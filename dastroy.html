@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dastroy — Planas Guillot | Photographs, Scribbles, Analog Collages</title>
+<meta name="description" content="dastroy (Planas Guillot): photographs, scribbles and scrawls, analog collages, songs and sounds, ideas, madness and glorious decades. Follow on Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Anton&family=Space+Mono:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3E9D2;
+    --pink:#FF3B81;
+    --orange:#FF6B35;
+    --yellow:#FFD23F;
+    --ink:#1A1A2E;
+    --gold:#C9A84C;
+    --gold-light:#F0C040;
+    --teal:#1FA598;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--paper);
+    background-image:
+      radial-gradient(circle at 10% 20%, rgba(255,59,129,0.08) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(31,165,152,0.08) 0%, transparent 40%);
+    color:var(--ink);
+    font-family:'Space Mono', monospace;
+    overflow-x:hidden;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  /* ===== TEXTURE / NOISE ===== */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:999;
+    opacity:0.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ===== NAV ===== */
+  nav{
+    position:sticky; top:0; z-index:100;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 6vw;
+    background:var(--ink);
+    border-bottom:6px dashed var(--gold);
+  }
+  .logo{
+    font-family:'Permanent Marker', cursive;
+    color:var(--yellow);
+    font-size:1.6rem;
+    transform:rotate(-3deg);
+    display:inline-block;
+  }
+  .nav-ig{
+    background:var(--gold);
+    color:var(--ink);
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size:0.75rem;
+    letter-spacing:0.08em;
+    padding:10px 18px;
+    border-radius:2px;
+    border:2px solid var(--ink);
+    box-shadow:3px 3px 0 var(--gold-light);
+    transition:transform 0.15s ease;
+  }
+  .nav-ig:hover{transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--gold-light);}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    padding:8vh 6vw 14vh;
+    text-align:center;
+    overflow:hidden;
+  }
+  .tape{
+    position:absolute;
+    width:140px; height:38px;
+    background:repeating-linear-gradient(45deg, var(--gold), var(--gold) 6px, var(--gold-light) 6px, var(--gold-light) 12px);
+    opacity:0.85;
+    box-shadow:0 2px 6px rgba(0,0,0,0.25);
+  }
+  .t1{top:4%; left:8%; transform:rotate(-12deg);}
+  .t2{top:10%; right:10%; transform:rotate(18deg);}
+  .t3{bottom:8%; left:14%; transform:rotate(8deg);}
+
+  .eyebrow{
+    font-family:'Special Elite', monospace;
+    font-size:0.85rem;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin-bottom:18px;
+  }
+
+  h1.title{
+    font-family:'Permanent Marker', cursive;
+    font-size:clamp(3.5rem, 12vw, 9rem);
+    line-height:0.9;
+    color:var(--pink);
+    text-shadow:6px 6px 0 var(--ink), 10px 10px 0 var(--gold);
+    transform:rotate(-2deg);
+    margin-bottom:6px;
+  }
+  h2.subtitle{
+    font-family:'Anton', sans-serif;
+    font-size:clamp(1.3rem, 3.5vw, 2.2rem);
+    letter-spacing:0.05em;
+    color:var(--ink);
+    margin-bottom:28px;
+  }
+  h2.subtitle span{
+    background:var(--yellow);
+    padding:2px 10px;
+    box-shadow:3px 3px 0 var(--ink);
+  }
+
+  .tagline-strip{
+    display:flex; flex-wrap:wrap; gap:10px;
+    justify-content:center;
+    max-width:820px;
+    margin:0 auto 40px;
+  }
+  .tagline-strip span{
+    font-family:'Special Elite', monospace;
+    font-size:0.85rem;
+    padding:6px 14px;
+    border:2px solid var(--ink);
+    border-radius:20px;
+    background:var(--paper);
+    transform:rotate(var(--r,0deg));
+  }
+  .tagline-strip span:nth-child(1){--r:-2deg; background:var(--pink); color:#fff;}
+  .tagline-strip span:nth-child(2){--r:1.5deg; background:var(--yellow);}
+  .tagline-strip span:nth-child(3){--r:-1deg; background:var(--teal); color:#fff;}
+  .tagline-strip span:nth-child(4){--r:2deg; background:var(--orange); color:#fff;}
+  .tagline-strip span:nth-child(5){--r:-2.5deg; background:var(--gold);}
+
+  .cta-primary{
+    display:inline-block;
+    font-family:'Anton', sans-serif;
+    letter-spacing:0.06em;
+    font-size:1.1rem;
+    color:var(--ink);
+    background:linear-gradient(135deg, var(--gold-light), var(--gold));
+    padding:18px 40px;
+    border:3px solid var(--ink);
+    border-radius:4px;
+    box-shadow:6px 6px 0 var(--ink);
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta-primary:hover{
+    transform:translate(-3px,-3px);
+    box-shadow:9px 9px 0 var(--ink);
+  }
+
+  /* ===== CORKBOARD ===== */
+  .corkboard{
+    position:relative;
+    max-width:1100px;
+    margin:0 auto;
+    padding:6vh 4vw;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:36px 24px;
+  }
+  .card{
+    background:#fffaf0;
+    width:210px;
+    padding:18px 16px 24px;
+    border:2px solid var(--ink);
+    box-shadow:5px 5px 0 rgba(26,26,46,0.85);
+    position:relative;
+    transform:rotate(var(--rot, 0deg));
+    opacity:0;
+    transform:translateY(30px) rotate(var(--rot,0deg));
+    transition:opacity 0.6s ease, transform 0.6s ease;
+  }
+  .card.visible{opacity:1; transform:translateY(0) rotate(var(--rot,0deg));}
+  .card::before{
+    content:"";
+    position:absolute;
+    top:-14px; left:50%;
+    transform:translateX(-50%) rotate(var(--pinrot,0deg));
+    width:60px; height:20px;
+    background:var(--gold);
+    border:1px solid var(--ink);
+    box-shadow:0 2px 4px rgba(0,0,0,0.3);
+  }
+  .card:nth-child(1){--rot:-4deg; --pinrot:-6deg;}
+  .card:nth-child(2){--rot:3deg; --pinrot:4deg;}
+  .card:nth-child(3){--rot:-2deg; --pinrot:-3deg;}
+  .card:nth-child(4){--rot:4deg; --pinrot:5deg;}
+  .card:nth-child(5){--rot:-3deg; --pinrot:-4deg;}
+
+  .card .icon{
+    width:100%;
+    height:120px;
+    margin-bottom:14px;
+    display:flex; align-items:center; justify-content:center;
+    border:2px dashed var(--ink);
+    background:var(--swatch, var(--pink));
+  }
+  .card:nth-child(1) .icon{--swatch: linear-gradient(135deg,#ff3b81,#ff6b35);}
+  .card:nth-child(2) .icon{--swatch: linear-gradient(135deg,#ffd23f,#ff6b35); background:var(--swatch);}
+  .card:nth-child(3) .icon{--swatch: linear-gradient(135deg,#1fa598,#ffd23f); background:var(--swatch);}
+  .card:nth-child(4) .icon{--swatch: linear-gradient(135deg,#c9a84c,#ff3b81); background:var(--swatch);}
+  .card:nth-child(5) .icon{--swatch: linear-gradient(135deg,#1a1a2e,#1fa598); background:var(--swatch);}
+
+  .card .icon svg{width:56px; height:56px;}
+
+  .card h3{
+    font-family:'Anton', sans-serif;
+    font-size:1.05rem;
+    letter-spacing:0.02em;
+    margin-bottom:8px;
+  }
+  .card p{
+    font-family:'Special Elite', monospace;
+    font-size:0.78rem;
+    line-height:1.5;
+    color:#333;
+  }
+
+  /* ===== ABOUT (torn note) ===== */
+  .about{
+    max-width:760px;
+    margin:8vh auto;
+    padding:5vh 6vw;
+  }
+  .note{
+    background:#fff4d6;
+    border:2px solid var(--ink);
+    box-shadow:8px 8px 0 var(--pink);
+    padding:40px 34px;
+    position:relative;
+    transform:rotate(-1deg);
+  }
+  .note::after{
+    content:"✂";
+    position:absolute; top:-18px; right:20px;
+    font-size:1.4rem;
+    background:var(--paper);
+    padding:2px 6px;
+  }
+  .note h2{
+    font-family:'Permanent Marker', cursive;
+    color:var(--teal);
+    font-size:1.8rem;
+    margin-bottom:16px;
+    transform:rotate(-1deg);
+  }
+  .note p{
+    font-family:'Special Elite', monospace;
+    font-size:0.95rem;
+    line-height:1.8;
+    color:var(--ink);
+  }
+  .note p + p{margin-top:14px;}
+
+  /* ===== CASSETTE / SOUNDS DIVIDER ===== */
+  .divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    padding:6vh 6vw;
+    flex-wrap:wrap;
+  }
+  .divider .line{
+    flex:1;
+    max-width:160px;
+    height:4px;
+    background:repeating-linear-gradient(90deg, var(--gold), var(--gold) 8px, transparent 8px, transparent 16px);
+  }
+  .divider span{
+    font-family:'Anton', sans-serif;
+    font-size:1rem;
+    letter-spacing:0.15em;
+    color:var(--pink);
+    white-space:nowrap;
+  }
+
+  /* ===== GALLERY STRIP ===== */
+  .gallery-strip{
+    display:flex;
+    gap:14px;
+    overflow-x:auto;
+    padding:2vh 6vw 6vh;
+    scrollbar-width:thin;
+  }
+  .strip-item{
+    flex:0 0 auto;
+    width:150px; height:190px;
+    background:#fffaf0;
+    border:2px solid var(--ink);
+    box-shadow:4px 4px 0 var(--ink);
+    padding:10px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    transform:rotate(var(--r,0deg));
+  }
+  .strip-item:nth-child(odd){--r:-3deg;}
+  .strip-item:nth-child(even){--r:2deg;}
+  .strip-item .swatch{
+    flex:1;
+    border-radius:2px;
+  }
+  .strip-item:nth-child(1) .swatch{background:linear-gradient(160deg,var(--pink),var(--orange));}
+  .strip-item:nth-child(2) .swatch{background:linear-gradient(160deg,var(--yellow),var(--gold));}
+  .strip-item:nth-child(3) .swatch{background:linear-gradient(160deg,var(--teal),var(--yellow));}
+  .strip-item:nth-child(4) .swatch{background:linear-gradient(160deg,var(--ink),var(--pink));}
+  .strip-item:nth-child(5) .swatch{background:linear-gradient(160deg,var(--orange),var(--teal));}
+  .strip-item:nth-child(6) .swatch{background:linear-gradient(160deg,var(--gold),var(--pink));}
+  .strip-item small{
+    font-family:'Special Elite', monospace;
+    font-size:0.68rem;
+    text-align:center;
+    margin-top:8px;
+    color:var(--ink);
+  }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta{
+    text-align:center;
+    padding:12vh 6vw 14vh;
+    background:var(--ink);
+    color:var(--paper);
+    position:relative;
+    border-top:6px dashed var(--gold);
+    overflow:hidden;
+  }
+  .final-cta h2{
+    font-family:'Permanent Marker', cursive;
+    font-size:clamp(2rem, 6vw, 3.4rem);
+    color:var(--yellow);
+    margin-bottom:14px;
+    transform:rotate(-1deg);
+  }
+  .final-cta p{
+    font-family:'Special Elite', monospace;
+    font-size:0.95rem;
+    color:#e8dfc8;
+    margin-bottom:36px;
+    max-width:520px;
+    margin-left:auto; margin-right:auto;
+  }
+  .cta-final-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    font-family:'Anton', sans-serif;
+    font-size:1.3rem;
+    letter-spacing:0.05em;
+    color:var(--ink);
+    background:var(--gold);
+    padding:20px 44px;
+    border:3px solid var(--yellow);
+    border-radius:6px;
+    box-shadow:7px 7px 0 var(--pink);
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cta-final-btn:hover{
+    transform:translate(-4px,-4px);
+    box-shadow:11px 11px 0 var(--pink);
+  }
+  .cta-final-btn svg{width:26px; height:26px;}
+
+  footer{
+    text-align:center;
+    padding:24px;
+    font-family:'Space Mono', monospace;
+    font-size:0.72rem;
+    color:#8a8060;
+    background:var(--ink);
+  }
+
+  /* scroll reveal */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible{opacity:1; transform:translateY(0);}
+
+  @media (max-width:600px){
+    .tape{display:none;}
+    .card{width:160px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+
+<nav>
+  <span class="logo">dastroy</span>
+  <a class="nav-ig" href="https://www.instagram.com/dastroy/" target="_blank" rel="noopener">FOLLOW @DASTROY</a>
+</nav>
+
+<section class="hero">
+  <div class="tape t1"></div>
+  <div class="tape t2"></div>
+  <div class="tape t3"></div>
+
+  <p class="eyebrow">// analog transmissions since forever</p>
+  <h1 class="title">dastroy</h1>
+  <h2 class="subtitle"><span>Planas Guillot</span></h2>
+
+  <div class="tagline-strip">
+    <span>Photographs</span>
+    <span>Scribbles &amp; Scrawls</span>
+    <span>Analog Collages</span>
+    <span>Songs &amp; Sounds</span>
+    <span>Glorious Decades</span>
+  </div>
+
+  <a class="cta-primary" href="https://www.instagram.com/dastroy/" target="_blank" rel="noopener">→ SEE THE FULL ARCHIVE ON INSTAGRAM</a>
+
+  <div class="corkboard">
+    <div class="card reveal">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="12" cy="12" r="3.5"/><circle cx="17.5" cy="8" r="0.8" fill="#fff"/></svg>
+      </div>
+      <h3>Photographs</h3>
+      <p>Raw frames, stolen moments, faces and cities caught off guard.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" stroke-width="1.6"><path d="M4 18c3-6 6-10 9-13 1 1 1 3-1 5-3 3-6 6-8 8z"/><path d="M14 6l4 4"/></svg>
+      </div>
+      <h3>Scribbles &amp; Scrawls</h3>
+      <p>Margin notes, doodles, ink that never asked permission.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" stroke-width="1.6"><rect x="3" y="3" width="8" height="8"/><rect x="13" y="7" width="8" height="8"/><rect x="7" y="13" width="8" height="8"/></svg>
+      </div>
+      <h3>Analog Collages</h3>
+      <p>Scissors, glue, torn paper, second lives for old magazines.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><rect x="2" y="7" width="20" height="10" rx="1.5"/><circle cx="8" cy="12" r="2.4"/><circle cx="16" cy="12" r="2.4"/></svg>
+      </div>
+      <h3>Songs &amp; Sounds</h3>
+      <p>Cassette-tape textures, four-track hums, half-remembered melodies.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/><circle cx="12" cy="12" r="4"/></svg>
+      </div>
+      <h3>Ideas, Madness &amp; Glorious Decades</h3>
+      <p>Everything else — the decades that made all of the above.</p>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="note reveal">
+    <h2>What is this place?</h2>
+    <p>dastroy is the working name of Planas Guillot — an ongoing archive of photographs, doodles, cut-and-paste collages, home-recorded sounds, and whatever else survives from decades of making things by hand.</p>
+    <p>Nothing here is polished on purpose. It's photographs next to scrawls next to songs, the way a real studio actually looks. If that sounds like your kind of mess, the full archive lives on Instagram.</p>
+  </div>
+</section>
+
+<div class="divider reveal">
+  <div class="line"></div>
+  <span>♫ SIDE A / SIDE B ♫</span>
+  <div class="line"></div>
+</div>
+
+<div class="gallery-strip reveal">
+  <div class="strip-item"><div class="swatch"></div><small>35mm frame</small></div>
+  <div class="strip-item"><div class="swatch"></div><small>torn poster</small></div>
+  <div class="strip-item"><div class="swatch"></div><small>tape reel</small></div>
+  <div class="strip-item"><div class="swatch"></div><small>ink blot</small></div>
+  <div class="strip-item"><div class="swatch"></div><small>ticket stub</small></div>
+  <div class="strip-item"><div class="swatch"></div><small>glue &amp; paper</small></div>
+</div>
+
+<section class="final-cta">
+  <h2 class="reveal">Come dig through the archive</h2>
+  <p class="reveal">New scraps, sounds and collages posted whenever the mood (or the madness) strikes. Follow along on Instagram — it's where everything actually lives.</p>
+  <a class="cta-final-btn reveal" href="https://www.instagram.com/dastroy/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#1a1a2e" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+    @DASTROY ON INSTAGRAM
+  </a>
+</section>
+
+<footer>
+  dastroy · Planas Guillot — analog since before it was a trend.
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal, .card');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
