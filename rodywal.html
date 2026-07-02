@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RODYWAL — Analog Collage, Leicestershire UK</title>
+<meta name="description" content="Rodywal makes hand-cut analog collage art in Leicestershire, UK. Commission a custom piece, order a print, or book a workshop.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #FBF3E7;
+    --paper-dark: #F3E4CC;
+    --ink: #201A17;
+    --coral: #FF5A4E;
+    --yellow: #FFC93C;
+    --teal: #2FB6A6;
+    --pink: #FF3E9A;
+    --blue: #3D7FD9;
+    --grass: #7BB84A;
+    --tape: rgba(255,201,60,0.55);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk',sans-serif;
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(32,26,23,0.06) 1px, transparent 0);
+    background-size:22px 22px;
+  }
+  a{color:inherit;text-decoration:none;}
+  .display{font-family:'Archivo Black',sans-serif;text-transform:uppercase;line-height:0.92;}
+  .marker{font-family:'Permanent Marker',cursive;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 6vw;position:relative;z-index:50;
+  }
+  .nav-logo{font-family:'Archivo Black',sans-serif;font-size:1.3rem;letter-spacing:0.02em;}
+  .nav-links{display:flex;gap:28px;align-items:center;font-weight:600;font-size:0.95rem;}
+  .nav-links a{position:relative;padding:4px 2px;}
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:-2px;width:0;height:3px;
+    background:var(--coral);transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--ink);color:var(--paper);padding:10px 20px;border-radius:999px;
+    font-weight:700;font-size:0.9rem;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;padding:6vh 6vw 10vh;text-align:center;
+    display:flex;flex-direction:column;align-items:center;
+  }
+  .eyebrow-tape{
+    display:inline-block;background:var(--tape);
+    padding:8px 22px;transform:rotate(-2deg);
+    font-family:'Permanent Marker',cursive;font-size:1rem;
+    color:#5b3a00;margin-bottom:28px;box-shadow:0 2px 4px rgba(0,0,0,0.08);
+  }
+  .title-cut{
+    display:flex;justify-content:center;flex-wrap:wrap;gap:0.35vw;
+    margin-bottom:20px;
+  }
+  .letter{
+    font-family:'Archivo Black',sans-serif;
+    font-size:clamp(2.6rem,9vw,7.5rem);
+    color:var(--paper);
+    padding:0 0.12em;
+    display:inline-block;
+    position:relative;
+    filter:drop-shadow(3px 4px 0 rgba(0,0,0,0.18));
+  }
+  .letter:nth-child(1){background:var(--coral); transform:rotate(-6deg);}
+  .letter:nth-child(2){background:var(--yellow); color:var(--ink); transform:rotate(4deg);}
+  .letter:nth-child(3){background:var(--teal); transform:rotate(-3deg);}
+  .letter:nth-child(4){background:var(--pink); transform:rotate(5deg);}
+  .letter:nth-child(5){background:var(--blue); transform:rotate(-4deg);}
+  .letter:nth-child(6){background:var(--grass); transform:rotate(3deg);}
+  .letter:nth-child(7){background:var(--coral); transform:rotate(-5deg);}
+
+  .hero-sub{
+    max-width:620px;font-size:1.15rem;line-height:1.6;color:#463731;
+    margin-bottom:14px;
+  }
+  .hero-loc{
+    font-weight:700;letter-spacing:0.08em;text-transform:uppercase;font-size:0.85rem;
+    color:var(--coral);margin-bottom:36px;
+  }
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+  .btn{
+    padding:16px 32px;border-radius:999px;font-weight:700;font-size:1rem;
+    display:inline-flex;align-items:center;gap:8px;
+    transition:transform .18s ease, box-shadow .18s ease;
+    border:3px solid var(--ink);
+  }
+  .btn:hover{transform:translateY(-3px) rotate(-1deg);}
+  .btn-primary{background:var(--ink);color:var(--paper);}
+  .btn-ghost{background:transparent;color:var(--ink);}
+
+  .scrap {
+    position:absolute; opacity:0.9; pointer-events:none; z-index:0;
+  }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee-wrap{
+    background:var(--ink);color:var(--paper);padding:14px 0;overflow:hidden;
+    transform:rotate(-1.4deg);margin:6vh -6vw 6vh;
+  }
+  .marquee{display:flex;white-space:nowrap;animation:scroll 22s linear infinite;}
+  .marquee span{
+    font-family:'Archivo Black',sans-serif;font-size:1.2rem;text-transform:uppercase;
+    padding:0 2rem;letter-spacing:0.04em;
+  }
+  .marquee span::after{content:"✂";margin-left:2rem;color:var(--yellow);}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{padding:6vh 6vw;position:relative;}
+  .section-head{max-width:640px;margin-bottom:50px;}
+  .section-tag{
+    font-family:'Permanent Marker',cursive;font-size:1.1rem;color:var(--pink);
+    margin-bottom:10px;display:block;
+  }
+  .section-title{font-size:clamp(1.8rem,4vw,3rem);}
+
+  /* ---------- ABOUT ---------- */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .about-visual{
+    position:relative;aspect-ratio:1/1;border-radius:6px;
+    background:linear-gradient(135deg,var(--yellow),var(--coral) 45%,var(--pink) 100%);
+    display:flex;align-items:center;justify-content:center;
+    transform:rotate(-2deg);
+    box-shadow:14px 14px 0 rgba(32,26,23,0.9);
+  }
+  .about-visual .layer{
+    position:absolute;background:var(--paper);border:3px solid var(--ink);
+  }
+  .about-visual .l1{width:60%;height:38%;top:12%;left:8%;transform:rotate(-8deg);}
+  .about-visual .l2{width:45%;height:30%;bottom:10%;right:6%;background:var(--teal);transform:rotate(9deg);}
+  .about-visual .l3{width:30%;height:30%;top:38%;left:38%;background:var(--blue);border-radius:50%;transform:rotate(0deg);}
+  .about p{font-size:1.08rem;line-height:1.75;color:#463731;margin-bottom:18px;}
+  .about strong{color:var(--ink);}
+  .stat-row{display:flex;gap:32px;margin-top:28px;flex-wrap:wrap;}
+  .stat{}
+  .stat b{display:block;font-family:'Archivo Black',sans-serif;font-size:1.8rem;color:var(--coral);}
+  .stat span{font-size:0.85rem;color:#6b5b52;}
+
+  /* ---------- GALLERY ---------- */
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+  }
+  .piece{
+    aspect-ratio:3/4;border-radius:4px;position:relative;overflow:hidden;
+    border:3px solid var(--ink);
+    box-shadow:6px 6px 0 rgba(32,26,23,0.85);
+    transition:transform .25s ease, box-shadow .25s ease;
+    cursor:pointer;
+  }
+  .piece:hover{transform:translateY(-8px) rotate(-1.5deg);box-shadow:10px 12px 0 rgba(32,26,23,0.85);}
+  .piece .tape{
+    position:absolute;top:-10px;left:50%;transform:translateX(-50%) rotate(-3deg);
+    width:60px;height:22px;background:var(--tape);
+  }
+  .piece .cap{
+    position:absolute;bottom:0;left:0;right:0;background:rgba(32,26,23,0.85);
+    color:var(--paper);font-size:0.78rem;padding:8px 10px;font-weight:600;
+    transform:translateY(100%);transition:transform .25s ease;
+  }
+  .piece:hover .cap{transform:translateY(0);}
+  .p1{background:repeating-linear-gradient(45deg,var(--coral),var(--coral) 18px,var(--yellow) 18px,var(--yellow) 36px);}
+  .p2{background:radial-gradient(circle at 30% 30%, var(--blue), var(--teal) 70%);}
+  .p3{background:linear-gradient(160deg,var(--pink),var(--yellow) 60%,var(--grass));}
+  .p4{background:conic-gradient(from 90deg, var(--coral), var(--pink), var(--blue), var(--yellow), var(--coral));}
+  .p5{background:repeating-linear-gradient(-40deg,var(--teal),var(--teal) 14px,var(--paper) 14px,var(--paper) 20px);}
+  .p6{background:linear-gradient(120deg,var(--grass),var(--blue));}
+  .p7{background:radial-gradient(circle at 70% 20%, var(--yellow), var(--coral) 55%, var(--pink));}
+  .p8{background:repeating-radial-gradient(circle at 50% 50%, var(--pink), var(--pink) 10px, var(--yellow) 10px, var(--yellow) 20px);}
+
+  /* ---------- PROCESS ---------- */
+  .process-list{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  .proc-card{
+    background:var(--paper-dark);border:3px solid var(--ink);border-radius:10px;
+    padding:26px 22px;position:relative;transition:transform .2s ease;
+  }
+  .proc-card:nth-child(odd){transform:rotate(-1.2deg);}
+  .proc-card:nth-child(even){transform:rotate(1.2deg);}
+  .proc-card:hover{transform:rotate(0) scale(1.03);}
+  .proc-icon{font-size:2rem;margin-bottom:12px;display:block;}
+  .proc-card h3{font-family:'Archivo Black',sans-serif;font-size:1.05rem;margin-bottom:8px;text-transform:uppercase;}
+  .proc-card p{font-size:0.92rem;color:#5c4b42;line-height:1.55;}
+
+  /* ---------- OFFER / PRICING ---------- */
+  .offers{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .offer-card{
+    background:var(--ink);color:var(--paper);border-radius:14px;padding:34px 28px;
+    position:relative;overflow:hidden;
+  }
+  .offer-card.highlight{background:var(--coral);}
+  .offer-card h3{font-family:'Archivo Black',sans-serif;font-size:1.3rem;margin-bottom:6px;text-transform:uppercase;}
+  .offer-card .price{font-family:'Permanent Marker',cursive;font-size:1.6rem;color:var(--yellow);margin-bottom:16px;display:block;}
+  .offer-card.highlight .price{color:var(--ink);}
+  .offer-card ul{list-style:none;margin-bottom:24px;}
+  .offer-card li{font-size:0.92rem;padding:6px 0;border-top:1px solid rgba(255,255,255,0.15);}
+  .offer-card.highlight li{border-top:1px solid rgba(32,26,23,0.15);}
+  .offer-card .btn{width:100%;justify-content:center;border-color:var(--paper);}
+  .offer-card.highlight .btn{border-color:var(--ink);background:var(--ink);color:var(--paper);}
+
+  /* ---------- TESTIMONIAL / IG STRIP ---------- */
+  .ig-strip{
+    background:linear-gradient(100deg,var(--pink),var(--blue));
+    border-radius:18px;padding:60px 6vw;text-align:center;color:var(--paper);
+    margin:6vh 0;
+  }
+  .ig-strip h2{font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:16px;}
+  .ig-strip p{max-width:520px;margin:0 auto 30px;font-size:1.05rem;opacity:0.95;}
+  .ig-handle{
+    display:inline-flex;align-items:center;gap:10px;background:var(--paper);color:var(--ink);
+    padding:16px 30px;border-radius:999px;font-weight:700;font-size:1.1rem;
+    border:3px solid var(--ink);
+  }
+  .ig-handle:hover{transform:translateY(-3px);}
+
+  /* ---------- CONTACT / FOOTER ---------- */
+  footer{
+    background:var(--ink);color:var(--paper);padding:8vh 6vw 4vh;text-align:center;
+  }
+  footer .display{font-size:clamp(2rem,6vw,4rem);color:var(--yellow);margin-bottom:20px;}
+  footer p{color:#cfc3ba;max-width:480px;margin:0 auto 30px;}
+  .foot-links{display:flex;gap:26px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;}
+  .foot-links a{font-weight:700;border-bottom:2px solid var(--coral);padding-bottom:2px;}
+  .foot-bottom{font-size:0.8rem;color:#8a7c73;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .about{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .process-list{grid-template-columns:repeat(2,1fr);}
+    .offers{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .marquee{animation:none;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">✂ RODYWAL</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#process">Process</a>
+    <a href="#offers">Commission</a>
+  </div>
+  <a class="nav-cta" href="https://www.instagram.com/rodywal/" target="_blank" rel="noopener">Follow on IG</a>
+</nav>
+
+<section class="hero">
+  <span class="eyebrow-tape">handcut &amp; glue-stuck since day one</span>
+  <div class="title-cut">
+    <span class="letter">R</span>
+    <span class="letter">O</span>
+    <span class="letter">D</span>
+    <span class="letter">Y</span>
+    <span class="letter">W</span>
+    <span class="letter">A</span>
+    <span class="letter">L</span>
+  </div>
+  <p class="hero-sub">Analog collage, made entirely by hand — no software, no filters. Just scissors, old paper, and a scalpel-sharp eye for the unexpected combination.</p>
+  <p class="hero-loc">📍 Leicestershire, UK</p>
+  <div class="hero-ctas">
+    <a class="btn btn-primary" href="#offers">Commission a piece</a>
+    <a class="btn btn-ghost" href="https://www.instagram.com/rodywal/" target="_blank" rel="noopener">View @rodywal on Instagram</a>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>ANALOG ONLY</span><span>HAND CUT</span><span>ONE OF ONE</span><span>LEICESTERSHIRE UK</span>
+    <span>ANALOG ONLY</span><span>HAND CUT</span><span>ONE OF ONE</span><span>LEICESTERSHIRE UK</span>
+  </div>
+</div>
+
+<section id="about" class="about">
+  <div class="about-visual" aria-hidden="true">
+    <div class="layer l1"></div>
+    <div class="layer l2"></div>
+    <div class="layer l3"></div>
+  </div>
+  <div>
+    <span class="section-tag">the studio</span>
+    <h2 class="section-title display" style="margin-bottom:22px;">Paper, glue,<br>and patience.</h2>
+    <p>Rodywal is a one-person analog collage practice based in <strong>Leicestershire, UK</strong>. Every piece starts as a pile of found paper — old magazines, books, maps, packaging — and ends up as something none of them were on their own.</p>
+    <p>No digital tools touch the final image. What you see is what was physically cut, arranged, and stuck down by hand, which means <strong>every commission is genuinely one of one</strong> — it can't be recreated, resized, or reprinted the same way twice.</p>
+    <div class="stat-row">
+      <div class="stat"><b>100%</b><span>hand cut, zero software</span></div>
+      <div class="stat"><b>1 of 1</b><span>every piece is unrepeatable</span></div>
+      <div class="stat"><b>UK</b><span>based in Leicestershire</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="section-head">
+    <span class="section-tag">recent cuts</span>
+    <h2 class="section-title display">A glimpse of the offcuts.</h2>
+  </div>
+  <div class="gallery-grid">
+    <div class="piece p1"><div class="tape"></div><div class="cap">Study in warm clash</div></div>
+    <div class="piece p2"><div class="tape"></div><div class="cap">Deep blue fragment</div></div>
+    <div class="piece p3"><div class="tape"></div><div class="cap">Sunset offcut</div></div>
+    <div class="piece p4"><div class="tape"></div><div class="cap">Full spectrum piece</div></div>
+    <div class="piece p5"><div class="tape"></div><div class="cap">Teal stripe series</div></div>
+    <div class="piece p6"><div class="tape"></div><div class="cap">Field study</div></div>
+    <div class="piece p7"><div class="tape"></div><div class="cap">Radiant layer</div></div>
+    <div class="piece p8"><div class="tape"></div><div class="cap">Dot pattern cut</div></div>
+  </div>
+  <p style="margin-top:26px;color:#6b5b52;font-size:0.95rem;">These blocks stand in for real collage photography — the actual, glorious paper-and-glue originals live on <a href="https://www.instagram.com/rodywal/" target="_blank" rel="noopener" style="color:var(--coral);font-weight:700;">Instagram @rodywal</a>.</p>
+</section>
+
+<section id="process">
+  <div class="section-head">
+    <span class="section-tag">how it's made</span>
+    <h2 class="section-title display">Four steps. Zero undo button.</h2>
+  </div>
+  <div class="process-list">
+    <div class="proc-card">
+      <span class="proc-icon">📚</span>
+      <h3>Source</h3>
+      <p>Old magazines, books, maps and ephemera are gathered and sorted by colour, texture and subject.</p>
+    </div>
+    <div class="proc-card">
+      <span class="proc-icon">✂️</span>
+      <h3>Cut</h3>
+      <p>Every shape is cut by hand with scissors or scalpel — no digital tracing, no vector shortcuts.</p>
+    </div>
+    <div class="proc-card">
+      <span class="proc-icon">🧩</span>
+      <h3>Arrange</h3>
+      <p>Fragments are laid out and re-laid out until the composition earns its place on the page.</p>
+    </div>
+    <div class="proc-card">
+      <span class="proc-icon">🪡</span>
+      <h3>Stick</h3>
+      <p>Once it's right, it's glued down for good. What you get is the one and only original.</p>
+    </div>
+  </div>
+</section>
+
+<section id="offers">
+  <div class="section-head">
+    <span class="section-tag">work with rodywal</span>
+    <h2 class="section-title display">Bring a piece into your world.</h2>
+  </div>
+  <div class="offers">
+    <div class="offer-card">
+      <h3>Mini Cut</h3>
+      <span class="price">from £45</span>
+      <ul>
+        <li>Small original, A5 scale</li>
+        <li>Choice of colour mood</li>
+        <li>Ready in 1–2 weeks</li>
+        <li>Great first commission</li>
+      </ul>
+      <a class="btn" href="https://www.instagram.com/rodywal/" target="_blank" rel="noopener">Enquire on Instagram</a>
+    </div>
+    <div class="offer-card highlight">
+      <h3>Custom Commission</h3>
+      <span class="price">from £120</span>
+      <ul>
+        <li>A4–A3 original, made for you</li>
+        <li>Brief call to talk theme &amp; palette</li>
+        <li>Progress photos before it's glued</li>
+        <li>Signed &amp; ready to frame</li>
+      </ul>
+      <a class="btn" href="https://www.instagram.com/rodywal/" target="_blank" rel="noopener">Start a commission</a>
+    </div>
+    <div class="offer-card">
+      <h3>Workshop</h3>
+      <span class="price">from £30 / head</span>
+      <ul>
+        <li>Hands-on analog collage session</li>
+        <li>All paper &amp; tools supplied</li>
+        <li>Leicestershire venues, or ask about travel</li>
+        <li>Great for groups &amp; events</li>
+      </ul>
+      <a class="btn" href="https://www.instagram.com/rodywal/" target="_blank" rel="noopener">Book a workshop</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="ig-strip">
+    <h2 class="display">Follow the whole process</h2>
+    <p>New cuts, works-in-progress and finished pieces are posted first on Instagram — it's the best way to see what Rodywal is working on right now, and the fastest way to get in touch.</p>
+    <a class="ig-handle" href="https://www.instagram.com/rodywal/" target="_blank" rel="noopener">
+      <span>📸</span> @rodywal on Instagram
+    </a>
+  </div>
+</section>
+
+<footer>
+  <h2 class="display">Let's make<br>something unrepeatable.</h2>
+  <p>Based in Leicestershire, UK. Every enquiry — commissions, prints, workshops, or just to say hello — starts on Instagram.</p>
+  <div class="foot-links">
+    <a href="https://www.instagram.com/rodywal/" target="_blank" rel="noopener">Instagram — @rodywal</a>
+    <a href="#offers">Commission</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#about">About</a>
+  </div>
+  <div class="foot-bottom">© 2026 Rodywal — Analog Collage, Leicestershire UK. Handmade, always.</div>
+</footer>
+
+</body>
+</html>
