@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CharmedHourCollage — Handmade Paper Collage Art by Tracy E. Meyer | Buffalo, NY</title>
+<meta name="description" content="One-of-a-kind handmade paper collage art by Tracy E. Meyer, cut and pasted from vintage magazines and books. Buffalo, NY. Shop original collage art on Etsy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Space+Mono:wght@400;700&family=Libre+Franklin:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #f1e6cf;
+    --paper-2: #e8dabb;
+    --ink: #2c2318;
+    --ink-soft: #4a3d2c;
+    --red: #b8402f;
+    --red-dark: #93321f;
+    --teal: #38695f;
+    --mustard: #cf9b2b;
+    --tape: #e9d9a8;
+    --card: #faf3e2;
+    --shadow: rgba(44,35,24,0.25);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Libre Franklin', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    background-image:
+      radial-gradient(circle at 20% 15%, rgba(184,64,47,0.05), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(56,105,95,0.06), transparent 45%),
+      repeating-linear-gradient(0deg, rgba(44,35,24,0.015) 0px, rgba(44,35,24,0.015) 1px, transparent 1px, transparent 3px);
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    color:var(--ink);
+    margin:0;
+  }
+  .label{
+    font-family:'Space Mono', monospace;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-size:0.72rem;
+    color:var(--red-dark);
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
+
+  /* torn paper edge */
+  .torn-top{position:relative;}
+  .torn-top::before{
+    content:"";
+    position:absolute;
+    top:-14px;left:0;right:0;height:16px;
+    background:
+      linear-gradient(135deg, var(--card) 25%, transparent 25%) 0 0/16px 16px,
+      linear-gradient(-135deg, var(--card) 25%, transparent 25%) 0 0/16px 16px;
+    background-repeat:repeat-x;
+  }
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(241,230,207,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:2px solid var(--ink);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:1140px; margin:0 auto;
+  }
+  .brand{
+    display:flex; align-items:baseline; gap:10px;
+  }
+  .brand .scissor{font-size:1.1rem;}
+  .brand-name{
+    font-family:'Fraunces', serif; font-weight:700; font-size:1.25rem;
+    letter-spacing:-0.01em;
+  }
+  .nav-links{display:flex; gap:26px; align-items:center; font-family:'Space Mono',monospace; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.06em;}
+  .nav-links a{text-decoration:none; border-bottom:2px solid transparent; padding-bottom:3px; transition:border-color .2s;}
+  .nav-links a:hover{border-color:var(--red);}
+  .nav-cta{
+    background:var(--red); color:var(--paper); padding:9px 16px;
+    border-radius:2px; text-decoration:none; font-family:'Space Mono',monospace;
+    font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em;
+    box-shadow:3px 3px 0 var(--ink);
+    transition:transform .15s, box-shadow .15s;
+    display:inline-block;
+  }
+  .nav-cta:hover{transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--ink);}
+  @media(max-width:760px){ .nav-links{display:none;} }
+
+  /* ===== HERO ===== */
+  .hero{
+    padding:80px 28px 60px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    max-width:1140px; margin:0 auto;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center;
+  }
+  @media(max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+
+  .eyebrow-tape{
+    display:inline-block;
+    background:var(--tape);
+    padding:6px 14px;
+    transform:rotate(-2deg);
+    font-family:'Space Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    box-shadow:0 2px 4px var(--shadow);
+    margin-bottom:22px;
+  }
+
+  .hero h1{
+    font-size:clamp(2.4rem, 5.5vw, 4.2rem);
+    line-height:1.02;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 .cut-a{color:var(--red);}
+  .hero h1 .cut-b{color:var(--teal); font-style:italic; font-weight:500;}
+  .hero h1 .cut-c{
+    background:var(--mustard);
+    padding:2px 10px;
+    display:inline-block;
+    transform:rotate(-1deg);
+    color:var(--ink);
+  }
+
+  .hero p.sub{
+    margin-top:24px; font-size:1.1rem; color:var(--ink-soft); max-width:46ch;
+  }
+
+  .hero-ctas{margin-top:34px; display:flex; gap:16px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--ink); color:var(--paper); text-decoration:none;
+    padding:15px 26px; font-family:'Space Mono',monospace; font-size:0.85rem;
+    text-transform:uppercase; letter-spacing:0.06em;
+    box-shadow:4px 4px 0 var(--red);
+    transition:transform .15s, box-shadow .15s;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--red);}
+  .btn-secondary{
+    background:transparent; color:var(--ink); text-decoration:none;
+    padding:15px 26px; border:2px solid var(--ink); font-family:'Space Mono',monospace;
+    font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em;
+    transition:background .15s, color .15s;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-secondary:hover{background:var(--ink); color:var(--paper);}
+
+  .hero-visual{position:relative; height:420px;}
+  .clip-card{
+    position:absolute; background:var(--card);
+    box-shadow:0 10px 24px var(--shadow);
+    padding:14px; border:1px solid rgba(44,35,24,0.1);
+  }
+  .clip-1{width:58%; top:0; left:8%; transform:rotate(-6deg); z-index:3;}
+  .clip-2{width:46%; top:38%; right:0; transform:rotate(5deg); z-index:2;}
+  .clip-3{width:40%; bottom:0; left:18%; transform:rotate(3deg); z-index:1;}
+  .clip-card .swatch{width:100%; aspect-ratio:4/5; background:linear-gradient(135deg,var(--mustard),var(--red) 60%, var(--teal)); position:relative; overflow:hidden;}
+  .clip-2 .swatch{aspect-ratio:1/1; background:linear-gradient(160deg,var(--teal),var(--paper-2) 55%, var(--red));}
+  .clip-3 .swatch{aspect-ratio:5/4; background:linear-gradient(200deg,var(--red),var(--mustard) 50%,var(--teal));}
+  .clip-card .cap{font-family:'Space Mono',monospace; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--ink-soft); margin-top:10px; text-align:center;}
+  .washi{
+    position:absolute; width:64px; height:22px; background:rgba(207,155,43,0.55);
+    box-shadow:0 2px 4px rgba(0,0,0,0.15);
+  }
+  .washi-1{top:-8px; left:20%; transform:rotate(-8deg); z-index:4;}
+  .washi-2{top:34%; right:6%; transform:rotate(10deg); z-index:4;}
+
+  /* ===== SECTION shared ===== */
+  section{padding:78px 0;}
+  .section-head{max-width:640px; margin-bottom:48px;}
+  .section-head h2{font-size:clamp(1.8rem,3.5vw,2.6rem); margin-top:10px;}
+  .divider{
+    height:3px; background:repeating-linear-gradient(90deg, var(--ink) 0 10px, transparent 10px 18px);
+    margin:0 auto; max-width:1140px;
+  }
+
+  /* ===== ABOUT ===== */
+  .about{background:var(--paper-2);}
+  .about-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;}
+  @media(max-width:860px){.about-grid{grid-template-columns:1fr;}}
+  .portrait-frame{
+    background:var(--card); padding:16px; box-shadow:0 12px 28px var(--shadow);
+    transform:rotate(-2deg); position:relative;
+  }
+  .portrait-frame .ph{
+    aspect-ratio:4/5; background:
+      linear-gradient(135deg, rgba(184,64,47,0.75), rgba(207,155,43,0.65) 45%, rgba(56,105,95,0.75));
+    position:relative;
+  }
+  .portrait-frame .pin{
+    position:absolute; top:-10px; left:50%; transform:translateX(-50%);
+    width:16px; height:16px; border-radius:50%; background:var(--red);
+    box-shadow:0 3px 5px rgba(0,0,0,0.3);
+  }
+  .portrait-frame .cap{font-family:'Space Mono',monospace; font-size:0.72rem; text-align:center; margin-top:12px; color:var(--ink-soft);}
+  .about-copy p{margin:0 0 18px; color:var(--ink-soft); font-size:1.02rem;}
+  .about-copy p:first-of-type{font-size:1.15rem; color:var(--ink);}
+  .signature{font-family:'Fraunces', serif; font-style:italic; font-size:1.4rem; color:var(--red-dark); margin-top:8px;}
+  .badge-row{display:flex; gap:14px; margin-top:28px; flex-wrap:wrap;}
+  .stat-badge{
+    background:var(--card); border:1px solid rgba(44,35,24,0.12);
+    padding:14px 18px; box-shadow:3px 3px 0 var(--mustard);
+    min-width:110px;
+  }
+  .stat-badge .num{font-family:'Fraunces',serif; font-weight:700; font-size:1.5rem; color:var(--red-dark);}
+  .stat-badge .lbl{font-family:'Space Mono',monospace; font-size:0.65rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--ink-soft);}
+
+  /* ===== GALLERY ===== */
+  .gallery{background:var(--paper);}
+  .gallery-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  @media(max-width:860px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.gallery-grid{grid-template-columns:1fr;}}
+  .piece{
+    background:var(--card); padding:14px 14px 18px; box-shadow:0 8px 18px var(--shadow);
+    transition:transform .2s, box-shadow .2s;
+  }
+  .piece:nth-child(odd){transform:rotate(-1.3deg);}
+  .piece:nth-child(even){transform:rotate(1.1deg);}
+  .piece:hover{transform:rotate(0) translateY(-6px); box-shadow:0 16px 28px var(--shadow);}
+  .piece .art{aspect-ratio:4/5; position:relative; overflow:hidden;}
+  .piece .art.p1{background:linear-gradient(150deg,#b8402f, #cf9b2b 55%, #38695f);}
+  .piece .art.p2{background:linear-gradient(160deg,#38695f, #e8dabb 50%, #b8402f);}
+  .piece .art.p3{background:linear-gradient(140deg,#cf9b2b, #93321f 55%, #38695f);}
+  .piece .art.p4{background:linear-gradient(170deg,#93321f, #38695f 50%, #cf9b2b);}
+  .piece .art.p5{background:linear-gradient(155deg,#38695f, #b8402f 45%, #cf9b2b);}
+  .piece .art.p6{background:linear-gradient(145deg,#cf9b2b, #38695f 55%, #93321f);}
+  .piece h3{font-size:1.15rem; margin-top:14px;}
+  .piece .meta{font-family:'Space Mono',monospace; font-size:0.7rem; color:var(--ink-soft); margin-top:4px; text-transform:uppercase; letter-spacing:0.05em;}
+  .gallery-note{margin-top:36px; text-align:center; color:var(--ink-soft); font-size:0.95rem;}
+
+  /* ===== PROCESS ===== */
+  .process{background:var(--ink); color:var(--paper);}
+  .process .section-head h2, .process .label{color:var(--paper);}
+  .process .label{color:var(--mustard);}
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:36px;}
+  @media(max-width:860px){.steps{grid-template-columns:1fr;}}
+  .step{border-left:2px solid var(--mustard); padding-left:20px;}
+  .step .stepnum{font-family:'Fraunces',serif; font-style:italic; font-size:1.6rem; color:var(--mustard);}
+  .step h3{color:var(--paper); font-size:1.2rem; margin-top:6px;}
+  .step p{color:#d8cdb3; font-size:0.95rem; margin-top:8px;}
+
+  /* ===== COLLECTIVE / WILDER ===== */
+  .collective{background:var(--paper-2);}
+  .collective-box{
+    display:flex; gap:32px; align-items:center; background:var(--card);
+    padding:36px; box-shadow:0 10px 24px var(--shadow); flex-wrap:wrap;
+  }
+  .collective-box .icon{
+    width:70px; height:70px; flex:0 0 70px; border-radius:50%;
+    background:var(--teal); display:flex; align-items:center; justify-content:center;
+    color:var(--paper); font-family:'Fraunces',serif; font-size:1.6rem; font-weight:700;
+  }
+  .collective-box .txt{flex:1; min-width:240px;}
+  .collective-box h3{font-size:1.3rem;}
+  .collective-box p{color:var(--ink-soft); margin-top:8px;}
+  .collective-box a.inline-link{color:var(--red-dark); font-weight:600; text-decoration:underline;}
+
+  /* ===== TESTIMONIAL / TRUST ===== */
+  .trust{background:var(--paper);}
+  .trust-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; text-align:center;}
+  @media(max-width:760px){.trust-grid{grid-template-columns:repeat(2,1fr);}}
+  .trust-item{padding:26px 14px; border:1px dashed rgba(44,35,24,0.3);}
+  .trust-item .big{font-family:'Fraunces',serif; font-weight:700; font-size:2.1rem; color:var(--red-dark);}
+  .trust-item .cap{font-family:'Space Mono',monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--ink-soft); margin-top:6px;}
+
+  /* ===== CTA ===== */
+  .cta{
+    background:var(--red); color:var(--paper); text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .cta h2{color:var(--paper); font-size:clamp(1.8rem,4vw,2.8rem);}
+  .cta p{color:#f2ddd6; max-width:50ch; margin:16px auto 0; font-size:1.05rem;}
+  .cta .hero-ctas{justify-content:center; margin-top:30px;}
+  .cta .btn-primary{box-shadow:4px 4px 0 var(--ink);}
+  .cta .btn-secondary{border-color:var(--paper);}
+  .cta .btn-secondary:hover{background:var(--paper); color:var(--red);}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--ink); color:#cfc4ab; padding:48px 0 28px;}
+  .foot-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:28px; margin-bottom:32px;}
+  .foot-brand{font-family:'Fraunces',serif; font-weight:700; color:var(--paper); font-size:1.2rem;}
+  .foot-links{display:flex; gap:24px; font-family:'Space Mono',monospace; font-size:0.78rem; text-transform:uppercase; letter-spacing:0.05em;}
+  .foot-links a{text-decoration:none; color:#cfc4ab; border-bottom:1px solid transparent;}
+  .foot-links a:hover{border-color:var(--mustard); color:var(--paper);}
+  .foot-bottom{border-top:1px solid #4a3d2c; padding-top:20px; font-size:0.78rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; color:#9a8d70;}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand">
+      <span class="scissor">✂️</span>
+      <span class="brand-name">Charmed Hour Collage</span>
+    </div>
+    <div class="nav-links">
+      <a href="#about">Artist</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#process">Process</a>
+      <a href="#collective">Wilder Collage</a>
+    </div>
+    <a class="nav-cta" href="https://www.etsy.com/shop/charmedhourcollage" target="_blank" rel="noopener">Shop Etsy</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow-tape">Buffalo, NY · One of a kind, cut by hand</span>
+      <h1>Vintage paper, <span class="cut-a">cut and pasted</span> into something <span class="cut-b">entirely new</span>.<br>
+      <span class="cut-c">Original collage art</span> by Tracy E. Meyer.</h1>
+      <p class="sub">Every piece begins as a stack of old magazines and forgotten books. Nothing is printed, filtered, or generated — just scissors, glue, and a lot of patient looking, until the images find each other.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="https://www.etsy.com/shop/charmedhourcollage" target="_blank" rel="noopener">Shop the collection →</a>
+        <a class="btn-secondary" href="https://www.instagram.com/charmedhourcollage/" target="_blank" rel="noopener">Follow on Instagram</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="washi washi-1"></div>
+      <div class="washi washi-2"></div>
+      <div class="clip-card clip-1"><div class="swatch"></div><div class="cap">"Thriving" · 6×8 in</div></div>
+      <div class="clip-card clip-2"><div class="swatch"></div><div class="cap">"Eclipse" · 8×8 in</div></div>
+      <div class="clip-card clip-3"><div class="swatch"></div><div class="cap">"Fractured" · 8×10 in</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="portrait-frame">
+      <div class="pin"></div>
+      <div class="ph"></div>
+      <div class="cap">Tracy E. Meyer, in the studio</div>
+    </div>
+    <div class="about-copy">
+      <span class="label">The Artist</span>
+      <p>Tracy E. Meyer has been making handmade paper collages for over a decade, working out of her studio in Buffalo, New York. Every piece is built by hand from images cut out of vintage magazines, books, and other found paper — no digital tools, no reprints.</p>
+      <p>Her work draws on memory, music, nostalgia, and nature, arranging fragments of the past into images that feel both familiar and slightly surreal. Each collage is one of a kind, signed, mounted on watercolor paper, and ready for framing.</p>
+      <p class="signature">— Tracy</p>
+      <div class="badge-row">
+        <div class="stat-badge"><div class="num">5.0★</div><div class="lbl">Etsy Rating</div></div>
+        <div class="stat-badge"><div class="num">10+</div><div class="lbl">Years Selling</div></div>
+        <div class="stat-badge"><div class="num">1/1</div><div class="lbl">Every Piece</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">Recent Work</span>
+      <h2>A few favorites from the studio</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="piece"><div class="art p1"></div><h3>Thriving</h3><div class="meta">6 × 8 in · Watercolor mount</div></div>
+      <div class="piece"><div class="art p2"></div><h3>Eclipse</h3><div class="meta">8 × 8 in · Made for the 2024 total eclipse</div></div>
+      <div class="piece"><div class="art p3"></div><h3>Fractured</h3><div class="meta">8 × 10 in · Watercolor mount</div></div>
+      <div class="piece"><div class="art p4"></div><h3>Paper Constellations</h3><div class="meta">Group exhibition piece</div></div>
+      <div class="piece"><div class="art p5"></div><h3>Vintage Ephemera Pack</h3><div class="meta">Curated paper for your own collage</div></div>
+      <div class="piece"><div class="art p6"></div><h3>Studio Original</h3><div class="meta">One of a kind · Signed</div></div>
+    </div>
+    <p class="gallery-note">New collages are added often — the full, current collection lives on Etsy.</p>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">How Each Piece Is Made</span>
+      <h2>Traditional cut-and-paste, start to finish</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="stepnum">01</div>
+        <h3>Gather</h3>
+        <p>Old magazines, books, and paper ephemera are collected and sorted — color, texture, and subject all matter before a single cut is made.</p>
+      </div>
+      <div class="step">
+        <div class="stepnum">02</div>
+        <h3>Cut &amp; Compose</h3>
+        <p>Images are cut by hand and arranged on the page, shifted and reworked until unrelated fragments start to feel like they belong together.</p>
+      </div>
+      <div class="step">
+        <div class="stepnum">03</div>
+        <h3>Mount &amp; Sign</h3>
+        <p>The finished collage is glued to watercolor paper, signed, and finished — ready to frame, one of a kind, and never reprinted.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="collective" id="collective">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="label">Community</span>
+      <h2>Proud member of Wilder Collage</h2>
+    </div>
+    <div class="collective-box">
+      <div class="icon">W</div>
+      <div class="txt">
+        <h3>@wildercollage</h3>
+        <p>Tracy is a member of Wilder Collage, a community of collage artists, and has shown work in group exhibitions alongside collage makers from across the country. It's part of a wider circle of paper artists she trades ideas — and scraps — with.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust">
+  <div class="wrap">
+    <div class="trust-grid">
+      <div class="trust-item"><div class="big">5.0★</div><div class="cap">Etsy Shop Rating</div></div>
+      <div class="trust-item"><div class="big">10+</div><div class="cap">Years on Etsy</div></div>
+      <div class="trust-item"><div class="big">1–3 Day</div><div class="cap">Ship Time (USPS)</div></div>
+      <div class="trust-item"><div class="big">100%</div><div class="cap">Hand Cut &amp; Signed</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <div class="wrap">
+    <span class="label" style="color:#f2ddd6;">Bring one home</span>
+    <h2>Every collage is one of a kind.<br>Once it's gone, it's gone.</h2>
+    <p>Browse the current collection on Etsy, or follow along on Instagram to see new pieces as they come off the worktable.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="https://www.etsy.com/shop/charmedhourcollage" target="_blank" rel="noopener">Shop on Etsy →</a>
+      <a class="btn-secondary" href="https://www.instagram.com/charmedhourcollage/" target="_blank" rel="noopener">@charmedhourcollage</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Charmed Hour Collage</div>
+        <p style="margin-top:8px; font-size:0.9rem; max-width:34ch;">Handmade paper collage art by Tracy E. Meyer. Buffalo, NY.</p>
+      </div>
+      <div class="foot-links">
+        <a href="https://www.etsy.com/shop/charmedhourcollage" target="_blank" rel="noopener">Etsy Shop</a>
+        <a href="https://www.instagram.com/charmedhourcollage/" target="_blank" rel="noopener">Instagram</a>
+        <a href="mailto:charmedhourcollage@gmail.com">Email</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Charmed Hour Collage · Tracy E. Meyer. All artwork one of a kind.</span>
+      <span>Member of @wildercollage</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
