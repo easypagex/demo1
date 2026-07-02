@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Samuel Eller — Designer · Collage Artist · Visual Poet</title>
+<meta name="description" content="Samuel Eller is a designer and collage artist working between graphic design, mixed-media collage and visual poetry. Master's degree and professor in Design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --paper: #F3ECD8;
+    --paper-dark: #E7DBB8;
+    --paper-shadow-dark: #d8c99a;
+    --ink: #211a12;
+    --rust: #C0402B;
+    --teal: #33594E;
+    --gold: #BD9424;
+    --shadow: rgba(33,26,18,.28);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Newsreader', serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* paper texture */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none;
+    z-index:0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(0,0,0,.025) 0, transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(0,0,0,.03) 0, transparent 45%),
+      repeating-linear-gradient(0deg, rgba(0,0,0,.012) 0px, rgba(0,0,0,.012) 1px, transparent 1px, transparent 3px);
+  }
+
+  a{ color:inherit; }
+
+  .label{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700;
+    font-size:.72rem;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+  }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 28px;
+    position:relative;
+    z-index:1;
+  }
+
+  /* ---------- washi tape ---------- */
+  .tape{
+    position:absolute;
+    width:100px; height:26px;
+    background:repeating-linear-gradient(45deg, rgba(255,255,255,.55) 0 6px, rgba(255,255,255,.32) 6px 12px), var(--gold);
+    opacity:.85;
+    box-shadow:0 2px 4px rgba(0,0,0,.15);
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--paper);
+    border-bottom:2px solid var(--ink);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:1120px; margin:0 auto;
+  }
+  .nav-name{
+    font-family:'Anton', sans-serif;
+    font-size:1.25rem;
+    letter-spacing:.02em;
+    text-transform:uppercase;
+  }
+  .nav-links{
+    display:flex; gap:26px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.78rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    list-style:none; margin:0; padding:0;
+  }
+  .nav-links a{ text-decoration:none; position:relative; }
+  .nav-links a:hover{ color:var(--rust); }
+  .nav-cta{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.75rem;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    text-decoration:none;
+    background:var(--ink);
+    color:var(--paper);
+    padding:9px 16px;
+    border:2px solid var(--ink);
+    transition:transform .15s ease, background .15s ease;
+    display:inline-block;
+  }
+  .nav-cta:hover{ background:var(--rust); border-color:var(--rust); transform:translateY(-2px); }
+
+  @media (max-width:720px){
+    .nav-links{ display:none; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    padding:90px 28px 70px;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:1120px; margin:0 auto;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:40px;
+    align-items:center;
+  }
+  @media (max-width:860px){
+    .hero-inner{ grid-template-columns:1fr; }
+  }
+
+  .eyebrow{
+    display:inline-block;
+    color:var(--teal);
+    margin-bottom:18px;
+  }
+
+  .collage-title{
+    display:flex; flex-wrap:wrap;
+    gap:10px 12px;
+    margin:0 0 22px;
+  }
+  .collage-title span{
+    font-family:'Anton', sans-serif;
+    font-size:clamp(2.4rem, 6vw, 4.6rem);
+    line-height:.92;
+    text-transform:uppercase;
+    padding:4px 14px 8px;
+    display:inline-block;
+    box-shadow:3px 4px 0 rgba(33,26,18,.18);
+  }
+  .collage-title .c1{ background:var(--paper-dark); color:var(--ink); transform:rotate(-2deg); clip-path:polygon(1% 8%,20% 0,55% 4%,100% 0,98% 88%,80% 100%,40% 96%,0 100%); }
+  .collage-title .c2{ background:var(--rust); color:var(--paper); transform:rotate(1.5deg); clip-path:polygon(0 2%,90% 0,100% 12%,97% 92%,60% 100%,10% 96%,3% 60%); }
+  .collage-title .c3{ background:var(--ink); color:var(--paper); transform:rotate(-1deg); clip-path:polygon(2% 0,100% 4%,98% 96%,55% 100%,0 92%); }
+
+  .hero-sub{
+    font-size:1.12rem;
+    max-width:46ch;
+    margin:0 0 30px;
+    color:#3a2f21;
+  }
+
+  .hero-ctas{ display:flex; gap:14px; flex-wrap:wrap; }
+  .btn{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.82rem; font-weight:700;
+    letter-spacing:.05em; text-transform:uppercase;
+    text-decoration:none;
+    padding:14px 22px;
+    border:2px solid var(--ink);
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s;
+  }
+  .btn-primary{
+    background:var(--rust); color:var(--paper); border-color:var(--rust);
+  }
+  .btn-primary:hover{ transform:translate(-2px,-2px); box-shadow:4px 4px 0 var(--ink); }
+  .btn-ghost{ background:transparent; color:var(--ink); }
+  .btn-ghost:hover{ transform:translate(-2px,-2px); box-shadow:4px 4px 0 var(--rust); border-color:var(--ink); }
+
+  /* hero collage art (original abstract composition, not a reproduction) */
+  .hero-art{ position:relative; height:420px; }
+  .hero-art svg{ width:100%; height:100%; }
+
+  @media (max-width:860px){ .hero-art{ height:280px; } }
+
+  /* ---------- section shell ---------- */
+  section{ padding:78px 0; position:relative; }
+  .section-head{ margin-bottom:44px; max-width:64ch; }
+  .section-head .label{ color:var(--rust); margin-bottom:12px; display:block; }
+  h2{
+    font-family:'Anton', sans-serif;
+    text-transform:uppercase;
+    font-size:clamp(1.8rem, 3.6vw, 2.6rem);
+    margin:0 0 14px;
+    letter-spacing:.01em;
+  }
+  .section-head p{ color:#3a2f21; font-size:1.05rem; }
+
+  .rule{
+    border:none; border-top:2px dashed var(--ink);
+    opacity:.35;
+  }
+
+  /* ---------- about ---------- */
+  .about{ background:var(--paper-dark); }
+  .about-grid{
+    display:grid; grid-template-columns:.85fr 1.15fr; gap:50px; align-items:start;
+  }
+  @media (max-width:820px){ .about-grid{ grid-template-columns:1fr; } }
+
+  .about-card{
+    background:var(--paper);
+    border:2px solid var(--ink);
+    padding:26px 24px;
+    position:relative;
+    transform:rotate(-1deg);
+    box-shadow:6px 6px 0 rgba(33,26,18,.15);
+  }
+  .about-card .tape{ top:-14px; left:30px; transform:rotate(-4deg); }
+  .about-card h3{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.85rem; letter-spacing:.04em; text-transform:uppercase;
+    margin:0 0 10px;
+  }
+  .about-card p{ margin:0; font-size:.95rem; color:#3a2f21; }
+  .credentials{ display:grid; gap:16px; margin-top:22px; }
+
+  .about-copy p{ font-size:1.05rem; color:#2c2417; }
+  .about-copy p + p{ margin-top:16px; }
+  .about-copy .pull{
+    font-style:italic;
+    font-size:1.35rem;
+    color:var(--teal);
+    border-left:3px solid var(--rust);
+    padding-left:18px;
+    margin:26px 0;
+  }
+
+  /* ---------- services ---------- */
+  .services-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
+  }
+  @media (max-width:980px){ .services-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:600px){ .services-grid{ grid-template-columns:1fr; } }
+
+  .service{
+    background:var(--paper);
+    border:2px solid var(--ink);
+    padding:26px 20px 24px;
+    position:relative;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .service:nth-child(odd){ transform:rotate(-.6deg); }
+  .service:nth-child(even){ transform:rotate(.6deg); }
+  .service:hover{ transform:translateY(-4px) rotate(0deg); box-shadow:5px 6px 0 var(--rust); }
+  .service .num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:.75rem; color:var(--rust); font-weight:700; letter-spacing:.05em;
+    display:block; margin-bottom:14px;
+  }
+  .service h3{
+    font-family:'Anton', sans-serif;
+    text-transform:uppercase;
+    font-size:1.15rem;
+    margin:0 0 10px;
+  }
+  .service p{ font-size:.92rem; color:#3a2f21; margin:0; }
+
+  /* ---------- portfolio ---------- */
+  .portfolio{ background:var(--ink); color:var(--paper); }
+  .portfolio .section-head p{ color:#cfc4a8; }
+  .portfolio .label{ color:var(--gold); }
+  .portfolio h2{ color:var(--paper); }
+
+  .grid-gallery{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+  }
+  @media (max-width:820px){ .grid-gallery{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:520px){ .grid-gallery{ grid-template-columns:1fr; } }
+
+  .frame{
+    background:var(--paper);
+    border:2px solid var(--paper);
+    padding:10px;
+    display:block;
+    text-decoration:none;
+    color:var(--ink);
+    transition:transform .18s ease;
+  }
+  .frame:hover{ transform:translateY(-5px); }
+  .frame svg{ width:100%; display:block; aspect-ratio:4/5; }
+  .frame-caption{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:10px;
+  }
+  .frame-caption .cap-label{ font-family:'JetBrains Mono',monospace; font-size:.72rem; letter-spacing:.04em; text-transform:uppercase; }
+  .frame-caption .cap-arrow{ font-family:'JetBrains Mono',monospace; font-size:.72rem; color:var(--rust); }
+
+  .portfolio-cta{ text-align:center; margin-top:44px; }
+
+  /* ---------- process ---------- */
+  .process-grid{ display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
+  @media (max-width:820px){ .process-grid{ grid-template-columns:1fr; } }
+  .process-quote{
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    font-size:clamp(1.4rem, 2.6vw, 2rem);
+    line-height:1.4;
+    color:var(--teal);
+    position:relative;
+    padding-left:26px;
+    border-left:3px solid var(--gold);
+  }
+  .process-steps{ display:grid; gap:22px; }
+  .step{ display:flex; gap:16px; }
+  .step .mark{
+    font-family:'JetBrains Mono', monospace;
+    font-weight:700; font-size:.85rem;
+    background:var(--rust); color:var(--paper);
+    width:30px; height:30px; flex:none;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%;
+  }
+  .step h4{ margin:0 0 4px; font-family:'Anton', sans-serif; font-size:1rem; text-transform:uppercase; letter-spacing:.02em; }
+  .step p{ margin:0; font-size:.92rem; color:#3a2f21; }
+
+  /* ---------- contact ---------- */
+  .contact{ background:var(--teal); color:var(--paper); text-align:center; }
+  .contact h2{ color:var(--paper); }
+  .contact .section-head{ margin:0 auto 30px; }
+  .contact .section-head p{ color:#dbe8e2; }
+  .ig-card{
+    display:inline-flex; align-items:center; gap:16px;
+    background:var(--paper);
+    color:var(--ink);
+    padding:18px 26px;
+    border:2px solid var(--ink);
+    text-decoration:none;
+    box-shadow:5px 5px 0 rgba(0,0,0,.25);
+    transition:transform .15s ease;
+  }
+  .ig-card:hover{ transform:translate(-3px,-3px); box-shadow:8px 8px 0 rgba(0,0,0,.3); }
+  .ig-card .ig-icon{ width:34px; height:34px; flex:none; }
+  .ig-card .ig-text{ text-align:left; }
+  .ig-card .ig-text .handle{ font-family:'Anton', sans-serif; font-size:1.05rem; text-transform:uppercase; }
+  .ig-card .ig-text .sub{ font-family:'JetBrains Mono', monospace; font-size:.7rem; letter-spacing:.05em; color:var(--rust); text-transform:uppercase; }
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--ink); color:#cfc4a8;
+    padding:30px 0;
+    font-family:'JetBrains Mono', monospace;
+    font-size:.78rem;
+  }
+  .footer-inner{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer a{ color:var(--gold); text-decoration:none; }
+  footer a:hover{ text-decoration:underline; }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ transition:none !important; }
+  }
+
+  :focus-visible{ outline:3px solid var(--rust); outline-offset:2px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="nav-name">Samuel Eller</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#process">Process</a></li>
+    </ul>
+    <a class="nav-cta" href="https://www.instagram.com/samuel.eller/" target="_blank" rel="noopener">Instagram ↗</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner wrap">
+      <div>
+        <span class="label eyebrow">Design · Collage · Visual Poetry</span>
+        <h1 class="collage-title">
+          <span class="c1">Cut.</span>
+          <span class="c2">Layer.</span>
+          <span class="c3">Reassemble.</span>
+        </h1>
+        <p class="hero-sub">Samuel Eller is a designer, collage artist and graphic artist who turns found imagery, paper and type into new visual narratives — grounded in a Master's degree and a career teaching design.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="https://www.instagram.com/samuel.eller/" target="_blank" rel="noopener">Follow @samuel.eller</a>
+          <a class="btn btn-ghost" href="#contact">Commission a Piece</a>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg">
+          <rect x="30" y="20" width="220" height="260" fill="#E7DBB8" transform="rotate(-6 140 150)"/>
+          <polygon points="60,40 300,20 320,220 90,260" fill="#C0402B" opacity="0.9"/>
+          <polygon points="120,140 380,110 360,340 100,360" fill="#33594E" opacity="0.85"/>
+          <circle cx="230" cy="200" r="70" fill="#BD9424" opacity="0.9"/>
+          <polygon points="40,260 180,230 210,400 30,400" fill="#211a12"/>
+          <rect x="150" y="260" width="180" height="90" fill="#F3ECD8" transform="rotate(4 240 300)"/>
+          <line x1="60" y1="300" x2="300" y2="300" stroke="#211a12" stroke-width="2" stroke-dasharray="6 6" opacity="0.5"/>
+          <line x1="80" y1="330" x2="320" y2="330" stroke="#211a12" stroke-width="2" stroke-dasharray="6 6" opacity="0.5"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div>
+        <div class="about-card">
+          <div class="tape"></div>
+          <h3>Credentials</h3>
+          <div class="credentials">
+            <p><strong>Master's Degree in Design</strong><br>Academic research feeding a hands-on studio practice.</p>
+            <p><strong>Professor of Design</strong><br>Teaching design theory and collage-based creative process.</p>
+            <p><strong>Collagist &amp; Graphic Artist</strong><br>Mixed-media collage, visual poetry and editorial design.</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-copy">
+        <span class="label" style="color:var(--rust);">About</span>
+        <h2>Where design discipline meets the cut edge of paper</h2>
+        <p>Samuel Eller works at the intersection of graphic design and fine art. Trained to postgraduate level and active as a design professor, he brings that same rigor to a personal practice built on collage, found imagery and visual poetry.</p>
+        <p class="pull">"A collage is never really finished — it's an argument between fragments that agree to sit still for a moment."</p>
+        <p>Each piece treats photographs, printed matter and typography as raw material: cut, reordered and reassembled until new meaning appears. The result sits comfortably in a gallery, a book cover, or a brand's visual identity.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">What I Offer</span>
+        <h2>Work with Samuel</h2>
+        <p>From one-off collectible pieces to ongoing design partnerships, every project starts from the same instinct: build something new out of existing material.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service">
+          <span class="num">Studio</span>
+          <h3>Original Collage Art</h3>
+          <p>Commissioned mixed-media collage pieces for private collectors, interiors and gift-worthy editions.</p>
+        </div>
+        <div class="service">
+          <span class="num">Brand</span>
+          <h3>Graphic Design</h3>
+          <p>Identity, editorial and poster design shaped by a collage sensibility — texture, contrast and cut-paper energy.</p>
+        </div>
+        <div class="service">
+          <span class="num">Teach</span>
+          <h3>Workshops &amp; Lectures</h3>
+          <p>Collage and creative-process workshops for schools, studios and cultural institutions, led by a practicing professor.</p>
+        </div>
+        <div class="service">
+          <span class="num">Words</span>
+          <h3>Visual Poetry</h3>
+          <p>Collaborative or commissioned visual-poetry pieces where text, image and composition are inseparable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO / INSTAGRAM -->
+  <section class="portfolio" id="work">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">Selected Work</span>
+        <h2>A studio table, in progress</h2>
+        <p>The full archive of finished pieces, process shots and works-in-progress lives on Instagram — the best way to see what Samuel is cutting up this week.</p>
+      </div>
+
+      <div class="grid-gallery">
+        <a class="frame" href="https://www.instagram.com/samuel.eller/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="400" fill="#E7DBB8"/>
+            <polygon points="20,30 300,10 280,180 30,200" fill="#C0402B"/>
+            <polygon points="40,180 260,160 290,380 20,390" fill="#33594E" opacity="0.9"/>
+            <circle cx="230" cy="270" r="55" fill="#BD9424"/>
+            <rect x="30" y="230" width="120" height="60" fill="#211a12" opacity="0.85"/>
+          </svg>
+          <div class="frame-caption"><span class="cap-label">Mixed Media Study</span><span class="cap-arrow">↗</span></div>
+        </a>
+
+        <a class="frame" href="https://www.instagram.com/samuel.eller/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="400" fill="#F3ECD8"/>
+            <polygon points="10,10 310,40 260,230 40,220" fill="#33594E"/>
+            <polygon points="30,220 290,230 270,390 10,380" fill="#211a12" opacity="0.9"/>
+            <circle cx="120" cy="130" r="70" fill="#C0402B" opacity="0.85"/>
+            <rect x="150" y="260" width="140" height="50" fill="#BD9424" transform="rotate(-3 220 285)"/>
+          </svg>
+          <div class="frame-caption"><span class="cap-label">Paper Fragments</span><span class="cap-arrow">↗</span></div>
+        </a>
+
+        <a class="frame" href="https://www.instagram.com/samuel.eller/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="400" fill="#E7DBB8"/>
+            <polygon points="40,20 300,60 250,250 20,220" fill="#BD9424"/>
+            <polygon points="10,230 270,210 290,390 30,400" fill="#C0402B" opacity="0.9"/>
+            <circle cx="200" cy="120" r="50" fill="#211a12"/>
+            <rect x="60" y="270" width="150" height="60" fill="#33594E" transform="rotate(3 135 300)"/>
+          </svg>
+          <div class="frame-caption"><span class="cap-label">Portrait Study</span><span class="cap-arrow">↗</span></div>
+        </a>
+
+        <a class="frame" href="https://www.instagram.com/samuel.eller/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="400" fill="#F3ECD8"/>
+            <polygon points="20,40 300,10 280,200 10,220" fill="#211a12" opacity="0.9"/>
+            <polygon points="30,210 290,230 260,390 40,380" fill="#C0402B"/>
+            <circle cx="230" cy="300" r="60" fill="#33594E" opacity="0.9"/>
+            <rect x="40" y="60" width="120" height="50" fill="#BD9424" transform="rotate(-4 100 85)"/>
+          </svg>
+          <div class="frame-caption"><span class="cap-label">Visual Poem</span><span class="cap-arrow">↗</span></div>
+        </a>
+
+        <a class="frame" href="https://www.instagram.com/samuel.eller/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="400" fill="#E7DBB8"/>
+            <polygon points="10,10 280,30 300,220 30,210" fill="#33594E" opacity="0.9"/>
+            <polygon points="20,220 300,230 280,390 10,380" fill="#BD9424"/>
+            <circle cx="150" cy="130" r="65" fill="#C0402B" opacity="0.85"/>
+            <rect x="180" y="260" width="110" height="60" fill="#211a12"/>
+          </svg>
+          <div class="frame-caption"><span class="cap-label">Colour Field</span><span class="cap-arrow">↗</span></div>
+        </a>
+
+        <a class="frame" href="https://www.instagram.com/samuel.eller/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 320 400" xmlns="http://www.w3.org/2000/svg">
+            <rect width="320" height="400" fill="#F3ECD8"/>
+            <polygon points="30,20 300,50 240,240 10,210" fill="#C0402B" opacity="0.9"/>
+            <polygon points="20,230 280,220 300,390 40,400" fill="#33594E"/>
+            <circle cx="220" cy="110" r="55" fill="#BD9424" opacity="0.9"/>
+            <rect x="50" y="270" width="130" height="55" fill="#211a12" transform="rotate(2 115 297)"/>
+          </svg>
+          <div class="frame-caption"><span class="cap-label">Archive Piece</span><span class="cap-arrow">↗</span></div>
+        </a>
+      </div>
+
+      <div class="portfolio-cta">
+        <a class="btn btn-primary" href="https://www.instagram.com/samuel.eller/" target="_blank" rel="noopener">See the Full Archive on Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="wrap process-grid">
+      <div class="process-quote">
+        "Teaching design and making collage are the same act, repeated at different speeds — both start by taking something apart to see how it works."
+      </div>
+      <div class="process-steps">
+        <div class="step">
+          <span class="mark">1</span>
+          <div><h4>Gather</h4><p>Source images, paper, type and texture become the working material — nothing starts from a blank page.</p></div>
+        </div>
+        <div class="step">
+          <span class="mark">2</span>
+          <div><h4>Cut &amp; Sort</h4><p>Fragments are separated from their original context and grouped by shape, colour and rhythm.</p></div>
+        </div>
+        <div class="step">
+          <span class="mark">3</span>
+          <div><h4>Compose</h4><p>Pieces are layered and rearranged until an unplanned relationship starts to read as intentional.</p></div>
+        </div>
+        <div class="step">
+          <span class="mark">4</span>
+          <div><h4>Fix &amp; Finish</h4><p>The composition is locked in place — on paper, screen or print — ready to leave the studio.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="section-head" style="text-align:center;">
+        <span class="label" style="color:var(--gold);">Get In Touch</span>
+        <h2>Have a project worth cutting up?</h2>
+        <p>The fastest way to reach Samuel, see current availability and browse new work is Instagram — DMs are open for commissions, collaborations and workshop enquiries.</p>
+      </div>
+
+      <a class="ig-card" href="https://www.instagram.com/samuel.eller/" target="_blank" rel="noopener">
+        <svg class="ig-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="20" height="20" rx="5" stroke="#211a12" stroke-width="1.8"/>
+          <circle cx="12" cy="12" r="4.2" stroke="#211a12" stroke-width="1.8"/>
+          <circle cx="17.4" cy="6.6" r="1.1" fill="#211a12"/>
+        </svg>
+        <span class="ig-text">
+          <span class="handle">@samuel.eller</span><br>
+          <span class="sub">Message on Instagram →</span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© <span id="year"></span> Samuel Eller — Design · Collage · Visual Poetry</span>
+    <a href="https://www.instagram.com/samuel.eller/" target="_blank" rel="noopener">instagram.com/samuel.eller ↗</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
