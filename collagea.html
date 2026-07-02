@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collage a Mano — Martín · Analog Collage Art</title>
+<meta name="description" content="Martín makes one-of-a-kind analog collage art, hand-cut and hand-pasted, alongside a parallel digital practice as @soyazulmartin. Pieces available for exhibition and for sale.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Anton&family=Permanent+Marker&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#E4D9BE;
+    --paper-card:#D8C9A3;
+    --paper-card-dark:#C9B98D;
+    --ink:#201A12;
+    --ink-soft:#4A4032;
+    --mustard:#C99A2E;
+    --teal:#285C56;
+    --coral:#B4432E;
+    --cream-line: rgba(32,26,18,0.14);
+    --shadow: 0 10px 24px rgba(32,26,18,0.18);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    position:relative;
+    overflow-x:hidden;
+  }
+
+  /* ambient paper grain */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:1;
+    opacity:0.35;
+    mix-blend-mode:multiply;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  a{color:inherit; text-decoration:none;}
+  img{display:block; max-width:100%;}
+  section{position:relative; z-index:2;}
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  .tag-underline{
+    display:inline-block;
+    position:relative;
+  }
+  .tag-underline::after{
+    content:"";
+    position:absolute;
+    left:-4px; right:-4px; bottom:2px; height:0.5em;
+    background:var(--mustard);
+    opacity:0.55;
+    z-index:-1;
+    transform:rotate(-0.6deg);
+  }
+
+  /* tape strip utility */
+  .tape{
+    position:absolute;
+    width:90px; height:28px;
+    background:repeating-linear-gradient(45deg, rgba(255,255,255,0.35) 0 6px, rgba(255,255,255,0.15) 6px 12px), var(--mustard);
+    opacity:0.85;
+    box-shadow:0 2px 4px rgba(0,0,0,0.15);
+  }
+  .tape.teal{ background:repeating-linear-gradient(45deg, rgba(255,255,255,0.3) 0 6px, rgba(255,255,255,0.1) 6px 12px), var(--teal); }
+  .tape.coral{ background:repeating-linear-gradient(45deg, rgba(255,255,255,0.3) 0 6px, rgba(255,255,255,0.1) 6px 12px), var(--coral); }
+
+  .torn{
+    clip-path: polygon(0% 2%, 6% 0%, 13% 3%, 19% 0%, 27% 2%, 34% 0%, 41% 3%, 49% 0%, 57% 2%, 64% 0%, 72% 3%, 80% 0%, 88% 2%, 95% 0%, 100% 3%,
+    100% 97%, 94% 100%, 87% 97%, 80% 100%, 72% 98%, 65% 100%, 57% 97%, 49% 100%, 41% 98%, 33% 100%, 26% 97%, 18% 100%, 11% 98%, 4% 100%, 0% 97%);
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(228,217,190,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1.5px solid var(--ink);
+  }
+  .nav-wrap{
+    max-width:1180px; margin:0 auto; padding:16px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{
+    font-family:'Permanent Marker', cursive;
+    font-size:22px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo span{
+    background:var(--ink); color:var(--paper);
+    padding:2px 8px;
+    transform:rotate(-2deg);
+    display:inline-block;
+    font-family:'Anton', sans-serif;
+    font-size:15px;
+    letter-spacing:0.03em;
+  }
+  nav ul{list-style:none; display:flex; gap:26px; margin:0; padding:0;}
+  nav a{
+    font-family:'Space Mono', monospace;
+    font-size:12.5px; text-transform:uppercase; letter-spacing:0.08em;
+    padding-bottom:3px; border-bottom:2px solid transparent;
+    transition:border-color .2s ease;
+  }
+  nav a:hover{border-color:var(--coral);}
+  .nav-cta{
+    font-family:'Space Mono', monospace; font-size:12px; letter-spacing:0.06em;
+    background:var(--ink); color:var(--paper);
+    padding:9px 16px; text-transform:uppercase;
+  }
+  .nav-links-mobile{display:none;}
+  @media (max-width:820px){
+    nav ul{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    max-width:1180px; margin:0 auto; padding:76px 28px 60px;
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:50px; align-items:center;
+  }
+  .ransom{
+    font-size:clamp(46px, 7vw, 92px);
+    line-height:0.98;
+    margin:14px 0 22px;
+    display:flex; flex-wrap:wrap; gap:0 10px;
+  }
+  .ransom span{
+    display:inline-block;
+    padding:2px 3px;
+  }
+  .ransom span:nth-child(6n+1){font-family:'Fraunces', serif; font-weight:700; transform:rotate(-4deg);}
+  .ransom span:nth-child(6n+2){font-family:'Anton', sans-serif; transform:rotate(3deg); background:var(--ink); color:var(--paper); padding:2px 8px;}
+  .ransom span:nth-child(6n+3){font-family:'Permanent Marker', cursive; font-weight:400; transform:rotate(-2deg); color:var(--coral);}
+  .ransom span:nth-child(6n+4){font-family:'Fraunces', serif; font-style:italic; font-weight:600; transform:rotate(2deg);}
+  .ransom span:nth-child(6n+5){font-family:'Anton', sans-serif; transform:rotate(-3deg); color:var(--teal);}
+  .ransom span:nth-child(6n){font-family:'Fraunces', serif; font-weight:700; transform:rotate(4deg); background:var(--mustard); padding:2px 8px;}
+
+  .hero p.lede{
+    font-size:18px; line-height:1.6; max-width:46ch; color:var(--ink-soft);
+    margin-bottom:30px;
+  }
+  .btn-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    font-family:'Space Mono', monospace; font-size:13px; letter-spacing:0.05em; text-transform:uppercase;
+    padding:14px 22px; display:inline-flex; align-items:center; gap:8px;
+    border:2px solid var(--ink); transition:transform .18s ease, background .18s ease, color .18s ease;
+  }
+  .btn-solid{background:var(--ink); color:var(--paper);}
+  .btn-solid:hover{transform:translate(-2px,-2px); background:var(--coral); border-color:var(--coral); color:#fff;}
+  .btn-outline{background:transparent; color:var(--ink);}
+  .btn-outline:hover{transform:translate(-2px,-2px); background:var(--ink); color:var(--paper);}
+
+  .hero-art{
+    position:relative; height:420px;
+  }
+  .scrap{
+    position:absolute;
+    background:var(--paper-card);
+    box-shadow:var(--shadow);
+    border:1px solid rgba(32,26,18,0.1);
+  }
+  .scrap-1{ width:230px; height:280px; top:0; left:20px; transform:rotate(-7deg); background:var(--paper-card);}
+  .scrap-2{ width:190px; height:190px; top:60px; right:0; transform:rotate(9deg); background:var(--teal); opacity:0.9;}
+  .scrap-3{ width:160px; height:210px; bottom:0; left:70px; transform:rotate(5deg); background:var(--mustard);}
+  .scrap-4{ width:120px; height:120px; bottom:30px; right:30px; transform:rotate(-10deg); background:var(--coral);}
+  .scrap-label{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:'Space Mono', monospace; font-size:11px; text-align:center; padding:14px;
+    color:rgba(32,26,18,0.65);
+  }
+  .scrap-2 .scrap-label, .scrap-3 .scrap-label, .scrap-4 .scrap-label{color:rgba(255,255,255,0.85);}
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    max-width:1180px; margin:0 auto; padding:70px 28px;
+    display:grid; grid-template-columns:0.8fr 1.2fr; gap:60px; align-items:start;
+    border-top:1.5px solid var(--ink);
+  }
+  .about-visual{
+    position:relative; height:380px;
+  }
+  .about-card{
+    position:absolute; width:78%; height:88%; top:6%; left:8%;
+    background:var(--paper-card-dark);
+    box-shadow:var(--shadow);
+    transform:rotate(-3deg);
+    padding:26px;
+    display:flex; flex-direction:column; justify-content:flex-end;
+  }
+  .about-card .tape{top:-14px; left:38%;}
+  .about-card small{font-family:'Space Mono', monospace; font-size:11px; letter-spacing:0.05em;}
+  .about-card strong{font-family:'Fraunces', serif; font-size:22px; display:block; margin-top:6px;}
+
+  h2{
+    font-family:'Fraunces', serif; font-weight:600;
+    font-size:clamp(28px,3.4vw,40px);
+    margin:0 0 20px;
+    line-height:1.15;
+  }
+  .about p{font-size:16.5px; line-height:1.75; color:var(--ink-soft); margin-bottom:18px; max-width:62ch;}
+  .about-signature{font-family:'Permanent Marker', cursive; font-size:20px; margin-top:20px; color:var(--coral);}
+
+  /* ---------- PRACTICE ---------- */
+  .practice{
+    background:var(--ink); color:var(--paper);
+    padding:74px 28px;
+  }
+  .practice-inner{max-width:1180px; margin:0 auto;}
+  .practice-inner h2{color:var(--paper);}
+  .practice-sub{font-family:'Space Mono', monospace; font-size:14px; color:rgba(228,217,190,0.7); max-width:58ch; margin-bottom:44px; line-height:1.6;}
+  .practice-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px;}
+  .practice-card{
+    background:rgba(228,217,190,0.06);
+    border:1.5px solid rgba(228,217,190,0.25);
+    padding:34px;
+    position:relative;
+  }
+  .practice-card .num{font-family:'Space Mono', monospace; font-size:12px; color:var(--mustard); letter-spacing:0.1em;}
+  .practice-card h3{font-family:'Fraunces', serif; font-size:26px; margin:12px 0 14px; font-weight:600;}
+  .practice-card p{font-size:15px; line-height:1.7; color:rgba(228,217,190,0.8);}
+  .practice-card a.handle{color:var(--mustard); border-bottom:1px dashed var(--mustard);}
+
+  /* ---------- COLLECTIVES ---------- */
+  .collectives{max-width:1180px; margin:0 auto; padding:74px 28px; border-top:1.5px solid var(--ink);}
+  .collectives-sub{font-size:16.5px; color:var(--ink-soft); max-width:58ch; margin-bottom:42px; line-height:1.7;}
+  .badge-row{display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;}
+  .badge{
+    border:2px solid var(--ink);
+    border-radius:50%;
+    aspect-ratio:1;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    padding:22px;
+    position:relative;
+    background:var(--paper-card);
+    transform:rotate(-2deg);
+  }
+  .badge:nth-child(2){transform:rotate(2deg); background:var(--paper-card-dark);}
+  .badge:nth-child(3){transform:rotate(-1.5deg);}
+  .badge::before{
+    content:"";
+    position:absolute; inset:8px;
+    border:1px dashed rgba(32,26,18,0.4);
+    border-radius:50%;
+  }
+  .badge .kicker{font-family:'Space Mono', monospace; font-size:10px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft);}
+  .badge .handle{font-family:'Anton', sans-serif; font-size:16px; margin:8px 0 6px;}
+  .badge .desc{font-size:12.5px; color:var(--ink-soft); line-height:1.4;}
+
+  /* ---------- AVAILABLE / CTA BANNER ---------- */
+  .available{
+    background:var(--mustard);
+    padding:80px 28px;
+    position:relative;
+    border-top:1.5px solid var(--ink);
+    border-bottom:1.5px solid var(--ink);
+    overflow:hidden;
+  }
+  .available-inner{max-width:900px; margin:0 auto; text-align:center; position:relative; z-index:2;}
+  .available h2{font-size:clamp(32px,5vw,52px); margin-bottom:18px;}
+  .available p{font-size:17px; max-width:56ch; margin:0 auto 34px; line-height:1.65; color:rgba(32,26,18,0.8);}
+  .available .btn-row{justify-content:center;}
+  .available .btn-solid{background:var(--ink); border-color:var(--ink);}
+  .available .btn-outline{border-color:var(--ink);}
+  .available .btn-outline:hover{background:var(--ink); color:var(--paper);}
+  .confetti{
+    position:absolute; width:34px; height:34px; opacity:0.5;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    max-width:1180px; margin:0 auto; padding:56px 28px 40px;
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:30px;
+  }
+  footer .logo{margin-bottom:10px;}
+  footer .foot-links{display:flex; gap:22px; flex-wrap:wrap;}
+  footer .foot-links a{
+    font-family:'Space Mono', monospace; font-size:12.5px; text-transform:uppercase; letter-spacing:0.06em;
+    border-bottom:1.5px solid var(--ink); padding-bottom:2px;
+  }
+  footer .foot-note{font-family:'Space Mono', monospace; font-size:11px; color:var(--ink-soft); margin-top:26px; width:100%;}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr; padding-top:50px;}
+    .hero-art{height:320px; order:-1;}
+    .about{grid-template-columns:1fr;}
+    .about-visual{height:280px;}
+    .practice-grid{grid-template-columns:1fr;}
+    .badge-row{grid-template-columns:1fr; max-width:280px; margin:0 auto; gap:36px;}
+  }
+
+  :focus-visible{outline:3px solid var(--coral); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <div class="logo">collage <span>a mano</span></div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#practice">Practice</a></li>
+        <li><a href="#collectives">Collectives</a></li>
+        <li><a href="#available">Available</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="https://www.instagram.com/collageamano/" target="_blank" rel="noopener">Instagram ↗</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <p class="eyebrow">Analog collage artist — hand-cut, hand-pasted</p>
+    <h1 class="ransom">
+      <span>C</span><span>o</span><span>l</span><span>l</span><span>a</span><span>g</span><span>e</span><span> </span><span>a</span><span> </span><span>m</span><span>a</span><span>n</span><span>o</span>
+    </h1>
+    <p class="lede">Martín builds one-of-a-kind analog collages by hand — no undo button, no shortcuts. A parallel digital practice lives under <strong>@soyazulmartin</strong>. Pieces are available for exhibition and for sale, right now.</p>
+    <div class="btn-row">
+      <a class="btn btn-solid" href="https://www.instagram.com/collageamano/" target="_blank" rel="noopener">View the Instagram feed</a>
+      <a class="btn btn-outline" href="https://linktr.ee/maliziamx" target="_blank" rel="noopener">All links · linktr.ee/maliziamx</a>
+    </div>
+  </div>
+  <div class="hero-art reveal">
+    <div class="scrap scrap-1 torn"><div class="scrap-label">paper, glue,<br>found print</div></div>
+    <div class="scrap scrap-2 torn"><div class="scrap-label">layered<br>by hand</div></div>
+    <div class="scrap scrap-3"><div class="tape" style="top:-14px; left:20px; transform:rotate(-8deg);"></div><div class="scrap-label">torn<br>edges</div></div>
+    <div class="scrap scrap-4"><div class="scrap-label">one of<br>a kind</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-visual reveal">
+    <div class="about-card">
+      <div class="tape coral"></div>
+      <small>PROCESS NOTE №1</small>
+      <strong>Cut first. Compose second. Never undo.</strong>
+    </div>
+  </div>
+  <div class="reveal">
+    <p class="eyebrow tag-underline">The practice</p>
+    <h2>Every piece starts as loose paper on a table.</h2>
+    <p>Old magazines, found ephemera, torn edges, glue that never quite dries flat — Martín works analog collage layer over layer, entirely by hand. There's no undo, no digital shortcut, just scissors, blade, and paper doing exactly what paper does. It's slow, deliberate work, and that's the point: you can see the hand in every piece.</p>
+    <p>Alongside the paper practice runs a second creative life on screen: digital collage published under the name <strong>soyazulmartin</strong>, exploring the same instincts for cutting, pairing, and recomposing images — just with a different set of tools.</p>
+    <p class="about-signature">— Martín</p>
+  </div>
+</section>
+
+<!-- PRACTICE -->
+<section class="practice" id="practice">
+  <div class="practice-inner">
+    <p class="eyebrow" style="color:var(--mustard);">Two hands, two mediums</p>
+    <h2 class="reveal">One eye for collage, two ways of working</h2>
+    <p class="practice-sub reveal">Analog and digital aren't separate brands here — they're the same instinct for cutting, pairing, and recomposing, split across two mediums and two names.</p>
+    <div class="practice-grid">
+      <div class="practice-card reveal">
+        <span class="num">01 · ANALOG</span>
+        <h3>Collage a Mano</h3>
+        <p>Vintage print media, found paper, and ephemera reassembled by hand into new compositions. No filters, no layers panel — just what the hands and a blade can do. This is the practice behind <a class="handle" href="https://www.instagram.com/collageamano/" target="_blank" rel="noopener">@collageamano</a>.</p>
+      </div>
+      <div class="practice-card reveal">
+        <span class="num">02 · DIGITAL</span>
+        <h3>Soy Azul Martín</h3>
+        <p>A second voice, built pixel by pixel instead of paper by paper. Same eye for juxtaposition and composition, translated into a parallel digital practice under <a class="handle" href="https://www.instagram.com/soyazulmartin/" target="_blank" rel="noopener">@soyazulmartin</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIVES -->
+<section class="collectives" id="collectives">
+  <p class="eyebrow tag-underline">Community</p>
+  <h2 class="reveal">Working in dialogue, not in isolation</h2>
+  <p class="collectives-sub reveal">Martín's collage practice runs alongside <strong>@eresartebb</strong> and stays plugged into two active collage collectives — proof that hand-cut work is having a real moment right now.</p>
+  <div class="badge-row">
+    <div class="badge reveal">
+      <span class="kicker">In dialogue with</span>
+      <span class="handle">@eresartebb</span>
+      <span class="desc">Shared roots in analog collage practice</span>
+    </div>
+    <div class="badge reveal">
+      <span class="kicker">Member of</span>
+      <span class="handle">@redmexicollage</span>
+      <span class="desc">A network of collage artists across Mexico</span>
+    </div>
+    <div class="badge reveal">
+      <span class="kicker">Member of</span>
+      <span class="handle">@sameenergymx</span>
+      <span class="desc">A creative collective for like-minded makers</span>
+    </div>
+  </div>
+</section>
+
+<!-- AVAILABLE -->
+<section class="available" id="available">
+  <div class="available-inner">
+    <p class="eyebrow" style="color:rgba(32,26,18,0.65);">Now available</p>
+    <h2 class="reveal">Pieces are ready for exhibition and for sale</h2>
+    <p class="reveal">Original analog collage pieces are available now — for exhibitions, galleries, and private collections. Message directly on Instagram, or find every link, shop, and inquiry route in one place on Linktree.</p>
+    <div class="btn-row reveal">
+      <a class="btn btn-solid" href="https://www.instagram.com/collageamano/" target="_blank" rel="noopener">Message on Instagram</a>
+      <a class="btn btn-outline" href="https://linktr.ee/maliziamx" target="_blank" rel="noopener">Browse linktr.ee/maliziamx</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <div class="logo">collage <span>a mano</span></div>
+    <p style="font-family:'Space Mono', monospace; font-size:12px; color:var(--ink-soft); max-width:32ch;">Analog collage by Martín. Cut by hand, in every sense.</p>
+  </div>
+  <div class="foot-links">
+    <a href="https://www.instagram.com/collageamano/" target="_blank" rel="noopener">Instagram · @collageamano</a>
+    <a href="https://www.instagram.com/soyazulmartin/" target="_blank" rel="noopener">@soyazulmartin</a>
+    <a href="https://www.instagram.com/redmexicollage/" target="_blank" rel="noopener">@redmexicollage</a>
+    <a href="https://www.instagram.com/sameenergymx/" target="_blank" rel="noopener">@sameenergymx</a>
+    <a href="https://linktr.ee/maliziamx" target="_blank" rel="noopener">linktr.ee/maliziamx</a>
+  </div>
+  <p class="foot-note">Made with paper, glue, and patience.</p>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
