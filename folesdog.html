@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FolesDog — A Gallery in Your Pocket</title>
+<meta name="description" content="FolesDog is a daily-curated art gallery on Instagram — 140K+ followers discovering paintings from across art history, one frame at a time.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;1,9..144,450&family=Newsreader:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --wall:#1b1712;
+    --wall-deep:#0f0c09;
+    --linen:#f2ece1;
+    --linen-dim:#cfc6b4;
+    --brass:#b08d57;
+    --brass-bright:#d4ac6e;
+    --oxblood:#5e2a2a;
+    --sage:#7c8a6a;
+    --radius: 2px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--wall);
+    color:var(--linen);
+    font-family:'Newsreader', serif;
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:450;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--brass-bright);
+  }
+
+  a{color:inherit;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(15,12,9,0.86);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(176,141,87,0.22);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 32px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:0.01em;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .logo .mark{
+    width:26px;height:26px;
+    border:1.5px solid var(--brass);
+    border-radius:50%;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Space Mono',monospace;
+    font-size:11px;
+    color:var(--brass-bright);
+  }
+  .nav-links{
+    display:flex;
+    align-items:center;
+    gap:28px;
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+  }
+  .nav-links a{
+    text-decoration:none;
+    color:var(--linen-dim);
+    transition:color .2s ease;
+  }
+  .nav-links a:hover, .nav-links a:focus-visible{color:var(--brass-bright);}
+  .btn-ig{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--brass);
+    color:var(--wall-deep);
+    padding:9px 18px;
+    border-radius:999px;
+    text-decoration:none;
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.04em;
+    font-weight:700;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .btn-ig:hover, .btn-ig:focus-visible{background:var(--brass-bright); transform:translateY(-1px);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:120px 32px 90px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 900px 500px at 15% -10%, rgba(176,141,87,0.15), transparent 60%),
+      radial-gradient(ellipse 700px 500px at 90% 10%, rgba(94,42,42,0.22), transparent 55%),
+      var(--wall);
+  }
+  .hero-inner{
+    max-width:1180px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(40px, 5.4vw, 68px);
+    line-height:1.03;
+    color:var(--linen);
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--brass-bright);
+  }
+  .hero p.lede{
+    font-size:19px;
+    color:var(--linen-dim);
+    max-width:46ch;
+    margin-top:22px;
+  }
+  .hero-cta{
+    margin-top:34px;
+    display:flex;
+    align-items:center;
+    gap:22px;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--brass);
+    color:var(--wall-deep);
+    padding:15px 26px;
+    border-radius:999px;
+    text-decoration:none;
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.04em;
+    transition:background .2s ease, transform .2s ease, box-shadow .2s ease;
+    box-shadow:0 8px 24px rgba(176,141,87,0.18);
+  }
+  .btn-primary:hover, .btn-primary:focus-visible{background:var(--brass-bright); transform:translateY(-2px); box-shadow:0 12px 30px rgba(176,141,87,0.28);}
+  .hero-stat{
+    font-family:'Space Mono', monospace;
+    font-size:12.5px;
+    color:var(--linen-dim);
+    letter-spacing:0.03em;
+  }
+  .hero-stat strong{color:var(--brass-bright); font-size:15px;}
+
+  /* hero signature frame */
+  .hero-frame{
+    position:relative;
+    aspect-ratio:4/5;
+    border:10px solid var(--brass);
+    border-radius:1px;
+    box-shadow:0 30px 70px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(0,0,0,0.4);
+    background:
+      linear-gradient(155deg, #7c8a6a 0%, #3f4a34 32%, #5e2a2a 55%, #22120f 78%, #0f0c09 100%);
+    overflow:hidden;
+  }
+  .hero-frame::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(242,236,225,0.35), transparent 40%),
+      radial-gradient(circle at 75% 70%, rgba(212,172,110,0.3), transparent 45%);
+    mix-blend-mode:screen;
+  }
+  .hero-frame .plate{
+    position:absolute;
+    left:50%;
+    bottom:-1px;
+    transform:translateX(-50%);
+    background:var(--brass);
+    color:var(--wall-deep);
+    font-family:'Space Mono', monospace;
+    font-size:10.5px;
+    letter-spacing:0.08em;
+    padding:6px 16px;
+    text-transform:uppercase;
+    border-radius:2px 2px 0 0;
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:100px 0;}
+  .section-head{
+    max-width:640px;
+    margin:0 0 56px;
+  }
+  .section-head h2{
+    font-size:clamp(30px, 3.6vw, 44px);
+    margin-top:10px;
+    color:var(--linen);
+  }
+  .section-head p{
+    color:var(--linen-dim);
+    margin-top:16px;
+    font-size:17.5px;
+  }
+
+  /* ---------- SALON WALL (signature) ---------- */
+  .salon-section{
+    background:var(--wall-deep);
+    border-top:1px solid rgba(176,141,87,0.18);
+    border-bottom:1px solid rgba(176,141,87,0.18);
+  }
+  .salon-wall{
+    display:grid;
+    grid-template-columns:repeat(6, 1fr);
+    grid-auto-rows:70px;
+    gap:22px;
+  }
+  .frame{
+    position:relative;
+    border:8px solid var(--brass);
+    box-shadow:0 18px 40px rgba(0,0,0,0.5);
+    overflow:hidden;
+    cursor:pointer;
+    transition:transform .35s ease, box-shadow .35s ease;
+  }
+  .frame:hover, .frame:focus-visible{
+    transform:translateY(-6px);
+    box-shadow:0 26px 55px rgba(0,0,0,0.6);
+  }
+  .frame:nth-child(1){grid-column:span 2; grid-row:span 4;}
+  .frame:nth-child(2){grid-column:span 2; grid-row:span 3;}
+  .frame:nth-child(3){grid-column:span 2; grid-row:span 5;}
+  .frame:nth-child(4){grid-column:span 2; grid-row:span 3;}
+  .frame:nth-child(5){grid-column:span 2; grid-row:span 4;}
+  .frame:nth-child(6){grid-column:span 2; grid-row:span 4;}
+
+  .frame .art{position:absolute; inset:0;}
+  .frame:nth-child(1) .art{background:linear-gradient(160deg,#e7c98f,#b08d57 40%,#5e2a2a 75%,#22120f);}
+  .frame:nth-child(2) .art{background:linear-gradient(200deg,#7c8a6a,#3f4a34 55%,#0f0c09);}
+  .frame:nth-child(3) .art{background:linear-gradient(135deg,#5e2a2a,#8a4a3a 35%,#d4ac6e 70%,#f2ece1);}
+  .frame:nth-child(4) .art{background:radial-gradient(circle at 30% 30%, #d4ac6e, #5e2a2a 60%, #1b1712);}
+  .frame:nth-child(5) .art{background:linear-gradient(170deg,#3f4a34,#7c8a6a 40%,#cfc6b4 80%);}
+  .frame:nth-child(6) .art{background:linear-gradient(145deg,#22120f,#5e2a2a 45%,#b08d57 85%,#f2ece1);}
+
+  .frame .label{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    background:rgba(15,12,9,0.92);
+    color:var(--linen);
+    padding:12px 14px;
+    transform:translateY(100%);
+    transition:transform .3s ease;
+    font-family:'Space Mono', monospace;
+  }
+  .frame:hover .label, .frame:focus-visible .label{transform:translateY(0);}
+  .frame .label .t{font-size:12.5px; letter-spacing:0.02em; color:var(--brass-bright);}
+  .frame .label .m{font-size:10.5px; color:var(--linen-dim); margin-top:3px;}
+
+  .salon-caption{
+    margin-top:28px;
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.04em;
+    color:var(--linen-dim);
+    text-align:center;
+  }
+
+  /* ---------- FEATURES ---------- */
+  .features{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:rgba(176,141,87,0.22);
+    border:1px solid rgba(176,141,87,0.22);
+  }
+  .feature{
+    background:var(--wall);
+    padding:40px 34px;
+  }
+  .feature .num{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    color:var(--brass);
+    letter-spacing:0.08em;
+  }
+  .feature h3{
+    font-size:23px;
+    margin-top:14px;
+    color:var(--linen);
+    font-weight:450;
+  }
+  .feature p{
+    margin-top:12px;
+    color:var(--linen-dim);
+    font-size:15.5px;
+  }
+
+  /* ---------- STATS STRIP ---------- */
+  .stats{
+    background:var(--oxblood);
+    background:linear-gradient(90deg, #4a2020, #5e2a2a 50%, #4a2020);
+    padding:52px 0;
+  }
+  .stats-inner{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:30px;
+  }
+  .stat{text-align:left;}
+  .stat .n{
+    font-family:'Fraunces', serif;
+    font-size:44px;
+    color:var(--linen);
+    font-weight:450;
+  }
+  .stat .l{
+    font-family:'Space Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:rgba(242,236,225,0.7);
+    margin-top:6px;
+  }
+
+  /* ---------- HOW IT WORKS ---------- */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:40px;
+    counter-reset:step;
+  }
+  .step{position:relative; padding-left:0;}
+  .step .step-n{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:56px;
+    color:var(--brass);
+    opacity:0.55;
+    line-height:1;
+  }
+  .step h3{
+    margin-top:8px;
+    font-size:21px;
+    font-weight:450;
+  }
+  .step p{
+    margin-top:10px;
+    color:var(--linen-dim);
+    font-size:15.5px;
+  }
+
+  /* ---------- QUOTE / BIO BLOCK ---------- */
+  .bio-block{
+    background:var(--wall-deep);
+    padding:100px 0;
+    text-align:center;
+    border-top:1px solid rgba(176,141,87,0.18);
+    border-bottom:1px solid rgba(176,141,87,0.18);
+  }
+  .bio-block .plate-text{
+    font-family:'Space Mono', monospace;
+    letter-spacing:0.1em;
+    color:var(--brass-bright);
+    font-size:12px;
+    text-transform:uppercase;
+  }
+  .bio-block h2{
+    margin-top:18px;
+    font-size:clamp(28px,4vw,42px);
+    max-width:760px;
+    margin-left:auto;
+    margin-right:auto;
+    color:var(--linen);
+    font-style:italic;
+    font-weight:400;
+  }
+  .handle-tag{
+    display:inline-block;
+    margin-top:22px;
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    color:var(--linen-dim);
+    border:1px solid rgba(176,141,87,0.35);
+    border-radius:999px;
+    padding:8px 18px;
+  }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    padding:120px 32px;
+    text-align:center;
+    background:
+      radial-gradient(ellipse 800px 400px at 50% 0%, rgba(176,141,87,0.16), transparent 60%),
+      var(--wall);
+  }
+  .final-cta h2{
+    font-size:clamp(34px,5vw,56px);
+    max-width:760px;
+    margin:0 auto;
+    color:var(--linen);
+  }
+  .final-cta p{
+    margin-top:18px;
+    color:var(--linen-dim);
+    font-size:18px;
+  }
+  .final-cta .btn-primary{
+    margin-top:34px;
+    font-size:15px;
+    padding:18px 34px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:40px 32px;
+    border-top:1px solid rgba(176,141,87,0.18);
+  }
+  .footer-inner{
+    max-width:1180px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:16px;
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    color:var(--linen-dim);
+    letter-spacing:0.03em;
+  }
+  footer a{text-decoration:none; color:var(--linen-dim); transition:color .2s ease;}
+  footer a:hover{color:var(--brass-bright);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .hero-inner{grid-template-columns:1fr; gap:44px;}
+    .hero{padding:96px 20px 70px;}
+    .features{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr; gap:30px;}
+    .stats-inner{justify-content:flex-start; gap:36px;}
+    .salon-wall{grid-template-columns:repeat(2,1fr); grid-auto-rows:100px;}
+    .frame:nth-child(1){grid-column:span 2; grid-row:span 3;}
+    .frame:nth-child(2){grid-column:span 1; grid-row:span 2;}
+    .frame:nth-child(3){grid-column:span 1; grid-row:span 2;}
+    .frame:nth-child(4){grid-column:span 1; grid-row:span 2;}
+    .frame:nth-child(5){grid-column:span 1; grid-row:span 2;}
+    .frame:nth-child(6){grid-column:span 2; grid-row:span 3;}
+    .nav-links{display:none;}
+    .wrap{padding:0 20px;}
+  }
+
+  :focus-visible{outline:2px solid var(--brass-bright); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="logo"><span class="mark">FD</span> FolesDog</div>
+    <nav class="nav-links">
+      <a href="#gallery">Gallery</a>
+      <a href="#why">Why Follow</a>
+      <a href="#how">How It Works</a>
+    </nav>
+    <a class="btn-ig" href="https://www.instagram.com/folesdog/" target="_blank" rel="noopener noreferrer">Follow on Instagram</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="eyebrow">A Daily Curated Art Feed</p>
+      <h1>A museum wall, <em>reframed</em><br>for your feed.</h1>
+      <p class="lede">FolesDog is a running, hand-picked gallery of paintings — old masters, quiet regionalists, and artists you've never heard of but won't forget — posted daily with the story behind every canvas.</p>
+      <div class="hero-cta">
+        <a class="btn-primary" href="https://www.instagram.com/folesdog/" target="_blank" rel="noopener noreferrer">
+          Follow @folesdog on Instagram →
+        </a>
+        <span class="hero-stat"><strong>140K+</strong> followers already looking</span>
+      </div>
+    </div>
+    <div class="hero-frame">
+      <div class="plate">Today's Discovery</div>
+    </div>
+  </div>
+</section>
+
+<section class="salon-section">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">The Wall</p>
+      <h2>What a week on FolesDog looks like</h2>
+      <p>Every post is hung like a real gallery label: artist, nationality, dates, title, year, medium, and dimensions — so you leave knowing something, not just scrolling past it.</p>
+    </div>
+
+    <div class="salon-wall" id="gallery">
+      <div class="frame" tabindex="0"><div class="art"></div><div class="label"><div class="t">Ochre Interior</div><div class="m">Daily discovery · oil study</div></div></div>
+      <div class="frame" tabindex="0"><div class="art"></div><div class="label"><div class="t">Forest, Late Light</div><div class="m">Regionalist · landscape</div></div></div>
+      <div class="frame" tabindex="0"><div class="art"></div><div class="label"><div class="t">Terra Rosa</div><div class="m">Contemporary · panel</div></div></div>
+      <div class="frame" tabindex="0"><div class="art"></div><div class="label"><div class="t">Study in Brass</div><div class="m">Still life · found favorite</div></div></div>
+      <div class="frame" tabindex="0"><div class="art"></div><div class="label"><div class="t">Sage & Linen</div><div class="m">Naive painting · 20th c.</div></div></div>
+      <div class="frame" tabindex="0"><div class="art"></div><div class="label"><div class="t">Harlequin Hour</div><div class="m">Modernist · portrait</div></div></div>
+    </div>
+    <p class="salon-caption">Illustrative preview — head to Instagram for the real, ever-growing collection.</p>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Why People Stay</p>
+      <h2>Art history, minus the gatekeeping</h2>
+      <p>No museum membership, no gallery hours, no jargon. Just one well-chosen painting at a time, dropped into a feed that's usually asking for your attention, not rewarding it.</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <div class="num">01</div>
+        <h3>A new find, daily</h3>
+        <p>From celebrated masters to painters history nearly skipped over — each post is chosen, not algorithmically served.</p>
+      </div>
+      <div class="feature">
+        <div class="num">02</div>
+        <h3>Context you can actually use</h3>
+        <p>Artist, era, medium, and dimensions in every caption — enough to remember the piece, and to talk about it later.</p>
+      </div>
+      <div class="feature">
+        <div class="num">03</div>
+        <h3>A feed worth slowing down for</h3>
+        <p>Built for people who want their scrolling to leave something behind — collectors, students, and the simply curious alike.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap stats-inner">
+    <div class="stat"><div class="n">140K+</div><div class="l">Followers</div></div>
+    <div class="stat"><div class="n">22K+</div><div class="l">Paintings shared</div></div>
+    <div class="stat"><div class="n">365</div><div class="l">Days a year, posting</div></div>
+    <div class="stat"><div class="n">1</div><div class="l">Feed, no ads</div></div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">How It Works</p>
+      <h2>Three taps to a better feed</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <h3>Follow @folesdog</h3>
+        <p>One tap on Instagram — no sign-up, no subscription, no catch.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <h3>Let the wall come to you</h3>
+        <p>New paintings land in your feed and stories, picked for the days you don't have time to visit a gallery.</p>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <h3>Save, share, or just look</h3>
+        <p>Build your own private collection of favorites, or send one to the one friend who'll actually appreciate it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bio-block">
+  <div class="wrap">
+    <p class="plate-text">From the FolesDog bio</p>
+    <h2>“Aᒋs L๏nGᕕ !!”</h2>
+    <span class="handle-tag">@folesdog · 140K followers · 22K posts</span>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>Your next favorite painting is one follow away.</h2>
+  <p>Join the people who'd rather find art in their feed than lose an afternoon to it.</p>
+  <a class="btn-primary" href="https://www.instagram.com/folesdog/" target="_blank" rel="noopener noreferrer">
+    Follow @folesdog on Instagram →
+  </a>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <span>FolesDog — a gallery, kept open.</span>
+    <a href="https://www.instagram.com/folesdog/" target="_blank" rel="noopener noreferrer">instagram.com/folesdog</a>
+  </div>
+</footer>
+
+</body>
+</html>
