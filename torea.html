@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Torea Frey — Collage &amp; Mixed-Media Art, Portland OR</title>
+<meta name="description" content="Torea Frey is a Portland-area collage and mixed-media artist working from found paper, vintage magazines, and mail ephemera. Follow @toreajade, browse the work, and inquire about a studio visit.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Courier+Prime:wght@400;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper: #EFE7D6;
+    --paper-light: #F8F3E7;
+    --paper-deep: #E4DAC3;
+    --ink: #241F1A;
+    --ink-soft: #4a4238;
+    --rust: #B5452B;
+    --rust-dark: #8f3520;
+    --sage: #56705F;
+    --mustard: #D6A244;
+    --kraft: #C9B896;
+    --line: rgba(36,31,26,0.16);
+    --shadow: 0 10px 28px rgba(36,31,26,0.14);
+  }
+
+  *{ box-sizing: border-box; }
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Lora', serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* subtle paper grain */
+  body::before{
+    content:"";
+    position: fixed;
+    inset:0;
+    pointer-events:none;
+    z-index: 999;
+    opacity: 0.5;
+    background-image:
+      radial-gradient(rgba(36,31,26,0.035) 1px, transparent 1px);
+    background-size: 3px 3px;
+    mix-blend-mode: multiply;
+  }
+
+  a{ color: var(--rust); }
+
+  .eyebrow, .mono, nav, .btn, .tag, .postmark text, .stamp-label, .credit, .figure-cap{
+    font-family: 'Courier Prime', monospace;
+  }
+
+  h1,h2,h3, .display{
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin: 0;
+  }
+
+  .wrap{
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- torn paper divider ---------- */
+  .torn{
+    position: relative;
+    width:100%;
+    height: 34px;
+    display:block;
+    margin-top:-1px;
+  }
+  .torn svg{ display:block; width:100%; height:100%; }
+
+  /* ---------- header / nav ---------- */
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--paper-light);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding: 18px 32px;
+    max-width: 1120px;
+    margin:0 auto;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration:none;
+  }
+  .brand em{ color: var(--rust); font-style: italic; }
+
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:26px;
+    margin:0; padding:0;
+  }
+  nav a{
+    color: var(--ink-soft);
+    text-decoration:none;
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  nav a:hover{ color: var(--rust); border-color: var(--rust); }
+
+  .nav-cta{
+    display:none;
+  }
+  @media(min-width:760px){
+    .nav-cta{ display:inline-flex; }
+  }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-decoration:none;
+    padding: 12px 20px;
+    border-radius: 999px;
+    border: 1.5px solid var(--ink);
+    color: var(--ink);
+    background: transparent;
+    transition: transform .15s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+    white-space: nowrap;
+  }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn-solid{
+    background: var(--rust);
+    border-color: var(--rust);
+    color: var(--paper-light);
+    box-shadow: var(--shadow);
+  }
+  .btn-solid:hover{ background: var(--rust-dark); border-color: var(--rust-dark); }
+  .btn-ghost:hover{ background: var(--ink); color: var(--paper-light); }
+
+  /* ---------- postmark badge (signature element) ---------- */
+  .postmark{
+    width: 108px;
+    height: 108px;
+    flex-shrink:0;
+  }
+  .postmark circle{ fill:none; stroke: currentColor; }
+  .postmark text{
+    fill: currentColor;
+    font-size: 8.4px;
+    letter-spacing: 1.5px;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    position: relative;
+    padding: 90px 0 70px;
+    overflow: hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items:center;
+  }
+  @media(min-width:900px){
+    .hero-grid{ grid-template-columns: 1.15fr 0.85fr; gap: 60px; }
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--rust-dark);
+    margin-bottom: 18px;
+  }
+  .eyebrow::before{
+    content:"";
+    width: 26px; height:1px;
+    background: var(--rust-dark);
+  }
+
+  .hero h1{
+    font-size: clamp(2.6rem, 5.6vw, 4.6rem);
+    color: var(--ink);
+  }
+  .hero h1 .accent{
+    font-style: italic;
+    font-weight: 500;
+    color: var(--rust);
+  }
+  .hero p.lede{
+    margin-top: 22px;
+    font-size: 1.15rem;
+    max-width: 46ch;
+    color: var(--ink-soft);
+  }
+  .hero-ctas{
+    margin-top: 34px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+  }
+
+  .hero-visual{
+    position:relative;
+    display:flex;
+    justify-content:center;
+  }
+  .collage-stack{
+    position:relative;
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 4/5;
+  }
+  .scrap{
+    position:absolute;
+    background: var(--paper-light);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    padding: 18px;
+  }
+  .scrap-1{
+    inset: 0 10% 18% 0;
+    background: linear-gradient(135deg, var(--sage) 0%, #6d8878 100%);
+    transform: rotate(-6deg);
+    clip-path: polygon(2% 4%, 96% 0%, 100% 92%, 6% 100%, 0% 60%);
+  }
+  .scrap-2{
+    inset: 14% 0 0 12%;
+    background: var(--paper-light);
+    transform: rotate(4deg);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+  }
+  .scrap-2 .mono{
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+  }
+  .scrap-2 .word{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-size: 2.2rem;
+    color: var(--rust);
+    margin: 10px 0;
+  }
+  .washi{
+    position:absolute;
+    width: 90px; height: 26px;
+    background: repeating-linear-gradient(45deg, var(--mustard), var(--mustard) 6px, #e6b968 6px, #e6b968 12px);
+    opacity: 0.85;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  }
+  .washi-1{ top: -10px; left: 20px; transform: rotate(-18deg); }
+  .washi-2{ bottom: 10%; right: -6px; transform: rotate(24deg); }
+
+  .stamp-corner{
+    position:absolute;
+    top: -18px;
+    right: -14px;
+    color: var(--ink);
+  }
+
+  /* ---------- section shells ---------- */
+  section{ position: relative; }
+  .section-pad{ padding: 84px 0; }
+  .band-dark{
+    background: var(--ink);
+    color: var(--paper-light);
+  }
+  .band-dark .eyebrow{ color: var(--mustard); }
+  .band-dark .eyebrow::before{ background: var(--mustard); }
+  .band-sage{ background: var(--sage); color: var(--paper-light); }
+
+  .section-head{
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+  .section-head h2{
+    font-size: clamp(2rem, 3.6vw, 2.8rem);
+  }
+  .section-head p{ margin-top:14px; color: var(--ink-soft); font-size: 1.05rem; }
+  .band-dark .section-head p{ color: #cfc6b4; }
+
+  /* ---------- about ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+  @media(min-width: 880px){
+    .about-grid{ grid-template-columns: 0.9fr 1.1fr; }
+  }
+  .about-card{
+    background: var(--paper-light);
+    border: 1px solid var(--line);
+    padding: 30px;
+    box-shadow: var(--shadow);
+    position:relative;
+  }
+  .about-card::after{
+    content:"";
+    position:absolute;
+    top: 14px; bottom: 14px; left: -8px;
+    width: 4px;
+    background: var(--rust);
+  }
+  .about-card p{ margin: 0 0 14px; }
+  .about-card p:last-child{ margin-bottom:0; }
+
+  .pull-tag-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top: 26px;
+  }
+  .tag{
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 7px 12px;
+    border: 1px dashed var(--ink-soft);
+    color: var(--ink-soft);
+    border-radius: 999px;
+  }
+
+  /* ---------- work index (series list) ---------- */
+  .series-list{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  @media(min-width: 700px){
+    .series-list{ grid-template-columns: 1fr 1fr; }
+  }
+  .series-item{
+    background: var(--paper-light);
+    padding: 34px 30px;
+    position: relative;
+    overflow:hidden;
+    transition: background .25s ease;
+  }
+  .series-item:hover{ background: var(--paper-deep); }
+  .series-num{
+    font-family:'Courier Prime', monospace;
+    font-size: 0.78rem;
+    color: var(--rust);
+    display:block;
+    margin-bottom: 14px;
+  }
+  .series-item h3{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  .series-item p{
+    color: var(--ink-soft);
+    font-size: 0.96rem;
+    margin:0;
+  }
+  .series-swatch{
+    position:absolute;
+    top:0; right:0;
+    width: 70px; height: 70px;
+    opacity: 0.9;
+  }
+
+  /* ---------- book section ---------- */
+  .book-grid{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 50px;
+    align-items:center;
+  }
+  @media(min-width: 880px){
+    .book-grid{ grid-template-columns: 0.8fr 1.2fr; }
+  }
+  .book-cover{
+    position:relative;
+    width: 100%;
+    max-width: 280px;
+    aspect-ratio: 1/1;
+    margin: 0 auto;
+    background:
+      linear-gradient(160deg, #6d8878 0%, var(--sage) 45%, #3f5548 100%);
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: 0 22px 40px rgba(0,0,0,0.35);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    padding: 26px;
+    transform: rotate(-2deg);
+  }
+  .book-cover .mono{ color: rgba(248,243,231,0.75); font-size: 0.72rem; letter-spacing: 0.1em; }
+  .book-cover h3{
+    font-family:'Fraunces', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.7rem;
+    color: var(--paper-light);
+    line-height: 1.15;
+  }
+  .book-cover .byline{
+    color: rgba(248,243,231,0.85);
+    font-size: 0.85rem;
+  }
+
+  .book-copy .stat-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap: 28px;
+    margin: 26px 0 30px;
+    padding-top: 22px;
+    border-top: 1px solid var(--line);
+  }
+  .book-copy .stat b{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size: 1.6rem;
+  }
+  .book-copy .stat span{
+    font-family:'Courier Prime', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- press / curatorial ---------- */
+  .press-card{
+    display:grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    background: var(--paper-light);
+    border: 1px solid var(--line);
+    padding: 36px;
+    box-shadow: var(--shadow);
+  }
+  @media(min-width: 760px){
+    .press-card{ grid-template-columns: auto 1fr; align-items:center; }
+  }
+  .press-card .postmark{ color: var(--sage); }
+
+  /* ---------- CTA / studio visit ---------- */
+  .cta-band{
+    background: var(--rust);
+    color: var(--paper-light);
+    text-align:center;
+    padding: 90px 0;
+  }
+  .cta-band h2{ font-size: clamp(2.2rem, 4.5vw, 3.4rem); }
+  .cta-band p{ color: rgba(248,243,231,0.9); max-width: 52ch; margin: 18px auto 34px; font-size: 1.08rem; }
+  .cta-band .btn{ border-color: var(--paper-light); color: var(--paper-light); }
+  .cta-band .btn-solid{ background: var(--ink); border-color: var(--ink); }
+  .cta-band .btn-solid:hover{ background: #100d0a; }
+  .cta-band .btn-ghost:hover{ background: var(--paper-light); color: var(--rust); }
+  .cta-row{ display:flex; flex-wrap:wrap; gap:16px; justify-content:center; }
+
+  /* ---------- footer ---------- */
+  footer{
+    background: var(--ink);
+    color: rgba(248,243,231,0.75);
+    padding: 56px 0 34px;
+  }
+  .footer-grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(248,243,231,0.15);
+  }
+  footer .brand{ color: var(--paper-light); }
+  footer .foot-links{
+    display:flex;
+    gap: 24px;
+    flex-wrap:wrap;
+    list-style:none;
+    padding:0; margin:0;
+  }
+  footer .foot-links a{
+    color: rgba(248,243,231,0.8);
+    text-decoration:none;
+    font-size: 0.85rem;
+  }
+  footer .foot-links a:hover{ color: var(--mustard); }
+  .credit{
+    padding-top: 22px;
+    font-size: 0.75rem;
+    color: rgba(248,243,231,0.5);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap: 10px;
+  }
+
+  /* reveal on scroll */
+  .reveal{
+    opacity:0;
+    transform: translateY(18px);
+    transition: opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{ opacity:1; transform:none; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .btn{ transition:none; }
+  }
+
+  :focus-visible{
+    outline: 2.5px solid var(--rust);
+    outline-offset: 3px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a class="brand" href="#top">Torea Frey <em>Art</em></a>
+    <nav aria-label="Primary">
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#book">Book</a></li>
+        <li><a href="#press">Curatorial</a></li>
+        <li><a href="#contact">Studio Visit</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-solid nav-cta" href="https://www.instagram.com/toreajade/" target="_blank" rel="noopener">Follow @toreajade</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="reveal in">
+        <span class="eyebrow">Collage &amp; Mixed Media · Portland, OR</span>
+        <h1>Found paper,<br><span class="accent">rearranged</span><br>into meaning.</h1>
+        <p class="lede">Torea Frey is a visual artist and word person working in analog collage — vintage magazines, books, and mail ephemera cut, layered, and stitched back together into something new. Based in and around PDX.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-solid" href="https://www.instagram.com/toreajade/" target="_blank" rel="noopener">View the work on Instagram</a>
+          <a class="btn btn-ghost" href="#contact">Inquire re: studio visit</a>
+        </div>
+      </div>
+      <div class="hero-visual reveal in">
+        <div class="collage-stack">
+          <div class="washi washi-1"></div>
+          <div class="scrap scrap-1" aria-hidden="true"></div>
+          <div class="scrap scrap-2">
+            <span class="mono">ANALOG COLLAGE · PDX</span>
+            <span class="word">one thing<br>leads to<br>another</span>
+            <span class="mono">100 pieces / 100 days</span>
+          </div>
+          <div class="washi washi-2"></div>
+          <svg class="stamp-corner postmark" viewBox="0 0 100 100" width="70" height="70" aria-hidden="true">
+            <circle cx="50" cy="50" r="46" stroke-width="1.4"/>
+            <circle cx="50" cy="50" r="38" stroke-width="1"/>
+            <text x="50" y="30" text-anchor="middle">PORTLAND</text>
+            <text x="50" y="74" text-anchor="middle">OREGON</text>
+            <text x="50" y="53" text-anchor="middle" font-size="11">PDX</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="torn" aria-hidden="true">
+    <svg viewBox="0 0 1200 34" preserveAspectRatio="none"><path d="M0,0 L1200,0 L1200,14 L1176,22 L1152,12 L1128,26 L1104,10 L1080,20 L1056,8 L1032,24 L1008,14 L984,28 L960,10 L936,18 L912,6 L888,22 L864,12 L840,26 L816,10 L792,20 L768,8 L744,24 L720,14 L696,28 L672,10 L648,18 L624,6 L600,22 L576,12 L552,26 L528,10 L504,20 L480,8 L456,24 L432,14 L408,28 L384,10 L360,18 L336,6 L312,22 L288,12 L264,26 L240,10 L216,20 L192,8 L168,24 L144,14 L120,28 L96,10 L72,18 L48,6 L24,22 L0,14 Z" fill="#241F1A"/></svg>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about" class="band-dark section-pad">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">About the artist</span>
+        <h2>Language, memory, and the paper trail we leave behind.</h2>
+        <p>Torea builds each piece from what already existed — someone else's magazine, someone else's letter, someone else's discarded photograph — and gives it a second life.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <p>Torea Frey is a Portland-area collage and mixed-media artist creating contemporary work from found materials, exploring language, identity, and memory. Her pieces are built by hand from vintage magazines, books, and mail-related ephemera, often finished with graphite and ink.</p>
+          <p>She's known for daily and durational practices — pieces made card by card, day by day — and for curatorial work that brings other artists' voices into the room alongside her own.</p>
+          <div class="pull-tag-row">
+            <span class="tag">Analog collage</span>
+            <span class="tag">Mixed media</span>
+            <span class="tag">Mail art</span>
+            <span class="tag">Disability arts</span>
+          </div>
+        </div>
+        <div class="about-card reveal" style="transition-delay:.1s">
+          <p><strong>Where the work has shown up:</strong> a solo exhibition of collage on paper at Float On in Southeast Portland; a cover commission for a print anthology of collage and mixed-media work; ongoing series shared card-by-card with a growing following.</p>
+          <p><strong>How she works:</strong> nothing is generated or printed first — every scrap is cut, torn, or salvaged, then composed by hand. The result reads less like illustration and more like evidence: layered, textured, a little frayed at the edges on purpose.</p>
+          <p>New collectors most often start the same way — by scrolling the feed, then sending a DM.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="torn" aria-hidden="true" style="transform:rotate(180deg);">
+    <svg viewBox="0 0 1200 34" preserveAspectRatio="none"><path d="M0,0 L1200,0 L1200,14 L1176,22 L1152,12 L1128,26 L1104,10 L1080,20 L1056,8 L1032,24 L1008,14 L984,28 L960,10 L936,18 L912,6 L888,22 L864,12 L840,26 L816,10 L792,20 L768,8 L744,24 L720,14 L696,28 L672,10 L648,18 L624,6 L600,22 L576,12 L552,26 L528,10 L504,20 L480,8 L456,24 L432,14 L408,28 L384,10 L360,18 L336,6 L312,22 L288,12 L264,26 L240,10 L216,20 L192,8 L168,24 L144,14 L120,28 L96,10 L72,18 L48,6 L24,22 L0,14 Z" fill="#EFE7D6"/></svg>
+  </div>
+
+  <!-- WORK / SERIES -->
+  <section id="work" class="section-pad">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">A field guide to the practice</span>
+        <h2>Ongoing series &amp; bodies of work</h2>
+        <p>Every series lives first on Instagram, where new pieces post as they're finished. This is the shorthand — follow along for the full archive.</p>
+      </div>
+      <div class="series-list reveal">
+        <div class="series-item">
+          <svg class="series-swatch" viewBox="0 0 70 70" aria-hidden="true"><polygon points="0,0 70,0 70,70" fill="#B5452B" opacity="0.85"/></svg>
+          <span class="series-num">Series 01</span>
+          <h3>Defaced Women</h3>
+          <p>Mixed-media works on paper grappling with gender and identity, exhibited as a solo show at Float On in Southeast Portland.</p>
+        </div>
+        <div class="series-item">
+          <svg class="series-swatch" viewBox="0 0 70 70" aria-hidden="true"><polygon points="0,0 70,0 70,70" fill="#56705F" opacity="0.85"/></svg>
+          <span class="series-num">Series 02</span>
+          <h3>Index Card a Day</h3>
+          <p>A durational, one-a-day collage project — small-format pieces made rapid-fire from found paper, one index card at a time.</p>
+        </div>
+        <div class="series-item">
+          <svg class="series-swatch" viewBox="0 0 70 70" aria-hidden="true"><polygon points="0,0 70,0 70,70" fill="#D6A244" opacity="0.85"/></svg>
+          <span class="series-num">Series 03</span>
+          <h3>One Thing Leads to Another</h3>
+          <p>A 100-day generative collage project: the first piece sparked the next, and the next, until 100 works existed as one continuous chain. Now a printed book.</p>
+        </div>
+        <div class="series-item">
+          <svg class="series-swatch" viewBox="0 0 70 70" aria-hidden="true"><polygon points="0,0 70,0 70,70" fill="#8f3520" opacity="0.85"/></svg>
+          <span class="series-num">Series 04</span>
+          <h3>Let 'Er Rip</h3>
+          <p>A curated group exhibition of collage and disability arts, built from a shared source of paper and bringing two dozen Pacific Northwest artists into one show.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section id="book" class="band-sage section-pad">
+    <div class="wrap">
+      <div class="book-grid">
+        <div class="book-cover reveal">
+          <span class="mono">BLURB · FINE ART BOOKS</span>
+          <div>
+            <h3>One thing<br>leads to<br>another</h3>
+            <span class="byline">by Torea Frey</span>
+          </div>
+          <span class="mono">70 PAGES · SOFTCOVER</span>
+        </div>
+        <div class="book-copy reveal">
+          <span class="eyebrow" style="color:#f0e6c9;">The book</span>
+          <h2 style="color:var(--paper-light);">A hundred days, one continuous thread.</h2>
+          <p style="color:rgba(248,243,231,0.9); margin-top:16px; max-width:52ch;">This art book documents a 100-day analog collage project in which the very first piece became the springboard for the next 99 — each one answering, echoing, or contradicting the one before it. Every finished work is reproduced in full color, alongside commentary on the process behind it.</p>
+          <div class="stat-row" style="border-color: rgba(248,243,231,0.25);">
+            <div class="stat"><b style="color:var(--paper-light);">100</b><span style="color:rgba(248,243,231,0.75);">Collage pieces</span></div>
+            <div class="stat"><b style="color:var(--paper-light);">100</b><span style="color:rgba(248,243,231,0.75);">Days, start to finish</span></div>
+            <div class="stat"><b style="color:var(--paper-light);">70</b><span style="color:rgba(248,243,231,0.75);">Pages, full color</span></div>
+          </div>
+          <a class="btn btn-solid" href="https://www.blurb.com/b/11698158-one-thing-leads-to-another" target="_blank" rel="noopener">Get the book on Blurb</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRESS / CURATORIAL -->
+  <section id="press" class="section-pad">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Curatorial work</span>
+        <h2>Let 'Er Rip: collage and disability arts</h2>
+      </div>
+      <div class="press-card reveal">
+        <svg class="postmark" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="46" stroke-width="1.4"/>
+          <circle cx="50" cy="50" r="38" stroke-width="1"/>
+          <text x="50" y="28" text-anchor="middle">SE STARK ST</text>
+          <text x="50" y="76" text-anchor="middle">PORTLAND</text>
+          <text x="50" y="54" text-anchor="middle" font-size="11">2025</text>
+        </svg>
+        <div>
+          <p style="margin:0 0 14px;">Torea curated <em>Let 'Er Rip</em>, a community collage exhibition inspired by the work of nonverbal paper artist Neva Delashmutt Sincick — pairing her own new collage pieces with fresh work from two dozen Pacific Northwest artists, all made from a shared source of paper. On view at 811 SE Stark Street, Portland, January through July 2025.</p>
+          <a class="btn btn-ghost" href="https://leterripart.com" target="_blank" rel="noopener">Visit leterripart.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="cta-band">
+    <div class="wrap">
+      <span class="eyebrow" style="color:#f6ded3;">Studio visits &amp; commissions</span>
+      <h2>Want to see the work in person?</h2>
+      <p>Original collage, mixed media, and a limited run of prints are available directly through the studio. DM on Instagram to inquire about a studio visit, a commission, or a specific piece you've seen in the feed.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="https://www.instagram.com/toreajade/" target="_blank" rel="noopener">DM @toreajade on Instagram</a>
+        <a class="btn btn-ghost" href="https://www.blurb.com/b/11698158-one-thing-leads-to-another" target="_blank" rel="noopener">Browse the book instead</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="#top">Torea Frey <em>Art</em></a>
+        <p style="max-width:34ch; margin-top:10px; color:rgba(248,243,231,0.65); font-size:0.92rem;">Visual artist &amp; word person, based in and around Portland, Oregon.</p>
+      </div>
+      <ul class="foot-links">
+        <li><a href="https://www.instagram.com/toreajade/" target="_blank" rel="noopener">Instagram — @toreajade</a></li>
+        <li><a href="https://www.blurb.com/b/11698158-one-thing-leads-to-another" target="_blank" rel="noopener">Blurb — the book</a></li>
+        <li><a href="https://leterripart.com" target="_blank" rel="noopener">Let 'Er Rip</a></li>
+      </ul>
+    </div>
+    <div class="credit">
+      <span>© <span id="year"></span> Torea Frey. All work and images belong to the artist.</span>
+      <span>Made with paper, scissors, and a little glue.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    revealEls.forEach(el => io.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+</script>
+
+</body>
+</html>
