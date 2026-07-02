@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>stolenpainting. — Handcut Collage Art from Toronto</title>
+<meta name="description" content="Analog collage art by stolenpainting (Robyn Redish), handcut from vintage magazines in Toronto. Shop original collages and prints.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #ece3d0;
+    --paper-dark: #ddd0b5;
+    --ink: #1c1a17;
+    --cut-red: #b6392c;
+    --faded-teal: #3f766d;
+    --mustard: #cc9a1f;
+    --tape: rgba(255,251,222,0.55);
+    --shadow: rgba(28,26,23,0.25);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Newsreader', serif;
+    font-size:18px;
+    line-height:1.6;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(0,0,0,0.025) 0, transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(0,0,0,0.03) 0, transparent 50%);
+  }
+
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:1140px;margin:0 auto;padding:0 28px;}
+
+  .label{
+    font-family:'Courier Prime', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:13px;
+  }
+
+  h1,h2,h3{
+    font-family:'Big Shoulders Display', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    margin:0;
+    line-height:0.95;
+  }
+
+  /* ---------- torn paper edge divider ---------- */
+  .torn{
+    height:26px;
+    width:100%;
+    background:var(--paper);
+    clip-path: polygon(0% 0%,3% 100%,6% 10%,9% 90%,12% 0%,15% 80%,18% 15%,21% 100%,24% 5%,27% 85%,30% 0%,33% 95%,36% 10%,39% 100%,42% 0%,45% 90%,48% 20%,51% 100%,54% 5%,57% 85%,60% 0%,63% 95%,66% 15%,69% 100%,72% 0%,75% 90%,78% 10%,81% 100%,84% 0%,87% 85%,90% 20%,93% 100%,96% 5%,100% 90%,100% 100%,0% 100%);
+  }
+  .torn.flip{transform:rotate(180deg);}
+  .torn.teal{background:var(--faded-teal);}
+  .torn.ink{background:var(--ink);}
+  .torn.red{background:var(--cut-red);}
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--paper);
+    border-bottom:2px solid var(--ink);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .logo{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:900;
+    font-size:26px;
+    text-transform:lowercase;
+    letter-spacing:0;
+  }
+  .logo::after{content:'.'; color:var(--cut-red);}
+  .navlinks{display:flex; align-items:center; gap:28px;}
+  .navlinks a{
+    font-family:'Courier Prime', monospace;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    text-decoration:none;
+    border-bottom:2px solid transparent;
+    padding-bottom:3px;
+    transition:border-color .2s ease;
+  }
+  .navlinks a:hover{border-color:var(--cut-red);}
+  .btn{
+    display:inline-block;
+    font-family:'Courier Prime', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    font-size:13px;
+    font-weight:700;
+    text-decoration:none;
+    padding:11px 20px;
+    border:2px solid var(--ink);
+    background:var(--ink);
+    color:var(--paper);
+    transform:rotate(-1deg);
+    box-shadow:3px 3px 0 var(--cut-red);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:rotate(0deg) translate(-2px,-2px); box-shadow:5px 5px 0 var(--cut-red);}
+  .btn.outline{background:transparent; color:var(--ink); box-shadow:3px 3px 0 var(--mustard);}
+  .btn.outline:hover{box-shadow:5px 5px 0 var(--mustard);}
+  .btn.small{padding:8px 14px; font-size:12px;}
+  @media (max-width:720px){
+    .navlinks .navtext{display:none;}
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:90px 0 70px;
+    position:relative;
+    overflow:hidden;
+  }
+  .eyebrow-strip{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--faded-teal);
+    color:var(--paper);
+    padding:6px 14px;
+    transform:rotate(-2deg);
+    font-family:'Courier Prime', monospace;
+    font-size:12px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    box-shadow:3px 3px 0 var(--shadow);
+    margin-bottom:26px;
+  }
+  .ransom{
+    font-size:clamp(46px, 8vw, 96px);
+    display:flex;
+    flex-wrap:wrap;
+    gap:0.15em 0.22em;
+    max-width:900px;
+  }
+  .ransom span{
+    display:inline-block;
+    background:var(--paper-dark);
+    padding:0.02em 0.18em 0.06em;
+    box-shadow:2px 2px 0 var(--shadow);
+    border:1px solid rgba(28,26,23,0.15);
+  }
+  .ransom span:nth-child(3n+1){transform:rotate(-3deg); background:#f2ead9;}
+  .ransom span:nth-child(3n+2){transform:rotate(2deg); background:var(--mustard); color:var(--ink);}
+  .ransom span:nth-child(3n){transform:rotate(-1.5deg); background:var(--cut-red); color:var(--paper);}
+  .ransom span:nth-child(5n){transform:rotate(3deg); background:var(--ink); color:var(--paper);}
+
+  .hero-sub{
+    max-width:560px;
+    margin-top:30px;
+    font-size:19px;
+    color:#3a362f;
+  }
+  .hero-ctas{
+    display:flex; flex-wrap:wrap; gap:16px;
+    margin-top:34px;
+  }
+
+  .hero-figure{
+    margin-top:60px;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+  }
+  .scrap{
+    aspect-ratio:3/4;
+    position:relative;
+    box-shadow:4px 6px 12px var(--shadow);
+    overflow:hidden;
+  }
+  .scrap::after{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(160deg, rgba(255,255,255,0.15), rgba(0,0,0,0.18));
+    mix-blend-mode:multiply;
+  }
+  .scrap.tape::before{
+    content:'';
+    position:absolute; top:-6px; left:50%;
+    width:46px; height:20px;
+    background:var(--tape);
+    transform:translateX(-50%) rotate(-4deg);
+    z-index:2;
+  }
+  .scrap:nth-child(1){background:linear-gradient(135deg,#3f766d,#274842); transform:rotate(-4deg); grid-row: span 1;}
+  .scrap:nth-child(2){background:linear-gradient(135deg,#cc9a1f,#8f6a10); transform:rotate(3deg); margin-top:24px;}
+  .scrap:nth-child(3){background:linear-gradient(135deg,#b6392c,#7c2419); transform:rotate(-2deg);}
+  .scrap:nth-child(4){background:linear-gradient(135deg,#dccfa8,#a8996f); transform:rotate(4deg); margin-top:14px;}
+  .scrap:nth-child(5){background:linear-gradient(135deg,#1c1a17,#3a362f); transform:rotate(-3deg);}
+  @media (max-width:820px){
+    .hero-figure{grid-template-columns:repeat(3,1fr);}
+    .scrap:nth-child(4),.scrap:nth-child(5){display:none;}
+  }
+
+  /* ---------- section basics ---------- */
+  section{padding:70px 0;}
+  .section-head{max-width:640px; margin-bottom:44px;}
+  .section-head .label{color:var(--cut-red); margin-bottom:10px; display:block;}
+  .section-head h2{font-size:clamp(32px,4.5vw,52px);}
+
+  /* ---------- about ---------- */
+  .about{background:var(--paper-dark);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 1fr;
+    gap:60px;
+    align-items:center;
+  }
+  .about-portrait{
+    aspect-ratio:4/5;
+    background:
+      repeating-linear-gradient(115deg, #cc9a1f 0 30px, #b6392c 30px 60px, #3f766d 60px 90px, #1c1a17 90px 120px);
+    position:relative;
+    box-shadow:6px 8px 0 var(--ink);
+    transform:rotate(-1.5deg);
+  }
+  .about-portrait::before{
+    content:'HANDCUT / TORONTO';
+    position:absolute;
+    bottom:16px; left:16px;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Courier Prime', monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    padding:6px 10px;
+    transform:rotate(1deg);
+  }
+  .about-text p{margin:0 0 18px;}
+  .pull{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-size:28px;
+    text-transform:none;
+    line-height:1.15;
+    color:var(--cut-red);
+    margin:26px 0;
+    border-left:4px solid var(--ink);
+    padding-left:18px;
+  }
+  @media (max-width:820px){
+    .about-grid{grid-template-columns:1fr; gap:36px;}
+  }
+
+  /* ---------- process ---------- */
+  .process-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+  }
+  .process-card{
+    background:var(--paper);
+    border:1px solid rgba(28,26,23,0.15);
+    padding:26px 22px 30px;
+    position:relative;
+  }
+  .process-card .pin{
+    position:absolute; top:-9px; left:24px;
+    width:16px; height:16px;
+    border-radius:50%;
+    background:var(--cut-red);
+    box-shadow:0 3px 4px var(--shadow);
+  }
+  .process-card .num{
+    font-family:'Courier Prime', monospace;
+    font-size:13px;
+    color:var(--faded-teal);
+    display:block;
+    margin-bottom:10px;
+  }
+  .process-card h3{
+    font-size:24px;
+    margin-bottom:10px;
+  }
+  .process-card p{font-size:16px; color:#3a362f; margin:0;}
+  @media (max-width:820px){.process-grid{grid-template-columns:1fr;}}
+
+  /* ---------- gallery ---------- */
+  .gallery{background:var(--ink); color:var(--paper);}
+  .gallery .section-head .label{color:var(--mustard);}
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+  }
+  .piece{
+    aspect-ratio:1/1;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 8px 18px rgba(0,0,0,0.4);
+  }
+  .piece span{
+    position:absolute; bottom:10px; left:10px;
+    font-family:'Courier Prime', monospace;
+    font-size:11px;
+    background:rgba(28,26,23,0.7);
+    color:var(--paper);
+    padding:4px 8px;
+    letter-spacing:0.06em;
+  }
+  .piece:nth-child(1){background:radial-gradient(circle at 30% 30%, #cc9a1f, #6e5312 70%);}
+  .piece:nth-child(2){background:radial-gradient(circle at 70% 40%, #b6392c, #601f17 70%);}
+  .piece:nth-child(3){background:radial-gradient(circle at 40% 70%, #3f766d, #17322e 70%);}
+  .piece:nth-child(4){background:radial-gradient(circle at 60% 30%, #ddd0b5, #8a7a53 70%);}
+  .piece:nth-child(5){background:radial-gradient(circle at 50% 50%, #7c2419, #b6392c 70%);}
+  .piece:nth-child(6){background:radial-gradient(circle at 30% 60%, #8f6a10, #cc9a1f 70%);}
+  .piece:nth-child(7){background:radial-gradient(circle at 70% 70%, #274842, #3f766d 70%);}
+  .piece:nth-child(8){background:radial-gradient(circle at 50% 40%, #3a362f, #6b6355 70%);}
+  @media (max-width:820px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+  .gallery-note{
+    margin-top:26px;
+    font-family:'Courier Prime', monospace;
+    font-size:13px;
+    color:#c9c2ac;
+    max-width:520px;
+  }
+
+  /* ---------- testimonials ---------- */
+  .clippings{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .clip{
+    background:#f4eedd;
+    padding:24px 22px;
+    box-shadow:3px 4px 0 var(--shadow);
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    font-size:16.5px;
+    position:relative;
+  }
+  .clip:nth-child(1){transform:rotate(-1.4deg);}
+  .clip:nth-child(2){transform:rotate(1deg);}
+  .clip:nth-child(3){transform:rotate(-0.6deg);}
+  .clip .stars{
+    font-style:normal;
+    color:var(--mustard);
+    letter-spacing:2px;
+    margin-bottom:10px;
+    display:block;
+  }
+  .clip .attrib{
+    display:block;
+    margin-top:14px;
+    font-family:'Courier Prime', monospace;
+    font-style:normal;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:#6b6355;
+  }
+  @media (max-width:820px){.clippings{grid-template-columns:1fr;}}
+
+  /* ---------- shop cta ---------- */
+  .shopcta{
+    background:var(--faded-teal);
+    color:var(--paper);
+  }
+  .postcard{
+    background:var(--paper);
+    color:var(--ink);
+    max-width:760px;
+    margin:0 auto;
+    padding:50px 56px;
+    border:2px solid var(--ink);
+    position:relative;
+    box-shadow:8px 8px 0 var(--ink);
+    transform:rotate(-0.6deg);
+  }
+  .postcard::before{
+    content:'PAR AVION — TORONTO, ON';
+    position:absolute; top:18px; right:22px;
+    font-family:'Courier Prime', monospace;
+    font-size:11px;
+    letter-spacing:0.1em;
+    border:1px solid var(--ink);
+    padding:4px 8px;
+    transform:rotate(3deg);
+  }
+  .postcard h2{font-size:clamp(30px,4vw,44px); max-width:520px; margin-bottom:16px;}
+  .postcard p{max-width:480px; margin-bottom:28px; color:#3a362f;}
+  .postcard-ctas{display:flex; flex-wrap:wrap; gap:16px;}
+  @media (max-width:600px){
+    .postcard{padding:36px 24px;}
+  }
+
+  /* ---------- footer ---------- */
+  footer{
+    background:var(--ink);
+    color:var(--paper);
+    padding:50px 0 30px;
+  }
+  .footer-top{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:30px;
+    align-items:flex-start;
+    padding-bottom:30px;
+    border-bottom:1px solid rgba(255,255,255,0.15);
+  }
+  .footer-logo{
+    font-family:'Big Shoulders Display', sans-serif;
+    font-weight:900;
+    font-size:24px;
+    text-transform:lowercase;
+  }
+  .footer-logo::after{content:'.'; color:var(--cut-red);}
+  .footer-links{display:flex; gap:20px; flex-wrap:wrap;}
+  .footer-links a{
+    font-family:'Courier Prime', monospace;
+    font-size:13px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    text-decoration:none;
+    border-bottom:1px solid rgba(255,255,255,0.4);
+  }
+  .footer-bottom{
+    padding-top:22px;
+    font-family:'Courier Prime', monospace;
+    font-size:12px;
+    color:#a49c86;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  /* ---------- floating instagram tab ---------- */
+  .float-ig{
+    position:fixed;
+    right:22px; bottom:22px;
+    z-index:60;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--cut-red);
+    color:var(--paper);
+    text-decoration:none;
+    font-family:'Courier Prime', monospace;
+    font-size:12px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    padding:12px 16px;
+    box-shadow:3px 3px 0 var(--ink);
+    transform:rotate(-2deg);
+    transition:transform .15s ease;
+  }
+  .float-ig:hover{transform:rotate(0deg) translateY(-2px);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="logo">stolenpainting</a>
+    <div class="navlinks">
+      <a class="navtext" href="#about">About</a>
+      <a class="navtext" href="#gallery">Gallery</a>
+      <a class="navtext" href="#reviews">Reviews</a>
+      <a class="btn small" href="https://www.etsy.com/shop/stolenpainting" target="_blank" rel="noopener">Shop Etsy</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow-strip">📍 Toronto — Analog Collage Art</span>
+      <h1 class="ransom">
+        <span>Nothing</span><span>on</span><span>this</span><span>page</span><span>was</span><span>printed.</span>
+      </h1>
+      <h1 class="ransom" style="margin-top:12px;">
+        <span>It</span><span>was</span><span>cut.</span>
+      </h1>
+      <p class="hero-sub">stolenpainting is the handcut collage work of Toronto artist Robyn Redish — surreal scenes built one scalpel-slice at a time from vintage National Geographic, LIFE, and old newspaper pages sourced around the city. No digital layers, no filters. Just paper, blade, and glue.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="https://www.etsy.com/shop/stolenpainting" target="_blank" rel="noopener">Shop Prints &amp; Originals</a>
+        <a class="btn outline" href="https://www.instagram.com/stolenpainting/" target="_blank" rel="noopener">Follow @stolenpainting</a>
+      </div>
+
+      <div class="hero-figure" aria-hidden="true">
+        <div class="scrap tape"></div>
+        <div class="scrap"></div>
+        <div class="scrap tape"></div>
+        <div class="scrap"></div>
+        <div class="scrap tape"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="torn"></div>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div class="about-portrait" role="img" aria-label="Abstract paper-strip collage representing the artist's cut-paper technique"></div>
+      <div class="about-text">
+        <span class="label" style="color:var(--cut-red);">The Artist</span>
+        <h2 style="font-size:clamp(30px,4vw,44px); margin:10px 0 22px;">Self-taught. Toronto-based. Obsessed with old paper.</h2>
+        <p>Robyn Redish has been hand-cutting collage since she was a kid, armed with scissors and whatever magazine was lying around. That habit never really stopped — it just got sharper.</p>
+        <p class="pull">Every piece starts as a stack of decades-old pages before it becomes something that never existed.</p>
+        <p>Today she works exclusively in analog: vintage National Geographic, LIFE Magazine, and old newspapers collected from across Toronto, hand-selected for color, texture, and the strange little details that only show up in print from another era. Each collage is sliced, layered, and assembled by hand — no digital compositing, ever.</p>
+        <p>Her work has shown in galleries, sold to collectors internationally, and been featured in print publications covering the collage art world.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="torn ink flip"></div>
+
+  <!-- PROCESS -->
+  <section id="process" style="background:var(--ink); color:var(--paper); padding-top:0;">
+    <div class="wrap" style="padding-top:70px;">
+      <div class="section-head">
+        <span class="label" style="color:var(--mustard);">How it's made</span>
+        <h2>Paper in. Something stranger out.</h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-card">
+          <span class="pin"></span>
+          <span class="num">01 / SOURCE</span>
+          <h3>Vintage pages</h3>
+          <p>Old National Geographic, LIFE, and newspaper issues are collected from around Toronto — flea markets, estate sales, secondhand shops — and sorted by color, texture, and subject.</p>
+        </div>
+        <div class="process-card">
+          <span class="pin"></span>
+          <span class="num">02 / CUT</span>
+          <h3>Hand-sliced</h3>
+          <p>Every element is cut by hand with a scalpel — no digital scissors, no shortcuts. Figures, textures, and landscapes are freed from their original pages one careful pass at a time.</p>
+        </div>
+        <div class="process-card">
+          <span class="pin"></span>
+          <span class="num">03 / BUILD</span>
+          <h3>Layered &amp; glued</h3>
+          <p>Fragments are arranged, tested, and re-arranged until the composition clicks — then permanently layered and adhered to become a one-of-a-kind, physical original.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="torn ink"></div>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label">A glimpse of the work</span>
+        <h2>Surreal, hand-built scenes</h2>
+      </div>
+      <div class="gallery-grid" aria-hidden="true">
+        <div class="piece"><span>Original</span></div>
+        <div class="piece"><span>Print</span></div>
+        <div class="piece"><span>Original</span></div>
+        <div class="piece"><span>Print</span></div>
+        <div class="piece"><span>Original</span></div>
+        <div class="piece"><span>Print</span></div>
+        <div class="piece"><span>Original</span></div>
+        <div class="piece"><span>Print</span></div>
+      </div>
+      <p class="gallery-note">Color blocks shown for layout — see the real, ever-changing collection of collages and prints on Etsy and the latest cuts-in-progress on Instagram.</p>
+      <div style="margin-top:30px; display:flex; gap:16px; flex-wrap:wrap;">
+        <a class="btn" href="https://www.etsy.com/shop/stolenpainting" target="_blank" rel="noopener">View the Shop</a>
+        <a class="btn outline" style="box-shadow:3px 3px 0 var(--mustard); color:var(--paper); border-color:var(--paper);" href="https://www.instagram.com/stolenpainting/" target="_blank" rel="noopener">See Recent Cuts on Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="torn flip"></div>
+
+  <!-- REVIEWS -->
+  <section id="reviews">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="label" style="color:var(--faded-teal);">From collectors</span>
+        <h2>What ends up on people's walls</h2>
+      </div>
+      <div class="clippings">
+        <div class="clip">
+          <span class="stars">★★★★★</span>
+          A print arrived exactly as pictured — beautifully packaged, fast shipping, and it looks even better framed on the wall.
+          <span class="attrib">— Etsy buyer</span>
+        </div>
+        <div class="clip">
+          <span class="stars">★★★★★</span>
+          Spotted the piece on Instagram first and had to have it. It showed up quickly, plus a couple of sweet little extras tucked in.
+          <span class="attrib">— Etsy buyer</span>
+        </div>
+        <div class="clip">
+          <span class="stars">★★★★★</span>
+          A print that genuinely stops people mid-conversation. Already planning to order more for the rest of the apartment.
+          <span class="attrib">— Etsy buyer</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOP CTA -->
+  <section class="shopcta">
+    <div class="wrap">
+      <div class="postcard">
+        <h2>Take one home.</h2>
+        <p>Originals are one-of-a-kind and don't come back once they're gone. Prints make the surreal a little more affordable — and both ship worldwide from Toronto.</p>
+        <div class="postcard-ctas">
+          <a class="btn" href="https://www.etsy.com/shop/stolenpainting" target="_blank" rel="noopener">Shop on Etsy</a>
+          <a class="btn outline" href="https://www.instagram.com/stolenpainting/" target="_blank" rel="noopener">DM on Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">stolenpainting</div>
+        <p style="margin:10px 0 0; color:#c9c2ac; max-width:320px; font-size:15px;">Handcut analog collage art, made in Toronto, Ontario.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/stolenpainting/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.etsy.com/shop/stolenpainting" target="_blank" rel="noopener">Etsy Shop</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> stolenpainting — Robyn Redish. All artwork rights reserved.</span>
+      <span>Toronto, Ontario, Canada</span>
+    </div>
+  </div>
+</footer>
+
+<a class="float-ig" href="https://www.instagram.com/stolenpainting/" target="_blank" rel="noopener">📍 @stolenpainting</a>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
