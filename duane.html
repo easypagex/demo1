@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Duane Toops — I make things...</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper: #F2E8D5;
+    --paper-dark: #E7D9BC;
+    --ink: #1B1B1B;
+    --coral: #E8543E;
+    --mustard: #D9A441;
+    --teal: #2E7D6B;
+    --magenta: #C93B7C;
+    --sky: #3E7CB1;
+    --shadow: rgba(27,27,27,0.25);
+  }
+
+  *{ box-sizing: border-box; }
+
+  html{ scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(circle at 20% 10%, rgba(0,0,0,0.03) 0, transparent 40%),
+      radial-gradient(circle at 80% 60%, rgba(0,0,0,0.03) 0, transparent 40%);
+  }
+
+  a{ color:inherit; }
+
+  .label{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    font-size:0.72rem;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 18px 6vw;
+    background:var(--paper);
+    border-bottom:3px solid var(--ink);
+  }
+  header .brand{
+    font-family:'Anton', sans-serif;
+    font-size:1.3rem;
+    letter-spacing:0.02em;
+  }
+  header nav a{
+    text-decoration:none;
+    margin-left:22px;
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    border-bottom:2px solid transparent;
+    padding-bottom:2px;
+    transition:border-color .2s ease, color .2s ease;
+  }
+  header nav a:hover{ border-color: var(--coral); color:var(--coral); }
+  header nav a.cta{
+    background:var(--ink); color:var(--paper);
+    padding:9px 16px; border-radius:2px;
+    border-bottom:none;
+  }
+  header nav a.cta:hover{ background:var(--coral); color:var(--paper); }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding: 9vh 6vw 10vh;
+    display:flex; flex-direction:column; align-items:flex-start;
+    max-width: 1200px; margin:0 auto;
+  }
+  .hero .eyebrow{
+    display:inline-block;
+    background:var(--ink); color:var(--paper);
+    padding:6px 14px; margin-bottom:26px;
+    transform: rotate(-2deg);
+  }
+
+  .collage-title{
+    display:flex; flex-wrap:wrap; gap:0.15em 0.05em;
+    margin:0 0 30px 0; line-height:0.92;
+  }
+  .collage-title span{
+    font-family:'Anton', sans-serif;
+    font-size:clamp(2.6rem, 9vw, 6.2rem);
+    padding: 0.02em 0.14em;
+    display:inline-block;
+    box-shadow: 6px 6px 0 var(--shadow);
+    border:3px solid var(--ink);
+  }
+  .collage-title span:nth-child(1){ background:var(--coral); color:var(--paper); transform:rotate(-4deg); }
+  .collage-title span:nth-child(2){ background:var(--paper); color:var(--ink); transform:rotate(3deg); }
+  .collage-title span:nth-child(3){ background:var(--mustard); color:var(--ink); transform:rotate(-2deg); }
+  .collage-title span:nth-child(4){ background:var(--teal); color:var(--paper); transform:rotate(2deg); }
+  .collage-title span:nth-child(5){ background:var(--magenta); color:var(--paper); transform:rotate(-3deg); }
+  .collage-title span:nth-child(6){ background:var(--sky); color:var(--paper); transform:rotate(4deg); }
+
+  .hero p.sub{
+    max-width:640px;
+    font-size:1.25rem;
+    line-height:1.55;
+    font-weight:300;
+  }
+  .hero p.sub strong{ font-weight:600; }
+
+  .hero-ctas{
+    margin-top:36px;
+    display:flex; gap:16px; flex-wrap:wrap;
+  }
+  .btn{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    font-size:0.85rem;
+    text-decoration:none;
+    padding:15px 28px;
+    border:3px solid var(--ink);
+    display:inline-flex; align-items:center; gap:10px;
+    transition: transform .15s ease, box-shadow .15s ease;
+    box-shadow:5px 5px 0 var(--ink);
+  }
+  .btn:hover{ transform: translate(-3px,-3px); box-shadow:8px 8px 0 var(--ink); }
+  .btn-primary{ background:var(--coral); color:var(--paper); }
+  .btn-secondary{ background:var(--paper); color:var(--ink); }
+
+  .follow-count{
+    margin-top:22px;
+    font-family:'Space Mono', monospace;
+    font-size:0.85rem;
+    display:flex; align-items:center; gap:10px;
+  }
+  .dot{ width:8px; height:8px; border-radius:50%; background:var(--teal); display:inline-block; animation:pulse 1.6s infinite; }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+
+  /* torn edge divider */
+  .torn{
+    height:34px; width:100%;
+    background:var(--paper);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='34' viewBox='0 0 120 34' preserveAspectRatio='none'%3E%3Cpath d='M0 10 L8 3 L16 14 L24 5 L32 16 L40 4 L48 12 L56 2 L64 15 L72 6 L80 13 L88 3 L96 16 L104 5 L112 12 L120 6 L120 34 L0 34 Z'/%3E%3C/svg%3E") repeat-x;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='34' viewBox='0 0 120 34' preserveAspectRatio='none'%3E%3Cpath d='M0 10 L8 3 L16 14 L24 5 L32 16 L40 4 L48 12 L56 2 L64 15 L72 6 L80 13 L88 3 L96 16 L104 5 L112 12 L120 6 L120 34 L0 34 Z'/%3E%3C/svg%3E") repeat-x;
+    -webkit-mask-size: 120px 34px;
+    mask-size: 120px 34px;
+  }
+  .torn.flip{ transform: rotate(180deg); }
+  .section-dark{ background:var(--ink); color:var(--paper); }
+  .section-coral{ background:var(--coral); color:var(--paper); }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    padding:8vh 6vw; max-width:1200px; margin:0 auto;
+    display:grid; grid-template-columns: 1fr 1fr; gap:60px; align-items:center;
+  }
+  .about .swatchboard{
+    position:relative; height:340px;
+  }
+  .swatch{
+    position:absolute; border:3px solid var(--ink);
+    box-shadow:5px 5px 0 var(--shadow);
+  }
+  .s1{ width:52%; height:60%; background:var(--mustard); top:0; left:0; transform:rotate(-6deg); }
+  .s2{ width:46%; height:46%; background:var(--teal); top:8%; right:0; transform:rotate(5deg); }
+  .s3{ width:40%; height:40%; background:var(--magenta); bottom:0; left:10%; transform:rotate(4deg); }
+  .s4{ width:36%; height:34%; background:var(--sky); bottom:2%; right:8%; transform:rotate(-8deg); }
+  .swatch::after{
+    content:'';
+    position:absolute; inset:10px;
+    border:2px dashed rgba(0,0,0,0.25);
+  }
+
+  .about h2{
+    font-family:'Anton', sans-serif;
+    font-size:clamp(1.8rem, 3vw, 2.6rem);
+    margin:0 0 20px 0;
+    text-transform:uppercase;
+  }
+  .about p{ font-size:1.08rem; line-height:1.7; font-weight:300; margin-bottom:16px;}
+  .about p strong{ font-weight:600; background:var(--paper-dark); padding:0 4px; }
+
+  /* ---------- THEMES ---------- */
+  .themes{ padding:8vh 6vw; max-width:1200px; margin:0 auto; }
+  .themes .label{ margin-bottom:10px; display:block; }
+  .themes h2{
+    font-family:'Anton', sans-serif;
+    font-size:clamp(1.8rem, 3.4vw, 2.8rem);
+    margin:0 0 50px 0; text-transform:uppercase;
+  }
+  .theme-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:26px;
+  }
+  .theme-card{
+    background:var(--paper);
+    border:3px solid var(--ink);
+    padding:30px 24px;
+    box-shadow:7px 7px 0 var(--ink);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .theme-card:hover{ transform:translate(-4px,-4px); box-shadow:11px 11px 0 var(--ink); }
+  .theme-card .tag{
+    display:inline-block; padding:4px 10px; margin-bottom:16px;
+    font-family:'Space Mono',monospace; font-size:0.7rem; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--paper);
+  }
+  .theme-card:nth-child(1) .tag{ background:var(--coral); }
+  .theme-card:nth-child(2) .tag{ background:var(--teal); }
+  .theme-card:nth-child(3) .tag{ background:var(--magenta); }
+  .theme-card h3{ font-family:'Anton', sans-serif; font-size:1.3rem; margin:0 0 10px; text-transform:uppercase; }
+  .theme-card p{ font-size:0.98rem; line-height:1.6; font-weight:300; margin:0; }
+
+  /* ---------- GALLERY ---------- */
+  .gallery-wrap{ padding:8vh 6vw; max-width:1300px; margin:0 auto; }
+  .gallery-wrap h2{
+    font-family:'Anton', sans-serif; color:var(--paper);
+    font-size:clamp(1.8rem, 3.4vw, 2.8rem); text-transform:uppercase; margin:0 0 12px;
+  }
+  .gallery-wrap > p.sub2{ color:var(--paper-dark); max-width:560px; font-weight:300; margin-bottom:50px; }
+  .gallery{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:20px;
+  }
+  .card{
+    aspect-ratio: 4/5; position:relative; overflow:hidden;
+    border:3px solid var(--paper);
+    display:flex; align-items:flex-end;
+  }
+  .card .fill{ position:absolute; inset:0; }
+  .card .cut{ position:absolute; }
+  .card figcaption{
+    position:relative; z-index:3; width:100%;
+    background:rgba(27,27,27,0.82); color:var(--paper);
+    padding:10px 12px; font-family:'Space Mono', monospace; font-size:0.72rem; letter-spacing:.03em;
+  }
+  .card:hover .cut{ transform: scale(1.06) rotate(0deg) !important; transition: transform .35s ease; }
+
+  .c1 .fill{ background:var(--mustard); }
+  .c1 .cut{ position:absolute; width:60%; height:55%; background:var(--coral); top:10%; left:20%; border:3px solid var(--ink); transform:rotate(-8deg); }
+
+  .c2 .fill{ background:var(--sky); }
+  .c2 .cut{ position:absolute; width:70%; height:40%; background:var(--paper); top:30%; left:15%; border:3px solid var(--ink); transform:rotate(6deg); }
+
+  .c3 .fill{ background:var(--magenta); }
+  .c3 .cut{ position:absolute; width:50%; height:70%; background:var(--teal); top:15%; left:25%; border:3px solid var(--ink); transform:rotate(4deg); }
+
+  .c4 .fill{ background:var(--teal); }
+  .c4 .cut{ position:absolute; width:65%; height:45%; background:var(--mustard); top:28%; left:5%; border:3px solid var(--ink); transform:rotate(-5deg); }
+
+  /* ---------- QUOTE ---------- */
+  .quote-wrap{
+    padding:9vh 6vw; text-align:center; max-width:840px; margin:0 auto;
+  }
+  .quote-wrap blockquote{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:clamp(1.3rem,2.6vw,2rem); line-height:1.5; margin:0 0 20px;
+  }
+  .quote-wrap cite{
+    font-family:'Space Mono', monospace; font-size:0.8rem; font-style:normal; text-transform:uppercase; letter-spacing:.08em; color:var(--coral);
+  }
+
+  /* ---------- CTA ---------- */
+  .cta-section{
+    padding:10vh 6vw; text-align:center;
+  }
+  .cta-section h2{
+    font-family:'Anton', sans-serif; color:var(--paper);
+    font-size:clamp(2rem,5vw,3.4rem); text-transform:uppercase; margin:0 0 20px; line-height:1.05;
+  }
+  .cta-section p{ color:var(--paper-dark); font-size:1.15rem; font-weight:300; max-width:520px; margin:0 auto 40px; }
+  .cta-buttons{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+  .cta-section .btn-primary{ background:var(--mustard); color:var(--ink); border-color:var(--paper); box-shadow:5px 5px 0 var(--paper);}
+  .cta-section .btn-secondary{ background:transparent; color:var(--paper); border-color:var(--paper); box-shadow:5px 5px 0 var(--paper);}
+  .cta-section .btn:hover{ box-shadow:8px 8px 0 var(--paper); }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:30px 6vw; display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:14px;
+    border-top:3px solid var(--ink);
+    font-family:'Space Mono', monospace; font-size:0.75rem;
+  }
+  footer a{ text-decoration:none; }
+  footer a:hover{ color:var(--coral); }
+
+  @media (max-width: 860px){
+    .about{ grid-template-columns:1fr; }
+    .theme-grid{ grid-template-columns:1fr; }
+    .gallery{ grid-template-columns:repeat(2,1fr); }
+    header nav a:not(.cta){ display:none; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">DUANE TOOPS</div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#themes">Themes</a>
+    <a href="#gallery">Gallery</a>
+    <a class="cta" href="https://www.instagram.com/duanetoops/" target="_blank" rel="noopener">Follow</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <span class="eyebrow label">Mixed-media collage artist</span>
+  <h1 class="collage-title">
+    <span>I</span><span>MAKE</span><span>THINGS</span><span>OUT</span><span>OF</span><span>FRAGMENTS.</span>
+  </h1>
+  <p class="sub">Duane Toops cuts, layers, and reassembles paper into work about <strong>identity, impermanence, and transformation</strong> — blending analog scraps with digital tools, one small collage at a time. New pieces land on Instagram first.</p>
+
+  <div class="hero-ctas">
+    <a class="btn btn-primary" href="https://www.instagram.com/duanetoops/" target="_blank" rel="noopener">📷 Follow on Instagram</a>
+    <a class="btn btn-secondary" href="https://linktr.ee/duanetoops" target="_blank" rel="noopener">🔗 All Links</a>
+  </div>
+
+  <div class="follow-count"><span class="dot"></span> 9.6K+ followers · 1,600+ posts and counting</div>
+</section>
+
+<div class="torn"></div>
+
+<section class="about" id="about">
+  <div class="swatchboard">
+    <div class="swatch s1"></div>
+    <div class="swatch s2"></div>
+    <div class="swatch s3"></div>
+    <div class="swatch s4"></div>
+  </div>
+  <div>
+    <h2>Paper, scissors, patience.</h2>
+    <p>Duane works primarily in <strong>collage</strong> — cutting up old magazines, wrapping paper, index cards, and printed fragments, then rebuilding them into something new. Some pieces mix in digital elements; all of them start with his hands and a stack of scraps.</p>
+    <p>The result is a body of work that's textured, layered, and a little unpredictable — small compositions that reward a second look. He shares the process, the in-progress shots, and the finished pieces daily on Instagram.</p>
+    <a class="btn btn-secondary" href="https://www.instagram.com/duanetoops/" target="_blank" rel="noopener">See the process →</a>
+  </div>
+</section>
+
+<div class="torn flip" style="background:var(--ink);"></div>
+
+<section class="themes section-dark" id="themes">
+  <span class="label" style="color:var(--mustard);">What the work is about</span>
+  <h2>Three threads, one practice</h2>
+  <div class="theme-grid">
+    <div class="theme-card">
+      <span class="tag">Identity</span>
+      <h3>Who we're made of</h3>
+      <p>Fragmented faces and figures built from mismatched paper — a reminder that identity is assembled, not fixed.</p>
+    </div>
+    <div class="theme-card">
+      <span class="tag">Impermanence</span>
+      <h3>Nothing stays whole</h3>
+      <p>Torn edges and layered scraps that embrace wear and change instead of hiding it.</p>
+    </div>
+    <div class="theme-card">
+      <span class="tag">Transformation</span>
+      <h3>Old paper, new meaning</h3>
+      <p>Discarded material — old magazines, wrapping paper — reborn as something worth a second look.</p>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-wrap section-coral" id="gallery">
+  <h2>A taste of the feed</h2>
+  <p class="sub2">Every square below is a stand-in for the real thing — head to Instagram to see the actual collages, reels, and works-in-progress.</p>
+  <div class="gallery">
+    <figure class="card c1"><div class="fill"></div><div class="cut"></div><figcaption>Latest collage</figcaption></figure>
+    <figure class="card c2"><div class="fill"></div><div class="cut"></div><figcaption>Work in progress</figcaption></figure>
+    <figure class="card c3"><div class="fill"></div><div class="cut"></div><figcaption>Studio scraps</figcaption></figure>
+    <figure class="card c4"><div class="fill"></div><div class="cut"></div><figcaption>Reel: how it's made</figcaption></figure>
+  </div>
+</section>
+
+<section class="quote-wrap">
+  <blockquote>"We live our creative lives in the interstices — the fragments of time between everything else. That's exactly where these collages get made."</blockquote>
+  <cite>— paraphrased from Duane's writing</cite>
+</section>
+
+<section class="cta-section section-dark">
+  <h2>Don't miss the next piece.</h2>
+  <p>New collages, process videos, and the occasional stray thought — posted where you already are.</p>
+  <div class="cta-buttons">
+    <a class="btn btn-primary" href="https://www.instagram.com/duanetoops/" target="_blank" rel="noopener">📷 @duanetoops on Instagram</a>
+    <a class="btn btn-secondary" href="https://linktr.ee/duanetoops" target="_blank" rel="noopener">🔗 linktr.ee/duanetoops</a>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Duane Toops — fan-made showcase page</span>
+  <span>
+    <a href="https://www.instagram.com/duanetoops/" target="_blank" rel="noopener">Instagram</a> ·
+    <a href="https://linktr.ee/duanetoops" target="_blank" rel="noopener">Linktree</a>
+  </span>
+</footer>
+
+</body>
+</html>
