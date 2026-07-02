@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>gluestix.art — Analog Collages by J. Møller</title>
+<meta name="description" content="Analog collages & visual stories by J. Møller. Hand-cut, hand-glued, no digital shortcuts. Follow the process on Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F3E8D0;
+    --paper-dark:#e9dab8;
+    --ink:#1B1712;
+    --poppy:#E8462B;
+    --sunflower:#F2B705;
+    --cobalt:#2454A6;
+    --magenta:#C23B7A;
+    --teal:#1F7A6C;
+    --lilac:#8A6FBF;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(circle, rgba(27,23,18,0.09) 1px, transparent 1px);
+    background-size:16px 16px;
+  }
+  ::selection{ background:var(--sunflower); color:var(--ink); }
+
+  h1,h2,h3, .display{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    letter-spacing:-0.01em;
+    line-height:0.95;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+  img{ max-width:100%; display:block; }
+
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 24px; }
+
+  /* ---------- Glue-stick side progress ---------- */
+  .gluestick{
+    position:fixed;
+    right:18px;
+    top:50%;
+    transform:translateY(-50%);
+    width:34px;
+    height:180px;
+    z-index:500;
+    border-radius:17px;
+    background:linear-gradient(180deg,var(--sunflower) 0%, var(--sunflower) 30%, var(--paper) 30%, var(--paper) 100%);
+    border:3px solid var(--ink);
+    overflow:hidden;
+    box-shadow:4px 4px 0 var(--ink);
+  }
+  .gluestick::before{
+    content:"GLUE";
+    position:absolute;
+    top:38%;
+    left:50%;
+    transform:translateX(-50%) rotate(90deg);
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:11px;
+    letter-spacing:0.2em;
+    color:var(--ink);
+    white-space:nowrap;
+  }
+  .gluestick .fill{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    height:0%;
+    background:var(--poppy);
+    transition:height .12s linear;
+  }
+  @media (max-width:760px){ .gluestick{ display:none; } }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:var(--paper);
+    border-bottom:3px solid var(--ink);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size:26px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .logo .dot{ color:var(--poppy); }
+  .navlinks{ display:flex; gap:28px; font-weight:600; font-size:15px; }
+  .navlinks a{ position:relative; padding-bottom:2px; }
+  .navlinks a:hover{ color:var(--poppy); }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--ink);
+    color:var(--paper);
+    font-weight:700;
+    font-size:14px;
+    padding:11px 20px;
+    border-radius:100px;
+    border:2px solid var(--ink);
+    transition:transform .15s ease, background .15s ease, color .15s ease;
+  }
+  .btn:hover{ background:var(--poppy); border-color:var(--poppy); color:#fff; transform:translateY(-2px); }
+  .btn.outline{ background:transparent; color:var(--ink); }
+  .btn.outline:hover{ background:var(--ink); color:var(--paper); }
+  @media (max-width:760px){ .navlinks{ display:none; } }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:90px 0 120px;
+    overflow:hidden;
+  }
+  .hero .wrap{ position:relative; z-index:2; }
+  .eyebrow{
+    font-family:'Caveat', cursive;
+    font-size:22px;
+    font-weight:700;
+    color:var(--poppy);
+    transform:rotate(-3deg);
+    display:inline-block;
+    margin-bottom:6px;
+  }
+  .hero h1{
+    font-size:clamp(48px, 9vw, 110px);
+    max-width:920px;
+  }
+  .hero h1 .cut{
+    background:var(--sunflower);
+    padding:0 12px 4px;
+    display:inline-block;
+    transform:rotate(-1.5deg);
+    box-shadow:6px 6px 0 var(--ink);
+    margin-bottom:6px;
+  }
+  .hero h1 .cut2{
+    background:var(--poppy);
+    color:#fff;
+    padding:0 12px 4px;
+    display:inline-block;
+    transform:rotate(1deg);
+    box-shadow:6px 6px 0 var(--ink);
+  }
+  .hero p.lede{
+    max-width:560px;
+    font-size:19px;
+    line-height:1.55;
+    margin-top:26px;
+    font-weight:500;
+  }
+  .hero-ctas{ display:flex; gap:16px; margin-top:34px; flex-wrap:wrap; }
+
+  /* floating torn-paper shapes in hero */
+  .float-shape{
+    position:absolute;
+    z-index:1;
+  }
+  .shape-a{ top:6%; right:8%; width:190px; }
+  .shape-b{ bottom:8%; right:20%; width:120px; }
+  .shape-c{ top:60%; right:-2%; width:150px; }
+  .shape-d{ top:14%; left:2%; width:90px; opacity:.9;}
+  @media (max-width:900px){ .float-shape{ display:none; } }
+
+  /* ---------- Marquee ---------- */
+  .marquee{
+    background:var(--ink);
+    color:var(--paper);
+    border-top:3px solid var(--ink);
+    border-bottom:3px solid var(--ink);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:14px 0;
+  }
+  .marquee .track{
+    display:inline-block;
+    animation:scroll 26s linear infinite;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-style:italic;
+    font-size:22px;
+  }
+  .marquee .track span{ margin:0 26px; }
+  .marquee .track span.accent{ color:var(--sunflower); }
+  @keyframes scroll{
+    0%{ transform:translateX(0); }
+    100%{ transform:translateX(-50%); }
+  }
+
+  /* ---------- Section basics ---------- */
+  section{ padding:100px 0; position:relative; }
+  .tag{
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--teal);
+    margin-bottom:14px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .tag::before{
+    content:"";
+    width:26px; height:2px;
+    background:var(--teal);
+    display:inline-block;
+  }
+  h2.section-title{
+    font-size:clamp(34px, 5vw, 56px);
+    max-width:680px;
+    margin-bottom:20px;
+  }
+  .section-sub{
+    max-width:560px;
+    font-size:17px;
+    line-height:1.6;
+    color:#3a352c;
+  }
+
+  /* ---------- About ---------- */
+  .about{
+    background:var(--cobalt);
+    color:var(--paper);
+  }
+  .about .tag{ color:var(--sunflower); }
+  .about .tag::before{ background:var(--sunflower); }
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:center;
+  }
+  @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; } }
+  .about h2{ color:var(--paper); }
+  .about p{ font-size:17px; line-height:1.7; margin-top:18px; color:#e9e3d2; }
+  .signature-card{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:18px;
+    padding:34px;
+    transform:rotate(-2deg);
+    border:3px solid var(--ink);
+    box-shadow:8px 8px 0 rgba(0,0,0,0.35);
+  }
+  .signature-card .quote{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:22px;
+    line-height:1.4;
+  }
+  .signature-card .who{
+    margin-top:18px;
+    font-family:'Caveat', cursive;
+    font-size:22px;
+    color:var(--poppy);
+    font-weight:700;
+  }
+
+  /* ---------- Chapters (Viewing / Reorganized / Take a Ride) ---------- */
+  .chapters-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+    margin-top:50px;
+  }
+  @media (max-width:900px){ .chapters-grid{ grid-template-columns:1fr; } }
+  .chapter-card{
+    border-radius:18px;
+    padding:32px 26px 28px;
+    border:3px solid var(--ink);
+    position:relative;
+    min-height:280px;
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    overflow:hidden;
+    transition:transform .2s ease;
+  }
+  .chapter-card:hover{ transform:translateY(-6px) rotate(-.5deg); }
+  .chapter-card .num{
+    position:absolute;
+    top:18px; left:20px;
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:700;
+    font-size:15px;
+    opacity:.7;
+  }
+  .chapter-card h3{
+    font-size:28px;
+    margin-bottom:10px;
+  }
+  .chapter-card p{ font-size:15px; line-height:1.55; font-weight:500; }
+  .chapter-1{ background:var(--sunflower); }
+  .chapter-2{ background:var(--magenta); color:#fff; }
+  .chapter-3{ background:var(--teal); color:#fff; }
+  .chapter-card .eye{
+    position:absolute;
+    right:-10px; top:-10px;
+    font-size:110px;
+    opacity:.15;
+  }
+
+  /* ---------- Process ---------- */
+  .process{ background:var(--paper-dark); }
+  .process-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+    margin-top:50px;
+    counter-reset:step;
+  }
+  @media (max-width:900px){ .process-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:520px){ .process-grid{ grid-template-columns:1fr; } }
+  .step{
+    background:var(--paper);
+    border:3px solid var(--ink);
+    border-radius:16px;
+    padding:26px 20px;
+    position:relative;
+  }
+  .step::before{
+    counter-increment:step;
+    content:counter(step,decimal-leading-zero);
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size:15px;
+    color:var(--poppy);
+    display:block;
+    margin-bottom:10px;
+  }
+  .step h3{ font-size:20px; margin-bottom:8px; }
+  .step p{ font-size:14.5px; line-height:1.55; color:#3a352c; }
+  .step:nth-child(1){ border-color:var(--poppy); }
+  .step:nth-child(2){ border-color:var(--cobalt); }
+  .step:nth-child(3){ border-color:var(--teal); }
+  .step:nth-child(4){ border-color:var(--magenta); }
+
+  /* ---------- Gallery ---------- */
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+    margin-top:50px;
+  }
+  @media (max-width:900px){ .gallery-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .gallery-grid{ grid-template-columns:1fr; } }
+  .art-card{
+    aspect-ratio:4/5;
+    border-radius:14px;
+    border:3px solid var(--ink);
+    position:relative;
+    overflow:hidden;
+    box-shadow:5px 5px 0 rgba(27,23,18,0.5);
+    transition:transform .2s ease;
+  }
+  .art-card:hover{ transform:translate(-3px,-6px); }
+  .art-card .cap{
+    position:absolute;
+    left:0; right:0; bottom:0;
+    padding:14px 16px;
+    background:rgba(27,23,18,0.82);
+    color:var(--paper);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:0.02em;
+  }
+  .art-card .cap .k{
+    display:block;
+    font-family:'Caveat', cursive;
+    font-size:18px;
+    color:var(--sunflower);
+    font-weight:700;
+  }
+  .art-card svg{ width:100%; height:100%; display:block; }
+
+  /* ---------- CTA / Follow ---------- */
+  .follow{
+    background:var(--ink);
+    color:var(--paper);
+    text-align:center;
+    border-top:3px solid var(--ink);
+  }
+  .follow .tag{ justify-content:center; color:var(--sunflower); }
+  .follow .tag::before{ background:var(--sunflower); }
+  .follow h2{
+    color:var(--paper);
+    font-size:clamp(36px, 6vw, 68px);
+    max-width:820px;
+    margin:0 auto 24px;
+  }
+  .follow h2 .hi{ color:var(--poppy); }
+  .follow p{
+    max-width:520px;
+    margin:0 auto 36px;
+    font-size:17px;
+    color:#cfc6ac;
+    line-height:1.6;
+  }
+  .ig-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    background:linear-gradient(135deg,var(--poppy), var(--magenta) 50%, var(--cobalt));
+    color:#fff;
+    font-weight:700;
+    font-size:18px;
+    padding:18px 34px;
+    border-radius:100px;
+    border:3px solid var(--paper);
+    box-shadow:6px 6px 0 rgba(255,255,255,0.15);
+    transition:transform .15s ease;
+  }
+  .ig-btn:hover{ transform:translateY(-3px) scale(1.02); }
+  .handle{
+    margin-top:22px;
+    font-family:'Caveat', cursive;
+    font-size:22px;
+    color:var(--sunflower);
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    padding:34px 0;
+    border-top:3px solid var(--paper-dark);
+    background:var(--paper);
+  }
+  footer .wrap{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:14px;
+    font-size:13px;
+    color:#5c5648;
+  }
+
+  /* ---------- Floating action button (mobile IG) ---------- */
+  .fab{
+    position:fixed;
+    bottom:20px; right:20px;
+    z-index:400;
+    background:linear-gradient(135deg,var(--poppy), var(--magenta));
+    color:#fff;
+    width:58px; height:58px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    border:3px solid var(--ink);
+    box-shadow:4px 4px 0 var(--ink);
+    font-size:24px;
+  }
+
+  /* reveal on scroll */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="gluestick" aria-hidden="true"><div class="fill" id="glueFill"></div></div>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">gluestix<span class="dot">.</span>art</div>
+    <div class="navlinks">
+      <a href="#about">Artist</a>
+      <a href="#chapters">Chapters</a>
+      <a href="#process">Process</a>
+      <a href="#gallery">Gallery</a>
+    </div>
+    <a class="btn" href="https://www.instagram.com/gluestix.art/" target="_blank" rel="noopener">Follow on IG ✂️</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <svg class="float-shape shape-a" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path d="M20 60 L80 15 L170 40 L180 110 L120 185 L40 170 L5 110 Z" fill="#C23B7A" opacity="0.9" transform="rotate(8 100 100)"/>
+  </svg>
+  <svg class="float-shape shape-b" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="85" fill="#F2B705"/>
+    <circle cx="100" cy="100" r="85" fill="none" stroke="#1B1712" stroke-width="4"/>
+  </svg>
+  <svg class="float-shape shape-c" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <path d="M10 100 L60 20 L150 10 L190 80 L160 190 L60 180 Z" fill="#2454A6" opacity="0.85" transform="rotate(-12 100 100)"/>
+  </svg>
+  <svg class="float-shape shape-d" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="20" y="20" width="160" height="160" fill="#1F7A6C" transform="rotate(20 100 100)"/>
+  </svg>
+
+  <div class="wrap">
+    <span class="eyebrow">✂️ handcut, hand-glued, never digital</span>
+    <h1><span class="cut">Analog</span> <span class="cut2">collages</span><br>& visual stories.</h1>
+    <p class="lede">gluestix.art is the studio of J. Møller — found paper, sharp scissors, and a glue stick, reassembled into new realities. Viewing & discovering, reorganized. Take a ride.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="https://www.instagram.com/gluestix.art/" target="_blank" rel="noopener">👁 See the collages on Instagram</a>
+      <a class="btn outline" href="#chapters">Explore the world ↓</a>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="track">
+    <span>CUT</span><span class="accent">•</span><span>ARRANGE</span><span class="accent">•</span><span>GLUE</span><span class="accent">•</span><span>DISCOVER</span><span class="accent">•</span>
+    <span>CUT</span><span class="accent">•</span><span>ARRANGE</span><span class="accent">•</span><span>GLUE</span><span class="accent">•</span><span>DISCOVER</span><span class="accent">•</span>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <div class="tag">The artist</div>
+      <h2>Paper doesn't lie — it just gets rearranged.</h2>
+      <p>J. Møller builds every scene by hand: no tablets, no layers panel, no undo button. Just salvaged magazines, old photographs, and a blade that only gets one shot at each cut.</p>
+      <p>Each piece starts as a pile of scraps and ends as a small, self-contained world — a reminder that looking closer is always worth it.</p>
+    </div>
+    <div class="signature-card reveal">
+      <div class="quote">"I don't make images disappear into the page. I make you look twice — that's the whole trick."</div>
+      <div class="who">— J. Møller, gluestix.art</div>
+    </div>
+  </div>
+</section>
+
+<section id="chapters">
+  <div class="wrap">
+    <div class="tag reveal">Three ways in</div>
+    <h2 class="section-title reveal">Viewing, reorganized. Then — take a ride.</h2>
+    <p class="section-sub reveal">Every collage on gluestix.art lives in one of three moods. Start wherever pulls you in first.</p>
+    <div class="chapters-grid">
+      <div class="chapter-card chapter-1 reveal">
+        <span class="eye">👁</span>
+        <span class="num">Chapter One</span>
+        <h3>Viewing &amp; Discovering</h3>
+        <p>Slow-looking pieces built for the second and third glance — the small surreal detail hiding behind the obvious one.</p>
+      </div>
+      <div class="chapter-card chapter-2 reveal">
+        <span class="eye">✂️</span>
+        <span class="num">Chapter Two</span>
+        <h3>Reorganized</h3>
+        <p>Familiar photographs, cut apart and rebuilt into scenes that never existed — but almost feel like they could have.</p>
+      </div>
+      <div class="chapter-card chapter-3 reveal">
+        <span class="eye">🚗</span>
+        <span class="num">Chapter Three</span>
+        <h3>Take a Ride</h3>
+        <p>Motion, road, and momentum — collages that move the eye from corner to corner like a story with no fixed ending.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="tag reveal">How a gluestix piece gets made</div>
+    <h2 class="section-title reveal">Four steps. Zero shortcuts.</h2>
+    <div class="process-grid">
+      <div class="step reveal">
+        <h3>Source</h3>
+        <p>Old magazines, books, and photographs are collected and sorted by color, texture, and era — the raw material for everything that follows.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Cut</h3>
+        <p>Every shape is hand-scissored, chosen as much for its scale as its subject — no two edges are ever quite the same.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Arrange</h3>
+        <p>Pieces are laid out, rearranged, and photographed dozens of times before a single one is glued down for good.</p>
+      </div>
+      <div class="step reveal">
+        <h3>Glue</h3>
+        <p>Layers are fixed in reverse order with a trusty glue stick, then sealed — a finished world, built entirely by hand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery">
+  <div class="wrap">
+    <div class="tag reveal">A peek inside the studio</div>
+    <h2 class="section-title reveal">The world in fragments.</h2>
+    <p class="section-sub reveal">A small taste of the color and composition you'll find in the full collection — new work drops regularly on Instagram.</p>
+    <div class="gallery-grid">
+
+      <div class="art-card reveal">
+        <svg viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="375" fill="#F2B705"/>
+          <circle cx="220" cy="90" r="70" fill="#E8462B"/>
+          <path d="M0 240 L120 190 L300 260 L300 375 L0 375 Z" fill="#2454A6"/>
+          <rect x="30" y="60" width="90" height="90" fill="#1F7A6C" transform="rotate(18 75 105)"/>
+        </svg>
+        <div class="cap"><span class="k">Static Bloom</span>found paper, ink</div>
+      </div>
+
+      <div class="art-card reveal">
+        <svg viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="375" fill="#2454A6"/>
+          <path d="M0 0 L300 0 L300 120 L0 200 Z" fill="#C23B7A"/>
+          <circle cx="90" cy="270" r="60" fill="#F2B705"/>
+          <circle cx="90" cy="270" r="60" fill="none" stroke="#1B1712" stroke-width="5"/>
+          <rect x="180" y="220" width="100" height="130" fill="#1F7A6C"/>
+        </svg>
+        <div class="cap"><span class="k">Sunken Archive</span>magazine collage</div>
+      </div>
+
+      <div class="art-card reveal">
+        <svg viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="375" fill="#1F7A6C"/>
+          <path d="M40 40 L260 60 L230 220 L60 260 Z" fill="#F3E8D0"/>
+          <circle cx="150" cy="150" r="45" fill="#E8462B"/>
+          <rect x="0" y="280" width="300" height="95" fill="#C23B7A"/>
+        </svg>
+        <div class="cap"><span class="k">Take a Ride</span>photograph, paper</div>
+      </div>
+
+      <div class="art-card reveal">
+        <svg viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="375" fill="#C23B7A"/>
+          <path d="M0 375 L100 200 L200 320 L300 150 L300 375 Z" fill="#1B1712" opacity="0.85"/>
+          <circle cx="230" cy="80" r="55" fill="#F2B705"/>
+        </svg>
+        <div class="cap"><span class="k">Reorganized No.4</span>mixed media</div>
+      </div>
+
+      <div class="art-card reveal">
+        <svg viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="375" fill="#F3E8D0"/>
+          <rect x="0" y="0" width="300" height="180" fill="#2454A6"/>
+          <path d="M0 180 L300 180 L260 375 L40 375 Z" fill="#E8462B"/>
+          <circle cx="150" cy="180" r="40" fill="#F2B705"/>
+        </svg>
+        <div class="cap"><span class="k">Split Horizon</span>found paper</div>
+      </div>
+
+      <div class="art-card reveal">
+        <svg viewBox="0 0 300 375" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="375" fill="#E8462B"/>
+          <circle cx="90" cy="120" r="80" fill="#F3E8D0"/>
+          <path d="M20 375 L150 220 L300 375 Z" fill="#1F7A6C"/>
+          <circle cx="90" cy="120" r="18" fill="#1B1712"/>
+        </svg>
+        <div class="cap"><span class="k">The Watcher</span>collage on board</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="follow">
+  <div class="wrap">
+    <div class="tag">Come take a closer look</div>
+    <h2>Every new piece, every process shot, <span class="hi">every cut</span> — it's all on Instagram first.</h2>
+    <p>New collages, behind-the-scenes cutting sessions, and the occasional pile of scraps that almost made it. Follow along and see how each world gets built.</p>
+    <a class="ig-btn" href="https://www.instagram.com/gluestix.art/" target="_blank" rel="noopener">
+      📷 Follow @gluestix.art on Instagram
+    </a>
+    <div class="handle">@gluestix.art — new cuts posted regularly</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>gluestix.art — analog collages by J. Møller</div>
+    <div><a href="https://www.instagram.com/gluestix.art/" target="_blank" rel="noopener">Instagram ↗</a></div>
+  </div>
+</footer>
+
+<a class="fab" href="https://www.instagram.com/gluestix.art/" target="_blank" rel="noopener" aria-label="Follow on Instagram">📷</a>
+
+<script>
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold:0.15 });
+  revealEls.forEach(el=>io.observe(el));
+
+  // glue stick scroll progress
+  const fill = document.getElementById('glueFill');
+  function updateGlue(){
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    fill.style.height = scrolled + '%';
+  }
+  document.addEventListener('scroll', updateGlue);
+  updateGlue();
+</script>
+
+</body>
+</html>
