@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scissor Stories — Collage Art from a Small German Town</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,500&family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap');
+
+  :root{
+    --ink:#151018;
+    --paper:#efe4cf;
+    --paper-2:#e6d9bd;
+    --burgundy:#7a1f2b;
+    --vermillion:#c1442e;
+    --petrol:#1f6f6b;
+    --mustard:#c9a84c;
+    --gold:#e8c368;
+    --violet:#5b3a6e;
+    --line:#2a2029;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Courier Prime', monospace;
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  /* subtle paper grain */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(233,195,104,0.05), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(122,31,43,0.08), transparent 40%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    line-height:1.05;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  .wrap{max-width:1100px; margin:0 auto; padding:0 24px; position:relative; z-index:1;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(21,16,24,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:2px dashed var(--mustard);
+  }
+  nav .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .brand{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size:1.3rem;
+    letter-spacing:0.02em;
+    color:var(--paper);
+    display:flex; align-items:center; gap:10px;
+  }
+  .brand span.cut{color:var(--gold);}
+  .nav-ig{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--gold);
+    color:var(--ink);
+    font-family:'Special Elite', cursive;
+    font-size:0.85rem;
+    padding:10px 18px;
+    border-radius:2px;
+    border:2px solid var(--ink);
+    box-shadow:3px 3px 0 var(--vermillion);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .nav-ig:hover{transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--vermillion);}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    padding:110px 0 140px;
+    background:
+      linear-gradient(180deg, rgba(21,16,24,0) 0%, rgba(21,16,24,1) 92%),
+      repeating-linear-gradient(135deg, var(--burgundy) 0 40px, var(--vermillion) 40px 80px);
+    background-size:100% 100%, 220% 220%;
+    overflow:hidden;
+    clip-path: polygon(0 0,100% 0,100% 96%,97% 100%,92% 96%,88% 100%,83% 96%,78% 100%,73% 96%,68% 100%,63% 96%,58% 100%,53% 96%,48% 100%,43% 96%,38% 100%,33% 96%,28% 100%,23% 96%,18% 100%,13% 96%,8% 100%,3% 96%,0 100%);
+  }
+
+  header.hero .scrap{
+    position:absolute;
+    filter:drop-shadow(2px 4px 0 rgba(0,0,0,0.35));
+  }
+  .scrap1{top:14%; left:6%; width:120px; height:80px; background:var(--petrol); transform:rotate(-8deg); clip-path:polygon(4% 0,100% 6%,96% 100%,0 92%);}
+  .scrap2{top:60%; left:12%; width:90px; height:60px; background:var(--mustard); transform:rotate(11deg); clip-path:polygon(0 0,100% 10%,92% 100%,6% 92%);}
+  .scrap3{top:20%; right:8%; width:140px; height:90px; background:var(--violet); transform:rotate(6deg); clip-path:polygon(2% 4%,98% 0,100% 96%,4% 100%);}
+  .scrap4{top:66%; right:14%; width:80px; height:80px; background:var(--paper); transform:rotate(-14deg); clip-path:polygon(0 10%,90% 0,100% 88%,10% 100%);}
+
+  .hero-inner{position:relative; z-index:2; text-align:center;}
+  .eyebrow{
+    display:inline-block;
+    font-family:'Special Elite', cursive;
+    color:var(--ink);
+    background:var(--gold);
+    padding:6px 16px;
+    border-radius:20px;
+    font-size:0.85rem;
+    letter-spacing:0.08em;
+    margin-bottom:28px;
+    transform:rotate(-2deg);
+    box-shadow:3px 3px 0 rgba(0,0,0,0.3);
+  }
+  .hero h1{
+    font-size:clamp(3rem, 9vw, 6.5rem);
+    font-weight:900;
+    color:var(--paper);
+    text-shadow:4px 4px 0 var(--vermillion), 8px 8px 0 var(--petrol);
+    letter-spacing:-0.01em;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold);
+    text-shadow:4px 4px 0 var(--burgundy);
+  }
+  .hero .sub{
+    margin-top:26px;
+    font-family:'Special Elite', cursive;
+    font-size:1.15rem;
+    color:var(--paper-2);
+    max-width:520px;
+    margin-left:auto; margin-right:auto;
+  }
+  .emoji-row{
+    margin-top:22px;
+    font-size:2rem;
+    letter-spacing:0.3em;
+  }
+  .cta-row{
+    margin-top:42px;
+    display:flex; gap:18px; justify-content:center; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'Special Elite', cursive;
+    font-size:1rem;
+    padding:16px 30px;
+    border-radius:3px;
+    border:3px solid var(--ink);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{
+    background:var(--gold);
+    color:var(--ink);
+    box-shadow:5px 5px 0 var(--burgundy);
+  }
+  .btn-primary:hover{transform:translate(-3px,-3px); box-shadow:8px 8px 0 var(--burgundy);}
+  .btn-ghost{
+    background:transparent;
+    color:var(--paper);
+    border-color:var(--paper);
+    box-shadow:5px 5px 0 var(--petrol);
+  }
+  .btn-ghost:hover{transform:translate(-3px,-3px); box-shadow:8px 8px 0 var(--petrol);}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{
+    padding:90px 0;
+    position:relative;
+  }
+  .tag{
+    font-family:'Special Elite', cursive;
+    color:var(--gold);
+    font-size:0.9rem;
+    letter-spacing:0.15em;
+    text-transform:uppercase;
+    margin-bottom:14px;
+    display:block;
+  }
+  .section-title{
+    font-size:clamp(2rem, 5vw, 3.2rem);
+    color:var(--paper);
+    margin-bottom:28px;
+    max-width:700px;
+  }
+  .section-title .hl{color:var(--gold);}
+
+  .reveal{
+    opacity:0; transform:translateY(40px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.show{opacity:1; transform:none;}
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--ink);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:60px;
+    align-items:center;
+  }
+  .about p{
+    font-family:'Courier Prime', monospace;
+    font-size:1.08rem;
+    line-height:1.85;
+    color:var(--paper-2);
+    margin-bottom:18px;
+  }
+  .about p.quote{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:1.5rem;
+    color:var(--gold);
+    border-left:4px solid var(--vermillion);
+    padding-left:22px;
+    line-height:1.4;
+  }
+  .polaroid-stack{
+    position:relative;
+    height:380px;
+  }
+  .polaroid{
+    position:absolute;
+    width:220px; height:260px;
+    background:var(--paper);
+    padding:14px 14px 44px;
+    box-shadow:6px 10px 24px rgba(0,0,0,0.45);
+  }
+  .polaroid .inner{
+    width:100%; height:100%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:4rem;
+  }
+  .p1{top:0; left:20px; transform:rotate(-9deg); background:var(--paper); z-index:2;}
+  .p1 .inner{background:var(--petrol);}
+  .p2{top:60px; left:150px; transform:rotate(7deg); background:var(--paper); z-index:1;}
+  .p2 .inner{background:var(--burgundy);}
+  .p3{top:150px; left:60px; transform:rotate(-3deg); background:var(--paper); z-index:3;}
+  .p3 .inner{background:var(--violet);}
+
+  /* ---------- WORK / OFFER ---------- */
+  .work{
+    background:
+      linear-gradient(180deg, var(--ink) 0%, #1b1420 100%);
+  }
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+    margin-top:20px;
+  }
+  .card{
+    background:var(--paper);
+    color:var(--ink);
+    padding:34px 26px;
+    position:relative;
+    clip-path:polygon(0 3%, 97% 0, 100% 97%, 3% 100%);
+    box-shadow:8px 8px 0 rgba(0,0,0,0.35);
+    transition:transform .2s ease;
+  }
+  .card:hover{transform:translateY(-6px);}
+  .card .icon{font-size:2.4rem; margin-bottom:16px; display:block;}
+  .card h3{font-size:1.4rem; margin-bottom:12px; color:var(--burgundy);}
+  .card p{font-family:'Courier Prime', monospace; font-size:0.95rem; line-height:1.6; color:#2a2029;}
+  .card:nth-child(1){background:var(--paper);}
+  .card:nth-child(2){background:var(--gold);}
+  .card:nth-child(3){background:#d9c9e8;}
+  .card:nth-child(2) h3, .card:nth-child(3) h3{color:var(--ink);}
+
+  /* ---------- GALLERY ---------- */
+  .gallery{background:var(--ink);}
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    grid-auto-rows:150px;
+    gap:14px;
+    margin-top:30px;
+  }
+  .tile{
+    position:relative;
+    overflow:hidden;
+    border:3px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-size:2.6rem;
+  }
+  .tile:nth-child(1){grid-column:span 2; grid-row:span 2; background:linear-gradient(135deg, var(--burgundy), var(--vermillion));}
+  .tile:nth-child(2){background:var(--petrol);}
+  .tile:nth-child(3){background:var(--mustard); color:var(--ink);}
+  .tile:nth-child(4){background:var(--violet);}
+  .tile:nth-child(5){background:var(--paper); color:var(--ink);}
+  .tile:nth-child(6){grid-column:span 2; background:linear-gradient(135deg, var(--violet), var(--burgundy));}
+  .tile-label{
+    position:absolute; bottom:8px; left:10px;
+    font-family:'Special Elite', cursive;
+    font-size:0.7rem;
+    background:rgba(0,0,0,0.5);
+    padding:3px 8px;
+    color:var(--paper);
+    border-radius:2px;
+  }
+  .gallery-cta{
+    text-align:center;
+    margin-top:44px;
+  }
+
+  /* ---------- QUOTE / TOWN ---------- */
+  .town{
+    background:repeating-linear-gradient(45deg, #1b1420, #1b1420 24px, #201828 24px, #201828 48px);
+    text-align:center;
+    padding:110px 0;
+  }
+  .town .mark{font-size:3rem; margin-bottom:20px;}
+  .town blockquote{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:clamp(1.5rem, 4vw, 2.4rem);
+    max-width:760px;
+    margin:0 auto 24px;
+    color:var(--paper);
+  }
+  .town cite{
+    font-family:'Special Elite', cursive;
+    color:var(--gold);
+    font-size:1rem;
+    font-style:normal;
+  }
+
+  /* ---------- FOOTER / FINAL CTA ---------- */
+  footer{
+    background:var(--gold);
+    color:var(--ink);
+    padding:90px 0 50px;
+    position:relative;
+    clip-path:polygon(0 6%, 100% 0, 100% 100%, 0 100%);
+  }
+  footer .final-title{
+    font-size:clamp(2.2rem, 6vw, 4rem);
+    text-align:center;
+    color:var(--ink);
+    margin-bottom:18px;
+  }
+  footer .final-sub{
+    text-align:center;
+    font-family:'Special Elite', cursive;
+    font-size:1.1rem;
+    margin-bottom:36px;
+    color:#3a2f1f;
+  }
+  .final-cta-row{display:flex; justify-content:center; margin-bottom:70px;}
+  .btn-dark{
+    background:var(--ink);
+    color:var(--gold);
+    border-color:var(--ink);
+    box-shadow:6px 6px 0 var(--burgundy);
+    font-size:1.15rem;
+    padding:20px 40px;
+  }
+  .btn-dark:hover{transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--burgundy);}
+  .foot-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:12px;
+    border-top:2px dashed var(--ink);
+    padding-top:24px;
+    font-family:'Courier Prime', monospace;
+    font-size:0.85rem;
+    color:#3a2f1f;
+  }
+  .foot-bottom a{text-decoration:underline;}
+
+  @media (max-width:820px){
+    .about-grid{grid-template-columns:1fr; gap:40px;}
+    .polaroid-stack{height:320px; margin:0 auto; max-width:340px;}
+    .cards{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2, 1fr);}
+    .tile:nth-child(1), .tile:nth-child(6){grid-column:span 2;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">✂️ <span>Scissor</span><span class="cut">Stories</span></div>
+    <a class="nav-ig" href="https://www.instagram.com/scissor_stories/" target="_blank" rel="noopener">📸 @scissor_stories</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="scrap scrap1"></div>
+  <div class="scrap scrap2"></div>
+  <div class="scrap scrap3"></div>
+  <div class="scrap scrap4"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">📚 ✂️ 🥃 🦇 — small town, big collages</span>
+    <h1>SCISSOR<br><em>Stories</em></h1>
+    <p class="sub">Collage art, secondhand books, and quiet strangeness — cut and pasted by hand in a small town somewhere in Germany.</p>
+    <div class="emoji-row">📚 ✂️ 🥃 🦇</div>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://www.instagram.com/scissor_stories/" target="_blank" rel="noopener">📸 Follow @scissor_stories</a>
+      <a class="btn btn-ghost" href="#gallery">✂️ See the collages</a>
+    </div>
+  </div>
+</header>
+
+<section class="about">
+  <div class="wrap about-grid">
+    <div class="reveal">
+      <span class="tag">The artist</span>
+      <h2 class="section-title">A pale young man, a pair of scissors, and a very small town.</h2>
+      <p>Scissor Stories is the work of one artist who sells old and curious books by day and builds paper collages by lamplight — cutting up magazines, book plates, and forgotten photographs into something new.</p>
+      <p>Every piece is made by hand. No filters, no digital layers — just paper, glue, a very sharp pair of scissors, and whatever strange thought needed cutting out that night.</p>
+      <p class="quote">"Hope you enjoy my scissor_stories..."</p>
+    </div>
+    <div class="polaroid-stack reveal">
+      <div class="polaroid p1"><div class="inner">🦇</div></div>
+      <div class="polaroid p2"><div class="inner">📚</div></div>
+      <div class="polaroid p3"><div class="inner">✂️</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="work">
+  <div class="wrap">
+    <span class="tag reveal">What's inside the shop window</span>
+    <h2 class="section-title reveal">Two obsessions, cut from the same paper.</h2>
+    <div class="cards">
+      <div class="card reveal">
+        <span class="icon">✂️</span>
+        <h3>Handmade Collages</h3>
+        <p>One-of-a-kind paper collages — surreal, literary, a little gothic. Each one built scrap by scrap, never repeated.</p>
+      </div>
+      <div class="card reveal">
+        <span class="icon">📚</span>
+        <h3>Curious Books</h3>
+        <p>Secondhand and rare finds sold from a small-town shelf — the kind of books collages are made out of, and the kind worth keeping whole.</p>
+      </div>
+      <div class="card reveal">
+        <span class="icon">🥃🦇</span>
+        <h3>Small-Town Strangeness</h3>
+        <p>Glimpses of a quiet German town after dark — bats, bar stools, and the odd little rituals that end up glued to a page.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <span class="tag reveal">A peek at the paper</span>
+    <h2 class="section-title reveal">The full collection lives on <span class="hl">Instagram</span>.</h2>
+    <div class="gallery-grid reveal">
+      <div class="tile">🦇<span class="tile-label">night cut</span></div>
+      <div class="tile">✂️<span class="tile-label">in progress</span></div>
+      <div class="tile">📚<span class="tile-label">shop shelf</span></div>
+      <div class="tile">🥃<span class="tile-label">closing time</span></div>
+      <div class="tile">🕯️<span class="tile-label">lamp light</span></div>
+      <div class="tile">🖇️<span class="tile-label">scraps</span></div>
+    </div>
+    <div class="gallery-cta reveal">
+      <a class="btn btn-primary" href="https://www.instagram.com/scissor_stories/" target="_blank" rel="noopener">📸 See every collage on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<section class="town">
+  <div class="wrap">
+    <div class="mark reveal">📚 ✂️ 🥃 🦇</div>
+    <blockquote class="reveal">"Selling books and creating collages in a small town somewhere in Germany."</blockquote>
+    <cite class="reveal">— scissor_stories</cite>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2 class="final-title">Come cut through the noise.</h2>
+    <p class="final-sub">New collages, book finds, and small-town oddities — posted whenever there's something worth pasting.</p>
+    <div class="final-cta-row">
+      <a class="btn btn-dark" href="https://www.instagram.com/scissor_stories/" target="_blank" rel="noopener">📸 Follow @scissor_stories on Instagram</a>
+    </div>
+    <div class="foot-bottom">
+      <span>Scissor Stories — Collage Art, Germany</span>
+      <a href="https://www.instagram.com/scissor_stories/" target="_blank" rel="noopener">instagram.com/scissor_stories</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
