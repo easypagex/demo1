@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tesorosbordados 🧵🪡 · Bordados personalizados en Illescas, Toledo</title>
+<meta name="description" content="Bordados personalizados y regalos originales hechos a mano con mucho amor. Illescas, Toledo. Envío a toda España.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --linen:#FBF3E7;
+    --linen-deep:#F3E4CE;
+    --ink:#3A2E39;
+    --coral:#FF6B6B;
+    --turquoise:#1FB6A6;
+    --mustard:#FFB627;
+    --purple:#9B5DE5;
+    --pink:#FF4FA3;
+    --white:#FFFDF9;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Quicksand',sans-serif;
+    background:var(--linen);
+    color:var(--ink);
+    overflow-x:hidden;
+    background-image:
+      radial-gradient(circle, rgba(58,46,57,0.06) 1px, transparent 1px);
+    background-size:22px 22px;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Fredoka',sans-serif;
+    line-height:1.1;
+  }
+
+  .accent-script{
+    font-family:'Caveat',cursive;
+  }
+
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img,svg{display:block;max-width:100%;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(251,243,231,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:2px dashed rgba(58,46,57,0.25);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 0;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:1.4rem;
+    font-weight:700;
+    color:var(--ink);
+  }
+  .logo span.dot{
+    color:var(--coral);
+  }
+  .nav-links{
+    display:flex;
+    gap:30px;
+    align-items:center;
+    font-weight:600;
+    font-size:0.98rem;
+  }
+  .nav-links a{
+    position:relative;
+    padding:4px 2px;
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--coral);}
+  .nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;bottom:-4px;
+    width:0%;
+    height:2px;
+    background:var(--coral);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:11px 22px;
+    border-radius:40px;
+    font-weight:700;
+    font-size:0.95rem;
+    border:2px solid var(--ink);
+    transition:transform .18s ease, box-shadow .18s ease;
+    white-space:nowrap;
+  }
+  .btn-solid{
+    background:var(--coral);
+    color:var(--white);
+    border-color:var(--coral);
+    box-shadow:3px 3px 0 var(--ink);
+  }
+  .btn-solid:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--ink);}
+  .btn-outline{
+    background:transparent;
+    box-shadow:3px 3px 0 var(--mustard);
+  }
+  .btn-outline:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--mustard);}
+  .menu-toggle{display:none;font-size:1.6rem;background:none;border:none;cursor:pointer;color:var(--ink);}
+
+  /* ===== HERO ===== */
+  .hero{
+    padding:70px 0 40px;
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:40px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--white);
+    border:2px dashed var(--purple);
+    padding:6px 16px;
+    border-radius:30px;
+    font-weight:700;
+    font-size:0.85rem;
+    color:var(--purple);
+    margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:3.1rem;
+    margin-bottom:20px;
+  }
+  .hero h1 .highlight{
+    color:var(--coral);
+    position:relative;
+    white-space:nowrap;
+  }
+  .hero h1 .highlight svg{
+    position:absolute;
+    left:0;bottom:-10px;
+    width:100%;
+    height:14px;
+  }
+  .hero p.lead{
+    font-size:1.15rem;
+    max-width:520px;
+    margin-bottom:30px;
+    color:#5a4b57;
+  }
+  .hero-ctas{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+  }
+  .hero-tags{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    font-size:0.92rem;
+    font-weight:600;
+    color:#6b5a67;
+  }
+  .hero-tags span{
+    display:flex;align-items:center;gap:6px;
+  }
+
+  .hoop-wrap{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hoop-wrap svg{
+    width:100%;
+    max-width:460px;
+    animation:sway 7s ease-in-out infinite;
+  }
+  @keyframes sway{
+    0%,100%{transform:rotate(-1.5deg);}
+    50%{transform:rotate(1.5deg);}
+  }
+
+  /* ===== STITCH DIVIDER ===== */
+  .stitch-divider{
+    width:100%;
+    height:34px;
+    margin:10px 0;
+  }
+
+  /* ===== SECTIONS GENERIC ===== */
+  section{
+    padding:70px 0;
+  }
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 50px;
+  }
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{
+    font-size:2.3rem;
+    margin-bottom:14px;
+  }
+  .section-head p{
+    color:#6b5a67;
+    font-size:1.05rem;
+  }
+
+  /* ===== ABOUT ===== */
+  .about{
+    background:var(--white);
+    border-radius:32px;
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:44px;
+    align-items:center;
+    padding:50px;
+    border:3px solid var(--ink);
+    box-shadow:8px 8px 0 var(--turquoise);
+  }
+  .about-badge{
+    width:100%;
+    aspect-ratio:1;
+    border-radius:50%;
+    background:conic-gradient(from 90deg, var(--coral), var(--mustard), var(--turquoise), var(--purple), var(--pink), var(--coral));
+    display:flex;align-items:center;justify-content:center;
+    padding:14px;
+  }
+  .about-badge-inner{
+    width:100%;height:100%;
+    border-radius:50%;
+    background:var(--linen);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;
+    padding:20px;
+  }
+  .about-badge-inner .big{
+    font-family:'Caveat',cursive;
+    font-size:2.1rem;
+    color:var(--coral);
+  }
+  .about h2{font-size:2rem;margin-bottom:16px;}
+  .about p{margin-bottom:16px;color:#5a4b57;font-size:1.02rem;}
+  .about-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+  }
+  .about-list li{
+    background:var(--linen-deep);
+    padding:8px 16px;
+    border-radius:20px;
+    font-weight:700;
+    font-size:0.88rem;
+    border:2px solid var(--ink);
+  }
+
+  /* ===== PRODUCTS ===== */
+  .products-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .card{
+    background:var(--white);
+    border-radius:22px;
+    padding:32px 26px;
+    border:3px solid var(--ink);
+    position:relative;
+    transition:transform .22s ease, box-shadow .22s ease;
+  }
+  .card::before{
+    content:"";
+    position:absolute;
+    top:-3px;left:22px;right:22px;
+    height:8px;
+    border-radius:0 0 8px 8px;
+  }
+  .card:nth-child(6n+1)::before{background:var(--coral);}
+  .card:nth-child(6n+2)::before{background:var(--turquoise);}
+  .card:nth-child(6n+3)::before{background:var(--mustard);}
+  .card:nth-child(6n+4)::before{background:var(--purple);}
+  .card:nth-child(6n+5)::before{background:var(--pink);}
+  .card:nth-child(6n+6)::before{background:var(--coral);}
+  .card:hover{
+    transform:translateY(-6px) rotate(-0.5deg);
+    box-shadow:6px 10px 0 rgba(58,46,57,0.15);
+  }
+  .card .icon{
+    font-size:2.2rem;
+    margin-bottom:16px;
+    display:inline-block;
+  }
+  .card h3{
+    font-size:1.25rem;
+    margin-bottom:10px;
+  }
+  .card p{
+    color:#6b5a67;
+    font-size:0.95rem;
+  }
+
+  /* ===== HOW TO ORDER ===== */
+  .steps{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  .steps::before{
+    content:"";
+    position:absolute;
+    top:34px;
+    left:8%;right:8%;
+    height:0;
+    border-top:3px dashed var(--purple);
+    z-index:0;
+  }
+  .step{
+    position:relative;
+    z-index:1;
+    text-align:center;
+  }
+  .step-num{
+    width:68px;height:68px;
+    border-radius:50%;
+    background:var(--white);
+    border:3px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fredoka',sans-serif;
+    font-weight:700;
+    font-size:1.5rem;
+    margin:0 auto 18px;
+  }
+  .step:nth-child(1) .step-num{color:var(--coral);}
+  .step:nth-child(2) .step-num{color:var(--turquoise);}
+  .step:nth-child(3) .step-num{color:var(--mustard);}
+  .step:nth-child(4) .step-num{color:var(--purple);}
+  .step h3{font-size:1.1rem;margin-bottom:8px;}
+  .step p{color:#6b5a67;font-size:0.92rem;padding:0 8px;}
+
+  /* ===== GALLERY (COLOR FAMILIES) ===== */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+  }
+  .hoop-card{
+    text-align:center;
+  }
+  .hoop-card svg{margin:0 auto 12px;}
+  .hoop-card span{
+    font-weight:700;
+    font-size:0.95rem;
+    color:var(--ink);
+  }
+
+  /* ===== SHIPPING ===== */
+  .shipping{
+    background:var(--ink);
+    color:var(--linen);
+    border-radius:32px;
+    padding:56px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  .shipping h2{color:var(--linen);font-size:2rem;margin-bottom:16px;}
+  .shipping p{color:#d9c9c5;margin-bottom:20px;font-size:1.02rem;}
+  .ship-cards{
+    display:grid;
+    gap:16px;
+  }
+  .ship-item{
+    background:rgba(255,255,255,0.06);
+    border:2px solid rgba(255,255,255,0.25);
+    border-radius:16px;
+    padding:18px 22px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .ship-item .icon{font-size:1.6rem;}
+  .ship-item strong{display:block;color:var(--linen);}
+  .ship-item span{color:#c9b8b4;font-size:0.9rem;}
+
+  /* ===== CTA / CONTACT ===== */
+  .cta{
+    text-align:center;
+    background:linear-gradient(135deg, var(--pink), var(--coral) 40%, var(--mustard));
+    border-radius:32px;
+    padding:70px 40px;
+    border:3px solid var(--ink);
+    color:var(--white);
+  }
+  .cta h2{font-size:2.4rem;margin-bottom:16px;color:var(--white);}
+  .cta p{font-size:1.1rem;margin-bottom:30px;opacity:0.95;max-width:560px;margin-left:auto;margin-right:auto;}
+  .cta .btn-solid{
+    background:var(--white);
+    color:var(--coral);
+    border-color:var(--ink);
+  }
+  .cta .btn-solid:hover{color:var(--pink);}
+
+  /* ===== FOOTER ===== */
+  footer{
+    padding:50px 0 30px;
+  }
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+    padding-bottom:26px;
+    border-bottom:2px dashed rgba(58,46,57,0.3);
+    margin-bottom:20px;
+  }
+  .footer-logo{
+    font-family:'Fredoka',sans-serif;
+    font-weight:700;
+    font-size:1.3rem;
+  }
+  .footer-social{
+    display:flex;
+    gap:14px;
+  }
+  .footer-social a{
+    width:42px;height:42px;
+    border-radius:50%;
+    background:var(--white);
+    border:2px solid var(--ink);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;
+    transition:transform .2s ease;
+  }
+  .footer-social a:hover{transform:scale(1.1) rotate(-6deg);background:var(--mustard);}
+  .footer-bottom{
+    text-align:center;
+    font-size:0.85rem;
+    color:#8a7a86;
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;text-align:center;padding-top:40px;}
+    .hero p.lead{margin-left:auto;margin-right:auto;}
+    .hero-ctas{justify-content:center;}
+    .hero-tags{justify-content:center;}
+    .about{grid-template-columns:1fr;padding:34px;text-align:center;}
+    .about-badge{max-width:240px;margin:0 auto;}
+    .products-grid{grid-template-columns:repeat(2,1fr);}
+    .steps{grid-template-columns:repeat(2,1fr);row-gap:40px;}
+    .steps::before{display:none;}
+    .gallery{grid-template-columns:repeat(2,1fr);}
+    .shipping{grid-template-columns:1fr;padding:36px;}
+    .nav-links{
+      position:fixed;
+      top:70px;left:0;right:0;
+      background:var(--linen);
+      flex-direction:column;
+      padding:24px 28px;
+      border-bottom:2px dashed var(--ink);
+      transform:translateY(-150%);
+      transition:transform .3s ease;
+    }
+    .nav-links.open{transform:translateY(0);}
+    .menu-toggle{display:block;}
+  }
+  @media (max-width:560px){
+    .hero h1{font-size:2.2rem;}
+    .products-grid{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:1fr 1fr;}
+    .cta h2{font-size:1.8rem;}
+    body{background-size:16px 16px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">🪡 Tesoros<span class="dot">bordados</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#como-pedir">Cómo pedir</a></li>
+      <li><a href="#envios">Envíos</a></li>
+      <li><a href="https://www.instagram.com/tesorosbordados/" target="_blank" rel="noopener" class="btn btn-solid">📷 Instagram</a></li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <span class="eyebrow">🌸 Hecho con mucho amor, puntada a puntada</span>
+      <h1>Tesoros bordados a mano en <span class="highlight">Illescas<svg viewBox="0 0 200 14" preserveAspectRatio="none"><path d="M2 8 Q 15 2, 28 8 T 54 8 T 80 8 T 106 8 T 132 8 T 158 8 T 184 8" stroke="#FFB627" stroke-width="4" fill="none" stroke-linecap="round" stroke-dasharray="1 12"/></svg></span>, Toledo</h1>
+      <p class="lead">Regalos personalizados y detalles únicos bordados con mucho cariño. Cada pieza se borda pensando en ti, con hilos de colores y todo el mimo de un trabajo hecho a mano.</p>
+      <div class="hero-ctas">
+        <a href="https://www.instagram.com/tesorosbordados/" target="_blank" rel="noopener" class="btn btn-solid">🪡 Pide tu bordado por Instagram</a>
+        <a href="#productos" class="btn btn-outline">🎁 Ver qué puedo bordar</a>
+      </div>
+      <div class="hero-tags">
+        <span>🧵 Bordados personalizados</span>
+        <span>🎁 Regalos originales</span>
+        <span>💌 Envío a toda España</span>
+      </div>
+    </div>
+
+    <div class="hoop-wrap">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="210" cy="210" r="190" fill="none" stroke="#3A2E39" stroke-width="14"/>
+        <circle cx="210" cy="210" r="190" fill="none" stroke="#FFB627" stroke-width="4" stroke-dasharray="2 10"/>
+        <rect x="196" y="10" width="28" height="46" rx="8" fill="#3A2E39"/>
+        <rect x="204" y="0" width="12" height="20" rx="4" fill="#3A2E39"/>
+        <circle cx="210" cy="210" r="164" fill="#FFFDF9"/>
+        <!-- stitched flowers -->
+        <g stroke-linecap="round">
+          <g transform="translate(210,150)">
+            <circle r="14" fill="#FF6B6B"/>
+            <circle cx="26" cy="8" r="14" fill="#FF4FA3"/>
+            <circle cx="-26" cy="8" r="14" fill="#FF4FA3"/>
+            <circle cx="14" cy="30" r="14" fill="#FF6B6B"/>
+            <circle cx="-14" cy="30" r="14" fill="#FF6B6B"/>
+            <circle r="9" fill="#FFB627"/>
+          </g>
+          <g transform="translate(130,250) scale(0.75)">
+            <circle r="14" fill="#9B5DE5"/>
+            <circle cx="26" cy="8" r="14" fill="#C9A6F7"/>
+            <circle cx="-26" cy="8" r="14" fill="#C9A6F7"/>
+            <circle cx="14" cy="30" r="14" fill="#9B5DE5"/>
+            <circle cx="-14" cy="30" r="14" fill="#9B5DE5"/>
+            <circle r="9" fill="#FFB627"/>
+          </g>
+          <g transform="translate(290,255) scale(0.85)">
+            <circle r="14" fill="#1FB6A6"/>
+            <circle cx="26" cy="8" r="14" fill="#7FD9CE"/>
+            <circle cx="-26" cy="8" r="14" fill="#7FD9CE"/>
+            <circle cx="14" cy="30" r="14" fill="#1FB6A6"/>
+            <circle cx="-14" cy="30" r="14" fill="#1FB6A6"/>
+            <circle r="9" fill="#FFB627"/>
+          </g>
+          <path d="M120 190 Q 160 170 190 190" stroke="#1FB6A6" stroke-width="5" fill="none" stroke-dasharray="1 9"/>
+          <path d="M230 190 Q 270 170 300 195" stroke="#1FB6A6" stroke-width="5" fill="none" stroke-dasharray="1 9"/>
+          <path d="M160 300 Q 210 330 260 300" stroke="#FF6B6B" stroke-width="5" fill="none" stroke-dasharray="1 9"/>
+        </g>
+        <text x="210" y="120" text-anchor="middle" font-family="Caveat, cursive" font-size="30" fill="#3A2E39" font-weight="700">hecho a mano</text>
+      </svg>
+    </div>
+  </section>
+
+  <div class="stitch-divider">
+    <svg viewBox="0 0 1180 34" width="100%" height="34" preserveAspectRatio="none">
+      <path d="M0 17 Q 30 0, 60 17 T 120 17 T 180 17 T 240 17 T 300 17 T 360 17 T 420 17 T 480 17 T 540 17 T 600 17 T 660 17 T 720 17 T 780 17 T 840 17 T 900 17 T 960 17 T 1020 17 T 1080 17 T 1140 17" stroke="#FF4FA3" stroke-width="3" fill="none" stroke-dasharray="1 11" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <!-- SOBRE MI -->
+  <section id="sobre-mi">
+    <div class="about">
+      <div class="about-badge">
+        <div class="about-badge-inner">
+          <span class="big">Illescas</span>
+          <span style="font-weight:700;">Toledo 📍</span>
+          <span style="font-size:0.85rem;color:#6b5a67;margin-top:6px;">Taller casero de bordado</span>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow" style="border-color:var(--turquoise);color:var(--turquoise);">🪡 Sobre Tesorosbordados</span>
+        <h2>Un tesoro bordado hilo a hilo, solo para ti</h2>
+        <p>Soy una emprendedora de Illescas (Toledo) y me dedico a bordar a mano regalos originales y personalizados. Cada pieza nace de una idea, un nombre, una fecha especial o un dibujo que me cuentas, y se convierte en un detalle único que se puede tocar y guardar para siempre.</p>
+        <p>No hay dos bordados iguales: elijo los hilos, las formas y los colores pensando en la persona que va a recibirlo. Por eso cada tesoro lleva mucho cariño en cada puntada.</p>
+        <ul class="about-list">
+          <li>🧵 100% hecho a mano</li>
+          <li>🎨 Diseños a tu gusto</li>
+          <li>💌 Envíos a toda España</li>
+          <li>📍 Recogida en Illescas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section id="productos">
+    <div class="section-head">
+      <span class="eyebrow" style="border-color:var(--mustard);color:#a8720f;">🎁 ¿Qué puedo bordar para ti?</span>
+      <h2>Ideas para regalar (o regalarte)</h2>
+      <p>Cuéntame tu idea y la bordamos juntas. Estas son algunas de las cosas más pedidas:</p>
+    </div>
+    <div class="products-grid">
+      <div class="card">
+        <span class="icon">👶</span>
+        <h3>Detalles para bebé</h3>
+        <p>Bodies, mantitas y capazos bordados con el nombre del peque, ideales para el bautizo o la llegada a casa.</p>
+      </div>
+      <div class="card">
+        <span class="icon">💍</span>
+        <h3>Bodas y eventos</h3>
+        <p>Pañuelos, tocados o detalles para invitados bordados con iniciales y fecha, para un día inolvidable.</p>
+      </div>
+      <div class="card">
+        <span class="icon">👕</span>
+        <h3>Ropa personalizada</h3>
+        <p>Sudaderas, camisetas y gorras con tu nombre, tu mascota o el dibujo que tú me digas.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🏠</span>
+        <h3>Decoración para el hogar</h3>
+        <p>Cojines, cuadros y aros bordados para dar un toque cálido y único a cualquier rincón de casa.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🐾</span>
+        <h3>Retratos de mascotas</h3>
+        <p>Un bordado con la carita de tu perro o gato, el regalo perfecto para cualquier amante de los animales.</p>
+      </div>
+      <div class="card">
+        <span class="icon">🎂</span>
+        <h3>Cumpleaños y fechas especiales</h3>
+        <p>Nombres, iniciales y frases bordadas para celebrar ese momento tan especial con un detalle diferente.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="stitch-divider">
+    <svg viewBox="0 0 1180 34" width="100%" height="34" preserveAspectRatio="none">
+      <path d="M0 17 Q 30 34, 60 17 T 120 17 T 180 17 T 240 17 T 300 17 T 360 17 T 420 17 T 480 17 T 540 17 T 600 17 T 660 17 T 720 17 T 780 17 T 840 17 T 900 17 T 960 17 T 1020 17 T 1080 17 T 1140 17" stroke="#9B5DE5" stroke-width="3" fill="none" stroke-dasharray="1 11" stroke-linecap="round"/>
+    </svg>
+  </div>
+
+  <!-- COMO PEDIR -->
+  <section id="como-pedir">
+    <div class="section-head">
+      <span class="eyebrow" style="border-color:var(--coral);color:var(--coral);">💌 Así de fácil</span>
+      <h2>Cómo pedir tu bordado</h2>
+      <p>En cuatro pasos, tu idea se convierte en un tesoro bordado a mano.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Cuéntame tu idea</h3>
+        <p>Escríbeme por Instagram con lo que tienes en mente: nombre, diseño o inspiración.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Elegimos los detalles</h3>
+        <p>Hablamos de colores, tamaño y prenda o base para dejarlo a tu gusto.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Bordo tu pieza</h3>
+        <p>Me pongo la aguja y el hilo y borda con mucho mimo, puntada a puntada.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Lo recibes</h3>
+        <p>Envío a toda España o recogida en mano en Illescas, ¡como prefieras!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERIA -->
+  <section id="galeria">
+    <div class="section-head">
+      <span class="eyebrow" style="border-color:var(--turquoise);color:var(--turquoise);">🌈 Paletas de hilo</span>
+      <h2>Un color para cada tesoro</h2>
+      <p>Trabajo con hilos de mil colores para que tu bordado sea único. Aquí tienes algunas de mis familias favoritas.</p>
+    </div>
+    <div class="gallery">
+      <div class="hoop-card">
+        <svg width="140" height="140" viewBox="0 0 140 140">
+          <circle cx="70" cy="70" r="62" fill="none" stroke="#3A2E39" stroke-width="8"/>
+          <circle cx="70" cy="70" r="62" fill="none" stroke="#FF6B6B" stroke-width="2" stroke-dasharray="1 8"/>
+          <circle cx="70" cy="70" r="50" fill="#FFFDF9"/>
+          <circle cx="70" cy="58" r="10" fill="#FF6B6B"/>
+          <circle cx="88" cy="70" r="10" fill="#FF4FA3"/>
+          <circle cx="52" cy="70" r="10" fill="#FF4FA3"/>
+          <circle cx="70" cy="82" r="10" fill="#FF6B6B"/>
+          <circle cx="70" cy="70" r="7" fill="#FFB627"/>
+        </svg>
+        <span>Rojos &amp; corales</span>
+      </div>
+      <div class="hoop-card">
+        <svg width="140" height="140" viewBox="0 0 140 140">
+          <circle cx="70" cy="70" r="62" fill="none" stroke="#3A2E39" stroke-width="8"/>
+          <circle cx="70" cy="70" r="62" fill="none" stroke="#1FB6A6" stroke-width="2" stroke-dasharray="1 8"/>
+          <circle cx="70" cy="70" r="50" fill="#FFFDF9"/>
+          <circle cx="70" cy="58" r="10" fill="#1FB6A6"/>
+          <circle cx="88" cy="70" r="10" fill="#7FD9CE"/>
+          <circle cx="52" cy="70" r="10" fill="#7FD9CE"/>
+          <circle cx="70" cy="82" r="10" fill="#1FB6A6"/>
+          <circle cx="70" cy="70" r="7" fill="#FFB627"/>
+        </svg>
+        <span>Turquesas &amp; verdes</span>
+      </div>
+      <div class="hoop-card">
+        <svg width="140" height="140" viewBox="0 0 140 140">
+          <circle cx="70" cy="70" r="62" fill="none" stroke="#3A2E39" stroke-width="8"/>
+          <circle cx="70" cy="70" r="62" fill="none" stroke="#9B5DE5" stroke-width="2" stroke-dasharray="1 8"/>
+          <circle cx="70" cy="70" r="50" fill="#FFFDF9"/>
+          <circle cx="70" cy="58" r="10" fill="#9B5DE5"/>
+          <circle cx="88" cy="70" r="10" fill="#C9A6F7"/>
+          <circle cx="52" cy="70" r="10" fill="#C9A6F7"/>
+          <circle cx="70" cy="82" r="10" fill="#9B5DE5"/>
+          <circle cx="70" cy="70" r="7" fill="#FFB627"/>
+        </svg>
+        <span>Lilas &amp; morados</span>
+      </div>
+      <div class="hoop-card">
+        <svg width="140" height="140" viewBox="0 0 140 140">
+          <circle cx="70" cy="70" r="62" fill="none" stroke="#3A2E39" stroke-width="8"/>
+          <circle cx="70" cy="70" r="62" fill="none" stroke="#FFB627" stroke-width="2" stroke-dasharray="1 8"/>
+          <circle cx="70" cy="70" r="50" fill="#FFFDF9"/>
+          <circle cx="70" cy="58" r="10" fill="#FFB627"/>
+          <circle cx="88" cy="70" r="10" fill="#FFD98A"/>
+          <circle cx="52" cy="70" r="10" fill="#FFD98A"/>
+          <circle cx="70" cy="82" r="10" fill="#FFB627"/>
+          <circle cx="70" cy="70" r="7" fill="#FF6B6B"/>
+        </svg>
+        <span>Mostazas &amp; dorados</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENVIOS -->
+  <section id="envios">
+    <div class="shipping">
+      <div>
+        <span class="eyebrow" style="background:transparent;border-color:var(--mustard);color:var(--mustard);">📦 Envíos y recogida</span>
+        <h2>Tu tesoro llega hasta la puerta de casa</h2>
+        <p>Trabajo cada pedido de forma artesanal, así que los tiempos pueden variar según la temporada. Escríbeme y te cuento el plazo estimado para tu bordado.</p>
+        <a href="https://www.instagram.com/tesorosbordados/" target="_blank" rel="noopener" class="btn btn-solid" style="border-color:var(--linen);">Consultar disponibilidad</a>
+      </div>
+      <div class="ship-cards">
+        <div class="ship-item">
+          <span class="icon">📍</span>
+          <div><strong>Recogida en mano</strong><span>Illescas, Toledo</span></div>
+        </div>
+        <div class="ship-item">
+          <span class="icon">💌</span>
+          <div><strong>Envío disponible</strong><span>A toda España</span></div>
+        </div>
+        <div class="ship-item">
+          <span class="icon">🎁</span>
+          <div><strong>Listo para regalar</strong><span>Presentación cuidada en cada pedido</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contacto">
+    <div class="cta">
+      <h2>¿Bordamos tu próximo tesoro? 🧵</h2>
+      <p>Sígueme en Instagram para ver mis últimos trabajos y escríbeme por DM para contarme tu idea. ¡Me encantará crear algo único para ti!</p>
+      <a href="https://www.instagram.com/tesorosbordados/" target="_blank" rel="noopener" class="btn btn-solid">📷 Visitar @tesorosbordados</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <span class="footer-logo">🪡 Tesorosbordados</span>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/tesorosbordados/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+      </div>
+    </div>
+    <p class="footer-bottom">Tesorosbordados · Illescas, Toledo · Bordados personalizados hechos a mano 🌸</p>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.getElementById('menuToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+</script>
+
+</body>
+</html>
