@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tetamesapuertabejaluz — Saúl G. Corona · Fundación Eugenio de la Torre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --luz:#FFD75E;
+    --miel:#F2A93B;
+    --teta:#F0A6AE;
+    --mesa:#C9743F;
+    --puerta:#3E7C8C;
+    --abeja:#2B2118;
+    --crema:#FFF7E6;
+    --crema2:#FFEBC7;
+    --tinta:#3A2B1E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Space Grotesk', sans-serif;
+    background:
+      radial-gradient(circle at 15% 10%, #FFE9A8 0%, transparent 45%),
+      radial-gradient(circle at 90% 20%, #FBD1B8 0%, transparent 40%),
+      radial-gradient(circle at 50% 90%, #FFEFCB 0%, transparent 50%),
+      linear-gradient(160deg, var(--crema) 0%, var(--crema2) 100%);
+    color:var(--tinta);
+    overflow-x:hidden;
+  }
+  a{color:inherit;}
+
+  .noise{
+    position:fixed; inset:0; pointer-events:none; opacity:0.035; z-index:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  header{
+    position:relative; z-index:2;
+    padding:min(10vw,90px) 6vw 60px;
+    text-align:center;
+  }
+  .eyebrow{
+    font-size:0.8rem; letter-spacing:0.35em; text-transform:uppercase;
+    color:var(--mesa); font-weight:600; margin-bottom:22px;
+  }
+  h1{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size:clamp(2.4rem, 9vw, 6rem);
+    line-height:0.95;
+    letter-spacing:-0.01em;
+  }
+  h1 span{display:inline-block; position:relative;}
+  h1 .c1{color:var(--teta);}
+  h1 .c2{color:var(--mesa);}
+  h1 .c3{color:var(--puerta);}
+  h1 .c4{color:var(--miel);}
+  h1 .c5{color:#D98A2B;}
+
+  .gloss{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:500;
+    font-size:clamp(1.1rem,3vw,1.7rem);
+    margin:28px auto 0;
+    max-width:640px;
+    color:var(--tinta);
+    opacity:0.85;
+  }
+  .byline{
+    margin-top:34px;
+    font-size:0.95rem;
+    line-height:1.9;
+  }
+  .byline strong{color:var(--mesa);}
+
+  /* THE FIVE DOORS */
+  .doors{
+    position:relative; z-index:2;
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:14px;
+    padding:0 6vw 20px;
+    max-width:1100px;
+    margin:0 auto;
+  }
+  @media (max-width:820px){
+    .doors{grid-template-columns:repeat(2,1fr);}
+  }
+  .door{
+    position:relative;
+    aspect-ratio:3/4.4;
+    border-radius:18px;
+    cursor:pointer;
+    overflow:hidden;
+    border:3px solid rgba(58,43,30,0.12);
+    transform-style:preserve-3d;
+    transition:transform .5s cubic-bezier(.2,.9,.25,1), box-shadow .4s ease;
+    box-shadow:0 10px 24px -14px rgba(58,43,30,0.35);
+  }
+  .door:hover{transform:translateY(-8px) rotate(-0.5deg); box-shadow:0 20px 34px -14px rgba(58,43,30,0.4);}
+  .door-face{
+    position:absolute; inset:0;
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
+    padding:18px 10px;
+    text-align:center;
+    transition:opacity .4s ease, transform .5s ease;
+  }
+  .door-front{z-index:2;}
+  .door-back{
+    z-index:1; opacity:0; justify-content:center; padding:22px;
+  }
+  .door.open .door-front{opacity:0; transform:translateY(-10px);}
+  .door.open .door-back{opacity:1;}
+
+  .door-icon{width:56px; height:56px; margin-bottom:14px;}
+  .door-label{
+    font-family:'Fraunces',serif; font-weight:700; font-size:1.05rem;
+    letter-spacing:0.02em;
+  }
+  .door-back p{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:500;
+    font-size:0.92rem; line-height:1.5; color:#fff;
+  }
+
+  .d1{background:linear-gradient(150deg,var(--teta) 0%, #E88C97 100%);}
+  .d2{background:linear-gradient(150deg,var(--mesa) 0%, #A85A2C 100%);}
+  .d3{background:linear-gradient(150deg,var(--puerta) 0%, #2A5B69 100%);}
+  .d4{background:linear-gradient(150deg,var(--miel) 0%, #E08A17 100%);}
+  .d5{background:linear-gradient(150deg,#FFE58A 0%, var(--luz) 100%);}
+  .d5 .door-label, .d5 .door-icon{color:var(--tinta);}
+  .d5 .door-back p{color:var(--tinta);}
+
+  .hint{
+    text-align:center; font-size:0.8rem; opacity:0.55; margin-top:18px; letter-spacing:0.04em;
+  }
+
+  /* MANIFESTO */
+  section.manifesto{
+    position:relative; z-index:2;
+    max-width:760px; margin:110px auto 100px; padding:0 6vw;
+    text-align:center;
+  }
+  .manifesto .tag{
+    font-size:0.78rem; letter-spacing:0.3em; text-transform:uppercase; color:var(--puerta); font-weight:600;
+  }
+  .manifesto h2{
+    font-family:'Fraunces',serif; font-weight:800; font-size:clamp(1.6rem,4.5vw,2.6rem);
+    margin:18px 0 22px; line-height:1.15;
+  }
+  .manifesto p{font-size:1.05rem; line-height:1.8; opacity:0.85;}
+
+  /* CTA / ENVIO */
+  .send{
+    position:relative; z-index:2;
+    margin:0 auto 110px; max-width:920px; padding:0 6vw;
+  }
+  .send-card{
+    background:linear-gradient(135deg, #FFFDF7 0%, #FFF1D6 100%);
+    border-radius:28px;
+    padding:min(8vw,56px);
+    border:1px solid rgba(58,43,30,0.08);
+    box-shadow:0 24px 60px -30px rgba(58,43,30,0.35);
+    position:relative;
+    overflow:hidden;
+  }
+  .send-card::before{
+    content:"";
+    position:absolute; width:280px; height:280px; border-radius:50%;
+    background:radial-gradient(circle, rgba(255,215,94,0.5), transparent 70%);
+    top:-120px; right:-100px;
+  }
+  .send-card h3{
+    font-family:'Fraunces',serif; font-weight:800; font-size:clamp(1.4rem,3.6vw,2.1rem);
+    margin-bottom:16px; position:relative;
+  }
+  .send-card p{font-size:1rem; line-height:1.75; opacity:0.85; max-width:60ch; position:relative; margin-bottom:28px;}
+
+  .send-grid{display:grid; grid-template-columns:1fr 1fr; gap:16px; position:relative;}
+  @media (max-width:600px){.send-grid{grid-template-columns:1fr;}}
+  .send-item{
+    background:rgba(255,255,255,0.65);
+    border:1px solid rgba(58,43,30,0.1);
+    border-radius:16px;
+    padding:20px 22px;
+  }
+  .send-item .k{font-size:0.72rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--mesa); font-weight:600; margin-bottom:8px;}
+  .send-item .v{font-size:1.02rem; font-weight:600; line-height:1.5;}
+  .send-item a{text-decoration:none; border-bottom:2px solid var(--miel);}
+
+  .ctas{
+    display:flex; flex-wrap:wrap; gap:14px; margin-top:30px; position:relative;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:16px 26px; border-radius:100px;
+    font-weight:600; font-size:0.98rem;
+    text-decoration:none;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn-primary{
+    background:linear-gradient(120deg, var(--mesa), #D9853F);
+    color:#fff;
+    box-shadow:0 14px 26px -12px rgba(201,116,63,0.6);
+  }
+  .btn-secondary{
+    background:#fff;
+    color:var(--tinta);
+    border:2px solid var(--puerta);
+    box-shadow:0 10px 20px -14px rgba(62,124,140,0.5);
+  }
+  .btn svg{width:20px; height:20px;}
+
+  /* WHERE */
+  .where{
+    position:relative; z-index:2;
+    max-width:920px; margin:0 auto 120px; padding:0 6vw;
+    display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center;
+  }
+  @media (max-width:760px){.where{grid-template-columns:1fr;}}
+  .where h3{font-family:'Fraunces',serif; font-weight:800; font-size:1.6rem; margin-bottom:16px;}
+  .where p{line-height:1.8; opacity:0.85; margin-bottom:10px;}
+  .where .addr{font-weight:600; color:var(--mesa);}
+
+  .bee-orbit{
+    position:relative; height:220px;
+  }
+  .sun{
+    position:absolute; top:50%; left:50%; width:120px; height:120px; margin:-60px 0 0 -60px;
+    border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #FFF1B0, var(--luz) 60%, var(--miel) 100%);
+    box-shadow:0 0 60px rgba(255,215,94,0.55);
+  }
+  .orbit{
+    position:absolute; inset:0; animation:spin 9s linear infinite;
+  }
+  @keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+  .bee{
+    position:absolute; top:0; left:50%; transform:translateX(-50%);
+    font-size:1.6rem;
+  }
+  @media (prefers-reduced-motion:reduce){
+    .orbit{animation:none;}
+  }
+
+  footer{
+    position:relative; z-index:2;
+    text-align:center; padding:40px 6vw 60px;
+    font-size:0.82rem; opacity:0.6; line-height:1.8;
+  }
+  footer a{border-bottom:1px solid currentColor;}
+</style>
+</head>
+<body>
+<div class="noise"></div>
+
+<header>
+  <div class="eyebrow">Fundación Eugenio de la Torre · Vélez-Málaga</div>
+  <h1>
+    <span class="c1">teta</span><span class="c2">mesa</span><span class="c3">puerta</span><span class="c4">beja</span><span class="c5">luz</span>
+  </h1>
+  <p class="gloss">la teta, la mesa, la puerta, la abeja y la luz</p>
+  <p class="byline">Un proyecto de <strong>@saul_g_corona</strong> en <strong>@fundacion.eugeniodelatorre</strong></p>
+</header>
+
+<section class="doors" id="doors">
+  <div class="door d1" data-door>
+    <div class="door-face door-front">
+      <svg class="door-icon" viewBox="0 0 24 24" fill="none"><path d="M12 3C9 3 7 6 7 9c0 2.5 1.8 4.5 3 5.5V19a2 2 0 0 0 4 0v-4.5c1.2-1 3-3 3-5.5 0-3-2-6-5-6z" stroke="white" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <div class="door-label">LA TETA</div>
+    </div>
+    <div class="door-face door-back"><p>Lo que alimenta. El primer gesto, el primer refugio.</p></div>
+  </div>
+
+  <div class="door d2" data-door>
+    <div class="door-face door-front">
+      <svg class="door-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="9" width="18" height="2.4" fill="white"/><rect x="5" y="11.4" width="2" height="8" fill="white"/><rect x="17" y="11.4" width="2" height="8" fill="white"/></svg>
+      <div class="door-label">LA MESA</div>
+    </div>
+    <div class="door-face door-back"><p>Donde se comparte. El lugar de encuentro y de obra.</p></div>
+  </div>
+
+  <div class="door d3" data-door>
+    <div class="door-face door-front">
+      <svg class="door-icon" viewBox="0 0 24 24" fill="none"><rect x="6" y="3" width="12" height="18" rx="1" stroke="white" stroke-width="1.6"/><circle cx="14.5" cy="12" r="1" fill="white"/></svg>
+      <div class="door-label">LA PUERTA</div>
+    </div>
+    <div class="door-face door-back"><p>El umbral. Lo que se abre para dejar entrar y salir.</p></div>
+  </div>
+
+  <div class="door d4" data-door>
+    <div class="door-face door-front">
+      <svg class="door-icon" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="13" rx="4" ry="5.5" stroke="white" stroke-width="1.6"/><path d="M12 7.5V4M9 5l1.5 2M15 5l-1.5 2" stroke="white" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <div class="door-label">LA ABEJA</div>
+    </div>
+    <div class="door-face door-back"><p>El trabajo pequeño y colectivo que sostiene lo grande.</p></div>
+  </div>
+
+  <div class="door d5" data-door>
+    <div class="door-face door-front">
+      <svg class="door-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" stroke="#3A2B1E" stroke-width="1.6"/><g stroke="#3A2B1E" stroke-width="1.6" stroke-linecap="round"><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2 2M17 17l2 2M19.1 4.9l-2 2M7 17l-2 2"/></g></svg>
+      <div class="door-label">LA LUZ</div>
+    </div>
+    <div class="door-face door-back"><p>Lo que revela. Sin ella nada de esto se ve.</p></div>
+  </div>
+</section>
+<p class="hint">toca cada puerta para abrirla</p>
+
+<section class="manifesto">
+  <div class="tag">El proyecto</div>
+  <h2>Cinco objetos, un mismo gesto: mirar de cerca lo cotidiano</h2>
+  <p>
+    Saúl G. Corona reúne en la Fundación Eugenio de la Torre cinco palabras que son también cinco formas de habitar
+    el mundo. Una exposición y un proyecto abierto que invita a quien lo visite a detenerse en lo pequeño —
+    la mesa donde se come, la puerta que se cruza, la luz que entra por la ventana— y a encontrar allí algo propio.
+  </p>
+</section>
+
+<section class="send">
+  <div class="send-card">
+    <h3>Participa: envía tu mirada</h3>
+    <p>
+      El proyecto sigue creciendo con lo que cada persona quiera aportar. Puedes enviar tu obra,
+      tu fotografía o tu carta inspirada en la teta, la mesa, la puerta, la abeja o la luz,
+      por correo postal o electrónico.
+    </p>
+    <div class="send-grid">
+      <div class="send-item">
+        <div class="k">Envíos por correo postal</div>
+        <div class="v">Calle Poeta Joaquín Lobato, 2<br>29700 Vélez-Málaga, España</div>
+      </div>
+      <div class="send-item">
+        <div class="k">Envíos por email</div>
+        <div class="v"><a href="mailto:fundacion@edelatorre.es">fundacion@edelatorre.es</a></div>
+      </div>
+    </div>
+    <div class="ctas">
+      <a class="btn btn-primary" href="https://www.instagram.com/tetamesapuertabejaluz/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="white" stroke-width="1.7"/><circle cx="12" cy="12" r="4" stroke="white" stroke-width="1.7"/><circle cx="17.2" cy="6.8" r="1.1" fill="white"/></svg>
+        Síguenos en Instagram
+      </a>
+      <a class="btn btn-secondary" href="https://linktr.ee/tetamesa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M13 3L4 14h6l-1 7 9-11h-6l1-7z" stroke="#3E7C8C" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        Todos los enlaces
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="where">
+  <div>
+    <h3>Visítanos</h3>
+    <p class="addr">Fundación Eugenio de la Torre</p>
+    <p>Calle Poeta Joaquín Lobato, 2 · 29700 Vélez-Málaga, Málaga</p>
+    <p>Un espacio cultural en el casco histórico de Vélez-Málaga, dedicado a la creación y difusión del arte contemporáneo.</p>
+  </div>
+  <div class="bee-orbit">
+    <div class="sun"></div>
+    <div class="orbit"><div class="bee">🐝</div></div>
+  </div>
+</section>
+
+<footer>
+  tetamesapuertabejaluz — un proyecto de @saul_g_corona en @fundacion.eugeniodelatorre<br>
+  Calle Poeta Joaquín Lobato, 2, 29700 Vélez-Málaga · fundacion@edelatorre.es<br>
+  © 2026 Fundación Eugenio de la Torre. Todos los derechos reservados.
+</footer>
+
+<script>
+  document.querySelectorAll('[data-door]').forEach(door=>{
+    door.addEventListener('click', ()=> door.classList.toggle('open'));
+  });
+</script>
+
+</body>
+</html>
