@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Make It Yours · Hazlo Tuyo — Regalos personalizados</title>
+<meta name="description" content="Regalos únicos personalizados a tu medida. Envíos a todo el país. Haz tu pedido por Instagram DM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#FF5D8F;
+    --pink-deep:#E8447A;
+    --yellow:#FFC94A;
+    --teal:#2EC4B6;
+    --ink:#2B1B4D;
+    --cream:#FFF9F2;
+    --lilac:#F4E9FF;
+    --paper:#FFFDF9;
+    --shadow: 8px 8px 0px rgba(43,27,77,0.9);
+    --shadow-sm: 4px 4px 0px rgba(43,27,77,0.9);
+    --radius: 22px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Nunito', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    line-height:1.05;
+  }
+  .script{ font-family:'Caveat', cursive; }
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  ::selection{ background:var(--yellow); color:var(--ink); }
+
+  /* Focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible{
+    outline: 3px solid var(--teal);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,249,242,0.9);
+    backdrop-filter: blur(8px);
+    border-bottom:3px solid var(--ink);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-size:1.3rem; font-weight:700; color:var(--ink);
+  }
+  .logo .dot{
+    width:14px; height:14px; border-radius:50%;
+    background:var(--pink); border:2px solid var(--ink);
+  }
+  .nav-links{ display:flex; gap:28px; font-weight:700; font-size:0.98rem; }
+  .nav-links a{ position:relative; padding:4px 0; }
+  .nav-links a:hover{ color:var(--pink-deep); }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    padding:12px 22px;
+    border-radius:100px;
+    border:3px solid var(--ink);
+    box-shadow:var(--shadow-sm);
+    transition: transform .15s ease, box-shadow .15s ease;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .btn:hover{ transform:translate(-2px,-2px); box-shadow:6px 6px 0 rgba(43,27,77,0.9); }
+  .btn:active{ transform:translate(0,0); box-shadow:2px 2px 0 rgba(43,27,77,0.9); }
+  .btn-pink{ background:var(--pink); color:#fff; }
+  .btn-yellow{ background:var(--yellow); color:var(--ink); }
+  .btn-outline{ background:transparent; color:var(--ink); }
+  .btn-sm{ padding:9px 16px; font-size:0.9rem; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:70px 0 40px;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--lilac);
+    border:2px solid var(--ink);
+    padding:6px 14px;
+    border-radius:100px;
+    font-weight:800;
+    font-size:0.82rem;
+    letter-spacing:0.03em;
+    text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    margin-bottom:20px;
+  }
+  .hero h1 .accent{
+    color:var(--pink-deep);
+    position:relative;
+    display:inline-block;
+  }
+  .hero h1 .underline{
+    position:absolute; left:0; right:0; bottom:2px; height:12px;
+    background:var(--yellow); z-index:-1; transform:rotate(-1deg);
+  }
+  .hero p.lead{
+    font-size:1.15rem;
+    max-width:46ch;
+    margin-bottom:30px;
+    color:#4a3a6b;
+  }
+  .hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:28px; }
+  .hero-badges{ display:flex; gap:22px; flex-wrap:wrap; font-weight:700; font-size:0.92rem; color:#5a4a7b;}
+  .hero-badges span{ display:flex; align-items:center; gap:6px; }
+
+  /* Hanging tag illustration */
+  .tag-stage{
+    position:relative;
+    display:flex; justify-content:center; align-items:flex-start;
+    padding-top:10px;
+  }
+  .string{
+    width:2px; height:60px;
+    background:var(--ink);
+    margin:0 auto;
+  }
+  .tag-card{
+    background:var(--paper);
+    border:3px solid var(--ink);
+    border-radius:20px;
+    box-shadow:var(--shadow);
+    padding:34px 30px 30px;
+    width:320px;
+    text-align:center;
+    transform:rotate(-3deg);
+    animation:sway 5s ease-in-out infinite;
+    position:relative;
+  }
+  .tag-card::before{
+    content:"";
+    position:absolute;
+    top:-11px; left:50%; transform:translateX(-50%);
+    width:20px; height:20px;
+    background:var(--cream);
+    border:3px solid var(--ink);
+    border-radius:50%;
+  }
+  @keyframes sway{
+    0%,100%{ transform:rotate(-3deg); }
+    50%{ transform:rotate(3deg); }
+  }
+  .tag-card .for{ font-size:0.85rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--pink-deep); }
+  .tag-card .name{
+    font-family:'Caveat', cursive;
+    font-size:2.6rem;
+    color:var(--ink);
+    margin:6px 0 10px;
+    min-height:52px;
+  }
+  .tag-card .msg{ font-size:0.95rem; color:#5a4a7b; }
+  .confetti-dot{
+    position:absolute; border-radius:50%;
+  }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{
+    background:var(--ink);
+    color:var(--cream);
+    border-top:3px solid var(--ink);
+    border-bottom:3px solid var(--ink);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:14px 0;
+  }
+  .marquee-track{
+    display:inline-block;
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    font-size:1.05rem;
+    letter-spacing:0.03em;
+    animation:scroll 22s linear infinite;
+  }
+  .marquee-track span{ margin:0 22px; color:var(--yellow); }
+  @keyframes scroll{
+    from{ transform:translateX(0); }
+    to{ transform:translateX(-50%); }
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{ padding:80px 0; }
+  .section-head{ max-width:640px; margin-bottom:50px; }
+  .section-head .eyebrow{ margin-bottom:14px; }
+  .section-head h2{ font-size:clamp(1.9rem, 3.4vw, 2.6rem); margin-bottom:14px; }
+  .section-head p{ color:#4a3a6b; font-size:1.05rem; }
+
+  /* ---------- STEPS ---------- */
+  .steps{ background:var(--paper); }
+  .steps-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+  }
+  .step{
+    background:var(--cream);
+    border:3px solid var(--ink);
+    border-radius:var(--radius);
+    padding:30px 26px;
+    box-shadow:var(--shadow-sm);
+    position:relative;
+  }
+  .step .num{
+    font-family:'Fredoka', sans-serif;
+    font-size:2.4rem;
+    font-weight:700;
+    color:var(--pink);
+    -webkit-text-stroke:2px var(--ink);
+    margin-bottom:14px;
+    display:block;
+  }
+  .step h3{ font-size:1.25rem; margin-bottom:10px; }
+  .step p{ color:#4a3a6b; font-size:0.98rem; }
+  .step-arrow{
+    position:absolute; right:-32px; top:50%; transform:translateY(-50%);
+    font-size:1.6rem; color:var(--ink);
+  }
+  @media (max-width:900px){ .step-arrow{ display:none; } }
+
+  /* ---------- CATEGORIES ---------- */
+  .categories{ background:var(--lilac); }
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+  }
+  .cat-card{
+    background:var(--paper);
+    border:3px solid var(--ink);
+    border-radius:var(--radius);
+    padding:26px;
+    box-shadow:var(--shadow-sm);
+    transition: transform .15s ease, box-shadow .15s ease;
+    display:flex; flex-direction:column; gap:12px;
+  }
+  .cat-card:hover{ transform:translateY(-6px); box-shadow:6px 10px 0 rgba(43,27,77,0.9); }
+  .cat-icon{
+    width:56px; height:56px;
+    border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    border:3px solid var(--ink);
+    font-size:1.6rem;
+  }
+  .cat-card h3{ font-size:1.15rem; }
+  .cat-card p{ font-size:0.92rem; color:#4a3a6b; }
+
+  /* ---------- PERSONALIZER ---------- */
+  .personalizer{ background:var(--paper); }
+  .pers-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+  }
+  .pers-controls label{
+    display:block;
+    font-weight:800;
+    font-size:0.85rem;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--pink-deep);
+    margin-bottom:8px;
+  }
+  .pers-controls input[type="text"]{
+    width:100%;
+    font-family:'Nunito', sans-serif;
+    font-size:1.05rem;
+    font-weight:700;
+    padding:14px 16px;
+    border:3px solid var(--ink);
+    border-radius:14px;
+    background:var(--cream);
+    margin-bottom:22px;
+  }
+  .swatches{ display:flex; gap:12px; margin-bottom:26px; }
+  .swatch{
+    width:38px; height:38px;
+    border-radius:50%;
+    border:3px solid var(--ink);
+    cursor:pointer;
+  }
+  .swatch.active{ box-shadow:0 0 0 3px var(--paper), 0 0 0 6px var(--ink); }
+  .pers-note{ font-size:0.92rem; color:#4a3a6b; margin-bottom:22px; }
+
+  .preview-stage{ display:flex; justify-content:center; }
+  .preview-tag{
+    background:var(--cream);
+    border:3px solid var(--ink);
+    border-radius:20px;
+    box-shadow:var(--shadow);
+    padding:38px 34px;
+    width:300px;
+    text-align:center;
+    position:relative;
+  }
+  .preview-tag .ribbon{
+    position:absolute; top:-16px; left:50%; transform:translateX(-50%);
+    width:46px; height:26px;
+    border-radius:0 0 8px 8px;
+    border:3px solid var(--ink);
+    border-top:none;
+  }
+  .preview-tag .for-label{ font-size:0.8rem; font-weight:800; text-transform:uppercase; letter-spacing:0.08em; color:#8a7ab0; }
+  .preview-tag .preview-name{
+    font-family:'Caveat', cursive;
+    font-size:2.8rem;
+    margin:10px 0 6px;
+    color:var(--ink);
+    word-break:break-word;
+  }
+  .preview-tag .preview-sub{ font-size:0.9rem; color:#4a3a6b; }
+
+  /* ---------- WHY US ---------- */
+  .why{ background:var(--ink); color:var(--cream); }
+  .why .section-head p{ color:#d8cdf2; }
+  .why .eyebrow{ background:transparent; border-color:var(--yellow); color:var(--yellow); }
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+  }
+  .why-card{
+    background:rgba(255,255,255,0.06);
+    border:2px solid rgba(255,255,255,0.25);
+    border-radius:var(--radius);
+    padding:28px 24px;
+  }
+  .why-card .ic{ font-size:1.8rem; margin-bottom:14px; }
+  .why-card h3{ font-size:1.15rem; margin-bottom:8px; color:var(--yellow); }
+  .why-card p{ font-size:0.95rem; color:#d8cdf2; }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{ background:var(--cream); }
+  .test-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .test-card{
+    background:var(--paper);
+    border:3px solid var(--ink);
+    border-radius:var(--radius);
+    padding:26px;
+    box-shadow:var(--shadow-sm);
+    transform:rotate(-1deg);
+  }
+  .test-card:nth-child(2){ transform:rotate(1deg); }
+  .test-card:nth-child(3){ transform:rotate(-1.5deg); }
+  .stars{ color:var(--yellow); font-size:1.1rem; letter-spacing:2px; margin-bottom:12px; }
+  .test-card p{ font-size:0.98rem; color:#3a2a5b; margin-bottom:16px; }
+  .test-name{ font-weight:800; font-size:0.9rem; }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    background:var(--pink);
+    color:#fff;
+    text-align:center;
+    padding:90px 0;
+    position:relative;
+    overflow:hidden;
+    border-top:3px solid var(--ink);
+    border-bottom:3px solid var(--ink);
+  }
+  .final-cta h2{
+    font-size:clamp(2rem, 4vw, 3rem);
+    margin-bottom:16px;
+  }
+  .final-cta p{ font-size:1.1rem; margin-bottom:34px; opacity:0.95; }
+  .final-cta .btn-yellow{ font-size:1.05rem; padding:16px 32px; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);
+    color:#d8cdf2;
+    padding:50px 0 30px;
+  }
+  .foot-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:30px;
+    margin-bottom:30px;
+  }
+  .foot-logo{ font-family:'Fredoka', sans-serif; font-size:1.3rem; color:#fff; margin-bottom:10px; }
+  .foot-grid p{ max-width:32ch; font-size:0.92rem; }
+  .foot-links{ display:flex; gap:40px; flex-wrap:wrap; }
+  .foot-col h4{ font-size:0.85rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--yellow); margin-bottom:12px; }
+  .foot-col a{ display:block; font-size:0.92rem; margin-bottom:8px; color:#d8cdf2; }
+  .foot-col a:hover{ color:#fff; }
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,0.15);
+    padding-top:22px;
+    font-size:0.85rem;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    color:#a795d1;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .nav-links{ display:none; }
+    .hero .wrap{ grid-template-columns:1fr; }
+    .tag-stage{ margin-top:20px; }
+    .steps-grid, .cat-grid, .why-grid, .test-grid{ grid-template-columns:1fr; }
+    .pers-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="dot"></span> Make It Yours</div>
+    <div class="nav-links">
+      <a href="#como">Cómo funciona</a>
+      <a href="#categorias">Ideas de regalo</a>
+      <a href="#personalizar">Personalizar</a>
+      <a href="#opiniones">Opiniones</a>
+    </div>
+    <a class="btn btn-pink btn-sm" href="https://www.instagram.com/anitamakeityours/" target="_blank" rel="noopener">
+      📩 Pedir por DM
+    </a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="eyebrow">🎁 anitamakeityours</div>
+      <h1>Regalos con
+        <span class="accent">nombre y apellido<span class="underline"></span></span>,
+        no de estantería.
+      </h1>
+      <p class="lead">Personalizamos cada regalo a tu medida: elige la idea, cuéntanos los detalles y nosotras lo hacemos único — para esa persona única. Envíos a todo el país.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-pink" href="https://www.instagram.com/anitamakeityours/" target="_blank" rel="noopener">📩 Haz tu pedido por DM</a>
+        <a class="btn btn-outline" href="#como">Ver cómo funciona</a>
+      </div>
+      <div class="hero-badges">
+        <span>📦 Envíos a todo el país</span>
+        <span>✨ 100% personalizado</span>
+        <span>💌 Pedidos por Instagram</span>
+      </div>
+    </div>
+    <div class="tag-stage">
+      <div style="position:relative;">
+        <div class="string"></div>
+        <div class="tag-card">
+          <div class="for">Para</div>
+          <div class="name">Anita ✨</div>
+          <div class="msg">"Hazlo Tuyo" — detalles únicos para personas únicas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>✨ ENVÍOS A TODO EL PAÍS</span>
+    <span>🎁 PERSONALIZAMOS CADA REGALO</span>
+    <span>📩 PEDIDOS POR DM</span>
+    <span>💜 HECHO CON CARIÑO</span>
+    <span>✨ ENVÍOS A TODO EL PAÍS</span>
+    <span>🎁 PERSONALIZAMOS CADA REGALO</span>
+    <span>📩 PEDIDOS POR DM</span>
+    <span>💜 HECHO CON CARIÑO</span>
+  </div>
+</div>
+
+<section class="steps" id="como">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Cómo funciona</div>
+      <h2>De la idea a la puerta de tu casa</h2>
+      <p>Pedir tu regalo personalizado es tan fácil como mandar un mensaje.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step">
+        <span class="num">1</span>
+        <h3>Escríbenos por DM</h3>
+        <p>Cuéntanos qué idea tienes en mente, para quién es y para qué ocasión.</p>
+        <span class="step-arrow">→</span>
+      </div>
+      <div class="step">
+        <span class="num">2</span>
+        <h3>Personalízalo</h3>
+        <p>Elegimos juntas el nombre, colores y detalles para que quede exactamente como lo imaginas.</p>
+        <span class="step-arrow">→</span>
+      </div>
+      <div class="step">
+        <span class="num">3</span>
+        <h3>Lo recibes en casa</h3>
+        <p>Lo preparamos con cariño y te lo enviamos a cualquier punto del país.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="categories" id="categorias">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Ideas de regalo</div>
+      <h2>Algo personalizado para cada ocasión</h2>
+      <p>Estas son solo algunas ideas — si tienes la tuya, cuéntanosla por DM y la hacemos realidad.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card">
+        <div class="cat-icon" style="background:var(--pink); color:#fff;">🎂</div>
+        <h3>Cumpleaños</h3>
+        <p>Detalles con nombre y mensaje para celebrar a lo grande.</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon" style="background:var(--teal); color:#fff;">💍</div>
+        <h3>Aniversarios y bodas</h3>
+        <p>Regalos con esa fecha y esas iniciales que lo hacen inolvidable.</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon" style="background:var(--yellow);">👶</div>
+        <h3>Baby shower</h3>
+        <p>Detalles tiernos personalizados con el nombre del bebé.</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon" style="background:var(--pink); color:#fff;">🎓</div>
+        <h3>Graduaciones</h3>
+        <p>Un detalle a la altura de todo el esfuerzo logrado.</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon" style="background:var(--teal); color:#fff;">🏢</div>
+        <h3>Regalos corporativos</h3>
+        <p>Detalles de marca para equipos, clientes o eventos.</p>
+      </div>
+      <div class="cat-card">
+        <div class="cat-icon" style="background:var(--yellow);">💌</div>
+        <h3>Porque sí</h3>
+        <p>No hace falta ocasión para regalar algo hecho especialmente para alguien.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="personalizer" id="personalizar">
+  <div class="wrap">
+    <div class="pers-grid">
+      <div class="pers-controls">
+        <div class="eyebrow">Pruébalo tú misma</div>
+        <h2 style="font-size:1.9rem; margin-bottom:16px;">Así de fácil es hacerlo tuyo</h2>
+        <label for="nameInput">Escribe un nombre</label>
+        <input type="text" id="nameInput" maxlength="18" placeholder="Ej: Sofía" value="Sofía">
+        <label>Elige un color</label>
+        <div class="swatches">
+          <div class="swatch active" style="background:#FF5D8F;" data-color="#FF5D8F" data-label="#8A7AB0"></div>
+          <div class="swatch" style="background:#2EC4B6;" data-color="#2EC4B6" data-label="#7AB0A0"></div>
+          <div class="swatch" style="background:#FFC94A;" data-color="#FFC94A" data-label="#B0A07A"></div>
+          <div class="swatch" style="background:#2B1B4D;" data-color="#2B1B4D" data-label="#8A7AB0"></div>
+        </div>
+        <p class="pers-note">Esta es una previsualización de ejemplo — al pedir por DM afinamos tipografía, tamaño y material contigo.</p>
+        <a class="btn btn-pink" href="https://www.instagram.com/anitamakeityours/" target="_blank" rel="noopener">📩 Pedir el mío así</a>
+      </div>
+      <div class="preview-stage">
+        <div class="preview-tag">
+          <div class="ribbon" id="ribbon" style="background:#FF5D8F;"></div>
+          <div class="for-label">Hecho especialmente para</div>
+          <div class="preview-name" id="previewName">Sofía</div>
+          <div class="preview-sub">Make It Yours · Hazlo Tuyo</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Por qué Make It Yours</div>
+      <h2>No es solo un regalo, es un detalle pensado</h2>
+      <p>Trabajamos cada pedido como si fuera para alguien nuestro.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="ic">🎯</div>
+        <h3>100% a tu medida</h3>
+        <p>Nombre, colores, mensaje: cada pedido se personaliza desde cero, no elegimos de un catálogo fijo.</p>
+      </div>
+      <div class="why-card">
+        <div class="ic">📦</div>
+        <h3>Llega a cualquier parte</h3>
+        <p>Hacemos envíos a todo el país, con empaque cuidado para que llegue perfecto.</p>
+      </div>
+      <div class="why-card">
+        <div class="ic">💬</div>
+        <h3>Atención directa y cercana</h3>
+        <p>Hablamos contigo por Instagram en cada paso, desde la idea hasta la entrega.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="opiniones">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Lo que dicen</div>
+      <h2>Clientas felices, regalos que emocionan</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>Pedí un regalo para el cumpleaños de mi hermana y quedó exactamente como lo había imaginado. Súper atentas por DM.</p>
+        <div class="test-name">— Cliente de Make It Yours</div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>Llegó perfecto a otra ciudad, muy bien empacado. Se nota el cuidado en cada detalle personalizado.</p>
+        <div class="test-name">— Cliente de Make It Yours</div>
+      </div>
+      <div class="test-card">
+        <div class="stars">★★★★★</div>
+        <p>Fue mi primera vez pidiendo algo personalizado y el proceso por Instagram fue rapidísimo y muy claro.</p>
+        <div class="test-name">— Cliente de Make It Yours</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>¿Ya tienes en mente a quién regalarle?</h2>
+    <p>Escríbenos por Instagram y lo hacemos tuyo — o de quien tú quieras.</p>
+    <a class="btn btn-yellow" href="https://www.instagram.com/anitamakeityours/" target="_blank" rel="noopener">📩 Escribir a @anitamakeityours</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">Make It Yours</div>
+        <p>Detalles únicos para personas únicas. Personalizamos cada regalo a tu medida, con envíos a todo el país.</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4>Explora</h4>
+          <a href="#como">Cómo funciona</a>
+          <a href="#categorias">Ideas de regalo</a>
+          <a href="#personalizar">Personalizar</a>
+          <a href="#opiniones">Opiniones</a>
+        </div>
+        <div class="foot-col">
+          <h4>Contacto</h4>
+          <a href="https://www.instagram.com/anitamakeityours/" target="_blank" rel="noopener">📷 @anitamakeityours</a>
+          <a href="https://www.instagram.com/anitamakeityours/" target="_blank" rel="noopener">📩 Pedidos por DM</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Make It Yours · Hazlo Tuyo</span>
+      <span>Hecho con 💜 para regalos que se recuerdan</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nameInput = document.getElementById('nameInput');
+  const previewName = document.getElementById('previewName');
+  const ribbon = document.getElementById('ribbon');
+  const swatches = document.querySelectorAll('.swatch');
+
+  nameInput.addEventListener('input', () => {
+    previewName.textContent = nameInput.value.trim() || 'Tu nombre aquí';
+  });
+
+  swatches.forEach(sw => {
+    sw.addEventListener('click', () => {
+      swatches.forEach(s => s.classList.remove('active'));
+      sw.classList.add('active');
+      const color = sw.getAttribute('data-color');
+      ribbon.style.background = color;
+      previewName.style.color = color === '#2B1B4D' ? '#FF5D8F' : '#2B1B4D';
+    });
+  });
+</script>
+
+</body>
+</html>
