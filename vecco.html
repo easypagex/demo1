@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VECCO | Ropa y Accesorios para Damas y Caballeros — Huaraz</title>
+<meta name="description" content="VECCO — Moda Casual & Old Money en Huaraz. Ropa y accesorios para damas y caballeros. Visítanos en Julián de Morales 541 y Av. Luzuriaga 1036.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F6EFE0;
+    --cream-soft:#EFE4CC;
+    --paper:#FBF7EC;
+    --forest:#1E3D2B;
+    --forest-deep:#132A1D;
+    --wine:#7C1F33;
+    --gold:#C9972A;
+    --gold-light:#E7C066;
+    --terracotta:#C1552C;
+    --navy:#182338;
+    --ink:#231C13;
+    --line: rgba(35,28,19,0.14);
+    --shadow: 0 18px 40px rgba(19,42,29,0.16);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:var(--forest-deep);
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:'Manrope',sans-serif;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.22em;
+    font-size:12px;
+    color:var(--wine);
+  }
+  ::selection{background:var(--gold-light);color:var(--forest-deep);}
+
+  /* ===== reveal ===== */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+  }
+
+  /* ===== header ===== */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    background:rgba(246,239,224,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+    transition: box-shadow .3s ease;
+  }
+  header.scrolled{ box-shadow:0 6px 24px rgba(19,42,29,0.10); }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px; max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:700; font-size:24px;
+    letter-spacing:0.06em;
+    color:var(--forest-deep);
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo .dot{width:8px;height:8px;border-radius:50%;background:var(--wine);display:inline-block;}
+  .nav-links{display:flex; align-items:center; gap:34px;}
+  .nav-links a{
+    font-size:14px; font-weight:600; color:var(--forest-deep);
+    position:relative; padding:4px 0;
+  }
+  .nav-links a::after{
+    content:''; position:absolute; bottom:-2px; left:0; width:0%; height:2px;
+    background:var(--gold); transition:width .3s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--forest); color:var(--paper)!important;
+    padding:10px 20px; border-radius:100px; font-weight:700!important;
+    font-size:13px!important; display:flex; align-items:center; gap:8px;
+    box-shadow:0 8px 18px rgba(30,61,43,0.28);
+    transition: transform .25s ease, background .25s ease;
+  }
+  .nav-cta::after{display:none;}
+  .nav-cta:hover{background:var(--wine); transform:translateY(-2px);}
+  .burger{display:none; background:none;border:none;cursor:pointer;padding:6px;}
+  .burger span{display:block;width:24px;height:2px;background:var(--forest-deep);margin:5px 0;transition:.3s;}
+
+  /* ===== hero ===== */
+  .hero{
+    position:relative;
+    padding:168px 0 0;
+    background:
+      radial-gradient(ellipse at 15% 0%, rgba(201,151,42,0.16), transparent 55%),
+      radial-gradient(ellipse at 85% 10%, rgba(124,31,51,0.14), transparent 50%),
+      var(--cream);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:50px;
+    align-items:center; max-width:1180px; margin:0 auto; padding:0 28px;
+  }
+  .hero h1{
+    font-size:clamp(40px,5.6vw,68px);
+    line-height:1.03;
+  }
+  .hero h1 em{
+    font-style:italic; color:var(--wine);
+    font-weight:500;
+  }
+  .hero p.lead{
+    font-size:18px; line-height:1.6; color:#4A4231; max-width:480px; margin-top:22px;
+  }
+  .hero-ctas{display:flex; gap:14px; margin-top:32px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 28px; border-radius:100px; font-weight:700; font-size:14.5px;
+    transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    cursor:pointer; border:none;
+  }
+  .btn-primary{background:var(--forest); color:var(--paper); box-shadow:0 10px 24px rgba(30,61,43,0.3);}
+  .btn-primary:hover{transform:translateY(-3px); box-shadow:0 14px 30px rgba(30,61,43,0.36); background:var(--forest-deep);}
+  .btn-outline{background:transparent; color:var(--forest-deep); border:2px solid var(--forest-deep);}
+  .btn-outline:hover{background:var(--forest-deep); color:var(--paper); transform:translateY(-3px);}
+  .btn-gold{background:var(--gold); color:var(--forest-deep); box-shadow:0 10px 22px rgba(201,151,42,0.35);}
+  .btn-gold:hover{transform:translateY(-3px); background:var(--gold-light);}
+
+  .hero-visual{position:relative; height:460px;}
+  .badge-float{
+    position:absolute; background:var(--paper); border-radius:20px; padding:16px 20px;
+    box-shadow:var(--shadow); border:1px solid var(--line);
+    animation: floaty 5s ease-in-out infinite;
+  }
+  .badge-float.b1{top:6%; left:2%; animation-delay:0s;}
+  .badge-float.b2{bottom:10%; right:0%; animation-delay:1.2s;}
+  .badge-float.b3{top:44%; left:56%; animation-delay:2.1s;}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+  .badge-float .num{font-family:'Fraunces',serif; font-size:22px; font-weight:700; color:var(--wine);}
+  .badge-float .lbl{font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:#6b6350; font-weight:700;}
+
+  .mountains{position:absolute; bottom:-2px; left:0; right:0; width:100%; line-height:0;}
+
+  /* ===== marquee strip ===== */
+  .strip{
+    background:var(--forest-deep); color:var(--cream-soft);
+    padding:14px 0; overflow:hidden; white-space:nowrap; position:relative;
+  }
+  .strip-track{display:inline-flex; gap:48px; animation:scroll 26s linear infinite; padding-left:48px;}
+  .strip-track span{font-family:'Fraunces',serif; font-style:italic; font-size:16px; display:flex; align-items:center; gap:14px; color:var(--gold-light);}
+  .strip-track span::after{content:'✦'; color:var(--wine); font-style:normal; margin-left:14px;}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ===== section generic ===== */
+  section{padding:120px 0;}
+  .section-head{max-width:640px; margin:0 auto 60px; text-align:center;}
+  .section-head h2{font-size:clamp(30px,4vw,46px); margin-top:14px; line-height:1.08;}
+  .section-head p{font-size:16.5px; color:#5a5138; margin-top:16px; line-height:1.65;}
+  .divider-svg{display:block; width:100%; height:auto;}
+
+  /* ===== philosophy (two worlds) ===== */
+  .worlds{
+    display:grid; grid-template-columns:1fr 1fr; gap:28px;
+  }
+  .world-card{
+    border-radius:28px; padding:44px 38px; position:relative; overflow:hidden;
+    min-height:340px; display:flex; flex-direction:column; justify-content:flex-end;
+  }
+  .world-card.casual{background:linear-gradient(155deg, #C1552C 0%, #8f3c1f 100%); color:var(--paper);}
+  .world-card.oldmoney{background:linear-gradient(155deg, #1E3D2B 0%, #0f2317 100%); color:var(--cream-soft);}
+  .world-card .icon-wrap{position:absolute; top:34px; right:34px; opacity:0.9;}
+  .world-card h3{color:inherit; font-size:28px; margin-bottom:10px;}
+  .world-card p{font-size:15px; line-height:1.6; opacity:0.92; max-width:340px;}
+  .world-card .tag-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:18px;}
+  .world-card .tag{
+    font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em;
+    border:1px solid rgba(255,255,255,0.35); padding:6px 12px; border-radius:100px;
+  }
+
+  /* ===== benefits ===== */
+  .benefits{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .benefit{
+    background:var(--paper); border-radius:22px; padding:32px 26px;
+    border:1px solid var(--line); transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .benefit:hover{transform:translateY(-8px); box-shadow:var(--shadow); border-color:transparent;}
+  .benefit .icon{
+    width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px;
+  }
+  .benefit:nth-child(1) .icon{background:rgba(124,31,51,0.12);}
+  .benefit:nth-child(2) .icon{background:rgba(201,151,42,0.16);}
+  .benefit:nth-child(3) .icon{background:rgba(30,61,43,0.12);}
+  .benefit:nth-child(4) .icon{background:rgba(193,85,44,0.14);}
+  .benefit h3{font-size:19px; margin-bottom:8px;}
+  .benefit p{font-size:14.5px; color:#5a5138; line-height:1.55; margin:0;}
+
+  /* ===== lookbook ===== */
+  .lookbook-grid{
+    display:grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 180px 180px;
+    gap:18px;
+  }
+  .lb-tile{
+    border-radius:20px; position:relative; overflow:hidden;
+    display:flex; align-items:flex-end; padding:20px;
+    color:var(--paper); font-family:'Fraunces',serif; font-weight:600; font-size:18px;
+  }
+  .lb-tile span{position:relative; z-index:2;}
+  .lb-tile::before{content:''; position:absolute; inset:0; opacity:0.94;}
+  .lb1{grid-column:1/3; grid-row:1/3;}
+  .lb1::before{background:linear-gradient(160deg,#7C1F33,#3d0f18);}
+  .lb2::before{background:linear-gradient(160deg,#C9972A,#8a6317);}
+  .lb3::before{background:linear-gradient(160deg,#1E3D2B,#0c1c11);}
+  .lb4{grid-column:3/5;}
+  .lb4::before{background:linear-gradient(160deg,#C1552C,#7a341a);}
+  .lb-tile .lb-icon{position:absolute; right:14px; top:14px; opacity:0.35; z-index:1;}
+
+  /* ===== location ===== */
+  .location{
+    background:var(--forest-deep); color:var(--cream-soft); border-radius:32px;
+    padding:70px 60px; display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;
+    position:relative; overflow:hidden;
+  }
+  .location::before{
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(circle at 90% 10%, rgba(201,151,42,0.18), transparent 45%);
+  }
+  .location h2{color:var(--cream-soft); font-size:clamp(28px,3.4vw,40px);}
+  .loc-list{margin-top:28px; display:flex; flex-direction:column; gap:20px;}
+  .loc-item{display:flex; gap:16px; align-items:flex-start;}
+  .loc-item .ic{flex:0 0 auto; width:40px; height:40px; border-radius:12px; background:rgba(201,151,42,0.18); display:flex; align-items:center; justify-content:center;}
+  .loc-item h4{margin:0 0 4px; font-family:'Fraunces',serif; font-size:16px; color:var(--gold-light); font-weight:600;}
+  .loc-item p{margin:0; font-size:14.5px; color:#D9D2BE; line-height:1.55;}
+  .loc-map-visual{
+    border-radius:22px; overflow:hidden; border:1px solid rgba(255,255,255,0.12);
+    background:rgba(255,255,255,0.03);
+  }
+
+  /* ===== social CTA ===== */
+  .social-cta{
+    text-align:center; background:
+      linear-gradient(160deg, var(--wine), #4a0f1c);
+    border-radius:32px; padding:80px 40px; color:var(--paper); position:relative; overflow:hidden;
+  }
+  .social-cta::after{
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(circle at 15% 90%, rgba(201,151,42,0.25), transparent 45%);
+  }
+  .social-cta .inner{position:relative; z-index:2;}
+  .social-cta h2{color:var(--paper); font-size:clamp(30px,4.4vw,48px); max-width:640px; margin:0 auto;}
+  .social-cta p{margin-top:16px; opacity:0.9; font-size:16.5px;}
+  .social-btns{display:flex; gap:16px; justify-content:center; margin-top:34px; flex-wrap:wrap;}
+
+  /* ===== footer ===== */
+  footer{padding:56px 0 34px; border-top:1px solid var(--line);}
+  .foot-grid{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;}
+  .foot-logo{font-family:'Fraunces',serif; font-weight:700; font-size:20px; color:var(--forest-deep);}
+  .foot-links{display:flex; gap:26px; flex-wrap:wrap;}
+  .foot-links a{font-size:13.5px; font-weight:600; color:#5a5138;}
+  .foot-links a:hover{color:var(--wine);}
+  .foot-bottom{margin-top:30px; padding-top:24px; border-top:1px solid var(--line); font-size:12.5px; color:#8a8168; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  /* ===== floating whatsapp ===== */
+  .float-wa{
+    position:fixed; bottom:26px; right:26px; z-index:999;
+    width:60px; height:60px; border-radius:50%; background:#25D366;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 28px rgba(37,211,102,0.45);
+    animation:pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{box-shadow:0 12px 28px rgba(37,211,102,0.45);}50%{box-shadow:0 12px 28px rgba(37,211,102,0.7), 0 0 0 10px rgba(37,211,102,0.12);}}
+
+  /* ===== responsive ===== */
+  @media (max-width: 980px){
+    .hero-grid{grid-template-columns:1fr; text-align:center;}
+    .hero p.lead{margin-left:auto; margin-right:auto;}
+    .hero-ctas{justify-content:center;}
+    .hero-visual{height:340px; margin-top:20px;}
+    .worlds{grid-template-columns:1fr;}
+    .benefits{grid-template-columns:repeat(2,1fr);}
+    .location{grid-template-columns:1fr; padding:48px 30px;}
+    .lookbook-grid{grid-template-columns:repeat(2,1fr); grid-template-rows:repeat(3,160px);}
+    .lb1{grid-column:1/3; grid-row:1/2;}
+    .lb4{grid-column:1/3;}
+  }
+  @media (max-width: 720px){
+    .nav-links{
+      position:fixed; top:70px; left:0; right:0; background:var(--paper);
+      flex-direction:column; padding:26px 28px; gap:20px;
+      transform:translateY(-130%); transition:transform .35s ease;
+      border-bottom:1px solid var(--line);
+    }
+    .nav-links.open{transform:translateY(0);}
+    .burger{display:block;}
+    section{padding:80px 0;}
+    .benefits{grid-template-columns:1fr;}
+    .social-cta{padding:56px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="nav">
+    <a href="#top" class="logo"><span class="dot"></span>VECCO</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#estilo">Estilo</a>
+      <a href="#coleccion">Colección</a>
+      <a href="#porque">Por qué VECCO</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="https://wa.me/51990176872?text=Hola%20VECCO%2C%20quisiera%20más%20información" class="nav-cta" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.35a9.9 9.9 0 0 0 4.62 1.14h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.79 14.1c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.12-.42-.13-.96-.31-1.65-.61-2.9-1.26-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.66.5.24.58.83 2 .9 2.14.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.28.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.2 1.36.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.44.19.5.3.07.11.07.63-.17 1.31z"/></svg>
+        WhatsApp
+      </a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" style="padding-bottom:0;">
+    <div class="hero-grid">
+      <div class="reveal in">
+        <p class="eyebrow">VECCO · Huaraz, Perú</p>
+        <h1>Estilo con <em>altura.</em><br>Casual de día, Old Money siempre.</h1>
+        <p class="lead">Ropa y accesorios para damas y caballeros donde la elegancia clásica se encuentra con el espíritu libre de la sierra. Piezas atemporales, pensadas para verse bien todos los días del año.</p>
+        <div class="hero-ctas">
+          <a href="https://wa.me/51990176872?text=Hola%20VECCO%2C%20quisiera%20más%20información%20sobre%20sus%20prendas" class="btn btn-primary" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.35a9.9 9.9 0 0 0 4.62 1.14h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.79 14.1c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.12-.42-.13-.96-.31-1.65-.61-2.9-1.26-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.66.5.24.58.83 2 .9 2.14.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.28.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.2 1.36.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.44.19.5.3.07.11.07.63-.17 1.31z"/></svg>
+            Escríbenos por WhatsApp
+          </a>
+          <a href="https://www.instagram.com/veccoperu/" class="btn btn-outline" target="_blank" rel="noopener">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+            @veccoperu
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal in">
+        <svg viewBox="0 0 420 460" width="100%" height="100%" style="overflow:visible;">
+          <!-- abstract blazer silhouette -->
+          <g transform="translate(60,20)">
+            <path d="M150 20 L110 70 L60 60 L10 130 L45 160 L70 130 L70 400 L230 400 L230 130 L255 160 L290 130 L240 60 L190 70 Z"
+                  fill="#1E3D2B" opacity="0.95"/>
+            <path d="M150 20 L110 70 L150 150 L190 70 Z" fill="#C9972A" opacity="0.9"/>
+            <line x1="150" y1="150" x2="150" y2="400" stroke="#F6EFE0" stroke-width="2" opacity="0.5"/>
+            <circle cx="150" cy="185" r="4" fill="#F6EFE0" opacity="0.6"/>
+            <circle cx="150" cy="215" r="4" fill="#F6EFE0" opacity="0.6"/>
+            <circle cx="150" cy="245" r="4" fill="#F6EFE0" opacity="0.6"/>
+          </g>
+        </svg>
+        <div class="badge-float b1">
+          <div class="num">100%</div>
+          <div class="lbl">Estilo Peruano</div>
+        </div>
+        <div class="badge-float b2">
+          <div class="num">2</div>
+          <div class="lbl">Tiendas en Huaraz</div>
+        </div>
+        <div class="badge-float b3">
+          <div class="num">7</div>
+          <div class="lbl">Días de atención</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Signature: Andes skyline divider -->
+    <div class="mountains">
+      <svg class="divider-svg" viewBox="0 0 1440 180" preserveAspectRatio="none">
+        <path d="M0,180 L0,110 L120,30 L220,90 L340,10 L430,80 L560,20 L680,95 L760,50 L880,110 L980,40 L1100,100 L1220,55 L1320,115 L1440,70 L1440,180 Z" fill="#EFE4CC"/>
+        <path d="M0,180 L0,140 L140,80 L260,130 L400,60 L520,125 L660,75 L790,135 L920,85 L1060,140 L1200,90 L1320,150 L1440,110 L1440,180 Z" fill="#1E3D2B"/>
+        <g fill="#C9972A" opacity="0.85">
+          <path d="M340,10 L360,55 L320,55 Z"/>
+          <path d="M560,20 L582,60 L538,60 Z"/>
+          <path d="M980,40 L1000,78 L960,78 Z"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE STRIP ============ -->
+  <div class="strip">
+    <div class="strip-track">
+      <span>Moda Casual</span><span>Old Money</span><span>Damas &amp; Caballeros</span>
+      <span>Julián de Morales 541</span><span>Av. Luzuriaga 1036</span><span>Huaraz, Perú</span>
+      <span>Moda Casual</span><span>Old Money</span><span>Damas &amp; Caballeros</span>
+      <span>Julián de Morales 541</span><span>Av. Luzuriaga 1036</span><span>Huaraz, Perú</span>
+    </div>
+  </div>
+
+  <!-- ============ ESTILO / TWO WORLDS ============ -->
+  <section id="estilo">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Nuestro sello</p>
+        <h2>Dos mundos, un mismo estilo</h2>
+        <p>En VECCO combinamos la comodidad de lo casual con el buen gusto que nunca pasa de moda. Prendas versátiles que llevas del día a la noche, de la calle a cualquier ocasión especial.</p>
+      </div>
+
+      <div class="worlds">
+        <div class="world-card casual reveal">
+          <div class="icon-wrap">
+            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.6"><path d="M4 8l4-4h8l4 4-3 3-1-1v10H8V10L7 11z"/></svg>
+          </div>
+          <h3>Casual</h3>
+          <p>Piezas cómodas y versátiles para el día a día en Huaraz: polos, camisas, jeans y chompas que se adaptan a tu ritmo.</p>
+          <div class="tag-row">
+            <span class="tag">Diario</span><span class="tag">Cómodo</span><span class="tag">Versátil</span>
+          </div>
+        </div>
+        <div class="world-card oldmoney reveal">
+          <div class="icon-wrap">
+            <svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#E7C066" stroke-width="1.6"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 15.8 7.1 18.2l.9-5.5-4-3.9 5.5-.8z"/></svg>
+          </div>
+          <h3>Old Money</h3>
+          <p>Cortes clásicos, colores tierra y acabados finos: blazers, camisas de lino y accesorios que hablan de elegancia discreta.</p>
+          <div class="tag-row">
+            <span class="tag">Atemporal</span><span class="tag">Sofisticado</span><span class="tag">Clásico</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COLECCION / LOOKBOOK ============ -->
+  <section id="coleccion" style="background:var(--cream-soft);">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Colección</p>
+        <h2>Prendas para cada momento</h2>
+        <p>Nuestra selección para damas y caballeros se renueva constantemente. Escríbenos por WhatsApp y te mostramos el catálogo actualizado con tallas y precios.</p>
+      </div>
+
+      <div class="lookbook-grid reveal">
+        <div class="lb-tile lb1">
+          <svg class="lb-icon" width="90" height="90" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><path d="M6 9l3-4h6l3 4-2.5 2-1-1v10H8.5V10l-1 1z"/></svg>
+          <span>Blazers &amp; Sacos</span>
+        </div>
+        <div class="lb-tile lb2">
+          <svg class="lb-icon" width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><path d="M4 6h16v3H4zM6 9v11h12V9"/></svg>
+          <span>Camisas &amp; Polos</span>
+        </div>
+        <div class="lb-tile lb3">
+          <svg class="lb-icon" width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><path d="M8 3v18M16 3v18M4 8h16M4 16h16"/></svg>
+          <span>Pantalones &amp; Jeans</span>
+        </div>
+        <div class="lb-tile lb4">
+          <svg class="lb-icon" width="70" height="70" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/></svg>
+          <span>Accesorios &amp; Complementos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POR QUE VECCO ============ -->
+  <section id="porque">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Por qué elegirnos</p>
+        <h2>La tienda favorita de Huaraz</h2>
+      </div>
+
+      <div class="benefits">
+        <div class="benefit reveal">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7C1F33" stroke-width="2"><path d="M12 2l2.6 5.3 5.9.9-4.3 4.2 1 5.9L12 15.4 6.8 18.3l1-5.9L3.5 8.2l5.9-.9z"/></svg></div>
+          <h3>Calidad garantizada</h3>
+          <p>Telas y confección seleccionadas para que cada prenda dure y luzca impecable.</p>
+        </div>
+        <div class="benefit reveal">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C9972A" stroke-width="2"><path d="M12 8v4l3 3M12 2a10 10 0 100 20 10 10 0 000-20z"/></svg></div>
+          <h3>Atención todos los días</h3>
+          <p>Abrimos de lunes a domingo, de 9:00 a.m. a 9:00 p.m., para que vengas cuando te acomode.</p>
+        </div>
+        <div class="benefit reveal">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#1E3D2B" stroke-width="2"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg></div>
+          <h3>Dos tiendas en Huaraz</h3>
+          <p>Encuéntranos en Julián de Morales o en Av. Luzuriaga, en el corazón de la ciudad.</p>
+        </div>
+        <div class="benefit reveal">
+          <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C1552C" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-8.5 8.4A8.38 8.38 0 014 11.5 8.38 8.38 0 0112.5 3a8.5 8.5 0 018.5 8.5z"/></svg></div>
+          <h3>Asesoría personalizada</h3>
+          <p>Te ayudamos a encontrar la talla y el estilo ideal, por WhatsApp o en tienda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ UBICACION ============ -->
+  <section id="ubicacion" style="padding-top:20px;">
+    <div class="wrap">
+      <div class="location reveal">
+        <div>
+          <p class="eyebrow" style="color:var(--gold-light);">Visítanos</p>
+          <h2>Te esperamos en el corazón de Huaraz</h2>
+          <div class="loc-list">
+            <div class="loc-item">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E7C066" stroke-width="2"><path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+              <div>
+                <h4>Tienda 1</h4>
+                <p>Jr. Julián de Morales N°541, Huaraz 02001</p>
+              </div>
+            </div>
+            <div class="loc-item">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E7C066" stroke-width="2"><path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg></div>
+              <div>
+                <h4>Tienda 2</h4>
+                <p>Av. Luzuriaga 1036, Huaraz 02001</p>
+              </div>
+            </div>
+            <div class="loc-item">
+              <div class="ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#E7C066" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+              <div>
+                <h4>Horario</h4>
+                <p>Lunes a domingo · 9:00 a.m. – 9:00 p.m.</p>
+              </div>
+            </div>
+          </div>
+          <a href="https://www.google.com/maps/search/?api=1&query=Jr%C3%B3n%20Juli%C3%A1n%20de%20Morales%20541%20Huaraz%20Peru" target="_blank" rel="noopener" class="btn btn-gold" style="margin-top:30px;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s7-7.5 7-13a7 7 0 10-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            Cómo llegar
+          </a>
+        </div>
+        <div class="loc-map-visual">
+          <svg viewBox="0 0 400 340" width="100%" height="100%">
+            <rect width="400" height="340" fill="#0f2317"/>
+            <g opacity="0.5" stroke="#C9972A" stroke-width="1.5" fill="none">
+              <path d="M0,260 L60,220 L120,260 L180,200 L240,250 L300,190 L360,240 L400,210"/>
+              <path d="M0,300 L80,270 L160,300 L240,260 L320,290 L400,250" opacity="0.6"/>
+            </g>
+            <circle cx="150" cy="150" r="7" fill="#7C1F33"/>
+            <circle cx="150" cy="150" r="14" fill="none" stroke="#7C1F33" stroke-width="2" opacity="0.5"/>
+            <text x="165" y="155" fill="#E7C066" font-family="Manrope" font-size="13" font-weight="700">Jr. Julián de Morales</text>
+            <circle cx="230" cy="210" r="7" fill="#C9972A"/>
+            <circle cx="230" cy="210" r="14" fill="none" stroke="#C9972A" stroke-width="2" opacity="0.5"/>
+            <text x="245" y="215" fill="#E7C066" font-family="Manrope" font-size="13" font-weight="700">Av. Luzuriaga</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SOCIAL CTA ============ -->
+  <section>
+    <div class="wrap">
+      <div class="social-cta reveal">
+        <div class="inner">
+          <p class="eyebrow" style="color:var(--gold-light);">Síguenos</p>
+          <h2>Vive el estilo VECCO en tu feed</h2>
+          <p>Nuevas prendas, combinaciones y promociones cada semana. Todo nuestro catálogo y enlaces en un solo lugar.</p>
+          <div class="social-btns">
+            <a href="https://www.instagram.com/veccoperu/" target="_blank" rel="noopener" class="btn btn-gold">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+              Instagram · @veccoperu
+            </a>
+            <a href="https://linktr.ee/Veccoperu" target="_blank" rel="noopener" class="btn btn-outline" style="color:#fff;border-color:#fff;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 007.07 0l2-2a5 5 0 00-7.07-7.07l-1 1"/><path d="M14 11a5 5 0 00-7.07 0l-2 2a5 5 0 007.07 7.07l1-1"/></svg>
+              linktr.ee/Veccoperu
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-logo">VECCO</div>
+      <div class="foot-links">
+        <a href="#estilo">Estilo</a>
+        <a href="#coleccion">Colección</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a href="https://www.instagram.com/veccoperu/" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://linktr.ee/Veccoperu" target="_blank" rel="noopener">Linktree</a>
+        <a href="https://wa.me/51990176872" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 VECCO Perú — Ropa y Accesorios para Damas y Caballeros, Huaraz.</span>
+      <span>Jr. Julián de Morales 541 · Av. Luzuriaga 1036, Huaraz</span>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/51990176872?text=Hola%20VECCO%2C%20quisiera%20más%20información" target="_blank" rel="noopener" class="float-wa" aria-label="Escríbenos por WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.35a9.9 9.9 0 0 0 4.62 1.14h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.79 14.1c-.24.68-1.4 1.3-1.93 1.38-.5.08-1.13.11-1.82-.12-.42-.13-.96-.31-1.65-.61-2.9-1.26-4.79-4.17-4.94-4.36-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.02-2.41.26-.29.57-.36.76-.36h.55c.18 0 .42-.07.66.5.24.58.83 2 .9 2.14.07.15.12.32.02.51-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.29-.12.57.16.28.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.2 1.36.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.24.09 1.53.72 1.79.85.26.13.44.19.5.3.07.11.07.63-.17 1.31z"/></svg>
+</a>
+
+<script>
+  // header scroll shadow
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  // mobile menu
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
