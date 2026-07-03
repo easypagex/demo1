@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RARA Residencia — Residencia de Arte en Villanueva del Rosario</title>
+<meta name="description" content="RARA Residencia: programa de residencias para artistas en Villanueva del Rosario, Málaga. Arte, naturaleza y comunidad rural.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --crema:#FFF7EA;
+    --rosa:#FF5FA2;
+    --rosa-suave:#FFD6E8;
+    --azul:#2E4CA6;
+    --azul-claro:#6FA8DC;
+    --terracota:#E8622C;
+    --verde:#4C8C4A;
+    --amarillo:#FFC93C;
+    --tinta:#241F3D;
+    --radius: 28px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--crema);
+    color:var(--tinta);
+    font-family:'Space Grotesk', sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    line-height:0.95;
+    letter-spacing:-0.02em;
+    margin:0;
+  }
+  .tag{
+    font-family:'Caveat', cursive;
+    font-weight:700;
+    font-size:1.4rem;
+    color:var(--terracota);
+    display:inline-block;
+    transform:rotate(-3deg);
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,247,234,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:3px solid var(--tinta);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size:1.6rem;
+    letter-spacing:-0.03em;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo span{color:var(--rosa);}
+  .navlinks{display:flex; gap:26px; align-items:center; font-weight:600; font-size:0.95rem;}
+  .navlinks a{text-decoration:none; position:relative; padding:4px 0;}
+  .navlinks a:hover{color:var(--rosa);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--tinta); color:var(--crema);
+    padding:12px 22px; border-radius:50px;
+    font-weight:600; font-size:0.95rem;
+    text-decoration:none; border:2px solid var(--tinta);
+    transition:transform .2s ease, background .2s ease, color .2s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translateY(-2px) rotate(-1deg); background:var(--rosa); border-color:var(--rosa);}
+  .btn.outline{background:transparent; color:var(--tinta);}
+  .btn.outline:hover{background:var(--tinta); color:var(--crema);}
+  .btn.small{padding:9px 16px; font-size:0.85rem;}
+  .navlinks .btn{padding:9px 18px;}
+  .menu-toggle{display:none;}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding:70px 0 90px;
+    overflow:hidden;
+  }
+  .cloud{
+    position:absolute; border-radius:50%;
+    background:var(--rosa-suave);
+    filter:blur(0px);
+  }
+  .cloud.c1{width:260px;height:120px; top:-40px; left:-60px;}
+  .cloud.c2{width:180px;height:90px; top:120px; right:-40px; background:var(--amarillo); opacity:.7;}
+  .cloud.c3{width:140px;height:70px; bottom:20px; left:20%; background:var(--azul-claro); opacity:.6;}
+  .float{animation:floaty 7s ease-in-out infinite;}
+  @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
+
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;
+    position:relative; z-index:2;
+  }
+  .eyebrow{
+    display:inline-block; background:var(--tinta); color:var(--crema);
+    padding:6px 14px; border-radius:50px; font-size:0.8rem; font-weight:700;
+    letter-spacing:0.06em; text-transform:uppercase; margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(3.2rem, 9vw, 6.4rem);
+    color:var(--tinta);
+  }
+  .hero h1 .hl{color:var(--rosa); font-style:italic; font-weight:600;}
+  .hero p.lead{
+    font-size:1.2rem; max-width:46ch; margin:22px 0 30px; line-height:1.5;
+    color:#3c3358;
+  }
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap;}
+  .hero-art{
+    position:relative;
+    background:var(--azul);
+    border-radius:var(--radius);
+    border:3px solid var(--tinta);
+    aspect-ratio:4/5;
+    display:flex; align-items:flex-end;
+    padding:26px;
+    box-shadow:14px 14px 0 var(--terracota);
+  }
+  .hero-art .badge{
+    background:var(--amarillo); color:var(--tinta);
+    padding:14px 18px; border-radius:18px; border:3px solid var(--tinta);
+    font-weight:700; font-size:0.95rem; transform:rotate(-4deg);
+    box-shadow:6px 6px 0 var(--tinta);
+  }
+  .hero-art svg{position:absolute; inset:0; width:100%; height:100%;}
+
+  section{padding:90px 0; position:relative;}
+  .section-title{
+    font-size:clamp(2.2rem, 5vw, 3.4rem);
+    margin-bottom:18px;
+  }
+  .kicker{
+    font-weight:700; text-transform:uppercase; letter-spacing:0.1em;
+    font-size:0.8rem; color:var(--terracota); margin-bottom:10px; display:block;
+  }
+  .lead-text{font-size:1.1rem; max-width:64ch; line-height:1.65; color:#3c3358;}
+
+  /* QUE ES */
+  .que-es{background:var(--tinta); color:var(--crema); border-radius:40px; margin:0 20px;}
+  .que-es .wrap{padding:0 28px;}
+  .que-es .section-title{color:var(--crema);}
+  .que-es .lead-text{color:#e7e1f7;}
+  .que-es .kicker{color:var(--amarillo);}
+  .stat-row{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:50px;
+  }
+  .stat{
+    background:rgba(255,255,255,0.06); border:2px solid rgba(255,255,255,0.25);
+    border-radius:22px; padding:26px;
+  }
+  .stat .num{font-family:'Fraunces',serif; font-size:2.6rem; font-weight:800; color:var(--rosa);}
+  .stat .lab{font-size:0.95rem; color:#cfc7ea; margin-top:6px;}
+
+  /* LA CASA */
+  .casa-grid{display:grid; grid-template-columns:1fr 1fr; gap:52px; align-items:center; margin-top:40px;}
+  .casa-visual{
+    background:var(--rosa-suave); border-radius:var(--radius); border:3px solid var(--tinta);
+    padding:30px; position:relative; min-height:380px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .sofa{
+    background:var(--azul); width:80%; border-radius:24px; border:3px solid var(--tinta);
+    padding:20px; box-shadow:10px 10px 0 var(--tinta); color:var(--crema); text-align:center;
+    transform:rotate(-2deg);
+  }
+  .sofa strong{display:block; font-family:'Fraunces',serif; font-size:1.3rem;}
+  .feature-list{list-style:none; padding:0; margin:26px 0 0;}
+  .feature-list li{
+    display:flex; gap:14px; padding:16px 0; border-bottom:2px dashed #d8cdb3;
+  }
+  .feature-list .ico{
+    width:38px; height:38px; border-radius:50%; flex:none;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:700; color:var(--crema); font-family:'Fraunces',serif;
+  }
+  .feature-list li:nth-child(1) .ico{background:var(--rosa);}
+  .feature-list li:nth-child(2) .ico{background:var(--verde);}
+  .feature-list li:nth-child(3) .ico{background:var(--azul);}
+  .feature-list li:nth-child(4) .ico{background:var(--terracota);}
+  .feature-list h4{margin:0 0 4px; font-family:'Fraunces',serif; font-size:1.1rem;}
+  .feature-list p{margin:0; color:#5b5170; font-size:0.95rem;}
+
+  /* PROCESO */
+  .proceso{background:var(--azul-claro); border-radius:40px; margin:0 20px;}
+  .proceso .section-title, .proceso .kicker{color:var(--tinta);}
+  .steps{display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:44px;}
+  .step{
+    background:var(--crema); border:3px solid var(--tinta); border-radius:22px; padding:28px;
+    box-shadow:8px 8px 0 var(--tinta); transition:transform .2s ease;
+  }
+  .step:hover{transform:translate(-4px,-4px); box-shadow:12px 12px 0 var(--tinta);}
+  .step .n{font-family:'Fraunces',serif; font-size:2.2rem; font-weight:800; color:var(--rosa);}
+  .step h3{font-size:1.25rem; margin:10px 0 8px;}
+  .step p{margin:0; color:#4a4360; font-size:0.95rem; line-height:1.5;}
+
+  /* ARTISTAS */
+  .artist-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:44px;
+  }
+  .artist-card{
+    border-radius:22px; padding:26px; border:3px solid var(--tinta);
+    min-height:190px; display:flex; flex-direction:column; justify-content:flex-end;
+    position:relative; overflow:hidden;
+  }
+  .artist-card::before{
+    content:""; position:absolute; top:-30px; right:-30px; width:110px; height:110px;
+    border-radius:50%; background:rgba(255,255,255,0.35);
+  }
+  .artist-card h4{font-family:'Fraunces',serif; font-size:1.3rem; margin:0 0 6px; position:relative;}
+  .artist-card p{margin:0; font-size:0.9rem; position:relative; opacity:0.85;}
+  .artist-card.c1{background:var(--rosa);}
+  .artist-card.c2{background:var(--amarillo);}
+  .artist-card.c3{background:var(--verde); color:var(--crema);}
+  .artist-card.c4{background:var(--azul); color:var(--crema);}
+  .artist-card.c5{background:var(--terracota); color:var(--crema);}
+  .artist-card.c6{background:var(--rosa-suave);}
+
+  /* PUEBLO */
+  .pueblo{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:52px; align-items:center; margin-top:20px;
+  }
+  .pueblo-visual{
+    border-radius:var(--radius); border:3px solid var(--tinta);
+    background:linear-gradient(180deg, var(--azul-claro) 0%, var(--azul-claro) 55%, var(--verde) 55%, var(--verde) 100%);
+    aspect-ratio:4/3; position:relative; overflow:hidden;
+  }
+  .pueblo-visual .sun{
+    position:absolute; top:26px; right:30px; width:60px; height:60px; border-radius:50%;
+    background:var(--amarillo); border:3px solid var(--tinta);
+  }
+  .pueblo-visual .mount{
+    position:absolute; bottom:32%; left:0; width:0; height:0;
+    border-left:90px solid transparent; border-right:120px solid transparent;
+    border-bottom:120px solid #3a6b3a; 
+  }
+  .pueblo-visual .mount2{
+    position:absolute; bottom:32%; left:90px; width:0; height:0;
+    border-left:110px solid transparent; border-right:90px solid transparent;
+    border-bottom:150px solid #2f5c2f;
+  }
+  .pueblo-visual .house{
+    position:absolute; bottom:0; left:20px; width:70px; height:70px; background:var(--crema); border:3px solid var(--tinta);
+  }
+  .pueblo-visual .house::after{
+    content:""; position:absolute; top:-30px; left:-3px; width:0; height:0;
+    border-left:38px solid transparent; border-right:38px solid transparent; border-bottom:30px solid var(--terracota);
+  }
+  .pueblo-visual .flag{
+    position:absolute; bottom:70px; left:44px; width:26px; height:16px;
+    background:repeating-linear-gradient(90deg, var(--rosa) 0 6px, var(--amarillo) 6px 12px, var(--azul-claro) 12px 18px, var(--verde) 18px 24px, var(--tinta) 24px 26px);
+  }
+
+  /* CTA APLICAR */
+  .aplicar{
+    background:var(--rosa); border-radius:40px; margin:0 20px; text-align:center;
+    border:3px solid var(--tinta);
+  }
+  .aplicar .section-title{color:var(--tinta);}
+  .aplicar p.lead-text{margin:0 auto 30px; color:#4a1730;}
+  .aplicar-ctas{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .aplicar .btn.light{background:var(--crema); color:var(--tinta); border-color:var(--tinta);}
+  .aplicar .btn.light:hover{background:var(--tinta); color:var(--crema);}
+
+  /* FOOTER */
+  footer{padding:70px 0 40px;}
+  .footer-grid{
+    display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px;
+    border-top:3px solid var(--tinta); padding-top:44px;
+  }
+  footer h4{font-family:'Fraunces',serif; font-size:1.2rem; margin:0 0 14px;}
+  footer p, footer li{color:#4a4360; font-size:0.95rem; line-height:1.7;}
+  footer ul{list-style:none; padding:0; margin:0;}
+  footer a{text-decoration:none; font-weight:600;}
+  footer a:hover{color:var(--rosa);}
+  .foot-bottom{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;
+    margin-top:40px; padding-top:20px; border-top:2px dashed #d8cdb3;
+    font-size:0.85rem; color:#7a7290;
+  }
+  .icon-row{display:flex; gap:10px; margin-top:10px;}
+  .icon-row a{
+    width:42px; height:42px; border-radius:50%; border:2px solid var(--tinta);
+    display:flex; align-items:center; justify-content:center; transition:background .2s, transform .2s;
+  }
+  .icon-row a:hover{background:var(--rosa); transform:translateY(-3px);}
+
+  @media (max-width: 880px){
+    .navlinks{display:none;}
+    .hero-grid, .casa-grid, .pueblo, .footer-grid{grid-template-columns:1fr;}
+    .stat-row, .steps{grid-template-columns:1fr 1fr;}
+    .artist-grid{grid-template-columns:1fr 1fr;}
+    .hero-art{order:-1;}
+  }
+  @media (max-width: 520px){
+    .stat-row, .steps, .artist-grid{grid-template-columns:1fr;}
+    .wrap{padding:0 18px;}
+  }
+
+  [data-reveal]{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
+  [data-reveal].in{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo">RA<span>·</span>RA</div>
+    <div class="navlinks">
+      <a href="#que-es">Qué es</a>
+      <a href="#casa">La casa</a>
+      <a href="#proceso">Cómo funciona</a>
+      <a href="#artistas">Artistas</a>
+      <a href="#pueblo">El pueblo</a>
+      <a href="https://www.instagram.com/rararesidencia/" target="_blank" rel="noopener" class="btn small">Instagram ↗</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="cloud c1 float"></div>
+  <div class="cloud c2 float" style="animation-delay:1.5s"></div>
+  <div class="cloud c3 float" style="animation-delay:3s"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Villanueva del Rosario · Málaga</span>
+      <h1>Vive el arte<br>de forma <span class="hl">rara</span>.</h1>
+      <p class="lead">RARA es una residencia de artistas en un pueblo de la Sierra Norte de Málaga: un lugar para crear, exponer y compartir tu trabajo lejos del ruido, rodeada de montañas y de una comunidad que te adopta.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="https://www.instagram.com/rararesidencia/" target="_blank" rel="noopener">📸 Síguenos en Instagram</a>
+        <a class="btn outline" href="https://cargocollective.com/rararesidencia" target="_blank" rel="noopener">Ver portfolio y convocatorias</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <span class="badge">Nueva Rara Avis<br>Asoc. Cultural</span>
+    </div>
+  </div>
+</section>
+
+<section class="que-es" id="que-es" data-reveal>
+  <div class="wrap">
+    <span class="kicker">Qué es RARA</span>
+    <h2 class="section-title">Un programa de residencias para artistas de cualquier disciplina y cualquier lugar del mundo.</h2>
+    <p class="lead-text">Impulsada por la asociación cultural sin ánimo de lucro <strong>Nueva Rara Avis</strong>, RARA conecta a artistas de todo el mundo con el entramado artístico local, en un entorno natural rodeado de montañas y bosques autóctonos. Desde la residencia impulsamos la conciencia social, el respeto a la naturaleza y la igualdad, especialmente la de las mujeres en el arte — porque no hay mejor herramienta de reflexión que la creación.</p>
+    <div class="stat-row">
+      <div class="stat"><div class="num">40+</div><div class="lab">artistas residentes desde 2020</div></div>
+      <div class="stat"><div class="num">20+</div><div class="lab">exposiciones individuales y colectivas</div></div>
+      <div class="stat"><div class="num">1–3</div><div class="lab">meses de estancia por proyecto</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="casa" data-reveal>
+  <div class="wrap casa-grid">
+    <div class="casa-visual">
+      <div class="sofa"><strong>El sofá isabelino azul</strong>y el mural de nubes rosas te reciben al entrar en RARA.</div>
+    </div>
+    <div>
+      <span class="kicker">La casa</span>
+      <h2 class="section-title">Tu estudio, tu cuarto y tu sala de exposiciones, todo en una casa con historia.</h2>
+      <ul class="feature-list">
+        <li>
+          <div class="ico">1</div>
+          <div><h4>Alojamiento en cortesía</h4><p>Estudios con camas individuales para artistas con membresía de residencia — no es un alquiler.</p></div>
+        </li>
+        <li>
+          <div class="ico">2</div>
+          <div><h4>Espacios expositivos propios</h4><p>Muestra tu obra en la casa o en la sala de exposiciones del pueblo, junto al museo José Hernández.</p></div>
+        </li>
+        <li>
+          <div class="ico">3</div>
+          <div><h4>Puertas abiertas los domingos</h4><p>La casa recibe visitas de 12:30 a 14:30h para que el arte llegue a los pueblos.</p></div>
+        </li>
+        <li>
+          <div class="ico">4</div>
+          <div><h4>Vida junto al pueblo</h4><p>Talleres con el colegio, murales colaborativos y una comunidad que se involucra en tu proceso creativo.</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="proceso" id="proceso" data-reveal>
+  <div class="wrap">
+    <span class="kicker">Cómo funciona</span>
+    <h2 class="section-title">Tres pasos para venir a crear a RARA.</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Hazte "amigo/a"</h3>
+        <p>Toda persona admitida se incorpora como Membresía Amigo/a de la Asociación Cultural Nueva Rara Avis, con una cuota que sostiene el proyecto.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>Define tu proyecto</h3>
+        <p>Tu estancia dura entre uno y tres meses naturales, el tiempo justo para desarrollar y completar tu propuesta artística.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>Comparte tu obra</h3>
+        <p>Expón en la casa, en la sala municipal o en el espacio que surja — el pueblo se convierte en tu público y tu colaborador.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="artistas" data-reveal>
+  <div class="wrap">
+    <span class="kicker">Quienes ya han pasado por aquí</span>
+    <h2 class="section-title">Cerámica, ilustración, performance, música, teatro — todas las disciplinas caben en RARA.</h2>
+    <div class="artist-grid">
+      <div class="artist-card c1"><h4>Cerámica</h4><p>Piezas que recogen la memoria colectiva del pueblo, del puente a las almendras.</p></div>
+      <div class="artist-card c2"><h4>Ilustración y novela gráfica</h4><p>Páginas creadas entre talleres de dibujo con el colegio local.</p></div>
+      <div class="artist-card c3"><h4>Música</h4><p>Estancias que terminan en un concierto para todo el pueblo.</p></div>
+      <div class="artist-card c4"><h4>Teatro experimental</h4><p>Un espacio inspirador para vincular las artes escénicas y visuales.</p></div>
+      <div class="artist-card c5"><h4>Costura y moda</h4><p>De un taller local a la primera Fashion Week de Villanueva del Rosario.</p></div>
+      <div class="artist-card c6"><h4>Pintura y mural</h4><p>Óleos, murales cerámicos y grandes piezas nacidas del entorno rural.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="pueblo" data-reveal>
+  <div class="wrap pueblo">
+    <div>
+      <span class="kicker">El entorno</span>
+      <h2 class="section-title">Un pueblo de 3.200 habitantes, a 40 minutos de Málaga capital.</h2>
+      <p class="lead-text">Villanueva del Rosario está rodeado de las Sierras de Camarolos y El Jobo: paseos en silencio, sin coches ni ruido de ciudad. RARA ondea su bandera LGTBI desde el balcón, en una calle donde el arte contemporáneo convive con la vida rural más auténtica.</p>
+    </div>
+    <div class="pueblo-visual">
+      <div class="sun"></div>
+      <div class="mount2"></div>
+      <div class="mount"></div>
+      <div class="house"></div>
+      <div class="flag"></div>
+    </div>
+  </div>
+</section>
+
+<section class="aplicar" id="contacto" data-reveal>
+  <div class="wrap" style="max-width:760px;">
+    <span class="kicker">¿Te apuntas?</span>
+    <h2 class="section-title">Trae tu proyecto a Villanueva del Rosario.</h2>
+    <p class="lead-text">Escríbenos y cuéntanos tu propuesta. Bienvenidas todas las nacionalidades y disciplinas de la creación contemporánea.</p>
+    <div class="aplicar-ctas">
+      <a class="btn light" href="mailto:rararesidenciaart@gmail.com">✉️ rararesidenciaart@gmail.com</a>
+      <a class="btn light" href="https://www.instagram.com/rararesidencia/" target="_blank" rel="noopener">📸 Instagram</a>
+      <a class="btn light" href="https://cargocollective.com/rararesidencia" target="_blank" rel="noopener">🖼️ Portfolio completo</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo" style="margin-bottom:12px;">RA<span>·</span>RA</div>
+        <p>Residencia Rara es un proyecto de la Asociación Cultural Nueva Rara Avis en Villanueva del Rosario, Málaga. Gestionado por Verónica Ruth Frías y Cyro García Rodríguez.</p>
+        <div class="icon-row">
+          <a href="https://www.instagram.com/rararesidencia/" target="_blank" rel="noopener" aria-label="Instagram">IG</a>
+          <a href="https://cargocollective.com/rararesidencia" target="_blank" rel="noopener" aria-label="Cargo Collective">CC</a>
+          <a href="mailto:rararesidenciaart@gmail.com" aria-label="Email">✉</a>
+        </div>
+      </div>
+      <div>
+        <h4>Explora</h4>
+        <ul>
+          <li><a href="#que-es">Qué es RARA</a></li>
+          <li><a href="#casa">La casa</a></li>
+          <li><a href="#proceso">Cómo funciona</a></li>
+          <li><a href="#artistas">Artistas</a></li>
+          <li><a href="#pueblo">El pueblo</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="mailto:rararesidenciaart@gmail.com">rararesidenciaart@gmail.com</a></li>
+          <li><a href="https://www.instagram.com/rararesidencia/" target="_blank" rel="noopener">@rararesidencia</a></li>
+          <li><a href="https://cargocollective.com/rararesidencia" target="_blank" rel="noopener">cargocollective.com/rararesidencia</a></li>
+          <li>Gestores: @veronicaruthfrias · @cyro.garcia.rodriguez</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>#villanuevadelrosario · Asociación Cultural Nueva Rara Avis</span>
+      <span>Hecho con cariño desde el pueblo 🌸</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const els = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  }, {threshold:0.15});
+  els.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
