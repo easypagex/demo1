@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Little Laughs · Accesorios personalizados hechos con ilusión</title>
+<meta name="description" content="Little Laughs · Accesorios personalizados y pequeños detalles hechos a mano desde cero en Madrid. Envíos a toda España.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink: #FF8FB1;
+    --pink-deep:#FF5C8A;
+    --sky:#79D2F2;
+    --sky-deep:#3FB6E8;
+    --yellow:#FFD34D;
+    --mint:#7FE0C0;
+    --lilac:#C9A6F2;
+    --cream:#FFF7EE;
+    --ink:#4A3B4E;
+    --ink-soft:#7A6A80;
+    --white:#FFFFFF;
+    --shadow: 0 12px 30px rgba(255,92,138,0.18);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Quicksand', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+    line-height:1.6;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Baloo 2', cursive;
+    font-weight:700;
+    line-height:1.1;
+  }
+
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  img,svg{display:block; max-width:100%;}
+
+  .container{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ===== Scroll reveal ===== */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1; transform:none; transition:none;}
+    *{animation:none !important;}
+  }
+
+  /* ===== Top confetti bar ===== */
+  .confetti-bar{
+    height:10px;
+    width:100%;
+    background:repeating-linear-gradient(90deg,
+      var(--pink) 0 40px,
+      var(--sky) 40px 80px,
+      var(--yellow) 80px 120px,
+      var(--mint) 120px 160px,
+      var(--lilac) 160px 200px);
+  }
+
+  /* ===== Header ===== */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(255,247,238,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:2px dashed rgba(255,92,138,0.25);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+  }
+  .logo{
+    font-family:'Baloo 2', cursive;
+    font-size:1.6rem;
+    font-weight:800;
+    color:var(--pink-deep);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .logo span.cloud{font-size:1.3rem;}
+  .nav-links{
+    display:flex;
+    gap:28px;
+    font-weight:600;
+    font-size:0.98rem;
+  }
+  .nav-links a{
+    position:relative;
+    color:var(--ink);
+    transition:color .25s ease;
+  }
+  .nav-links a:hover{color:var(--pink-deep);}
+  .nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0; bottom:-4px;
+    width:0%; height:3px;
+    background:var(--yellow);
+    border-radius:4px;
+    transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:linear-gradient(135deg,var(--pink),var(--pink-deep));
+    color:var(--white) !important;
+    padding:10px 22px;
+    border-radius:999px;
+    font-weight:700;
+    box-shadow:var(--shadow);
+    white-space:nowrap;
+    transition:transform .2s ease;
+  }
+  .nav-cta:hover{transform:translateY(-2px) scale(1.03);}
+  .burger{display:none; font-size:1.6rem; background:none; border:none; color:var(--pink-deep); cursor:pointer;}
+
+  @media (max-width:820px){
+    .nav-links{
+      position:fixed;
+      top:68px; left:0; right:0;
+      background:var(--white);
+      flex-direction:column;
+      align-items:center;
+      gap:0;
+      max-height:0;
+      overflow:hidden;
+      transition:max-height .35s ease;
+      border-bottom:2px dashed rgba(255,92,138,0.25);
+    }
+    .nav-links.open{max-height:320px;}
+    .nav-links a{padding:16px; width:100%; text-align:center;}
+    .burger{display:block;}
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    padding:80px 24px 100px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero-bg-blob{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(121,210,242,0.35), transparent 40%),
+      radial-gradient(circle at 85% 15%, rgba(255,143,177,0.35), transparent 40%),
+      radial-gradient(circle at 50% 90%, rgba(255,211,77,0.3), transparent 45%);
+  }
+  .hero-content{position:relative; z-index:2; max-width:780px; margin:0 auto;}
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--white);
+    color:var(--pink-deep);
+    font-weight:700;
+    padding:8px 18px;
+    border-radius:999px;
+    box-shadow:var(--shadow);
+    font-size:0.9rem;
+    margin-bottom:24px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    color:var(--ink);
+    margin-bottom:20px;
+  }
+  .hero h1 .rainbow{
+    background:linear-gradient(90deg,var(--pink-deep),var(--sky-deep),var(--yellow),var(--mint),var(--lilac));
+    background-size:200% auto;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:shine 6s linear infinite;
+  }
+  @keyframes shine{
+    to{background-position:200% center;}
+  }
+  .hero p.sub{
+    font-size:1.2rem;
+    color:var(--ink-soft);
+    margin-bottom:36px;
+  }
+  .hero-ctas{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-bottom:56px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:15px 30px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:1rem;
+    transition:transform .2s ease, box-shadow .2s ease;
+    cursor:pointer;
+    border:none;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--pink),var(--pink-deep));
+    color:var(--white);
+    box-shadow:var(--shadow);
+  }
+  .btn-primary:hover{transform:translateY(-3px) scale(1.03); box-shadow:0 16px 34px rgba(255,92,138,0.3);}
+  .btn-secondary{
+    background:var(--white);
+    color:var(--sky-deep);
+    border:2px solid var(--sky);
+  }
+  .btn-secondary:hover{transform:translateY(-3px) scale(1.03); background:var(--sky); color:var(--white);}
+
+  .hero-art{
+    position:relative;
+    z-index:2;
+    max-width:640px;
+    margin:0 auto;
+  }
+  .float{
+    animation:floaty 5s ease-in-out infinite;
+  }
+  .float-slow{animation-duration:7s;}
+  .float-rev{animation-direction:alternate-reverse;}
+  @keyframes floaty{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-14px) rotate(3deg);}
+  }
+
+  /* ===== Marquee ===== */
+  .marquee-wrap{
+    background:var(--ink);
+    overflow:hidden;
+    padding:14px 0;
+  }
+  .marquee{
+    display:flex;
+    width:max-content;
+    animation:scroll-left 22s linear infinite;
+    gap:0;
+  }
+  @keyframes scroll-left{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  .marquee span{
+    font-family:'Baloo 2', cursive;
+    font-size:1.15rem;
+    color:var(--white);
+    padding:0 28px;
+    white-space:nowrap;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .marquee span:nth-child(5n+1){color:var(--pink);}
+  .marquee span:nth-child(5n+2){color:var(--sky);}
+  .marquee span:nth-child(5n+3){color:var(--yellow);}
+  .marquee span:nth-child(5n+4){color:var(--mint);}
+  .marquee span:nth-child(5n+5){color:var(--lilac);}
+
+  /* ===== Section generic ===== */
+  section{padding:96px 0;}
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 56px;
+  }
+  .section-head .eyebrow{background:var(--cream); box-shadow:none; border:2px dashed var(--pink);}
+  .section-head h2{
+    font-size:clamp(2rem, 4vw, 2.8rem);
+    margin:14px 0 12px;
+  }
+  .section-head p{color:var(--ink-soft); font-size:1.08rem;}
+
+  /* ===== About / Ilusión ===== */
+  .about{
+    background:var(--white);
+    border-top:2px dashed rgba(255,92,138,0.2);
+    border-bottom:2px dashed rgba(255,92,138,0.2);
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .about-grid.reverse{grid-template-columns:1fr 1fr;}
+  .about h3{font-size:1.9rem; margin-bottom:16px; color:var(--pink-deep);}
+  .about p{color:var(--ink-soft); margin-bottom:16px; font-size:1.05rem;}
+  .about-badges{display:flex; gap:14px; flex-wrap:wrap; margin-top:24px;}
+  .badge{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:var(--cream);
+    padding:10px 16px;
+    border-radius:999px;
+    font-weight:600;
+    font-size:0.92rem;
+    color:var(--ink);
+  }
+  @media (max-width:860px){
+    .about-grid{grid-template-columns:1fr; gap:36px;}
+  }
+
+  /* ===== Product categories ===== */
+  .categories{background:var(--cream);}
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:28px;
+  }
+  .cat-card{
+    background:var(--white);
+    border-radius:28px;
+    padding:36px 28px;
+    text-align:center;
+    box-shadow:0 10px 26px rgba(74,59,78,0.08);
+    transition:transform .3s ease, box-shadow .3s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .cat-card:hover{transform:translateY(-8px); box-shadow:0 18px 34px rgba(74,59,78,0.14);}
+  .cat-icon{
+    width:88px; height:88px;
+    margin:0 auto 20px;
+    display:flex; align-items:center; justify-content:center;
+    border-radius:50%;
+  }
+  .cat-card:nth-child(1) .cat-icon{background:rgba(255,143,177,0.18);}
+  .cat-card:nth-child(2) .cat-icon{background:rgba(121,210,242,0.2);}
+  .cat-card:nth-child(3) .cat-icon{background:rgba(255,211,77,0.22);}
+  .cat-card:nth-child(4) .cat-icon{background:rgba(127,224,192,0.22);}
+  .cat-card:nth-child(5) .cat-icon{background:rgba(201,166,242,0.22);}
+  .cat-card:nth-child(6) .cat-icon{background:rgba(255,143,177,0.18);}
+  .cat-card h3{font-size:1.3rem; margin-bottom:10px;}
+  .cat-card p{color:var(--ink-soft); font-size:0.98rem;}
+  @media (max-width:900px){.cat-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:600px){.cat-grid{grid-template-columns:1fr;}}
+
+  /* ===== Process / cómo funciona ===== */
+  .process{background:var(--white);}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    position:relative;
+  }
+  .step{
+    text-align:center;
+    padding:28px 18px;
+  }
+  .step-num{
+    width:56px; height:56px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Baloo 2',cursive;
+    font-weight:700;
+    font-size:1.4rem;
+    color:var(--white);
+    margin:0 auto 18px;
+  }
+  .step:nth-child(1) .step-num{background:var(--pink-deep);}
+  .step:nth-child(2) .step-num{background:var(--sky-deep);}
+  .step:nth-child(3) .step-num{background:var(--yellow); color:var(--ink);}
+  .step:nth-child(4) .step-num{background:var(--mint); color:var(--ink);}
+  .step h3{font-size:1.1rem; margin-bottom:8px;}
+  .step p{color:var(--ink-soft); font-size:0.94rem;}
+  @media (max-width:900px){.steps{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.steps{grid-template-columns:1fr;}}
+
+  /* ===== Testimonials ===== */
+  .testimonials{background:var(--lilac); position:relative; overflow:hidden;}
+  .testimonials::before{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 20% 30%, rgba(255,255,255,0.25), transparent 40%);
+  }
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+    position:relative;
+    z-index:2;
+  }
+  .testi-card{
+    background:var(--white);
+    border-radius:24px;
+    padding:30px 26px;
+    box-shadow:0 14px 28px rgba(74,59,78,0.15);
+  }
+  .testi-stars{color:var(--yellow); font-size:1.1rem; margin-bottom:14px; letter-spacing:2px;}
+  .testi-card p{font-size:0.98rem; color:var(--ink); margin-bottom:18px;}
+  .testi-author{display:flex; align-items:center; gap:12px;}
+  .testi-avatar{
+    width:42px; height:42px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Baloo 2', cursive;
+    color:var(--white);
+    font-weight:700;
+  }
+  .testi-author span{font-weight:700; font-size:0.92rem;}
+  @media (max-width:900px){.testi-grid{grid-template-columns:1fr;}}
+
+  /* ===== Envíos / info ===== */
+  .info{background:var(--cream);}
+  .info-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .info-card{
+    background:var(--white);
+    border-radius:24px;
+    padding:32px 26px;
+    text-align:center;
+    border:2px dashed transparent;
+    transition:border-color .25s ease, transform .25s ease;
+  }
+  .info-card:hover{border-color:var(--pink); transform:translateY(-4px);}
+  .info-card .emoji{font-size:2.2rem; margin-bottom:14px;}
+  .info-card h3{font-size:1.15rem; margin-bottom:8px;}
+  .info-card p{color:var(--ink-soft); font-size:0.95rem;}
+  @media (max-width:900px){.info-grid{grid-template-columns:1fr;}}
+
+  /* ===== CTA final ===== */
+  .cta-final{
+    background:linear-gradient(135deg, var(--pink) 0%, var(--pink-deep) 55%, #E85A9C 100%);
+    text-align:center;
+    color:var(--white);
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-final::before, .cta-final::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,0.12);
+  }
+  .cta-final::before{width:280px; height:280px; top:-100px; left:-80px;}
+  .cta-final::after{width:200px; height:200px; bottom:-80px; right:-60px;}
+  .cta-final h2{font-size:clamp(2rem,4.5vw,3rem); margin-bottom:16px; position:relative; z-index:2;}
+  .cta-final p{font-size:1.1rem; opacity:0.95; margin-bottom:34px; position:relative; z-index:2;}
+  .cta-final .hero-ctas{position:relative; z-index:2; margin-bottom:0;}
+  .cta-final .btn-primary{background:var(--white); color:var(--pink-deep); box-shadow:0 12px 26px rgba(0,0,0,0.15);}
+  .cta-final .btn-secondary{background:transparent; color:var(--white); border-color:rgba(255,255,255,0.6);}
+  .cta-final .btn-secondary:hover{background:rgba(255,255,255,0.15); color:var(--white);}
+
+  /* ===== Footer ===== */
+  footer{
+    background:var(--ink);
+    color:rgba(255,255,255,0.85);
+    padding:56px 0 28px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:40px;
+    margin-bottom:40px;
+  }
+  .footer-logo{
+    font-family:'Baloo 2', cursive;
+    font-size:1.5rem;
+    color:var(--white);
+    margin-bottom:12px;
+  }
+  footer p{font-size:0.92rem; color:rgba(255,255,255,0.65); margin-bottom:8px;}
+  footer h4{font-size:1rem; margin-bottom:16px; color:var(--white);}
+  footer ul li{margin-bottom:10px;}
+  footer ul a{font-size:0.92rem; color:rgba(255,255,255,0.7); transition:color .2s ease;}
+  footer ul a:hover{color:var(--yellow);}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,0.12);
+    padding-top:22px;
+    text-align:center;
+    font-size:0.85rem;
+    color:rgba(255,255,255,0.5);
+  }
+  @media (max-width:800px){.footer-grid{grid-template-columns:1fr; gap:28px;}}
+
+  /* ===== Floating buttons ===== */
+  .floating-buttons{
+    position:fixed;
+    bottom:26px;
+    right:24px;
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+    z-index:200;
+  }
+  .fab{
+    width:58px; height:58px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem;
+    box-shadow:0 10px 24px rgba(0,0,0,0.22);
+    transition:transform .2s ease;
+    color:var(--white);
+  }
+  .fab:hover{transform:scale(1.1);}
+  .fab-wa{background:#3FBF60;}
+  .fab-ig{background:radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);}
+
+</style>
+</head>
+<body>
+
+<div class="confetti-bar"></div>
+
+<header>
+  <div class="nav container">
+    <a href="#top" class="logo"><span class="cloud">☁️</span> Little Laughs</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#nosotros">Nosotras</a>
+      <a href="#productos">Productos</a>
+      <a href="#proceso">Cómo pedir</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#envios">Envíos</a>
+      <a href="https://www.instagram.com/__littlelaughs__/" target="_blank" rel="noopener" class="nav-cta">📩 Pedir ahora</a>
+    </nav>
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg-blob"></div>
+  <div class="hero-content">
+    <div class="eyebrow reveal">🎀 Hecho a mano en Madrid, con envíos a toda España</div>
+    <h1 class="reveal">Su sonrisa es <span class="rainbow">nuestra ilusión</span></h1>
+    <p class="sub reveal">Accesorios personalizados y pequeños detalles creados desde cero, uno a uno, para que cada peque luzca algo tan único como ella.</p>
+    <div class="hero-ctas reveal">
+      <a href="https://www.instagram.com/__littlelaughs__/" target="_blank" rel="noopener" class="btn btn-primary">✨ Ver creaciones en Instagram</a>
+      <a href="#productos" class="btn btn-secondary">🎀 Descubrir productos</a>
+    </div>
+  </div>
+
+  <div class="hero-art reveal">
+    <svg viewBox="0 0 700 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de lazos, nube y estrellas de colores">
+      <g class="float float-slow">
+        <ellipse cx="120" cy="70" rx="60" ry="34" fill="#79D2F2" opacity="0.9"/>
+        <ellipse cx="165" cy="55" rx="42" ry="28" fill="#79D2F2" opacity="0.9"/>
+        <ellipse cx="75" cy="58" rx="38" ry="26" fill="#79D2F2" opacity="0.9"/>
+      </g>
+      <g class="float" style="transform-origin:350px 140px;">
+        <path d="M350 100 C310 100 290 130 320 145 C290 160 310 190 350 190 C390 190 410 160 380 145 C410 130 390 100 350 100 Z" fill="#FF8FB1"/>
+        <circle cx="350" cy="145" r="16" fill="#FF5C8A"/>
+      </g>
+      <g class="float float-rev" style="transform-origin:560px 90px;">
+        <path d="M560 70 l10 22 24 3 -18 16 5 24 -21 -12 -21 12 5 -24 -18 -16 24 -3 z" fill="#FFD34D"/>
+      </g>
+      <g class="float" style="transform-origin:500px 190px; animation-duration:6s;">
+        <path d="M500 170 l7 15 16 2 -12 11 3 16 -14 -8 -14 8 3 -16 -12 -11 16 -2 z" fill="#C9A6F2"/>
+      </g>
+      <g class="float float-slow" style="transform-origin:210px 200px;">
+        <path d="M210 175 l7 15 16 2 -12 11 3 16 -14 -8 -14 8 3 -16 -12 -11 16 -2 z" fill="#7FE0C0"/>
+      </g>
+      <g class="float" style="transform-origin:610px 150px; animation-duration:5.5s;">
+        <ellipse cx="610" cy="150" rx="30" ry="18" fill="#FFF" opacity="0.8"/>
+        <ellipse cx="630" cy="140" rx="20" ry="14" fill="#FFF" opacity="0.8"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<div class="marquee-wrap">
+  <div class="marquee" id="marquee">
+    <span>🎀 Hecho a mano</span>
+    <span>☁️ Creaciones desde cero</span>
+    <span>✨ Piezas personalizadas</span>
+    <span>📦 Envíos a toda España</span>
+    <span>📍 Desde Madrid con cariño</span>
+    <span>🎀 Hecho a mano</span>
+    <span>☁️ Creaciones desde cero</span>
+    <span>✨ Piezas personalizadas</span>
+    <span>📦 Envíos a toda España</span>
+    <span>📍 Desde Madrid con cariño</span>
+  </div>
+</div>
+
+<section class="about" id="nosotros">
+  <div class="container about-grid">
+    <div class="reveal">
+      <div class="eyebrow" style="border:2px dashed var(--sky); color:var(--sky-deep);">☁️ Nuestra ilusión</div>
+      <h3>Cada detalle, pensado para arrancar una sonrisa</h3>
+      <p>En Little Laughs diseñamos y creamos cada accesorio desde cero, a mano, con mimo y sin prisa. Nada de producción en serie: cada lazo, cada broche, cada detalle nace pensado para una persona concreta.</p>
+      <p>Nos encanta personalizar: colores, nombres, iniciales o esa combinación imposible de encontrar en cualquier tienda. Si lo imaginas, lo hacemos realidad.</p>
+      <div class="about-badges">
+        <div class="badge">✋ 100% artesanal</div>
+        <div class="badge">🎨 Diseños a medida</div>
+        <div class="badge">📍 Origen Madrid</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <svg viewBox="0 0 420 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración decorativa de lazos y corazones">
+        <circle cx="210" cy="190" r="170" fill="#FFF7EE"/>
+        <circle cx="210" cy="190" r="170" fill="none" stroke="#FF8FB1" stroke-width="3" stroke-dasharray="10 10"/>
+        <g transform="translate(210,150)">
+          <path d="M0 -40 C-40 -40 -60 -10 -30 5 C-60 20 -40 50 0 50 C40 50 60 20 30 5 C60 -10 40 -40 0 -40 Z" fill="#FF8FB1"/>
+          <circle cx="0" cy="5" r="14" fill="#FF5C8A"/>
+        </g>
+        <g transform="translate(120,250)">
+          <path d="M0 -22 C-22 -22 -33 -6 -16 3 C-33 12 -22 28 0 28 C22 28 33 12 16 3 C33 -6 22 -22 0 -22 Z" fill="#79D2F2"/>
+          <circle cx="0" cy="3" r="8" fill="#3FB6E8"/>
+        </g>
+        <g transform="translate(300,255)">
+          <path d="M0 -18 C-18 -18 -27 -5 -13 2 C-27 9 -18 22 0 22 C18 22 27 9 13 2 C27 -5 18 -18 0 -18 Z" fill="#FFD34D"/>
+          <circle cx="0" cy="2" r="6" fill="#F2B705"/>
+        </g>
+        <path d="M100 100 c8 -16 24 -16 32 0 c8 -16 24 -16 32 0 c0 16 -32 32 -32 32 c0 0 -32 -16 -32 -32 z" fill="#C9A6F2"/>
+        <path d="M270 110 c6 -12 18 -12 24 0 c6 -12 18 -12 24 0 c0 12 -24 24 -24 24 c0 0 -24 -12 -24 -24 z" fill="#7FE0C0"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="categories" id="productos">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">🎀 Lo que creamos</div>
+      <h2>Un detalle para cada momento</h2>
+      <p>Accesorios y pequeños detalles hechos a mano, pensados para regalar o para darte un capricho.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card reveal">
+        <div class="cat-icon">🎀</div>
+        <h3>Lazos y broches</h3>
+        <p>Combinaciones de color únicas, en distintos tamaños y estilos para cada ocasión.</p>
+      </div>
+      <div class="cat-card reveal">
+        <div class="cat-icon">🔤</div>
+        <h3>Personalizados con nombre</h3>
+        <p>Iniciales, nombres o mensajes especiales integrados en cada creación.</p>
+      </div>
+      <div class="cat-card reveal">
+        <div class="cat-icon">🎁</div>
+        <h3>Detalles para regalo</h3>
+        <p>Pequeños obsequios listos para sorprender en cumpleaños, bautizos y celebraciones.</p>
+      </div>
+      <div class="cat-card reveal">
+        <div class="cat-icon">👶</div>
+        <h3>Para bebé</h3>
+        <p>Piezas suaves y delicadas, pensadas con materiales cuidados para la piel más sensible.</p>
+      </div>
+      <div class="cat-card reveal">
+        <div class="cat-icon">🌈</div>
+        <h3>Colecciones de temporada</h3>
+        <p>Paletas y diseños que cambian según la época del año, siempre con mucho color.</p>
+      </div>
+      <div class="cat-card reveal">
+        <div class="cat-icon">✨</div>
+        <h3>Piezas 100% a medida</h3>
+        <p>Cuéntanos tu idea y la convertimos en un accesorio irrepetible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="proceso">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow" style="border-color:var(--yellow); color:#B8860B;">📩 Cómo pedir</div>
+      <h2>De la idea a tu buzón, en cuatro pasos</h2>
+      <p>Pedir tu accesorio a medida es tan fácil como escribirnos.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <h3>Escríbenos</h3>
+        <p>Cuéntanos qué tienes en mente por Instagram.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <h3>Diseñamos juntas</h3>
+        <p>Elegimos colores, tamaño y personalización.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <h3>Creamos a mano</h3>
+        <p>Confeccionamos tu pieza desde cero, con calma y cariño.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">4</div>
+        <h3>Vuela hacia ti</h3>
+        <p>Lo enviamos con cuidado a cualquier punto de España.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="opiniones">
+  <div class="container">
+    <div class="section-head reveal" style="color:var(--white);">
+      <div class="eyebrow" style="background:rgba(255,255,255,0.9);">💬 Lo que cuentan</div>
+      <h2 style="color:var(--white);">Sonrisas que nos emocionan</h2>
+      <p style="color:rgba(255,255,255,0.9);">Estas son algunas de las cosas más bonitas que nos han escrito.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p>«El lazo personalizado con el nombre de mi hija quedó precioso, se nota el mimo en cada puntada.»</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:var(--pink-deep);">L</div>
+          <span>Laura, Madrid</span>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p>«Pedí un detalle de cumpleaños y llegó incluso antes de lo esperado, envuelto con muchísimo cariño.»</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:var(--sky-deep);">M</div>
+          <span>Marina, Sevilla</span>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p>«Me encanta que cada pieza sea única. Ya voy por mi tercer pedido y siempre superan lo que imaginaba.»</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:#B8860B;">C</div>
+          <span>Carla, Valencia</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="info" id="envios">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">📦 Información práctica</div>
+      <h2>Todo lo que necesitas saber</h2>
+    </div>
+    <div class="info-grid">
+      <div class="info-card reveal">
+        <div class="emoji">📦</div>
+        <h3>Envíos a toda España</h3>
+        <p>Preparamos y enviamos cada pedido con mucho cuidado, llegue donde llegue.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="emoji">✋</div>
+        <h3>Hecho a mano desde cero</h3>
+        <p>Nada de piezas prefabricadas: cada creación empieza desde el primer hilo.</p>
+      </div>
+      <div class="info-card reveal">
+        <div class="emoji">📍</div>
+        <h3>Con base en Madrid</h3>
+        <p>Trabajamos desde Madrid, con pedidos que puedes seguir por Instagram.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="container">
+    <h2 class="reveal">¿Le regalamos una sonrisa hoy?</h2>
+    <p class="reveal">Escríbenos por Instagram y creamos juntas ese detalle que están buscando.</p>
+    <div class="hero-ctas reveal">
+      <a href="https://www.instagram.com/__littlelaughs__/" target="_blank" rel="noopener" class="btn btn-primary">📩 Escribir por Instagram</a>
+      <a href="#productos" class="btn btn-secondary">🎀 Ver productos</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">☁️ Little Laughs</div>
+        <p>Su sonrisa es nuestra ilusión. Accesorios personalizados y pequeños detalles, creados desde cero con mucho cariño.</p>
+        <p>📍 Madrid · 📦 Envíos a toda España</p>
+      </div>
+      <div>
+        <h4>Explora</h4>
+        <ul>
+          <li><a href="#nosotros">Nosotras</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#proceso">Cómo pedir</a></li>
+          <li><a href="#opiniones">Opiniones</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/__littlelaughs__/" target="_blank" rel="noopener">@__littlelaughs__</a></li>
+          <li><a href="#envios">Información de envíos</a></li>
+          <li><a href="#top">Volver arriba</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 Little Laughs · Hecho con 🎀 en Madrid
+    </div>
+  </div>
+</footer>
+
+<div class="floating-buttons">
+  <a href="https://www.instagram.com/__littlelaughs__/" target="_blank" rel="noopener" class="fab fab-ig" aria-label="Instagram">📷</a>
+</div>
+
+<script>
+  // Mobile nav toggle
+  const burger = document.getElementById('burgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
