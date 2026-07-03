@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hijo de Epigmenio · Cacharros para todos · Madrid</title>
+<meta name="description" content="Artesanía española auténtica en el corazón de Madrid. Cerámica, cristal y textiles hechos a mano. Calle de la Puebla, 13.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cobalto:#1C5C93;
+    --cobalto-dark:#123E64;
+    --barro:#D9622B;
+    --barro-dark:#B44D1C;
+    --amarillo:#F2B705;
+    --oliva:#79974A;
+    --crema:#FBF3E3;
+    --crema2:#F6E8CC;
+    --tinta:#2C2013;
+    --blanco:#FFFDF8;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Nunito', sans-serif;
+    background:var(--crema);
+    color:var(--tinta);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Baloo 2', cursive;
+    font-weight:700;
+    letter-spacing:.2px;
+  }
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+
+  /* Scallop divider - evokes glazed tile edge */
+  .scallop{
+    width:100%; height:26px; line-height:0;
+  }
+  .scallop svg{width:100%; height:100%;}
+
+  /* ===== NAV ===== */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:var(--crema);
+    border-bottom:4px solid var(--tinta);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px; max-width:1180px; margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand-mark{width:40px; height:40px;}
+  .brand-name{font-size:1.25rem; color:var(--cobalto-dark); line-height:1;}
+  .brand-tag{font-size:.68rem; text-transform:uppercase; letter-spacing:1.5px; color:var(--barro); font-weight:800;}
+  nav.links{display:flex; gap:26px; font-weight:800; font-size:.98rem;}
+  nav.links a{padding:6px 2px; border-bottom:3px solid transparent; transition:.2s;}
+  nav.links a:hover{border-color:var(--barro); color:var(--barro-dark);}
+  .nav-cta{
+    background:var(--barro); color:var(--blanco); font-weight:800;
+    padding:10px 18px; border-radius:30px; font-size:.92rem;
+    border:3px solid var(--tinta); box-shadow:3px 3px 0 var(--tinta);
+    transition:.15s;
+  }
+  .nav-cta:hover{transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--tinta);}
+  .burger{display:none; font-size:1.6rem; background:none; border:none; color:var(--tinta); cursor:pointer;}
+
+  @media (max-width:800px){
+    nav.links{
+      position:fixed; top:70px; left:0; right:0; background:var(--crema);
+      flex-direction:column; padding:20px 24px; gap:14px;
+      border-bottom:4px solid var(--tinta);
+      transform:translateY(-130%); transition:transform .25s ease;
+    }
+    nav.links.open{transform:translateY(0);}
+    .burger{display:block;}
+    .nav-cta{display:none;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    background:var(--cobalto);
+    color:var(--blanco);
+    padding:70px 0 0;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:1180px; margin:0 auto; padding:20px 24px 90px;
+    display:grid; grid-template-columns:1.1fr .9fr; gap:40px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--amarillo); color:var(--tinta); font-weight:800;
+    font-size:.8rem; letter-spacing:1px; text-transform:uppercase;
+    padding:7px 14px; border-radius:30px; border:2.5px solid var(--tinta);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.4vw, 4rem);
+    line-height:1.02; color:var(--blanco);
+    text-shadow:3px 3px 0 var(--cobalto-dark);
+  }
+  .hero h1 span{color:var(--amarillo);}
+  .hero p.lead{
+    margin-top:22px; font-size:1.18rem; max-width:46ch; line-height:1.55;
+    font-weight:600; color:var(--crema2);
+  }
+  .hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-top:32px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:9px;
+    font-weight:800; font-size:1rem; padding:14px 26px; border-radius:40px;
+    border:3px solid var(--tinta); cursor:pointer; transition:.15s;
+  }
+  .btn-primary{background:var(--barro); color:var(--blanco); box-shadow:4px 4px 0 var(--tinta);}
+  .btn-primary:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--tinta);}
+  .btn-secondary{background:var(--blanco); color:var(--cobalto-dark); box-shadow:4px 4px 0 var(--tinta);}
+  .btn-secondary:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--tinta);}
+
+  .hero-art{position:relative;}
+  .hero-art svg{width:100%; height:auto;}
+  .spin-slow{animation:spin 40s linear infinite; transform-origin:center;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .float-y{animation:floaty 4.5s ease-in-out infinite;}
+  @keyframes floaty{0%,100%{transform:translateY(0);}50%{transform:translateY(-12px);}}
+
+  @media (max-width:800px){
+    .hero-inner{grid-template-columns:1fr; text-align:left;}
+  }
+
+  /* ===== STRIP ===== */
+  .strip{
+    background:var(--tinta); color:var(--crema);
+    padding:14px 0; overflow:hidden; white-space:nowrap;
+  }
+  .strip-track{display:inline-flex; gap:40px; animation:marquee 26s linear infinite;}
+  .strip span{font-family:'Baloo 2',cursive; font-weight:600; font-size:1.05rem; letter-spacing:.5px;}
+  @keyframes marquee{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+
+  /* ===== SECTION GENERIC ===== */
+  section{padding:86px 0;}
+  .section-head{max-width:640px; margin:0 auto 50px; text-align:center;}
+  .section-head .eyebrow{background:none; border:none; color:var(--barro); padding:0; font-size:.85rem;}
+  .section-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem); color:var(--cobalto-dark); margin-top:6px;}
+  .section-head p{margin-top:14px; font-size:1.08rem; font-weight:600; color:#5a4a34; line-height:1.6;}
+
+  /* ===== HISTORIA ===== */
+  .historia{background:var(--blanco);}
+  .historia-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:56px; align-items:center;}
+  .historia-art{background:var(--crema2); border:3px solid var(--tinta); border-radius:24px; padding:26px; box-shadow:6px 6px 0 var(--tinta);}
+  .historia-text p{font-size:1.06rem; line-height:1.75; margin-bottom:16px; color:#41341f;}
+  .historia-text strong{color:var(--barro-dark);}
+  .signature-quote{
+    margin-top:20px; padding:20px 22px; background:var(--amarillo);
+    border:3px solid var(--tinta); border-radius:16px; font-family:'Baloo 2',cursive;
+    font-size:1.15rem; box-shadow:5px 5px 0 var(--tinta); color:var(--tinta);
+  }
+  @media (max-width:800px){.historia-grid{grid-template-columns:1fr;}}
+
+  /* ===== CATEGORIAS ===== */
+  .categorias{background:var(--cobalto-dark); color:var(--blanco);}
+  .categorias .section-head h2{color:var(--blanco);}
+  .categorias .section-head .eyebrow{color:var(--amarillo);}
+  .categorias .section-head p{color:#cfe0ee;}
+  .cat-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .cat-card{
+    background:var(--blanco); color:var(--tinta); border-radius:20px; padding:26px 20px;
+    border:3px solid var(--tinta); box-shadow:5px 5px 0 rgba(0,0,0,.35);
+    text-align:center; transition:.2s;
+  }
+  .cat-card:hover{transform:translateY(-6px);}
+  .cat-icon{width:64px; height:64px; margin:0 auto 14px;}
+  .cat-card h3{font-size:1.12rem; color:var(--barro-dark); margin-bottom:8px;}
+  .cat-card p{font-size:.92rem; color:#584a33; line-height:1.5; font-weight:600;}
+  @media (max-width:900px){.cat-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:520px){.cat-grid{grid-template-columns:1fr;}}
+
+  /* ===== GALERIA / INSTAGRAM ===== */
+  .galeria{background:var(--crema);}
+  .insta-frame{
+    background:var(--blanco); border:3px solid var(--tinta); border-radius:28px;
+    padding:46px 40px; box-shadow:8px 8px 0 var(--barro); text-align:center;
+    max-width:820px; margin:0 auto;
+  }
+  .insta-frame .cat-icon{width:70px;height:70px;margin:0 auto 16px;}
+  .insta-frame h3{font-size:1.7rem; color:var(--cobalto-dark);}
+  .insta-frame p{margin:14px auto 24px; max-width:52ch; font-weight:600; color:#5a4a34; line-height:1.6;}
+  .insta-stats{display:flex; justify-content:center; gap:34px; margin-bottom:26px; flex-wrap:wrap;}
+  .insta-stats div{text-align:center;}
+  .insta-stats strong{display:block; font-family:'Baloo 2',cursive; font-size:1.6rem; color:var(--barro);}
+  .insta-stats span{font-size:.82rem; text-transform:uppercase; letter-spacing:.6px; font-weight:800; color:#7a6a4c;}
+
+  /* ===== TESTIMONIOS ===== */
+  .testi{background:var(--barro); color:var(--blanco);}
+  .testi .section-head h2{color:var(--blanco);}
+  .testi .section-head .eyebrow{color:var(--amarillo);}
+  .testi .section-head p{color:#fbe6d8;}
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .testi-card{
+    background:var(--blanco); color:var(--tinta); border-radius:18px; padding:26px;
+    border:3px solid var(--tinta); box-shadow:5px 5px 0 var(--tinta);
+  }
+  .stars{color:var(--amarillo); font-size:1.1rem; letter-spacing:2px; margin-bottom:10px;}
+  .testi-card p{font-size:.98rem; line-height:1.6; font-weight:600; color:#41341f; margin-bottom:14px;}
+  .testi-name{font-family:'Baloo 2',cursive; font-weight:700; color:var(--cobalto-dark);}
+  @media (max-width:900px){.testi-grid{grid-template-columns:1fr;}}
+
+  /* ===== VISITA ===== */
+  .visita{background:var(--oliva); color:var(--blanco);}
+  .visita .section-head h2{color:var(--blanco);}
+  .visita .section-head .eyebrow{color:var(--amarillo);}
+  .visita .section-head p{color:#e7f0dc;}
+  .visita-grid{display:grid; grid-template-columns:1fr 1fr; gap:30px;}
+  .info-card{
+    background:var(--blanco); color:var(--tinta); border-radius:22px; padding:32px;
+    border:3px solid var(--tinta); box-shadow:6px 6px 0 var(--tinta);
+  }
+  .info-row{display:flex; gap:16px; margin-bottom:20px;}
+  .info-row:last-child{margin-bottom:0;}
+  .info-row svg{width:30px; height:30px; flex-shrink:0; margin-top:2px;}
+  .info-row h4{font-family:'Baloo 2',cursive; color:var(--barro-dark); font-size:1.05rem; margin-bottom:4px;}
+  .info-row p{font-size:.95rem; font-weight:600; color:#41341f; line-height:1.55;}
+  .hours-table{width:100%; border-collapse:collapse; margin-top:6px;}
+  .hours-table td{padding:5px 0; font-size:.93rem; font-weight:700; color:#41341f;}
+  .hours-table td:last-child{text-align:right; font-weight:600; color:#5a4a34;}
+  .map-card{border-radius:22px; overflow:hidden; border:3px solid var(--tinta); box-shadow:6px 6px 0 var(--tinta); min-height:340px;}
+  .map-card iframe{width:100%; height:100%; min-height:340px; border:0;}
+  @media (max-width:800px){.visita-grid{grid-template-columns:1fr;}}
+
+  /* ===== CTA FINAL ===== */
+  .cta-final{
+    background:var(--amarillo); text-align:center; position:relative; overflow:hidden;
+  }
+  .cta-final h2{font-size:clamp(2rem,4vw,3rem); color:var(--tinta);}
+  .cta-final p{max-width:52ch; margin:16px auto 30px; font-weight:700; font-size:1.1rem; color:#4a3a1c;}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--tinta); color:var(--crema2); padding:56px 0 26px;}
+  .foot-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; margin-bottom:40px;}
+  .foot-brand h3{color:var(--blanco); font-size:1.4rem;}
+  .foot-brand p{margin-top:12px; font-size:.92rem; line-height:1.6; color:#cbb99b; max-width:34ch;}
+  footer h4{font-family:'Baloo 2',cursive; color:var(--amarillo); font-size:1rem; margin-bottom:14px;}
+  footer ul{list-style:none;}
+  footer li{margin-bottom:10px; font-size:.92rem; color:#e4d7bd;}
+  footer a:hover{color:var(--amarillo);}
+  .foot-bottom{
+    border-top:1px solid #453a26; padding-top:22px; text-align:center;
+    font-size:.82rem; color:#9c8b6c;
+  }
+  @media (max-width:760px){.foot-grid{grid-template-columns:1fr;}}
+
+  /* ===== FLOATING BUTTON ===== */
+  .fab{
+    position:fixed; bottom:24px; right:24px; z-index:60;
+    width:62px; height:62px; border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, #f9ce34, #ee2a7b 60%, #6228d7);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:4px 4px 0 var(--tinta); border:3px solid var(--tinta);
+    transition:.2s;
+  }
+  .fab:hover{transform:scale(1.08) translateY(-3px);}
+  .fab svg{width:30px; height:30px;}
+
+  /* reveal on scroll */
+  .reveal{opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .spin-slow,.float-y,.strip-track{animation:none !important;}
+    .reveal{opacity:1; transform:none; transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav">
+  <div class="nav-inner">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 64 64" fill="none">
+        <circle cx="32" cy="32" r="30" fill="#D9622B" stroke="#2C2013" stroke-width="3"/>
+        <path d="M20 40 Q32 20 44 40" stroke="#FBF3E3" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <circle cx="32" cy="26" r="4" fill="#F2B705" stroke="#2C2013" stroke-width="2"/>
+      </svg>
+      <div>
+        <div class="brand-name">Hijo de Epigmenio</div>
+        <div class="brand-tag">Cacharros para todos</div>
+      </div>
+    </div>
+    <nav class="links" id="navLinks">
+      <a href="#historia">Historia</a>
+      <a href="#categorias">Qué encontrarás</a>
+      <a href="#galeria">Instagram</a>
+      <a href="#testimonios">Opiniones</a>
+      <a href="#visita">Visítanos</a>
+    </nav>
+    <a class="nav-cta" href="https://www.instagram.com/hijo_de_epigmenio" target="_blank" rel="noopener">Síguenos ✿</a>
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="reveal in">
+      <span class="eyebrow">Calle de la Puebla, 13 · Madrid</span>
+      <h1>Artesanía española<br>hecha con <span>manos</span>,<br>no con máquinas.</h1>
+      <p class="lead">Cerámica, cristal y textiles tradicionales rescatados de talleres de toda España. Cada pieza tiene un oficio y una historia detrás. <strong>Cacharros para todos.</strong></p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://www.instagram.com/hijo_de_epigmenio" target="_blank" rel="noopener">Ver en Instagram</a>
+        <a class="btn btn-secondary" href="#visita">Cómo llegar</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 420 460" class="float-y">
+        <ellipse cx="210" cy="430" rx="140" ry="18" fill="#123E64" opacity=".4"/>
+        <g class="spin-slow" style="transform-origin:210px 240px;">
+          <path d="M110 240 C110 150 140 90 210 90 C280 90 310 150 310 240 C310 330 270 400 210 400 C150 400 110 330 110 240 Z" fill="#FBF3E3" stroke="#2C2013" stroke-width="5"/>
+          <path d="M210 90 C280 90 310 150 310 240 C310 330 270 400 210 400" fill="none" stroke="#1C5C93" stroke-width="0"/>
+          <circle cx="210" cy="240" r="98" fill="none" stroke="#1C5C93" stroke-width="4" stroke-dasharray="4 10"/>
+          <circle cx="210" cy="240" r="70" fill="none" stroke="#D9622B" stroke-width="6"/>
+          <circle cx="210" cy="240" r="40" fill="#F2B705" stroke="#2C2013" stroke-width="4"/>
+          <g stroke="#79974A" stroke-width="4" fill="none">
+            <path d="M210 200 L210 130"/>
+            <path d="M245 220 L300 175"/>
+            <path d="M245 260 L300 305"/>
+            <path d="M175 220 L120 175"/>
+            <path d="M175 260 L120 305"/>
+            <path d="M210 280 L210 350"/>
+          </g>
+          <circle cx="210" cy="130" r="8" fill="#D9622B"/>
+          <circle cx="300" cy="175" r="8" fill="#D9622B"/>
+          <circle cx="300" cy="305" r="8" fill="#D9622B"/>
+          <circle cx="120" cy="175" r="8" fill="#D9622B"/>
+          <circle cx="120" cy="305" r="8" fill="#D9622B"/>
+          <circle cx="210" cy="350" r="8" fill="#D9622B"/>
+        </g>
+        <path d="M110 240 C110 150 140 90 210 90 C280 90 310 150 310 240 C310 330 270 400 210 400 C150 400 110 330 110 240 Z" fill="none" stroke="#2C2013" stroke-width="5"/>
+        <ellipse cx="210" cy="92" rx="60" ry="14" fill="#1C5C93" stroke="#2C2013" stroke-width="4"/>
+      </svg>
+    </div>
+  </div>
+  <div class="scallop">
+    <svg viewBox="0 0 1200 30" preserveAspectRatio="none"><path d="M0 0 Q30 30 60 0 Q90 30 120 0 Q150 30 180 0 Q210 30 240 0 Q270 30 300 0 Q330 30 360 0 Q390 30 420 0 Q450 30 480 0 Q510 30 540 0 Q570 30 600 0 Q630 30 660 0 Q690 30 720 0 Q750 30 780 0 Q810 30 840 0 Q870 30 900 0 Q930 30 960 0 Q990 30 1020 0 Q1050 30 1080 0 Q1110 30 1140 0 Q1170 30 1200 0 V30 H0 Z" fill="#FBF3E3"/></svg>
+  </div>
+</section>
+
+<!-- ===================== STRIP ===================== -->
+<div class="strip">
+  <div class="strip-track">
+    <span>✿ Hecho a mano</span><span>✿ Cerámica de Priego</span><span>✿ Cristal de Mallorca</span><span>✿ Oficios en extinción</span><span>✿ Regalos con alma</span><span>✿ Hecho en España</span>
+    <span>✿ Hecho a mano</span><span>✿ Cerámica de Priego</span><span>✿ Cristal de Mallorca</span><span>✿ Oficios en extinción</span><span>✿ Regalos con alma</span><span>✿ Hecho en España</span>
+  </div>
+</div>
+
+<!-- ===================== HISTORIA ===================== -->
+<section class="historia" id="historia">
+  <div class="wrap historia-grid">
+    <div class="historia-art reveal">
+      <svg viewBox="0 0 300 340" width="100%">
+        <rect x="10" y="10" width="280" height="320" rx="18" fill="#F2B705" stroke="#2C2013" stroke-width="4"/>
+        <path d="M60 260 Q150 300 240 260 L240 300 Q150 335 60 300 Z" fill="#1C5C93" stroke="#2C2013" stroke-width="4"/>
+        <path d="M90 90 C90 60 120 40 150 40 C180 40 210 60 210 90 C210 150 190 200 150 220 C110 200 90 150 90 90 Z" fill="#FBF3E3" stroke="#2C2013" stroke-width="4"/>
+        <circle cx="150" cy="100" r="26" fill="none" stroke="#D9622B" stroke-width="5"/>
+        <circle cx="150" cy="100" r="10" fill="#79974A"/>
+        <path d="M110 150 Q150 175 190 150" stroke="#D9622B" stroke-width="5" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="historia-text">
+      <span class="eyebrow" style="color:var(--barro); background:none; border:none; padding:0;">Nuestra historia</span>
+      <h2 style="color:var(--cobalto-dark); font-size:2.1rem; margin:8px 0 18px;">El oficio de un padre, vivo en cada estante</h2>
+      <p><strong>Epigmenio</strong> era de los de antes: capaz de hacer con las manos cualquier objeto que se le pasara por la cabeza. Cosas sencillas y tremendamente bellas en su sencillez.</p>
+      <p>Su hijo, <strong>Juan Manuel</strong>, convirtió ese recuerdo en una tienda: un punto de encuentro entre los artesanos de toda España y la gente de la ciudad. Aquí no verás objetos en serie, sino piezas de talleres que llevan generaciones perfeccionando su técnica.</p>
+      <p>Cerámica de Priego, cristal soplado de Mallorca, mantas tejidas a mano en Castellón... rescatamos oficios de los que, muchas veces, ya solo queda un maestro artesano en pie.</p>
+      <div class="signature-quote">"Cacharros para todos" — porque la artesanía de verdad no es un lujo, es una forma de vivir.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CATEGORIAS ===================== -->
+<section class="categorias" id="categorias">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Lo que encontrarás</span>
+      <h2>Un poco de toda España, en una sola calle</h2>
+      <p>Piezas seleccionadas una a una, de talleres que se cuentan con los dedos de una mano.</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card reveal">
+        <svg class="cat-icon" viewBox="0 0 64 64"><path d="M32 8c-10 0-18 8-18 20 0 16 8 24 18 28 10-4 18-12 18-28 0-12-8-20-18-20z" fill="#F2B705" stroke="#2C2013" stroke-width="3"/><circle cx="32" cy="28" r="8" fill="#1C5C93" stroke="#2C2013" stroke-width="2.5"/></svg>
+        <h3>Cerámica</h3>
+        <p>Vajillas, jarrones y piezas pintadas a mano llegadas de Priego y otros talleres alfareros.</p>
+      </div>
+      <div class="cat-card reveal">
+        <svg class="cat-icon" viewBox="0 0 64 64"><path d="M22 8h20l-4 20c8 4 12 12 12 20 0 10-9 16-18 16s-18-6-18-16c0-8 4-16 12-20z" fill="#79974A" stroke="#2C2013" stroke-width="3"/><circle cx="32" cy="46" r="6" fill="#FBF3E3"/></svg>
+        <h3>Cristal</h3>
+        <p>Vidrio soplado según técnicas centenarias que hoy sobreviven en apenas dos talleres de Mallorca.</p>
+      </div>
+      <div class="cat-card reveal">
+        <svg class="cat-icon" viewBox="0 0 64 64"><rect x="10" y="18" width="44" height="30" rx="4" fill="#D9622B" stroke="#2C2013" stroke-width="3"/><path d="M10 26h44M10 34h44M10 42h44" stroke="#FBF3E3" stroke-width="3"/></svg>
+        <h3>Textiles</h3>
+        <p>Mantas y tejidos artesanales, como la mítica manta morellana, tejida por un único maestro.</p>
+      </div>
+      <div class="cat-card reveal">
+        <svg class="cat-icon" viewBox="0 0 64 64"><path d="M32 6l6 14h16l-13 10 5 16-14-9-14 9 5-16-13-10h16z" fill="#1C5C93" stroke="#2C2013" stroke-width="3"/></svg>
+        <h3>Piezas únicas</h3>
+        <p>Objetos de oficios en peligro de extinción, para dar presencia a técnicas que casi nadie conserva ya.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALERIA / INSTAGRAM ===================== -->
+<section class="galeria" id="galeria">
+  <div class="wrap">
+    <div class="insta-frame reveal">
+      <svg class="cat-icon" viewBox="0 0 64 64"><rect x="6" y="6" width="52" height="52" rx="16" fill="url(#ig)" stroke="#2C2013" stroke-width="3"/><circle cx="32" cy="32" r="14" fill="none" stroke="#FBF3E3" stroke-width="4"/><circle cx="46" cy="18" r="3.5" fill="#FBF3E3"/><defs><radialGradient id="ig" cx="30%" cy="107%"><stop offset="0%" stop-color="#f9ce34"/><stop offset="30%" stop-color="#ee2a7b"/><stop offset="100%" stop-color="#6228d7"/></radialGradient></defs></svg>
+      <h3>@hijo_de_epigmenio</h3>
+      <p>Cada semana subimos las piezas nuevas que llegan al taller: fotos, vídeos y las historias de los artesanos que las hacen. Es la forma más rápida de saber qué acaba de llegar.</p>
+      <div class="insta-stats">
+        <div><strong>12K</strong><span>Seguidores</span></div>
+        <div><strong>3.040</strong><span>Publicaciones</span></div>
+        <div><strong>1.137</strong><span>Siguiendo</span></div>
+      </div>
+      <a class="btn btn-primary" href="https://www.instagram.com/hijo_de_epigmenio" target="_blank" rel="noopener">Seguir en Instagram ✿</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIOS ===================== -->
+<section class="testi" id="testimonios">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Opiniones</span>
+      <h2>Lo que dicen quienes ya han pasado por la tienda</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Una tienda maravillosa para los amantes de la artesanía. El dueño es un chico muy simpático y apasionado por su trabajo."</p>
+        <div class="testi-name">Reseña en TripAdvisor</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"La mejor artesanía en estado puro. Verdaderos tesoros, hechos a mano con amor."</p>
+        <div class="testi-name">Reseña en TripAdvisor</div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Ideas maravillosas para la decoración de la casa o para regalar. Se nota que cada pieza está elegida con mucho gusto."</p>
+        <div class="testi-name">Reseña en TripAdvisor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VISITA ===================== -->
+<section class="visita" id="visita">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Visítanos</span>
+      <h2>Te esperamos en el centro de Madrid</h2>
+    </div>
+    <div class="visita-grid">
+      <div class="info-card reveal">
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8z" stroke="#D9622B" stroke-width="2"/><circle cx="12" cy="10" r="3" stroke="#1C5C93" stroke-width="2"/></svg>
+          <div><h4>Dirección</h4><p>Calle de la Puebla, 13<br>28004 Madrid, España</p></div>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 5c0-1 1-2 2-2h2l2 5-2 1c1 3 3 5 6 6l1-2 5 2v2c0 1-1 2-2 2C10 19 4 13 4 5z" stroke="#79974A" stroke-width="2"/></svg>
+          <div><h4>Teléfono</h4><p>910 66 70 19</p></div>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="#1C5C93" stroke-width="2"/><path d="M3 6l9 7 9-7" stroke="#1C5C93" stroke-width="2"/></svg>
+          <div><h4>Email</h4><p>hijodeepigmenio@gmail.com</p></div>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#D9622B" stroke-width="2"/><path d="M12 7v5l4 2" stroke="#D9622B" stroke-width="2"/></svg>
+          <div>
+            <h4>Horario</h4>
+            <table class="hours-table">
+              <tr><td>Lun – Vie</td><td>11:30–14:30 / 17:00–21:00</td></tr>
+              <tr><td>Sábado</td><td>11:00–20:00</td></tr>
+              <tr><td>Domingo</td><td>Cerrado</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="map-card reveal">
+        <iframe src="https://www.google.com/maps?q=Calle+de+la+Puebla,+13,+Madrid,+Spain&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa Hijo de Epigmenio"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="cta-final">
+  <div class="wrap reveal">
+    <h2>Ven a curiosear.<br>Cada estante tiene una historia.</h2>
+    <p>Entrada libre, sin compromiso. Te enseñamos de dónde viene cada pieza y quién la hizo con sus manos.</p>
+    <div class="hero-ctas" style="justify-content:center;">
+      <a class="btn btn-primary" href="https://www.instagram.com/hijo_de_epigmenio" target="_blank" rel="noopener">Síguenos en Instagram</a>
+      <a class="btn btn-secondary" href="tel:+34910667019">Llamar a la tienda</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <h3>Hijo de Epigmenio</h3>
+        <p>Artesanía española reunida en una sola tienda del centro de Madrid. Cacharros para todos, hechos con manos que conocen su oficio.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="#historia">Nuestra historia</a></li>
+          <li><a href="#categorias">Qué encontrarás</a></li>
+          <li><a href="#testimonios">Opiniones</a></li>
+          <li><a href="#visita">Cómo llegar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>Calle de la Puebla, 13, Madrid</li>
+          <li>910 66 70 19</li>
+          <li>hijodeepigmenio@gmail.com</li>
+          <li><a href="https://www.instagram.com/hijo_de_epigmenio" target="_blank" rel="noopener">@hijo_de_epigmenio</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 Hijo de Epigmenio · Madrid · Hecho a mano, con cariño.</div>
+  </div>
+</footer>
+
+<!-- ===================== FLOATING INSTAGRAM BUTTON ===================== -->
+<a class="fab" href="https://www.instagram.com/hijo_de_epigmenio" target="_blank" rel="noopener" aria-label="Instagram">
+  <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="#fff" stroke-width="2"/><circle cx="18" cy="6" r="1.4" fill="#fff"/></svg>
+</a>
+
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const links = document.getElementById('navLinks');
+  burger.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
