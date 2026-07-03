@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turquesa.cm 🌈 Bolsos y cositas bonitas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --turquesa: #1FC7C2;
+    --turquesa-dark: #0E9A96;
+    --rosa: #FF6FA5;
+    --amarillo: #FFCB3C;
+    --morado: #8B5CF6;
+    --crema: #FFF8EE;
+    --tinta: #2B2140;
+    --naranja: #FF8A3D;
+    --borde: 3px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Quicksand', sans-serif;
+    background: var(--crema);
+    color: var(--tinta);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Baloo 2', cursive;
+  }
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;margin:0;padding:0;}
+  img{max-width:100%;display:block;}
+
+  /* ===== Textured background dots ===== */
+  .dotbg{
+    background-image: radial-gradient(circle, rgba(43,33,64,0.08) 1.6px, transparent 1.6px);
+    background-size: 22px 22px;
+  }
+
+  /* ===== Scribble underline ===== */
+  .scribble{
+    position:relative;
+    display:inline-block;
+  }
+  .scribble svg{
+    position:absolute;
+    left:0; right:0; bottom:-10px;
+    width:100%; height:16px;
+  }
+
+  /* ===== Sticker chip ===== */
+  .sticker{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 18px;
+    border-radius:999px;
+    border:3px solid var(--tinta);
+    font-weight:700;
+    font-size:0.95rem;
+    box-shadow:4px 4px 0 var(--tinta);
+    background:#fff;
+    transform:rotate(-3deg);
+    white-space:nowrap;
+  }
+
+  /* ===== Header / Nav ===== */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background: var(--crema);
+    border-bottom: 3px solid var(--tinta);
+  }
+  .nav-wrap{
+    max-width:1200px;
+    margin:0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+  }
+  .logo{
+    font-size:1.7rem;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color: var(--tinta);
+  }
+  .logo span.dot{
+    color: var(--rosa);
+  }
+  nav ul{
+    display:flex;
+    gap:28px;
+    font-weight:700;
+  }
+  nav a{
+    position:relative;
+    padding:6px 2px;
+    transition: color .2s;
+  }
+  nav a:hover{ color: var(--turquesa-dark); }
+  .nav-cta{
+    background: var(--tinta);
+    color:#fff !important;
+    padding:10px 20px;
+    border-radius:999px;
+    font-weight:700;
+    border:3px solid var(--tinta);
+    transition: transform .15s ease, background .15s ease;
+  }
+  .nav-cta:hover{
+    background: var(--rosa);
+    border-color: var(--tinta);
+    transform: translateY(-2px);
+  }
+  .menu-toggle{ display:none; }
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    max-width:1200px;
+    margin:0 auto;
+    padding:70px 24px 110px;
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+    overflow:visible;
+  }
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter: blur(0px);
+    z-index:0;
+  }
+  .blob1{ width:340px; height:340px; background: var(--amarillo); top:-60px; right:60px; border-radius:42% 58% 65% 35% / 45% 40% 60% 55%; opacity:.9;}
+  .blob2{ width:220px; height:220px; background: var(--rosa); bottom:-40px; left:0; border-radius:60% 40% 30% 70% / 60% 30% 70% 40%; opacity:.85;}
+  .blob3{ width:150px; height:150px; background: var(--turquesa); top:20px; left:38%; border-radius:50% 50% 40% 60% / 60% 40% 60% 40%; opacity:.7;}
+
+  .hero-text{ position:relative; z-index:2; }
+  .eyebrow-stack{
+    display:flex;
+    gap:12px;
+    margin-bottom:22px;
+    flex-wrap:wrap;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.2vw, 4.2rem);
+    line-height:1.05;
+    margin:0 0 22px;
+    font-weight:800;
+  }
+  .hero h1 .accent{ color: var(--turquesa-dark); }
+  .hero p.lead{
+    font-size:1.25rem;
+    max-width:520px;
+    margin:0 0 30px;
+    font-weight:500;
+    color:#463a5c;
+  }
+  .btn-row{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 30px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:1.05rem;
+    border:3px solid var(--tinta);
+    box-shadow:5px 5px 0 var(--tinta);
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{ transform: translate(-2px,-2px); box-shadow:7px 7px 0 var(--tinta); }
+  .btn:active{ transform: translate(1px,1px); box-shadow:2px 2px 0 var(--tinta); }
+  .btn-primary{ background: var(--rosa); color:#fff; }
+  .btn-secondary{ background:#fff; color: var(--tinta); }
+
+  .hero-art{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .bag-card{
+    position:relative;
+    width:100%;
+    max-width:380px;
+    aspect-ratio: 1/1.05;
+    background: linear-gradient(155deg, var(--turquesa), var(--turquesa-dark));
+    border-radius:32px;
+    border:4px solid var(--tinta);
+    box-shadow:10px 10px 0 var(--tinta);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:7rem;
+    transform:rotate(4deg);
+  }
+  .bag-card .tag{
+    position:absolute;
+    top:-22px;
+    right:-18px;
+    background: var(--amarillo);
+    border:3px solid var(--tinta);
+    border-radius:16px;
+    padding:10px 16px;
+    font-weight:800;
+    transform:rotate(-8deg);
+    box-shadow:4px 4px 0 var(--tinta);
+    font-size:1rem;
+  }
+  .bag-card .tag2{
+    position:absolute;
+    bottom:-18px;
+    left:-24px;
+    background: #fff;
+    border:3px solid var(--tinta);
+    border-radius:16px;
+    padding:8px 14px;
+    font-weight:800;
+    transform:rotate(6deg);
+    box-shadow:4px 4px 0 var(--tinta);
+    font-size:.95rem;
+  }
+
+  /* ===== Marquee ===== */
+  .marquee{
+    background: var(--tinta);
+    color:#fff;
+    padding:16px 0;
+    overflow:hidden;
+    white-space:nowrap;
+    border-top:3px solid var(--tinta);
+    border-bottom:3px solid var(--tinta);
+  }
+  .marquee-track{
+    display:inline-block;
+    padding-left:100%;
+    animation: scroll-left 22s linear infinite;
+    font-family:'Baloo 2', cursive;
+    font-weight:700;
+    font-size:1.3rem;
+    letter-spacing:.5px;
+  }
+  .marquee-track span{ margin:0 26px; color: var(--amarillo); }
+  .marquee-track span.alt{ color: var(--rosa); }
+  .marquee-track span.alt2{ color: var(--turquesa); }
+  @keyframes scroll-left{
+    0%{ transform: translateX(0); }
+    100%{ transform: translateX(-100%); }
+  }
+
+  /* ===== Section generic ===== */
+  section{
+    padding:90px 24px;
+    max-width:1200px;
+    margin:0 auto;
+    position:relative;
+  }
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 56px;
+  }
+  .section-head .kicker{
+    display:inline-block;
+    margin-bottom:14px;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem, 3.6vw, 2.8rem);
+    margin:0 0 14px;
+  }
+  .section-head p{
+    font-size:1.1rem;
+    color:#5b4d70;
+    margin:0;
+  }
+
+  /* ===== Productos / cards ===== */
+  .grid-productos{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:30px;
+  }
+  .card{
+    background:#fff;
+    border:3px solid var(--tinta);
+    border-radius:26px;
+    padding:34px 26px;
+    text-align:center;
+    position:relative;
+    box-shadow:6px 6px 0 var(--tinta);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{
+    transform: translateY(-8px) rotate(-1deg);
+    box-shadow:9px 9px 0 var(--tinta);
+  }
+  .card .icon-badge{
+    width:84px;height:84px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:2.4rem;
+    margin:0 auto 20px;
+    border:3px solid var(--tinta);
+  }
+  .card:nth-child(1) .icon-badge{ background: var(--rosa); }
+  .card:nth-child(2) .icon-badge{ background: var(--amarillo); }
+  .card:nth-child(3) .icon-badge{ background: var(--turquesa); }
+  .card h3{ margin:0 0 10px; font-size:1.35rem; }
+  .card p{ margin:0; color:#5b4d70; font-size:1rem; }
+
+  /* ===== Por qué elegirnos ===== */
+  .why-wrap{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap:24px;
+  }
+  .why-item{
+    background:#fff;
+    border:3px solid var(--tinta);
+    border-radius:20px;
+    padding:26px 20px;
+    text-align:center;
+    box-shadow:5px 5px 0 var(--tinta);
+  }
+  .why-item .emoji{ font-size:2.2rem; margin-bottom:12px; }
+  .why-item h4{ margin:0 0 8px; font-family:'Baloo 2',cursive; font-size:1.05rem; }
+  .why-item p{ margin:0; font-size:.92rem; color:#5b4d70; }
+
+  /* ===== Galería estilo Instagram ===== */
+  .insta-section{
+    background: linear-gradient(180deg, #fff 0%, #FFF3E0 100%);
+    border-top:3px solid var(--tinta);
+    border-bottom:3px solid var(--tinta);
+  }
+  .insta-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+  }
+  .insta-tile{
+    aspect-ratio:1/1;
+    border-radius:20px;
+    border:3px solid var(--tinta);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2.6rem;
+    position:relative;
+    overflow:hidden;
+    box-shadow:5px 5px 0 var(--tinta);
+    transition: transform .2s ease;
+  }
+  .insta-tile:hover{ transform: scale(1.04) rotate(-1deg); }
+  .insta-tile:nth-child(1){ background: linear-gradient(135deg, var(--rosa), #ffc1de); }
+  .insta-tile:nth-child(2){ background: linear-gradient(135deg, var(--amarillo), #ffe9ad); }
+  .insta-tile:nth-child(3){ background: linear-gradient(135deg, var(--turquesa), #b6f3f0); }
+  .insta-tile:nth-child(4){ background: linear-gradient(135deg, var(--morado), #d9c6ff); }
+  .insta-tile:nth-child(5){ background: linear-gradient(135deg, var(--naranja), #ffd3ad); }
+  .insta-tile:nth-child(6){ background: linear-gradient(135deg, var(--turquesa-dark), #9fe8e4); }
+  .insta-tile:nth-child(7){ background: linear-gradient(135deg, var(--rosa), var(--amarillo)); }
+  .insta-tile:nth-child(8){ background: linear-gradient(135deg, var(--morado), var(--turquesa)); }
+  .insta-tile .overlay{
+    position:absolute; inset:0;
+    background:rgba(43,33,64,0.55);
+    display:flex; align-items:center; justify-content:center;
+    color:#fff; font-family:'Baloo 2',cursive; font-weight:700; font-size:1rem;
+    opacity:0; transition:opacity .2s ease;
+    text-align:center; padding:10px;
+  }
+  .insta-tile:hover .overlay{ opacity:1; }
+  .insta-follow{
+    text-align:center;
+    margin-top:44px;
+  }
+
+  /* ===== Testimonios ===== */
+  .testi-wrap{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+  }
+  .testi-card{
+    background:#fff;
+    border:3px solid var(--tinta);
+    border-radius:22px;
+    padding:28px;
+    box-shadow:5px 5px 0 var(--tinta);
+  }
+  .testi-stars{ color: var(--amarillo); letter-spacing:2px; font-size:1.1rem; margin-bottom:12px; }
+  .testi-card p.quote{ font-size:1rem; color:#463a5c; margin:0 0 16px; }
+  .testi-user{ display:flex; align-items:center; gap:12px; font-weight:700; }
+  .testi-avatar{
+    width:42px;height:42px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    border:3px solid var(--tinta); font-size:1.2rem;
+  }
+
+  /* ===== Cómo pedir ===== */
+  .pasos{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    position:relative;
+  }
+  .paso{
+    background:#fff;
+    border:3px solid var(--tinta);
+    border-radius:24px;
+    padding:32px 26px;
+    position:relative;
+    box-shadow:6px 6px 0 var(--tinta);
+  }
+  .paso .num{
+    position:absolute;
+    top:-22px; left:-14px;
+    width:52px;height:52px;
+    border-radius:50%;
+    background: var(--tinta);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Baloo 2',cursive;
+    font-weight:800;
+    font-size:1.4rem;
+    border:3px solid var(--tinta);
+  }
+  .paso:nth-child(1) .num{ background: var(--rosa); }
+  .paso:nth-child(2) .num{ background: var(--turquesa-dark); }
+  .paso:nth-child(3) .num{ background: var(--naranja); }
+  .paso h3{ margin:14px 0 10px; }
+  .paso p{ margin:0; color:#5b4d70; }
+
+  /* ===== CTA final ===== */
+  .cta-final{
+    background: var(--tinta);
+    color:#fff;
+    border-radius:32px;
+    max-width:1100px;
+    margin:0 auto 90px;
+    padding:70px 40px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    border:4px solid var(--tinta);
+  }
+  .cta-final::before, .cta-final::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+  }
+  .cta-final::before{ width:220px;height:220px; background: var(--turquesa); top:-90px; left:-60px; opacity:.5;}
+  .cta-final::after{ width:260px;height:260px; background: var(--rosa); bottom:-110px; right:-60px; opacity:.5;}
+  .cta-final h2{ font-size:clamp(1.9rem,4vw,2.6rem); margin:0 0 16px; position:relative; z-index:2;}
+  .cta-final p{ font-size:1.1rem; margin:0 0 34px; color:#e8e2f5; position:relative; z-index:2;}
+  .cta-final .btn-row{ justify-content:center; position:relative; z-index:2; }
+  .cta-final .btn-primary{ background: var(--amarillo); color: var(--tinta); }
+  .cta-final .btn-secondary{ background:transparent; color:#fff; border-color:#fff; box-shadow:5px 5px 0 rgba(255,255,255,.4);}
+
+  /* ===== Contacto ===== */
+  .contact-wrap{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:40px;
+    align-items:start;
+  }
+  .contact-card{
+    background:#fff;
+    border:3px solid var(--tinta);
+    border-radius:26px;
+    padding:36px;
+    box-shadow:6px 6px 0 var(--tinta);
+  }
+  .contact-card h3{ margin-top:0; }
+  .contact-row{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    padding:16px 0;
+    border-bottom:2px dashed #d9cdee;
+  }
+  .contact-row:last-child{ border-bottom:none; }
+  .contact-row .ic{
+    width:48px;height:48px;
+    border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;
+    border:3px solid var(--tinta);
+    flex-shrink:0;
+  }
+  .contact-row a, .contact-row span.txt{ font-weight:700; font-size:1.05rem; }
+  .contact-row small{ display:block; font-weight:500; color:#7a6d8f; font-size:.85rem; }
+
+  .faq-card{
+    background: var(--amarillo);
+    border:3px solid var(--tinta);
+    border-radius:26px;
+    padding:36px;
+    box-shadow:6px 6px 0 var(--tinta);
+  }
+  .faq-item{ margin-bottom:20px; }
+  .faq-item:last-child{ margin-bottom:0; }
+  .faq-item h4{ margin:0 0 6px; font-family:'Baloo 2',cursive; }
+  .faq-item p{ margin:0; color:#4a3f0f; font-size:.95rem; }
+
+  /* ===== Footer ===== */
+  footer{
+    background: var(--tinta);
+    color:#fff;
+    padding:50px 24px 26px;
+  }
+  .footer-inner{
+    max-width:1200px;
+    margin:0 auto;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:30px;
+    padding-bottom:30px;
+    border-bottom:1px solid rgba(255,255,255,.15);
+  }
+  .footer-logo{
+    font-family:'Baloo 2',cursive;
+    font-size:1.5rem;
+    font-weight:800;
+    margin-bottom:10px;
+  }
+  .footer-inner p{ color:#c9c0dc; max-width:320px; margin:0; }
+  .footer-links{ display:flex; gap:60px; flex-wrap:wrap; }
+  .footer-col h5{ margin:0 0 14px; font-family:'Baloo 2',cursive; }
+  .footer-col ul li{ margin-bottom:10px; }
+  .footer-col a:hover{ color: var(--turquesa); }
+  .footer-bottom{
+    max-width:1200px;
+    margin:24px auto 0;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:.85rem;
+    color:#a89bc4;
+  }
+  .social-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background: var(--rosa);
+    color:#fff;
+    padding:10px 18px;
+    border-radius:999px;
+    font-weight:700;
+    border:2px solid #fff;
+  }
+
+  /* ===== Floating whatsapp-like button ===== */
+  .floating-cta{
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    z-index:200;
+    background: var(--rosa);
+    color:#fff;
+    padding:14px 22px;
+    border-radius:999px;
+    font-weight:800;
+    border:3px solid var(--tinta);
+    box-shadow:5px 5px 0 var(--tinta);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    animation: bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob{
+    0%,100%{ transform: translateY(0); }
+    50%{ transform: translateY(-6px); }
+  }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 980px){
+    .hero{ grid-template-columns:1fr; padding-top:40px; }
+    .hero-art{ order:-1; }
+    .grid-productos{ grid-template-columns:repeat(2,1fr); }
+    .why-wrap{ grid-template-columns:repeat(2,1fr); }
+    .insta-grid{ grid-template-columns:repeat(3,1fr); }
+    .testi-wrap{ grid-template-columns:1fr; }
+    .pasos{ grid-template-columns:1fr; }
+    .contact-wrap{ grid-template-columns:1fr; }
+    nav ul{ display:none; }
+  }
+  @media (max-width: 600px){
+    .grid-productos{ grid-template-columns:1fr; }
+    .why-wrap{ grid-template-columns:1fr; }
+    .insta-grid{ grid-template-columns:repeat(2,1fr); }
+    .nav-cta{ padding:9px 14px; font-size:.9rem; }
+    section{ padding:60px 18px; }
+    .floating-cta span.txt{ display:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="#inicio" class="logo">👜 Turquesa<span class="dot">.cm</span></a>
+    <nav>
+      <ul>
+        <li><a href="#productos">Productos</a></li>
+        <li><a href="#nosotras">Nosotras</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#como-pedir">Cómo pedir</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">Síguenos 📸</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+
+  <div class="hero-text">
+    <div class="eyebrow-stack">
+      <span class="sticker">✨ Hecho a mano</span>
+      <span class="sticker" style="transform:rotate(3deg); background:var(--amarillo);">💌 Pedidos por DM</span>
+    </div>
+    <h1>Bolsos y cositas para hacer tu día <span class="accent">un poco más bonito</span> 😍</h1>
+    <p class="lead">En Turquesa.cm creamos bolsos y detalles llenos de color, pensados para acompañarte a todas partes y sacarte una sonrisa cada vez que los usas.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">📷 Ver catálogo en Instagram</a>
+      <a class="btn btn-secondary" href="#como-pedir">¿Cómo pido el mío?</a>
+    </div>
+  </div>
+
+  <div class="hero-art">
+    <div class="bag-card">
+      👜
+      <span class="tag">¡Nuevo! ✨</span>
+      <span class="tag2">Edición limitada 🌈</span>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>BOLSOS ÚNICOS</span>
+    <span class="alt">★</span>
+    <span class="alt2">COSITAS BONITAS</span>
+    <span>★</span>
+    <span>HECHO CON AMOR</span>
+    <span class="alt">★</span>
+    <span class="alt2">PEDIDOS POR DM</span>
+    <span>★</span>
+    <span>BOLSOS ÚNICOS</span>
+    <span class="alt">★</span>
+    <span class="alt2">COSITAS BONITAS</span>
+    <span>★</span>
+    <span>HECHO CON AMOR</span>
+    <span class="alt">★</span>
+    <span class="alt2">PEDIDOS POR DM</span>
+    <span>★</span>
+  </div>
+</div>
+
+<section id="productos">
+  <div class="section-head">
+    <span class="kicker sticker" style="background:var(--turquesa); transform:rotate(-2deg);">🎀 Lo que encontrarás</span>
+    <h2>Un poquito de todo para enamorarte</h2>
+    <p>Cada pieza está pensada con cariño para que tengas algo bonito, práctico y diferente.</p>
+  </div>
+  <div class="grid-productos">
+    <div class="card">
+      <div class="icon-badge">👜</div>
+      <h3>Bolsos</h3>
+      <p>Diseños coloridos para el día a día, salidas especiales o para regalar a alguien que quieres.</p>
+    </div>
+    <div class="card">
+      <div class="icon-badge">🎒</div>
+      <h3>Cositas</h3>
+      <p>Detalles y accesorios pequeños que alegran cualquier rincón: monederos, llaveros y mucho más.</p>
+    </div>
+    <div class="card">
+      <div class="icon-badge">🎁</div>
+      <h3>Ediciones especiales</h3>
+      <p>Colecciones limitadas que van rotando, ¡por eso conviene estar pendiente de nuestro Instagram!</p>
+    </div>
+  </div>
+</section>
+
+<section id="nosotras" class="dotbg" style="border-radius:36px;">
+  <div class="section-head">
+    <span class="kicker sticker" style="background:var(--rosa); color:#fff; transform:rotate(2deg);">💖 Por qué Turquesa.cm</span>
+    <h2>Hecho con amor, pensado para ti</h2>
+    <p>No somos una fábrica, somos personas creando cosas bonitas una por una.</p>
+  </div>
+  <div class="why-wrap">
+    <div class="why-item">
+      <div class="emoji">🎨</div>
+      <h4>Colores que enamoran</h4>
+      <p>Cada pieza está llena de vida, para que combine con tu forma de ser.</p>
+    </div>
+    <div class="why-item">
+      <div class="emoji">🧵</div>
+      <h4>Hecho con dedicación</h4>
+      <p>Cuidamos cada detalle como si fuera para nosotras mismas.</p>
+    </div>
+    <div class="why-item">
+      <div class="emoji">💌</div>
+      <h4>Atención personal</h4>
+      <p>Te acompañamos por DM o correo en todo tu pedido, sin bots ni vueltas.</p>
+    </div>
+    <div class="why-item">
+      <div class="emoji">🌟</div>
+      <h4>Piezas únicas</h4>
+      <p>Ediciones limitadas, así que lo que compras hoy puede que mañana ya no esté.</p>
+    </div>
+  </div>
+</section>
+
+<section id="galeria" class="insta-section">
+  <div class="section-head">
+    <span class="kicker sticker" style="background:var(--morado); color:#fff; transform:rotate(-2deg);">📸 Síguenos</span>
+    <h2>Así se ve el color en Turquesa.cm</h2>
+    <p>Todo nuestro catálogo, fotos reales y novedades están en nuestro Instagram.</p>
+  </div>
+  <div class="insta-grid">
+    <a class="insta-tile" href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">👜<div class="overlay">Ver en Instagram</div></a>
+    <a class="insta-tile" href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">🎒<div class="overlay">Ver en Instagram</div></a>
+    <a class="insta-tile" href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">✨<div class="overlay">Ver en Instagram</div></a>
+    <a class="insta-tile" href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">💖<div class="overlay">Ver en Instagram</div></a>
+    <a class="insta-tile" href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">🎁<div class="overlay">Ver en Instagram</div></a>
+    <a class="insta-tile" href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">🌈<div class="overlay">Ver en Instagram</div></a>
+    <a class="insta-tile" href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">👛<div class="overlay">Ver en Instagram</div></a>
+    <a class="insta-tile" href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">🔑<div class="overlay">Ver en Instagram</div></a>
+  </div>
+  <div class="insta-follow">
+    <a class="btn btn-primary" href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">📷 Seguir a @turquesa.cm</a>
+  </div>
+</section>
+
+<section id="testimonios">
+  <div class="section-head">
+    <span class="kicker sticker" style="background:var(--amarillo); transform:rotate(2deg);">💬 Nos encanta leerlas</span>
+    <h2>Lo que dicen quienes ya tienen su Turquesa</h2>
+  </div>
+  <div class="testi-wrap">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="quote">Pedí mi bolso por DM y todo el proceso fue súper fácil. Llegó hasta más bonito de lo que esperaba.</p>
+      <div class="testi-user">
+        <div class="testi-avatar" style="background:var(--rosa);">🌸</div>
+        Valentina R.
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="quote">Los colores son una locura, se nota que cada pieza está hecha con dedicación de verdad.</p>
+      <div class="testi-user">
+        <div class="testi-avatar" style="background:var(--turquesa);">🌊</div>
+        Camila G.
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="quote">Compré una cosita de regalo y terminé pidiendo otra para mí. Ya soy fan de Turquesa.cm.</p>
+      <div class="testi-user">
+        <div class="testi-avatar" style="background:var(--amarillo);">🌼</div>
+        Andrea M.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="como-pedir" class="dotbg" style="border-radius:36px;">
+  <div class="section-head">
+    <span class="kicker sticker" style="background:var(--turquesa); transform:rotate(-2deg);">🛍️ Es súper fácil</span>
+    <h2>¿Cómo hago mi pedido?</h2>
+    <p>En tres pasitos tienes tu bolso o cosita en camino.</p>
+  </div>
+  <div class="pasos">
+    <div class="paso">
+      <div class="num">1</div>
+      <h3>Escríbenos 💌</h3>
+      <p>Mándanos un mensaje directo por Instagram o un correo contándonos qué te gustó.</p>
+    </div>
+    <div class="paso">
+      <div class="num">2</div>
+      <h3>Elige tu favorito 🎨</h3>
+      <p>Te ayudamos a escoger color, tamaño y modelo según lo que tengas en mente.</p>
+    </div>
+    <div class="paso">
+      <div class="num">3</div>
+      <h3>Recíbelo con amor 📦</h3>
+      <p>Confirmamos tu pedido y coordinamos la entrega o el envío hasta tu puerta.</p>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="cta-final">
+    <h2>¿Lista para tener tu propia Turquesa? 🌈</h2>
+    <p>Escríbenos hoy mismo y arma tu pedido a tu manera.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">📸 Escribir por Instagram</a>
+      <a class="btn btn-secondary" href="#contacto">✉️ Ver correo de contacto</a>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="section-head">
+    <span class="kicker sticker" style="background:var(--naranja); color:#fff; transform:rotate(2deg);">📬 Hablemos</span>
+    <h2>Estamos a un mensaje de distancia</h2>
+    <p>Pedidos por DM y por correo. Te respondemos con mucho gusto.</p>
+  </div>
+  <div class="contact-wrap">
+    <div class="contact-card">
+      <h3>Contáctanos</h3>
+      <div class="contact-row">
+        <div class="ic" style="background:var(--rosa);">📷</div>
+        <div>
+          <a href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">@turquesa.cm</a>
+          <small>Instagram · pedidos por DM</small>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ic" style="background:var(--turquesa);">✉️</div>
+        <div>
+          <span class="txt">Pedidos por e-mail</span>
+          <small>Escríbenos y cuéntanos qué buscas</small>
+        </div>
+      </div>
+      <div class="contact-row">
+        <div class="ic" style="background:var(--amarillo);">⏰</div>
+        <div>
+          <span class="txt">Respuesta rápida</span>
+          <small>Te contestamos lo antes posible</small>
+        </div>
+      </div>
+      <div style="margin-top:24px;">
+        <a class="social-btn" href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">📸 Abrir Instagram</a>
+      </div>
+    </div>
+    <div class="faq-card">
+      <div class="faq-item">
+        <h4>¿Cómo hago mi pedido?</h4>
+        <p>Por mensaje directo en Instagram o por correo, contándonos el modelo que te gustó.</p>
+      </div>
+      <div class="faq-item">
+        <h4>¿Los diseños se repiten?</h4>
+        <p>Trabajamos por ediciones limitadas, así que cada pieza es especial.</p>
+      </div>
+      <div class="faq-item">
+        <h4>¿Dónde veo el catálogo completo?</h4>
+        <p>Todo el catálogo actualizado está en nuestro Instagram @turquesa.cm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">👜 Turquesa.cm</div>
+      <p>Bolsos y cositas hechas para hacer la vida un poco más bonita 😍</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h5>Explora</h5>
+        <ul>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#nosotras">Nosotras</a></li>
+          <li><a href="#galeria">Galería</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Pedidos</h5>
+        <ul>
+          <li><a href="#como-pedir">Cómo pedir</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Turquesa.cm — Hecho con 💖</span>
+    <span>Pedidos por DM y e-mail</span>
+  </div>
+</footer>
+
+<a class="floating-cta" href="https://www.instagram.com/turquesa.cm/" target="_blank" rel="noopener">
+  📸 <span class="txt">Pedir por Instagram</span>
+</a>
+
+</body>
+</html>
