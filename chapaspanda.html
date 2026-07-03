@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChapasPanda 🐼 Chapas personalizadas con tu diseño</title>
+<meta name="description" content="Chapas personalizadas con tu diseño. Regalos originales desde 2€. Envíos a toda España. Pide la tuya por DM.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --panda-black:#1c1b1f;
+    --cloud:#fffaf0;
+    --bamboo:#3fb27f;
+    --bamboo-dark:#1f7a53;
+    --bubblegum:#ff5fa2;
+    --sunny:#ffc93c;
+    --sky:#4fb8e8;
+    --gold:#d4af37;
+    --gold-light:#f0c040;
+    --paper:#fff4e0;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Quicksand', sans-serif;
+    background:
+      radial-gradient(circle at 10% 10%, rgba(255,201,60,0.25), transparent 35%),
+      radial-gradient(circle at 90% 20%, rgba(79,184,232,0.25), transparent 40%),
+      radial-gradient(circle at 20% 90%, rgba(255,95,162,0.22), transparent 40%),
+      linear-gradient(160deg, #fff8ea 0%, #fff1e0 50%, #ffe9d6 100%);
+    color:var(--panda-black);
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Baloo 2', cursive;
+  }
+
+  a{color:inherit; text-decoration:none;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- Floating chapas background ---------- */
+  .floaters{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+    overflow:hidden;
+  }
+  .floater{
+    position:absolute;
+    border-radius:50%;
+    opacity:0.16;
+    filter:blur(0.3px);
+    animation: drift 14s ease-in-out infinite;
+  }
+  @keyframes drift{
+    0%,100%{ transform: translateY(0) rotate(0deg);}
+    50%{ transform: translateY(-26px) rotate(12deg);}
+  }
+
+  /* ---------- Top bar ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,250,240,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom:3px solid var(--gold);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 24px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Baloo 2', cursive;
+    font-weight:800;
+    font-size:1.4rem;
+    color:var(--panda-black);
+  }
+  .brand-panda{
+    width:38px; height:38px;
+    flex:none;
+  }
+  .nav-cta{
+    background:linear-gradient(135deg, var(--bubblegum), #ff2d8a);
+    color:#fff;
+    padding:10px 20px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.92rem;
+    box-shadow:0 6px 16px rgba(255,45,138,0.35);
+    border:2px solid var(--gold-light);
+    transition:transform .2s ease, box-shadow .2s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{ transform:translateY(-2px) scale(1.03); box-shadow:0 10px 22px rgba(255,45,138,0.45);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    z-index:1;
+    padding:70px 0 40px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:#fff;
+    border:2px dashed var(--gold);
+    color:var(--bamboo-dark);
+    font-weight:700;
+    font-size:0.85rem;
+    padding:7px 16px;
+    border-radius:999px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:3rem;
+    line-height:1.08;
+    font-weight:800;
+    color:var(--panda-black);
+  }
+  .hero h1 .accent{
+    color:var(--bubblegum);
+    -webkit-text-stroke: 1px var(--gold);
+  }
+  .hero p.lead{
+    margin-top:20px;
+    font-size:1.18rem;
+    max-width:520px;
+    color:#4a4550;
+    font-weight:500;
+  }
+  .hero-actions{
+    margin-top:32px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--bubblegum), #e0489a);
+    color:#fff;
+    font-weight:800;
+    font-family:'Baloo 2', cursive;
+    font-size:1.08rem;
+    padding:16px 30px;
+    border-radius:999px;
+    box-shadow:0 10px 24px rgba(255,45,138,0.4);
+    border:3px solid var(--gold);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary:hover{ transform:translateY(-3px) rotate(-1deg); box-shadow:0 16px 30px rgba(255,45,138,0.5);}
+  .price-tag{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-weight:700;
+    color:var(--bamboo-dark);
+    background:#fff;
+    padding:12px 18px;
+    border-radius:16px;
+    border:2px solid var(--bamboo);
+  }
+  .price-tag b{ font-family:'Baloo 2', cursive; font-size:1.3rem; color:var(--bamboo-dark);}
+
+  .hero-visual{
+    position:relative;
+    height:440px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  /* Panda mascot */
+  .panda{
+    position:relative;
+    width:230px;
+    height:230px;
+    z-index:3;
+  }
+  .panda-ear{
+    position:absolute;
+    width:70px; height:70px;
+    background:var(--panda-black);
+    border-radius:50%;
+    top:-22px;
+  }
+  .panda-ear.l{ left:-14px;}
+  .panda-ear.r{ right:-14px;}
+  .panda-face{
+    position:absolute;
+    inset:0;
+    background:#fffdf8;
+    border-radius:50%;
+    box-shadow: inset 0 -10px 20px rgba(0,0,0,0.04);
+    border:4px solid #fff;
+  }
+  .panda-patch{
+    position:absolute;
+    width:78px; height:92px;
+    background:var(--panda-black);
+    border-radius:50% 50% 55% 55%;
+    top:48px;
+    transform:rotate(8deg);
+  }
+  .panda-patch.l{ left:2px;}
+  .panda-patch.r{ right:2px; transform:rotate(-8deg);}
+  .panda-eye{
+    position:absolute;
+    width:16px; height:20px;
+    background:#fffdf8;
+    border-radius:50%;
+    top:30px;
+  }
+  .panda-eye.l{ left:22px;}
+  .panda-eye.r{ right:22px;}
+  .panda-nose{
+    position:absolute;
+    width:22px; height:16px;
+    background:var(--panda-black);
+    border-radius:50%;
+    top:118px;
+    left:50%;
+    transform:translateX(-50%);
+  }
+  .panda-mouth{
+    position:absolute;
+    width:44px; height:22px;
+    border:5px solid var(--panda-black);
+    border-top:none;
+    border-radius:0 0 40px 40px;
+    top:132px;
+    left:50%;
+    transform:translateX(-50%);
+  }
+  .panda-blush{
+    position:absolute;
+    width:26px; height:14px;
+    background:var(--bubblegum);
+    opacity:0.55;
+    border-radius:50%;
+    top:100px;
+  }
+  .panda-blush.l{ left:16px;}
+  .panda-blush.r{ right:16px;}
+
+  /* orbiting chapa badges around panda */
+  .orbit-badge{
+    position:absolute;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Baloo 2', cursive;
+    font-weight:700;
+    color:#fff;
+    box-shadow:0 10px 20px rgba(0,0,0,0.18);
+    border:4px solid #fff;
+  }
+  .orbit-badge::before{
+    content:'';
+    position:absolute;
+    top:-9px; left:50%;
+    transform:translateX(-50%);
+    width:14px; height:14px;
+    background:#e6e6e6;
+    border-radius:50%;
+    border:2px solid #bbb;
+  }
+  .ob1{ width:76px; height:76px; background:conic-gradient(from 90deg, var(--sunny), var(--bubblegum)); top:6px; left:0; font-size:1.6rem; animation: drift 8s ease-in-out infinite;}
+  .ob2{ width:64px; height:64px; background:conic-gradient(from 45deg, var(--sky), var(--bamboo)); top:250px; left:-30px; font-size:1.4rem; animation: drift 10s ease-in-out infinite reverse;}
+  .ob3{ width:58px; height:58px; background:conic-gradient(from 0deg, var(--gold-light), var(--bubblegum)); top:300px; right:-10px; font-size:1.3rem; animation: drift 9s ease-in-out infinite;}
+  .ob4{ width:52px; height:52px; background:conic-gradient(from 200deg, var(--bamboo), var(--sunny)); top:20px; right:10px; font-size:1.2rem; animation: drift 11s ease-in-out infinite reverse;}
+
+  /* ---------- Section generic ---------- */
+  section{
+    position:relative;
+    z-index:1;
+    padding:70px 0;
+  }
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 46px;
+  }
+  .section-head .eyebrow{ margin-bottom:14px;}
+  .section-head h2{
+    font-size:2.2rem;
+    color:var(--panda-black);
+  }
+  .section-head p{
+    margin-top:14px;
+    color:#5a5560;
+    font-weight:500;
+    font-size:1.05rem;
+  }
+
+  /* ---------- Qué es una chapa ---------- */
+  .about-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:26px;
+  }
+  .about-card{
+    background:#fff;
+    border-radius:24px;
+    padding:30px 26px;
+    border:2px solid #ffe3b8;
+    box-shadow:0 12px 26px rgba(212,175,55,0.12);
+    text-align:center;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .about-card:hover{ transform:translateY(-6px); box-shadow:0 18px 34px rgba(212,175,55,0.2);}
+  .about-icon{
+    width:64px; height:64px;
+    border-radius:50%;
+    margin:0 auto 18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.8rem;
+    color:#fff;
+  }
+  .about-card:nth-child(1) .about-icon{ background:linear-gradient(135deg, var(--bubblegum), #ff2d8a);}
+  .about-card:nth-child(2) .about-icon{ background:linear-gradient(135deg, var(--bamboo), var(--bamboo-dark));}
+  .about-card:nth-child(3) .about-icon{ background:linear-gradient(135deg, var(--sunny), var(--gold));}
+  .about-card h3{ font-size:1.2rem; margin-bottom:8px;}
+  .about-card p{ color:#5a5560; font-size:0.96rem; font-weight:500;}
+
+  /* ---------- Gallery of chapa designs ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap:22px;
+  }
+  .chapa{
+    position:relative;
+    aspect-ratio:1/1;
+    border-radius:50%;
+    border:5px solid #fff;
+    box-shadow:0 10px 22px rgba(0,0,0,0.14);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:transform .25s ease;
+  }
+  .chapa:hover{ transform:translateY(-8px) rotate(-4deg) scale(1.05);}
+  .chapa::before{
+    content:'';
+    position:absolute;
+    top:-11px; left:50%;
+    transform:translateX(-50%);
+    width:16px; height:16px;
+    background:#dcdcdc;
+    border-radius:50%;
+    border:2px solid #b9b9b9;
+    z-index:2;
+  }
+  .chapa span{ font-size:1.7rem; z-index:1;}
+  .c1{ background:conic-gradient(from 0deg, var(--bubblegum), var(--sunny), var(--sky), var(--bubblegum));}
+  .c2{ background:radial-gradient(circle at 35% 35%, var(--sunny), var(--bamboo));}
+  .c3{ background:conic-gradient(from 120deg, var(--sky), var(--gold-light), var(--bubblegum));}
+  .c4{ background:repeating-conic-gradient(var(--bamboo) 0deg 30deg, var(--cloud) 30deg 60deg);}
+  .c5{ background:radial-gradient(circle at 60% 40%, var(--bubblegum), #7a2455);}
+  .c6{ background:conic-gradient(from 200deg, var(--gold-light), var(--sky), var(--sunny));}
+
+  /* ---------- Steps ---------- */
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    counter-reset: step;
+  }
+  .step{
+    background:#fff;
+    border-radius:22px;
+    padding:28px 22px;
+    border:2px dashed var(--gold);
+    position:relative;
+  }
+  .step-num{
+    width:38px; height:38px;
+    border-radius:50%;
+    background:var(--panda-black);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Baloo 2', cursive;
+    font-weight:700;
+    margin-bottom:14px;
+  }
+  .step h3{ font-size:1.08rem; margin-bottom:8px;}
+  .step p{ font-size:0.92rem; color:#5a5560; font-weight:500;}
+
+  /* ---------- Why us / stats ---------- */
+  .why{
+    background:linear-gradient(135deg, var(--bamboo-dark), var(--bamboo));
+    border-radius:32px;
+    padding:56px 40px;
+    color:#fff;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    text-align:center;
+    box-shadow:0 20px 50px rgba(31,122,83,0.3);
+    border:3px solid var(--gold-light);
+  }
+  .why-item .num{
+    font-family:'Baloo 2', cursive;
+    font-size:2.4rem;
+    font-weight:800;
+    color:var(--sunny);
+  }
+  .why-item p{ font-weight:600; margin-top:6px; font-size:0.95rem;}
+
+  /* ---------- Testimonials ---------- */
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .testi{
+    background:#fff;
+    border-radius:22px;
+    padding:26px;
+    border:2px solid #ffe3b8;
+    box-shadow:0 10px 22px rgba(212,175,55,0.12);
+  }
+  .testi .stars{ color:var(--sunny); font-size:1.1rem; margin-bottom:10px;}
+  .testi p.quote{ font-weight:600; color:#3a3540; font-size:0.98rem; margin-bottom:14px;}
+  .testi .who{ font-weight:700; color:var(--bubblegum); font-size:0.9rem;}
+
+  /* ---------- Final CTA ---------- */
+  .final-cta{
+    text-align:center;
+    background:radial-gradient(circle at 50% 0%, #fff2d8, transparent 60%), linear-gradient(160deg, #fff 0%, #fff8ea 100%);
+    border-radius:32px;
+    padding:64px 30px;
+    border:3px solid var(--gold);
+    position:relative;
+    overflow:hidden;
+  }
+  .final-cta h2{ font-size:2.3rem; margin-bottom:16px;}
+  .final-cta p{ font-size:1.1rem; color:#5a5560; font-weight:500; max-width:520px; margin:0 auto 30px;}
+  .ig-handle{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    margin-top:22px;
+    font-weight:700;
+    color:var(--panda-black);
+    background:#fff;
+    border:2px solid var(--gold);
+    padding:10px 20px;
+    border-radius:999px;
+  }
+
+  footer{
+    text-align:center;
+    padding:36px 24px 48px;
+    color:#8a8390;
+    font-weight:600;
+    font-size:0.9rem;
+    position:relative;
+    z-index:1;
+  }
+  footer a{ color:var(--bubblegum); font-weight:800;}
+
+  @media (max-width: 980px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-visual{ height:340px; order:-1;}
+    .about-grid, .steps, .why, .testi-grid{ grid-template-columns:repeat(2,1fr);}
+    .gallery{ grid-template-columns:repeat(3,1fr);}
+    .hero h1{ font-size:2.3rem;}
+  }
+  @media (max-width:560px){
+    .about-grid, .steps, .why, .testi-grid{ grid-template-columns:1fr;}
+    .gallery{ grid-template-columns:repeat(2,1fr);}
+    .nav .brand span.brand-text{ display:none;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="floaters" aria-hidden="true">
+  <div class="floater" style="width:120px;height:120px; background:var(--bubblegum); top:8%; left:4%;"></div>
+  <div class="floater" style="width:80px;height:80px; background:var(--sky); top:60%; left:2%; animation-delay:2s;"></div>
+  <div class="floater" style="width:100px;height:100px; background:var(--sunny); top:20%; right:6%; animation-delay:1s;"></div>
+  <div class="floater" style="width:70px;height:70px; background:var(--bamboo); top:75%; right:8%; animation-delay:3s;"></div>
+  <div class="floater" style="width:50px;height:50px; background:var(--gold); top:40%; right:20%; animation-delay:4s;"></div>
+</div>
+
+<header>
+  <div class="nav">
+    <div class="brand">
+      <svg class="brand-panda" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="46" fill="#fffdf8" stroke="#1c1b1f" stroke-width="4"/>
+        <circle cx="20" cy="18" r="16" fill="#1c1b1f"/>
+        <circle cx="80" cy="18" r="16" fill="#1c1b1f"/>
+        <ellipse cx="30" cy="52" rx="15" ry="18" fill="#1c1b1f" transform="rotate(10 30 52)"/>
+        <ellipse cx="70" cy="52" rx="15" ry="18" fill="#1c1b1f" transform="rotate(-10 70 52)"/>
+        <circle cx="30" cy="48" r="6" fill="#fffdf8"/>
+        <circle cx="70" cy="48" r="6" fill="#fffdf8"/>
+        <ellipse cx="50" cy="66" rx="8" ry="6" fill="#1c1b1f"/>
+      </svg>
+      <span class="brand-text">Chapas<span style="color:var(--bubblegum)">Panda</span></span>
+    </div>
+    <a class="nav-cta" href="https://www.instagram.com/chapaspanda/" target="_blank" rel="noopener">Pide la tuya 📩</a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">🐼 Chapas hechas a mano en Galicia</div>
+        <h1>Tu diseño, <span class="accent">tu chapa</span>, tu regalo perfecto</h1>
+        <p class="lead">En ChapasPanda convertimos tus ideas, fotos o dibujos en chapas personalizadas únicas. Regalos originales y con mucho arte que llegan a toda España.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="https://www.instagram.com/chapaspanda/" target="_blank" rel="noopener">
+            🐼 Pide la tuya por DM
+          </a>
+          <div class="price-tag">🎁 Desde <b>2€</b></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="panda">
+          <div class="panda-ear l"></div>
+          <div class="panda-ear r"></div>
+          <div class="panda-face">
+            <div class="panda-patch l"></div>
+            <div class="panda-patch r"></div>
+            <div class="panda-eye l"></div>
+            <div class="panda-eye r"></div>
+            <div class="panda-blush l"></div>
+            <div class="panda-blush r"></div>
+            <div class="panda-nose"></div>
+            <div class="panda-mouth"></div>
+          </div>
+        </div>
+        <div class="orbit-badge ob1">🎨</div>
+        <div class="orbit-badge ob2">💝</div>
+        <div class="orbit-badge ob3">⭐</div>
+        <div class="orbit-badge ob4">📦</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUE ES -->
+  <section id="que-es">
+    <div class="section-head">
+      <div class="eyebrow">🎨 ¿Qué es una chapa personalizada?</div>
+      <h2>Arte en miniatura que puedes llevar puesto</h2>
+      <p>Nos mandas tu idea y nosotros la convertimos en una chapa metálica única. Tan sencillo como eso.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-icon">✏️</div>
+        <h3>100% a tu gusto</h3>
+        <p>Fotos, mascotas, frases, dibujos o el diseño que imagines. Tú decides qué llevar en tu chapa.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-icon">🐾</div>
+        <h3>Hechas con mimo</h3>
+        <p>Cada chapa se prepara a mano, cuidando cada detalle como si fuera para nosotros mismas.</p>
+      </div>
+      <div class="about-card">
+        <div class="about-icon">💌</div>
+        <h3>Regalo con significado</h3>
+        <p>Perfectas para cumpleaños, mochilas, chaquetas o para sorprender a alguien especial.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="galeria">
+    <div class="section-head">
+      <div class="eyebrow">✨ Inspiración</div>
+      <h2>Cada chapa cuenta una historia</h2>
+      <p>Un ejemplo de la variedad de estilos y colores que podemos crear para ti.</p>
+    </div>
+    <div class="gallery">
+      <div class="chapa c1"><span>🌸</span></div>
+      <div class="chapa c2"><span>🐼</span></div>
+      <div class="chapa c3"><span>🌈</span></div>
+      <div class="chapa c4"><span>🐾</span></div>
+      <div class="chapa c5"><span>💫</span></div>
+      <div class="chapa c6"><span>🎀</span></div>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section id="como-pedir">
+    <div class="section-head">
+      <div class="eyebrow">📦 Así de fácil</div>
+      <h2>Cómo pedir tu chapa</h2>
+      <p>En cuatro pasos tienes tu regalo original en camino.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Escríbenos por DM</h3>
+        <p>Cuéntanos tu idea por Instagram: una foto, un dibujo o simplemente lo que tienes en mente.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Diseñamos juntas</h3>
+        <p>Te proponemos el diseño y ajustamos colores y detalles hasta que te encante.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Confirmas y pagas</h3>
+        <p>Una vez estés conforme, confirmamos el pedido y forma de pago.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Recibe tu chapa</h3>
+        <p>La preparamos con cariño y te la enviamos a cualquier punto de España.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section id="por-que">
+    <div class="why">
+      <div class="why-item">
+        <div class="num">2€</div>
+        <p>Precio desde</p>
+      </div>
+      <div class="why-item">
+        <div class="num">100%</div>
+        <p>Diseño personalizado</p>
+      </div>
+      <div class="why-item">
+        <div class="num">🚛</div>
+        <p>Envíos a toda España</p>
+      </div>
+      <div class="why-item">
+        <div class="num">🐼</div>
+        <p>Hecho a mano en Galicia</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="opiniones">
+    <div class="section-head">
+      <div class="eyebrow">💬 Lo que dicen</div>
+      <h2>Clientas felices, chapas felices</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p class="quote">Pedí una chapa con la cara de mi perrita y quedó preciosa, súper rápido todo por DM.</p>
+        <div class="who">— Cliente en Galicia</div>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p class="quote">El detalle perfecto para un regalo de cumpleaños. Original y con un precio genial.</p>
+        <div class="who">— Cliente en Madrid</div>
+      </div>
+      <div class="testi">
+        <div class="stars">★★★★★</div>
+        <p class="quote">Me hicieron una chapa personalizada con mi propio dibujo, ¡tal cual lo imaginaba!</p>
+        <div class="who">— Cliente en Barcelona</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="pedir">
+    <div class="final-cta">
+      <h2>🐼 Tu chapa te está esperando</h2>
+      <p>Escríbenos ahora por Instagram y en unos días tendrás tu regalo original, hecho a mano con mucho cariño desde Galicia.</p>
+      <a class="btn-primary" href="https://www.instagram.com/chapaspanda/" target="_blank" rel="noopener">
+        📩 Pide la tuya por DM
+      </a>
+      <br>
+      <a class="ig-handle" href="https://www.instagram.com/chapaspanda/" target="_blank" rel="noopener">
+        📷 @chapaspanda
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>ChapasPanda 🐼 · Chapas personalizadas hechas a mano · Galicia, España</p>
+  <p style="margin-top:6px;">Síguenos en <a href="https://www.instagram.com/chapaspanda/" target="_blank" rel="noopener">Instagram @chapaspanda</a></p>
+</footer>
+
+</body>
+</html>
