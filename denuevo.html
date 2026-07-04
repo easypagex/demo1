@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DeNuevo | Objetos de Diseño en Concreto y Mosaico</title>
+<meta name="description" content="DeNuevo — objetos de diseño hechos a mano en concreto y mosaico. Piezas únicas, envíos a todo el país. Pedidos por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:            #EFE9DD; /* concreto claro, cálido */
+    --bg-alt:        #E2DACB; /* concreto un poco más oscuro */
+    --ink:           #2C2721; /* carbón cálido para texto */
+    --ink-soft:      #5B5346;
+    --line:          rgba(44,39,33,0.14);
+    --clay:          #C1694F;   /* pigmento arcilla */
+    --mustard:       #D9A441;  /* pigmento mostaza */
+    --sage:          #7E9678;  /* mosaico verde */
+    --dust:          #C97F8C;  /* mosaico rosa */
+    --sky:           #5F8AA0;  /* mosaico azul */
+    --card:          #F7F3EA;
+    --radius:        4px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Space Grotesk', sans-serif;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+
+  .label{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- terrazzo texture ---------- */
+  .terrazzo{
+    position:relative;
+    background-color:var(--bg);
+    background-image:
+      radial-gradient(circle at 12% 22%, var(--dust) 0 5px, transparent 6px),
+      radial-gradient(circle at 78% 14%, var(--sage) 0 6px, transparent 7px),
+      radial-gradient(circle at 34% 68%, var(--mustard) 0 4px, transparent 5px),
+      radial-gradient(circle at 92% 58%, var(--sky) 0 5px, transparent 6px),
+      radial-gradient(circle at 58% 40%, var(--clay) 0 4px, transparent 5px),
+      radial-gradient(circle at 8% 82%, var(--sky) 0 4px, transparent 5px),
+      radial-gradient(circle at 68% 88%, var(--dust) 0 5px, transparent 6px),
+      radial-gradient(circle at 46% 10%, var(--sage) 0 3px, transparent 4px),
+      radial-gradient(circle at 25% 45%, var(--mustard) 0 3px, transparent 4px);
+    background-size: 340px 340px;
+    background-repeat: repeat;
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(239,233,221,0.86);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+    max-width:1120px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:600; font-style:italic;
+    font-size:1.5rem;
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo .chip{
+    width:12px;height:12px;border-radius:50%;
+    background:var(--clay);
+    box-shadow: 14px 2px 0 -2px var(--sage), 26px -4px 0 -3px var(--sky);
+  }
+  .nav-links{display:flex; align-items:center; gap:26px;}
+  .nav-links a{font-size:0.92rem; color:var(--ink-soft); transition:color .2s;}
+  .nav-links a:hover, .nav-links a:focus-visible{color:var(--ink);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 20px;
+    border-radius:var(--radius);
+    font-size:0.9rem; font-weight:500;
+    border:1px solid var(--ink);
+    transition:transform .15s ease, background .2s ease, color .2s ease;
+  }
+  .btn-primary{background:var(--ink); color:var(--bg);}
+  .btn-primary:hover{transform:translateY(-2px); background:var(--clay); border-color:var(--clay);}
+  .btn-ghost{background:transparent; color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink); color:var(--bg);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--clay); outline-offset:3px;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding:110px 0 90px;
+    position:relative;
+  }
+  .hero .wrap{position:relative; z-index:2;}
+  .hero .label{margin-bottom:22px; display:flex; align-items:center; gap:10px;}
+  .hero .label::before{content:''; width:26px;height:1px;background:var(--ink-soft);display:inline-block;}
+  h1.headline{
+    font-size:clamp(2.6rem, 6vw, 5rem);
+    max-width:15ch;
+    margin-bottom:28px;
+  }
+  h1.headline em{
+    font-style:italic; color:var(--clay);
+  }
+  .hero p.sub{
+    max-width:46ch;
+    font-size:1.12rem;
+    color:var(--ink-soft);
+    margin-bottom:38px;
+  }
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:14px;}
+
+  /* ---------- marquee strip ---------- */
+  .strip{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    padding:14px 0;
+    overflow:hidden;
+    white-space:nowrap;
+    background:var(--bg-alt);
+  }
+  .strip-track{
+    display:inline-flex;
+    gap:48px;
+    animation: scroll-strip 32s linear infinite;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+  }
+  .strip-track span{display:inline-flex; align-items:center; gap:10px;}
+  .strip-track span::after{content:'●'; font-size:0.5rem; color:var(--clay);}
+  @keyframes scroll-strip{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---------- reveal ---------- */
+  .reveal{
+    opacity:0; transform:translateY(26px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  section{padding:96px 0;}
+  .section-head{
+    display:flex; align-items:flex-end; justify-content:space-between;
+    gap:24px; margin-bottom:56px; flex-wrap:wrap;
+  }
+  .section-head h2{font-size:clamp(1.9rem, 3.6vw, 2.8rem);}
+  .section-head p{color:var(--ink-soft); max-width:34ch;}
+
+  /* ---------- la mezcla (signature) ---------- */
+  .mezcla{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:40px clamp(20px,4vw,48px);
+  }
+  .mezcla-bar{
+    display:flex; width:100%; height:34px; border-radius:4px; overflow:hidden;
+    border:1px solid var(--line);
+    margin:26px 0 18px;
+  }
+  .mezcla-bar span{height:100%; display:block;}
+  .mezcla-legend{
+    display:flex; flex-wrap:wrap; gap:22px;
+    font-family:'JetBrains Mono', monospace; font-size:0.82rem; color:var(--ink-soft);
+  }
+  .mezcla-legend b{color:var(--ink); font-weight:500;}
+  .mezcla-legend i{
+    display:inline-block; width:9px;height:9px;border-radius:50%; margin-right:8px;
+  }
+
+  /* ---------- coleccion grid ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .piece{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:28px 24px 26px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .piece:hover{transform:translateY(-6px); box-shadow:0 16px 30px -18px rgba(44,39,33,0.35);}
+  .piece .icon-box{
+    width:100%; aspect-ratio:1/0.85;
+    border-radius:4px;
+    margin-bottom:18px;
+    display:flex; align-items:center; justify-content:center;
+    background:
+      radial-gradient(circle at 20% 30%, var(--dust) 0 5px, transparent 6px),
+      radial-gradient(circle at 75% 65%, var(--sage) 0 4px, transparent 5px),
+      radial-gradient(circle at 55% 20%, var(--mustard) 0 4px, transparent 5px),
+      radial-gradient(circle at 85% 25%, var(--sky) 0 3px, transparent 4px),
+      var(--bg-alt);
+  }
+  .piece h3{font-size:1.2rem; margin-bottom:6px;}
+  .piece p{font-size:0.9rem; color:var(--ink-soft);}
+
+  /* ---------- proceso ---------- */
+  .proceso-list{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:32px;
+    counter-reset:step;
+  }
+  .step{position:relative; padding-left:0;}
+  .step .num{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:600;
+    font-size:2.6rem; color:var(--clay); line-height:1; margin-bottom:14px; display:block;
+  }
+  .step h3{font-size:1.15rem; margin-bottom:8px;}
+  .step p{color:var(--ink-soft); font-size:0.94rem;}
+
+  /* ---------- envios ---------- */
+  .envios{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .envios-copy p{color:var(--ink-soft); margin-bottom:18px; max-width:46ch;}
+  .envios-badge{
+    border:1px solid var(--line);
+    background:var(--card);
+    border-radius:8px;
+    padding:36px;
+    text-align:center;
+  }
+  .envios-badge .big{
+    font-family:'Fraunces', serif; font-style:italic; font-weight:600;
+    font-size:3.2rem; color:var(--ink);
+  }
+  .envios-badge .label{margin-top:6px;}
+
+  /* ---------- contacto ---------- */
+  .contact{
+    background:var(--ink);
+    color:var(--bg);
+    border-radius:10px;
+    padding:clamp(40px,6vw,72px);
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .contact::before{
+    content:'';
+    position:absolute; inset:0;
+    background-image:
+      radial-gradient(circle at 15% 20%, var(--dust) 0 6px, transparent 7px),
+      radial-gradient(circle at 85% 30%, var(--sage) 0 6px, transparent 7px),
+      radial-gradient(circle at 50% 80%, var(--mustard) 0 5px, transparent 6px),
+      radial-gradient(circle at 70% 60%, var(--sky) 0 5px, transparent 6px);
+    background-size:280px 280px;
+    opacity:0.5;
+  }
+  .contact-inner{position:relative; z-index:2;}
+  .contact h2{color:var(--bg); font-size:clamp(2rem,4vw,3rem); margin-bottom:18px;}
+  .contact p{color:#D8D2C4; max-width:44ch; margin:0 auto 34px;}
+  .contact .btn-primary{background:var(--clay); border-color:var(--clay); color:#fff;}
+  .contact .btn-primary:hover{background:#fff; color:var(--ink); border-color:#fff;}
+  .contact .btn-ghost{border-color:#D8D2C4; color:var(--bg);}
+  .contact .btn-ghost:hover{background:var(--bg); color:var(--ink);}
+  .contact-ctas{display:flex; justify-content:center; gap:14px; flex-wrap:wrap;}
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:36px 0;
+  }
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  }
+  footer .label{color:var(--ink-soft);}
+  .foot-links{display:flex; gap:20px;}
+  .foot-links a{font-size:0.85rem; color:var(--ink-soft);}
+  .foot-links a:hover{color:var(--ink);}
+
+  /* ---------- floating whatsapp ---------- */
+  .float-wa{
+    position:fixed; bottom:22px; right:22px; z-index:60;
+    background:var(--ink); color:var(--bg);
+    width:56px; height:56px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 24px -8px rgba(44,39,33,0.5);
+    transition:transform .2s ease, background .2s ease;
+  }
+  .float-wa:hover{transform:scale(1.08); background:var(--clay);}
+
+  @media (max-width:860px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .proceso-list{grid-template-columns:1fr; gap:26px;}
+    .envios{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+  }
+  @media (max-width:520px){
+    .grid{grid-template-columns:1fr;}
+    .hero{padding:80px 0 60px;}
+    section{padding:64px 0;}
+    nav{padding:16px 20px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{transition:none; opacity:1; transform:none;}
+    .strip-track{animation:none;}
+    *{scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><span class="chip"></span>DeNuevo</div>
+    <div class="nav-links">
+      <a href="#coleccion">Colección</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#envios">Envíos</a>
+      <a href="https://www.instagram.com/denuevo.arte/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <a class="btn btn-primary" href="https://api.whatsapp.com/message/XSRY2T6CHZDHM1" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+  </nav>
+</header>
+
+<section class="hero terrazzo">
+  <div class="wrap">
+    <p class="label">Concreto · Mosaico · Hecho a mano</p>
+    <h1 class="headline">Objetos que empiezan siendo <em>polvo</em> y terminan siendo para siempre.</h1>
+    <p class="sub">DeNuevo crea piezas de diseño en concreto y mosaico, moldeadas y ensambladas a mano, una por una. Cada objeto lleva su propia mezcla, sus propias fisuras, su propio color.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://api.whatsapp.com/message/XSRY2T6CHZDHM1" target="_blank" rel="noopener">👇 Consultas y pedidos por WhatsApp</a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/denuevo.arte/" target="_blank" rel="noopener">Ver en Instagram</a>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-track">
+    <span>Concreto</span><span>Mosaico</span><span>Pieza única</span><span>Hecho a mano</span><span>Envíos a todo el país</span>
+    <span>Concreto</span><span>Mosaico</span><span>Pieza única</span><span>Hecho a mano</span><span>Envíos a todo el país</span>
+  </div>
+</div>
+
+<section id="mezcla">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <h2>La mezcla</h2>
+        <p>Todo objeto DeNuevo parte de la misma proporción base, ajustada a mano según la pieza y el molde.</p>
+      </div>
+      <p class="label">Fórmula de taller</p>
+    </div>
+    <div class="mezcla reveal">
+      <p class="label">Composición aproximada por pieza</p>
+      <div class="mezcla-bar" aria-hidden="true">
+        <span style="width:45%; background:#8B8377;"></span>
+        <span style="width:30%; background:#B9AE9B;"></span>
+        <span style="width:15%; background:var(--sky);"></span>
+        <span style="width:10%; background:var(--dust);"></span>
+      </div>
+      <div class="mezcla-legend">
+        <span><i style="background:#8B8377;"></i><b>45%</b> cemento</span>
+        <span><i style="background:#B9AE9B;"></i><b>30%</b> arena fina</span>
+        <span><i style="background:var(--sky);"></i><b>15%</b> agua + pigmento</span>
+        <span><i style="background:var(--dust);"></i><b>10%</b> teselas de mosaico</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="coleccion" style="background:var(--bg-alt);">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <h2>Colección</h2>
+        <p>Piezas para la casa, el escritorio y los rituales pequeños del día a día.</p>
+      </div>
+      <p class="label">Disponible por encargo</p>
+    </div>
+    <div class="grid">
+      <div class="piece reveal"><div class="icon-box"></div><h3>Macetas</h3><p>Concreto pulido con base de mosaico, en varios tamaños.</p></div>
+      <div class="piece reveal"><div class="icon-box"></div><h3>Bandejas</h3><p>Superficies planas con teselas incrustadas a mano.</p></div>
+      <div class="piece reveal"><div class="icon-box"></div><h3>Portavelas</h3><p>Peso y textura para acompañar la luz de una vela.</p></div>
+      <div class="piece reveal"><div class="icon-box"></div><h3>Jaboneras</h3><p>Drenaje integrado, acabado mate al tacto.</p></div>
+      <div class="piece reveal"><div class="icon-box"></div><h3>Posavasos</h3><p>Sets con mosaico distinto en cada pieza.</p></div>
+      <div class="piece reveal"><div class="icon-box"></div><h3>Piezas a medida</h3><p>Color, tamaño y mosaico definidos junto al cliente.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <h2>Cómo se hace</h2>
+        <p>Ningún objeto sale igual a otro; el molde es el mismo, la mano no.</p>
+      </div>
+    </div>
+    <div class="proceso-list">
+      <div class="step reveal"><span class="num">01</span><h3>Molde y mezcla</h3><p>Se prepara la mezcla de concreto y se vierte en moldes hechos a medida.</p></div>
+      <div class="step reveal"><span class="num">02</span><h3>Mosaico a mano</h3><p>Mientras el concreto aún está fresco, se incrustan las teselas una a una.</p></div>
+      <div class="step reveal"><span class="num">03</span><h3>Curado y pulido</h3><p>La pieza cura varios días y se pule a mano hasta su acabado final.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="envios" style="background:var(--bg-alt);">
+  <div class="wrap envios">
+    <div class="envios-copy reveal">
+      <p class="label">📦 Logística</p>
+      <h2 style="margin:14px 0 20px; font-size:clamp(1.9rem,3.6vw,2.6rem);">Envíos a todo el país</h2>
+      <p>Cada pieza se embala a mano con material de protección propio para el concreto, pensado para que la mezcla llegue intacta a cualquier destino.</p>
+      <p>Coordinación de envío y seguimiento directo por WhatsApp, desde el pedido hasta la entrega.</p>
+    </div>
+    <div class="envios-badge reveal">
+      <div class="big">100%</div>
+      <p class="label">del país cubierto</p>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="contact reveal">
+      <div class="contact-inner">
+        <p class="label" style="color:#D8D2C4;">Objetos de diseño · Entrepreneur</p>
+        <h2>Cada pieza empieza con un mensaje.</h2>
+        <p>Contá qué objeto tenés en mente, tu ciudad y la cantidad, y armamos la mezcla exacta para vos.</p>
+        <div class="contact-ctas">
+          <a class="btn btn-primary" href="https://api.whatsapp.com/message/XSRY2T6CHZDHM1" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/denuevo.arte/" target="_blank" rel="noopener">@denuevo.arte</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="label">© 2026 DeNuevo — Objetos de Diseño</p>
+    <div class="foot-links">
+      <a href="https://www.instagram.com/denuevo.arte/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://api.whatsapp.com/message/XSRY2T6CHZDHM1" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://api.whatsapp.com/message/XSRY2T6CHZDHM1" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.38 5.07L2 22l5.07-1.33A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2Zm5.2 14.1c-.22.62-1.28 1.2-1.77 1.24-.45.05-1.02.07-1.65-.1-.38-.11-.87-.27-1.5-.53-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.44-1.08-2.74 0-1.3.68-1.94.93-2.2.24-.26.53-.32.7-.32h.5c.16 0 .38-.02.58.45.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.13.29-.27.44-.13.16-.28.35-.4.47-.13.13-.27.27-.12.53.16.26.7 1.16 1.5 1.88 1.03.92 1.9 1.21 2.16 1.34.26.13.42.11.57-.07.16-.18.66-.77.84-1.03.18-.26.35-.22.6-.13.24.09 1.53.72 1.79.86.26.13.44.2.5.31.07.13.07.71-.15 1.33Z" fill="currentColor"/>
+  </svg>
+</a>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
