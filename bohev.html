@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boheva | Tote Bags Bordadas a Mano</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep:#2A1626;
+    --bg-deep2:#3D1F35;
+    --rust:#C1502E;
+    --gold:#E8A93A;
+    --gold-soft:#F0C862;
+    --berry:#B23A5C;
+    --teal:#1F6F6B;
+    --cream:#F7EEDD;
+    --cream-dim:#e4d4bd;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(ellipse 80% 50% at 20% -10%, rgba(178,58,92,0.35), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 90% 10%, rgba(31,111,107,0.30), transparent 60%),
+      linear-gradient(160deg, var(--bg-deep) 0%, var(--bg-deep2) 55%, #241220 100%);
+    background-attachment:fixed;
+    color:var(--cream);
+    font-family:'Inter',sans-serif;
+    overflow-x:hidden;
+  }
+  .eyebrow{
+    font-family:'Space Mono',monospace;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    font-size:0.72rem;
+    color:var(--gold-soft);
+  }
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.05;}
+  em{font-style:italic;font-weight:500;color:var(--gold-soft);}
+  a{color:inherit;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    backdrop-filter:blur(10px);
+    background:rgba(42,22,38,0.72);
+    border-bottom:1px solid rgba(232,169,58,0.18);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;}
+  .logo{font-family:'Fraunces',serif;font-weight:600;font-size:1.4rem;letter-spacing:0.01em;}
+  .logo span{color:var(--gold);}
+  .nav-cta{
+    font-family:'Space Mono',monospace;
+    font-size:0.78rem;
+    text-decoration:none;
+    background:linear-gradient(120deg,var(--gold),var(--gold-soft));
+    color:#2A1626;
+    padding:10px 20px;
+    border-radius:100px;
+    font-weight:700;
+    letter-spacing:0.03em;
+    transition:transform .25s ease, box-shadow .25s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(232,169,58,0.35);}
+
+  /* ---------- STITCH DIVIDER (signature motif) ---------- */
+  .stitch-divider{width:100%;height:14px;overflow:hidden;}
+  .stitch-divider svg{width:100%;height:100%;display:block;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding:88px 0 40px;position:relative;}
+  .hero .wrap{display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center;}
+  .hero h1{font-size:clamp(2.6rem,5.5vw,4.2rem);color:var(--cream);margin:14px 0 20px;}
+  .hero p.sub{font-size:1.08rem;color:var(--cream-dim);max-width:46ch;line-height:1.6;margin-bottom:30px;}
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .btn-primary{
+    text-decoration:none;
+    display:inline-flex;align-items:center;gap:8px;
+    background:linear-gradient(120deg,var(--rust),var(--berry));
+    color:var(--cream);
+    padding:15px 26px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:0.98rem;
+    box-shadow:0 10px 28px rgba(193,80,46,0.35);
+    transition:transform .25s ease;
+  }
+  .btn-primary:hover{transform:translateY(-3px) scale(1.02);}
+  .btn-ghost{
+    text-decoration:none;
+    display:inline-flex;align-items:center;gap:8px;
+    border:1.5px solid rgba(247,238,221,0.35);
+    color:var(--cream);
+    padding:14px 24px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:0.98rem;
+    transition:border-color .25s ease, background .25s ease;
+  }
+  .btn-ghost:hover{border-color:var(--gold-soft);background:rgba(232,169,58,0.08);}
+
+  .hero-art{position:relative;display:flex;align-items:center;justify-content:center;}
+  .hero-art svg{width:100%;max-width:380px;height:auto;}
+
+  .stitch-path{
+    fill:none;
+    stroke:var(--gold-soft);
+    stroke-width:2.5;
+    stroke-linecap:round;
+    stroke-dasharray:8 9;
+    stroke-dashoffset:2000;
+    animation:draw 3.2s ease forwards;
+  }
+  .bag-fill{
+    fill:url(#bagGrad);
+    opacity:0;
+    animation:fadeIn 1s ease forwards 2.6s;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  @keyframes fadeIn{to{opacity:1;}}
+
+  /* ---------- VALUE PROPS ---------- */
+  .props{padding:60px 0 20px;}
+  .props-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .prop-card{
+    background:rgba(247,238,221,0.045);
+    border:1px solid rgba(232,169,58,0.22);
+    border-radius:18px;
+    padding:28px 24px;
+    position:relative;
+    transition:transform .3s ease, border-color .3s ease;
+  }
+  .prop-card:hover{transform:translateY(-6px);border-color:var(--gold);}
+  .prop-icon{width:42px;height:42px;margin-bottom:16px;}
+  .prop-card h3{font-size:1.2rem;color:var(--cream);margin-bottom:8px;}
+  .prop-card p{color:var(--cream-dim);font-size:0.94rem;line-height:1.55;}
+
+  /* ---------- PROCESO ---------- */
+  .proceso{padding:80px 0 60px;}
+  .section-head{max-width:600px;margin-bottom:48px;}
+  .section-head h2{font-size:clamp(1.9rem,3.6vw,2.6rem);margin-top:10px;color:var(--cream);}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;}
+  .step{position:relative;padding-top:8px;}
+  .step .num{
+    font-family:'Space Mono',monospace;
+    font-size:0.85rem;
+    color:var(--rust);
+    border:1.5px solid var(--rust);
+    width:34px;height:34px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:16px;
+    background:rgba(193,80,46,0.08);
+  }
+  .step h3{font-size:1.05rem;color:var(--cream);margin-bottom:6px;}
+  .step p{font-size:0.88rem;color:var(--cream-dim);line-height:1.5;}
+
+  /* ---------- GALERIA ---------- */
+  .galeria{padding:20px 0 80px;}
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .gal-card{
+    aspect-ratio:0.85;
+    border-radius:16px;
+    position:relative;
+    overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid rgba(247,238,221,0.12);
+  }
+  .gal-card svg{width:58%;height:58%;}
+  .gal-card span{
+    position:absolute;bottom:12px;left:14px;
+    font-family:'Space Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.04em;
+    color:rgba(247,238,221,0.85);
+  }
+  .g1{background:linear-gradient(160deg,#B23A5C,#6f2038);}
+  .g2{background:linear-gradient(160deg,#1F6F6B,#123f3d);}
+  .g3{background:linear-gradient(160deg,#E8A93A,#a5711c);}
+  .g4{background:linear-gradient(160deg,#C1502E,#7c2e15);}
+
+  /* ---------- MAKER ---------- */
+  .maker{padding:20px 0 90px;}
+  .maker-box{
+    background:rgba(232,169,58,0.06);
+    border:1px solid rgba(232,169,58,0.25);
+    border-radius:22px;
+    padding:44px;
+    display:grid;
+    grid-template-columns:auto 1fr;
+    gap:30px;
+    align-items:center;
+  }
+  .maker-box svg{width:64px;height:64px;flex-shrink:0;}
+  .maker-box h3{color:var(--cream);font-size:1.3rem;margin-bottom:8px;}
+  .maker-box p{color:var(--cream-dim);font-size:0.96rem;line-height:1.6;}
+  .maker-box a{color:var(--gold-soft);text-decoration:underline;text-underline-offset:3px;}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{padding:20px 0 100px;text-align:center;}
+  .cta-box{
+    background:linear-gradient(135deg, rgba(178,58,92,0.35), rgba(31,111,107,0.30));
+    border:1px solid rgba(247,238,221,0.15);
+    border-radius:28px;
+    padding:70px 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-box h2{font-size:clamp(2rem,4.4vw,3rem);color:var(--cream);margin-bottom:16px;}
+  .cta-box p{color:var(--cream-dim);max-width:50ch;margin:0 auto 32px;font-size:1.02rem;}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:40px 0 30px;border-top:1px solid rgba(247,238,221,0.1);}
+  footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;align-items:center;}
+  footer .f-left{font-family:'Space Mono',monospace;font-size:0.78rem;color:var(--cream-dim);}
+  footer .f-right a{font-size:0.78rem;color:var(--gold-soft);text-decoration:none;}
+  footer .credit{width:100%;text-align:center;margin-top:20px;font-size:0.7rem;color:rgba(247,238,221,0.35);font-family:'Space Mono',monospace;}
+
+  @media(max-width:860px){
+    .hero .wrap{grid-template-columns:1fr;text-align:center;}
+    .hero-ctas{justify-content:center;}
+    .props-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr 1fr;row-gap:34px;}
+    .gal-grid{grid-template-columns:1fr 1fr;}
+    .maker-box{grid-template-columns:1fr;text-align:center;justify-items:center;}
+  }
+  @media(prefers-reduced-motion: reduce){
+    .stitch-path,.bag-fill{animation:none;stroke-dashoffset:0;opacity:1;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="logo">Bo<span>heva</span></div>
+    <a class="nav-cta" href="https://www.instagram.com/boheva_/" target="_blank" rel="noopener">Ver Instagram →</a>
+  </div>
+</nav>
+
+<div class="stitch-divider">
+  <svg viewBox="0 0 1200 14" preserveAspectRatio="none">
+    <line x1="0" y1="7" x2="1200" y2="7" stroke="#E8A93A" stroke-width="2" stroke-dasharray="10 8" opacity="0.55"/>
+  </svg>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow">Tote bags bordadas a mano · 📍 SMT, Argentina 🇦🇷</p>
+      <h1>Piezas <em>únicas</em>,<br>bordadas para vos.</h1>
+      <p class="sub">En Boheva cada tote bag se borda a mano, con diseños personalizados e irrepetibles. Nada de producción en serie: cada puntada la elegís vos. Hacemos envíos a todo el país.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="https://www.instagram.com/boheva_/" target="_blank" rel="noopener">
+          Pedí la tuya en Instagram
+        </a>
+        <a class="btn-ghost" href="#proceso">Cómo funciona</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 300 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bagGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#B23A5C"/>
+            <stop offset="55%" stop-color="#C1502E"/>
+            <stop offset="100%" stop-color="#E8A93A"/>
+          </linearGradient>
+        </defs>
+        <!-- tote body -->
+        <path class="bag-fill" d="M45 110 L255 110 L235 300 Q150 315 65 300 Z"/>
+        <!-- stitched outline drawn on load -->
+        <path class="stitch-path" d="M45 110 L255 110 L235 300 Q150 315 65 300 Z"/>
+        <!-- handles -->
+        <path class="stitch-path" d="M95 110 C95 55 205 55 205 110"/>
+        <!-- embroidered flower motif on bag -->
+        <g class="stitch-path" stroke="#F7EEDD">
+          <circle cx="150" cy="195" r="10"/>
+          <circle cx="150" cy="170" r="9"/>
+          <circle cx="128" cy="205" r="9"/>
+          <circle cx="172" cy="205" r="9"/>
+          <circle cx="150" cy="195" r="3" fill="#F7EEDD" stroke="none"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="stitch-divider">
+  <svg viewBox="0 0 1200 14" preserveAspectRatio="none">
+    <line x1="0" y1="7" x2="1200" y2="7" stroke="#B23A5C" stroke-width="2" stroke-dasharray="10 8" opacity="0.45"/>
+  </svg>
+</div>
+
+<!-- VALUE PROPS -->
+<section class="props">
+  <div class="wrap">
+    <div class="props-grid">
+      <div class="prop-card">
+        <svg class="prop-icon" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="21" stroke="#E8A93A" stroke-width="2" stroke-dasharray="4 4"/><path d="M16 24c2-6 6-9 8-9s6 3 8 9-6 9-8 9-10-3-8-9z" stroke="#F7EEDD" stroke-width="2"/></svg>
+        <h3>Bordado 100% a mano</h3>
+        <p>Cada hilo se borda puntada por puntada. Sin máquinas, sin réplicas: tu bolso no se repite.</p>
+      </div>
+      <div class="prop-card">
+        <svg class="prop-icon" viewBox="0 0 48 48" fill="none"><path d="M24 6l4 10 11 1-8 8 3 11-10-6-10 6 3-11-8-8 11-1z" stroke="#C1502E" stroke-width="2" stroke-linejoin="round"/></svg>
+        <h3>Diseños personalizados</h3>
+        <p>Elegís colores, motivos e iniciales. Lo pensamos juntas hasta que sea exactamente tu idea.</p>
+      </div>
+      <div class="prop-card">
+        <svg class="prop-icon" viewBox="0 0 48 48" fill="none"><rect x="6" y="16" width="24" height="16" rx="2" stroke="#1F6F6B" stroke-width="2"/><path d="M30 22h6l6 6v4h-12z" stroke="#1F6F6B" stroke-width="2"/><circle cx="14" cy="34" r="3" stroke="#1F6F6B" stroke-width="2"/><circle cx="34" cy="34" r="3" stroke="#1F6F6B" stroke-width="2"/></svg>
+        <h3>Envíos a todo el país</h3>
+        <p>Desde SMT llega tu tote bag a cualquier rincón de Argentina, bien protegida y lista para usar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESO -->
+<section class="proceso" id="proceso">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Cómo se hace tu bolso</p>
+      <h2>De la idea a la puntada final</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="num">01</div>
+        <h3>Elegís tu diseño</h3>
+        <p>Nos escribís por Instagram y vemos juntas qué motivo, tamaño y colores querés.</p>
+      </div>
+      <div class="step">
+        <div class="num">02</div>
+        <h3>Personalizamos</h3>
+        <p>Ajustamos el boceto: iniciales, frases o el detalle que la haga tuya.</p>
+      </div>
+      <div class="step">
+        <div class="num">03</div>
+        <h3>Bordamos a mano</h3>
+        <p>Cada puntada se hace a mano, con tiempo, sin apuro y sin dos piezas iguales.</p>
+      </div>
+      <div class="step">
+        <div class="num">04</div>
+        <h3>Te la enviamos</h3>
+        <p>Empacamos con cuidado y la mandamos a cualquier punto del país 🇦🇷.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA -->
+<section class="galeria">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Inspiración</p>
+      <h2>Algunos motivos bordados</h2>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-card g1">
+        <svg viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="6" stroke="#F7EEDD" stroke-width="2"/><circle cx="30" cy="14" r="5" stroke="#F7EEDD" stroke-width="2"/><circle cx="30" cy="46" r="5" stroke="#F7EEDD" stroke-width="2"/><circle cx="14" cy="30" r="5" stroke="#F7EEDD" stroke-width="2"/><circle cx="46" cy="30" r="5" stroke="#F7EEDD" stroke-width="2"/></svg>
+        <span>flor bordada</span>
+      </div>
+      <div class="gal-card g2">
+        <svg viewBox="0 0 60 60" fill="none"><path d="M15 45c8-22 22-22 30-30" stroke="#F7EEDD" stroke-width="2" stroke-linecap="round" stroke-dasharray="3 4"/><circle cx="45" cy="15" r="3" fill="#F7EEDD"/></svg>
+        <span>rama minimal</span>
+      </div>
+      <div class="gal-card g3">
+        <svg viewBox="0 0 60 60" fill="none"><text x="30" y="38" font-family="Fraunces,serif" font-size="26" fill="#2A1626" text-anchor="middle" font-style="italic">B</text></svg>
+        <span>iniciales</span>
+      </div>
+      <div class="gal-card g4">
+        <svg viewBox="0 0 60 60" fill="none"><path d="M20 40 Q30 15 40 40 Q30 30 20 40Z" stroke="#F7EEDD" stroke-width="2"/></svg>
+        <span>hoja bordada</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAKER -->
+<section class="maker">
+  <div class="wrap">
+    <div class="maker-box">
+      <svg viewBox="0 0 64 64" fill="none"><path d="M12 52 L20 12 L44 12 L52 52" stroke="#E8A93A" stroke-width="2.5" stroke-linejoin="round"/><path d="M22 12c0-8 20-8 20 0" stroke="#E8A93A" stroke-width="2.5"/></svg>
+      <div>
+        <h3>Hecho a mano, hilo por hilo</h3>
+        <p>Boheva nace de la pasión por el bordado y las piezas irrepetibles. Este trabajo de bordado es realizado junto a <a href="https://www.instagram.com/conty.colombres/" target="_blank" rel="noopener">@conty.colombres</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="wrap">
+    <div class="cta-box">
+      <p class="eyebrow" style="margin-bottom:14px;">📍 SMT · Envíos a todo el país 🇦🇷</p>
+      <h2>Tu tote bag bordada<br>te está esperando.</h2>
+      <p>Escribinos por Instagram, contanos tu idea y la bordamos para vos. Piezas únicas, hechas con tiempo y con cariño.</p>
+      <a class="btn-primary" href="https://www.instagram.com/boheva_/" target="_blank" rel="noopener">
+        Escribir a @boheva_ en Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="f-left">Boheva · Tote Bags Únicas · 📍 SMT, Argentina</div>
+    <div class="f-right"><a href="https://www.instagram.com/boheva_/" target="_blank" rel="noopener">instagram.com/boheva_</a></div>
+    <div class="credit">Sitio hecho con EasyPageX</div>
+  </div>
+</footer>
+
+</body>
+</html>
