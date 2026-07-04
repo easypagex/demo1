@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Henko Terrarium & Candles · Alquimia de cristal y cera · Vall Fosca</title>
+<meta name="description" content="Terrarios de cristal y velas de soja artesanales, hechos a mano en Vall Fosca, Pallars. Pastisseria de cera única. Encárgalas por Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pine: #16352b;
+    --pine-deep: #0b1f19;
+    --moss: #6f9b76;
+    --wax: #e0a352;
+    --wax-deep: #c07a2b;
+    --plum: #55284a;
+    --gold: #d4af37;
+    --gold-soft: #f0c862;
+    --cream: #f7ecd8;
+    --glass: rgba(247,236,216,0.08);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Jost', sans-serif;
+    background: linear-gradient(160deg, var(--pine-deep) 0%, var(--pine) 45%, var(--plum) 100%);
+    color: var(--cream);
+    overflow-x:hidden;
+    position:relative;
+  }
+
+  h1,h2,h3, .display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:0.01em;
+  }
+
+  em{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    color: var(--gold-soft);
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  ::selection{ background: var(--gold); color: var(--pine-deep); }
+
+  /* Fireflies / ember particles */
+  #fireflies{
+    position:fixed; inset:0; pointer-events:none; z-index:1; overflow:hidden;
+  }
+  .firefly{
+    position:absolute;
+    width:4px; height:4px;
+    border-radius:50%;
+    background: var(--gold-soft);
+    box-shadow: 0 0 8px 2px var(--gold-soft), 0 0 16px 4px rgba(212,175,55,0.4);
+    opacity:0;
+    animation: float-firefly linear infinite;
+  }
+  @keyframes float-firefly{
+    0%{ opacity:0; transform: translateY(0) translateX(0); }
+    10%{ opacity:0.9; }
+    50%{ opacity:0.5; }
+    90%{ opacity:0.9; }
+    100%{ opacity:0; transform: translateY(-120vh) translateX(40px); }
+  }
+
+  header, section, footer{ position:relative; z-index:2; }
+
+  /* NAV */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; justify-content:space-between; align-items:center;
+    padding: 18px 6vw;
+    background: linear-gradient(to bottom, rgba(11,31,25,0.85), transparent);
+    backdrop-filter: blur(2px);
+  }
+  .logo-mark{
+    font-family:'Fraunces', serif;
+    font-size: 1.3rem;
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo-mark svg{ width:28px; height:28px; }
+  nav a.cta-small{
+    border:1px solid var(--gold);
+    color: var(--gold-soft);
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-size:0.85rem;
+    letter-spacing:0.05em;
+    transition: all .3s ease;
+  }
+  nav a.cta-small:hover{ background: var(--gold); color: var(--pine-deep); }
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center;
+    padding: 140px 6vw 80px;
+    position:relative;
+  }
+  .eyebrow{
+    color: var(--moss);
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    font-size:0.75rem;
+    margin-bottom: 22px;
+  }
+  .hero h1{
+    font-size: clamp(2.4rem, 6vw, 4.6rem);
+    line-height:1.05;
+    max-width: 15ch;
+  }
+  .hero p.sub{
+    margin-top:26px;
+    max-width:46ch;
+    font-size:1.15rem;
+    font-weight:300;
+    color: rgba(247,236,216,0.85);
+  }
+
+  .jar-wrap{
+    margin: 48px 0 20px;
+    position:relative;
+    width: 220px;
+    height: 260px;
+  }
+  .flame{
+    animation: flicker 2.4s ease-in-out infinite;
+    transform-origin: center bottom;
+  }
+  @keyframes flicker{
+    0%,100%{ transform: scaleY(1) scaleX(1) rotate(0deg); }
+    20%{ transform: scaleY(1.08) scaleX(0.94) rotate(-1.5deg); }
+    40%{ transform: scaleY(0.92) scaleX(1.05) rotate(1deg); }
+    60%{ transform: scaleY(1.1) scaleX(0.96) rotate(-1deg); }
+    80%{ transform: scaleY(0.96) scaleX(1.02) rotate(1.5deg); }
+  }
+  .glow{
+    animation: glow-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes glow-pulse{
+    0%,100%{ opacity:0.55; }
+    50%{ opacity:0.85; }
+  }
+
+  .hero-ctas{
+    margin-top:38px;
+    display:flex; gap:16px; flex-wrap:wrap; justify-content:center;
+  }
+  .btn{
+    padding: 14px 30px;
+    border-radius: 999px;
+    font-size:0.95rem;
+    letter-spacing:0.03em;
+    transition: transform .25s ease, box-shadow .25s ease;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-gold{
+    background: linear-gradient(135deg, var(--gold-soft), var(--wax-deep));
+    color: var(--pine-deep);
+    font-weight:600;
+    box-shadow: 0 8px 24px rgba(212,175,55,0.25);
+  }
+  .btn-gold:hover{ transform: translateY(-3px); box-shadow: 0 12px 30px rgba(212,175,55,0.4); }
+  .btn-outline{
+    border:1px solid rgba(247,236,216,0.4);
+    color: var(--cream);
+  }
+  .btn-outline:hover{ border-color: var(--gold-soft); color: var(--gold-soft); transform: translateY(-3px); }
+
+  .scroll-hint{
+    position:absolute; bottom:28px; left:50%; transform:translateX(-50%);
+    font-size:0.7rem; letter-spacing:0.25em; text-transform:uppercase;
+    color: rgba(247,236,216,0.5);
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+  }
+  .scroll-line{ width:1px; height:34px; background: linear-gradient(var(--gold-soft), transparent); animation: scroll-move 2s ease-in-out infinite; }
+  @keyframes scroll-move{ 0%,100%{ transform: scaleY(1); opacity:0.6; } 50%{ transform: scaleY(0.6); opacity:1; } }
+
+  /* SECTION generic */
+  section{ padding: 110px 6vw; }
+  .section-inner{ max-width: 1080px; margin:0 auto; }
+  .eyebrow-line{
+    display:flex; align-items:center; gap:14px;
+    color: var(--moss);
+    letter-spacing:0.3em; text-transform:uppercase; font-size:0.72rem;
+    margin-bottom:20px;
+  }
+  .eyebrow-line::before{ content:''; width:36px; height:1px; background: var(--gold); }
+
+  /* ABOUT */
+  .about-grid{
+    display:grid; grid-template-columns: 1.1fr 0.9fr; gap:70px; align-items:center;
+  }
+  .about-grid h2{ font-size: clamp(1.9rem, 3.4vw, 2.6rem); margin-bottom:22px; }
+  .about-grid p{ color: rgba(247,236,216,0.82); line-height:1.8; font-weight:300; margin-bottom:16px; font-size:1.02rem;}
+  .badge-row{ display:flex; gap:14px; margin-top:28px; flex-wrap:wrap; }
+  .badge{
+    border:1px solid rgba(212,175,55,0.4);
+    padding:8px 16px; border-radius:999px; font-size:0.78rem;
+    color: var(--gold-soft); letter-spacing:0.03em;
+    background: rgba(212,175,55,0.06);
+  }
+
+  /* GRIMOIRE illustration (SVG) */
+  .grimoire-svg{ width:100%; max-width:340px; margin:0 auto; display:block; }
+
+  /* PRODUCTS */
+  .products{
+    background: linear-gradient(180deg, transparent, rgba(11,31,25,0.55), transparent);
+  }
+  .products h2{ text-align:center; font-size: clamp(1.9rem, 3.4vw, 2.6rem); }
+  .products .eyebrow-line{ justify-content:center; }
+  .products .eyebrow-line::before, .products .eyebrow-line::after{ content:''; width:36px; height:1px; background: var(--gold); }
+  .products-intro{ text-align:center; max-width:56ch; margin: 18px auto 60px; color: rgba(247,236,216,0.75); font-weight:300; }
+
+  .product-cards{
+    display:grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+  }
+  .card{
+    background: linear-gradient(160deg, rgba(247,236,216,0.05), rgba(247,236,216,0.02));
+    border: 1px solid rgba(212,175,55,0.18);
+    border-radius: 18px;
+    padding: 38px 28px;
+    transition: transform .35s ease, border-color .35s ease, background .35s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .card::before{
+    content:'';
+    position:absolute; top:-40%; right:-40%;
+    width:200px; height:200px;
+    background: radial-gradient(circle, rgba(212,175,55,0.15), transparent 70%);
+    transition: opacity .35s ease;
+    opacity:0;
+  }
+  .card:hover{ transform: translateY(-8px); border-color: rgba(212,175,55,0.55); }
+  .card:hover::before{ opacity:1; }
+  .card svg{ width:52px; height:52px; margin-bottom:22px; }
+  .card h3{ font-size:1.3rem; margin-bottom:12px; }
+  .card p{ font-weight:300; color: rgba(247,236,216,0.75); line-height:1.7; font-size:0.95rem; }
+  .card .tag{
+    display:inline-block; margin-top:18px;
+    font-size:0.7rem; letter-spacing:0.15em; text-transform:uppercase;
+    color: var(--wax);
+  }
+
+  /* PASTISSERIA highlight */
+  .pastry-feature{
+    margin-top: 70px;
+    display:grid; grid-template-columns: 0.9fr 1.1fr; gap: 60px; align-items:center;
+    background: linear-gradient(135deg, rgba(85,40,74,0.35), rgba(224,163,82,0.08));
+    border:1px solid rgba(212,175,55,0.25);
+    border-radius: 24px;
+    padding: 50px;
+  }
+  .pastry-feature h3{ font-size: 1.7rem; margin-bottom:16px; }
+  .pastry-feature p{ font-weight:300; color: rgba(247,236,216,0.82); line-height:1.8; margin-bottom:20px; }
+  .pastry-illustration{ width:100%; }
+
+  /* VALL FOSCA */
+  .fosca{
+    text-align:center;
+  }
+  .fosca .section-inner{ max-width: 760px; }
+  .fosca h2{ font-size: clamp(1.9rem, 3.4vw, 2.6rem); margin-bottom: 22px;}
+  .fosca p{ font-weight:300; color: rgba(247,236,216,0.82); line-height:1.85; font-size:1.05rem; }
+  .mountains-svg{ width:100%; max-width:520px; margin: 40px auto 0; display:block; opacity:0.9; }
+
+  /* INSTAGRAM STRIP */
+  .insta-strip{
+    text-align:center;
+  }
+  .insta-strip h2{ font-size: clamp(1.8rem, 3vw, 2.3rem); margin-bottom:14px; }
+  .insta-strip p{ color: rgba(247,236,216,0.75); font-weight:300; margin-bottom: 40px; }
+  .insta-grid{
+    display:grid; grid-template-columns: repeat(4, 1fr); gap:16px; margin-bottom: 46px;
+  }
+  .insta-tile{
+    aspect-ratio:1; border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem;
+    border: 1px solid rgba(212,175,55,0.2);
+    transition: transform .3s ease, border-color .3s ease;
+  }
+  .insta-tile:nth-child(1){ background: linear-gradient(150deg, #274e3e, #16352b); }
+  .insta-tile:nth-child(2){ background: linear-gradient(150deg, #c07a2b, #55284a); }
+  .insta-tile:nth-child(3){ background: linear-gradient(150deg, #55284a, #16352b); }
+  .insta-tile:nth-child(4){ background: linear-gradient(150deg, #6f9b76, #0b1f19); }
+  .insta-tile:hover{ transform: translateY(-6px) scale(1.03); border-color: var(--gold-soft); }
+
+  .insta-follow{
+    display:inline-flex; align-items:center; gap:12px;
+    padding: 16px 36px;
+    border-radius:999px;
+    background: linear-gradient(135deg, var(--gold-soft), var(--wax-deep));
+    color: var(--pine-deep);
+    font-weight:600;
+    font-size:1.05rem;
+    box-shadow: 0 10px 28px rgba(212,175,55,0.3);
+    transition: transform .25s ease;
+  }
+  .insta-follow:hover{ transform: translateY(-3px) scale(1.02); }
+
+  /* FOOTER / FINAL CTA */
+  footer{
+    padding: 90px 6vw 50px;
+    text-align:center;
+    background: linear-gradient(180deg, transparent, rgba(11,31,25,0.9));
+  }
+  footer h2{ font-size: clamp(1.8rem, 3.4vw, 2.5rem); margin-bottom:20px; }
+  footer p.closing{ max-width:50ch; margin:0 auto 40px; color: rgba(247,236,216,0.75); font-weight:300; }
+  .footer-ctas{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-bottom:60px; }
+  .footer-bottom{
+    border-top: 1px solid rgba(247,236,216,0.12);
+    padding-top: 26px;
+    font-size:0.8rem;
+    color: rgba(247,236,216,0.5);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+  .footer-bottom span em{ color: var(--gold-soft); }
+
+  /* reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    *{ animation: none !important; transition:none !important; }
+  }
+
+  @media (max-width: 860px){
+    .about-grid{ grid-template-columns:1fr; gap:40px; }
+    .product-cards{ grid-template-columns:1fr; }
+    .pastry-feature{ grid-template-columns:1fr; padding:32px; }
+    .insta-grid{ grid-template-columns: repeat(2,1fr); }
+    section{ padding: 80px 6vw; }
+  }
+</style>
+</head>
+<body>
+
+<div id="fireflies"></div>
+
+<nav>
+  <div class="logo-mark">
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20 4C20 4 12 14 12 22C12 27.5 15.5 32 20 32C24.5 32 28 27.5 28 22C28 14 20 4 20 4Z" stroke="#f0c862" stroke-width="1.4"/>
+      <circle cx="20" cy="24" r="3.4" fill="#e0a352"/>
+      <line x1="20" y1="32" x2="20" y2="37" stroke="#f0c862" stroke-width="1.2"/>
+    </svg>
+    Henko
+  </div>
+  <a class="cta-small" href="https://www.instagram.com/henko__terrarium/" target="_blank" rel="noopener">Instagram ↗</a>
+</nav>
+
+<header class="hero">
+  <div class="eyebrow">Vall Fosca · Pallars</div>
+  <h1>Alquimia de <em>cristal</em><br>y cera encendida</h1>
+  <p class="sub">Terrarios de vidrio y velas aromáticas de soja 100%, moldeadas a mano como si fueran repostería. Cada pieza sale de un mismo taller, entre montañas, con paciencia de bruja buena.</p>
+
+  <div class="jar-wrap">
+    <svg viewBox="0 0 220 260" width="220" height="260">
+      <defs>
+        <radialGradient id="flameGlow" cx="50%" cy="35%" r="65%">
+          <stop offset="0%" stop-color="#ffe3a3" stop-opacity="0.9"/>
+          <stop offset="100%" stop-color="#f0c862" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="jarGlass" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#f7ecd8" stop-opacity="0.14"/>
+          <stop offset="100%" stop-color="#f7ecd8" stop-opacity="0.03"/>
+        </linearGradient>
+        <linearGradient id="waxGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#e0a352"/>
+          <stop offset="100%" stop-color="#c07a2b"/>
+        </linearGradient>
+      </defs>
+
+      <!-- glow -->
+      <circle class="glow" cx="110" cy="70" r="70" fill="url(#flameGlow)"/>
+
+      <!-- jar body -->
+      <path d="M60 100 L60 220 Q60 235 78 235 L142 235 Q160 235 160 220 L160 100 Z" fill="url(#jarGlass)" stroke="#f0c862" stroke-opacity="0.35" stroke-width="1.5"/>
+      <!-- jar lid -->
+      <rect x="72" y="86" width="76" height="18" rx="4" fill="#16352b" stroke="#f0c862" stroke-opacity="0.4" stroke-width="1.2"/>
+      <rect x="80" y="76" width="60" height="12" rx="3" fill="#0b1f19" stroke="#f0c862" stroke-opacity="0.4" stroke-width="1.2"/>
+
+      <!-- moss / terrarium bits inside -->
+      <ellipse cx="110" cy="215" rx="46" ry="10" fill="#0b1f19" opacity="0.6"/>
+      <path d="M78 215 Q85 190 78 178 Q90 185 92 200 Q98 180 88 165 Q104 175 100 198 Q112 182 108 165 Q122 178 114 200 Q128 190 122 178 Q135 190 128 210" fill="#6f9b76" opacity="0.85"/>
+      <circle cx="95" cy="205" r="4" fill="#e0a352"/>
+      <circle cx="128" cy="200" r="3" fill="#e0a352"/>
+
+      <!-- candle -->
+      <rect x="102" y="130" width="16" height="55" rx="3" fill="url(#waxGrad)"/>
+      <rect x="100" y="182" width="20" height="8" rx="2" fill="#c07a2b"/>
+      <line x1="110" y1="130" x2="110" y2="120" stroke="#3a2a1a" stroke-width="1.5"/>
+
+      <!-- flame -->
+      <g class="flame">
+        <path d="M110 120 C104 112 104 104 110 96 C116 104 116 112 110 120Z" fill="#f0c862"/>
+        <path d="M110 116 C107 111 107 106 110 101 C113 106 113 111 110 116Z" fill="#fff3d6"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="hero-ctas">
+    <a class="btn btn-gold" href="https://www.instagram.com/henko__terrarium/" target="_blank" rel="noopener">Ver el catálogo en Instagram</a>
+    <a class="btn btn-outline" href="#pastisseria">Descubre la pastisseria de cera</a>
+  </div>
+
+  <div class="scroll-hint"><span>Sigue bajando</span><span class="scroll-line"></span></div>
+</header>
+
+<section class="about" id="sobre">
+  <div class="section-inner about-grid">
+    <div>
+      <div class="eyebrow-line">El taller</div>
+      <h2>Un rincón de bosque encerrado en vidrio</h2>
+      <p>Henko nace en Vall Fosca, en pleno Pallars, donde el bosque entra en casa a través de tarros de cristal soplado y velas encendidas.</p>
+      <p>Cada terrario se compone a mano, capa a capa, y cada vela se funde con cera de soja 100% vegetal — sin humo negro, sin prisas, con aromas que se quedan.</p>
+      <p>Marca registrada, oficio de siempre: aquí no se fabrica en serie, se cultiva y se moldea, pieza a pieza.</p>
+      <div class="badge-row">
+        <span class="badge">Cera de soja 100%</span>
+        <span class="badge">Hecho a mano</span>
+        <span class="badge">Marca registrada ®️</span>
+        <span class="badge">Vall Fosca, Pallars</span>
+      </div>
+    </div>
+    <div>
+      <svg class="grimoire-svg" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bookCover" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#55284a"/>
+            <stop offset="100%" stop-color="#16352b"/>
+          </linearGradient>
+        </defs>
+        <rect x="40" y="40" width="220" height="240" rx="10" fill="url(#bookCover)" stroke="#d4af37" stroke-width="1.4" opacity="0.9"/>
+        <rect x="52" y="52" width="196" height="216" rx="6" fill="none" stroke="#f0c862" stroke-opacity="0.5" stroke-width="1"/>
+        <circle cx="150" cy="115" r="34" fill="none" stroke="#f0c862" stroke-width="1.3"/>
+        <path d="M150 90 L150 140 M126 115 L174 115 M132 98 L168 132 M168 98 L132 132" stroke="#e0a352" stroke-width="1.1" opacity="0.8"/>
+        <text x="150" y="200" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="17" fill="#f0c862">Henko</text>
+        <text x="150" y="222" text-anchor="middle" font-family="Jost, sans-serif" font-size="9" letter-spacing="3" fill="#f7ecd8" opacity="0.65">TERRARIUM &amp; CANDLES</text>
+        <path d="M65 260 Q150 275 235 260" stroke="#d4af37" stroke-width="1" opacity="0.5" fill="none"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="productos">
+  <div class="section-inner">
+    <div class="eyebrow-line">Lo que sale del taller</div>
+    <h2>Tres oficios, una misma llama</h2>
+    <p class="products-intro">Del cristal a la cera, cada pieza está pensada para quedarse en la mesa, no en el cajón.</p>
+
+    <div class="product-cards">
+      <div class="card">
+        <svg viewBox="0 0 60 60" fill="none"><path d="M18 20 L18 46 Q18 52 26 52 L34 52 Q42 52 42 46 L42 20 Z" stroke="#d4af37" stroke-width="2"/><rect x="20" y="14" width="20" height="8" rx="2" fill="#d4af37" opacity="0.7"/><path d="M22 46 Q26 34 22 28 Q30 32 31 40 Q36 30 30 22" stroke="#6f9b76" stroke-width="2" fill="none"/></svg>
+        <h3>Terrarios de cristal</h3>
+        <p>Ecosistemas en miniatura montados a mano, con musgo, piedra y vida vegetal de verdad. Cada tarro es una escena única, no una réplica.</p>
+        <span class="tag">Desde el bosque a tu estantería</span>
+      </div>
+      <div class="card">
+        <svg viewBox="0 0 60 60" fill="none"><rect x="24" y="26" width="12" height="24" rx="3" fill="#e0a352"/><rect x="22" y="48" width="16" height="6" rx="2" fill="#c07a2b"/><path d="M30 26 C25 20 25 14 30 8 C35 14 35 20 30 26Z" fill="#f0c862"/></svg>
+        <h3>Velas de soja 100%</h3>
+        <p>Cera vegetal, mecha de algodón y aromas propios. Arden limpias, largas y sin dejar rastro negro en el cristal.</p>
+        <span class="tag">Aroma que se queda en casa</span>
+      </div>
+      <div class="card" id="pastisseria">
+        <svg viewBox="0 0 60 60" fill="none"><ellipse cx="30" cy="42" rx="18" ry="8" fill="#c07a2b"/><path d="M14 40 Q30 20 46 40" fill="#e0a352"/><circle cx="24" cy="30" r="2" fill="#f0c862"/><circle cx="34" cy="26" r="2" fill="#f0c862"/><circle cx="30" cy="34" r="2" fill="#f0c862"/></svg>
+        <h3>Pastisseria de cera</h3>
+        <p>Nuestra firma: velas que se moldean como piezas de repostería. Parecen dulces recién hechos, pero son luz encendida.</p>
+        <span class="tag">Marca registrada ®️ · Al Pallars</span>
+      </div>
+    </div>
+
+    <div class="pastry-feature">
+      <svg class="pastry-illustration" viewBox="0 0 260 220" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="130" cy="185" rx="90" ry="14" fill="#0b1f19" opacity="0.5"/>
+        <path d="M60 160 Q60 100 130 95 Q200 100 200 160 Z" fill="#e0a352"/>
+        <path d="M75 158 Q78 115 130 108 Q182 115 185 158 Z" fill="#f0c07a"/>
+        <circle cx="95" cy="135" r="5" fill="#55284a"/>
+        <circle cx="130" cy="120" r="5" fill="#55284a"/>
+        <circle cx="165" cy="138" r="5" fill="#55284a"/>
+        <circle cx="115" cy="150" r="5" fill="#c07a2b"/>
+        <circle cx="150" cy="148" r="5" fill="#c07a2b"/>
+        <rect x="123" y="70" width="14" height="30" rx="3" fill="#f7ecd8" opacity="0.85"/>
+        <path d="M130 70 C124 62 124 54 130 46 C136 54 136 62 130 70Z" fill="#f0c862"/>
+      </svg>
+      <div>
+        <div class="eyebrow-line">La firma de Henko</div>
+        <h3>Pastisseria de cera al Pallars</h3>
+        <p>Aquí nadie hornea nada: se funde y se moldea. Cada "pastel" es en realidad una vela de soja, decorada a mano como si saliera de una pastelería de pueblo — con la diferencia de que, en lugar de comerla, la enciendes.</p>
+        <p>Es la pieza que más se regala, y la que más preguntan por Instagram. Marca registrada, hecha solo en Vall Fosca.</p>
+        <a class="btn btn-gold" href="https://www.instagram.com/henko__terrarium/" target="_blank" rel="noopener">Pedir la mía por Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fosca">
+  <div class="section-inner">
+    <div class="eyebrow-line" style="justify-content:center;">De dónde viene</div>
+    <h2>Vall Fosca no es un decorado, es el taller</h2>
+    <p>Entre picos del Pirineo leridano, con niebla que baja pronto y noches largas para trabajar con calma, cada terrario y cada vela se hace donde el silencio ayuda a que las manos no se apresuren. No es una marca que imite el campo: es una marca que vive en él.</p>
+    <svg class="mountains-svg" viewBox="0 0 520 180" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="0,180 90,60 160,140 220,40 300,150 360,70 430,150 520,90 520,180" fill="#16352b" opacity="0.9"/>
+      <polygon points="0,180 60,110 140,160 210,90 280,170 350,120 420,170 520,130 520,180" fill="#0b1f19"/>
+      <circle cx="430" cy="45" r="18" fill="#f0c862" opacity="0.85"/>
+    </svg>
+  </div>
+</section>
+
+<section class="insta-strip" id="instagram">
+  <div class="section-inner">
+    <div class="eyebrow-line" style="justify-content:center;">@henko__terrarium</div>
+    <h2>El catálogo real vive en Instagram</h2>
+    <p>Nuevas piezas, terrarios en proceso y el detrás de escena de la pastisseria de cera se publican primero ahí.</p>
+    <div class="insta-grid">
+      <div class="insta-tile">🌿</div>
+      <div class="insta-tile">🕯️</div>
+      <div class="insta-tile">🥐</div>
+      <div class="insta-tile">🧙🏻</div>
+    </div>
+    <a class="insta-follow" href="https://www.instagram.com/henko__terrarium/" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#0b1f19" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" stroke="#0b1f19" stroke-width="1.8"/><circle cx="17.4" cy="6.6" r="1.1" fill="#0b1f19"/></svg>
+      Seguir a @henko__terrarium
+    </a>
+  </div>
+</section>
+
+<footer>
+  <h2>¿Le encendemos una vela<br>a tu próximo rincón?</h2>
+  <p class="closing">Encargos, colores y aromas se hablan por Instagram. Escríbenos y te contamos qué hay ahora mismo saliendo del taller.</p>
+  <div class="footer-ctas">
+    <a class="btn btn-gold" href="https://www.instagram.com/henko__terrarium/" target="_blank" rel="noopener">Escribir por Instagram</a>
+  </div>
+  <div class="section-inner footer-bottom">
+    <span>Henko Terrarium &amp; Candles <em>®️</em> · Vall Fosca, Pallars</span>
+    <span>Cera de soja 100% · Hecho a mano</span>
+  </div>
+</footer>
+
+<script>
+  // fireflies
+  const container = document.getElementById('fireflies');
+  const count = window.innerWidth < 700 ? 14 : 26;
+  for(let i=0;i<count;i++){
+    const f = document.createElement('div');
+    f.className = 'firefly';
+    const left = Math.random()*100;
+    const duration = 10 + Math.random()*14;
+    const delay = Math.random()*14;
+    const size = 2 + Math.random()*3;
+    f.style.left = left + 'vw';
+    f.style.bottom = '-10px';
+    f.style.width = size+'px';
+    f.style.height = size+'px';
+    f.style.animationDuration = duration+'s';
+    f.style.animationDelay = delay+'s';
+    container.appendChild(f);
+  }
+
+  // scroll reveal
+  const revealTargets = document.querySelectorAll('.card, .about-grid, .pastry-feature, .fosca .section-inner, .insta-grid');
+  revealTargets.forEach(el=>{
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity .8s ease, transform .8s ease';
+  });
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealTargets.forEach(el=> io.observe(el));
+</script>
+
+</body>
+</html>
