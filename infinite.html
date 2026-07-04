@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infinite Baby Love | Chupeteros, Llaveros y Accesorios Personalizados</title>
+<meta name="description" content="Chupeteros, llaveros, bolsos, mochilas y neceseres 100% personalizados. Envíos a toda España.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink: #FF8FB1;
+    --pink-deep: #FF5D8F;
+    --lavender: #B79CED;
+    --mint: #7FE8C6;
+    --sky: #7FD8F0;
+    --gold: #F0C040;
+    --gold-deep: #D4AF37;
+    --cream-text: #4a2c3a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Quicksand', sans-serif;
+    color:var(--cream-text);
+    background:linear-gradient(160deg,#FFE1EC 0%, #E6D9FF 35%, #C9F2E8 70%, #BEEBFA 100%);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.logo{font-family:'Baloo 2', cursive;}
+
+  /* floating decorations */
+  .float-deco{
+    position:fixed; pointer-events:none; opacity:.35; z-index:0; user-select:none;
+    animation:floaty 9s ease-in-out infinite;
+  }
+  @keyframes floaty{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-25px) rotate(8deg);}
+  }
+
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,0.55);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--gold);
+    padding:14px 6%;
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .logo{
+    font-size:1.6rem; font-weight:800; color:var(--pink-deep);
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo span{color:var(--gold-deep);}
+  nav a{
+    color:var(--cream-text); text-decoration:none; font-weight:600;
+    margin-left:22px; font-size:.95rem; transition:color .2s;
+  }
+  nav a:hover{color:var(--pink-deep);}
+  .nav-cta{
+    background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+    padding:9px 18px; border-radius:30px; color:#4a2c3a !important;
+    box-shadow:0 4px 12px rgba(212,175,55,.4);
+  }
+
+  section{position:relative; z-index:2; padding:80px 6%;}
+
+  /* HERO */
+  .hero{
+    display:flex; align-items:center; justify-content:space-between;
+    min-height:88vh; padding-top:60px; gap:40px; flex-wrap:wrap;
+  }
+  .hero-text{flex:1; min-width:300px;}
+  .badge{
+    display:inline-block; background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+    color:#fff; padding:6px 16px; border-radius:20px; font-weight:700; font-size:.85rem;
+    margin-bottom:18px; box-shadow:0 4px 14px rgba(212,175,55,.4);
+    letter-spacing:.5px;
+  }
+  .hero h1{
+    font-size:3.2rem; line-height:1.1; color:var(--pink-deep);
+    margin-bottom:18px; text-shadow:2px 2px 0 rgba(255,255,255,.6);
+  }
+  .hero h1 em{
+    font-style:normal; color:var(--gold-deep);
+    background:linear-gradient(120deg, transparent 0%, transparent 100%);
+  }
+  .hero p{font-size:1.15rem; max-width:480px; margin-bottom:30px; color:#5a3a4a;}
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    padding:15px 30px; border-radius:40px; font-weight:700; font-size:1rem;
+    text-decoration:none; display:inline-flex; align-items:center; gap:10px;
+    transition:transform .25s, box-shadow .25s; border:none; cursor:pointer;
+  }
+  .btn:hover{transform:translateY(-4px) scale(1.03);}
+  .btn-gold{
+    background:linear-gradient(135deg,var(--gold),var(--gold-deep));
+    color:#4a2c3a; box-shadow:0 8px 20px rgba(212,175,55,.45);
+  }
+  .btn-outline{
+    background:#fff; color:var(--pink-deep); border:2px solid var(--pink-deep);
+    box-shadow:0 8px 20px rgba(255,93,143,.25);
+  }
+  .hero-visual{
+    flex:1; min-width:280px; display:flex; justify-content:center; align-items:center;
+  }
+  .blob{
+    width:340px; height:340px; border-radius:48% 52% 60% 40% / 45% 40% 60% 55%;
+    background:linear-gradient(135deg, var(--pink), var(--lavender) 50%, var(--sky));
+    display:flex; align-items:center; justify-content:center; position:relative;
+    animation:blobmove 8s ease-in-out infinite;
+    box-shadow:0 20px 50px rgba(183,156,237,.4);
+  }
+  @keyframes blobmove{
+    0%,100%{border-radius:48% 52% 60% 40% / 45% 40% 60% 55%;}
+    50%{border-radius:60% 40% 45% 55% / 55% 60% 40% 45%;}
+  }
+  .blob-emoji{font-size:7rem; filter:drop-shadow(0 8px 12px rgba(0,0,0,.15));}
+  .ring{
+    position:absolute; border:3px dashed var(--gold); border-radius:50%;
+    width:110%; height:110%; animation:spin 20s linear infinite;
+  }
+  @keyframes spin{from{transform:rotate(0);} to{transform:rotate(360deg);}}
+
+  /* SECTION TITLES */
+  .section-title{text-align:center; margin-bottom:50px;}
+  .section-title h2{
+    font-size:2.4rem; color:var(--pink-deep); margin-bottom:10px;
+  }
+  .section-title p{color:#5a3a4a; font-size:1.05rem;}
+  .gold-underline{
+    width:80px; height:5px; margin:14px auto 0; border-radius:10px;
+    background:linear-gradient(90deg,var(--gold),var(--gold-deep));
+  }
+
+  /* PRODUCTS */
+  .products{background:rgba(255,255,255,0.35); border-radius:40px; margin:0 3% 60px;}
+  .product-grid{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:26px; max-width:1100px; margin:0 auto;
+  }
+  .product-card{
+    background:#fff; border-radius:24px; padding:32px 22px; text-align:center;
+    box-shadow:0 10px 30px rgba(183,156,237,.25);
+    border:2px solid transparent;
+    transition:transform .3s, border-color .3s, box-shadow .3s;
+    position:relative; overflow:hidden;
+  }
+  .product-card::before{
+    content:''; position:absolute; top:-40%; left:-40%; width:180%; height:180%;
+    background:radial-gradient(circle, rgba(240,192,64,.12), transparent 60%);
+    transition:opacity .3s;
+  }
+  .product-card:hover{
+    transform:translateY(-10px) rotate(-1deg);
+    border-color:var(--gold);
+    box-shadow:0 16px 36px rgba(212,175,55,.35);
+  }
+  .product-icon{font-size:3rem; margin-bottom:14px; display:block;}
+  .product-card h3{color:var(--pink-deep); font-size:1.25rem; margin-bottom:8px;}
+  .product-card p{font-size:.92rem; color:#5a3a4a;}
+
+  /* PERSONALIZATION BANNER */
+  .personal-banner{
+    background:linear-gradient(120deg, var(--lavender), var(--sky));
+    border-radius:36px; margin:0 3% 60px; padding:60px 8%;
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:30px;
+    color:#fff; box-shadow:0 20px 50px rgba(127,216,240,.35);
+  }
+  .personal-banner h2{font-size:2rem; margin-bottom:14px;}
+  .personal-banner p{max-width:460px; font-size:1.05rem; opacity:.95;}
+  .percent{
+    font-size:5.5rem; font-weight:800; font-family:'Baloo 2',cursive;
+    color:var(--gold); text-shadow:3px 3px 0 rgba(0,0,0,.08);
+  }
+
+  /* HOW IT WORKS */
+  .steps{max-width:1000px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:26px;}
+  .step{
+    background:#fff; border-radius:22px; padding:30px 20px; text-align:center;
+    box-shadow:0 10px 26px rgba(255,143,177,.2);
+    border-top:5px solid var(--gold);
+  }
+  .step .num{
+    width:46px; height:46px; border-radius:50%; margin:0 auto 14px;
+    background:linear-gradient(135deg,var(--pink),var(--pink-deep));
+    color:#fff; font-weight:800; display:flex; align-items:center; justify-content:center;
+    font-family:'Baloo 2',cursive; font-size:1.3rem;
+  }
+  .step h3{color:var(--pink-deep); font-size:1.1rem; margin-bottom:8px;}
+  .step p{font-size:.9rem; color:#5a3a4a;}
+
+  /* SHIPPING */
+  .shipping{
+    text-align:center; background:rgba(255,255,255,0.4); border-radius:32px;
+    margin:0 3% 60px; padding:50px 6%;
+  }
+  .shipping-icon{font-size:3.5rem; margin-bottom:10px;}
+  .shipping h2{color:var(--pink-deep); font-size:1.8rem; margin-bottom:10px;}
+  .shipping p{max-width:520px; margin:0 auto; font-size:1.05rem;}
+
+  /* GALLERY STRIP */
+  .gallery-strip{
+    display:flex; gap:16px; overflow-x:auto; padding:10px 3% 40px; scrollbar-width:none;
+  }
+  .gallery-strip::-webkit-scrollbar{display:none;}
+  .gallery-item{
+    min-width:150px; height:150px; border-radius:20px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-size:2.8rem;
+    box-shadow:0 10px 24px rgba(0,0,0,.1);
+  }
+  .g1{background:linear-gradient(135deg,var(--pink),#ffd1de);}
+  .g2{background:linear-gradient(135deg,var(--lavender),#e2d4ff);}
+  .g3{background:linear-gradient(135deg,var(--mint),#d4fbef);}
+  .g4{background:linear-gradient(135deg,var(--sky),#d3f2ff);}
+  .g5{background:linear-gradient(135deg,var(--gold),#ffe9ad);}
+  .g6{background:linear-gradient(135deg,var(--pink-deep),#ffc2d6);}
+
+  /* FINAL CTA */
+  .final-cta{
+    text-align:center; border-radius:40px; margin:0 3% 60px;
+    padding:70px 6%;
+    background:linear-gradient(135deg, var(--pink-deep), var(--lavender) 60%, var(--sky));
+    color:#fff; position:relative; overflow:hidden;
+  }
+  .final-cta h2{font-size:2.4rem; margin-bottom:16px;}
+  .final-cta p{max-width:520px; margin:0 auto 32px; font-size:1.1rem; opacity:.95;}
+  .final-cta .cta-row{justify-content:center;}
+
+  footer{
+    background:#3d2436; color:#f5e6ef; padding:50px 6% 30px; text-align:center;
+  }
+  footer .logo{color:#ffb3cb; justify-content:center; margin-bottom:14px;}
+  footer .logo span{color:var(--gold);}
+  .footer-links{display:flex; justify-content:center; gap:24px; margin-bottom:20px; flex-wrap:wrap;}
+  .footer-links a{color:#f5e6ef; text-decoration:none; font-weight:600; font-size:.95rem;}
+  .footer-links a:hover{color:var(--gold);}
+  .footer-note{font-size:.85rem; opacity:.6;}
+
+  /* WHATSAPP FLOATING BUTTON */
+  .wa-float{
+    position:fixed; bottom:24px; right:24px; z-index:200;
+    background:#25D366; color:#fff; width:62px; height:62px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:1.8rem;
+    box-shadow:0 8px 22px rgba(37,211,102,.5); text-decoration:none;
+    animation:pulse 2.4s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(37,211,102,.55);}
+    70%{box-shadow:0 0 0 16px rgba(37,211,102,0);}
+    100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+  }
+
+  @media(max-width:640px){
+    .hero h1{font-size:2.2rem;}
+    nav a{margin-left:12px; font-size:.85rem;}
+    .personal-banner{flex-direction:column; text-align:center;}
+    .percent{font-size:4rem;}
+  }
+
+  .reveal{opacity:0; transform:translateY(30px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<div class="float-deco" style="top:15%; left:4%; font-size:2.5rem;">🍼</div>
+<div class="float-deco" style="top:60%; left:8%; font-size:2rem; animation-delay:2s;">🎀</div>
+<div class="float-deco" style="top:30%; right:6%; font-size:2.3rem; animation-delay:1s;">🧸</div>
+<div class="float-deco" style="top:75%; right:10%; font-size:2rem; animation-delay:3s;">⭐</div>
+
+<header>
+  <div class="logo">👶 Infinite <span>Baby</span> Love</div>
+  <nav>
+    <a href="#productos">Productos</a>
+    <a href="#personalizacion">Personalización</a>
+    <a href="#envios">Envíos</a>
+    <a href="https://wa.me/c/34661503655" class="nav-cta" target="_blank" rel="noopener">WhatsApp</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="badge">💯% Diseños Personalizados</div>
+    <h1>Detalles únicos<br>para tu <em>bebé</em></h1>
+    <p>Chupeteros, llaveros, bolsos, mochilas, neceseres y mucho más — todo diseñado a tu gusto, con envío a toda España. 👶🏻💌</p>
+    <div class="cta-row">
+      <a href="https://wa.me/c/34661503655" class="btn btn-gold" target="_blank" rel="noopener">💬 Pide el tuyo por WhatsApp</a>
+      <a href="https://www.instagram.com/infinitebabylove/" class="btn btn-outline" target="_blank" rel="noopener">📸 Ver Instagram</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="blob">
+      <div class="ring"></div>
+      <span class="blob-emoji">👶🏻</span>
+    </div>
+  </div>
+</section>
+
+<section class="products reveal" id="productos">
+  <div class="section-title">
+    <h2>Nuestros productos</h2>
+    <p>Hechos con amor, pensados para cada pequeño gran momento</p>
+    <div class="gold-underline"></div>
+  </div>
+  <div class="product-grid">
+    <div class="product-card">
+      <span class="product-icon">🍼</span>
+      <h3>Chupeteros</h3>
+      <p>Personalizados con el nombre y estilo que más te guste.</p>
+    </div>
+    <div class="product-card">
+      <span class="product-icon">🔑</span>
+      <h3>Llaveros</h3>
+      <p>Detalles únicos para regalar o llevar contigo cada día.</p>
+    </div>
+    <div class="product-card">
+      <span class="product-icon">👜</span>
+      <h3>Bolsos</h3>
+      <p>Diseño y funcionalidad para llevar todo lo del bebé con estilo.</p>
+    </div>
+    <div class="product-card">
+      <span class="product-icon">🎒</span>
+      <h3>Mochilas</h3>
+      <p>Ideales para el día a día, personalizadas a tu gusto.</p>
+    </div>
+    <div class="product-card">
+      <span class="product-icon">🧴</span>
+      <h3>Neceseres</h3>
+      <p>Organiza cada detalle del bebé con un toque especial.</p>
+    </div>
+    <div class="product-card">
+      <span class="product-icon">✨</span>
+      <h3>Y mucho más</h3>
+      <p>Cuéntanos tu idea y la hacemos realidad, 100% a medida.</p>
+    </div>
+  </div>
+</section>
+
+<section class="personal-banner reveal" id="personalizacion">
+  <div>
+    <h2>Cada detalle, a tu manera</h2>
+    <p>Elige colores, nombres, formas y estilos. Creamos piezas únicas pensadas especialmente para tu bebé o para ese regalo que quieres que sea inolvidable.</p>
+    <div class="cta-row" style="margin-top:24px;">
+      <a href="https://wa.me/c/34661503655" class="btn btn-gold" target="_blank" rel="noopener">Diseña el tuyo</a>
+    </div>
+  </div>
+  <div class="percent">100%</div>
+</section>
+
+<section>
+  <div class="section-title">
+    <h2>¿Cómo pedir el tuyo?</h2>
+    <p>Tan fácil como escribirnos</p>
+    <div class="gold-underline"></div>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <h3>Escríbenos</h3>
+      <p>Contáctanos por WhatsApp o Instagram y cuéntanos tu idea.</p>
+    </div>
+    <div class="step">
+      <div class="num">2</div>
+      <h3>Personaliza</h3>
+      <p>Elige colores, nombre y estilo de tu producto favorito.</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <h3>Confirmamos</h3>
+      <p>Te mostramos el diseño final antes de confeccionarlo.</p>
+    </div>
+    <div class="step">
+      <div class="num">4</div>
+      <h3>Recíbelo en casa</h3>
+      <p>Enviamos a toda España directo a tu puerta. 📦</p>
+    </div>
+  </div>
+</section>
+
+<div class="gallery-strip">
+  <div class="gallery-item g1">🍼</div>
+  <div class="gallery-item g2">🔑</div>
+  <div class="gallery-item g3">👜</div>
+  <div class="gallery-item g4">🎒</div>
+  <div class="gallery-item g5">🧴</div>
+  <div class="gallery-item g6">🎀</div>
+  <div class="gallery-item g1">👶🏻</div>
+  <div class="gallery-item g2">✨</div>
+</div>
+
+<section class="shipping reveal" id="envios">
+  <div class="shipping-icon">📦💌</div>
+  <h2>Envíos a toda España</h2>
+  <p>Da igual dónde estés: preparamos tu pedido con mucho cariño y lo enviamos directo a tu casa, esté donde esté.</p>
+</section>
+
+<section class="final-cta reveal">
+  <h2>¿Listo para tu diseño personalizado?</h2>
+  <p>Escríbenos ahora mismo y creamos juntos algo único para tu bebé.</p>
+  <div class="cta-row">
+    <a href="https://wa.me/c/34661503655" class="btn btn-gold" target="_blank" rel="noopener">💬 Hablar por WhatsApp</a>
+    <a href="https://www.instagram.com/infinitebabylove/" class="btn btn-outline" target="_blank" rel="noopener" style="background:transparent; color:#fff; border-color:#fff;">📸 @infinitebabylove</a>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">👶 Infinite <span>Baby</span> Love</div>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/infinitebabylove/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://wa.me/c/34661503655" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="#productos">Productos</a>
+  </div>
+  <p class="footer-note">© 2026 Infinite Baby Love · Envíos a toda España · Diseños 100% personalizados</p>
+</footer>
+
+<a href="https://wa.me/c/34661503655" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
