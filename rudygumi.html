@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rudygumi · Amigurumis y regalos handmade para bebés y familias</title>
+<meta name="description" content="Amigurumis a crochet, canastillas, tazas y textil personalizado, hechos a mano con cariño por Celia. Pide el tuyo por Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --coral:#FF6F7C;
+    --coral-deep:#E85566;
+    --lavender:#9B7FD9;
+    --lavender-deep:#7B5FC7;
+    --mint:#5FCBA8;
+    --butter:#FFCE54;
+    --gold:#E8B84B;
+    --gold-deep:#C9962E;
+    --plum:#3B2A4A;
+    --cream-text:#FFF7ED;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Quicksand', sans-serif;
+    color:var(--plum);
+    background:var(--butter);
+    overflow-x:hidden;
+  }
+  h1,h2,h3, .display{
+    font-family:'Baloo 2', cursive;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+
+  /* ---------- decorative scallop divider (crochet edge) ---------- */
+  .scallop{
+    display:block;
+    width:100%;
+    height:34px;
+    line-height:0;
+  }
+  .scallop-top-butter{ margin-top:-1px; }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,247,237,0.92);
+    backdrop-filter: blur(6px);
+    border-bottom:3px dashed var(--gold);
+  }
+  .nav-wrap{
+    max-width:1100px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px;
+  }
+  .logo{
+    font-family:'Baloo 2', cursive;
+    font-size:1.5rem; font-weight:800;
+    color:var(--coral-deep);
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo svg{width:32px; height:32px;}
+  nav.links{display:flex; gap:22px; font-weight:600;}
+  nav.links a{ padding:6px 4px; border-bottom:2px solid transparent; transition:.2s;}
+  nav.links a:hover{ border-color:var(--gold); color:var(--coral-deep);}
+  .nav-cta{
+    background:var(--coral); color:#fff; padding:10px 20px; border-radius:999px;
+    font-weight:700; box-shadow:0 4px 0 var(--coral-deep);
+    transition:.15s;
+  }
+  .nav-cta:hover{ transform:translateY(2px); box-shadow:0 2px 0 var(--coral-deep);}
+  @media(max-width:720px){ nav.links{display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background: linear-gradient(135deg, var(--lavender) 0%, var(--coral) 60%, var(--coral-deep) 100%);
+    padding:90px 24px 70px;
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:1100px; margin:0 auto;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;
+  }
+  @media(max-width:860px){ .hero-inner{grid-template-columns:1fr; text-align:center;} }
+
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.22); border:2px solid var(--gold);
+    color:#fff; padding:6px 16px; border-radius:999px;
+    font-weight:700; font-size:0.85rem; letter-spacing:.03em;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    color:#fff; font-size:clamp(2.2rem, 4.5vw, 3.4rem);
+    line-height:1.08; font-weight:800;
+    text-shadow:0 3px 0 rgba(59,42,74,0.25);
+  }
+  .hero h1 span{ color:var(--butter); }
+  .hero p.lead{
+    color:#FFF3E6; font-size:1.15rem; margin-top:18px; max-width:520px;
+    font-weight:500;
+  }
+  @media(max-width:860px){ .hero p.lead{margin-left:auto; margin-right:auto;} }
+
+  .hero-ctas{ display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
+  @media(max-width:860px){ .hero-ctas{justify-content:center;} }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 26px; border-radius:999px; font-weight:700; font-size:1rem;
+    transition:.15s ease; border:2px solid transparent;
+  }
+  .btn-primary{
+    background:var(--gold); color:var(--plum); box-shadow:0 5px 0 var(--gold-deep);
+  }
+  .btn-primary:hover{ transform:translateY(3px); box-shadow:0 2px 0 var(--gold-deep); }
+  .btn-ghost{
+    background:rgba(255,255,255,0.12); color:#fff; border-color:#fff;
+  }
+  .btn-ghost:hover{ background:rgba(255,255,255,0.25); }
+
+  .hero-art{ display:flex; justify-content:center; align-items:center; }
+  .yarn-badge{
+    animation: float 4.5s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{ transform:translateY(0px) rotate(-2deg);}
+    50%{ transform:translateY(-14px) rotate(2deg);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .yarn-badge{ animation:none; }
+  }
+
+  /* ---------- Section generic ---------- */
+  section{ padding:80px 24px; position:relative; }
+  .section-inner{ max-width:1100px; margin:0 auto; }
+  .kicker{
+    font-weight:800; letter-spacing:.08em; text-transform:uppercase;
+    font-size:0.8rem; color:var(--coral-deep);
+    display:flex; align-items:center; gap:10px; margin-bottom:10px;
+  }
+  .kicker::before{
+    content:""; width:24px; height:3px; background:var(--gold); border-radius:2px;
+  }
+  h2.title{ font-size:clamp(1.8rem,3.2vw,2.5rem); font-weight:800; margin-bottom:14px;}
+  .section-sub{ max-width:600px; font-size:1.05rem; color:var(--plum); opacity:.85; margin-bottom:44px;}
+
+  /* ---------- About ---------- */
+  .about{ background:var(--mint); }
+  .about .kicker, .about h2{ color:var(--plum); }
+  .about-grid{ display:grid; grid-template-columns:0.85fr 1.15fr; gap:50px; align-items:center;}
+  @media(max-width:820px){ .about-grid{grid-template-columns:1fr;} }
+  .celia-card{
+    background:#fff; border-radius:28px; padding:34px;
+    box-shadow:0 10px 0 rgba(59,42,74,0.12);
+    border:3px solid var(--gold);
+    text-align:center;
+  }
+  .celia-avatar{
+    width:120px; height:120px; margin:0 auto 16px;
+    border-radius:50%;
+    background: radial-gradient(circle at 35% 30%, var(--butter), var(--coral));
+    display:flex; align-items:center; justify-content:center;
+    font-size:3rem;
+    border:4px solid var(--gold);
+  }
+  .celia-card h3{ font-size:1.3rem; margin-bottom:4px;}
+  .celia-card .role{ color:var(--coral-deep); font-weight:700; font-size:0.9rem; margin-bottom:14px;}
+  .about-text p{ margin-bottom:16px; font-size:1.05rem; line-height:1.65;}
+  .stitch-list{ list-style:none; margin-top:20px; display:flex; flex-direction:column; gap:12px;}
+  .stitch-list li{ display:flex; gap:12px; align-items:flex-start; font-weight:600;}
+  .stitch-list li svg{ flex-shrink:0; margin-top:2px;}
+
+  /* ---------- Products ---------- */
+  .products{ background:#FFF7ED; }
+  .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  @media(max-width:900px){ .grid-3{grid-template-columns:1fr;} }
+  .product-card{
+    background:#fff; border-radius:24px; padding:30px 26px;
+    border:3px solid transparent;
+    box-shadow:0 8px 22px rgba(59,42,74,0.08);
+    transition:.25s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .product-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--gold);
+    box-shadow:0 16px 28px rgba(59,42,74,0.14);
+  }
+  .product-icon{
+    width:64px; height:64px; border-radius:18px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.9rem; margin-bottom:18px;
+  }
+  .p1 .product-icon{ background:linear-gradient(135deg,var(--coral),var(--coral-deep)); }
+  .p2 .product-icon{ background:linear-gradient(135deg,var(--lavender),var(--lavender-deep)); }
+  .p3 .product-icon{ background:linear-gradient(135deg,var(--mint),#3FAF8C); }
+  .product-card h3{ font-size:1.25rem; margin-bottom:10px;}
+  .product-card p{ opacity:.85; line-height:1.55; margin-bottom:16px;}
+  .tag-row{ display:flex; flex-wrap:wrap; gap:8px;}
+  .tag{
+    font-size:0.78rem; font-weight:700; padding:5px 12px; border-radius:999px;
+    background:var(--butter); color:var(--plum);
+  }
+
+  /* ---------- Process / how to order ---------- */
+  .process{ background:var(--lavender); color:#fff; }
+  .process h2, .process .kicker{ color:#fff; }
+  .process .kicker::before{ background:var(--butter); }
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:26px; margin-top:10px;}
+  @media(max-width:820px){ .steps{grid-template-columns:1fr;} }
+  .step{
+    background:rgba(255,255,255,0.12); border:2px solid rgba(255,255,255,0.35);
+    border-radius:22px; padding:28px 24px;
+  }
+  .step .num{
+    font-family:'Baloo 2',cursive; font-size:2rem; font-weight:800; color:var(--butter);
+    display:block; margin-bottom:10px;
+  }
+  .step h3{ margin-bottom:8px; font-size:1.1rem;}
+  .step p{ opacity:.9; line-height:1.5; font-size:0.95rem;}
+
+  /* ---------- Gallery strip ---------- */
+  .gallery-strip{ background:var(--butter); padding:60px 24px;}
+  .gallery-strip .section-inner{ text-align:center;}
+  .swatch-row{
+    display:flex; justify-content:center; gap:18px; flex-wrap:wrap; margin-top:30px;
+  }
+  .swatch{
+    width:88px; height:88px; border-radius:22px;
+    display:flex; align-items:center; justify-content:center; font-size:2rem;
+    border:3px solid var(--plum); box-shadow:4px 4px 0 var(--plum);
+    background:#fff;
+  }
+
+  /* ---------- CTA / footer ---------- */
+  .cta-final{
+    background:linear-gradient(135deg, var(--coral-deep), var(--lavender-deep));
+    color:#fff; text-align:center;
+  }
+  .cta-final h2{ color:#fff; font-size:clamp(1.8rem,3.6vw,2.6rem); margin-bottom:14px;}
+  .cta-final p{ color:#FFF3E6; max-width:520px; margin:0 auto 34px; font-size:1.05rem;}
+  .cta-buttons{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+
+  footer{
+    background:var(--plum); color:#F1E7FA; padding:44px 24px 30px; text-align:center;
+  }
+  footer .logo{ justify-content:center; color:var(--butter); margin-bottom:14px;}
+  footer .foot-links{ display:flex; justify-content:center; gap:22px; margin:18px 0; flex-wrap:wrap; font-weight:600;}
+  footer .foot-links a:hover{ color:var(--gold);}
+  footer .fine{ opacity:.6; font-size:0.85rem; margin-top:18px;}
+
+  .ig-icon{ display:inline-flex; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="#top" class="logo" aria-label="Rudygumi inicio">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#FF6F7C"/><circle cx="12" cy="12" r="4" fill="#FFCE54"/></svg>
+      Rudygumi
+    </a>
+    <nav class="links">
+      <a href="#sobre-celia">Sobre Celia</a>
+      <a href="#productos">Productos</a>
+      <a href="#como-pedir">Cómo pedir</a>
+    </nav>
+    <a class="nav-cta" href="https://www.instagram.com/rudygumi/" target="_blank" rel="noopener">Ver Instagram</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">🧶 Hecho a mano, con cariño</span>
+      <h1>Regalos <span>handmade</span> que se quedan para siempre</h1>
+      <p class="lead">Amigurumis, canastillas, tazas y detalles textiles personalizados para bebés, familias y quien quieras sorprender. Cada pieza la teje Celia, punto a punto.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://www.instagram.com/rudygumi/" target="_blank" rel="noopener">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#3B2A4A" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="#3B2A4A" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.3" fill="#3B2A4A"/></svg>
+          Sígueme en Instagram
+        </a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/rudygumi/" target="_blank" rel="noopener">💌 Consultar por MD</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg class="yarn-badge" width="300" height="300" viewBox="0 0 300 300" fill="none">
+        <circle cx="150" cy="150" r="130" fill="#FFF7ED" stroke="#E8B84B" stroke-width="6" stroke-dasharray="2 14" stroke-linecap="round"/>
+        <circle cx="150" cy="150" r="95" fill="#FFCE54"/>
+        <path d="M85 150c10-40 40-70 65-70s55 30 65 70c-10 40-40 70-65 70s-55-30-65-70z" fill="#FF6F7C" opacity="0.85"/>
+        <circle cx="128" cy="140" r="7" fill="#3B2A4A"/>
+        <circle cx="172" cy="140" r="7" fill="#3B2A4A"/>
+        <path d="M132 168c8 10 28 10 36 0" stroke="#3B2A4A" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M95 110c-8-14-4-30 8-30" stroke="#3B2A4A" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <path d="M205 110c8-14 4-30-8-30" stroke="#3B2A4A" stroke-width="4" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- scallop divider hero -> about -->
+<svg class="scallop" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,0 C50,40 100,40 150,0 C200,40 250,40 300,0 C350,40 400,40 450,0 C500,40 550,40 600,0 C650,40 700,40 750,0 C800,40 850,40 900,0 C950,40 1000,40 1050,0 C1100,40 1150,40 1200,0 L1200,0 L0,0 Z" fill="#5FCBA8"/></svg>
+
+<section class="about" id="sobre-celia">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="celia-card">
+        <div class="celia-avatar">🙋🏻‍♀️</div>
+        <h3>Celia</h3>
+        <div class="role">Creadora de Rudygumi</div>
+        <p style="font-size:0.95rem; opacity:.85;">Amante del crochet, las agujas y los detalles que hacen sonreír.</p>
+      </div>
+      <div class="about-text">
+        <span class="kicker">Quién teje tus regalos</span>
+        <h2 class="title">Detrás de cada amigurumi hay una historia</h2>
+        <p>Rudygumi nace de las manos de Celia, tejiendo regalos handmade para bebés y familias que buscan algo distinto: piezas únicas, con alma, hechas con la misma paciencia con la que se cuidan las cosas importantes.</p>
+        <p>Cada pedido se hilvana a medida — colores, tamaños y detalles pensados para ti o para quien vayas a regalar.</p>
+        <ul class="stitch-list">
+          <li><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#FF6F7C"/></svg> Amigurumis y canastillas tejidas a mano</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#9B7FD9"/></svg> Tazas y textil personalizado</li>
+          <li><svg width="20" height="20" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#E8B84B"/></svg> Detalles para bebés y adultos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="scallop" viewBox="0 0 1200 40" preserveAspectRatio="none"><path d="M0,40 C50,0 100,0 150,40 C200,0 250,0 300,40 C350,0 400,0 450,40 C500,0 550,0 600,40 C650,0 700,0 750,40 C800,0 850,0 900,40 C950,0 1000,0 1050,40 C1100,0 1150,0 1200,40 L1200,40 L0,40 Z" fill="#FFF7ED"/></svg>
+
+<section class="products" id="productos">
+  <div class="section-inner">
+    <span class="kicker">Lo que tejemos para ti</span>
+    <h2 class="title">Un catálogo pensado para regalar</h2>
+    <p class="section-sub">Cada pieza se personaliza contigo: color, tamaño, nombre bordado o el toque especial que imagines.</p>
+    <div class="grid-3">
+      <div class="product-card p1">
+        <div class="product-icon">🧸</div>
+        <h3>Amigurumis y canastillas</h3>
+        <p>Muñecos y set de bienvenida tejidos punto a punto, ideales para nacimientos y baby shower.</p>
+        <div class="tag-row"><span class="tag">A medida</span><span class="tag">Ideal regalo bebé</span></div>
+      </div>
+      <div class="product-card p2">
+        <div class="product-icon">🎁</div>
+        <h3>Tazas y textil personalizado</h3>
+        <p>Detalles con nombres, frases o diseños propios — perfectos para sorprender en cualquier ocasión.</p>
+        <div class="tag-row"><span class="tag">Personalizable</span><span class="tag">Para toda la familia</span></div>
+      </div>
+      <div class="product-card p3">
+        <div class="product-icon">🌿</div>
+        <h3>Detalles para bebés y adultos</h3>
+        <p>Pequeños regalos hechos a mano pensados para cada etapa, con materiales suaves y cuidados.</p>
+        <div class="tag-row"><span class="tag">Handmade</span><span class="tag">Para regalar</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="como-pedir">
+  <div class="section-inner">
+    <span class="kicker">Cómo pedir el tuyo</span>
+    <h2 class="title">Tan fácil como escribir un mensaje</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="num">1</span>
+        <h3>Escríbeme por Instagram</h3>
+        <p>Cuéntame qué buscas: para quién es, colores favoritos y ocasión.</p>
+      </div>
+      <div class="step">
+        <span class="num">2</span>
+        <h3>Diseñamos juntas el detalle</h3>
+        <p>Ajustamos tamaño, personalización y tiempos de entrega a tu medida.</p>
+      </div>
+      <div class="step">
+        <span class="num">3</span>
+        <h3>Lo tejo con cariño y te lo envío</h3>
+        <p>Recibes tu pieza única, lista para regalar o para quedártela tú misma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery-strip">
+  <div class="section-inner">
+    <span class="kicker">Colores para elegir</span>
+    <h2 class="title">Un hilo para cada idea</h2>
+    <div class="swatch-row">
+      <div class="swatch" style="background:#FF6F7C;">🧶</div>
+      <div class="swatch" style="background:#9B7FD9;">🧵</div>
+      <div class="swatch" style="background:#5FCBA8;">🌱</div>
+      <div class="swatch" style="background:#FFE28A;">☀️</div>
+      <div class="swatch" style="background:#fff;">🐣</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="section-inner">
+    <h2>¿Lista para tejer tu regalo perfecto?</h2>
+    <p>Consulta disponibilidad, precios y tiempos de entrega directamente por Instagram. Celia responde por MD con mucho cariño.</p>
+    <div class="cta-buttons">
+      <a class="btn btn-primary" href="https://www.instagram.com/rudygumi/" target="_blank" rel="noopener">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#3B2A4A" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="#3B2A4A" stroke-width="2"/><circle cx="17.2" cy="6.8" r="1.3" fill="#3B2A4A"/></svg>
+        Ir a @rudygumi
+      </a>
+      <a class="btn btn-ghost" href="https://www.instagram.com/rudygumi/" target="_blank" rel="noopener">💌 Enviar mensaje directo</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">
+    <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#FF6F7C"/><circle cx="12" cy="12" r="4" fill="#FFCE54"/></svg>
+    Rudygumi
+  </div>
+  <p style="opacity:.8;">Regalos handmade para bebés y familias — hechos con hilo, tiempo y cariño.</p>
+  <div class="foot-links">
+    <a href="https://www.instagram.com/rudygumi/" target="_blank" rel="noopener">Instagram @rudygumi</a>
+    <a href="#productos">Productos</a>
+    <a href="#sobre-celia">Sobre Celia</a>
+  </div>
+  <p class="fine">Hecho con 🧶 para Rudygumi.</p>
+</footer>
+
+<script>
+  // Reveal-on-scroll for product and step cards
+  const revealEls = document.querySelectorAll('.product-card, .step, .celia-card');
+  revealEls.forEach(el=>{
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = 'opacity .6s ease, transform .6s ease';
+  });
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = 'translateY(0)';
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
