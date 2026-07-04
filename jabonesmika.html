@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mika — Jabones artesanales &amp; Velas de soja</title>
+<meta name="description" content="Jabones artesanales de base glicerina, velas de soja y piezas de yeso, 100% naturales y hechos a mano. Zona Oeste.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF3E6;
+    --cream-2:#F3E7D4;
+    --sage:#8FA07E;
+    --sage-dark:#57694A;
+    --moss:#3E4A34;
+    --clay:#D8A192;
+    --clay-dark:#B77A6B;
+    --gold:#C89B3C;
+    --ink:#3D3227;
+    --paper:#FFFDF8;
+    --radius: 26px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Jost', sans-serif;
+    font-weight:400;
+    overflow-x:hidden;
+  }
+  h1,h2,h3, .display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  a{ text-decoration:none; color:inherit; }
+  img{ max-width:100%; display:block; }
+  .wrap{ max-width:1180px; margin:0 auto; padding:0 28px; }
+
+  /* subtle grain / soap texture overlay */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    pointer-events:none;
+    z-index:1;
+    opacity:.35;
+    background-image:radial-gradient(rgba(255,255,255,.6) 1px, transparent 1px);
+    background-size:3px 3px;
+    mix-blend-mode:overlay;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,243,230,.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(87,105,74,.14);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+    max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-size:1.5rem;
+    font-weight:700;
+    color:var(--sage-dark);
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo .dot{
+    width:10px; height:10px; border-radius:50%;
+    background:var(--gold);
+    display:inline-block;
+  }
+  .nav-links{ display:flex; align-items:center; gap:28px; }
+  .nav-links a.navlink{ font-size:.92rem; color:var(--ink); opacity:.75; transition:opacity .2s; }
+  .nav-links a.navlink:hover{ opacity:1; }
+  .ig-pill{
+    display:flex; align-items:center; gap:8px;
+    background:var(--moss);
+    color:var(--cream) !important;
+    padding:10px 18px;
+    border-radius:50px;
+    font-size:.9rem;
+    transition:transform .25s ease, background .25s ease;
+  }
+  .ig-pill:hover{ transform:translateY(-2px); background:var(--sage-dark); }
+  .ig-pill svg{ width:16px; height:16px; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:90px 0 60px;
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:40px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:.78rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--sage-dark);
+    background:rgba(143,160,126,.15);
+    padding:7px 14px;
+    border-radius:50px;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5vw, 4.1rem);
+    line-height:1.04;
+    color:var(--moss);
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--clay-dark);
+  }
+  .hero p.sub{
+    font-size:1.14rem;
+    line-height:1.6;
+    max-width:480px;
+    margin:26px 0 34px;
+    color:#5a5040;
+  }
+  .cta-row{ display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
+  .btn-primary{
+    background:var(--gold);
+    color:var(--paper);
+    padding:16px 30px;
+    border-radius:50px;
+    font-size:1rem;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    box-shadow:0 10px 24px -8px rgba(200,155,60,.55);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 14px 30px -8px rgba(200,155,60,.7); }
+  .btn-secondary{
+    color:var(--moss);
+    border-bottom:1.5px solid var(--moss);
+    padding-bottom:2px;
+    font-size:.98rem;
+  }
+
+  /* hero visual: soap stack + candle */
+  .hero-visual{
+    position:relative;
+    height:420px;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+  }
+  .soap-bar{
+    position:absolute;
+    filter:drop-shadow(0 18px 24px rgba(62,74,52,.18));
+  }
+  .soap-bar.b1{ width:260px; bottom:40px; left:10%; }
+  .soap-bar.b2{ width:220px; bottom:120px; left:34%; opacity:.92; }
+  .candle{
+    position:absolute;
+    right:8%;
+    bottom:30px;
+    width:120px;
+  }
+  .flame{
+    transform-origin:center bottom;
+    animation:flicker 2.6s ease-in-out infinite;
+  }
+  @keyframes flicker{
+    0%,100%{ transform:scaleY(1) rotate(0deg); opacity:1; }
+    25%{ transform:scaleY(1.08) rotate(-2deg); opacity:.92; }
+    50%{ transform:scaleY(.95) rotate(2deg); opacity:1; }
+    75%{ transform:scaleY(1.05) rotate(-1deg); opacity:.95; }
+  }
+
+  /* ---------- SOAP-CUT DIVIDER (signature) ---------- */
+  .cut-divider{
+    width:100%;
+    height:64px;
+    display:block;
+  }
+
+  /* ---------- PHILOSOPHY PILLS ---------- */
+  .philosophy{
+    background:var(--sage);
+    padding:60px 0 70px;
+    position:relative;
+  }
+  .philosophy .wrap{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .pill-card{
+    background:rgba(255,253,248,.94);
+    border-radius:20px;
+    padding:30px 26px;
+    text-align:left;
+    opacity:0; transform:translateY(24px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .pill-card.show{ opacity:1; transform:translateY(0); }
+  .pill-card .num{
+    font-family:'Fraunces', serif;
+    font-size:2.1rem;
+    color:var(--clay-dark);
+    display:block;
+    margin-bottom:8px;
+  }
+  .pill-card h3{ font-size:1.15rem; color:var(--moss); margin-bottom:8px; }
+  .pill-card p{ font-size:.94rem; line-height:1.55; color:#5a5040; margin:0; }
+
+  /* ---------- PRODUCTS ---------- */
+  .products{ padding:100px 0 40px; }
+  .section-head{ max-width:640px; margin-bottom:54px; }
+  .section-head .eyebrow{ margin-bottom:16px; }
+  .section-head h2{ font-size:clamp(2rem, 3.6vw, 2.8rem); color:var(--moss); }
+  .section-head p{ margin-top:14px; font-size:1.05rem; color:#5a5040; line-height:1.6; }
+
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:26px;
+  }
+  .product-card{
+    background:var(--paper);
+    border-radius:var(--radius);
+    padding:34px 28px 30px;
+    border:1px solid rgba(87,105,74,.1);
+    opacity:0; transform:translateY(30px);
+    transition:opacity .7s ease, transform .7s ease, box-shadow .3s ease, border-color .3s ease;
+  }
+  .product-card.show{ opacity:1; transform:translateY(0); }
+  .product-card:hover{
+    box-shadow:0 20px 40px -18px rgba(62,74,52,.25);
+    border-color:rgba(200,155,60,.4);
+  }
+  .icon-wrap{
+    width:60px; height:60px;
+    border-radius:16px;
+    background:var(--cream-2);
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:22px;
+  }
+  .icon-wrap svg{ width:30px; height:30px; }
+  .product-card h3{ font-size:1.3rem; color:var(--moss); margin-bottom:10px; }
+  .product-card p{ font-size:.95rem; line-height:1.6; color:#5a5040; margin:0 0 14px; }
+  .tag-row{ display:flex; gap:8px; flex-wrap:wrap; }
+  .tag{
+    font-size:.74rem;
+    padding:5px 11px;
+    border-radius:50px;
+    background:rgba(143,160,126,.16);
+    color:var(--sage-dark);
+  }
+
+  /* ---------- WHY US / STRIP ---------- */
+  .why{
+    margin-top:90px;
+    background:var(--moss);
+    color:var(--cream);
+    padding:80px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .why .wrap{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:50px;
+    align-items:center;
+  }
+  .why h2{ font-size:clamp(2rem,3.4vw,2.6rem); line-height:1.1; }
+  .why h2 em{ font-style:italic; color:var(--clay); }
+  .why-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:22px; }
+  .why-list li{
+    display:flex; gap:16px; align-items:flex-start;
+    font-size:1.02rem;
+    opacity:.92;
+  }
+  .why-list .check{
+    flex-shrink:0;
+    width:26px; height:26px;
+    border-radius:50%;
+    background:var(--gold);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .why-list .check svg{ width:13px; height:13px; }
+
+  /* ---------- LOCATION ---------- */
+  .location{
+    padding:90px 0;
+    text-align:center;
+  }
+  .location .eyebrow{ margin:0 auto 18px; }
+  .location h2{ font-size:clamp(1.8rem,3vw,2.4rem); color:var(--moss); max-width:620px; margin:0 auto; }
+  .location p{ color:#5a5040; margin-top:16px; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.6; }
+  .pin{
+    display:inline-flex; align-items:center; gap:8px;
+    margin-top:26px;
+    background:var(--cream-2);
+    padding:10px 20px;
+    border-radius:50px;
+    font-size:.92rem;
+    color:var(--sage-dark);
+  }
+  .pin svg{ width:16px; height:16px; }
+
+  /* ---------- FOOTER CTA ---------- */
+  footer{
+    background:var(--clay);
+    padding:80px 0 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .foot-cta{
+    text-align:center;
+    max-width:600px;
+    margin:0 auto 50px;
+  }
+  .foot-cta h2{ font-size:clamp(2rem,4vw,2.9rem); color:var(--paper); }
+  .foot-cta p{ color:rgba(255,253,248,.85); margin:18px 0 30px; font-size:1.05rem; }
+  .btn-light{
+    background:var(--paper);
+    color:var(--moss);
+    padding:17px 34px;
+    border-radius:50px;
+    display:inline-flex; align-items:center; gap:10px;
+    font-size:1.02rem;
+    transition:transform .25s ease;
+  }
+  .btn-light:hover{ transform:translateY(-3px); }
+  .foot-bottom{
+    display:flex; justify-content:space-between; align-items:center;
+    max-width:1180px; margin:0 auto; padding:26px 28px 0;
+    border-top:1px solid rgba(255,253,248,.3);
+    font-size:.85rem;
+    color:rgba(255,253,248,.75);
+    flex-wrap:wrap;
+    gap:12px;
+  }
+  .foot-bottom a{ color:rgba(255,253,248,.9); }
+
+  /* reveal helper */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.show{ opacity:1; transform:translateY(0); }
+
+  @media (max-width:900px){
+    .hero{ grid-template-columns:1fr; padding-top:50px; }
+    .hero-visual{ height:300px; margin-top:20px; }
+    .philosophy .wrap, .product-grid{ grid-template-columns:1fr; }
+    .why .wrap{ grid-template-columns:1fr; }
+    .nav-links .navlink{ display:none; }
+    nav{ padding:16px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><span class="dot"></span>Mika</div>
+    <div class="nav-links">
+      <a class="navlink" href="#productos">Productos</a>
+      <a class="navlink" href="#nosotros">Nuestra filosofía</a>
+      <a class="navlink" href="#zona">Zona Oeste</a>
+      <a class="ig-pill" href="https://www.instagram.com/jabonesmika/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        @jabonesmika
+      </a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap" style="display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center; width:100%;">
+    <div>
+      <span class="eyebrow">✨ Velas de soja &amp; jabones artesanales</span>
+      <h1>Hecho a mano,<br>pensado para <em>tu piel</em>.</h1>
+      <p class="sub">Mika crea jabones de base glicerina, velas de soja y piezas de yeso 100% naturales, sin tóxicos y con el cuidado de lo hecho a mano. Cada pieza, única — como quien la elige.</p>
+      <div class="cta-row">
+        <a class="btn-primary" href="https://www.instagram.com/jabonesmika/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          Ver catálogo en Instagram
+        </a>
+        <a class="btn-secondary" href="#productos">Conocer los productos ↓</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg class="soap-bar b2" viewBox="0 0 200 110" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 55 C10 30 30 14 60 15 C95 16 110 8 140 18 C168 27 190 40 186 62 C182 86 155 96 120 94 C85 92 60 98 35 90 C14 83 13 76 12 55Z" fill="var(--clay)"/>
+      </svg>
+      <svg class="soap-bar b1" viewBox="0 0 240 120" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 62 C10 34 34 16 70 17 C110 18 128 6 165 17 C200 27 226 42 222 68 C218 96 186 108 145 106 C104 104 74 112 42 102 C16 94 15 88 14 62Z" fill="var(--sage)"/>
+        <path d="M40 40 C70 30 150 30 195 46" stroke="rgba(255,255,255,.5)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+      <svg class="candle" viewBox="0 0 100 200" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="60" width="60" height="130" rx="10" fill="var(--cream-2)" stroke="var(--sage-dark)" stroke-width="2"/>
+        <ellipse cx="50" cy="60" rx="30" ry="8" fill="#fff" stroke="var(--sage-dark)" stroke-width="2"/>
+        <line x1="50" y1="52" x2="50" y2="30" stroke="#4a4030" stroke-width="2.5" stroke-linecap="round"/>
+        <path class="flame" d="M50 8 C58 18 60 26 50 34 C40 26 42 18 50 8Z" fill="var(--gold)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<svg class="cut-divider" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 30 C 60 5, 120 55, 180 30 C 240 5, 300 55, 360 30 C 420 5, 480 55, 540 30 C 600 5, 660 55, 720 30 C 780 5, 840 55, 900 30 C 960 5, 1020 55, 1080 30 C 1140 5, 1180 40, 1200 30 L1200 60 L0 60 Z" fill="var(--sage)"/>
+</svg>
+
+<section class="philosophy" id="nosotros">
+  <div class="wrap">
+    <div class="pill-card reveal">
+      <span class="num">100%</span>
+      <h3>Ingredientes naturales</h3>
+      <p>Sin rellenos ni químicos de más. Lo que ves en la etiqueta es lo que tocás en tu piel.</p>
+    </div>
+    <div class="pill-card reveal">
+      <span class="num">0</span>
+      <h3>Tóxicos</h3>
+      <p>Fórmulas pensadas para pieles sensibles, hogares con chicos y mascotas.</p>
+    </div>
+    <div class="pill-card reveal">
+      <span class="num">1x1</span>
+      <h3>Hecho a mano</h3>
+      <p>Cada jabón, vela y pieza de yeso se elabora en pequeños lotes, con tiempo y detalle.</p>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="productos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Nuestro catálogo</span>
+      <h2>Tres formas de llevar Mika a tu casa</h2>
+      <p>Desde el aroma de una vela recién encendida hasta el jabón de todos los días: cada producto está pensado para durar y para cuidar.</p>
+    </div>
+    <div class="product-grid">
+      <div class="product-card reveal">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--sage-dark)" stroke-width="1.8"><path d="M9 3c0 2-2 3-2 5a2 2 0 0 0 2 2c1 0 2-1 2-2"/><path d="M7 10v2h10v-2"/><path d="M6 12h12l-1 8H7l-1-8Z"/></svg>
+        </div>
+        <h3>Velas de soja</h3>
+        <p>Cera 100% de soja, combustión limpia y aromas cálidos que llenan cada ambiente sin humo tóxico.</p>
+        <div class="tag-row"><span class="tag">Cera vegetal</span><span class="tag">Aromas naturales</span></div>
+      </div>
+      <div class="product-card reveal">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--sage-dark)" stroke-width="1.8"><path d="M4 13c0-5 4-9 8-9s8 4 8 9-4 8-8 8-8-3-8-8Z"/><path d="M9 12c1 1 2 1 3 0s2-1 3 0"/></svg>
+        </div>
+        <h3>Jabones artesanales</h3>
+        <p>Base de glicerina, texturas suaves y fórmulas naturales para una limpieza sin tóxicos, todos los días.</p>
+        <div class="tag-row"><span class="tag">Base glicerina</span><span class="tag">No tóxicos</span></div>
+      </div>
+      <div class="product-card reveal">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--sage-dark)" stroke-width="1.8"><path d="M6 20h12M8 20V9l4-5 4 5v11"/><path d="M8 13h8"/></svg>
+        </div>
+        <h3>Piezas de yeso</h3>
+        <p>Objetos decorativos moldeados a mano, ideales para regalar o sumar un detalle artesanal a tu hogar.</p>
+        <div class="tag-row"><span class="tag">Decoración</span><span class="tag">Edición limitada</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <h2 class="reveal">Por qué elegir <em>Mika</em></h2>
+    <ul class="why-list">
+      <li class="reveal"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Productos naturales, pensados para pieles y hogares sensibles.</li>
+      <li class="reveal"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Elaboración 100% artesanal, en pequeños lotes.</li>
+      <li class="reveal"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Sin tóxicos: fórmulas simples, ingredientes reales.</li>
+      <li class="reveal"><span class="check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3"><path d="M4 12l5 5L20 6"/></svg></span>Catálogo variado: velas, jabones y piezas de yeso.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="location" id="zona">
+  <span class="eyebrow">📍 Dónde estamos</span>
+  <h2>Trabajamos y entregamos en Zona Oeste</h2>
+  <p>Consultá disponibilidad de stock, pedidos personalizados y puntos de entrega directamente por Instagram.</p>
+  <div class="pin">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+    Zona Oeste
+  </div>
+</section>
+
+<svg class="cut-divider" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 30 C 60 55, 120 5, 180 30 C 240 55, 300 5, 360 30 C 420 55, 480 5, 540 30 C 600 55, 660 5, 720 30 C 780 55, 840 5, 900 30 C 960 55, 1020 5, 1080 30 C 1140 55, 1180 20, 1200 30 L1200 60 L0 60 Z" fill="var(--clay)"/>
+</svg>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-cta reveal">
+      <h2>Descubrí cada pieza en Instagram</h2>
+      <p>Fotos, videos y novedades del taller — nuevos aromas, piezas de yeso y stock disponible, todo se publica primero ahí.</p>
+      <a class="btn-light" href="https://www.instagram.com/jabonesmika/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        Seguir @jabonesmika
+      </a>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Mika — Velas &amp; Jabones Artesanales</span>
+      <a href="https://www.instagram.com/jabonesmika/" target="_blank" rel="noopener">@jabonesmika</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('show');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold:0.15 });
+  document.querySelectorAll('.reveal, .pill-card, .product-card').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
