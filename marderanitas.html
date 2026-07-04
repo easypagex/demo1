@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mar de Ranitas · Costuritas bonitas desde 2015 · Ribeira, Galicia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sea-deep:#0b5d63;
+    --sea-mid:#12808a;
+    --sea-light:#bfeee2;
+    --foam:#eaf9f3;
+    --gold:#d9a441;
+    --gold-deep:#b8842a;
+    --coral:#ef6f53;
+    --ink:#0e3b3f;
+    --thread:#f7f2e7;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Quicksand', sans-serif;
+    color:var(--ink);
+    background:var(--foam);
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3, .script{
+    font-family:'Caveat', cursive;
+  }
+
+  a{text-decoration:none; color:inherit;}
+
+  img,svg{display:block;}
+
+  /* ---------- stitched divider (signature element) ---------- */
+  .stitch{
+    width:100%;
+    height:14px;
+    background-image: repeating-linear-gradient(
+      90deg,
+      var(--gold) 0px, var(--gold) 10px,
+      transparent 10px, transparent 20px
+    );
+    background-size: 20px 2px;
+    background-repeat: repeat-x;
+    background-position: center;
+    opacity:0.85;
+  }
+  .stitch.light{
+    background-image: repeating-linear-gradient(
+      90deg,
+      var(--foam) 0px, var(--foam) 10px,
+      transparent 10px, transparent 20px
+    );
+  }
+
+  .sewn-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:8px 18px;
+    border:2px dashed var(--gold);
+    border-radius:999px;
+    font-weight:600;
+    font-size:0.85rem;
+    letter-spacing:0.03em;
+    background:rgba(217,164,65,0.08);
+  }
+
+  /* ---------- header / nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:linear-gradient(120deg,var(--sea-deep),var(--sea-mid));
+    padding:14px 6vw;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    box-shadow:0 4px 18px rgba(11,93,99,0.25);
+  }
+  .logo{
+    font-family:'Caveat',cursive;
+    font-size:1.9rem;
+    color:var(--thread);
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .logo .dot{color:var(--gold);}
+  nav.top-links{display:flex; gap:22px;}
+  nav.top-links a{
+    color:var(--foam);
+    font-weight:600;
+    font-size:0.95rem;
+    opacity:0.9;
+    transition:opacity 0.2s;
+  }
+  nav.top-links a:hover{opacity:1; color:var(--gold);}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,255,255,0.10), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(217,164,65,0.18), transparent 45%),
+      linear-gradient(160deg, var(--sea-deep) 0%, var(--sea-mid) 55%, #1a9c9a 100%);
+    color:var(--foam);
+    padding:90px 6vw 70px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .waves{
+    position:absolute; bottom:-2px; left:0; width:100%; line-height:0;
+  }
+  .hero-content{position:relative; z-index:2; max-width:760px; margin:0 auto;}
+  .hero .eyebrow{
+    font-weight:700; letter-spacing:0.14em; text-transform:uppercase;
+    font-size:0.78rem; color:var(--gold);
+    margin-bottom:18px;
+    display:inline-block;
+  }
+  .hero h1{
+    font-size:clamp(3.2rem, 9vw, 5.6rem);
+    line-height:0.95;
+    margin-bottom:10px;
+    text-shadow:0 6px 24px rgba(0,0,0,0.15);
+  }
+  .hero h1 .frog{font-family:'Quicksand',sans-serif; font-size:0.5em; vertical-align:middle;}
+  .hero p.tag{
+    font-size:1.25rem;
+    max-width:520px;
+    margin:0 auto 34px;
+    color:var(--foam);
+    opacity:0.95;
+    font-weight:500;
+  }
+  .cta-row{
+    display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+    margin-bottom:38px;
+  }
+  .btn{
+    padding:15px 30px;
+    border-radius:40px;
+    font-weight:700;
+    font-size:1rem;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+    border:2px solid transparent;
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn-primary{
+    background:linear-gradient(120deg, var(--coral), #ff8a63);
+    color:#fff;
+    box-shadow:0 10px 24px rgba(239,111,83,0.35);
+  }
+  .btn-primary:hover{box-shadow:0 14px 30px rgba(239,111,83,0.45);}
+  .btn-gold{
+    background:linear-gradient(120deg, var(--gold), var(--gold-deep));
+    color:#3a2a08;
+    box-shadow:0 10px 24px rgba(217,164,65,0.35);
+  }
+  .btn-gold:hover{box-shadow:0 14px 30px rgba(217,164,65,0.5);}
+
+  .hero-badges{
+    display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+    font-size:0.88rem; font-weight:600; color:var(--foam); opacity:0.9;
+  }
+  .hero-badges span{display:flex; align-items:center; gap:6px;}
+
+  /* ---------- marquee ribbon ---------- */
+  .ribbon{
+    background:var(--gold);
+    color:var(--ink);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:12px 0;
+    font-weight:700;
+    font-size:1rem;
+    letter-spacing:0.02em;
+    border-top:3px dashed rgba(14,59,63,0.35);
+    border-bottom:3px dashed rgba(14,59,63,0.35);
+  }
+  .ribbon-track{
+    display:inline-block;
+    padding-left:100%;
+    animation: scroll-left 28s linear infinite;
+  }
+  .ribbon-track span{margin:0 28px;}
+  @keyframes scroll-left{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-100%);}
+  }
+
+  /* ---------- section generic ---------- */
+  section{padding:80px 6vw;}
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 50px;
+  }
+  .section-head .eyebrow{
+    color:var(--sea-mid);
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:0.12em;
+    font-size:0.78rem;
+  }
+  .section-head h2{
+    font-size:clamp(2.2rem,5vw,3.2rem);
+    color:var(--sea-deep);
+    margin:10px 0 14px;
+  }
+  .section-head p{
+    color:#3a5f61;
+    font-size:1.05rem;
+    line-height:1.5;
+  }
+
+  /* ---------- about ---------- */
+  .about{
+    background:linear-gradient(180deg, var(--foam), #fdf7ec);
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .about-text h2{font-size:clamp(2rem,4.5vw,2.8rem); color:var(--sea-deep); margin-bottom:18px;}
+  .about-text p{font-size:1.05rem; line-height:1.7; color:#33534f; margin-bottom:16px;}
+  .about-visual{
+    position:relative;
+    aspect-ratio:1/1;
+    max-width:380px;
+    margin:0 auto;
+  }
+
+  @media(max-width:800px){
+    .about-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- products ---------- */
+  .products{background:var(--foam);}
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:26px;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .product-card{
+    background:#fff;
+    border-radius:22px;
+    padding:32px 24px 28px;
+    text-align:center;
+    position:relative;
+    border:2px solid rgba(217,164,65,0.25);
+    transition:transform 0.25s ease, box-shadow 0.25s ease, border-color .25s ease;
+  }
+  .product-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 34px rgba(11,93,99,0.14);
+    border-color:var(--gold);
+  }
+  .product-card .icon-wrap{
+    width:84px; height:84px;
+    margin:0 auto 20px;
+    border-radius:50%;
+    background:linear-gradient(135deg, var(--sea-light), #d8f3e8);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .product-card h3{
+    font-family:'Quicksand',sans-serif;
+    font-weight:700;
+    font-size:1.15rem;
+    color:var(--sea-deep);
+    margin-bottom:10px;
+  }
+  .product-card p{
+    font-size:0.92rem;
+    color:#4a6a68;
+    line-height:1.5;
+  }
+
+  @media(max-width:900px){
+    .product-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:520px){
+    .product-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- values ---------- */
+  .values{
+    background:linear-gradient(135deg, var(--sea-deep), var(--sea-mid) 60%, #178f8f);
+    color:var(--foam);
+  }
+  .values .section-head p{color:var(--sea-light);}
+  .values .section-head .eyebrow{color:var(--gold);}
+  .value-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .value-item{
+    text-align:center;
+    padding:24px 16px;
+  }
+  .value-item .num{
+    font-family:'Caveat',cursive;
+    font-size:2.6rem;
+    color:var(--gold);
+    display:block;
+    margin-bottom:6px;
+  }
+  .value-item h4{font-size:1rem; font-weight:700; margin-bottom:8px;}
+  .value-item p{font-size:0.88rem; color:var(--sea-light); line-height:1.5;}
+
+  @media(max-width:800px){
+    .value-grid{grid-template-columns:1fr 1fr;}
+  }
+
+  /* ---------- instagram teaser ---------- */
+  .insta{
+    background:linear-gradient(180deg,#fdf7ec, var(--foam));
+    text-align:center;
+  }
+  .insta-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+    max-width:900px;
+    margin:0 auto 38px;
+  }
+  .insta-tile{
+    aspect-ratio:1/1;
+    border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:2rem;
+    position:relative;
+    overflow:hidden;
+  }
+  .insta-tile::after{
+    content:'';
+    position:absolute; inset:0;
+    background:rgba(255,255,255,0.0);
+    transition:background .2s;
+  }
+  .insta-tile:hover::after{background:rgba(255,255,255,0.15);}
+  .t1{background:linear-gradient(135deg,#12808a,#0b5d63);}
+  .t2{background:linear-gradient(135deg,#d9a441,#b8842a);}
+  .t3{background:linear-gradient(135deg,#ef6f53,#ff9270);}
+  .t4{background:linear-gradient(135deg,#bfeee2,#7fd4bf);}
+  .t5{background:linear-gradient(135deg,#0b5d63,#178f8f);}
+  .t6{background:linear-gradient(135deg,#ff9270,#ef6f53);}
+  .t7{background:linear-gradient(135deg,#b8842a,#d9a441);}
+  .t8{background:linear-gradient(135deg,#7fd4bf,#bfeee2);}
+
+  @media(max-width:700px){
+    .insta-grid{grid-template-columns:repeat(4,1fr);}
+    .insta-tile{font-size:1.4rem;}
+  }
+
+  /* ---------- footer / contact ---------- */
+  footer{
+    background:linear-gradient(160deg, #0b5d63, #093e42);
+    color:var(--foam);
+    padding:70px 6vw 30px;
+    text-align:center;
+  }
+  footer h2{
+    font-size:clamp(2.2rem,5vw,3rem);
+    margin-bottom:14px;
+  }
+  footer p.sub{
+    color:var(--sea-light);
+    max-width:480px;
+    margin:0 auto 34px;
+    font-size:1.05rem;
+  }
+  .footer-ctas{
+    display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+    margin-bottom:50px;
+  }
+  .footer-meta{
+    display:flex;
+    justify-content:center;
+    gap:26px;
+    flex-wrap:wrap;
+    font-size:0.88rem;
+    color:var(--sea-light);
+    padding-top:26px;
+    border-top:1px dashed rgba(191,238,226,0.3);
+  }
+  .footer-meta a{font-weight:700; color:var(--gold);}
+  .footer-meta a:hover{text-decoration:underline;}
+
+  ::selection{background:var(--gold); color:#2a1e05;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">mar<span class="dot">·</span>de<span class="dot">·</span>ranitas</div>
+  <nav class="top-links">
+    <a href="#productos">Productos</a>
+    <a href="#nosotras">Historia</a>
+    <a href="#instagram">Instagram</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <span class="eyebrow">Ribeira · Galicia 🌍</span>
+    <h1>mar de ranitas</h1>
+    <p class="tag">✨️ Costuritas bonitas, desde 2015 🌸<br>Fundas de pandereta, canastillas, bolsos y complementos, cosidos a mano.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://wa.me/c/34601514560" target="_blank" rel="noopener">
+        💬 Ver catálogo en WhatsApp
+      </a>
+      <a class="btn btn-gold" href="https://www.instagram.com/mar.de.ranitas/" target="_blank" rel="noopener">
+        📸 Síguenos en Instagram
+      </a>
+    </div>
+    <div class="hero-badges">
+      <span>🧵 Hecho a mano</span>
+      <span>🌊 Diseño gallego</span>
+      <span>🎁 Piezas personalizables</span>
+    </div>
+  </div>
+</section>
+
+<div class="ribbon">
+  <div class="ribbon-track">
+    <span>🐸 Fundas Pandereta</span>
+    <span>🌊 Canastillas</span>
+    <span>🧵 Bolsos</span>
+    <span>✨ Complementos</span>
+    <span>🐸 Fundas Pandereta</span>
+    <span>🌊 Canastillas</span>
+    <span>🧵 Bolsos</span>
+    <span>✨ Complementos</span>
+    <span>🐸 Fundas Pandereta</span>
+    <span>🌊 Canastillas</span>
+    <span>🧵 Bolsos</span>
+    <span>✨ Complementos</span>
+  </div>
+</div>
+
+<section class="about" id="nosotras">
+  <div class="about-grid">
+    <div class="about-text">
+      <span class="sewn-tag">🧵 Desde 2015</span>
+      <h2 style="margin-top:16px;">Costura con alma de Ribeira</h2>
+      <p>En <strong>Mar de Ranitas</strong> cada puntada nace en Ribeira, entre el mar y el olor a tela nueva. Empezamos en 2015 cosiendo fundas de pandereta para grupos de baile tradicional gallego, y desde entonces no hemos dejado la aguja.</p>
+      <p>Hoy seguimos igual: telas elegidas una a una, patrones propios y ese cariño de taller pequeño que se nota en cada canastilla, bolso o complemento que sale de aquí.</p>
+      <p>Nada se hace en serie. Cada encargo se cose pensando en quién lo va a llevar.</p>
+    </div>
+    <div class="about-visual">
+      <svg viewBox="0 0 380 380" width="100%" height="100%">
+        <defs>
+          <linearGradient id="seaGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#12808a"/>
+            <stop offset="100%" stop-color="#0b5d63"/>
+          </linearGradient>
+        </defs>
+        <circle cx="190" cy="190" r="170" fill="url(#seaGrad)"/>
+        <circle cx="190" cy="190" r="170" fill="none" stroke="#d9a441" stroke-width="4" stroke-dasharray="10 10"/>
+        <!-- pandereta -->
+        <circle cx="190" cy="190" r="90" fill="#eaf9f3"/>
+        <circle cx="190" cy="190" r="90" fill="none" stroke="#d9a441" stroke-width="6" stroke-dasharray="8 8"/>
+        <circle cx="190" cy="190" r="60" fill="#ef6f53" opacity="0.85"/>
+        <circle cx="190" cy="190" r="30" fill="#d9a441"/>
+        <!-- jingles -->
+        <circle cx="115" cy="140" r="10" fill="#d9a441"/>
+        <circle cx="265" cy="140" r="10" fill="#d9a441"/>
+        <circle cx="115" cy="240" r="10" fill="#d9a441"/>
+        <circle cx="265" cy="240" r="10" fill="#d9a441"/>
+        <!-- little frog -->
+        <g transform="translate(140,285)">
+          <ellipse cx="30" cy="18" rx="26" ry="16" fill="#eaf9f3"/>
+          <circle cx="14" cy="4" r="8" fill="#eaf9f3"/>
+          <circle cx="46" cy="4" r="8" fill="#eaf9f3"/>
+          <circle cx="14" cy="4" r="3" fill="#0e3b3f"/>
+          <circle cx="46" cy="4" r="3" fill="#0e3b3f"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="stitch"></div>
+
+<section class="products" id="productos">
+  <div class="section-head">
+    <span class="eyebrow">Lo que cosemos</span>
+    <h2>Nuestras costuritas</h2>
+    <p>Cuatro familias de piezas, todas cosidas a mano y pensadas para durar.</p>
+  </div>
+  <div class="product-grid">
+
+    <div class="product-card">
+      <div class="icon-wrap">
+        <svg width="40" height="40" viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="#0b5d63"/><circle cx="20" cy="20" r="17" fill="none" stroke="#d9a441" stroke-width="2" stroke-dasharray="4 4"/><circle cx="20" cy="20" r="7" fill="#d9a441"/><circle cx="8" cy="12" r="3" fill="#d9a441"/><circle cx="32" cy="12" r="3" fill="#d9a441"/><circle cx="8" cy="28" r="3" fill="#d9a441"/><circle cx="32" cy="28" r="3" fill="#d9a441"/></svg>
+      </div>
+      <h3>Fundas Pandereta</h3>
+      <p>Vestimos tu pandereta con telas y bordados únicos. Ideales para grupos de baile, regalos y romerías.</p>
+    </div>
+
+    <div class="product-card">
+      <div class="icon-wrap">
+        <svg width="40" height="40" viewBox="0 0 40 40"><path d="M8 18 Q20 8 32 18 L30 32 Q20 38 10 32 Z" fill="#ef6f53"/><path d="M8 18 Q20 8 32 18" fill="none" stroke="#d9a441" stroke-width="2"/><line x1="12" y1="22" x2="28" y2="22" stroke="#fff" stroke-width="1.5" stroke-dasharray="2 2"/></svg>
+      </div>
+      <h3>Canastillas</h3>
+      <p>Sets de bienvenida para los más pequeños: mantitas, baberos y detalles a juego para regalar con mimo.</p>
+    </div>
+
+    <div class="product-card">
+      <div class="icon-wrap">
+        <svg width="40" height="40" viewBox="0 0 40 40"><path d="M10 16 h20 v18 a3 3 0 0 1 -3 3 h-14 a3 3 0 0 1 -3 -3 Z" fill="#12808a"/><path d="M14 16 v-4 a6 6 0 0 1 12 0 v4" fill="none" stroke="#d9a441" stroke-width="2.5"/><line x1="12" y1="24" x2="28" y2="24" stroke="#eaf9f3" stroke-width="1.5" stroke-dasharray="2 2"/></svg>
+      </div>
+      <h3>Bolsos</h3>
+      <p>Bolsos de tela hechos a mano, resistentes y con carácter propio para el día a día.</p>
+    </div>
+
+    <div class="product-card">
+      <div class="icon-wrap">
+        <svg width="40" height="40" viewBox="0 0 40 40"><circle cx="14" cy="20" r="7" fill="#d9a441"/><circle cx="26" cy="20" r="7" fill="#d9a441"/><circle cx="20" cy="20" r="4" fill="#0b5d63"/></svg>
+      </div>
+      <h3>Complementos</h3>
+      <p>Lazos, pinzas, monederos y pequeños detalles para completar tu look con costura artesanal.</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="values">
+  <div class="section-head">
+    <span class="eyebrow">Por qué elegirnos</span>
+    <h2>Puntada a puntada</h2>
+    <p>Diez años cosiendo en Ribeira nos han enseñado lo que de verdad importa.</p>
+  </div>
+  <div class="value-grid">
+    <div class="value-item">
+      <span class="num">100%</span>
+      <h4>Hecho a mano</h4>
+      <p>Cada pieza se cose de principio a fin en nuestro taller.</p>
+    </div>
+    <div class="value-item">
+      <span class="num">10+</span>
+      <h4>Años de oficio</h4>
+      <p>Desde 2015 cosiendo para familias de toda Galicia.</p>
+    </div>
+    <div class="value-item">
+      <span class="num">🎨</span>
+      <h4>A tu medida</h4>
+      <p>Elige tela, color y detalles para tu encargo personalizado.</p>
+    </div>
+    <div class="value-item">
+      <span class="num">📦</span>
+      <h4>Envíos</h4>
+      <p>Preparamos y enviamos tu pedido allá donde estés.</p>
+    </div>
+  </div>
+</section>
+
+<section class="insta" id="instagram">
+  <div class="section-head">
+    <span class="eyebrow">Nuestro día a día</span>
+    <h2>Síguenos la puntada</h2>
+    <p>Enseñamos telas nuevas, encargos terminados y el taller por dentro.</p>
+  </div>
+  <div class="insta-grid">
+    <div class="insta-tile t1">🐸</div>
+    <div class="insta-tile t2">🧵</div>
+    <div class="insta-tile t3">🌊</div>
+    <div class="insta-tile t4">🎀</div>
+    <div class="insta-tile t5">✂️</div>
+    <div class="insta-tile t6">🌸</div>
+    <div class="insta-tile t7">👜</div>
+    <div class="insta-tile t8">🎁</div>
+  </div>
+  <a class="btn btn-primary" href="https://www.instagram.com/mar.de.ranitas/" target="_blank" rel="noopener">
+    📸 Ver @mar.de.ranitas
+  </a>
+</section>
+
+<div class="stitch light" style="background-color:#0b5d63;"></div>
+
+<footer>
+  <h2>¿Cosemos algo bonito juntas?</h2>
+  <p class="sub">Escríbenos por WhatsApp para ver el catálogo completo o encargar tu pieza a medida.</p>
+  <div class="footer-ctas">
+    <a class="btn btn-primary" href="https://wa.me/c/34601514560" target="_blank" rel="noopener">💬 Escríbenos por WhatsApp</a>
+    <a class="btn btn-gold" href="https://www.instagram.com/mar.de.ranitas/" target="_blank" rel="noopener">📸 Instagram</a>
+  </div>
+  <div class="footer-meta">
+    <span>📍 Ribeira, Galicia</span>
+    <a href="https://www.instagram.com/mar.de.ranitas/" target="_blank" rel="noopener">@mar.de.ranitas</a>
+    <a href="https://wa.me/c/34601514560" target="_blank" rel="noopener">wa.me/c/34601514560</a>
+  </div>
+</footer>
+
+</body>
+</html>
