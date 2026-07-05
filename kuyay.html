@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KUYAY_ tejidos con magia | Atrapasueños, Tapices y Macramé hechos a mano</title>
+<meta name="description" content="Atrapasueños, tapices y macramé tejidos a mano con magia y buena energía. Piezas únicas para tu hogar o para regalar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noche: #2B1035;
+    --noche-2: #3D1650;
+    --magenta: #B23A6B;
+    --terracota: #D9713C;
+    --turquesa: #2A9D8F;
+    --crema: #FBF2E3;
+    --oro: #D4AF37;
+    --oro-claro: #F0C040;
+    --oro-fuerte: #C9A84C;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior:smooth; }
+
+  body{
+    font-family:'Nunito Sans', sans-serif;
+    background:var(--noche);
+    color:var(--crema);
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+  }
+
+  a { color:inherit; text-decoration:none; }
+
+  ::selection{ background:var(--oro); color:var(--noche); }
+
+  /* ================= BACKGROUND TEXTURE ================= */
+  .bg-glow{
+    position:fixed; inset:0; z-index:-2;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(217,113,60,0.35), transparent 40%),
+      radial-gradient(circle at 85% 10%, rgba(42,157,143,0.3), transparent 45%),
+      radial-gradient(circle at 50% 90%, rgba(178,58,107,0.4), transparent 50%),
+      linear-gradient(160deg, #2B1035 0%, #3D1650 55%, #251029 100%);
+  }
+  .bg-stars{
+    position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background-image:
+      radial-gradient(1.5px 1.5px at 10% 20%, var(--oro-claro), transparent),
+      radial-gradient(1.5px 1.5px at 80% 15%, var(--crema), transparent),
+      radial-gradient(1px 1px at 60% 70%, var(--oro), transparent),
+      radial-gradient(1.5px 1.5px at 30% 85%, var(--crema), transparent),
+      radial-gradient(1px 1px at 90% 60%, var(--oro-claro), transparent),
+      radial-gradient(1.5px 1.5px at 45% 40%, var(--crema), transparent);
+    background-size:600px 600px;
+    opacity:0.7;
+  }
+
+  /* ================= NAV ================= */
+  header{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 6%;
+    background:rgba(43,16,53,0.75);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(212,175,55,0.25);
+  }
+  .logo{
+    font-size:1.5rem; letter-spacing:1px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo span{ color:var(--oro-claro); }
+  nav a{
+    margin-left:26px; font-weight:700; font-size:0.9rem;
+    letter-spacing:0.5px; text-transform:uppercase;
+    opacity:0.85; transition:opacity .25s, color .25s;
+  }
+  nav a:hover{ opacity:1; color:var(--oro-claro); }
+  .nav-links{ display:flex; align-items:center; }
+  .btn-nav{
+    background:linear-gradient(135deg, var(--oro-fuerte), var(--oro-claro));
+    color:var(--noche) !important;
+    padding:10px 20px; border-radius:30px;
+    margin-left:26px !important;
+    box-shadow:0 4px 15px rgba(212,175,55,0.35);
+  }
+
+  /* ================= HERO ================= */
+  .hero{
+    display:flex; align-items:center; justify-content:space-between;
+    flex-wrap:wrap;
+    padding:70px 6% 90px;
+    gap:40px;
+    position:relative;
+  }
+  .hero-text{ flex:1 1 420px; max-width:560px; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:0.85rem; letter-spacing:2px; text-transform:uppercase;
+    color:var(--oro-claro); font-weight:800;
+    border:1px solid rgba(212,175,55,0.4);
+    padding:6px 14px; border-radius:30px;
+    margin-bottom:22px;
+    background:rgba(212,175,55,0.08);
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.5vw, 4.2rem);
+    line-height:1.05;
+    margin-bottom:22px;
+    background:linear-gradient(100deg, var(--crema) 30%, var(--oro-claro) 60%, var(--terracota) 90%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p.lead{
+    font-size:1.15rem; line-height:1.6; opacity:0.9; margin-bottom:34px;
+    max-width:480px;
+  }
+  .hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 28px; border-radius:40px;
+    font-weight:800; font-size:0.95rem; letter-spacing:0.3px;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .btn:hover{ transform:translateY(-3px); }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--terracota), var(--magenta));
+    color:var(--crema);
+    box-shadow:0 10px 25px rgba(178,58,107,0.4);
+  }
+  .btn-gold{
+    background:linear-gradient(135deg, var(--oro-fuerte), var(--oro-claro));
+    color:var(--noche);
+    box-shadow:0 10px 25px rgba(212,175,55,0.35);
+  }
+
+  /* ============ SIGNATURE DREAMCATCHER SVG ============ */
+  .hero-visual{
+    flex:1 1 380px; display:flex; justify-content:center;
+    min-width:320px;
+  }
+  #dreamcatcher{ width:min(100%, 420px); height:auto; overflow:visible; }
+  .thread{
+    stroke:var(--oro-claro);
+    stroke-width:1.4;
+    fill:none;
+    stroke-dasharray:900;
+    stroke-dashoffset:900;
+    animation:weave 2.6s ease forwards;
+  }
+  .ring{
+    fill:none; stroke:var(--oro-fuerte); stroke-width:5;
+    stroke-dasharray:720; stroke-dashoffset:720;
+    animation:weave 1.6s ease forwards;
+  }
+  @keyframes weave{ to{ stroke-dashoffset:0; } }
+  .feather{
+    transform-origin:top center;
+    animation:sway 4s ease-in-out infinite;
+  }
+  .feather:nth-child(2){ animation-delay:.3s; }
+  .feather:nth-child(3){ animation-delay:.6s; }
+  @keyframes sway{
+    0%,100%{ transform:rotate(-4deg); }
+    50%{ transform:rotate(4deg); }
+  }
+  .bead{ fill:var(--turquesa); }
+  .bead.alt{ fill:var(--terracota); }
+  .bead.gold{ fill:var(--oro-claro); }
+
+  /* ================= SECTION GENERIC ================= */
+  section{ padding:90px 6%; position:relative; }
+  .section-head{ max-width:680px; margin:0 auto 60px; text-align:center; }
+  .section-head .eyebrow{ margin-bottom:16px; }
+  .section-head h2{
+    font-size:clamp(2rem, 4vw, 2.8rem);
+    color:var(--crema);
+  }
+  .section-head h2 em{ font-style:italic; color:var(--oro-claro); }
+  .section-head p{ opacity:0.85; margin-top:16px; font-size:1.05rem; }
+
+  /* ================= PRODUCTS ================= */
+  .productos{ background:linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.15) 100%); }
+  .grid-productos{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:28px; max-width:1100px; margin:0 auto;
+  }
+  .card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(212,175,55,0.25);
+    border-radius:22px;
+    padding:34px 28px;
+    text-align:center;
+    transition:transform .3s ease, border-color .3s ease, background .3s ease;
+    opacity:0; transform:translateY(30px);
+  }
+  .card.visible{ opacity:1; transform:translateY(0); transition:opacity .7s ease, transform .7s ease; }
+  .card:hover{
+    transform:translateY(-8px);
+    border-color:var(--oro-claro);
+    background:rgba(212,175,55,0.07);
+  }
+  .card .icon-wrap{
+    width:78px; height:78px; margin:0 auto 20px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, rgba(212,175,55,0.25), rgba(217,113,60,0.25));
+    border:1px solid rgba(212,175,55,0.4);
+  }
+  .card h3{ font-size:1.3rem; margin-bottom:10px; color:var(--oro-claro); }
+  .card p{ opacity:0.85; font-size:0.98rem; line-height:1.55; }
+
+  /* ================= HISTORIA ================= */
+  .historia{
+    display:flex; gap:60px; align-items:center; flex-wrap:wrap;
+    max-width:1100px; margin:0 auto;
+  }
+  .historia-visual{ flex:1 1 300px; display:flex; justify-content:center; }
+  .historia-text{ flex:1 1 380px; }
+  .historia-text .eyebrow{ margin-bottom:18px; }
+  .historia-text h2{ font-size:clamp(1.8rem,3.5vw,2.4rem); margin-bottom:20px; }
+  .historia-text p{ opacity:0.88; line-height:1.7; margin-bottom:16px; font-size:1.05rem; }
+  .mandala{ width:min(100%,320px); animation:spin 40s linear infinite; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  /* ================= GALERIA ================= */
+  .galeria{ background:rgba(0,0,0,0.15); }
+  .grid-galeria{
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+    gap:20px; max-width:1100px; margin:0 auto;
+  }
+  .tile{
+    aspect-ratio:1/1.05; border-radius:20px;
+    position:relative; overflow:hidden;
+    display:flex; align-items:flex-end;
+    padding:20px;
+    border:1px solid rgba(212,175,55,0.25);
+    opacity:0; transform:scale(0.92);
+  }
+  .tile.visible{ opacity:1; transform:scale(1); transition:opacity .7s ease, transform .7s ease; }
+  .tile span{ font-weight:800; font-size:1.05rem; z-index:2; }
+  .tile::after{ content:''; position:absolute; inset:0; background:linear-gradient(0deg, rgba(0,0,0,0.55), transparent 60%); z-index:1; }
+  .tile:hover svg{ transform:scale(1.08); }
+  .tile svg{ position:absolute; inset:0; width:100%; height:100%; transition:transform .5s ease; }
+
+  /* ================= TESTIMONIOS ================= */
+  .testimonios{
+    max-width:900px; margin:0 auto; text-align:center;
+  }
+  .quote-carousel{ position:relative; min-height:170px; }
+  .quote{
+    position:absolute; inset:0;
+    opacity:0; transition:opacity .8s ease;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+  }
+  .quote.active{ opacity:1; }
+  .quote p{ font-size:1.3rem; font-family:'Fraunces', serif; font-style:italic; line-height:1.5; max-width:640px; }
+  .quote .autor{ margin-top:18px; color:var(--oro-claro); font-weight:800; font-family:'Nunito Sans'; font-style:normal; font-size:0.95rem; }
+  .dots{ display:flex; gap:10px; justify-content:center; margin-top:24px; }
+  .dot{ width:9px; height:9px; border-radius:50%; background:rgba(212,175,55,0.3); cursor:pointer; transition:background .3s; }
+  .dot.active{ background:var(--oro-claro); }
+
+  /* ================= CTA FINAL ================= */
+  .cta-final{
+    text-align:center;
+    background:linear-gradient(135deg, rgba(178,58,107,0.25), rgba(217,113,60,0.2));
+    border-top:1px solid rgba(212,175,55,0.3);
+    border-bottom:1px solid rgba(212,175,55,0.3);
+  }
+  .cta-final h2{ font-size:clamp(2rem,4vw,2.8rem); margin-bottom:18px; }
+  .cta-final p{ opacity:0.9; max-width:520px; margin:0 auto 34px; font-size:1.08rem; }
+  .cta-btns{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; }
+
+  /* ================= FOOTER ================= */
+  footer{
+    padding:50px 6% 30px;
+    text-align:center;
+    background:#1D0A26;
+  }
+  .footer-logo{ font-size:1.4rem; margin-bottom:14px; }
+  .footer-links{ display:flex; justify-content:center; gap:24px; margin-bottom:20px; flex-wrap:wrap; }
+  .footer-links a{ opacity:0.8; font-size:0.95rem; transition:opacity .25s, color .25s; }
+  .footer-links a:hover{ opacity:1; color:var(--oro-claro); }
+  .ig-pill{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:9px 18px; border-radius:30px;
+    border:1px solid rgba(212,175,55,0.4);
+    margin-bottom:22px;
+    font-weight:700;
+  }
+  footer .fine{ opacity:0.5; font-size:0.82rem; }
+
+  /* ================= SCROLL REVEAL GENERIC ================= */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.visible{ opacity:1; transform:translateY(0); }
+
+  @media (max-width:640px){
+    nav a:not(.btn-nav){ display:none; }
+    header{ padding:16px 5%; }
+    .hero{ padding:40px 6% 60px; }
+    section{ padding:60px 6%; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+<div class="bg-stars"></div>
+
+<header>
+  <div class="logo">🕸️<span>KUYAY_</span> tejidos con magia</div>
+  <div class="nav-links">
+    <nav style="display:flex; align-items:center;">
+      <a href="#productos">Piezas</a>
+      <a href="#historia">Historia</a>
+      <a href="#galeria">Galería</a>
+      <a href="https://www.instagram.com/kuyay_tejidos_con_magia/" target="_blank" rel="noopener" class="btn-nav">Instagram</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="eyebrow">✨ Design & fashion · hecho a mano</div>
+    <h1>Tejidos que guardan magia para tu hogar</h1>
+    <p class="lead">Atrapasueños, tapices y macramé tejidos a mano, hilo a hilo, con intención y buena energía. Cada pieza es única — como el espacio que la recibe.</p>
+    <div class="hero-ctas">
+      <a href="https://www.instagram.com/kuyay_tejidos_con_magia/" target="_blank" rel="noopener" class="btn btn-primary">📷 Ver piezas en Instagram</a>
+      <a href="#productos" class="btn btn-gold">Explorar colección</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <svg id="dreamcatcher" viewBox="0 0 400 460" xmlns="http://www.w3.org/2000/svg">
+      <circle class="ring" cx="200" cy="150" r="110"/>
+      <g class="thread">
+        <path d="M200,40 L300,110 L260,220 L140,220 L100,110 Z"/>
+        <path d="M200,40 L200,260"/>
+        <path d="M100,110 L300,110"/>
+        <path d="M90,150 L310,150"/>
+        <path d="M140,220 L260,220"/>
+        <path d="M300,110 L140,220"/>
+        <path d="M100,110 L260,220"/>
+        <circle cx="200" cy="150" r="55" fill="none" stroke="#D4AF37" stroke-width="1"/>
+      </g>
+      <circle class="bead gold" cx="200" cy="150" r="7"/>
+      <circle class="bead" cx="165" cy="120" r="4"/>
+      <circle class="bead alt" cx="235" cy="120" r="4"/>
+      <circle class="bead" cx="235" cy="185" r="4"/>
+      <circle class="bead alt" cx="165" cy="185" r="4"/>
+
+      <g class="feather">
+        <path d="M170,262 C160,300 165,340 178,375 C186,340 182,300 190,262 Z" fill="#D9713C" opacity="0.85"/>
+        <line x1="178" y1="262" x2="178" y2="375" stroke="#F0C040" stroke-width="1.2"/>
+        <circle class="bead gold" cx="178" cy="252" r="4"/>
+      </g>
+      <g class="feather">
+        <path d="M195,270 C185,315 190,360 202,400 C210,360 206,315 214,270 Z" fill="#B23A6B" opacity="0.85"/>
+        <line x1="202" y1="270" x2="202" y2="400" stroke="#F0C040" stroke-width="1.2"/>
+        <circle class="bead" cx="202" cy="260" r="4"/>
+      </g>
+      <g class="feather">
+        <path d="M220,262 C210,300 215,335 226,365 C234,335 230,300 238,262 Z" fill="#2A9D8F" opacity="0.85"/>
+        <line x1="226" y1="262" x2="226" y2="365" stroke="#F0C040" stroke-width="1.2"/>
+        <circle class="bead alt" cx="226" cy="252" r="4"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section class="productos" id="productos">
+  <div class="section-head reveal">
+    <div class="eyebrow">Lo que tejemos</div>
+    <h2>Cada hilo tiene un <em>propósito</em></h2>
+    <p>Piezas artesanales pensadas para decorar, proteger y acompañar. Personalizamos tamaños, colores y significados.</p>
+  </div>
+  <div class="grid-productos">
+    <div class="card">
+      <div class="icon-wrap">🕸️</div>
+      <h3>Atrapasueños</h3>
+      <p>Tejidos hilo a hilo sobre aro, con plumas y cuentas elegidas para atraer buenos sueños y buena energía a tu espacio.</p>
+    </div>
+    <div class="card">
+      <div class="icon-wrap">🧵</div>
+      <h3>Tapices</h3>
+      <p>Piezas de pared con textura y movimiento, ideales para darle alma boho a cualquier rincón de tu casa.</p>
+    </div>
+    <div class="card">
+      <div class="icon-wrap">🪢</div>
+      <h3>Macramé</h3>
+      <p>Nudos hechos con paciencia: colgantes de plantas, cortinas y detalles que transforman cualquier ambiente.</p>
+    </div>
+    <div class="card">
+      <div class="icon-wrap">🎁</div>
+      <h3>Piezas personalizadas</h3>
+      <p>¿Tenés una idea, colores o una fecha especial? Tejemos una pieza única pensada para vos o para regalar.</p>
+    </div>
+  </div>
+</section>
+
+<section class="historia" id="historia">
+  <div class="historia-visual reveal">
+    <svg class="mandala" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+      <g fill="none" stroke="#D4AF37" stroke-width="1.4">
+        <circle cx="150" cy="150" r="130"/>
+        <circle cx="150" cy="150" r="100"/>
+        <circle cx="150" cy="150" r="70"/>
+        <circle cx="150" cy="150" r="40"/>
+      </g>
+      <g fill="none" stroke="#D9713C" stroke-width="1.2" opacity="0.8">
+        <path d="M150,20 A130,130 0 0,1 262.5,85"/>
+        <path d="M262.5,85 A130,130 0 0,1 262.5,215"/>
+        <path d="M262.5,215 A130,130 0 0,1 150,280"/>
+        <path d="M150,280 A130,130 0 0,1 37.5,215"/>
+        <path d="M37.5,215 A130,130 0 0,1 37.5,85"/>
+        <path d="M37.5,85 A130,130 0 0,1 150,20"/>
+      </g>
+      <g fill="#2A9D8F" opacity="0.9">
+        <circle cx="150" cy="20" r="5"/>
+        <circle cx="262.5" cy="85" r="5"/>
+        <circle cx="262.5" cy="215" r="5"/>
+        <circle cx="150" cy="280" r="5"/>
+        <circle cx="37.5" cy="215" r="5"/>
+        <circle cx="37.5" cy="85" r="5"/>
+      </g>
+      <circle cx="150" cy="150" r="14" fill="#F0C040"/>
+    </svg>
+  </div>
+  <div class="historia-text reveal">
+    <div class="eyebrow">Nuestra historia</div>
+    <h2>KUYAY significa <em>amor</em> en quechua</h2>
+    <p>Nació como una forma de canalizar creatividad y calma a través del tejido. Cada atrapasueños, tapiz o pieza de macramé se hace con las manos, con tiempo y con intención — sin apuros ni producción en masa.</p>
+    <p>No hay dos piezas iguales: elegimos los hilos, colores y nudos pensando en quién la va a recibir. Por eso cada creación se siente hecha especialmente para vos.</p>
+    <p>Seguinos en Instagram para ver el proceso de tejido, piezas disponibles y encargos personalizados.</p>
+    <a href="https://www.instagram.com/kuyay_tejidos_con_magia/" target="_blank" rel="noopener" class="btn btn-gold" style="margin-top:10px;">📷 @kuyay_tejidos_con_magia</a>
+  </div>
+</section>
+
+<section class="galeria" id="galeria">
+  <div class="section-head reveal">
+    <div class="eyebrow">Galería</div>
+    <h2>Un vistazo a nuestro <em>mundo tejido</em></h2>
+    <p>Estas son solo algunas ideas — la colección completa y actualizada está siempre en Instagram.</p>
+  </div>
+  <div class="grid-galeria">
+    <div class="tile">
+      <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+        <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#B23A6B"/><stop offset="100%" stop-color="#2B1035"/>
+        </linearGradient></defs>
+        <rect width="300" height="300" fill="url(#g1)"/>
+        <circle cx="150" cy="130" r="70" fill="none" stroke="#F0C040" stroke-width="4"/>
+        <line x1="150" y1="200" x2="150" y2="260" stroke="#F0C040" stroke-width="2"/>
+      </svg>
+      <span>Atrapasueños clásico</span>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+        <defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#D9713C"/><stop offset="100%" stop-color="#3D1650"/>
+        </linearGradient></defs>
+        <rect width="300" height="300" fill="url(#g2)"/>
+        <path d="M60,60 L240,60 L200,260 L100,260 Z" fill="none" stroke="#F0C040" stroke-width="3"/>
+      </svg>
+      <span>Tapiz boho</span>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+        <defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#2A9D8F"/><stop offset="100%" stop-color="#2B1035"/>
+        </linearGradient></defs>
+        <rect width="300" height="300" fill="url(#g3)"/>
+        <path d="M150,40 C100,100 100,160 150,180 C200,160 200,100 150,40Z" fill="none" stroke="#F0C040" stroke-width="3"/>
+        <line x1="150" y1="180" x2="150" y2="260" stroke="#F0C040" stroke-width="2"/>
+      </svg>
+      <span>Colgante macramé</span>
+    </div>
+    <div class="tile">
+      <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice">
+        <defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#C9A84C"/><stop offset="100%" stop-color="#3D1650"/>
+        </linearGradient></defs>
+        <rect width="300" height="300" fill="url(#g4)"/>
+        <circle cx="150" cy="150" r="90" fill="none" stroke="#B23A6B" stroke-width="4"/>
+        <circle cx="150" cy="150" r="50" fill="none" stroke="#B23A6B" stroke-width="3"/>
+      </svg>
+      <span>Pieza personalizada</span>
+    </div>
+  </div>
+</section>
+
+<section class="testimonios">
+  <div class="section-head reveal">
+    <div class="eyebrow">Lo que dicen</div>
+    <h2>Energía que se <em>siente</em></h2>
+  </div>
+  <div class="quote-carousel">
+    <div class="quote active">
+      <p>“Pedí un atrapasueños personalizado y quedó más lindo de lo que imaginé. Se nota el cariño en cada nudo.”</p>
+      <div class="autor">— Camila R.</div>
+    </div>
+    <div class="quote">
+      <p>“El tapiz le cambió completamente la energía a mi living. Colores hermosos y muy buena calidad.”</p>
+      <div class="autor">— Julián M.</div>
+    </div>
+    <div class="quote">
+      <p>“Compré un macramé de regalo y la persona que lo recibió no paraba de agradecerme. Va a volver a pedir.”</p>
+      <div class="autor">— Valentina S.</div>
+    </div>
+  </div>
+  <div class="dots">
+    <div class="dot active" data-i="0"></div>
+    <div class="dot" data-i="1"></div>
+    <div class="dot" data-i="2"></div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <h2>¿Lista para tejer tu propia pieza?</h2>
+  <p>Contanos qué tenés en mente — colores, tamaño o para quién es — y armamos algo único para vos.</p>
+  <div class="cta-btns">
+    <a href="https://www.instagram.com/kuyay_tejidos_con_magia/" target="_blank" rel="noopener" class="btn btn-primary">📷 Escribinos por Instagram</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">🕸️ KUYAY_ tejidos con magia</div>
+  <a class="ig-pill" href="https://www.instagram.com/kuyay_tejidos_con_magia/" target="_blank" rel="noopener">📷 @kuyay_tejidos_con_magia</a>
+  <div class="footer-links">
+    <a href="#productos">Piezas</a>
+    <a href="#historia">Historia</a>
+    <a href="#galeria">Galería</a>
+  </div>
+  <p class="fine">Hecho a mano con magia · Design & fashion · Todas las piezas son únicas</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .card, .tile');
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold:0.15 });
+  revealEls.forEach(el=>observer.observe(el));
+
+  // Testimonial carousel
+  const quotes = document.querySelectorAll('.quote');
+  const dots = document.querySelectorAll('.dot');
+  let current = 0;
+  function showQuote(i){
+    quotes.forEach(q=>q.classList.remove('active'));
+    dots.forEach(d=>d.classList.remove('active'));
+    quotes[i].classList.add('active');
+    dots[i].classList.add('active');
+    current = i;
+  }
+  dots.forEach(d=>d.addEventListener('click', ()=> showQuote(parseInt(d.dataset.i))));
+  setInterval(()=>{ showQuote((current+1)%quotes.length); }, 5000);
+
+  // Gentle chime on feather hover (Web Audio API, no external files)
+  let audioCtx;
+  function chime(freq){
+    try{
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      const o = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      o.type = 'sine';
+      o.frequency.value = freq;
+      g.gain.setValueAtTime(0.0001, audioCtx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.06, audioCtx.currentTime + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.2);
+      o.connect(g); g.connect(audioCtx.destination);
+      o.start(); o.stop(audioCtx.currentTime + 1.2);
+    }catch(e){}
+  }
+  document.querySelectorAll('.feather').forEach((f,i)=>{
+    f.style.cursor = 'pointer';
+    f.addEventListener('click', ()=> chime([523, 659, 784][i % 3]));
+  });
+</script>
+
+</body>
+</html>
