@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beyond the Bar — Cacao & Chocolate Culture with Melanie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cacao-dark:#2B1810;
+    --cacao-mid:#5C3423;
+    --forest:#34492F;
+    --forest-light:#4A6844;
+    --terracotta:#C1633A;
+    --gold:#D4AF37;
+    --gold-light:#F0C040;
+    --blush:#E8A87C;
+    --cream:#F5EDE1;
+    --cream-dim:rgba(245,237,225,0.72);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Work Sans', sans-serif;
+    background:
+      radial-gradient(circle at 15% 8%, rgba(193,99,58,0.35), transparent 45%),
+      radial-gradient(circle at 88% 18%, rgba(212,175,55,0.22), transparent 50%),
+      radial-gradient(circle at 50% 90%, rgba(74,104,68,0.35), transparent 55%),
+      linear-gradient(160deg, #2B1810 0%, #40241a 35%, #34492F 100%);
+    background-attachment:fixed;
+    color:var(--cream);
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:600; letter-spacing:-0.01em;}
+  a{text-decoration:none;color:inherit;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold-light);
+  }
+  .wrap{max-width:1100px;margin:0 auto;padding:0 28px;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px;
+    backdrop-filter:blur(10px);
+    background:rgba(43,24,16,0.55);
+    border-bottom:1px solid rgba(212,175,55,0.18);
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Fraunces',serif;font-size:1.15rem;font-weight:600;color:var(--cream);}
+  .brand svg{width:30px;height:30px;flex-shrink:0;}
+  .nav-links{display:flex;align-items:center;gap:22px;font-size:0.9rem;}
+  .nav-links a.pill{
+    border:1px solid var(--gold);
+    color:var(--gold-light);
+    padding:8px 16px;
+    border-radius:999px;
+    transition:all .25s ease;
+    font-weight:500;
+  }
+  .nav-links a.pill:hover{background:var(--gold); color:var(--cacao-dark);}
+  .nav-links a.ig{display:none;}
+  @media(min-width:640px){.nav-links a.ig{display:inline-flex;align-items:center;gap:6px;}}
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding:110px 28px 90px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero .pod{position:absolute; opacity:0.5; filter:blur(0.3px);}
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    line-height:1.05;
+    background:linear-gradient(100deg, var(--gold-light), var(--blush) 45%, var(--gold) 80%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    margin:18px auto 20px;
+    max-width:780px;
+  }
+  .hero p.sub{
+    max-width:560px; margin:0 auto 34px;
+    color:var(--cream-dim);
+    font-size:1.08rem;
+    line-height:1.6;
+  }
+  .cta-row{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .btn-gold{
+    background:linear-gradient(120deg, var(--gold-light), var(--gold));
+    color:var(--cacao-dark);
+    font-weight:600;
+    padding:14px 30px;
+    border-radius:10px;
+    border:none;
+    font-size:1rem;
+    cursor:pointer;
+    box-shadow:0 8px 24px rgba(212,175,55,0.28);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-gold:hover{transform:translateY(-2px); box-shadow:0 12px 30px rgba(212,175,55,0.4);}
+  .btn-outline{
+    border:1.5px solid var(--gold);
+    color:var(--gold-light);
+    padding:13px 28px;
+    border-radius:10px;
+    font-weight:500;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:all .2s ease;
+  }
+  .btn-outline:hover{background:rgba(212,175,55,0.12);}
+
+  /* SECTION shared */
+  section{padding:90px 0; position:relative;}
+  .section-head{max-width:640px; margin-bottom:52px;}
+  .section-head h2{font-size:clamp(1.9rem,3.6vw,2.7rem); margin-top:10px; color:var(--cream);}
+  .section-head p{color:var(--cream-dim); margin-top:14px; line-height:1.6; font-size:1.02rem;}
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+
+  /* ABOUT */
+  .about-grid{display:grid; grid-template-columns:1fr; gap:40px; align-items:center;}
+  @media(min-width:860px){.about-grid{grid-template-columns:1.1fr 0.9fr;}}
+  .about-card{
+    background:linear-gradient(160deg, rgba(92,52,35,0.55), rgba(52,73,47,0.4));
+    border:1px solid rgba(212,175,55,0.25);
+    border-radius:20px;
+    padding:34px;
+  }
+  .about-card h3{color:var(--gold-light); font-size:1.3rem; margin-bottom:12px;}
+  .about-card p{color:var(--cream-dim); line-height:1.7; margin-bottom:10px;}
+  .tag-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px;}
+  .tag{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.05em;
+    padding:6px 12px;
+    border-radius:999px;
+    background:rgba(212,175,55,0.14);
+    border:1px solid rgba(212,175,55,0.35);
+    color:var(--gold-light);
+  }
+
+  /* BEAN TO BITE - process */
+  .process-strip{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+    gap:0;
+    border-radius:20px;
+    overflow:hidden;
+    border:1px solid rgba(212,175,55,0.25);
+  }
+  .process-step{
+    padding:30px 22px;
+    background:rgba(43,24,16,0.4);
+    border-right:1px solid rgba(212,175,55,0.15);
+    position:relative;
+    transition:background .3s ease;
+  }
+  .process-step:last-child{border-right:none;}
+  .process-step:hover{background:rgba(212,175,55,0.1);}
+  .process-num{
+    font-family:'JetBrains Mono',monospace;
+    color:var(--gold);
+    font-size:0.85rem;
+    display:block;
+    margin-bottom:10px;
+  }
+  .process-step h4{font-family:'Fraunces',serif; font-size:1.1rem; color:var(--cream); margin-bottom:6px;}
+  .process-step p{font-size:0.85rem; color:var(--cream-dim); line-height:1.5;}
+
+  /* FLAVOR WHEEL */
+  .wheel-section{display:grid; grid-template-columns:1fr; gap:48px; align-items:center;}
+  @media(min-width:900px){.wheel-section{grid-template-columns:0.85fr 1.15fr;}}
+  .wheel-wrap{display:flex; justify-content:center;}
+  #flavor-note{
+    background:rgba(92,52,35,0.5);
+    border:1px solid rgba(212,175,55,0.3);
+    border-radius:16px;
+    padding:26px;
+    min-height:150px;
+  }
+  #flavor-note h4{color:var(--gold-light); font-size:1.2rem; margin-bottom:10px;}
+  #flavor-note p{color:var(--cream-dim); line-height:1.6;}
+  .wheel-hint{font-size:0.82rem; color:var(--cream-dim); margin-top:10px; font-family:'JetBrains Mono',monospace;}
+
+  /* SERVICES */
+  .services-grid{display:grid; grid-template-columns:1fr; gap:22px;}
+  @media(min-width:700px){.services-grid{grid-template-columns:1fr 1fr;}}
+  .service-card{
+    background:linear-gradient(150deg, rgba(193,99,58,0.22), rgba(52,73,47,0.35));
+    border:1px solid rgba(212,175,55,0.25);
+    border-radius:18px;
+    padding:30px;
+    transition:transform .25s ease, border-color .25s ease;
+  }
+  .service-card:hover{transform:translateY(-4px); border-color:var(--gold);}
+  .service-card .icon{width:42px;height:42px;margin-bottom:16px;}
+  .service-card h3{font-size:1.2rem; color:var(--cream); margin-bottom:10px;}
+  .service-card p{color:var(--cream-dim); font-size:0.94rem; line-height:1.6; margin-bottom:14px;}
+  .service-card .price{font-family:'JetBrains Mono',monospace; color:var(--gold-light); font-size:0.85rem;}
+
+  /* VALUES */
+  .values-strip{
+    display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:24px;
+  }
+  .value-item{text-align:left; padding:6px 0;}
+  .value-item .dot{
+    width:34px;height:34px;border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-light),var(--terracotta));
+    margin-bottom:14px;
+  }
+  .value-item h4{font-size:1.05rem; color:var(--cream); margin-bottom:8px;}
+  .value-item p{color:var(--cream-dim); font-size:0.9rem; line-height:1.6;}
+
+  /* FOOTER CTA */
+  footer{
+    padding:80px 28px 50px;
+    text-align:center;
+    background:linear-gradient(180deg, transparent, rgba(212,175,55,0.08));
+    border-top:1px solid rgba(212,175,55,0.2);
+  }
+  footer h2{font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:16px; color:var(--cream);}
+  footer p{color:var(--cream-dim); max-width:480px; margin:0 auto 30px; line-height:1.6;}
+  .footer-links{display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin-top:30px;}
+  .footer-note{margin-top:50px; font-size:0.78rem; color:rgba(245,237,225,0.4); font-family:'JetBrains Mono',monospace;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">
+    <svg viewBox="0 0 40 40" fill="none">
+      <path d="M20 4C12 4 6 12 6 20c0 8 6 16 14 16s14-8 14-16C34 12 28 4 20 4Z" fill="#5C3423" stroke="#D4AF37" stroke-width="1.4"/>
+      <path d="M20 6c0 5-3 6-3 11s3 6 3 11" stroke="#D4AF37" stroke-width="1.1" opacity="0.7"/>
+      <path d="M14 10c1 5 3 6 3 10s-3 7-2 12" stroke="#D4AF37" stroke-width="0.9" opacity="0.5"/>
+      <path d="M26 10c-1 5-3 6-3 10s3 7 2 12" stroke="#D4AF37" stroke-width="0.9" opacity="0.5"/>
+    </svg>
+    Beyond the Bar
+  </div>
+  <div class="nav-links">
+    <a class="ig" href="https://www.instagram.com/beyond_the_bar_tn/" target="_blank" rel="noopener">@beyond_the_bar_tn</a>
+    <a class="pill" href="#book">Book a Tasting</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <svg class="pod" style="top:60px; left:-40px; width:180px;" viewBox="0 0 100 160" fill="none">
+    <path d="M50 5C25 5 8 40 8 80c0 40 17 75 42 75s42-35 42-75C92 40 75 5 50 5Z" fill="#C1633A" opacity="0.35"/>
+  </svg>
+  <svg class="pod" style="top:120px; right:-50px; width:220px; transform:rotate(20deg);" viewBox="0 0 100 160" fill="none">
+    <path d="M50 5C25 5 8 40 8 80c0 40 17 75 42 75s42-35 42-75C92 40 75 5 50 5Z" fill="#4A6844" opacity="0.3"/>
+  </svg>
+
+  <span class="eyebrow reveal">Bean to Bite · Smoky Mountains, TN</span>
+  <h1 class="reveal">Cacao, explored beyond the bar.</h1>
+  <p class="sub reveal">
+    I'm Melanie — guiding curious tasters through the world of ethical chocolate, one pod, one ferment, one bite at a time.
+    Come learn what's really inside your favorite bar.
+  </p>
+  <div class="cta-row reveal">
+    <a class="btn-gold" href="https://www.instagram.com/beyond_the_bar_tn/" target="_blank" rel="noopener">DM to Book a Tasting</a>
+    <a class="btn-outline" href="https://www.instagram.com/beyond_the_bar_tn/" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor"/></svg>
+      Follow @beyond_the_bar_tn
+    </a>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="about-grid">
+    <div class="reveal">
+      <span class="eyebrow">The Explorer</span>
+      <h2 style="margin-top:10px;">Cacao & chocolate culture, from bean to bite.</h2>
+      <p style="color:var(--cream-dim); margin-top:16px; line-height:1.7;">
+        Beyond the Bar started as one simple question: what actually happens between a cacao pod and a finished chocolate bar?
+        Since then, Melanie has been learning, tasting, and creating alongside makers who care about where their cacao comes from —
+        sharing it all with a growing community that wants their chocolate to mean something.
+      </p>
+      <div class="tag-row">
+        <span class="tag">ETHICAL SOURCING</span>
+        <span class="tag">BEAN-TO-BAR</span>
+        <span class="tag">GUIDED TASTINGS</span>
+        <span class="tag">SMOKIES-BASED</span>
+      </div>
+    </div>
+    <div class="about-card reveal">
+      <h3>Enjoying life in the Smokies 🐻</h3>
+      <p>Based in the Smoky Mountains, Melanie brings tastings and workshops to small groups who want a slower, richer way to experience chocolate — outdoors when the weather allows, cozy and candlelit when it doesn't.</p>
+      <p>Every session supports small, ethical chocolate makers — never mass-market cacao.</p>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow">The Journey</span>
+    <h2>From bean to bite</h2>
+    <p>Every tasting walks through the real journey cacao takes before it reaches your tongue — so you'll never look at a chocolate bar the same way again.</p>
+  </div>
+  <div class="process-strip reveal">
+    <div class="process-step"><span class="process-num">01</span><h4>Harvest</h4><p>Ripe pods are cut by hand from the cacao tree, each one holding 30–40 beans.</p></div>
+    <div class="process-step"><span class="process-num">02</span><h4>Ferment</h4><p>Beans rest in their pulp for days, developing the flavor precursors that make chocolate taste like chocolate.</p></div>
+    <div class="process-step"><span class="process-num">03</span><h4>Dry</h4><p>Sun-dried slowly, locking in aroma before the beans ever leave the farm.</p></div>
+    <div class="process-step"><span class="process-num">04</span><h4>Roast</h4><p>Careful roasting coaxes out the deep, complex notes hiding inside each bean.</p></div>
+    <div class="process-step"><span class="process-num">05</span><h4>Grind</h4><p>Roasted nibs are ground into liquor, then conched into silky, glossy chocolate.</p></div>
+    <div class="process-step"><span class="process-num">06</span><h4>Taste</h4><p>The moment it all comes together — and where every Beyond the Bar session begins.</p></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="wheel-section">
+    <div class="wheel-wrap reveal">
+      <svg width="320" height="320" viewBox="0 0 320 320" id="flavor-wheel">
+        <circle cx="160" cy="160" r="150" fill="none" stroke="rgba(212,175,55,0.25)" stroke-width="1"/>
+        <g id="wheel-segments"></g>
+        <circle cx="160" cy="160" r="46" fill="#2B1810" stroke="#D4AF37" stroke-width="1.5"/>
+        <text x="160" y="155" text-anchor="middle" fill="#F0C040" font-family="Fraunces, serif" font-size="14">Tasting</text>
+        <text x="160" y="172" text-anchor="middle" fill="#F5EDE1" font-family="Fraunces, serif" font-size="14">Notes</text>
+      </svg>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Try It Yourself</span>
+      <h2 style="margin-top:10px;">What you'll taste in a session</h2>
+      <p style="color:var(--cream-dim); margin:14px 0 22px; line-height:1.6;">Hover or tap a slice of the wheel — this is the same flavor language we use in every guided tasting.</p>
+      <div id="flavor-note">
+        <h4>Pick a flavor note</h4>
+        <p>Cacao carries the same complexity as wine or coffee. Explore the wheel to see what a single origin bar can reveal.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="wrap" id="book">
+  <div class="section-head reveal">
+    <span class="eyebrow">Book an Experience</span>
+    <h2>Bring the tasting to your table</h2>
+    <p>Every offering is built around small groups, real conversation, and chocolate you won't find at the grocery store.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <svg class="icon" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="17" stroke="#D4AF37" stroke-width="1.5"/><path d="M14 22c2 4 10 4 12 0" stroke="#F0C040" stroke-width="1.5" stroke-linecap="round"/><circle cx="15" cy="16" r="1.6" fill="#F0C040"/><circle cx="25" cy="16" r="1.6" fill="#F0C040"/></svg>
+      <h3>Private Tasting Experience</h3>
+      <p>A guided, 90-minute tasting through 5–6 single-origin bars for you and your group — perfect for birthdays, date nights, or curious friends.</p>
+      <span class="price">2–8 guests · by appointment</span>
+    </div>
+    <div class="service-card reveal">
+      <svg class="icon" viewBox="0 0 40 40" fill="none"><rect x="8" y="10" width="24" height="20" rx="3" stroke="#D4AF37" stroke-width="1.5"/><path d="M8 16h24" stroke="#F0C040" stroke-width="1.5"/></svg>
+      <h3>Bean-to-Bar Workshop</h3>
+      <p>A hands-on session covering fermentation, roasting, and grinding basics — you'll leave understanding exactly how chocolate is made.</p>
+      <span class="price">Small groups · seasonal dates</span>
+    </div>
+    <div class="service-card reveal">
+      <svg class="icon" viewBox="0 0 40 40" fill="none"><path d="M20 6l4 8 9 1-7 6 2 9-8-5-8 5 2-9-7-6 9-1 4-8Z" stroke="#F0C040" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <h3>Corporate & Group Events</h3>
+      <p>A memorable, low-key team activity — chocolate tasting brings people together better than any icebreaker.</p>
+      <span class="price">Custom quote · on request</span>
+    </div>
+    <div class="service-card reveal">
+      <svg class="icon" viewBox="0 0 40 40" fill="none"><path d="M20 8v24M8 20h24" stroke="#F0C040" stroke-width="1.5" stroke-linecap="round"/><circle cx="20" cy="20" r="15" stroke="#D4AF37" stroke-width="1.2"/></svg>
+      <h3>Ethical Sourcing Consults</h3>
+      <p>For small chocolate brands and cafés wanting guidance on ethical, traceable cacao sourcing and menu development.</p>
+      <span class="price">Discovery call · 30 min</span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <div class="section-head reveal">
+    <span class="eyebrow">Why It Matters</span>
+    <h2>Supporting ethical chocolate, always</h2>
+  </div>
+  <div class="values-strip reveal">
+    <div class="value-item"><div class="dot"></div><h4>Traceable cacao</h4><p>Every bar featured in a tasting comes from makers who know exactly where — and from whom — their beans come from.</p></div>
+    <div class="value-item"><div class="dot"></div><h4>Fair to farmers</h4><p>We choose brands that pay cacao farmers fairly, not just the ones with the prettiest packaging.</p></div>
+    <div class="value-item"><div class="dot"></div><h4>Small & independent</h4><p>Big chocolate has enough marketing budget. Beyond the Bar shines a light on the small makers doing it right.</p></div>
+  </div>
+</section>
+
+<footer>
+  <h2>Let's taste something real.</h2>
+  <p>Send a DM on Instagram to check dates, ask questions, or book your next chocolate experience in the Smokies.</p>
+  <div class="footer-links reveal">
+    <a class="btn-gold" href="https://www.instagram.com/beyond_the_bar_tn/" target="_blank" rel="noopener">Message @beyond_the_bar_tn</a>
+  </div>
+  <p class="footer-note">Beyond the Bar · Cacao & Chocolate Culture · Smoky Mountains, TN</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  // Flavor wheel build
+  const notes = [
+    {label:'Fruity', color:'#C1633A', desc:'Bright red-berry and citrus notes, common in high-fermentation single origins.'},
+    {label:'Nutty', color:'#D4AF37', desc:'Roasted almond and hazelnut tones from a careful, longer roast.'},
+    {label:'Floral', color:'#E8A87C', desc:'Delicate jasmine or rose notes — often found in rare Madagascar-style beans.'},
+    {label:'Earthy', color:'#4A6844', desc:'Deep, woodsy notes from beans grown in shaded, forest-like cacao farms.'},
+    {label:'Spiced', color:'#8C4A2F', desc:'Warm cinnamon or clove tones that emerge during fermentation.'},
+    {label:'Roasted', color:'#5C3423', desc:'Deep cocoa and toasted-bread notes from a longer roast profile.'}
+  ];
+  const cx=160, cy=160, rInner=48, rOuter=150;
+  const segAngle = (2*Math.PI)/notes.length;
+  const svgNS = "http://www.w3.org/2000/svg";
+  const group = document.getElementById('wheel-segments');
+  const noteBox = document.getElementById('flavor-note');
+
+  function polar(cx,cy,r,angle){
+    return [cx + r*Math.cos(angle), cy + r*Math.sin(angle)];
+  }
+
+  notes.forEach((note, i)=>{
+    const start = -Math.PI/2 + i*segAngle;
+    const end = start + segAngle - 0.03;
+    const [x1,y1] = polar(cx,cy,rOuter,start);
+    const [x2,y2] = polar(cx,cy,rOuter,end);
+    const [x3,y3] = polar(cx,cy,rInner,end);
+    const [x4,y4] = polar(cx,cy,rInner,start);
+    const path = document.createElementNS(svgNS,'path');
+    const d = `M ${x1} ${y1} A ${rOuter} ${rOuter} 0 0 1 ${x2} ${y2} L ${x3} ${y3} A ${rInner} ${rInner} 0 0 0 ${x4} ${y4} Z`;
+    path.setAttribute('d', d);
+    path.setAttribute('fill', note.color);
+    path.setAttribute('opacity', '0.82');
+    path.setAttribute('stroke', '#2B1810');
+    path.setAttribute('stroke-width', '2');
+    path.style.cursor = 'pointer';
+    path.style.transition = 'opacity .2s ease';
+    path.addEventListener('mouseenter', ()=>{ path.setAttribute('opacity','1'); });
+    path.addEventListener('mouseleave', ()=>{ path.setAttribute('opacity','0.82'); });
+    path.addEventListener('click', ()=>{
+      noteBox.innerHTML = `<h4>${note.label}</h4><p>${note.desc}</p>`;
+    });
+    group.appendChild(path);
+
+    const [lx,ly] = polar(cx,cy,(rOuter+rInner)/2, start + segAngle/2);
+    const label = document.createElementNS(svgNS,'text');
+    label.setAttribute('x', lx);
+    label.setAttribute('y', ly);
+    label.setAttribute('text-anchor','middle');
+    label.setAttribute('fill', '#F5EDE1');
+    label.setAttribute('font-family', 'Work Sans, sans-serif');
+    label.setAttribute('font-size', '11');
+    label.setAttribute('font-weight', '600');
+    label.style.pointerEvents = 'none';
+    label.textContent = note.label;
+    group.appendChild(label);
+  });
+</script>
+
+</body>
+</html>
