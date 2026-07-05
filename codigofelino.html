@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Código Felino — Educadora felina | Asesorías y curso online</title>
+<meta name="description" content="Aprende a entender a tu gato desde el respeto. Asesorías privadas y curso online de comunicación felina con Código Felino.">
+<style>
+  :root{
+    --bg: #FFF8EC;
+    --bg-alt: #FFEEDA;
+    --bg-card: #FFFFFF;
+    --ink: #241B36;
+    --ink-muted: #6E6380;
+    --pink: #FF4F81;
+    --pink-deep: #E8336B;
+    --turq: #16BFA8;
+    --purple: #7A5CFA;
+    --yellow: #FFC23C;
+    --line: rgba(36,27,54,0.12);
+    --serif: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'Times New Roman', serif;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{ color:inherit; }
+  img,svg{ display:block; max-width:100%; }
+
+  ::selection{ background:var(--pink); color:#fff; }
+
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--pink-deep);
+    outline-offset:3px;
+  }
+
+  .wrap{ max-width:1120px; margin:0 auto; padding:0 28px; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,248,236,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 28px; max-width:1120px; margin:0 auto;
+  }
+  .logo{
+    font-family:var(--mono); font-size:15px; letter-spacing:0.02em;
+    color:var(--ink); text-decoration:none; white-space:nowrap;
+  }
+  .logo span{ color:var(--pink-deep); }
+  .nav-links{
+    display:flex; gap:32px; align-items:center;
+    font-size:14.5px; color:var(--ink-muted);
+  }
+  .nav-links a{ text-decoration:none; transition:color .2s ease; }
+  .nav-links a:hover{ color:var(--pink-deep); }
+  .nav-cta{
+    font-family:var(--mono); font-size:13px;
+    background:var(--pink); color:#fff;
+    padding:9px 16px; border-radius:20px;
+    text-decoration:none; font-weight:600;
+    transition:transform .15s ease, box-shadow .15s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{ transform:translateY(-1px); box-shadow:0 8px 18px rgba(255,79,129,0.35); }
+  .menu-toggle{ display:none; }
+
+  @media (max-width: 760px){
+    .nav-links{
+      position:fixed; inset:64px 0 auto 0; flex-direction:column; align-items:flex-start;
+      background:var(--bg-alt); padding:20px 28px 26px; gap:18px;
+      border-bottom:1px solid var(--line);
+      transform:translateY(-120%); transition:transform .25s ease;
+    }
+    .nav-links.open{ transform:translateY(0); }
+    .nav-links a.nav-cta{ margin-top:6px; }
+    .menu-toggle{
+      display:flex; flex-direction:column; gap:5px; background:none; border:none;
+      cursor:pointer; padding:6px;
+    }
+    .menu-toggle span{ width:22px; height:2px; background:var(--ink); display:block; border-radius:2px; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:96px 0 80px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:''; position:absolute; top:-140px; right:-160px; width:420px; height:420px;
+    background:radial-gradient(circle, rgba(255,194,60,0.45) 0%, rgba(255,194,60,0) 70%);
+    z-index:0;
+  }
+  .hero::after{
+    content:''; position:absolute; bottom:-180px; left:-140px; width:400px; height:400px;
+    background:radial-gradient(circle, rgba(22,191,168,0.35) 0%, rgba(22,191,168,0) 70%);
+    z-index:0;
+  }
+  .hero-grid{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center;
+  }
+  .eyebrow{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:0.14em;
+    color:var(--pink-deep); text-transform:uppercase; margin-bottom:18px;
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{
+    content:''; width:22px; height:2px; background:var(--pink-deep); display:inline-block; border-radius:2px;
+  }
+  h1{
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(34px, 5.2vw, 56px);
+    line-height:1.08; letter-spacing:-0.01em;
+    margin-bottom:22px;
+  }
+  h1 em{ font-style:italic; color:var(--pink-deep); }
+  .hero p.lede{
+    font-size:17.5px; color:var(--ink-muted); max-width:46ch; margin-bottom:34px;
+  }
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+  .btn{
+    font-family:var(--sans); font-size:15px; font-weight:600;
+    padding:14px 26px; border-radius:30px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    border:2px solid transparent;
+  }
+  .btn-primary{ background:var(--pink); color:#fff; }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 12px 26px rgba(255,79,129,0.35); background:var(--pink-deep); }
+  .btn-ghost{ border-color:var(--ink); color:var(--ink); background:transparent; }
+  .btn-ghost:hover{ border-color:var(--turq); color:var(--turq); transform:translateY(-2px); }
+  .hero-note{
+    font-family:var(--mono); font-size:12.5px; color:var(--ink-muted);
+    border-top:1px solid var(--line); padding-top:16px; max-width:44ch;
+  }
+
+  .hero-art{ position:relative; }
+  .hero-art svg{ width:100%; height:auto; }
+
+  @media (max-width: 860px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-art{ order:-1; max-width:340px; margin:0 auto 12px; }
+  }
+
+  /* ---------- SECTION SCAFFOLD ---------- */
+  section{ padding:88px 0; position:relative; }
+  .section-head{ max-width:640px; margin-bottom:52px; }
+  .section-tag{
+    font-family:var(--mono); font-size:12px; letter-spacing:0.12em;
+    color:var(--turq); text-transform:uppercase; margin-bottom:14px; display:block;
+  }
+  h2{
+    font-family:var(--serif); font-weight:400; font-size:clamp(26px,3.4vw,38px);
+    line-height:1.16; margin-bottom:16px;
+  }
+  .section-head p{ color:var(--ink-muted); font-size:16px; max-width:56ch; }
+
+  .reveal{ opacity:0; transform:translateY(22px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background:var(--bg-alt); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .about-grid{ display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+  .about-grid p{ color:var(--ink-muted); margin-bottom:18px; font-size:16px; }
+  .about-grid p strong{ color:var(--ink); font-weight:600; }
+  .principles{ display:flex; flex-direction:column; gap:22px; }
+  .principle{ display:flex; gap:16px; align-items:flex-start; }
+  .principle .mark{
+    font-family:var(--mono); font-size:13px;
+    border-radius:6px; padding:4px 9px;
+    white-space:nowrap; margin-top:2px; color:#fff; font-weight:600;
+  }
+  .principle:nth-child(1) .mark{ background:var(--pink); }
+  .principle:nth-child(2) .mark{ background:var(--turq); }
+  .principle:nth-child(3) .mark{ background:var(--purple); }
+  .principle:nth-child(4) .mark{ background:var(--yellow); color:#241B36; }
+  .principle .txt{ font-size:15.5px; color:var(--ink-muted); }
+  .principle .txt strong{ color:var(--ink); }
+
+  @media (max-width: 760px){ .about-grid{ grid-template-columns:1fr; gap:36px; } }
+
+  /* ---------- DECODER ---------- */
+  .decoder-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+  }
+  .decode-card{
+    background:var(--bg-card); padding:28px 24px; min-height:190px;
+    display:flex; flex-direction:column; gap:14px;
+    border-radius:14px; border:1px solid var(--line);
+    border-top:5px solid var(--pink);
+    box-shadow:0 8px 24px rgba(36,27,54,0.06);
+  }
+  .decode-card:nth-child(6n+2){ border-top-color:var(--turq); }
+  .decode-card:nth-child(6n+3){ border-top-color:var(--yellow); }
+  .decode-card:nth-child(6n+4){ border-top-color:var(--purple); }
+  .decode-card:nth-child(6n+5){ border-top-color:var(--turq); }
+  .decode-card:nth-child(6n+6){ border-top-color:var(--pink-deep); }
+  .decode-tag{
+    font-family:var(--mono); font-size:13px; color:var(--pink-deep);
+    display:inline-block; width:fit-content;
+  }
+  .decode-card:nth-child(6n+2) .decode-tag{ color:var(--turq); }
+  .decode-card:nth-child(6n+3) .decode-tag{ color:#B8860B; }
+  .decode-card:nth-child(6n+4) .decode-tag{ color:var(--purple); }
+  .decode-card:nth-child(6n+5) .decode-tag{ color:var(--turq); }
+  .decode-card:nth-child(6n+6) .decode-tag{ color:var(--pink-deep); }
+  .decode-tag::before{ content:'// '; color:var(--ink-muted); }
+  .decode-signal{ font-family:var(--serif); font-size:19px; color:var(--ink); }
+  .decode-meaning{ font-size:14.5px; color:var(--ink-muted); }
+
+  @media (max-width: 860px){ .decoder-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width: 560px){ .decoder-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- SERVICIOS ---------- */
+  .services{ display:grid; grid-template-columns:1fr 1fr; gap:26px; }
+  .service-card{
+    border-radius:18px; padding:38px 34px;
+    display:flex; flex-direction:column; gap:18px;
+    box-shadow:0 10px 30px rgba(36,27,54,0.08);
+  }
+  .service-card:nth-child(1){ background:linear-gradient(160deg, #FFE3ED 0%, #FFF8EC 60%); border:1px solid rgba(255,79,129,0.25); }
+  .service-card:nth-child(2){ background:linear-gradient(160deg, #DFF7F2 0%, #FFF8EC 60%); border:1px solid rgba(22,191,168,0.25); }
+  .service-card .num{ font-family:var(--mono); font-size:13px; font-weight:700; }
+  .service-card:nth-child(1) .num{ color:var(--pink-deep); }
+  .service-card:nth-child(2) .num{ color:var(--turq); }
+  .service-card h3{ font-family:var(--serif); font-weight:400; font-size:24px; }
+  .service-card p{ color:var(--ink-muted); font-size:15.5px; flex-grow:1; }
+  .service-card ul{ list-style:none; display:flex; flex-direction:column; gap:8px; margin:4px 0 6px; }
+  .service-card li{ color:var(--ink-muted); font-size:14.5px; padding-left:20px; position:relative; }
+  .service-card li::before{
+    content:''; position:absolute; left:0; top:9px; width:10px; height:3px; border-radius:2px;
+  }
+  .service-card:nth-child(1) li::before{ background:var(--pink); }
+  .service-card:nth-child(2) li::before{ background:var(--turq); }
+  @media (max-width: 760px){ .services{ grid-template-columns:1fr; } }
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{
+    background:linear-gradient(135deg, #FFE3ED 0%, #FFF3D6 50%, #DFF7F2 100%);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    text-align:center;
+  }
+  .cta-band h2{ margin-bottom:14px; }
+  .cta-band p{ color:var(--ink-muted); max-width:48ch; margin:0 auto 34px; }
+  .cta-band .cta-row{ justify-content:center; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ padding:56px 0 40px; }
+  .footer-grid{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+    border-top:1px solid var(--line); padding-top:32px;
+  }
+  .footer-links{ display:flex; gap:26px; font-size:14px; }
+  .footer-links a{ text-decoration:none; color:var(--ink-muted); transition:color .2s ease; }
+  .footer-links a:hover{ color:var(--pink-deep); }
+  .footer-fine{ font-family:var(--mono); font-size:12px; color:var(--ink-muted); opacity:0.8; }
+
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ transition:none; opacity:1; transform:none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#top" class="logo">‹<span>código</span>_felino/›</a>
+    <button class="menu-toggle" aria-label="Abrir menú" aria-expanded="false" id="menuToggle">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#sobre">Sobre mí</a>
+      <a href="#codigo">El código</a>
+      <a href="#servicios">Servicios</a>
+      <a href="https://www.instagram.com/codigofelino" target="_blank" rel="noopener" class="nav-cta">Agenda tu asesoría</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Educadora felina</span>
+        <h1>Tu gato lleva toda la vida <em>hablándote.</em></h1>
+        <p class="lede">Cada oreja hacia atrás, cada cola en punto de interrogación, cada parpadeo lento es información. Código Felino te enseña a leer ese lenguaje y a construir con tu gato una relación de confianza, desde el respeto.</p>
+        <div class="cta-row">
+          <a href="https://www.instagram.com/codigofelino" target="_blank" rel="noopener" class="btn btn-primary" id="ctaPrimary">Reservar asesoría privada</a>
+          <a href="https://linktr.ee/codigofelino" target="_blank" rel="noopener" class="btn btn-ghost">Ver el curso online</a>
+        </div>
+        <p class="hero-note">Basado en etología felina · sin castigos, sin dominancia — solo observación y comprensión.</p>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg">
+          <g>
+            <circle cx="70" cy="90" r="7" fill="#FFC23C"></circle>
+            <circle cx="500" cy="70" r="5" fill="#16BFA8"></circle>
+            <circle cx="60" cy="470" r="6" fill="#FF4F81"></circle>
+            <circle cx="520" cy="480" r="8" fill="#7A5CFA"></circle>
+            <circle cx="40" cy="280" r="4" fill="#16BFA8"></circle>
+            <circle cx="530" cy="300" r="5" fill="#FFC23C"></circle>
+          </g>
+          <g stroke="rgba(36,27,54,0.35)" stroke-width="1" stroke-dasharray="2 4">
+            <line x1="365" y1="150" x2="470" y2="110"></line>
+            <line x1="385" y1="230" x2="500" y2="240"></line>
+            <line x1="230" y1="255" x2="90" y2="275"></line>
+            <line x1="330" y1="400" x2="440" y2="450"></line>
+          </g>
+          <g fill="#241B36">
+            <circle cx="365" cy="150" r="2.5"></circle>
+            <circle cx="385" cy="230" r="2.5"></circle>
+            <circle cx="230" cy="255" r="2.5"></circle>
+            <circle cx="330" cy="400" r="2.5"></circle>
+          </g>
+          <g font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="12" font-weight="600">
+            <text x="474" y="106" fill="#E8336B">orejas</text>
+            <text x="504" y="236" fill="#16BFA8">pupilas</text>
+            <text x="34" y="279" fill="#7A5CFA">bigotes</text>
+            <text x="444" y="454" fill="#B8860B">cola</text>
+          </g>
+          <g fill="none" stroke="#241B36" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M330 400 C 400 420, 430 380, 415 330 C 405 300, 375 300, 370 325" fill="#FFC23C" fill-opacity="0.25"></path>
+            <path d="M200 340 C 190 250, 240 210, 300 210 C 360 210, 400 250, 395 340 C 395 400, 340 430, 300 430 C 250 430, 200 400, 200 340 Z" fill="#FFE3ED"></path>
+            <path d="M245 150 L 225 90 L 285 130 Z" fill="#7A5CFA" fill-opacity="0.25"></path>
+            <path d="M355 150 L 375 90 L 315 130 Z" fill="#7A5CFA" fill-opacity="0.25"></path>
+            <path d="M252 140 L 240 108 L 272 128 Z" stroke-width="1.4" fill="#FF4F81" fill-opacity="0.4"></path>
+            <path d="M348 140 L 360 108 L 328 128 Z" stroke-width="1.4" fill="#FF4F81" fill-opacity="0.4"></path>
+            <circle cx="300" cy="195" r="82" fill="#DFF7F2"></circle>
+            <path d="M258 190 C 264 178, 278 178, 284 190" stroke-width="2.4"></path>
+            <path d="M316 190 C 322 178, 336 178, 342 190" stroke-width="2.4"></path>
+            <ellipse cx="270" cy="196" rx="2.6" ry="8" fill="#16BFA8" stroke="none"></ellipse>
+            <ellipse cx="330" cy="196" rx="2.6" ry="8" fill="#16BFA8" stroke="none"></ellipse>
+            <path d="M295 216 L 305 216 L 300 224 Z" fill="#FF4F81" stroke="none"></path>
+            <path d="M300 224 L 300 232"></path>
+            <path d="M300 232 C 292 240, 282 240, 278 234"></path>
+            <path d="M300 232 C 308 240, 318 240, 322 234"></path>
+            <g stroke-width="1.4">
+              <line x1="225" y1="205" x2="150" y2="196"></line>
+              <line x1="225" y1="216" x2="148" y2="220"></line>
+              <line x1="228" y1="228" x2="155" y2="244"></line>
+              <line x1="375" y1="205" x2="450" y2="196"></line>
+              <line x1="375" y1="216" x2="452" y2="220"></line>
+              <line x1="372" y1="228" x2="445" y2="244"></line>
+            </g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section class="about" id="sobre">
+    <div class="wrap about-grid">
+      <div class="reveal">
+        <span class="section-tag" style="color:var(--pink-deep)">Sobre mí</span>
+        <h2>Los gatos no son difíciles.<br>Son incomprendidos.</h2>
+        <p>Código Felino nace de una idea sencilla: <strong>casi todo lo que hace un gato es comunicación.</strong> El arañazo, el maullido, el silencio, la distancia que pone o no pone — todo es información, no capricho.</p>
+        <p>Mi trabajo como educadora felina es ayudarte a traducir ese código: entender qué necesita tu gato para sentirse seguro, y qué le estás diciendo tú sin darte cuenta.</p>
+        <p>Nada de dominancia, nada de castigos. Trabajamos con lo que la etología felina sabe hoy sobre cómo piensan, sienten y se comunican los gatos — aplicado a tu casa, a tu gato, a tu situación real.</p>
+      </div>
+      <div class="principles reveal">
+        <div class="principle">
+          <span class="mark">01</span>
+          <span class="txt"><strong>Observar antes de corregir.</strong> Toda conducta tiene una causa; buscamos la causa, no solo el síntoma.</span>
+        </div>
+        <div class="principle">
+          <span class="mark">02</span>
+          <span class="txt"><strong>Vínculo, no obediencia.</strong> Un gato que confía coopera solo; no hace falta imponerle nada.</span>
+        </div>
+        <div class="principle">
+          <span class="mark">03</span>
+          <span class="txt"><strong>Ciencia con cariño.</strong> Etología felina aplicada con paciencia, sin juicios hacia ti ni hacia tu gato.</span>
+        </div>
+        <div class="principle">
+          <span class="mark">04</span>
+          <span class="txt"><strong>Soluciones reales.</strong> Cada casa y cada gato son distintos; nada de consejos genéricos de internet.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EL CÓDIGO -->
+  <section id="codigo">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag">El código, traducido</span>
+        <h2>Seis señales que tu gato ya te está dando</h2>
+        <p>Una pequeña muestra de cómo se "lee" a un gato. En las asesorías y en el curso vamos mucho más a fondo, adaptado a tu propio gato.</p>
+      </div>
+      <div class="decoder-grid reveal">
+        <div class="decode-card">
+          <span class="decode-tag">cola:vertical_temblor</span>
+          <span class="decode-signal">Saludo alegre</span>
+          <span class="decode-meaning">Cola en alto y con un ligero temblor: se alegra de verte, es una de las señales más positivas que existen.</span>
+        </div>
+        <div class="decode-card">
+          <span class="decode-tag">orejas:atras</span>
+          <span class="decode-signal">Incomodidad</span>
+          <span class="decode-meaning">Orejas aplanadas hacia atrás o hacia los lados: algo le molesta o le da miedo. Es momento de darle espacio.</span>
+        </div>
+        <div class="decode-card">
+          <span class="decode-tag">ojos:parpadeo_lento</span>
+          <span class="decode-signal">"Beso de gato"</span>
+          <span class="decode-meaning">Un parpadeo lento y suave es una señal de calma y confianza. Puedes devolvérselo.</span>
+        </div>
+        <div class="decode-card">
+          <span class="decode-tag">bigotes:adelante</span>
+          <span class="decode-signal">Curiosidad</span>
+          <span class="decode-meaning">Bigotes proyectados hacia delante: algo ha captado su atención y está en modo alerta o exploración.</span>
+        </div>
+        <div class="decode-card">
+          <span class="decode-tag">cuerpo:pegado_suelo</span>
+          <span class="decode-signal">Estrés</span>
+          <span class="decode-meaning">Cuerpo bajo, cola pegada, pupilas dilatadas: necesita sentirse seguro, no que lo fuercen a nada.</span>
+        </div>
+        <div class="decode-card">
+          <span class="decode-tag">patas:amasando</span>
+          <span class="decode-signal">Bienestar</span>
+          <span class="decode-meaning">Amasar con las patas delanteras es un gesto que conserva desde cachorro: señal de comodidad y afecto.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag" style="color:var(--purple)">Cómo puedo ayudarte</span>
+        <h2>Dos formas de aprender el código de tu gato</h2>
+      </div>
+      <div class="services reveal">
+        <div class="service-card">
+          <span class="num">asesoría · 1:1</span>
+          <h3>Asesoría privada</h3>
+          <p>Una sesión personalizada para resolver lo que te preocupa de verdad: arañazos, marcaje, conflictos entre gatos, ansiedad, la llegada de un nuevo gato a casa, o simplemente entender mejor a tu compañero.</p>
+          <ul>
+            <li>Analizamos tu caso concreto</li>
+            <li>Plan de acción claro y realista</li>
+            <li>Acompañamiento durante el proceso</li>
+          </ul>
+          <a href="https://www.instagram.com/codigofelino" target="_blank" rel="noopener" class="btn btn-primary">Escríbeme por Instagram</a>
+        </div>
+        <div class="service-card">
+          <span class="num">curso · online</span>
+          <h3>Curso online</h3>
+          <p>Aprende a tu ritmo los fundamentos de la comunicación felina: cómo piensa un gato, cómo interpretar su lenguaje corporal y cómo aplicarlo día a día en tu propia casa.</p>
+          <ul>
+            <li>Contenido a tu ritmo, desde donde estés</li>
+            <li>Fundamentos de etología felina aplicada</li>
+            <li>Pensado para convivencia real, no solo teoría</li>
+          </ul>
+          <a href="https://linktr.ee/codigofelino" target="_blank" rel="noopener" class="btn btn-ghost">Ver el curso</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band">
+    <div class="wrap reveal">
+      <h2>¿Tu gato y tú tenéis algo que deciros?</h2>
+      <p>Empecemos por entenderlo. Escríbeme por Instagram para tu asesoría privada o revisa todos los recursos disponibles en un solo lugar.</p>
+      <div class="cta-row">
+        <a href="https://www.instagram.com/codigofelino" target="_blank" rel="noopener" class="btn btn-primary">Instagram @codigofelino</a>
+        <a href="https://linktr.ee/codigofelino" target="_blank" rel="noopener" class="btn btn-ghost">linktr.ee/codigofelino</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <a href="#top" class="logo">‹<span>código</span>_felino/›</a>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/codigofelino" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://linktr.ee/codigofelino" target="_blank" rel="noopener">Linktree</a>
+        <a href="#codigo">El código</a>
+      </div>
+      <span class="footer-fine">// aprende a entender a tu gato, desde el respeto</span>
+    </div>
+  </footer>
+
+</main>
+
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){
+          entry.target.classList.add('in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(el => io.observe(el));
+  } else {
+    reveals.forEach(el => el.classList.add('in'));
+  }
+
+  let audioCtx;
+  function playChirp(){
+    try{
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      const now = audioCtx.currentTime;
+      [ [660, now, 0.09], [880, now + 0.07, 0.11] ].forEach(([freq, start, dur]) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, start);
+        gain.gain.setValueAtTime(0, start);
+        gain.gain.linearRampToValueAtTime(0.05, start + 0.015);
+        gain.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+        osc.connect(gain).connect(audioCtx.destination);
+        osc.start(start);
+        osc.stop(start + dur + 0.02);
+      });
+    }catch(e){}
+  }
+  document.querySelectorAll('.btn-primary').forEach(btn => {
+    btn.addEventListener('click', playChirp);
+  });
+</script>
+
+</body>
+</html>
