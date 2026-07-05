@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shahamana Chocolate — Farm to Bar Cocoa Project</title>
+<meta name="description" content="Shahamana Chocolate is a farm-to-bar cocoa project by Shahamana Enterprise. Cocoa farmers cooperative, farm tours and volunteering opportunities.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,900&family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cocoa: #2B1810;
+    --gold: #F5A623;
+    --gold-light: #FFC857;
+    --green: #3F7D20;
+    --green-dark: #2A5714;
+    --pink: #E8397D;
+    --cream: #FFF4E0;
+    --sienna: #C1440E;
+    --white: #FFFDF9;
+    --shadow: 0 12px 30px rgba(43,24,16,0.18);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Nunito Sans', sans-serif;
+    background:var(--cream);
+    color:var(--cocoa);
+    overflow-x:hidden;
+    line-height:1.6;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces', serif;
+    line-height:1.1;
+    font-weight:700;
+  }
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  img,svg{max-width:100%; display:block;}
+  .container{max-width:1180px; margin:0 auto; padding:0 24px;}
+  .eyebrow{
+    font-family:'Nunito Sans', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-weight:800;
+    font-size:0.78rem;
+    color:var(--sienna);
+  }
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,244,224,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:3px solid var(--cocoa);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px; max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size:1.35rem;
+    color:var(--cocoa);
+  }
+  .logo-pod{width:34px; height:34px; flex-shrink:0;}
+  .nav-links{
+    display:flex; align-items:center; gap:30px;
+    font-weight:700;
+    font-size:0.98rem;
+  }
+  .nav-links a{
+    position:relative;
+    padding:4px 0;
+    transition:color 0.2s;
+  }
+  .nav-links a:hover{color:var(--sienna);}
+  .nav-links a::after{
+    content:'';
+    position:absolute; left:0; bottom:-3px;
+    width:0; height:3px; background:var(--gold);
+    transition:width 0.25s;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--sienna);
+    color:var(--white) !important;
+    padding:10px 20px;
+    border-radius:30px;
+    font-weight:800;
+    box-shadow:var(--shadow);
+    transition:transform 0.2s, background 0.2s;
+  }
+  .nav-cta:hover{background:var(--green-dark); transform:translateY(-2px);}
+  .nav-cta::after{display:none;}
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none; border:none; cursor:pointer;
+    padding:8px;
+  }
+  .hamburger span{
+    width:26px; height:3px; background:var(--cocoa); border-radius:2px;
+  }
+  .mobile-menu{
+    display:none;
+    flex-direction:column;
+    gap:0;
+    background:var(--white);
+    border-top:2px solid var(--cocoa);
+  }
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{
+    padding:16px 24px;
+    font-weight:700;
+    border-bottom:1px solid #eee2cc;
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    padding:90px 24px 120px;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(245,166,35,0.35), transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(232,57,125,0.28), transparent 50%),
+      linear-gradient(160deg, var(--cocoa) 0%, #3d2313 55%, var(--green-dark) 130%);
+    color:var(--cream);
+    overflow:hidden;
+  }
+  .hero-grid{
+    max-width:1180px; margin:0 auto;
+    display:grid; grid-template-columns:1.1fr 0.9fr;
+    gap:50px; align-items:center;
+    position:relative; z-index:2;
+  }
+  .hero .eyebrow{color:var(--gold-light);}
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    color:var(--white);
+    margin:14px 0 20px;
+  }
+  .hero h1 span{color:var(--gold);}
+  .hero p{
+    font-size:1.15rem;
+    max-width:520px;
+    color:#f2e6d3;
+    margin-bottom:32px;
+  }
+  .hero-btns{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 28px;
+    border-radius:40px;
+    font-weight:800;
+    font-size:1rem;
+    cursor:pointer;
+    border:none;
+    transition:transform 0.2s, box-shadow 0.2s;
+    box-shadow:var(--shadow);
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn-primary{background:var(--gold); color:var(--cocoa);}
+  .btn-secondary{background:transparent; color:var(--white); border:2px solid var(--gold-light);}
+  .btn-secondary:hover{background:rgba(255,255,255,0.1);}
+
+  .hero-visual{position:relative; display:flex; justify-content:center;}
+  .pod-float{
+    animation:float 5s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0) rotate(-2deg);}
+    50%{transform:translateY(-18px) rotate(2deg);}
+  }
+
+  /* ===== MARQUEE STRIP ===== */
+  .strip{
+    background:var(--gold);
+    color:var(--cocoa);
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.05rem;
+    padding:14px 0;
+    overflow:hidden;
+    white-space:nowrap;
+    border-top:3px solid var(--cocoa);
+    border-bottom:3px solid var(--cocoa);
+  }
+  .strip-track{
+    display:inline-block;
+    animation:scroll-strip 22s linear infinite;
+  }
+  .strip-track span{margin:0 28px;}
+  @keyframes scroll-strip{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+
+  /* ===== SECTION GENERIC ===== */
+  section{padding:100px 0;}
+  .section-head{
+    text-align:center;
+    max-width:680px;
+    margin:0 auto 60px;
+  }
+  .section-head h2{
+    font-size:clamp(1.9rem, 3.6vw, 2.6rem);
+    margin:12px 0 16px;
+  }
+  .section-head p{color:#5a4536; font-size:1.05rem;}
+
+  .reveal{
+    opacity:0; transform:translateY(28px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible{opacity:1; transform:translateY(0);}
+
+  /* ===== STORY ===== */
+  .story{background:var(--white);}
+  .story-grid{
+    display:grid; grid-template-columns:0.85fr 1.15fr;
+    gap:60px; align-items:center;
+  }
+  .story-art{
+    background:linear-gradient(145deg, var(--green), var(--green-dark));
+    border-radius:28px;
+    padding:36px;
+    box-shadow:var(--shadow);
+  }
+  .story h3{font-size:1.5rem; margin-bottom:8px; color:var(--sienna);}
+  .story p{margin-bottom:16px; color:#4a3626;}
+  .founder-tag{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--cream);
+    border:2px solid var(--cocoa);
+    border-radius:40px;
+    padding:8px 18px 8px 8px;
+    margin-top:10px;
+    font-weight:800;
+    font-size:0.92rem;
+  }
+  .founder-tag .dot{
+    width:34px; height:34px; border-radius:50%;
+    background:var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-weight:900; color:var(--cocoa);
+  }
+
+  /* ===== PROCESS ===== */
+  .process{
+    background:linear-gradient(180deg, var(--cream) 0%, #ffeccb 100%);
+  }
+  .process-track{
+    display:grid;
+    grid-template-columns:repeat(5, 1fr);
+    gap:20px;
+    position:relative;
+  }
+  .process-track::before{
+    content:'';
+    position:absolute; top:38px; left:6%; right:6%;
+    height:4px;
+    background:repeating-linear-gradient(90deg, var(--sienna) 0 10px, transparent 10px 20px);
+    z-index:0;
+  }
+  .p-step{
+    position:relative; z-index:1;
+    text-align:center;
+  }
+  .p-num{
+    width:76px; height:76px;
+    margin:0 auto 16px;
+    border-radius:50%;
+    background:var(--white);
+    border:4px solid var(--sienna);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:var(--shadow);
+  }
+  .p-step h4{font-size:1.05rem; margin-bottom:6px;}
+  .p-step p{font-size:0.9rem; color:#5a4536;}
+
+  /* ===== COOPERATIVE ===== */
+  .co-op{
+    background:var(--cocoa);
+    color:var(--cream);
+    position:relative;
+    overflow:hidden;
+  }
+  .co-op::before{
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 90% 10%, rgba(245,166,35,0.18), transparent 55%);
+  }
+  .co-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr);
+    gap:30px;
+    position:relative; z-index:1;
+  }
+  .co-card{
+    background:rgba(255,255,255,0.06);
+    border:1px solid rgba(245,166,35,0.35);
+    border-radius:20px;
+    padding:32px 26px;
+    transition:transform 0.25s, background 0.25s;
+  }
+  .co-card:hover{transform:translateY(-6px); background:rgba(255,255,255,0.1);}
+  .co-card .icon-wrap{margin-bottom:18px;}
+  .co-card h4{font-size:1.2rem; color:var(--gold-light); margin-bottom:10px;}
+  .co-card p{font-size:0.95rem; color:#e7d8c4;}
+
+  /* ===== VOLUNTEER / TOURS CTA CARDS ===== */
+  .offers{background:var(--white);}
+  .offer-grid{
+    display:grid; grid-template-columns:1fr 1fr;
+    gap:32px;
+  }
+  .offer-card{
+    border-radius:26px;
+    padding:44px 38px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    color:var(--white);
+  }
+  .offer-card.tours{background:linear-gradient(135deg, var(--sienna), #8f2e0a);}
+  .offer-card.volunteer{background:linear-gradient(135deg, var(--green), var(--green-dark));}
+  .offer-card h3{font-size:1.6rem; margin-bottom:12px; color:var(--white);}
+  .offer-card p{color:rgba(255,255,255,0.9); margin-bottom:26px; max-width:420px;}
+  .offer-card .btn-primary{background:var(--white); color:var(--cocoa);}
+  .offer-badge{
+    position:absolute; top:24px; right:24px;
+    background:rgba(255,255,255,0.18);
+    border-radius:50%;
+    width:60px; height:60px;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  /* ===== GALLERY ===== */
+  .gallery{background:var(--cream);}
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+  }
+  .g-item{
+    border-radius:18px;
+    overflow:hidden;
+    aspect-ratio:1;
+    box-shadow:var(--shadow);
+    transition:transform 0.3s;
+  }
+  .g-item:hover{transform:scale(1.04) rotate(-1deg);}
+
+  /* ===== CONTACT / FOOTER ===== */
+  .contact{
+    background:linear-gradient(160deg, var(--green-dark), var(--cocoa));
+    color:var(--cream);
+    text-align:center;
+  }
+  .contact h2{color:var(--white); font-size:clamp(1.9rem,3.6vw,2.7rem); margin-bottom:16px;}
+  .contact p{max-width:560px; margin:0 auto 34px; color:#e7d8c4;}
+  .contact-btns{display:flex; justify-content:center; gap:18px; flex-wrap:wrap;}
+
+  footer{
+    background:var(--cocoa);
+    color:#c9b79f;
+    padding:36px 24px;
+    text-align:center;
+    font-size:0.9rem;
+    border-top:3px solid var(--gold);
+  }
+  footer a{color:var(--gold-light); font-weight:700;}
+
+  /* Floating Instagram button */
+  .ig-float{
+    position:fixed;
+    bottom:26px; right:26px;
+    z-index:200;
+    width:60px; height:60px;
+    border-radius:50%;
+    background:linear-gradient(135deg, #E8397D, #F5A623 60%, #C1440E);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 24px rgba(43,24,16,0.35);
+    transition:transform 0.25s;
+  }
+  .ig-float:hover{transform:scale(1.1) rotate(8deg);}
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:880px){
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+    .hero-grid{grid-template-columns:1fr; text-align:center;}
+    .hero p{margin-left:auto; margin-right:auto;}
+    .hero-btns{justify-content:center;}
+    .story-grid{grid-template-columns:1fr;}
+    .process-track{grid-template-columns:1fr 1fr; row-gap:40px;}
+    .process-track::before{display:none;}
+    .co-grid{grid-template-columns:1fr;}
+    .offer-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+  :focus-visible{outline:3px solid var(--pink); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#top" class="logo">
+      <svg class="logo-pod" viewBox="0 0 40 40" fill="none">
+        <path d="M20 3C11 3 5 12 5 22C5 32 12 37 20 37C28 37 35 32 35 22C35 12 29 3 20 3Z" fill="#F5A623" stroke="#2B1810" stroke-width="2"/>
+        <path d="M20 5V35M12 12L20 20L28 12M11 22H29M13 30L20 24L27 30" stroke="#2B1810" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      Shahamana
+    </a>
+    <div class="nav-links">
+      <a href="#story">Our Story</a>
+      <a href="#process">Farm to Bar</a>
+      <a href="#cooperative">Cooperative</a>
+      <a href="#offers">Visit &amp; Volunteer</a>
+      <a href="https://www.instagram.com/shahamanafarmchocolate/" target="_blank" rel="noopener" class="nav-cta">Follow on IG</a>
+    </div>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#story">Our Story</a>
+    <a href="#process">Farm to Bar</a>
+    <a href="#cooperative">Cooperative</a>
+    <a href="#offers">Visit &amp; Volunteer</a>
+    <a href="https://www.instagram.com/shahamanafarmchocolate/" target="_blank" rel="noopener">Follow on Instagram</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-grid">
+    <div>
+      <div class="eyebrow">Farm-to-Bar · Shahamana Enterprise</div>
+      <h1>From cocoa pod to <span>chocolate bar</span>, grown by hands you can meet.</h1>
+      <p>Shahamana Chocolate is a farm-to-bar cocoa project led by Nana Nyanteng Ahenkan — built with a cocoa farmers cooperative, open for volunteers, and open for tours. Real cocoa, real farmers, real chocolate.</p>
+      <div class="hero-btns">
+        <a href="#offers" class="btn btn-primary">Book a Farm Tour</a>
+        <a href="https://www.instagram.com/shahamanafarmchocolate/" target="_blank" rel="noopener" class="btn btn-secondary">Follow @shahamanafarmchocolate</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg class="pod-float" width="320" height="360" viewBox="0 0 320 360" fill="none">
+        <ellipse cx="160" cy="330" rx="120" ry="18" fill="#000" opacity="0.15"/>
+        <path d="M160 30C90 30 55 110 55 180C55 260 100 320 160 320C220 320 265 260 265 180C265 110 230 30 160 30Z" fill="#F5A623" stroke="#2B1810" stroke-width="4"/>
+        <path d="M160 40V310" stroke="#C1440E" stroke-width="3" stroke-linecap="round"/>
+        <path d="M90 100C120 130 130 160 160 170C190 160 200 130 230 100" stroke="#C1440E" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <path d="M75 190C110 210 130 230 160 235C190 230 210 210 245 190" stroke="#C1440E" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <path d="M85 260C115 275 135 285 160 288C185 285 205 275 235 260" stroke="#C1440E" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <circle cx="160" cy="16" r="14" fill="#3F7D20" stroke="#2B1810" stroke-width="3"/>
+        <path d="M160 2C150 -8 130 -6 128 8C142 12 155 10 160 2Z" fill="#3F7D20" stroke="#2B1810" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-track">
+    <span>🌱 FARM TO BAR</span><span>🍫 SINGLE ORIGIN</span><span>🤝 FARMERS COOPERATIVE</span><span>🥾 FARM TOURS</span><span>🙌 VOLUNTEER PROGRAM</span>
+    <span>🌱 FARM TO BAR</span><span>🍫 SINGLE ORIGIN</span><span>🤝 FARMERS COOPERATIVE</span><span>🥾 FARM TOURS</span><span>🙌 VOLUNTEER PROGRAM</span>
+  </div>
+</div>
+
+<section class="story" id="story">
+  <div class="container story-grid">
+    <div class="story-art reveal">
+      <svg viewBox="0 0 300 300" width="100%">
+        <rect width="300" height="300" rx="20" fill="#2A5714"/>
+        <circle cx="150" cy="150" r="95" fill="#F5A623" opacity="0.9"/>
+        <path d="M150 80C160 80 168 92 168 108C168 124 160 140 150 150C140 140 132 124 132 108C132 92 140 80 150 80Z" fill="#8f2e0a"/>
+        <ellipse cx="150" cy="150" rx="10" ry="16" fill="#8f2e0a"/>
+        <circle cx="105" cy="185" r="9" fill="#8f2e0a"/>
+        <circle cx="195" cy="185" r="9" fill="#8f2e0a"/>
+        <circle cx="120" cy="205" r="9" fill="#8f2e0a"/>
+        <circle cx="180" cy="205" r="9" fill="#8f2e0a"/>
+        <circle cx="150" cy="215" r="9" fill="#8f2e0a"/>
+      </svg>
+    </div>
+    <div class="reveal">
+      <div class="eyebrow">Our Story</div>
+      <h2 style="font-size:2.1rem; margin:10px 0 18px;">Chocolate that starts with a handshake, not a factory line.</h2>
+      <p>Shahamana Chocolate is the farm-to-bar arm of Shahamana Enterprise — a project built on the belief that great chocolate begins in the soil, not in a laboratory. Every bar we make can be traced back to the pod, the tree, and the farmer who tended it.</p>
+      <p>We work hand-in-hand with a cocoa farmers cooperative, keeping more of the value of chocolate with the people who grow it. And because we believe chocolate is better understood in person, we open our farm to visitors and volunteers year-round.</p>
+      <div class="founder-tag">
+        <span class="dot">N</span>
+        Led by Nana Nyanteng Ahenkan, Founder
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">How It's Made</div>
+      <h2>Five steps, one story: farm to bar</h2>
+      <p>No shortcuts. Every bar of Shahamana chocolate passes through the same hands and the same hills.</p>
+    </div>
+    <div class="process-track">
+      <div class="p-step reveal">
+        <div class="p-num">
+          <svg width="34" height="34" viewBox="0 0 34 34"><path d="M17 4C10 4 6 12 6 19C6 27 11 31 17 31C23 31 28 27 28 19C28 12 24 4 17 4Z" fill="#F5A623" stroke="#2B1810" stroke-width="2"/></svg>
+        </div>
+        <h4>1. Grow</h4>
+        <p>Cooperative farmers cultivate cocoa in the shade of native trees.</p>
+      </div>
+      <div class="p-step reveal">
+        <div class="p-num">
+          <svg width="34" height="34" viewBox="0 0 34 34"><rect x="6" y="10" width="22" height="16" rx="4" fill="#3F7D20" stroke="#2B1810" stroke-width="2"/></svg>
+        </div>
+        <h4>2. Ferment</h4>
+        <p>Fresh beans rest in wooden boxes, developing their signature flavor.</p>
+      </div>
+      <div class="p-step reveal">
+        <div class="p-num">
+          <svg width="34" height="34" viewBox="0 0 34 34"><circle cx="17" cy="17" r="12" fill="#FFC857" stroke="#2B1810" stroke-width="2"/></svg>
+        </div>
+        <h4>3. Dry</h4>
+        <p>Beans are sun-dried on raised beds under the open Ghanaian sky.</p>
+      </div>
+      <div class="p-step reveal">
+        <div class="p-num">
+          <svg width="34" height="34" viewBox="0 0 34 34"><path d="M8 20L17 6L26 20L17 28Z" fill="#C1440E" stroke="#2B1810" stroke-width="2"/></svg>
+        </div>
+        <h4>4. Roast</h4>
+        <p>Slow roasting unlocks the deep, nutty character of the bean.</p>
+      </div>
+      <div class="p-step reveal">
+        <div class="p-num">
+          <svg width="34" height="34" viewBox="0 0 34 34"><rect x="7" y="7" width="20" height="20" rx="3" fill="#8B4A26" stroke="#2B1810" stroke-width="2"/><rect x="11" y="11" width="12" height="12" fill="#5a2f18"/></svg>
+        </div>
+        <h4>5. Bar</h4>
+        <p>Ground, conched and molded into the finished Shahamana bar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="co-op" id="cooperative">
+  <div class="container">
+    <div class="section-head reveal" style="color:var(--cream);">
+      <div class="eyebrow" style="color:var(--gold-light);">The Cocoa Farmers Cooperative</div>
+      <h2 style="color:var(--white);">Chocolate that puts farmers first</h2>
+      <p style="color:#e7d8c4;">Shahamana Enterprise works directly with a cooperative of cocoa growers, building a chain that's shorter, fairer, and rooted in the community.</p>
+    </div>
+    <div class="co-grid">
+      <div class="co-card reveal">
+        <div class="icon-wrap">
+          <svg width="42" height="42" viewBox="0 0 42 42"><circle cx="14" cy="16" r="7" fill="#F5A623"/><circle cx="28" cy="16" r="7" fill="#E8397D"/><path d="M6 34C6 27 10 23 14 23C18 23 22 27 22 34" stroke="#F5A623" stroke-width="2.5" fill="none"/><path d="M20 34C20 27 24 23 28 23C32 23 36 27 36 34" stroke="#E8397D" stroke-width="2.5" fill="none"/></svg>
+        </div>
+        <h4>Grower Partnership</h4>
+        <p>Cocoa is sourced directly from cooperative members at fair, transparent prices.</p>
+      </div>
+      <div class="co-card reveal">
+        <div class="icon-wrap">
+          <svg width="42" height="42" viewBox="0 0 42 42"><path d="M21 6C12 6 6 16 6 24C6 33 13 37 21 37C29 37 36 33 36 24C36 16 30 6 21 6Z" fill="#3F7D20"/></svg>
+        </div>
+        <h4>Shared Growth</h4>
+        <p>Revenue from every bar helps reinvest in tools, training, and farm upkeep.</p>
+      </div>
+      <div class="co-card reveal">
+        <div class="icon-wrap">
+          <svg width="42" height="42" viewBox="0 0 42 42"><path d="M21 5L26 16L38 17L29 25L32 37L21 30L10 37L13 25L4 17L16 16Z" fill="#F5A623"/></svg>
+        </div>
+        <h4>Quality at the Source</h4>
+        <p>Cooperative training keeps fermentation and drying consistent, batch after batch.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="offers" id="offers">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Come See It Yourself</div>
+      <h2>Visit the farm, or lend a hand</h2>
+      <p>Two ways to get closer to where chocolate really comes from.</p>
+    </div>
+    <div class="offer-grid">
+      <div class="offer-card tours reveal">
+        <div class="offer-badge">
+          <svg width="28" height="28" viewBox="0 0 28 28"><path d="M14 3C8 3 4 9 4 14C4 20 9 24 14 24C19 24 24 20 24 14C24 9 20 3 14 3Z" fill="#FFF"/></svg>
+        </div>
+        <h3>Farm Tours</h3>
+        <p>Walk the cocoa groves, meet the cooperative, and taste chocolate at the source. A hands-on look at the whole farm-to-bar journey.</p>
+        <a href="https://www.instagram.com/shahamanafarmchocolate/" target="_blank" rel="noopener" class="btn btn-primary">Message Us to Book</a>
+      </div>
+      <div class="offer-card volunteer reveal">
+        <div class="offer-badge">
+          <svg width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="9" r="5" fill="#FFF"/><path d="M4 24C4 18 9 15 14 15C19 15 24 18 24 24" fill="#FFF"/></svg>
+        </div>
+        <h3>Volunteer at the Farm</h3>
+        <p>Join the cooperative for a season — planting, harvest, or chocolate-making. A hands-in-the-soil way to give back and learn.</p>
+        <a href="https://www.instagram.com/shahamanafarmchocolate/" target="_blank" rel="noopener" class="btn btn-primary">Ask About Volunteering</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">A Glimpse of the Farm</div>
+      <h2>Life between the cocoa trees</h2>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item reveal" style="background:linear-gradient(160deg,#3F7D20,#2A5714);">
+        <svg width="100%" height="100%" viewBox="0 0 200 200"><path d="M100 40C70 40 50 80 50 110C50 145 75 165 100 165C125 165 150 145 150 110C150 80 130 40 100 40Z" fill="#F5A623"/></svg>
+      </div>
+      <div class="g-item reveal" style="background:linear-gradient(160deg,#F5A623,#C1440E);">
+        <svg width="100%" height="100%" viewBox="0 0 200 200"><rect x="40" y="60" width="120" height="80" rx="10" fill="#2B1810"/><rect x="55" y="75" width="90" height="50" fill="#8B4A26"/></svg>
+      </div>
+      <div class="g-item reveal" style="background:linear-gradient(160deg,#E8397D,#8f2e0a);">
+        <svg width="100%" height="100%" viewBox="0 0 200 200"><circle cx="70" cy="90" r="18" fill="#fff" opacity="0.9"/><circle cx="110" cy="120" r="18" fill="#fff" opacity="0.9"/><circle cx="140" cy="80" r="18" fill="#fff" opacity="0.9"/></svg>
+      </div>
+      <div class="g-item reveal" style="background:linear-gradient(160deg,#2A5714,#2B1810);">
+        <svg width="100%" height="100%" viewBox="0 0 200 200"><path d="M40 160C60 100 90 70 100 40C110 70 140 100 160 160Z" fill="#F5A623"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow" style="color:var(--gold-light);">Get In Touch</div>
+      <h2>Ready to taste the farm?</h2>
+      <p>Book a tour, ask about volunteering, or just say hello — Shahamana Chocolate is easiest to reach on Instagram.</p>
+      <div class="contact-btns">
+        <a href="https://www.instagram.com/shahamanafarmchocolate/" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#2B1810" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="#2B1810" stroke-width="2"/><circle cx="18" cy="6" r="1.4" fill="#2B1810"/></svg>
+          @shahamanafarmchocolate
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Shahamana Chocolate — a project by Shahamana Enterprise. Farm to bar, always.</p>
+  <p style="margin-top:8px;">Find us on <a href="https://www.instagram.com/shahamanafarmchocolate/" target="_blank" rel="noopener">Instagram @shahamanafarmchocolate</a></p>
+</footer>
+
+<a href="https://www.instagram.com/shahamanafarmchocolate/" target="_blank" rel="noopener" class="ig-float" aria-label="Follow Shahamana Chocolate on Instagram">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#FFF" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="#FFF" stroke-width="2"/><circle cx="18" cy="6" r="1.4" fill="#FFF"/></svg>
+</a>
+
+<script>
+  // Mobile menu toggle
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen);
+  });
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburgerBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
