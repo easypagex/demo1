@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tarot del Humedal · Andrea — Tarot evolutivo</title>
+<meta name="description" content="Tarot del Humedal — Lecturas de tarot evolutivo con Andrea. Un lenguaje simbólico para acompañarte. Lecturas virtuales, consultas por Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#141126;
+    --wetland-teal:#0E5C56;
+    --marsh-emerald:#1E8A6E;
+    --dusk-purple:#6E4A8E;
+    --amber-gold:#E3A857;
+    --blush-magenta:#D9487A;
+    --twilight-blue:#2C3E7A;
+    --mist-cream:#F6F1E7;
+    --paper:#FBF7EF;
+    --card-back:#2A1F4A;
+
+    --font-display:'Cormorant Garamond', serif;
+    --font-label:'Cinzel', serif;
+    --font-body:'Jost', sans-serif;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:var(--font-body);
+    background:var(--paper);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+
+  a{color:inherit;text-decoration:none;}
+
+  img,svg{display:block;max-width:100%;}
+
+  .eyebrow{
+    font-family:var(--font-label);
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    font-size:0.7rem;
+    font-weight:600;
+  }
+
+  h1,h2,h3{
+    font-family:var(--font-display);
+    font-weight:600;
+    line-height:1.05;
+  }
+
+  .container{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 6vw;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:1.1rem 6vw;
+    background:rgba(20,17,38,0.0);
+    transition:background 0.4s ease, padding 0.4s ease, backdrop-filter .4s ease;
+  }
+  header.scrolled{
+    background:rgba(20,17,38,0.82);
+    backdrop-filter:blur(10px);
+    padding:0.7rem 6vw;
+    box-shadow:0 1px 24px rgba(0,0,0,0.15);
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:0.55rem;
+    font-family:var(--font-display);
+    font-size:1.35rem;
+    font-weight:600;
+    color:var(--mist-cream);
+    letter-spacing:0.01em;
+  }
+  .logo svg{width:30px;height:30px;flex-shrink:0;}
+
+  nav.links{
+    display:flex;
+    gap:2.2rem;
+    align-items:center;
+  }
+  nav.links a{
+    font-family:var(--font-body);
+    font-size:0.86rem;
+    font-weight:500;
+    color:var(--mist-cream);
+    opacity:0.85;
+    letter-spacing:0.02em;
+    position:relative;
+  }
+  nav.links a::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:-6px;
+    width:0%;height:1px;
+    background:var(--amber-gold);
+    transition:width 0.3s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+  nav.links a:hover{opacity:1;}
+
+  .nav-cta{
+    background:var(--amber-gold);
+    color:var(--ink) !important;
+    padding:0.55rem 1.3rem;
+    border-radius:100px;
+    font-weight:600 !important;
+    opacity:1 !important;
+    font-size:0.82rem !important;
+    box-shadow:0 4px 18px rgba(227,168,87,0.35);
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .nav-cta::after{display:none;}
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(227,168,87,0.5);}
+
+  .burger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+    z-index:120;
+  }
+  .burger span{
+    width:26px;height:2px;
+    background:var(--mist-cream);
+    transition:all 0.3s ease;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    background:linear-gradient(180deg, #241541 0%, #3B2565 22%, #7A3C6D 42%, #C1587B 58%, #E3A857 72%, #0E5C56 72%, #0A403C 100%);
+  }
+  .hero-sky-glow{
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(ellipse 60% 40% at 50% 8%, rgba(255,255,255,0.18), transparent 60%),
+      radial-gradient(ellipse 80% 50% at 70% 15%, rgba(227,168,87,0.25), transparent 60%);
+    pointer-events:none;
+  }
+  .hero-reeds{
+    position:absolute;
+    bottom:0;left:0;right:0;
+    width:100%;
+    opacity:0.9;
+  }
+  .hero-content{
+    position:relative;
+    z-index:5;
+    text-align:center;
+    padding-top:4rem;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:1.6rem;
+  }
+  .hero-moon{
+    width:88px;height:88px;
+    margin-bottom:0.4rem;
+    animation:moonGlow 5s ease-in-out infinite;
+    filter:drop-shadow(0 0 24px rgba(246,241,231,0.55));
+  }
+  @keyframes moonGlow{
+    0%,100%{filter:drop-shadow(0 0 20px rgba(246,241,231,0.45));}
+    50%{filter:drop-shadow(0 0 34px rgba(246,241,231,0.75));}
+  }
+  .hero-eyebrow{color:var(--amber-gold);}
+  .hero h1{
+    font-size:clamp(2.8rem, 7vw, 5.2rem);
+    color:var(--mist-cream);
+    font-style:italic;
+    font-weight:500;
+  }
+  .hero h1 span{
+    display:block;
+    font-style:normal;
+    font-weight:600;
+    font-size:clamp(3.4rem, 9vw, 6.4rem);
+    background:linear-gradient(90deg, var(--amber-gold), var(--blush-magenta) 55%, #F0C48A);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .hero p.lede{
+    max-width:520px;
+    font-size:1.15rem;
+    color:var(--mist-cream);
+    opacity:0.88;
+    font-weight:300;
+    line-height:1.6;
+  }
+  .hero-ctas{
+    display:flex;
+    gap:1rem;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:0.6rem;
+  }
+  .btn-primary, .btn-secondary{
+    padding:0.95rem 2rem;
+    border-radius:100px;
+    font-size:0.92rem;
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:0.55rem;
+    transition:transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  }
+  .btn-primary{
+    background:linear-gradient(120deg, var(--blush-magenta), var(--amber-gold));
+    color:#1a1330;
+    box-shadow:0 8px 24px rgba(217,72,122,0.35);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(217,72,122,0.5);}
+  .btn-secondary{
+    border:1.5px solid rgba(246,241,231,0.5);
+    color:var(--mist-cream);
+    background:rgba(255,255,255,0.04);
+  }
+  .btn-secondary:hover{background:rgba(255,255,255,0.14);transform:translateY(-3px);}
+
+  .hero-scroll-hint{
+    position:absolute;
+    bottom:2rem;left:50%;
+    transform:translateX(-50%);
+    color:var(--mist-cream);
+    opacity:0.6;
+    font-size:0.7rem;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0.5rem;
+  }
+  .hero-scroll-hint .line{
+    width:1px;height:34px;
+    background:var(--mist-cream);
+    animation:hintPulse 2s ease-in-out infinite;
+  }
+  @keyframes hintPulse{0%,100%{opacity:0.25;}50%{opacity:0.9;}}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity 0.8s ease, transform 0.8s ease;
+  }
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{position:relative;padding:7rem 0;}
+  .section-head{
+    max-width:640px;
+    margin:0 auto 3.5rem;
+    text-align:center;
+  }
+  .section-head .eyebrow{color:var(--marsh-emerald);}
+  .section-head h2{
+    font-size:clamp(2.1rem,4.4vw,3rem);
+    margin-top:0.6rem;
+    color:var(--ink);
+  }
+  .section-head p{
+    margin-top:1rem;
+    color:#4a4560;
+    font-size:1.05rem;
+    line-height:1.65;
+    font-weight:300;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--paper);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:4.5rem;
+    align-items:center;
+  }
+  .about-portrait{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:14px;
+    overflow:hidden;
+    background:linear-gradient(160deg, var(--dusk-purple), var(--wetland-teal));
+  }
+  .about-portrait svg{width:100%;height:100%;}
+  .about-text .eyebrow{color:var(--blush-magenta);}
+  .about-text h2{
+    font-size:clamp(1.9rem,3.6vw,2.6rem);
+    margin:0.6rem 0 1.3rem;
+  }
+  .about-text p{
+    color:#4a4560;
+    font-size:1.05rem;
+    line-height:1.75;
+    font-weight:300;
+    margin-bottom:1.1rem;
+  }
+  .about-text p em{
+    font-family:var(--font-display);
+    font-style:italic;
+    color:var(--wetland-teal);
+    font-size:1.15rem;
+  }
+  .about-signature{
+    margin-top:1.6rem;
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:1.3rem;
+    color:var(--ink);
+  }
+
+  /* ---------- WHAT IS EVOLUTIONARY TAROT ---------- */
+  .concept{
+    background:linear-gradient(180deg, #17122B, #241A3C);
+    color:var(--mist-cream);
+  }
+  .concept .section-head .eyebrow{color:var(--amber-gold);}
+  .concept .section-head h2{color:var(--mist-cream);}
+  .concept .section-head p{color:rgba(246,241,231,0.75);}
+  .concept-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2rem;
+  }
+  .concept-card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.09);
+    border-radius:16px;
+    padding:2.3rem 1.9rem;
+    transition:transform 0.35s ease, background 0.35s ease, border-color .35s ease;
+  }
+  .concept-card:hover{
+    transform:translateY(-6px);
+    background:rgba(255,255,255,0.07);
+    border-color:rgba(227,168,87,0.4);
+  }
+  .concept-icon{
+    width:46px;height:46px;
+    margin-bottom:1.2rem;
+  }
+  .concept-card h3{
+    font-size:1.4rem;
+    color:var(--mist-cream);
+    margin-bottom:0.7rem;
+    font-weight:500;
+  }
+  .concept-card p{
+    font-size:0.95rem;
+    line-height:1.65;
+    color:rgba(246,241,231,0.72);
+    font-weight:300;
+  }
+
+  /* ---------- SERVICES / LILY PAD CARDS ---------- */
+  .services{background:var(--paper);}
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:2.2rem;
+  }
+  .service-card{
+    perspective:1200px;
+    height:340px;
+  }
+  .service-inner{
+    position:relative;
+    width:100%;height:100%;
+    transition:transform 0.7s cubic-bezier(.4,.2,.2,1);
+    transform-style:preserve-3d;
+  }
+  .service-card:hover .service-inner{transform:rotateY(180deg);}
+  .service-face{
+    position:absolute;inset:0;
+    -webkit-backface-visibility:hidden;
+    backface-visibility:hidden;
+    border-radius:18px;
+    padding:2.2rem;
+    display:flex;
+    flex-direction:column;
+  }
+  .service-front{
+    background:var(--card-back);
+    color:var(--mist-cream);
+    justify-content:space-between;
+    box-shadow:0 14px 34px rgba(42,31,74,0.28);
+  }
+  .service-front .card-motif{width:56px;height:56px;}
+  .service-front h3{
+    font-size:1.55rem;
+    font-weight:500;
+    margin-top:1.2rem;
+  }
+  .service-front .tag{
+    font-family:var(--font-label);
+    font-size:0.62rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--amber-gold);
+  }
+  .service-front .hint{
+    font-size:0.78rem;
+    opacity:0.55;
+    font-style:italic;
+    font-family:var(--font-display);
+  }
+  .service-back{
+    background:linear-gradient(160deg, var(--marsh-emerald), var(--wetland-teal));
+    color:var(--mist-cream);
+    transform:rotateY(180deg);
+    justify-content:center;
+    text-align:center;
+    gap:0.9rem;
+  }
+  .service-back p{
+    font-size:0.95rem;
+    line-height:1.6;
+    font-weight:300;
+  }
+  .service-back .price{
+    font-family:var(--font-display);
+    font-size:1.6rem;
+    font-style:italic;
+    color:var(--amber-gold);
+  }
+
+  /* ---------- PROCESS ---------- */
+  .process{background:var(--mist-cream);}
+  .process-steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:2rem;
+    position:relative;
+  }
+  .process-step{
+    text-align:center;
+    padding:0 0.8rem;
+  }
+  .process-step .step-icon{
+    width:64px;height:64px;
+    margin:0 auto 1.3rem;
+    background:var(--paper);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 22px rgba(20,17,38,0.08);
+  }
+  .process-step .step-icon svg{width:30px;height:30px;}
+  .process-step h3{
+    font-size:1.25rem;
+    font-weight:500;
+    margin-bottom:0.5rem;
+  }
+  .process-step p{
+    font-size:0.9rem;
+    color:#585270;
+    line-height:1.55;
+    font-weight:300;
+  }
+  .process-step .num{
+    font-family:var(--font-label);
+    font-size:0.7rem;
+    color:var(--blush-magenta);
+    letter-spacing:0.15em;
+    display:block;
+    margin-bottom:0.4rem;
+  }
+
+  /* ---------- WORDS SECTION (ambient quotes, generic not attributed) ---------- */
+  .words{
+    background:linear-gradient(120deg, var(--dusk-purple), var(--blush-magenta));
+    color:var(--mist-cream);
+    text-align:center;
+  }
+  .words blockquote{
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:clamp(1.5rem,3vw,2.3rem);
+    max-width:780px;
+    margin:0 auto;
+    line-height:1.5;
+  }
+  .words .attribution{
+    margin-top:1.6rem;
+    font-family:var(--font-body);
+    font-size:0.85rem;
+    letter-spacing:0.05em;
+    opacity:0.75;
+  }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    position:relative;
+    background:linear-gradient(180deg, #0A403C, #123B57 55%, #241541);
+    color:var(--mist-cream);
+    text-align:center;
+    overflow:hidden;
+  }
+  .final-cta .ripples{
+    position:absolute;inset:0;
+    opacity:0.5;
+    pointer-events:none;
+  }
+  .final-cta-content{position:relative;z-index:3;}
+  .final-cta .eyebrow{color:var(--amber-gold);}
+  .final-cta h2{
+    font-size:clamp(2.2rem,5vw,3.4rem);
+    margin:0.8rem 0 1.2rem;
+  }
+  .final-cta p{
+    max-width:480px;
+    margin:0 auto 2.2rem;
+    color:rgba(246,241,231,0.8);
+    font-weight:300;
+    line-height:1.65;
+  }
+  .insta-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:0.6rem;
+    background:linear-gradient(135deg,#F4A15A,#D9487A 45%,#6E4A8E 85%);
+    padding:1rem 2.3rem;
+    border-radius:100px;
+    font-weight:600;
+    font-size:1rem;
+    box-shadow:0 12px 30px rgba(217,72,122,0.4);
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .insta-pill:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 16px 38px rgba(217,72,122,0.55);}
+  .insta-pill svg{width:22px;height:22px;}
+  .final-cta .handle{
+    margin-top:1.1rem;
+    font-family:var(--font-display);
+    font-style:italic;
+    font-size:1.05rem;
+    opacity:0.75;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);
+    color:rgba(246,241,231,0.6);
+    padding:3rem 0 2rem;
+    text-align:center;
+    font-size:0.85rem;
+  }
+  footer .logo{justify-content:center;color:var(--mist-cream);margin-bottom:1rem;}
+  footer .foot-links{
+    display:flex;
+    gap:1.6rem;
+    justify-content:center;
+    margin-bottom:1.4rem;
+    flex-wrap:wrap;
+  }
+  footer .foot-links a{opacity:0.8;font-size:0.85rem;}
+  footer .foot-links a:hover{opacity:1;color:var(--amber-gold);}
+  footer .fine{opacity:0.45;font-size:0.78rem;margin-top:0.6rem;}
+
+  /* ---------- FLOATING INSTAGRAM BUTTON ---------- */
+  .float-insta{
+    position:fixed;
+    bottom:1.8rem;right:1.8rem;
+    z-index:90;
+    width:60px;height:60px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#F4A15A,#D9487A 45%,#6E4A8E 85%);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 10px 28px rgba(217,72,122,0.45);
+    transition:transform 0.3s ease, box-shadow 0.3s ease;
+    animation:floatBob 3.2s ease-in-out infinite;
+  }
+  .float-insta:hover{transform:scale(1.1);box-shadow:0 14px 34px rgba(217,72,122,0.6);}
+  .float-insta svg{width:28px;height:28px;}
+  @keyframes floatBob{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:920px){
+    .about-grid{grid-template-columns:1fr;gap:2.5rem;}
+    .concept-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr;}
+    .process-steps{grid-template-columns:repeat(2,1fr);row-gap:2.6rem;}
+  }
+  @media (max-width:720px){
+    nav.links{
+      position:fixed;
+      top:0;right:0;
+      height:100vh;
+      width:72vw;
+      background:rgba(20,17,38,0.98);
+      flex-direction:column;
+      justify-content:center;
+      align-items:flex-start;
+      padding:2rem 2.4rem;
+      gap:1.8rem;
+      transform:translateX(100%);
+      transition:transform 0.4s ease;
+    }
+    nav.links.open{transform:translateX(0);}
+    .burger{display:flex;}
+    .nav-cta{margin-top:0.6rem;}
+    .process-steps{grid-template-columns:1fr;}
+    .service-card{height:310px;}
+  }
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="logo">
+    <svg viewBox="0 0 40 40" fill="none">
+      <circle cx="20" cy="20" r="19" stroke="#E3A857" stroke-width="1"/>
+      <path d="M20 8 C25 14 25 26 20 32 C15 26 15 14 20 8Z" fill="#E3A857" opacity="0.85"/>
+      <circle cx="20" cy="20" r="3" fill="#241541"/>
+    </svg>
+    Tarot del Humedal
+  </div>
+  <nav class="links" id="navLinks">
+    <a href="#sobre-andrea">Andrea</a>
+    <a href="#tarot-evolutivo">El tarot evolutivo</a>
+    <a href="#servicios">Lecturas</a>
+    <a href="#proceso">Cómo funciona</a>
+    <a href="https://www.instagram.com/tarotdelhumedal/" target="_blank" rel="noopener" class="nav-cta">Escríbeme</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Abrir menú">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-sky-glow"></div>
+  <svg class="hero-reeds" viewBox="0 0 1440 220" preserveAspectRatio="none">
+    <path d="M0,220 L0,140 Q80,60 120,140 L120,220 Z" fill="#0A403C" opacity="0.9"/>
+    <path d="M60,220 L60,90 Q100,20 140,90 L140,220 Z" fill="#0A403C" opacity="0.7"/>
+    <path d="M1440,220 L1440,120 Q1360,50 1310,120 L1310,220 Z" fill="#0A403C" opacity="0.9"/>
+    <path d="M1250,220 L1250,70 Q1300,10 1350,70 L1350,220 Z" fill="#0A403C" opacity="0.6"/>
+    <rect x="0" y="180" width="1440" height="40" fill="#0A403C"/>
+    <path d="M0,190 Q360,175 720,190 T1440,190" stroke="#E3A857" stroke-width="1" fill="none" opacity="0.25"/>
+    <path d="M0,200 Q360,188 720,200 T1440,200" stroke="#F6F1E7" stroke-width="1" fill="none" opacity="0.15"/>
+  </svg>
+  <div class="hero-content">
+    <svg class="hero-moon" viewBox="0 0 100 100">
+      <circle cx="50" cy="50" r="46" fill="#F6F1E7"/>
+      <circle cx="66" cy="40" r="8" fill="#E3A857" opacity="0.35"/>
+      <circle cx="40" cy="60" r="5" fill="#E3A857" opacity="0.3"/>
+      <circle cx="55" cy="65" r="3.5" fill="#E3A857" opacity="0.25"/>
+    </svg>
+    <p class="eyebrow hero-eyebrow reveal in-view">🌸 Hola, soy Andrea</p>
+    <h1 class="reveal in-view">Tarot evolutivo,<span>del humedal</span></h1>
+    <p class="lede reveal in-view">Un lenguaje simbólico para leer las aguas quietas de tu momento. Lecturas virtuales, pensadas para acompañarte a ver con más claridad.</p>
+    <div class="hero-ctas reveal in-view">
+      <a href="https://www.instagram.com/tarotdelhumedal/" target="_blank" rel="noopener" class="btn-primary">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="#1a1330" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        Reservar una lectura
+      </a>
+      <a href="#tarot-evolutivo" class="btn-secondary">Conocer el tarot evolutivo</a>
+    </div>
+  </div>
+  <div class="hero-scroll-hint"><span class="line"></span>Descubre más</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre-andrea">
+  <div class="container about-grid">
+    <div class="about-portrait reveal">
+      <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice">
+        <defs>
+          <linearGradient id="portraitBg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#6E4A8E"/>
+            <stop offset="100%" stop-color="#0E5C56"/>
+          </linearGradient>
+        </defs>
+        <rect width="400" height="500" fill="url(#portraitBg)"/>
+        <circle cx="200" cy="180" r="90" fill="#F6F1E7" opacity="0.08"/>
+        <path d="M60 500 C60 380 340 380 340 500 Z" fill="#241541" opacity="0.4"/>
+        <ellipse cx="200" cy="220" rx="60" ry="72" fill="#F6F1E7" opacity="0.9"/>
+        <path d="M140 200 Q200 140 260 200 Q260 260 200 300 Q140 260 140 200Z" fill="#241541" opacity="0.15"/>
+        <g opacity="0.9">
+          <ellipse cx="176" cy="222" rx="6" ry="8" fill="#241541"/>
+          <ellipse cx="224" cy="222" rx="6" ry="8" fill="#241541"/>
+          <path d="M186 252 Q200 262 214 252" stroke="#241541" stroke-width="3" fill="none" stroke-linecap="round"/>
+        </g>
+        <path d="M0 60 Q100 20 200 55 T400 50 L400 0 L0 0Z" fill="#E3A857" opacity="0.18"/>
+        <circle cx="340" cy="70" r="26" fill="#E3A857" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="about-text reveal">
+      <p class="eyebrow">Quién sostiene el espacio</p>
+      <h2>Andrea, tejiendo símbolos entre las aguas</h2>
+      <p>El tarot es, para mí, un lenguaje: no predice un destino fijo, sino que nombra lo que ya se está moviendo dentro tuyo. <em>Leo las cartas como quien lee el reflejo del cielo en un humedal</em> — con calma, sin apuro, dejando que las capas aparezcan.</p>
+      <p>Acompaño procesos de evolución personal a través de lecturas virtuales, en un espacio íntimo y sin juicio. No busco respuestas cerradas: busco preguntas más honestas.</p>
+      <p class="about-signature">— Andrea 🀄</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPT: TAROT EVOLUTIVO -->
+<section class="concept" id="tarot-evolutivo">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">👁️‍🗨️ Una forma de mirar</p>
+      <h2>¿Qué es el tarot evolutivo?</h2>
+      <p>No es adivinación de certezas. Es un espejo simbólico que te ayuda a leer los ciclos que ya estás atravesando, y a elegir con más conciencia el paso siguiente.</p>
+    </div>
+    <div class="concept-grid">
+      <div class="concept-card reveal">
+        <svg class="concept-icon" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="20" stroke="#E3A857" stroke-width="1.5"/>
+          <path d="M24 10 C30 17 30 31 24 38 C18 31 18 17 24 10Z" fill="#E3A857" opacity="0.7"/>
+        </svg>
+        <h3>Lenguaje simbólico</h3>
+        <p>Cada carta es una imagen arquetípica: un espejo donde proyectar lo que estás viviendo, no una sentencia fija sobre tu futuro.</p>
+      </div>
+      <div class="concept-card reveal">
+        <svg class="concept-icon" viewBox="0 0 48 48" fill="none">
+          <path d="M8 30 Q24 10 40 30" stroke="#D9487A" stroke-width="2" fill="none"/>
+          <path d="M8 36 Q24 20 40 36" stroke="#1E8A6E" stroke-width="2" fill="none"/>
+          <circle cx="24" cy="14" r="4" fill="#F6F1E7"/>
+        </svg>
+        <h3>Ciclos, no destinos</h3>
+        <p>Como el agua de un humedal, todo se mueve en ciclos. El tarot evolutivo ayuda a ubicar en qué fase estás y qué pide ese momento.</p>
+      </div>
+      <div class="concept-card reveal">
+        <svg class="concept-icon" viewBox="0 0 48 48" fill="none">
+          <rect x="14" y="8" width="20" height="32" rx="3" fill="#6E4A8E" opacity="0.5"/>
+          <rect x="10" y="12" width="20" height="32" rx="3" fill="#E3A857" opacity="0.85"/>
+          <circle cx="20" cy="28" r="3" fill="#241541"/>
+        </svg>
+        <h3>Acompañamiento, no veredicto</h3>
+        <p>La lectura abre preguntas, no las cierra. Vos seguís siendo quien decide — yo sostengo el espacio simbólico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">🀄🀄🀄 Lecturas virtuales</p>
+      <h2>Elegí tu lectura</h2>
+      <p>Todas las sesiones son virtuales, por videollamada o mensajes de voz, con una devolución escrita para que puedas volver a ella cuando la necesites.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-inner">
+          <div class="service-face service-front">
+            <div>
+              <svg class="card-motif" viewBox="0 0 48 48" fill="none">
+                <circle cx="24" cy="24" r="18" stroke="#E3A857" stroke-width="1.5"/>
+                <circle cx="24" cy="24" r="4" fill="#E3A857"/>
+              </svg>
+              <p class="tag">Lectura</p>
+              <h3>Panorama general</h3>
+            </div>
+            <p class="hint">Pasá el cursor para ver</p>
+          </div>
+          <div class="service-face service-back">
+            <p>Una mirada amplia sobre tu momento: qué energías están activas y hacia dónde te invitan a moverte.</p>
+            <p class="price">3 cartas</p>
+          </div>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-inner">
+          <div class="service-face service-front">
+            <div>
+              <svg class="card-motif" viewBox="0 0 48 48" fill="none">
+                <path d="M24 10 C10 20 10 32 24 40 C38 32 38 20 24 10Z" stroke="#D9487A" stroke-width="1.5" fill="none"/>
+                <circle cx="24" cy="26" r="4" fill="#D9487A"/>
+              </svg>
+              <p class="tag">Lectura</p>
+              <h3>Vínculos y amor</h3>
+            </div>
+            <p class="hint">Pasá el cursor para ver</p>
+          </div>
+          <div class="service-face service-back">
+            <p>Para leer un vínculo puntual o tu forma de relacionarte: patrones, deseos y lo que está pidiendo atención.</p>
+            <p class="price">5 cartas</p>
+          </div>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-inner">
+          <div class="service-face service-front">
+            <div>
+              <svg class="card-motif" viewBox="0 0 48 48" fill="none">
+                <path d="M24 8 L28 20 L40 20 L30 28 L34 40 L24 32 L14 40 L18 28 L8 20 L20 20Z" fill="#1E8A6E"/>
+              </svg>
+              <p class="tag">Lectura</p>
+              <h3>Propósito y camino</h3>
+            </div>
+            <p class="hint">Pasá el cursor para ver</p>
+          </div>
+          <div class="service-face service-back">
+            <p>Una lectura profunda para momentos de bifurcación: decisiones, vocación, o un nuevo ciclo que se abre.</p>
+            <p class="price">7 cartas</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="proceso">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="eyebrow">💌 Cómo funciona</p>
+      <h2>De tu mensaje a tu lectura</h2>
+    </div>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-icon">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M4 8h24v18H4z" stroke="#6E4A8E" stroke-width="1.6"/><path d="M4 8l12 9 12-9" stroke="#6E4A8E" stroke-width="1.6" fill="none"/></svg>
+        </div>
+        <span class="num">Paso 01</span>
+        <h3>Escribís por MD</h3>
+        <p>Me contás qué querés consultar y elegimos juntas la lectura que mejor se ajusta.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-icon">
+          <svg viewBox="0 0 32 32" fill="none"><rect x="5" y="4" width="22" height="24" rx="2" stroke="#D9487A" stroke-width="1.6"/><path d="M10 12h12M10 17h12M10 22h7" stroke="#D9487A" stroke-width="1.6"/></svg>
+        </div>
+        <span class="num">Paso 02</span>
+        <h3>Coordinamos el turno</h3>
+        <p>Fijamos día y horario para tu sesión virtual, con tiempo suficiente para no apurarnos.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-icon">
+          <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="#E3A857" stroke-width="1.6"/><path d="M16 9v7l5 3" stroke="#E3A857" stroke-width="1.6" fill="none"/></svg>
+        </div>
+        <span class="num">Paso 03</span>
+        <h3>Hacemos la lectura</h3>
+        <p>Por videollamada o audios, tirando las cartas en vivo y conversando lo que van mostrando.</p>
+      </div>
+      <div class="process-step reveal">
+        <div class="step-icon">
+          <svg viewBox="0 0 32 32" fill="none"><path d="M6 16c0-6 4-10 10-10s10 4 10 10-4 10-10 10" stroke="#1E8A6E" stroke-width="1.6" fill="none"/><path d="M6 16l4 4M6 16l4-4" stroke="#1E8A6E" stroke-width="1.6"/></svg>
+        </div>
+        <span class="num">Paso 04</span>
+        <h3>Te llevás una devolución</h3>
+        <p>Un resumen escrito de la lectura, para releer cuando lo necesites en tu proceso.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AMBIENT WORDS -->
+<section class="words">
+  <div class="container reveal">
+    <blockquote>"Como el agua quieta del humedal, a veces solo hace falta detenerse para ver con claridad lo que ya estaba ahí."</blockquote>
+    <p class="attribution">— Tarot del Humedal</p>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <svg class="ripples" viewBox="0 0 1440 400" preserveAspectRatio="none">
+    <path d="M0,200 Q360,180 720,200 T1440,200" stroke="#E3A857" stroke-width="1" fill="none" opacity="0.3"/>
+    <path d="M0,240 Q360,215 720,240 T1440,240" stroke="#D9487A" stroke-width="1" fill="none" opacity="0.25"/>
+    <path d="M0,280 Q360,255 720,280 T1440,280" stroke="#F6F1E7" stroke-width="1" fill="none" opacity="0.15"/>
+  </svg>
+  <div class="container final-cta-content reveal">
+    <p class="eyebrow">💌 Escribime</p>
+    <h2>¿Empezamos tu lectura?</h2>
+    <p>Mandame un mensaje directo por Instagram contándome qué te gustaría consultar. Te respondo ahí mismo para coordinar todo.</p>
+    <a href="https://www.instagram.com/tarotdelhumedal/" target="_blank" rel="noopener" class="insta-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#1a1330" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+      Escribir en Instagram
+    </a>
+    <p class="handle">@tarotdelhumedal</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="logo">
+      <svg viewBox="0 0 40 40" fill="none" width="26" height="26">
+        <circle cx="20" cy="20" r="19" stroke="#E3A857" stroke-width="1"/>
+        <path d="M20 8 C25 14 25 26 20 32 C15 26 15 14 20 8Z" fill="#E3A857" opacity="0.85"/>
+      </svg>
+      Tarot del Humedal
+    </div>
+    <div class="foot-links">
+      <a href="#sobre-andrea">Andrea</a>
+      <a href="#tarot-evolutivo">Tarot evolutivo</a>
+      <a href="#servicios">Lecturas</a>
+      <a href="https://www.instagram.com/tarotdelhumedal/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <p class="fine">Tarot del Humedal · Lecturas virtuales · Hecho con cariño simbólico 🌸</p>
+  </div>
+</footer>
+
+<a href="https://www.instagram.com/tarotdelhumedal/" target="_blank" rel="noopener" class="float-insta" aria-label="Escribir por Instagram">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+</a>
+
+<script>
+  // Sticky header background on scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // Mobile menu
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal:not(.in-view)');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
