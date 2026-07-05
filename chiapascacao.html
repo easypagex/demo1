@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chiapas Cacao — Cacao y Chocolate Chiapaneco</title>
+<meta name="description" content="Chocolate y cacao artesanal de Chiapas, molido en piedra y cultivado por familias productoras. Pide el tuyo por Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cacao-dark:#3B1B10;
+    --cacao-mid:#6B3423;
+    --terracotta:#D65A31;
+    --terracotta-deep:#B8431F;
+    --marigold:#F4A825;
+    --jungle:#1F6D4C;
+    --jungle-deep:#155038;
+    --pink:#E8437A;
+    --cream:#FFF8ED;
+    --paper:#FFEEDA;
+    --ink:#2B140B;
+    --max:1160px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Space Grotesk', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    line-height:1.02;
+  }
+  .tag{
+    font-family:'Caveat', cursive;
+    font-weight:700;
+  }
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  ul{list-style:none;}
+  .wrap{max-width:var(--max); margin:0 auto; padding:0 28px;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- textile stripe divider (signature motif) ---------- */
+  .stripe{
+    height:16px;
+    width:100%;
+    background:
+      repeating-linear-gradient(115deg,
+        var(--terracotta) 0 26px,
+        var(--marigold) 26px 52px,
+        var(--pink) 52px 78px,
+        var(--jungle) 78px 104px,
+        var(--cacao-mid) 104px 130px
+      );
+    background-size:260px 100%;
+  }
+  .stripe.thin{height:8px;}
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--cream);
+    border-bottom:3px solid var(--ink);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:var(--max); margin:0 auto;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.35rem;
+    color:var(--cacao-dark);
+  }
+  .brand .pod-mini{width:30px; height:30px; flex-shrink:0;}
+  .nav-links{display:flex; align-items:center; gap:28px; font-weight:600; font-size:0.95rem;}
+  .nav-links a{position:relative; padding:4px 0;}
+  .nav-links a:not(.btn):after{
+    content:''; position:absolute; left:0; bottom:-2px; width:0; height:3px;
+    background:var(--terracotta); transition:width .25s ease;
+  }
+  .nav-links a:not(.btn):hover:after{width:100%;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 22px;
+    border-radius:100px;
+    font-weight:700;
+    font-size:0.95rem;
+    border:2.5px solid var(--ink);
+    cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease;
+    box-shadow:4px 4px 0 var(--ink);
+  }
+  .btn:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink);}
+  .btn:active{transform:translate(1px,1px); box-shadow:2px 2px 0 var(--ink);}
+  .btn-ig{background:linear-gradient(135deg,#F4A825,#E8437A 55%,#B8431F); color:#fff;}
+  .btn-outline{background:var(--cream); color:var(--ink);}
+  .btn-jungle{background:var(--jungle); color:#fff;}
+  .btn-lg{padding:16px 30px; font-size:1.05rem;}
+  .hide-mobile{display:inline-flex;}
+
+  /* ---------- hero ---------- */
+  .hero{
+    position:relative;
+    background:var(--paper);
+    overflow:hidden;
+    padding:70px 0 40px;
+  }
+  .hero-grain{
+    position:absolute; inset:0;
+    background-image:radial-gradient(var(--cacao-mid) 1px, transparent 1px);
+    background-size:22px 22px;
+    opacity:0.06;
+    pointer-events:none;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+    position:relative;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:700; font-size:0.85rem; letter-spacing:.04em; text-transform:uppercase;
+    background:var(--jungle); color:#fff;
+    padding:7px 16px; border-radius:100px;
+    margin-bottom:20px;
+    transform:rotate(-2deg);
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.2vw, 4.4rem);
+    color:var(--cacao-dark);
+    font-weight:900;
+  }
+  .hero h1 .accent{
+    color:var(--terracotta);
+    font-style:italic;
+    font-weight:500;
+  }
+  .hero p.lede{
+    margin-top:22px;
+    font-size:1.2rem;
+    max-width:46ch;
+    color:var(--cacao-mid);
+    font-weight:500;
+  }
+  .hero-ctas{display:flex; gap:16px; margin-top:34px; flex-wrap:wrap;}
+  .hero-stats{
+    display:flex; gap:28px; margin-top:44px; flex-wrap:wrap;
+  }
+  .hero-stats div{font-weight:700;}
+  .hero-stats .num{
+    font-family:'Fraunces', serif; font-size:1.9rem; color:var(--terracotta-deep); display:block;
+  }
+  .hero-stats .lbl{font-size:0.82rem; color:var(--cacao-mid); text-transform:uppercase; letter-spacing:.03em;}
+
+  .pod-stage{
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+    min-height:420px;
+  }
+  .pod-stage svg{width:100%; max-width:420px; overflow:visible;}
+  .float-slow{animation:floaty 6s ease-in-out infinite;}
+  @keyframes floaty{0%,100%{transform:translateY(0px) rotate(-3deg);} 50%{transform:translateY(-16px) rotate(1deg);}}
+  .spin-slow{transform-origin:210px 195px; animation:spin 22s linear infinite;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* ---------- marquee ---------- */
+  .marquee{
+    background:var(--cacao-dark);
+    color:var(--marigold);
+    overflow:hidden;
+    white-space:nowrap;
+    padding:14px 0;
+    border-top:3px solid var(--ink);
+    border-bottom:3px solid var(--ink);
+  }
+  .marquee div{
+    display:inline-block;
+    font-family:'Fraunces', serif;
+    font-weight:700; font-style:italic;
+    font-size:1.15rem;
+    animation:marquee 26s linear infinite;
+  }
+  .marquee span{margin:0 26px; color:var(--paper);}
+  .marquee span.dot{color:var(--terracotta);}
+  @keyframes marquee{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+
+  /* ---------- section shells ---------- */
+  section{padding:86px 0;}
+  .section-head{max-width:640px; margin:0 auto 52px; text-align:center;}
+  .section-head .kicker{
+    font-family:'Caveat', cursive; font-weight:700; font-size:1.5rem;
+    color:var(--pink);
+    display:block; margin-bottom:2px;
+  }
+  .section-head h2{
+    font-size:clamp(2rem,3.6vw,2.9rem);
+    color:var(--cacao-dark);
+  }
+  .section-head p{margin-top:14px; color:var(--cacao-mid); font-size:1.05rem;}
+
+  /* ---------- historia ---------- */
+  .historia{background:var(--cream);}
+  .historia .wrap{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
+  .historia h2{font-size:clamp(1.9rem,3.4vw,2.6rem); color:var(--cacao-dark); margin-bottom:20px;}
+  .historia p{color:var(--cacao-mid); font-size:1.05rem; margin-bottom:16px; line-height:1.65;}
+  .historia .pill-list{display:flex; flex-wrap:wrap; gap:10px; margin-top:24px;}
+  .pill{
+    background:var(--paper); border:2px solid var(--ink); border-radius:100px;
+    padding:8px 16px; font-weight:700; font-size:0.88rem; color:var(--cacao-dark);
+  }
+  .leaf-frame{
+    position:relative; background:var(--jungle); border:3px solid var(--ink); border-radius:26px;
+    padding:34px; box-shadow:8px 8px 0 var(--ink);
+  }
+  .leaf-frame svg{width:100%;}
+
+  /* ---------- productos ---------- */
+  .productos{background:var(--cacao-dark); color:var(--cream);}
+  .productos .section-head h2{color:var(--cream);}
+  .productos .section-head p{color:var(--paper); opacity:.85;}
+  .grid-productos{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:26px;
+  }
+  .card-prod{
+    background:var(--cream); color:var(--ink);
+    border:3px solid var(--ink); border-radius:22px;
+    padding:26px;
+    display:flex; flex-direction:column; gap:14px;
+    position:relative;
+    transition:transform .2s ease, box-shadow .2s ease;
+    box-shadow:6px 6px 0 rgba(0,0,0,.35);
+  }
+  .card-prod:hover{transform:translateY(-8px) rotate(-1deg); box-shadow:10px 12px 0 rgba(0,0,0,.35);}
+  .card-icon{
+    width:64px; height:64px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    border:2.5px solid var(--ink);
+  }
+  .card-prod h3{font-family:'Fraunces', serif; font-size:1.3rem;}
+  .card-prod p{color:var(--cacao-mid); font-size:0.96rem; line-height:1.5;}
+  .card-badge{
+    position:absolute; top:-14px; right:18px;
+    font-family:'Caveat', cursive; font-weight:700; font-size:1.15rem;
+    background:var(--pink); color:#fff;
+    padding:5px 14px; border-radius:100px; border:2px solid var(--ink);
+    transform:rotate(4deg);
+  }
+
+  /* ---------- por que elegirnos ---------- */
+  .porque{background:var(--paper);}
+  .grid-benef{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:22px;
+  }
+  .benef{
+    background:var(--cream); border:2.5px solid var(--ink); border-radius:20px;
+    padding:26px 20px; text-align:center;
+    box-shadow:5px 5px 0 var(--ink);
+  }
+  .benef .ico{width:52px; height:52px; margin:0 auto 14px;}
+  .benef h3{font-family:'Fraunces', serif; font-size:1.08rem; margin-bottom:8px; color:var(--cacao-dark);}
+  .benef p{font-size:0.9rem; color:var(--cacao-mid);}
+
+  /* ---------- galeria estilo instagram ---------- */
+  .galeria{background:var(--cream);}
+  .ig-frame{
+    max-width:640px; margin:0 auto;
+    border:3px solid var(--ink); border-radius:24px;
+    overflow:hidden; box-shadow:8px 8px 0 var(--ink);
+    background:#fff;
+  }
+  .ig-topbar{
+    display:flex; align-items:center; gap:12px;
+    padding:16px 20px; border-bottom:2px solid var(--ink);
+  }
+  .ig-avatar{
+    width:44px; height:44px; border-radius:50%;
+    background:linear-gradient(135deg,var(--marigold),var(--pink),var(--terracotta));
+    display:flex; align-items:center; justify-content:center;
+    border:2px solid var(--ink);
+    font-family:'Fraunces',serif; font-weight:700; color:#fff;
+  }
+  .ig-user{font-weight:700; font-size:0.98rem;}
+  .ig-user span{display:block; font-weight:500; font-size:0.8rem; color:var(--cacao-mid);}
+  .ig-grid{display:grid; grid-template-columns:repeat(3,1fr);}
+  .ig-cell{
+    aspect-ratio:1/1; position:relative; overflow:hidden;
+    border-right:1px solid var(--paper); border-bottom:1px solid var(--paper);
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .3s ease;
+  }
+  .ig-cell:hover{transform:scale(1.05); z-index:2;}
+  .ig-cell svg{width:60%; height:60%;}
+  .ig-cta{
+    padding:22px; text-align:center; border-top:2px solid var(--ink);
+    background:var(--paper);
+  }
+  .ig-cta p{margin-bottom:14px; font-weight:600; color:var(--cacao-dark);}
+
+  /* ---------- proceso ---------- */
+  .proceso{background:var(--jungle-deep); color:var(--cream);}
+  .proceso .section-head h2{color:var(--cream);}
+  .proceso .section-head p{color:var(--paper);}
+  .timeline{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+    position:relative;
+  }
+  .timeline:before{
+    content:''; position:absolute; top:34px; left:6%; right:6%; height:3px;
+    background:repeating-linear-gradient(90deg, var(--marigold) 0 10px, transparent 10px 20px);
+  }
+  .tl-step{text-align:center; padding:0 14px; position:relative;}
+  .tl-num{
+    width:68px; height:68px; border-radius:50%;
+    background:var(--marigold); color:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-weight:900; font-size:1.5rem;
+    margin:0 auto 18px; border:3px solid var(--ink);
+    position:relative; z-index:1;
+  }
+  .tl-step h3{font-family:'Fraunces',serif; font-size:1.1rem; margin-bottom:8px;}
+  .tl-step p{font-size:0.9rem; color:var(--paper); opacity:.9;}
+
+  /* ---------- cta final ---------- */
+  .cta-final{
+    background:linear-gradient(135deg, var(--terracotta) 0%, var(--pink) 55%, var(--marigold) 100%);
+    color:var(--ink);
+    position:relative; overflow:hidden;
+  }
+  .cta-final .wrap{
+    position:relative; z-index:1;
+    text-align:center; display:flex; flex-direction:column; align-items:center;
+  }
+  .cta-final h2{
+    font-size:clamp(2.1rem,4.4vw,3.4rem); color:#fff;
+    text-shadow:3px 3px 0 var(--ink);
+    max-width:16ch;
+  }
+  .cta-final p{margin-top:18px; font-size:1.15rem; max-width:50ch; color:#fff; font-weight:600;}
+  .cta-final .hero-ctas{margin-top:32px; justify-content:center;}
+  .cta-final .btn-ig{background:#fff; color:var(--ink);}
+  .cta-final .btn-outline{background:transparent; color:#fff; border-color:#fff; box-shadow:4px 4px 0 #fff;}
+  .cta-final .btn-outline:hover{box-shadow:6px 6px 0 #fff;}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--cacao-dark); color:var(--paper); padding:56px 0 28px;}
+  .foot-grid{
+    display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px;
+    padding-bottom:36px; border-bottom:1px solid rgba(255,255,255,.15);
+  }
+  footer .brand{color:var(--cream);}
+  footer p.small{font-size:0.92rem; color:var(--paper); opacity:.75; margin-top:12px; max-width:32ch;}
+  footer h4{font-family:'Fraunces',serif; font-size:1.05rem; margin-bottom:16px; color:var(--marigold);}
+  footer ul li{margin-bottom:10px; font-size:0.94rem;}
+  footer ul li a:hover{color:var(--marigold);}
+  .foot-bottom{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;
+    padding-top:24px; font-size:0.85rem; opacity:.7;
+  }
+
+  /* ---------- floating instagram button ---------- */
+  .float-ig{
+    position:fixed; right:22px; bottom:22px; z-index:60;
+    width:64px; height:64px; border-radius:50%;
+    background:linear-gradient(135deg,#F4A825,#E8437A 55%,#B8431F);
+    border:3px solid var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:5px 5px 0 var(--ink);
+    transition:transform .2s ease;
+  }
+  .float-ig:hover{transform:scale(1.08) rotate(-4deg);}
+  .float-ig svg{width:30px; height:30px;}
+
+  /* ---------- responsive ---------- */
+  @media (max-width:980px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .pod-stage{order:-1; min-height:300px;}
+    .historia .wrap{grid-template-columns:1fr;}
+    .grid-productos{grid-template-columns:repeat(2,1fr);}
+    .grid-benef{grid-template-columns:repeat(2,1fr);}
+    .timeline{grid-template-columns:repeat(2,1fr); row-gap:36px;}
+    .timeline:before{display:none;}
+    .foot-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:640px){
+    .nav-links{gap:14px;}
+    .hide-mobile{display:none !important;}
+    .grid-productos{grid-template-columns:1fr;}
+    .grid-benef{grid-template-columns:1fr;}
+    .ig-grid{grid-template-columns:repeat(3,1fr);}
+    .foot-grid{grid-template-columns:1fr; text-align:left;}
+    .hero-stats{gap:20px;}
+  }
+  :focus-visible{outline:3px solid var(--jungle); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header>
+  <nav class="nav">
+    <div class="brand">
+      <svg class="pod-mini" viewBox="0 0 40 40" fill="none"><path d="M20 3C11 3 5 12 5 22c0 8 6 15 15 15s15-7 15-15C35 12 29 3 20 3Z" fill="#D65A31" stroke="#2B140B" stroke-width="2"/><path d="M20 6c-3 6-3 24 0 30" stroke="#2B140B" stroke-width="1.6"/><ellipse cx="15" cy="16" rx="2.6" ry="3.6" fill="#F4A825"/><ellipse cx="24" cy="18" rx="2.6" ry="3.6" fill="#F4A825"/><ellipse cx="18" cy="26" rx="2.6" ry="3.6" fill="#F4A825"/></svg>
+      Chiapas Cacao
+    </div>
+    <div class="nav-links">
+      <a href="#historia" class="hide-mobile">Historia</a>
+      <a href="#productos" class="hide-mobile">Productos</a>
+      <a href="#proceso" class="hide-mobile">Proceso</a>
+      <a href="https://www.instagram.com/chiapascacao/" target="_blank" rel="noopener" class="btn btn-ig">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="white"/></svg>
+        @chiapascacao
+      </a>
+    </div>
+  </nav>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-grain"></div>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">🌿 Cultivado y molido en Chiapas</span>
+      <h1>Cacao de la tierra,<br><span class="accent">chocolate</span> con raíz.</h1>
+      <p class="lede">Chocolate y cacao artesanal chiapaneco, hecho a mano con el mismo cariño de siempre. Directo de nuestras manos a tu mesa — sin intermediarios, sin prisas.</p>
+      <div class="hero-ctas">
+        <a href="https://www.instagram.com/chiapascacao/" target="_blank" rel="noopener" class="btn btn-ig btn-lg">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="white"/></svg>
+          Pide por Instagram
+        </a>
+        <a href="#productos" class="btn btn-outline btn-lg">Ver productos</a>
+      </div>
+      <div class="hero-stats">
+        <div><span class="num">100%</span><span class="lbl">Cacao chiapaneco</span></div>
+        <div><span class="num">0</span><span class="lbl">Conservadores</span></div>
+        <div><span class="num">A mano</span><span class="lbl">Molido en piedra</span></div>
+      </div>
+    </div>
+    <div class="pod-stage">
+      <svg class="float-slow" viewBox="0 0 420 420" fill="none">
+        <ellipse cx="210" cy="380" rx="140" ry="18" fill="#2B140B" opacity="0.08"/>
+        <g class="spin-slow">
+          <path d="M210 40C140 40 95 130 95 205c0 80 55 150 115 150s115-70 115-150c0-75-45-165-115-165Z" fill="#D65A31" stroke="#2B140B" stroke-width="4"/>
+          <path d="M210 55C160 90 160 320 210 350" stroke="#2B140B" stroke-width="2.4"/>
+          <path d="M175 70C150 130 150 280 180 335" stroke="#2B140B" stroke-width="2" opacity=".6"/>
+          <path d="M245 70C270 130 270 280 240 335" stroke="#2B140B" stroke-width="2" opacity=".6"/>
+        </g>
+        <g>
+          <ellipse cx="170" cy="150" rx="26" ry="34" fill="#F4A825" stroke="#2B140B" stroke-width="3"/>
+          <ellipse cx="235" cy="180" rx="26" ry="34" fill="#F4A825" stroke="#2B140B" stroke-width="3"/>
+          <ellipse cx="195" cy="245" rx="26" ry="34" fill="#F4A825" stroke="#2B140B" stroke-width="3"/>
+          <ellipse cx="255" cy="255" rx="22" ry="30" fill="#E8437A" stroke="#2B140B" stroke-width="3"/>
+        </g>
+        <path d="M195 40c0-20 15-32 34-32" stroke="#1F6D4C" stroke-width="8" stroke-linecap="round"/>
+        <ellipse cx="236" cy="10" rx="18" ry="26" fill="#1F6D4C" stroke="#2B140B" stroke-width="3" transform="rotate(30 236 10)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div>
+    <span>DE LA MATA A LA TABLILLA <span class="dot">•</span></span>
+    <span>CACAO 100% CHIAPANECO <span class="dot">•</span></span>
+    <span>MOLIDO EN PIEDRA <span class="dot">•</span></span>
+    <span>HECHO A MANO <span class="dot">•</span></span>
+    <span>DE LA MATA A LA TABLILLA <span class="dot">•</span></span>
+    <span>CACAO 100% CHIAPANECO <span class="dot">•</span></span>
+    <span>MOLIDO EN PIEDRA <span class="dot">•</span></span>
+    <span>HECHO A MANO <span class="dot">•</span></span>
+  </div>
+</div>
+
+<!-- ================= HISTORIA ================= -->
+<section id="historia" class="historia">
+  <div class="wrap">
+    <div>
+      <span class="section-head kicker" style="display:inline-block; text-align:left; margin-bottom:6px;">Nuestra raíz</span>
+      <h2>El cacao lleva siglos siendo el corazón de Chiapas.</h2>
+      <p>Desde las tierras del Soconusco hasta los Altos, el cacao ha sido alimento, moneda y ritual para las comunidades de esta región. En Chiapas Cacao seguimos ese mismo camino: trabajamos con productores locales, respetamos los tiempos de la planta y transformamos cada grano con procesos tradicionales.</p>
+      <p>Nada de atajos industriales. Tostamos, descascarillamos y molemos como se ha hecho por generaciones, para que cada tablilla conserve su aroma, su textura y su historia.</p>
+      <div class="pill-list">
+        <span class="pill">🌱 Origen Chiapas</span>
+        <span class="pill">🪨 Molienda de piedra</span>
+        <span class="pill">🤝 Comercio directo</span>
+        <span class="pill">🔥 Tueste artesanal</span>
+      </div>
+    </div>
+    <div class="leaf-frame">
+      <svg viewBox="0 0 400 320" fill="none">
+        <path d="M40 260C40 180 100 60 220 40c40 60 20 160-40 200-60 40-140 40-140 20Z" fill="#F4A825" stroke="#2B140B" stroke-width="3"/>
+        <path d="M60 250C90 170 140 90 215 48" stroke="#2B140B" stroke-width="2" opacity=".5"/>
+        <ellipse cx="290" cy="150" rx="70" ry="90" fill="#D65A31" stroke="#2B140B" stroke-width="3" transform="rotate(18 290 150)"/>
+        <path d="M290 70c-30 22-30 140 0 160" stroke="#2B140B" stroke-width="2" opacity=".6" transform="rotate(18 290 150)"/>
+        <ellipse cx="120" cy="230" rx="34" ry="44" fill="#E8437A" stroke="#2B140B" stroke-width="3" transform="rotate(-14 120 230)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ================= PRODUCTOS ================= -->
+<section id="productos" class="productos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Para llevar a tu mesa</span>
+      <h2>Nuestro chocolate y cacao</h2>
+      <p>Cada producto se elabora en pequeños lotes. Escríbenos por Instagram para conocer disponibilidad, precios y envíos.</p>
+    </div>
+    <div class="grid-productos">
+
+      <div class="card-prod">
+        <span class="card-badge">favorito</span>
+        <div class="card-icon" style="background:#F4A825;">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" fill="#3B1B10"/><rect x="4" y="4" width="16" height="16" rx="3" stroke="#2B140B" stroke-width="1.5"/><path d="M4 12h16M12 4v16" stroke="#F4A825" stroke-width="1.5"/></svg>
+        </div>
+        <h3>Tablilla de mesa</h3>
+        <p>El chocolate clásico chiapaneco, ideal para batir en agua o leche caliente. Perfecto para las mañanas frías.</p>
+      </div>
+
+      <div class="card-prod">
+        <div class="card-icon" style="background:#D65A31;">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2" fill="#3B1B10" stroke="#2B140B" stroke-width="1.5"/><path d="M9 8h6M9 12h6M9 16h4" stroke="#F4A825" stroke-width="1.5"/></svg>
+        </div>
+        <h3>Barra 70% cacao</h3>
+        <p>Chocolate oscuro e intenso, molido en piedra, sin leche ni conservadores. Para quienes disfrutan el cacao puro.</p>
+      </div>
+
+      <div class="card-prod">
+        <div class="card-icon" style="background:#1F6D4C;">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M6 20c0-6 2-9 6-13 4 4 6 7 6 13" stroke="#F4A825" stroke-width="1.6" fill="none"/><ellipse cx="12" cy="20" rx="7" ry="2" fill="#3B1B10"/></svg>
+        </div>
+        <h3>Cacao en polvo puro</h3>
+        <p>Molido finamente, ideal para repostería, licuados o tu propia versión de chocolate caliente.</p>
+      </div>
+
+      <div class="card-prod">
+        <div class="card-icon" style="background:#E8437A;">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M7 3v6M17 3v6M4 9h16l-1.5 11H5.5L4 9Z" stroke="#3B1B10" stroke-width="1.6" fill="none"/></svg>
+        </div>
+        <h3>Bebida tradicional</h3>
+        <p>Nuestra receta ancestral batida a mano con molinillo, tal como se prepara desde hace generaciones.</p>
+      </div>
+
+      <div class="card-prod">
+        <span class="card-badge">edición</span>
+        <div class="card-icon" style="background:#F4A825;">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M12 3c3 3 3 6 0 9-3-3-3-6 0-9Z" fill="#3B1B10"/><path d="M12 12v9" stroke="#3B1B10" stroke-width="1.6"/></svg>
+        </div>
+        <h3>Chocolate con canela</h3>
+        <p>Un toque especiado que resalta el sabor del cacao. Nuestra versión más pedida en temporada de frío.</p>
+      </div>
+
+      <div class="card-prod">
+        <div class="card-icon" style="background:#D65A31;">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="#3B1B10" stroke-width="1.6" fill="none"/><circle cx="12" cy="12" r="3" fill="#3B1B10"/></svg>
+        </div>
+        <h3>Cacao ceremonial</h3>
+        <p>Grano seleccionado y procesado con cuidado especial para rituales y momentos de conexión.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="stripe"></div>
+
+<!-- ================= POR QUE ELEGIRNOS ================= -->
+<section class="porque">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Lo que nos distingue</span>
+      <h2>¿Por qué elegir nuestro cacao?</h2>
+    </div>
+    <div class="grid-benef">
+      <div class="benef">
+        <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M6 20c0-6 2-9 6-13 4 4 6 7 6 13" stroke="#1F6D4C" stroke-width="1.8"/><ellipse cx="12" cy="20" rx="7" ry="2" fill="#1F6D4C" opacity=".25"/></svg>
+        <h3>Origen 100% Chiapas</h3>
+        <p>Trabajamos directo con familias productoras de la región.</p>
+      </div>
+      <div class="benef">
+        <svg class="ico" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#D65A31" stroke-width="1.8"/><path d="M8 12l2.5 2.5L16 9" stroke="#D65A31" stroke-width="1.8"/></svg>
+        <h3>Sin conservadores</h3>
+        <p>Ingredientes reales, sin aditivos artificiales ni rellenos.</p>
+      </div>
+      <div class="benef">
+        <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M4 12a8 8 0 1116 0 8 8 0 01-16 0Z" stroke="#F4A825" stroke-width="1.8"/><path d="M12 8v4l3 2" stroke="#F4A825" stroke-width="1.8"/></svg>
+        <h3>Proceso artesanal</h3>
+        <p>Tueste y molienda en piedra, con tiempos que respetan al grano.</p>
+      </div>
+      <div class="benef">
+        <svg class="ico" viewBox="0 0 24 24" fill="none"><path d="M3 12h18M12 3v18" stroke="#E8437A" stroke-width="1.8"/><circle cx="12" cy="12" r="9" stroke="#E8437A" stroke-width="1.8"/></svg>
+        <h3>Envíos a todo México</h3>
+        <p>Coordina tu pedido y envío escribiéndonos por Instagram.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALERIA / INSTAGRAM ================= -->
+<section id="galeria" class="galeria">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Síguenos</span>
+      <h2>La vida diaria del cacao, en Instagram</h2>
+      <p>Compartimos el proceso, los productores y las recetas en @chiapascacao.</p>
+    </div>
+    <div class="ig-frame">
+      <div class="ig-topbar">
+        <div class="ig-avatar">CC</div>
+        <div class="ig-user">chiapascacao<span>Cacao y Chocolate Chiapaneco</span></div>
+      </div>
+      <div class="ig-grid">
+        <div class="ig-cell" style="background:#F4A825;"><svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="12" rx="7" ry="9" fill="#3B1B10"/></svg></div>
+        <div class="ig-cell" style="background:#D65A31;"><svg viewBox="0 0 24 24" fill="none"><rect x="6" y="4" width="12" height="16" rx="2" fill="#3B1B10"/></svg></div>
+        <div class="ig-cell" style="background:#1F6D4C;"><svg viewBox="0 0 24 24" fill="none"><path d="M6 19c0-5 2-8 6-11 4 3 6 6 6 11" stroke="#F4A825" stroke-width="1.8" fill="none"/></svg></div>
+        <div class="ig-cell" style="background:#E8437A;"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="7" fill="#3B1B10"/></svg></div>
+        <div class="ig-cell" style="background:#6B3423;"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3v6M17 3v6M4 9h16l-1.5 11H5.5L4 9Z" stroke="#F4A825" stroke-width="1.6" fill="none"/></svg></div>
+        <div class="ig-cell" style="background:#F4A825;"><svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="12" rx="8" ry="6" fill="#3B1B10"/></svg></div>
+      </div>
+      <div class="ig-cta">
+        <p>Descubre fotos, recetas y novedades directo de nuestra cuenta.</p>
+        <a href="https://www.instagram.com/chiapascacao/" target="_blank" rel="noopener" class="btn btn-ig">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="white" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="white" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="white"/></svg>
+          Ver @chiapascacao
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESO ================= -->
+<section id="proceso" class="proceso">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">De la vaina a tu taza</span>
+      <h2>Así llega el cacao hasta ti</h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-step">
+        <div class="tl-num">1</div>
+        <h3>Cosecha</h3>
+        <p>Se recolectan las vainas maduras junto a productores chiapanecos.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-num">2</div>
+        <h3>Fermentado y secado</h3>
+        <p>El grano descansa al sol hasta desarrollar su aroma característico.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-num">3</div>
+        <h3>Tueste y molienda</h3>
+        <p>Se tuesta con cuidado y se muele en piedra, como manda la tradición.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-num">4</div>
+        <h3>Empaque y envío</h3>
+        <p>Cada pedido se prepara a mano y se envía directo hasta tu puerta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CTA FINAL ================= -->
+<section class="cta-final">
+  <div class="wrap">
+    <h2>¿Listo para probar el sabor de Chiapas?</h2>
+    <p>Escríbenos por Instagram para conocer disponibilidad, precios y tiempos de envío. Respondemos por DM.</p>
+    <div class="hero-ctas">
+      <a href="https://www.instagram.com/chiapascacao/" target="_blank" rel="noopener" class="btn btn-ig btn-lg">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#2B140B" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="#2B140B" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="#2B140B"/></svg>
+        Escríbenos por Instagram
+      </a>
+      <a href="#productos" class="btn btn-outline btn-lg">Ver productos</a>
+    </div>
+  </div>
+</section>
+
+<div class="stripe thin"></div>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand">
+          <svg class="pod-mini" viewBox="0 0 40 40" fill="none"><path d="M20 3C11 3 5 12 5 22c0 8 6 15 15 15s15-7 15-15C35 12 29 3 20 3Z" fill="#F4A825" stroke="#FFF8ED" stroke-width="2"/></svg>
+          Chiapas Cacao
+        </div>
+        <p class="small">Cacao y chocolate chiapaneco, hecho a mano de principio a fin. Sabor con raíz.</p>
+      </div>
+      <div>
+        <h4>Explorar</h4>
+        <ul>
+          <li><a href="#historia">Nuestra historia</a></li>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#proceso">Proceso</a></li>
+          <li><a href="#galeria">Galería</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/chiapascacao/" target="_blank" rel="noopener">Instagram: @chiapascacao</a></li>
+          <li>Chiapas, México</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Chiapas Cacao. Todos los derechos reservados.</span>
+      <span>Hecho con cariño desde Chiapas 🌿</span>
+    </div>
+  </div>
+</footer>
+
+<a class="float-ig" href="https://www.instagram.com/chiapascacao/" target="_blank" rel="noopener" aria-label="Ir a Instagram de Chiapas Cacao">
+  <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#2B140B" stroke-width="2"/><circle cx="12" cy="12" r="4.5" stroke="#2B140B" stroke-width="2"/><circle cx="17.6" cy="6.4" r="1.3" fill="#2B140B"/></svg>
+</a>
+
+</body>
+</html>
