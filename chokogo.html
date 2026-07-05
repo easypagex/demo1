@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Choko Go! · Chocolate artesanal de la Amazonía Ecuatoriana</title>
+<meta name="description" content="Choko Go! — Barras de chocolate artesanal elaboradas con el mejor cacao de la Amazonía Ecuatoriana. Pide la tuya por Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Sora:wght@300;400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FDF3E1;
+    --cream-2:#FBEAD0;
+    --gold:#E8A93E;
+    --gold-soft:#F2C979;
+    --cacao:#4A2C1D;
+    --cacao-deep:#2A1810;
+    --chili:#D6521B;
+    --green:#3F7A57;
+    --green-deep:#2C5940;
+    --paper: rgba(255,255,255,0.55);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Sora', sans-serif;
+    background:
+      radial-gradient(circle at 12% 8%, rgba(232,169,62,0.35), transparent 45%),
+      radial-gradient(circle at 90% 15%, rgba(214,82,27,0.18), transparent 40%),
+      var(--cream);
+    color:var(--cacao-deep);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-weight:700;
+    color:var(--chili);
+  }
+  h1,h2,h3{
+    font-family:'Bricolage Grotesque', sans-serif;
+    line-height:1.02;
+    color:var(--cacao-deep);
+  }
+  p{ line-height:1.65; color:#5a4030; }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(253,243,225,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(74,44,29,0.08);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:800; font-size:22px; letter-spacing:-0.01em;
+    color:var(--cacao-deep);
+  }
+  .logo .bean{
+    width:30px; height:30px;
+    background:linear-gradient(140deg, var(--chili), var(--gold));
+    border-radius:60% 40% 60% 40% / 55% 60% 40% 45%;
+    box-shadow: inset -3px -3px 0 rgba(0,0,0,0.15);
+  }
+  .nav-links{display:flex; align-items:center; gap:30px;}
+  .nav-links a{
+    font-size:14.5px; font-weight:600; color:var(--cacao);
+    position:relative; padding:4px 0;
+  }
+  .nav-links a::after{
+    content:""; position:absolute; left:0; bottom:0; width:0; height:2px;
+    background:var(--chili); transition:width .25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-weight:700; font-size:14.5px;
+    padding:12px 22px; border-radius:999px;
+    background:var(--chili); color:#fff;
+    box-shadow:0 8px 20px -8px rgba(214,82,27,0.6);
+    transition:transform .2s ease, box-shadow .2s ease;
+    border:none; cursor:pointer;
+  }
+  .btn:hover{ transform:translateY(-2px); box-shadow:0 12px 24px -8px rgba(214,82,27,0.7); }
+  .btn.ghost{
+    background:transparent; color:var(--cacao-deep);
+    border:2px solid var(--cacao-deep); box-shadow:none;
+  }
+  .btn.ghost:hover{ background:var(--cacao-deep); color:var(--cream); }
+  .btn svg{width:17px; height:17px;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:78px 0 60px;
+    position:relative;
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5.6vw, 70px);
+    margin:18px 0 22px;
+    letter-spacing:-0.02em;
+  }
+  .hero h1 em{
+    font-style:normal; color:var(--chili);
+    position:relative;
+  }
+  .hero p.lead{
+    font-size:18px; max-width:480px; margin-bottom:32px;
+  }
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:34px;}
+  .flag-line{
+    display:flex; align-items:center; gap:10px;
+    font-family:'JetBrains Mono', monospace; font-size:13px; color:var(--green-deep); font-weight:600;
+  }
+  .flag-line .dot{width:8px;height:8px;border-radius:50%;background:var(--green);}
+
+  /* signature: chocolate bar that snaps into squares */
+  .bar-stage{
+    position:relative; display:flex; align-items:center; justify-content:center;
+    min-height:420px;
+  }
+  .choco-bar{
+    display:grid; grid-template-columns:repeat(3, 1fr); grid-template-rows:repeat(4,1fr);
+    gap:10px;
+    width:280px; height:380px;
+    transform:rotate(-6deg);
+    filter:drop-shadow(0 30px 40px rgba(74,44,29,0.35));
+  }
+  .square{
+    background:linear-gradient(155deg, #6B4226, #3E2313 70%);
+    border-radius:10px;
+    position:relative;
+    transition:transform .5s cubic-bezier(.2,.9,.3,1.4);
+  }
+  .square::before{
+    content:""; position:absolute; inset:5px;
+    border-radius:6px;
+    background:linear-gradient(155deg, rgba(255,255,255,0.10), transparent 60%);
+  }
+  .bar-stage:hover .square{ }
+  .square:nth-child(1){ transform: translate(-14px,-18px) rotate(-4deg); }
+  .square:nth-child(2){ transform: translate(0,-24px) rotate(2deg); }
+  .square:nth-child(3){ transform: translate(16px,-14px) rotate(6deg); }
+  .square:nth-child(4){ transform: translate(-10px,-4px) rotate(-2deg); }
+  .square:nth-child(6){ transform: translate(12px,-2px) rotate(3deg); }
+  .square:nth-child(7){ transform: translate(-16px,10px) rotate(3deg); }
+  .square:nth-child(9){ transform: translate(14px,14px) rotate(-3deg); }
+  .square:nth-child(10){ transform: translate(-12px,24px) rotate(5deg); }
+  .square:nth-child(11){ transform: translate(0,30px) rotate(-2deg); }
+  .square:nth-child(12){ transform: translate(12px,22px) rotate(4deg); }
+  .badge-float{
+    position:absolute; top:14px; right:-6px;
+    background:var(--gold); color:var(--cacao-deep);
+    font-family:'JetBrains Mono',monospace; font-weight:700; font-size:12.5px;
+    padding:10px 14px; border-radius:14px; transform:rotate(8deg);
+    box-shadow:0 10px 20px -6px rgba(232,169,62,0.7);
+  }
+  .badge-float.two{
+    top:auto; bottom:24px; left:-10px; right:auto; transform:rotate(-9deg);
+    background:var(--green); color:#fff;
+  }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{
+    border-top:1px solid rgba(74,44,29,0.12);
+    border-bottom:1px solid rgba(74,44,29,0.12);
+    padding:16px 0; background:var(--cacao-deep);
+    overflow:hidden; white-space:nowrap;
+  }
+  .marquee-track{
+    display:inline-flex; gap:40px; animation:scroll 26s linear infinite;
+  }
+  .marquee-track span{
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-weight:700; font-size:17px; color:var(--gold-soft);
+    display:inline-flex; align-items:center; gap:14px;
+  }
+  .marquee-track span::after{content:"•"; color:var(--chili);}
+  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ---------- SECTIONS GENERAL ---------- */
+  section{ padding:96px 0; }
+  .section-head{ max-width:620px; margin-bottom:52px; }
+  .section-head h2{ font-size:clamp(30px,4vw,44px); margin:14px 0 16px; letter-spacing:-0.01em;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+  }
+  .about-card{
+    background:var(--paper);
+    border:1px solid rgba(74,44,29,0.1);
+    border-radius:24px;
+    padding:34px;
+    backdrop-filter:blur(6px);
+  }
+  .stat-row{ display:flex; gap:28px; margin-top:26px; flex-wrap:wrap; }
+  .stat{ }
+  .stat b{
+    font-family:'Bricolage Grotesque', sans-serif;
+    font-size:32px; color:var(--chili); display:block;
+  }
+  .stat span{ font-size:13px; color:var(--cacao); font-weight:600; }
+  .leaf-deco{
+    width:100%; aspect-ratio:1/1; border-radius:28px;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), transparent 60%),
+      linear-gradient(155deg, var(--green), var(--green-deep));
+    position:relative; overflow:hidden;
+  }
+  .leaf-deco .ring{
+    position:absolute; border:2px dashed rgba(253,243,225,0.35);
+    border-radius:50%;
+  }
+  .leaf-deco .ring.r1{ width:70%; height:70%; top:15%; left:15%; }
+  .leaf-deco .ring.r2{ width:44%; height:44%; top:28%; left:28%; }
+  .leaf-deco .center{
+    position:absolute; top:50%; left:50%; transform:translate(-50%,-50%);
+    text-align:center; color:var(--cream);
+  }
+  .leaf-deco .center b{ font-family:'Bricolage Grotesque'; font-size:46px; display:block; }
+  .leaf-deco .center span{ font-family:'JetBrains Mono'; font-size:12px; letter-spacing:.1em; }
+
+  /* ---------- PROCESS (real sequence) ---------- */
+  .process{
+    background:var(--cacao-deep);
+    color:var(--cream);
+    border-radius:32px;
+    padding:64px 44px;
+    position:relative;
+  }
+  .process .section-head h2, .process .section-head p, .process .eyebrow{ color:var(--cream); }
+  .process .section-head p{ color:#d8c3ad; }
+  .process-track{
+    display:grid; grid-template-columns:repeat(5,1fr); gap:18px; counter-reset:step;
+  }
+  .step{
+    background:rgba(253,243,225,0.06);
+    border:1px solid rgba(253,243,225,0.14);
+    border-radius:18px; padding:22px 18px; position:relative;
+    counter-increment:step;
+  }
+  .step::before{
+    content:counter(step,decimal-leading-zero);
+    font-family:'JetBrains Mono'; font-weight:700; font-size:13px;
+    color:var(--gold-soft); display:block; margin-bottom:14px;
+  }
+  .step h4{ font-family:'Bricolage Grotesque'; font-size:17px; margin-bottom:8px; color:var(--cream);}
+  .step p{ font-size:13.5px; color:#c9b39d; line-height:1.5; }
+  .step:not(:last-child)::after{
+    content:"→"; position:absolute; right:-20px; top:26px; color:var(--gold);
+    font-size:16px; display:none;
+  }
+  @media(min-width:900px){ .step:not(:last-child)::after{ display:block; } }
+
+  /* ---------- WHY US ---------- */
+  .why-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:26px;
+  }
+  .why-card{
+    background:#fff; border-radius:22px; padding:30px;
+    border:1px solid rgba(74,44,29,0.08);
+    box-shadow:0 20px 40px -30px rgba(74,44,29,0.4);
+    transition:transform .25s ease;
+  }
+  .why-card:hover{ transform:translateY(-6px); }
+  .why-icon{
+    width:52px; height:52px; border-radius:14px; margin-bottom:18px;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(155deg, var(--gold-soft), var(--gold));
+  }
+  .why-icon svg{ width:26px; height:26px; color:var(--cacao-deep); }
+  .why-card h3{ font-size:19px; margin-bottom:10px; }
+  .why-card p{ font-size:14.5px; }
+
+  /* ---------- GALLERY / INSTAGRAM ---------- */
+  .insta-panel{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:50px; align-items:center;
+    background:linear-gradient(155deg, var(--gold-soft), var(--cream-2));
+    border-radius:32px; padding:56px 46px;
+    border:1px solid rgba(74,44,29,0.08);
+  }
+  .insta-mockup{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:8px;
+  }
+  .insta-tile{
+    aspect-ratio:1/1; border-radius:14px;
+    background:linear-gradient(160deg, var(--cacao), var(--chili));
+    display:flex; align-items:center; justify-content:center;
+    color:rgba(253,243,225,0.85); font-size:22px;
+  }
+  .insta-tile:nth-child(2n){ background:linear-gradient(160deg, var(--green), var(--green-deep)); }
+  .insta-tile:nth-child(3n){ background:linear-gradient(160deg, var(--gold), #b97a1e); }
+  .insta-cta h2{ font-size:clamp(26px,3.4vw,36px); margin-bottom:14px; }
+  .handle{
+    display:inline-flex; align-items:center; gap:10px;
+    font-family:'JetBrains Mono'; font-weight:700; font-size:15px;
+    background:var(--cacao-deep); color:var(--gold-soft);
+    padding:10px 18px; border-radius:999px; margin-bottom:22px;
+  }
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    text-align:center; padding:100px 0;
+  }
+  .final-cta h2{ font-size:clamp(32px,5vw,56px); margin-bottom:18px; }
+  .final-cta p{ max-width:520px; margin:0 auto 34px; font-size:17px; }
+  .cta-row{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
+
+  footer{
+    background:var(--cacao-deep); color:#d8c3ad; padding:48px 0 30px;
+  }
+  .footer-grid{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+    padding-bottom:26px; border-bottom:1px solid rgba(253,243,225,0.12); margin-bottom:20px;
+  }
+  .footer-logo{
+    font-family:'Bricolage Grotesque'; font-weight:800; font-size:20px; color:var(--cream);
+    display:flex; align-items:center; gap:10px;
+  }
+  .footer-bottom{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-size:13px; color:#a68a6f;
+  }
+  .social-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:10px 18px; border-radius:999px;
+    border:1px solid rgba(253,243,225,0.25); color:var(--cream); font-size:14px; font-weight:600;
+  }
+  .social-btn:hover{ background:rgba(253,243,225,0.1); }
+
+  /* reveal animation */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  @media (max-width:900px){
+    .hero-grid, .about-grid, .insta-panel{ grid-template-columns:1fr; }
+    .why-grid{ grid-template-columns:1fr 1fr; }
+    .process-track{ grid-template-columns:repeat(2,1fr); }
+    .nav-links{ display:none; }
+  }
+  @media (max-width:560px){
+    .why-grid{ grid-template-columns:1fr; }
+    .process-track{ grid-template-columns:1fr; }
+    section{ padding:64px 0; }
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="logo"><span class="bean"></span>Choko Go!</div>
+    <div class="nav-links">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#porque">Por qué elegirnos</a>
+      <a href="#instagram">Instagram</a>
+    </div>
+    <a class="btn" href="https://www.instagram.com/chokogo_ec/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      Síguenos
+    </a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Cacao fino de aroma · Amazonía Ecuatoriana 🇪🇨</span>
+      <h1>Chocolate que nace en la <em>selva</em>, no en la fábrica.</h1>
+      <p class="lead">Somos Choko Go!, un emprendimiento de barras de chocolate elaboradas con el mejor cacao del mundo, cultivado por familias de la Amazonía Ecuatoriana.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="https://www.instagram.com/chokogo_ec/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          Pedí la tuya en Instagram
+        </a>
+        <a class="btn ghost" href="#proceso">Cómo la hacemos</a>
+      </div>
+      <div class="flag-line"><span class="dot"></span>100% cacao ecuatoriano · lotes pequeños · hecho a mano</div>
+    </div>
+    <div class="bar-stage reveal">
+      <div class="choco-bar">
+        <div class="square"></div><div class="square"></div><div class="square"></div>
+        <div class="square"></div><div class="square"></div><div class="square"></div>
+        <div class="square"></div><div class="square"></div><div class="square"></div>
+        <div class="square"></div><div class="square"></div><div class="square"></div>
+      </div>
+      <div class="badge-float">🍫 100% cacao fino</div>
+      <div class="badge-float two">🌿 Origen Amazonía</div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>CACAO ECUATORIANO</span><span>ARTESANAL</span><span>AMAZONÍA</span><span>CHOKO GO!</span>
+    <span>CACAO ECUATORIANO</span><span>ARTESANAL</span><span>AMAZONÍA</span><span>CHOKO GO!</span>
+  </div>
+</div>
+
+<section id="nosotros">
+  <div class="wrap about-grid">
+    <div class="leaf-deco reveal">
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="center"><b>🇪🇨</b><span>AMAZONÍA · ECUADOR</span></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Nuestra historia</span>
+      <h2>De la tierra amazónica a tu barra de chocolate.</h2>
+      <p>Choko Go! nació de las ganas de compartir el verdadero sabor del cacao ecuatoriano: uno de los más premiados y reconocidos del mundo por su aroma fino y su historia. Trabajamos de cerca con productores de la Amazonía para transformar ese cacao en barras artesanales, sin atajos y sin ingredientes de más.</p>
+      <div class="stat-row">
+        <div class="stat"><b>100%</b><span>cacao ecuatoriano</span></div>
+        <div class="stat"><b>0</b><span>procesos industriales</span></div>
+        <div class="stat"><b>🌎</b><span>fino aroma mundial</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proceso">
+  <div class="wrap">
+    <div class="process reveal">
+      <div class="section-head">
+        <span class="eyebrow">Del árbol a la barra</span>
+        <h2>Así hacemos cada chocolate</h2>
+        <p>Un proceso simple, cuidado en cada etapa, para que el sabor del cacao amazónico llegue intacto hasta vos.</p>
+      </div>
+      <div class="process-track">
+        <div class="step"><h4>Cosecha</h4><p>Mazorcas de cacao fino recolectadas a mano en la Amazonía.</p></div>
+        <div class="step"><h4>Fermentación</h4><p>Reposo cuidado que despierta el aroma característico del grano.</p></div>
+        <div class="step"><h4>Secado</h4><p>Secado natural que concentra sabor y calidad.</p></div>
+        <div class="step"><h4>Tueste y molienda</h4><p>Se transforma el grano en una pasta de cacao pura.</p></div>
+        <div class="step"><h4>Barra final</h4><p>Moldeada y empacada a mano, lista para disfrutar.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="porque">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Por qué Choko Go!</span>
+      <h2>Chocolate con origen, no de supermercado.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C7 6 4 10 4 14a8 8 0 0016 0c0-4-3-8-8-12z"/></svg></div>
+        <h3>Cacao fino de aroma</h3>
+        <p>Usamos cacao ecuatoriano, reconocido mundialmente por su calidad y su sabor único.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7l-8-4-8 4v10l8 4 8-4V7z"/><path d="M12 22V12"/><path d="M4 7l8 5 8-5"/></svg></div>
+        <h3>Hecho a mano</h3>
+        <p>Elaboración artesanal en lotes pequeños, cuidando cada barra de principio a fin.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg></div>
+        <h3>Origen amazónico</h3>
+        <p>Apoyamos el trabajo de familias productoras de cacao en la Amazonía Ecuatoriana.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="instagram">
+  <div class="wrap">
+    <div class="insta-panel reveal">
+      <div class="insta-mockup">
+        <div class="insta-tile">🍫</div>
+        <div class="insta-tile">🌿</div>
+        <div class="insta-tile">🇪🇨</div>
+        <div class="insta-tile">🌰</div>
+        <div class="insta-tile">🍫</div>
+        <div class="insta-tile">🌱</div>
+      </div>
+      <div class="insta-cta">
+        <span class="handle">📷 @chokogo_ec</span>
+        <h2>Mirá nuestras barras y hacé tu pedido por Instagram.</h2>
+        <p>Publicamos nuevas barras, procesos y promociones directamente en nuestro Instagram. Es el lugar más rápido para ver qué tenemos disponible y coordinar tu pedido.</p>
+        <a class="btn" href="https://www.instagram.com/chokogo_ec/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          Ir a @chokogo_ec
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <span class="eyebrow">🍫 Tu próxima barra te espera</span>
+    <h2>Probá el chocolate de la Amazonía Ecuatoriana.</h2>
+    <p>Escribinos por Instagram para conocer disponibilidad, precios y cómo recibir tu pedido.</p>
+    <div class="cta-row">
+      <a class="btn" href="https://www.instagram.com/chokogo_ec/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        Pedir por Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-logo"><span class="bean"></span>Choko Go!</div>
+      <a class="social-btn" href="https://www.instagram.com/chokogo_ec/" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        @chokogo_ec
+      </a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Choko Go! — Chocolate artesanal de la Amazonía Ecuatoriana.</span>
+      <span>Hecho con 🍫 en Ecuador</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
