@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carol Tarot ✨ Tarotista Evolutiva | Oráculos, Velas y Sesiones 1 a 1</title>
+<meta name="description" content="Carol Tarot - Tarotista Evolutiva. Oráculos, velas rituales y sesiones personales 1 a 1. Agenda tu lectura hoy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night-1: #150826;
+    --night-2: #2b0f52;
+    --night-3: #3d1466;
+    --gold: #f4b942;
+    --gold-soft: #ffd98e;
+    --magenta: #e0218a;
+    --magenta-soft: #ff6fb9;
+    --turquoise: #16d1b6;
+    --lavender: #c9a7eb;
+    --cream: #f8ecda;
+    --ink: #120720;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background: var(--night-1);
+    color: var(--cream);
+    font-family:'Quicksand', sans-serif;
+    overflow-x:hidden;
+    position:relative;
+  }
+  h1,h2,h3, .display{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    letter-spacing:0.02em;
+  }
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img,svg{display:block;}
+
+  /* ---------- Starfield background ---------- */
+  .stars{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(224,33,138,0.18), transparent 40%),
+      radial-gradient(circle at 80% 10%, rgba(22,209,182,0.14), transparent 45%),
+      radial-gradient(circle at 60% 80%, rgba(244,185,66,0.10), transparent 50%),
+      linear-gradient(160deg, var(--night-1) 0%, var(--night-2) 55%, var(--night-3) 100%);
+    pointer-events:none;
+  }
+  .stars::before, .stars::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 10% 20%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 30% 70%, #fff 100%, transparent),
+      radial-gradient(2px 2px at 50% 15%, #ffd98e 100%, transparent),
+      radial-gradient(1px 1px at 70% 40%, #fff 100%, transparent),
+      radial-gradient(1.5px 1.5px at 85% 65%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 92% 25%, #fff 100%, transparent),
+      radial-gradient(1.5px 1.5px at 15% 85%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 45% 90%, #fff 100%, transparent),
+      radial-gradient(1px 1px at 65% 55%, #fff 100%, transparent);
+    background-repeat:repeat;
+    background-size: 500px 500px;
+    animation: twinkle 6s ease-in-out infinite alternate;
+    opacity:0.8;
+  }
+  .stars::after{
+    background-size: 700px 700px;
+    background-position: 50px 80px;
+    animation-duration: 9s;
+    animation-delay: 1s;
+  }
+  @keyframes twinkle{
+    0%{opacity:0.4;}
+    50%{opacity:0.95;}
+    100%{opacity:0.5;}
+  }
+
+  .wrap{position:relative;z-index:1;}
+  section{position:relative;padding:100px 24px;max-width:1100px;margin:0 auto;}
+  .eyebrow{
+    font-family:'Quicksand',sans-serif;
+    font-size:0.78rem;
+    letter-spacing:0.35em;
+    text-transform:uppercase;
+    color: var(--turquoise);
+    display:inline-block;
+    margin-bottom:14px;
+  }
+
+  /* ---------- Nav ---------- */
+  nav{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:18px 28px;
+    background:rgba(21,8,38,0.55);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid rgba(244,185,66,0.15);
+  }
+  .brand{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.5rem;
+    color: var(--gold-soft);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .brand .dot{color:var(--magenta-soft);}
+  nav .nav-links{
+    display:flex;
+    gap:26px;
+    font-size:0.85rem;
+    letter-spacing:0.06em;
+  }
+  nav .nav-links a{
+    opacity:0.85;
+    transition:opacity 0.2s, color 0.2s;
+  }
+  nav .nav-links a:hover{opacity:1;color:var(--turquoise);}
+  .nav-cta{
+    background: linear-gradient(120deg, var(--magenta), var(--magenta-soft));
+    padding:9px 18px;
+    border-radius:30px;
+    font-size:0.82rem;
+    font-weight:600;
+    box-shadow:0 4px 20px rgba(224,33,138,0.35);
+    white-space:nowrap;
+  }
+  @media (max-width:760px){
+    .nav-links{display:none;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding-top:120px;
+    padding-bottom:60px;
+  }
+  .moon{
+    width:120px;height:120px;
+    margin-bottom:22px;
+    animation: float 5s ease-in-out infinite;
+    filter: drop-shadow(0 0 25px rgba(244,185,66,0.5));
+  }
+  @keyframes float{
+    0%,100%{transform:translateY(0px) rotate(0deg);}
+    50%{transform:translateY(-14px) rotate(3deg);}
+  }
+  .hero .eyebrow{margin-bottom:20px;}
+  .hero h1{
+    font-size: clamp(3rem, 9vw, 6.2rem);
+    line-height:0.95;
+    background: linear-gradient(120deg, var(--gold-soft), var(--magenta-soft) 55%, var(--turquoise));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    margin-bottom:8px;
+  }
+  .hero .sub{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size: clamp(1.2rem, 3vw, 1.7rem);
+    color: var(--lavender);
+    margin-bottom:34px;
+  }
+  .hero p.lead{
+    max-width:560px;
+    font-size:1.05rem;
+    line-height:1.7;
+    color: rgba(248,236,218,0.85);
+    margin-bottom:40px;
+  }
+  .cta-row{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 32px;
+    border-radius:40px;
+    font-weight:700;
+    font-size:0.95rem;
+    letter-spacing:0.02em;
+    transition:transform 0.25s ease, box-shadow 0.25s ease;
+    cursor:pointer;
+    border:none;
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn-primary{
+    background: linear-gradient(120deg, #25d366, #1ebe5d);
+    color:#05210f;
+    box-shadow:0 10px 30px rgba(37,211,102,0.35);
+  }
+  .btn-primary:hover{box-shadow:0 14px 36px rgba(37,211,102,0.5);}
+  .btn-outline{
+    background:transparent;
+    color:var(--cream);
+    border:1.5px solid rgba(244,185,66,0.6);
+  }
+  .btn-outline:hover{
+    background:rgba(244,185,66,0.1);
+    border-color: var(--gold);
+  }
+
+  /* ---------- Section headings ---------- */
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 56px;
+  }
+  .section-head h2{
+    font-size: clamp(2.1rem, 5vw, 3.2rem);
+    color: var(--gold-soft);
+  }
+  .section-head p{
+    margin-top:14px;
+    color: rgba(248,236,218,0.75);
+    font-size:1.02rem;
+    line-height:1.6;
+  }
+
+  /* ---------- Sobre mi ---------- */
+  .about{
+    display:grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap:60px;
+    align-items:center;
+  }
+  @media (max-width:820px){ .about{grid-template-columns:1fr;} }
+  .about-visual{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .about-visual svg{width:100%;max-width:320px;}
+  .about-text .eyebrow{margin-bottom:10px;}
+  .about-text h2{font-size:2.2rem;color:var(--gold-soft);margin-bottom:18px;}
+  .about-text p{
+    color: rgba(248,236,218,0.85);
+    line-height:1.85;
+    font-size:1.05rem;
+    margin-bottom:16px;
+  }
+  .about-text .signature{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    color: var(--turquoise);
+    font-size:1.2rem;
+    margin-top:20px;
+  }
+
+  /* ---------- Servicios ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:28px;
+  }
+  @media (max-width:860px){ .services-grid{grid-template-columns:1fr;} }
+  .service-card{
+    background: linear-gradient(160deg, rgba(255,255,255,0.05), rgba(255,255,255,0.015));
+    border:1px solid rgba(244,185,66,0.18);
+    border-radius:22px;
+    padding:38px 28px;
+    text-align:center;
+    transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+    position:relative;
+    overflow:hidden;
+  }
+  .service-card:hover{
+    transform:translateY(-8px);
+    border-color: rgba(244,185,66,0.5);
+    background: linear-gradient(160deg, rgba(255,255,255,0.08), rgba(255,255,255,0.02));
+  }
+  .service-card .icon-wrap{
+    width:76px;height:76px;
+    margin:0 auto 22px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    background: radial-gradient(circle, rgba(224,33,138,0.25), transparent 70%);
+  }
+  .service-card svg{width:40px;height:40px;}
+  .service-card h3{
+    font-size:1.5rem;
+    color: var(--gold-soft);
+    margin-bottom:12px;
+  }
+  .service-card p{
+    color: rgba(248,236,218,0.78);
+    font-size:0.95rem;
+    line-height:1.65;
+    margin-bottom:20px;
+  }
+  .service-card .mini-link{
+    font-size:0.85rem;
+    color: var(--turquoise);
+    font-weight:600;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+
+  /* ---------- Carta del dia (signature) ---------- */
+  .oracle{
+    text-align:center;
+  }
+  .oracle-stage{
+    display:flex;
+    justify-content:center;
+    margin: 20px auto 34px;
+    perspective: 1200px;
+  }
+  .card-slot{
+    width:220px;
+    height:340px;
+    position:relative;
+    cursor:pointer;
+  }
+  .card-face{
+    position:absolute;
+    inset:0;
+    border-radius:18px;
+    backface-visibility:hidden;
+    transition: transform 0.8s cubic-bezier(.4,.2,.2,1);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    padding:20px;
+  }
+  .card-back{
+    background:
+      repeating-linear-gradient(45deg, rgba(244,185,66,0.12) 0 10px, rgba(224,33,138,0.10) 10px 20px),
+      linear-gradient(160deg, var(--night-3), var(--night-2));
+    border:2px solid var(--gold);
+    box-shadow: 0 0 40px rgba(244,185,66,0.25), inset 0 0 30px rgba(224,33,138,0.15);
+  }
+  .card-back .glyph{
+    width:70px;height:70px;
+    opacity:0.85;
+  }
+  .card-front{
+    background: linear-gradient(160deg, #24123f, #3a1a5c);
+    border:2px solid var(--turquoise);
+    transform: rotateY(180deg);
+    box-shadow: 0 0 40px rgba(22,209,182,0.3);
+  }
+  .card-slot.flipped .card-back{transform:rotateY(180deg);}
+  .card-slot.flipped .card-front{transform:rotateY(360deg);}
+  .card-front .card-name{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.4rem;
+    color: var(--gold-soft);
+    margin:14px 0 8px;
+  }
+  .card-front .card-msg{
+    font-size:0.85rem;
+    line-height:1.55;
+    color: rgba(248,236,218,0.88);
+  }
+  .card-front svg{width:52px;height:52px;}
+
+  .oracle-hint{
+    color: var(--lavender);
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.1rem;
+    margin-bottom:8px;
+  }
+  .oracle-again{
+    margin-top:22px;
+    font-size:0.85rem;
+    color: var(--turquoise);
+    opacity:0;
+    transition:opacity 0.4s ease;
+    cursor:pointer;
+    font-weight:600;
+  }
+  .oracle-again.show{opacity:1;}
+
+  /* ---------- Testimonios ---------- */
+  .testi-track{
+    position:relative;
+    min-height:160px;
+    max-width:700px;
+    margin:0 auto;
+    text-align:center;
+  }
+  .testi{
+    position:absolute;
+    inset:0;
+    opacity:0;
+    transition:opacity 0.8s ease;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
+  .testi.active{opacity:1;position:relative;}
+  .testi p{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.4rem;
+    line-height:1.6;
+    color: var(--cream);
+    max-width:600px;
+  }
+  .testi span{
+    display:block;
+    margin-top:16px;
+    font-family:'Quicksand',sans-serif;
+    font-style:normal;
+    font-size:0.85rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color: var(--gold);
+  }
+  .testi-dots{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:30px;
+  }
+  .testi-dots button{
+    width:9px;height:9px;
+    border-radius:50%;
+    border:none;
+    background: rgba(244,185,66,0.3);
+    cursor:pointer;
+    transition:background 0.3s;
+  }
+  .testi-dots button.active{background: var(--gold);}
+
+  /* ---------- Contacto ---------- */
+  .contact{
+    text-align:center;
+  }
+  .contact-card{
+    background: linear-gradient(160deg, rgba(224,33,138,0.12), rgba(22,209,182,0.08));
+    border:1px solid rgba(244,185,66,0.25);
+    border-radius:28px;
+    padding:60px 30px;
+    max-width:720px;
+    margin:0 auto;
+  }
+  .contact-card h2{
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    color: var(--gold-soft);
+    margin-bottom:16px;
+  }
+  .contact-card p{
+    color: rgba(248,236,218,0.85);
+    max-width:480px;
+    margin:0 auto 34px;
+    line-height:1.7;
+  }
+  .social-row{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin-top:36px;
+    flex-wrap:wrap;
+  }
+  .social-btn{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:13px 22px;
+    border-radius:14px;
+    font-size:0.88rem;
+    font-weight:600;
+    border:1px solid rgba(248,236,218,0.2);
+    transition: all 0.25s ease;
+  }
+  .social-btn svg{width:20px;height:20px;}
+  .social-btn:hover{transform:translateY(-3px); border-color: var(--gold);}
+  .social-btn.ig:hover{color:#ff6fb9;}
+  .social-btn.fb:hover{color:#7fb8ff;}
+
+  footer{
+    text-align:center;
+    padding:40px 24px 100px;
+    font-size:0.8rem;
+    color: rgba(248,236,218,0.45);
+  }
+  footer a{color: rgba(244,185,66,0.7); font-weight:600;}
+
+  /* Floating WhatsApp button */
+  .float-wa{
+    position:fixed;
+    bottom:26px;
+    right:26px;
+    z-index:60;
+    width:62px;height:62px;
+    border-radius:50%;
+    background: linear-gradient(135deg, #25d366, #1ebe5d);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 30px rgba(37,211,102,0.5);
+    animation: pulse-wa 2.4s ease-in-out infinite;
+  }
+  .float-wa svg{width:30px;height:30px;fill:#05210f;}
+  @keyframes pulse-wa{
+    0%,100%{box-shadow:0 8px 30px rgba(37,211,102,0.5);}
+    50%{box-shadow:0 8px 40px rgba(37,211,102,0.85);}
+  }
+
+  ::selection{background: var(--magenta); color:#fff;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<nav>
+  <div class="brand">Carol <span class="dot">✦</span> Tarot</div>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi">Sobre mí</a></li>
+    <li><a href="#servicios">Servicios</a></li>
+    <li><a href="#oraculo">Carta del día</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+  <a class="nav-cta" href="https://api.whatsapp.com/send/?phone=5548443449" target="_blank" rel="noopener">Agendar sesión</a>
+</nav>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="moon" viewBox="0 0 100 100" fill="none">
+      <defs>
+        <linearGradient id="moonGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ffd98e"/>
+          <stop offset="100%" stop-color="#f4b942"/>
+        </linearGradient>
+      </defs>
+      <path d="M50 5 A45 45 0 1 0 50 95 A35 35 0 0 1 50 5 Z" fill="url(#moonGrad)"/>
+      <circle cx="30" cy="35" r="3" fill="#e0218a" opacity="0.4"/>
+      <circle cx="45" cy="60" r="4" fill="#16d1b6" opacity="0.3"/>
+      <circle cx="20" cy="60" r="2" fill="#c9a7eb" opacity="0.5"/>
+    </svg>
+    <span class="eyebrow">🔮 Tarot · Oráculos · Rituales</span>
+    <h1>Carol Tarot</h1>
+    <p class="sub">Tarotista Evolutiva ✨🃏</p>
+    <p class="lead">Lecturas que iluminan tu camino. Descubre respuestas, sana desde la raíz y reconecta con tu intuición a través del tarot, los oráculos y el poder de las velas rituales.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5548443449" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.32 4.95L2 22l5.24-1.37a9.9 9.9 0 0 0 4.8 1.22h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2zm0 18.2c-1.5 0-2.97-.4-4.24-1.16l-.3-.18-3.11.81.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.36c0-4.53 3.69-8.22 8.24-8.22 2.2 0 4.27.86 5.83 2.42a8.16 8.16 0 0 1 2.41 5.82c0 4.53-3.69 8.22-8.2 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.12-.17.25-.65.81-.8.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.38-1.73-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.48-.02s-.43.06-.66.31c-.23.25-.87.85-.87 2.08 0 1.23.89 2.41 1.02 2.58.12.17 1.75 2.68 4.25 3.75.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
+        Escríbeme por WhatsApp
+      </a>
+      <a class="btn btn-outline" href="https://www.instagram.com/carolina_ouilhet_tarot/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.43.4a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.16.46.35 1.26.4 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.4 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.16-1.26.35-2.43.4-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.43-.4a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.16-.46-.35-1.26-.4-2.43C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.97.4-2.43a4.9 4.9 0 0 1 1.15-1.77A4.9 4.9 0 0 1 5.55 1.8c.46-.16 1.26-.35 2.43-.4C9.25 1.34 9.63 1.33 12 1.33V2.16zm0 1.62c-3.15 0-3.5.01-4.74.07-1.15.05-1.77.24-2.19.4-.55.21-.94.47-1.36.88-.41.42-.67.81-.88 1.36-.16.42-.35 1.04-.4 2.19-.06 1.24-.07 1.6-.07 4.74s.01 3.5.07 4.74c.05 1.15.24 1.77.4 2.19.21.55.47.94.88 1.36.42.41.81.67 1.36.88.42.16 1.04.35 2.19.4 1.24.06 1.6.07 4.74.07s3.5-.01 4.74-.07c1.15-.05 1.77-.24 2.19-.4a3.28 3.28 0 0 0 1.36-.88c.41-.42.67-.81.88-1.36.16-.42.35-1.04.4-2.19.06-1.24.07-1.6.07-4.74s-.01-3.5-.07-4.74c-.05-1.15-.24-1.77-.4-2.19a3.28 3.28 0 0 0-.88-1.36 3.28 3.28 0 0 0-1.36-.88c-.42-.16-1.04-.35-2.19-.4-1.24-.06-1.6-.07-4.74-.07zm0 4.16a4.06 4.06 0 1 1 0 8.12 4.06 4.06 0 0 1 0-8.12zm0 1.62a2.44 2.44 0 1 0 0 4.88 2.44 2.44 0 0 0 0-4.88zm5.17-1.8a.95.95 0 1 1-1.9 0 .95.95 0 0 1 1.9 0z"/></svg>
+        Seguir en Instagram
+      </a>
+    </div>
+  </section>
+
+  <!-- SOBRE MI -->
+  <section id="sobre-mi" class="about">
+    <div class="about-visual">
+      <svg viewBox="0 0 300 300" fill="none">
+        <circle cx="150" cy="150" r="130" fill="none" stroke="#f4b942" stroke-width="1" opacity="0.5"/>
+        <circle cx="150" cy="150" r="105" fill="none" stroke="#16d1b6" stroke-width="1" opacity="0.35"/>
+        <g stroke="#c9a7eb" stroke-width="1" opacity="0.6">
+          <line x1="150" y1="20" x2="150" y2="280"/>
+          <line x1="20" y1="150" x2="280" y2="150"/>
+          <line x1="55" y1="55" x2="245" y2="245"/>
+          <line x1="245" y1="55" x2="55" y2="245"/>
+        </g>
+        <circle cx="150" cy="150" r="55" fill="url(#cardGlow)"/>
+        <defs>
+          <radialGradient id="cardGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#e0218a" stop-opacity="0.55"/>
+            <stop offset="100%" stop-color="#e0218a" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <path d="M150 105 L165 140 L200 150 L165 160 L150 195 L135 160 L100 150 L135 140 Z" fill="#ffd98e"/>
+        <circle cx="150" cy="150" r="3" fill="#180b2e"/>
+      </svg>
+    </div>
+    <div class="about-text">
+      <span class="eyebrow">Sobre mí</span>
+      <h2>Una guía para tu evolución</h2>
+      <p>Soy Carol, tarotista evolutiva 🙏🏼. Acompaño procesos de transformación a través del tarot, los oráculos y los rituales con velas, conectando cada consulta con tu momento de vida y tu propósito.</p>
+      <p>Mi enfoque no busca predecir por predecir: busca darte herramientas y claridad para que tomes decisiones desde la conciencia, no desde el miedo.</p>
+      <p class="signature">"Las cartas no dictan tu destino, iluminan tu camino."</p>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios">
+    <div class="section-head">
+      <span class="eyebrow">Servicios</span>
+      <h2>Cómo puedo acompañarte</h2>
+      <p>Tres caminos para conectar con tu energía, tu intuición y tus decisiones.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ffd98e" stroke-width="1.5"><path d="M12 2 L14.5 8.5 L21 9.5 L16.2 14 L17.7 20.5 L12 17 L6.3 20.5 L7.8 14 L3 9.5 L9.5 8.5 Z" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Oráculos</h3>
+        <p>Consultas con mazos oraculares para recibir mensajes claros sobre amor, trabajo, familia y propósito de vida.</p>
+        <a class="mini-link" href="https://api.whatsapp.com/send/?phone=5548443449" target="_blank" rel="noopener">Consultar disponibilidad →</a>
+      </div>
+      <div class="service-card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#ff6fb9" stroke-width="1.5"><path d="M12 3c0 0 -3 4 -3 7a3 3 0 0 0 6 0c0-3-3-7-3-7z"/><path d="M8 22h8"/><path d="M9 22c-1-2-1-5 0-7h6c1 2 1 5 0 7"/></svg>
+        </div>
+        <h3>Velas</h3>
+        <p>Rituales con velas para limpieza energética, abundancia, amor propio y apertura de caminos.</p>
+        <a class="mini-link" href="https://api.whatsapp.com/send/?phone=5548443449" target="_blank" rel="noopener">Pedir información →</a>
+      </div>
+      <div class="service-card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#16d1b6" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+        </div>
+        <h3>Sesiones 1 a 1</h3>
+        <p>Encuentros personales y profundos, en video llamada o presencial, con espacio para tus preguntas más importantes.</p>
+        <a class="mini-link" href="https://api.whatsapp.com/send/?phone=5548443449" target="_blank" rel="noopener">Reservar sesión →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTA DEL DIA -->
+  <section id="oraculo" class="oracle">
+    <div class="section-head">
+      <span class="eyebrow">Regalo del universo</span>
+      <h2>Saca tu carta del día</h2>
+      <p>Toca la carta y recibe un mensaje para guiar tu energía de hoy.</p>
+    </div>
+    <div class="oracle-stage">
+      <div class="card-slot" id="cardSlot">
+        <div class="card-face card-back">
+          <svg class="glyph" viewBox="0 0 24 24" fill="none" stroke="#f4b942" stroke-width="1.2">
+            <path d="M12 2 L14.5 8.5 L21 9.5 L16.2 14 L17.7 20.5 L12 17 L6.3 20.5 L7.8 14 L3 9.5 L9.5 8.5 Z" stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="card-face card-front" id="cardFront">
+          <svg id="cardIcon" viewBox="0 0 24 24" fill="none" stroke="#ffd98e" stroke-width="1.4"></svg>
+          <div class="card-name" id="cardName">—</div>
+          <div class="card-msg" id="cardMsg">Toca para revelar tu mensaje</div>
+        </div>
+      </div>
+    </div>
+    <p class="oracle-hint">✦ Un mensaje distinto cada vez que lo intentas ✦</p>
+    <div class="oracle-again" id="oracleAgain">Volver a intentar ↺</div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <section class="testimonios">
+    <div class="section-head">
+      <span class="eyebrow">Palabras de consultantes</span>
+      <h2>Energía que transforma</h2>
+    </div>
+    <div class="testi-track" id="testiTrack">
+      <div class="testi active">
+        <p>"Carol tiene una sensibilidad increíble. Cada carta que sacó describía exactamente lo que estaba viviendo."</p>
+        <span>— Consulta de Oráculo</span>
+      </div>
+      <div class="testi">
+        <p>"El ritual con velas me ayudó a soltar un ciclo que llevaba meses cargando. Sentí un antes y un después."</p>
+        <span>— Ritual de Velas</span>
+      </div>
+      <div class="testi">
+        <p>"La sesión 1 a 1 fue reveladora. Me sentí acompañada y con más claridad para decidir sobre mi futuro."</p>
+        <span>— Sesión Personal</span>
+      </div>
+    </div>
+    <div class="testi-dots" id="testiDots"></div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contact">
+    <div class="contact-card">
+      <span class="eyebrow">Contacto</span>
+      <h2>Es momento de mirar tu camino</h2>
+      <p>Escríbeme y agenda tu lectura. Con gusto te acompaño a encontrar claridad, calma y dirección.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5548443449" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.32 4.95L2 22l5.24-1.37a9.9 9.9 0 0 0 4.8 1.22h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2zm0 18.2c-1.5 0-2.97-.4-4.24-1.16l-.3-.18-3.11.81.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.36c0-4.53 3.69-8.22 8.24-8.22 2.2 0 4.27.86 5.83 2.42a8.16 8.16 0 0 1 2.41 5.82c0 4.53-3.69 8.22-8.2 8.22z"/></svg>
+          Agendar por WhatsApp
+        </a>
+      </div>
+      <div class="social-row">
+        <a class="social-btn ig" href="https://www.instagram.com/carolina_ouilhet_tarot/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.43.4a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.16.46.35 1.26.4 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.4 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.16-1.26.35-2.43.4-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.43-.4a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.16-.46-.35-1.26-.4-2.43C2.17 15.58 2.16 15.2 2.16 12s.01-3.58.07-4.85c.05-1.17.24-1.97.4-2.43a4.9 4.9 0 0 1 1.15-1.77A4.9 4.9 0 0 1 5.55 1.8c.46-.16 1.26-.35 2.43-.4C9.25 1.34 9.63 1.33 12 1.33V2.16zm0 1.62c-3.15 0-3.5.01-4.74.07-1.15.05-1.77.24-2.19.4-.55.21-.94.47-1.36.88-.41.42-.67.81-.88 1.36-.16.42-.35 1.04-.4 2.19-.06 1.24-.07 1.6-.07 4.74s.01 3.5.07 4.74c.05 1.15.24 1.77.4 2.19.21.55.47.94.88 1.36.42.41.81.67 1.36.88.42.16 1.04.35 2.19.4 1.24.06 1.6.07 4.74.07s3.5-.01 4.74-.07c1.15-.05 1.77-.24 2.19-.4a3.28 3.28 0 0 0 1.36-.88c.41-.42.67-.81.88-1.36.16-.42.35-1.04.4-2.19.06-1.24.07-1.6.07-4.74s-.01-3.5-.07-4.74c-.05-1.15-.24-1.77-.4-2.19a3.28 3.28 0 0 0-.88-1.36 3.28 3.28 0 0 0-1.36-.88c-.42-.16-1.04-.35-2.19-.4-1.24-.06-1.6-.07-4.74-.07zm0 4.16a4.06 4.06 0 1 1 0 8.12 4.06 4.06 0 0 1 0-8.12zm0 1.62a2.44 2.44 0 1 0 0 4.88 2.44 2.44 0 0 0 0-4.88zm5.17-1.8a.95.95 0 1 1-1.9 0 .95.95 0 0 1 1.9 0z"/></svg>
+          Instagram
+        </a>
+        <a class="social-btn fb" href="https://facebook.com/carolina.barba.1044" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7.5h2.5l.4-3H13.5V8.4c0-.87.24-1.46 1.5-1.46h1.6V3.35C16.3 3.24 15.34 3.15 14.2 3.15c-2.36 0-3.97 1.44-3.97 4.08v2.27H7.7v3h2.53V21h3.27z"/></svg>
+          Facebook
+        </a>
+        <a class="social-btn wa" href="https://api.whatsapp.com/send/?phone=5548443449" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.32 4.95L2 22l5.24-1.37a9.9 9.9 0 0 0 4.8 1.22h.01c5.5 0 9.96-4.46 9.96-9.96C22.01 6.46 17.55 2 12.04 2z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>✨ Carol Tarot · Tarotista Evolutiva · Oráculos · Velas · Sesiones 1 a 1 ✨</p>
+    <p style="margin-top:8px;">Página creada por <a href="https://easypagex.github.io" target="_blank" rel="noopener">EasyPageX</a></p>
+  </footer>
+
+</div>
+
+<a class="float-wa" href="https://api.whatsapp.com/send/?phone=5548443449" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.32 4.95L2 22l5.24-1.37a9.9 9.9 0 0 0 4.8 1.22h.01c5.5 0 9.96-4.46 9.96-9.96 0-2.66-1.04-5.16-2.92-7.04A9.9 9.9 0 0 0 12.04 2zm0 18.2c-1.5 0-2.97-.4-4.24-1.16l-.3-.18-3.11.81.83-3.04-.2-.31a8.18 8.18 0 0 1-1.26-4.36c0-4.53 3.69-8.22 8.24-8.22 2.2 0 4.27.86 5.83 2.42a8.16 8.16 0 0 1 2.41 5.82c0 4.53-3.69 8.22-8.2 8.22zm4.52-6.16c-.25-.12-1.47-.72-1.7-.81-.23-.08-.4-.12-.56.12-.17.25-.65.81-.8.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.48-1.38-1.73-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.36-.77-1.86-.2-.48-.4-.42-.56-.42-.14 0-.31-.02-.48-.02s-.43.06-.66.31c-.23.25-.87.85-.87 2.08 0 1.23.89 2.41 1.02 2.58.12.17 1.75 2.68 4.25 3.75.6.26 1.06.41 1.42.53.6.19 1.14.16 1.57.1.48-.07 1.47-.6 1.68-1.18.2-.58.2-1.08.14-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
+</a>
+
+<script>
+(function(){
+  // ---------- Web Audio chime ----------
+  let audioCtx;
+  function chime(){
+    try{
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      const now = audioCtx.currentTime;
+      const notes = [660, 880, 990];
+      notes.forEach((freq, i) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0, now + i*0.12);
+        gain.gain.linearRampToValueAtTime(0.12, now + i*0.12 + 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + i*0.12 + 0.9);
+        osc.connect(gain).connect(audioCtx.destination);
+        osc.start(now + i*0.12);
+        osc.stop(now + i*0.12 + 1);
+      });
+    }catch(e){}
+  }
+
+  // ---------- Carta del dia ----------
+  const cards = [
+    {name:"La Estrella", msg:"Hoy la esperanza guía tus pasos. Confía en tu proceso, la luz está más cerca de lo que crees.", path:"M12 2 L14.5 8.5 L21 9.5 L16.2 14 L17.7 20.5 L12 17 L6.3 20.5 L7.8 14 L3 9.5 L9.5 8.5 Z"},
+    {name:"La Luna", msg:"Escucha tu intuición aunque el camino no esté del todo claro. Tus sueños tienen mensajes para ti.", path:"M12 3a9 9 0 1 0 8.94 10.06A7 7 0 1 1 12 3z"},
+    {name:"El Sol", msg:"Un ciclo de claridad y alegría comienza. Es momento de mostrarte tal cual eres.", path:"M12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm0-4v3m0 14v3m10-10h-3M5 12H2m15.5-7.5l-2.1 2.1M8.6 15.4l-2.1 2.1m0-11l2.1 2.1m8.8 8.8l-2.1-2.1"},
+    {name:"La Sacerdotisa", msg:"Hay una respuesta dentro de ti esperando ser escuchada en silencio. Confía en tu sabiduría interior.", path:"M12 2v20M7 6c0 4 10 4 10 0M7 18c0-4 10-4 10 0"},
+    {name:"El Mundo", msg:"Cierras un ciclo importante. Celebra lo aprendido, un nuevo comienzo está por abrirse.", path:"M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zm0 0c3 3 3 15 0 18m0-18c-3 3-3 15 0 18M3 12h18"},
+    {name:"La Rueda de la Fortuna", msg:"Los ciclos cambian a tu favor. Sostén tu fe, algo se está moviendo para tu bien.", path:"M12 2v4m0 12v4m10-10h-4M6 12H2m14.14-7.14l-2.83 2.83M9.69 14.31l-2.83 2.83m11.28 0l-2.83-2.83M9.69 9.69 6.86 6.86"},
+  ];
+  let used = [];
+  function pickCard(){
+    if(used.length === cards.length) used = [];
+    let idx;
+    do{ idx = Math.floor(Math.random()*cards.length); } while(used.includes(idx));
+    used.push(idx);
+    return cards[idx];
+  }
+
+  const slot = document.getElementById('cardSlot');
+  const nameEl = document.getElementById('cardName');
+  const msgEl = document.getElementById('cardMsg');
+  const iconEl = document.getElementById('cardIcon');
+  const again = document.getElementById('oracleAgain');
+  let flipped = false;
+
+  function reveal(){
+    if(flipped) return;
+    const c = pickCard();
+    nameEl.textContent = c.name;
+    msgEl.textContent = c.msg;
+    iconEl.innerHTML = '<path d="'+c.path+'" stroke-linejoin="round" stroke-linecap="round"/>';
+    slot.classList.add('flipped');
+    flipped = true;
+    chime();
+    setTimeout(()=> again.classList.add('show'), 500);
+  }
+  slot.addEventListener('click', reveal);
+  again.addEventListener('click', function(e){
+    e.stopPropagation();
+    slot.classList.remove('flipped');
+    again.classList.remove('show');
+    setTimeout(()=>{ flipped = false; }, 400);
+  });
+
+  // ---------- Testimonios auto-cycle ----------
+  const testis = document.querySelectorAll('.testi');
+  const dotsWrap = document.getElementById('testiDots');
+  let tIdx = 0;
+  testis.forEach((_, i) => {
+    const b = document.createElement('button');
+    if(i===0) b.classList.add('active');
+    b.addEventListener('click', () => setTesti(i));
+    dotsWrap.appendChild(b);
+  });
+  function setTesti(i){
+    testis[tIdx].classList.remove('active');
+    dotsWrap.children[tIdx].classList.remove('active');
+    tIdx = i;
+    testis[tIdx].classList.add('active');
+    dotsWrap.children[tIdx].classList.add('active');
+  }
+  setInterval(()=> setTesti((tIdx+1) % testis.length), 5500);
+
+})();
+</script>
+
+</body>
+</html>
