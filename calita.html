@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calita Boutique | Ropa para Perros · Lomas de Zamora</title>
+<meta name="description" content="Calita Boutique - Ropa para perros en Lomas de Zamora. Cápsula Campeones ya disponible. Pedí por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky:#5EC4E8;
+    --sky-deep:#2E86C1;
+    --sun:#FFC93C;
+    --coral:#FF6F61;
+    --grass:#3FAE7C;
+    --navy:#1B2A4A;
+    --cream:#FFF8EC;
+    --white:#ffffff;
+    --shadow: 8px 8px 0 rgba(27,42,74,0.15);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Nunito', sans-serif;
+    background:var(--cream);
+    color:var(--navy);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.logo,.badge,.nav a,.btn{font-family:'Fredoka', sans-serif;}
+
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img,svg{display:block;max-width:100%;}
+  section{position:relative;}
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{opacity:0; transform:translateY(30px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal.visible{opacity:1; transform:translateY(0);}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,248,236,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:3px solid var(--navy);
+  }
+  .nav-wrap{
+    max-width:1180px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+    gap:16px;
+  }
+  .logo{
+    font-size:1.5rem; font-weight:700; color:var(--navy);
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo .dot{width:10px;height:10px;border-radius:50%;background:var(--coral);display:inline-block;}
+  nav ul{display:flex; gap:26px; font-weight:500; font-size:0.98rem;}
+  nav ul li a{position:relative; padding:4px 0;}
+  nav ul li a::after{
+    content:''; position:absolute; left:0; bottom:-2px; width:0; height:3px;
+    background:var(--sun); transition:width .25s ease; border-radius:3px;
+  }
+  nav ul li a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--grass); color:var(--white); padding:10px 20px; border-radius:40px;
+    font-weight:600; font-size:0.92rem; box-shadow:4px 4px 0 var(--navy);
+    transition:transform .15s ease, box-shadow .15s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--navy);}
+  .burger{display:none; font-size:1.6rem; cursor:pointer; background:none; border:none; color:var(--navy);}
+
+  @media(max-width:820px){
+    nav{position:fixed; top:64px; left:0; right:0; background:var(--cream); border-bottom:3px solid var(--navy);
+        flex-direction:column; padding:18px 24px; transform:translateY(-130%); transition:transform .3s ease;}
+    nav.open{transform:translateY(0);}
+    nav ul{flex-direction:column; gap:16px; margin-bottom:14px;}
+    .burger{display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    max-width:1180px; margin:0 auto; padding:70px 24px 40px;
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:40px; align-items:center;
+  }
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--sun); color:var(--navy); font-weight:700; font-size:0.85rem;
+    padding:8px 16px; border-radius:40px; border:2px solid var(--navy);
+    transform:rotate(-3deg); box-shadow:4px 4px 0 var(--navy);
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem); line-height:1.05; margin:20px 0 18px; color:var(--navy);
+  }
+  .hero h1 span{color:var(--coral);}
+  .hero p{font-size:1.15rem; max-width:480px; margin-bottom:28px; font-weight:600; color:#3a4a6b;}
+  .cta-row{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px; padding:16px 28px; border-radius:50px;
+    font-weight:700; font-size:1.05rem; border:3px solid var(--navy); cursor:pointer;
+    box-shadow:6px 6px 0 var(--navy); transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--navy);}
+  .btn:active{transform:translate(0,0); box-shadow:2px 2px 0 var(--navy);}
+  .btn-primary{background:var(--grass); color:var(--white);}
+  .btn-secondary{background:var(--white); color:var(--navy);}
+
+  .hero-visual{position:relative; display:flex; align-items:center; justify-content:center;}
+  .sunburst{
+    position:absolute; width:520px; height:520px; border-radius:50%;
+    background:repeating-conic-gradient(var(--sun) 0deg 10deg, transparent 10deg 20deg);
+    opacity:0.55; animation:spin 40s linear infinite; z-index:0;
+  }
+  @keyframes spin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+  .hero-visual svg{position:relative; z-index:1; width:100%; max-width:420px;}
+  .sticker{
+    position:absolute; background:var(--coral); color:var(--white); font-weight:700;
+    padding:10px 16px; border-radius:50%; border:3px solid var(--navy); font-size:0.85rem;
+    display:flex; align-items:center; justify-content:center; text-align:center; line-height:1.1;
+    width:96px; height:96px; box-shadow:4px 4px 0 var(--navy); z-index:2;
+  }
+  .sticker.s1{top:6%; right:2%; transform:rotate(12deg); background:var(--sky-deep);}
+  .sticker.s2{bottom:2%; left:0; transform:rotate(-10deg); background:var(--sun); color:var(--navy);}
+
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr; text-align:center;}
+    .hero p{margin-left:auto; margin-right:auto;}
+    .cta-row{justify-content:center;}
+    .hero-visual{order:-1;}
+    .sunburst{width:380px; height:380px;}
+  }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{
+    background:var(--navy); color:var(--cream); padding:14px 0; overflow:hidden;
+    white-space:nowrap; border-top:3px solid var(--navy); border-bottom:3px solid var(--navy);
+  }
+  .marquee-track{display:inline-block; animation:marquee 22s linear infinite;}
+  .marquee-track span{font-family:'Fredoka'; font-weight:600; font-size:1.05rem; margin:0 28px;}
+  @keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- SECTION TITLES ---------- */
+  .section-inner{max-width:1180px; margin:0 auto; padding:90px 24px;}
+  .eyebrow-tag{
+    display:inline-block; font-weight:700; font-size:0.82rem; letter-spacing:0.06em;
+    text-transform:uppercase; color:var(--grass); margin-bottom:10px;
+  }
+  .section-title{font-size:clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom:16px; color:var(--navy);}
+  .section-sub{font-size:1.05rem; font-weight:600; color:#556; max-width:600px; margin-bottom:50px;}
+
+  /* ---------- CAPSULA ---------- */
+  .capsula{background:var(--sky); position:relative;}
+  .capsula::before{
+    content:''; position:absolute; top:-1px; left:0; right:0; height:60px;
+    background:var(--cream); clip-path:polygon(0 100%, 100% 0, 100% 100%);
+  }
+  .capsula .section-title, .capsula .section-sub{color:var(--white);}
+  .capsula .eyebrow-tag{color:var(--sun);}
+  .product-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .product-card{
+    background:var(--white); border:3px solid var(--navy); border-radius:22px; padding:26px;
+    box-shadow:var(--shadow); position:relative; overflow:hidden;
+  }
+  .product-card .tag{
+    position:absolute; top:16px; right:-34px; background:var(--coral); color:var(--white);
+    font-weight:700; font-size:0.75rem; padding:5px 40px; transform:rotate(35deg);
+    border:2px solid var(--navy);
+  }
+  .product-icon{
+    width:76px; height:76px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px; border:3px solid var(--navy);
+  }
+  .product-card h3{font-size:1.25rem; margin-bottom:8px;}
+  .product-card p{font-size:0.95rem; color:#556; margin-bottom:16px; font-weight:600;}
+  .size-chips{display:flex; gap:8px; flex-wrap:wrap;}
+  .size-chips span{
+    background:var(--cream); border:2px solid var(--navy); border-radius:20px; padding:4px 12px;
+    font-size:0.8rem; font-weight:700;
+  }
+  @media(max-width:900px){.product-grid{grid-template-columns:1fr;}}
+
+  /* ---------- WHY US ---------- */
+  .why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:24px;}
+  .why-card{text-align:center;}
+  .why-icon{
+    width:84px; height:84px; margin:0 auto 18px; border-radius:26px;
+    display:flex; align-items:center; justify-content:center; border:3px solid var(--navy);
+    box-shadow:5px 5px 0 var(--navy);
+  }
+  .why-card h3{font-size:1.1rem; margin-bottom:8px;}
+  .why-card p{font-size:0.92rem; font-weight:600; color:#556;}
+  @media(max-width:900px){.why-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* ---------- INSTAGRAM ---------- */
+  .insta{background:var(--navy);}
+  .insta .eyebrow-tag{color:var(--sun);}
+  .insta .section-title{color:var(--white);}
+  .insta .section-sub{color:#c9d3e6;}
+  .insta-follow{
+    display:inline-flex; align-items:center; gap:10px; color:var(--white); font-weight:700;
+    margin-bottom:40px; font-size:1.05rem;
+  }
+  .insta-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px;}
+  .insta-tile{
+    aspect-ratio:1; border-radius:18px; border:3px solid rgba(255,255,255,0.15);
+    display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;
+    font-size:2.4rem; transition:transform .25s ease;
+  }
+  .insta-tile:hover{transform:scale(1.05) rotate(-1deg);}
+  .insta-tile span.label{
+    position:absolute; bottom:10px; left:12px; right:12px; font-family:'Fredoka'; font-size:0.78rem;
+    color:var(--white); font-weight:600; background:rgba(0,0,0,0.25); padding:4px 8px; border-radius:8px;
+  }
+  @media(max-width:900px){.insta-grid{grid-template-columns:repeat(2,1fr);}}
+
+  /* ---------- TESTIMONIOS ---------- */
+  .testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .testi-card{
+    background:var(--white); border:3px solid var(--navy); border-radius:22px; padding:28px;
+    box-shadow:var(--shadow);
+  }
+  .stars{color:var(--sun); font-size:1.1rem; margin-bottom:12px; letter-spacing:2px;}
+  .testi-card p{font-size:0.98rem; font-weight:600; color:#3a4a6b; margin-bottom:18px;}
+  .testi-who{display:flex; align-items:center; gap:12px;}
+  .testi-avatar{
+    width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    font-size:1.3rem; border:2px solid var(--navy);
+  }
+  .testi-who strong{font-size:0.95rem; display:block;}
+  .testi-who span{font-size:0.8rem; color:#7a8399;}
+  @media(max-width:900px){.testi-grid{grid-template-columns:1fr;}}
+
+  /* ---------- FINAL CTA ---------- */
+  .final-cta{
+    background:var(--coral); text-align:center; border-top:3px solid var(--navy); border-bottom:3px solid var(--navy);
+  }
+  .final-cta .section-inner{padding:90px 24px;}
+  .final-cta h2{color:var(--white); font-size:clamp(2rem,4.5vw,2.8rem); margin-bottom:16px;}
+  .final-cta p{color:#fff0ee; font-weight:700; font-size:1.1rem; margin-bottom:32px;}
+  .final-cta .cta-row{justify-content:center;}
+  .final-cta .btn-primary{background:var(--navy);}
+  .final-cta .btn-secondary{background:var(--sun); color:var(--navy);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy); color:#c9d3e6; padding:50px 24px 26px;}
+  .footer-inner{max-width:1180px; margin:0 auto; display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px;}
+  .footer-inner h4{color:var(--white); font-family:'Fredoka'; margin-bottom:14px; font-size:1.05rem;}
+  .footer-inner p, .footer-inner a{font-size:0.92rem; line-height:1.9;}
+  .footer-inner a:hover{color:var(--sun);}
+  .foot-logo{font-family:'Fredoka'; font-size:1.4rem; color:var(--white); margin-bottom:10px;}
+  .foot-bottom{
+    max-width:1180px; margin:40px auto 0; padding-top:22px; border-top:1px solid rgba(255,255,255,0.15);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-size:0.82rem; color:#8a94ac;
+  }
+  @media(max-width:820px){.footer-inner{grid-template-columns:1fr; gap:28px;}}
+
+  /* Whatsapp floating button */
+  .float-wa{
+    position:fixed; bottom:22px; right:22px; z-index:200;
+    background:var(--grass); border:3px solid var(--navy); border-radius:50%;
+    width:64px; height:64px; display:flex; align-items:center; justify-content:center;
+    box-shadow:5px 5px 0 var(--navy); animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{transform:scale(1);}50%{transform:scale(1.07);}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <div class="logo"><span class="dot"></span>Calita Boutique</div>
+    <nav id="mainNav">
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#capsula">Cápsula Campeones</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#opiniones">Opiniones</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+      <a class="nav-cta" href="https://api.whatsapp.com/send/?phone=541144174759" target="_blank" rel="noopener">Escribinos 🐾</a>
+    </nav>
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-copy reveal">
+    <span class="hero-eyebrow">🇦🇷 Cápsula Campeones · Ya disponible</span>
+    <h1>Ropa para perros con <span>toda la garra</span> argentina</h1>
+    <p>Calita Boutique viste a tu perro con diseños únicos, hechos con onda desde Lomas de Zamora para toda la Argentina.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=541144174759" target="_blank" rel="noopener">💬 Pedir por WhatsApp</a>
+      <a class="btn btn-secondary" href="https://www.instagram.com/calitatienda/" target="_blank" rel="noopener">📸 Ver en Instagram</a>
+    </div>
+  </div>
+  <div class="hero-visual reveal">
+    <div class="sunburst"></div>
+    <div class="sticker s1">100%<br>Argentino</div>
+    <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+      <!-- ground shadow -->
+      <ellipse cx="210" cy="390" rx="130" ry="16" fill="#1B2A4A" opacity="0.12"/>
+      <!-- dog body -->
+      <g>
+        <!-- tail -->
+        <path d="M320 250 Q 370 230 360 190 Q 350 210 320 220" fill="#E8B382" stroke="#1B2A4A" stroke-width="4" stroke-linejoin="round"/>
+        <!-- back legs -->
+        <rect x="270" y="300" width="26" height="70" rx="12" fill="#E8B382" stroke="#1B2A4A" stroke-width="4"/>
+        <rect x="120" y="300" width="26" height="70" rx="12" fill="#E8B382" stroke="#1B2A4A" stroke-width="4"/>
+        <!-- jersey body -->
+        <path d="M110 200 Q210 165 320 200 L330 300 Q210 340 100 300 Z" fill="#5EC4E8" stroke="#1B2A4A" stroke-width="5" stroke-linejoin="round"/>
+        <!-- jersey stripes -->
+        <path d="M150 175 L160 320" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round"/>
+        <path d="M280 175 L270 320" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round"/>
+        <!-- collar -->
+        <path d="M170 185 Q210 210 260 185 L250 165 Q210 185 180 165 Z" fill="#FFFFFF" stroke="#1B2A4A" stroke-width="4"/>
+        <!-- number -->
+        <text x="210" y="270" font-family="Fredoka" font-size="52" font-weight="700" fill="#1B2A4A" text-anchor="middle">10</text>
+        <!-- front legs -->
+        <rect x="150" y="290" width="24" height="80" rx="12" fill="#E8B382" stroke="#1B2A4A" stroke-width="4"/>
+        <rect x="246" y="290" width="24" height="80" rx="12" fill="#E8B382" stroke="#1B2A4A" stroke-width="4"/>
+        <!-- head -->
+        <circle cx="210" cy="130" r="78" fill="#F0C9A0" stroke="#1B2A4A" stroke-width="5"/>
+        <!-- ears -->
+        <path d="M150 90 Q120 40 150 20 Q180 55 165 100 Z" fill="#D89A66" stroke="#1B2A4A" stroke-width="4"/>
+        <path d="M270 90 Q300 40 270 20 Q240 55 255 100 Z" fill="#D89A66" stroke="#1B2A4A" stroke-width="4"/>
+        <!-- snout -->
+        <ellipse cx="210" cy="160" rx="34" ry="24" fill="#FFF8EC" stroke="#1B2A4A" stroke-width="4"/>
+        <ellipse cx="210" cy="150" rx="10" ry="7" fill="#1B2A4A"/>
+        <!-- eyes -->
+        <circle cx="178" cy="118" r="7" fill="#1B2A4A"/>
+        <circle cx="242" cy="118" r="7" fill="#1B2A4A"/>
+        <!-- blush -->
+        <circle cx="160" cy="140" r="10" fill="#FF6F61" opacity="0.4"/>
+        <circle cx="260" cy="140" r="10" fill="#FF6F61" opacity="0.4"/>
+        <!-- tongue -->
+        <path d="M205 170 Q210 190 218 170" stroke="#FF6F61" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <!-- sun crown -->
+        <g transform="translate(210,32)">
+          <circle r="16" fill="#FFC93C" stroke="#1B2A4A" stroke-width="3"/>
+        </g>
+      </g>
+    </svg>
+    <div class="sticker s2">Talles<br>XS-XL</div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>🐕 CÁPSULA CAMPEONES YA DISPONIBLE</span>
+    <span>🇦🇷 HECHO EN ARGENTINA</span>
+    <span>📦 ENVÍOS A TODO EL PAÍS</span>
+    <span>💛 DISEÑOS ÚNICOS PARA TU MASCOTA</span>
+    <span>🐕 CÁPSULA CAMPEONES YA DISPONIBLE</span>
+    <span>🇦🇷 HECHO EN ARGENTINA</span>
+    <span>📦 ENVÍOS A TODO EL PAÍS</span>
+    <span>💛 DISEÑOS ÚNICOS PARA TU MASCOTA</span>
+  </div>
+</div>
+
+<section class="capsula" id="capsula">
+  <div class="section-inner">
+    <span class="eyebrow-tag">Lanzamiento</span>
+    <h2 class="section-title reveal">Cápsula Campeones 🇦🇷</h2>
+    <p class="section-sub reveal">La colección que tu perro se merece: celeste y blanco de pies a cabeza, para hinchar desde el sillón o desde la vereda.</p>
+    <div class="product-grid">
+      <div class="product-card reveal">
+        <span class="tag">Nuevo</span>
+        <div class="product-icon" style="background:#5EC4E8;">🎽</div>
+        <h3>Camiseta Campeón</h3>
+        <p>Tela suave, calce cómodo y el número que tu perro elija.</p>
+        <div class="size-chips"><span>XS</span><span>S</span><span>M</span><span>L</span><span>XL</span></div>
+      </div>
+      <div class="product-card reveal">
+        <span class="tag">Nuevo</span>
+        <div class="product-icon" style="background:#FFC93C;">🎗️</div>
+        <h3>Pañuelo Tricampeón</h3>
+        <p>El accesorio infaltable para el paseo de después del partido.</p>
+        <div class="size-chips"><span>Único</span><span>Ajustable</span></div>
+      </div>
+      <div class="product-card reveal">
+        <span class="tag">Nuevo</span>
+        <div class="product-icon" style="background:#FF6F61;">🏆</div>
+        <h3>Cintillo Estrellas</h3>
+        <p>Con las estrellitas bordadas, para las fotos de gala.</p>
+        <div class="size-chips"><span>S</span><span>M</span><span>L</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="section-inner">
+    <span class="eyebrow-tag">Por qué Calita</span>
+    <h2 class="section-title reveal">Ropa con onda, hecha con amor</h2>
+    <p class="section-sub reveal">Cada prenda sale de Lomas de Zamora pensada para que tu perro esté cómodo, abrigado y con estilo.</p>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon" style="background:#5EC4E8;">✂️</div>
+        <h3>Diseños propios</h3>
+        <p>Cada modelo es exclusivo de Calita Boutique.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon" style="background:#FFC93C;">📏</div>
+        <h3>Talles reales</h3>
+        <p>Guía de medidas para que calce perfecto la primera vez.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon" style="background:#FF6F61;">📦</div>
+        <h3>Envíos a todo el país</h3>
+        <p>Coordinamos por WhatsApp o retirás en Lomas de Zamora.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon" style="background:#3FAE7C;">💛</div>
+        <h3>Atención personal</h3>
+        <p>Te ayudamos a elegir el talle y el diseño ideal por MD.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="insta">
+  <div class="section-inner">
+    <span class="eyebrow-tag">Comunidad</span>
+    <h2 class="section-title reveal">Seguinos en Instagram</h2>
+    <a class="insta-follow reveal" href="https://www.instagram.com/calitatienda/" target="_blank" rel="noopener">📸 @calitatienda — sumate a la comunidad Calita</a>
+    <div class="insta-grid">
+      <div class="insta-tile reveal" style="background:#5EC4E8;">🐕<span class="label">Cápsula Campeones</span></div>
+      <div class="insta-tile reveal" style="background:#FFC93C;">🧣<span class="label">Nuevos accesorios</span></div>
+      <div class="insta-tile reveal" style="background:#FF6F61;">🐾<span class="label">Clientas felices</span></div>
+      <div class="insta-tile reveal" style="background:#3FAE7C;">✨<span class="label">Detrás de escena</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="opiniones">
+  <div class="section-inner">
+    <span class="eyebrow-tag">Testimonios</span>
+    <h2 class="section-title reveal">Lo que dicen las familias Calita</h2>
+    <p class="section-sub reveal">Perros felices, dueños contentos.</p>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Le compré la camiseta a Rocco y le quedó perfecta. Atención rapidísima por WhatsApp."</p>
+        <div class="testi-who">
+          <div class="testi-avatar" style="background:#5EC4E8;">🐶</div>
+          <div><strong>Male, dueña de Rocco</strong><span>Lomas de Zamora</span></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"La calidad de la tela sorprende. Mi Kira ya tiene 3 prendas de Calita."</p>
+        <div class="testi-who">
+          <div class="testi-avatar" style="background:#FFC93C;">🐕</div>
+          <div><strong>Vicky, dueña de Kira</strong><span>Banfield</span></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Pedí por Instagram y llegó rapidísimo. Toto se lució con la cápsula campeones."</p>
+        <div class="testi-who">
+          <div class="testi-avatar" style="background:#FF6F61;">🐩</div>
+          <div><strong>Nico, dueño de Toto</strong><span>Adrogué</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="contacto">
+  <div class="section-inner">
+    <h2 class="reveal">¿Le hacemos un cambio de look a tu perro?</h2>
+    <p class="reveal">Escribinos y te ayudamos a elegir el talle y el diseño perfecto.</p>
+    <div class="cta-row reveal">
+      <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=541144174759" target="_blank" rel="noopener">💬 Consultar por WhatsApp</a>
+      <a class="btn btn-secondary" href="https://www.instagram.com/calitatienda/" target="_blank" rel="noopener">📸 @calitatienda</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="foot-logo">Calita Boutique</div>
+      <p>Ropa para perros con diseños únicos, hecha con onda desde Lomas de Zamora para toda la Argentina. 🐾</p>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <p>
+        <a href="https://api.whatsapp.com/send/?phone=541144174759" target="_blank" rel="noopener">WhatsApp: +54 11 4417-4759</a><br>
+        <a href="https://www.instagram.com/calitatienda/" target="_blank" rel="noopener">Instagram @calitatienda</a>
+      </p>
+    </div>
+    <div>
+      <h4>Ubicación</h4>
+      <p>Lomas de Zamora, Buenos Aires<br>Argentina</p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 Calita Boutique. Todos los derechos reservados.</span>
+    <span>Hecho con 💙 para los perros más copados</span>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://api.whatsapp.com/send/?phone=541144174759" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+    <path d="M17.6 6.32A7.85 7.85 0 0 0 12.05 4C7.62 4 4 7.6 4 12.02c0 1.42.38 2.8 1.1 4.02L4 20l4.08-1.07a8.1 8.1 0 0 0 3.97 1.02h.01c4.42 0 8.02-3.6 8.02-8.02a7.9 7.9 0 0 0-2.48-5.6Z" stroke="#FFF8EC" stroke-width="1.4"/>
+    <path d="M9.3 8.6c.15-.34.31-.35.45-.35h.38c.12 0 .29-.05.45.35.17.42.58 1.44.63 1.54.05.1.08.22.02.36-.06.14-.1.22-.2.34-.1.12-.2.26-.3.35-.1.1-.2.2-.09.4.12.2.53.9 1.15 1.46.79.72 1.46 1 1.66 1.1.2.1.32.08.44-.04.12-.13.5-.58.63-.78.13-.2.26-.16.44-.1.18.06 1.14.54 1.34.64.2.1.33.15.38.24.05.1.05.55-.13 1.08-.18.53-1.05 1-1.45 1.06-.4.06-.72.06-1.63-.34-1.38-.6-2.28-2-2.35-2.1-.07-.1-.57-.76-.57-1.44 0-.68.36-1.02.49-1.16Z" fill="#FFF8EC"/>
+  </svg>
+</a>
+
+<script>
+  // menu mobile
+  const burger = document.getElementById('burgerBtn');
+  const nav = document.getElementById('mainNav');
+  burger.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // playful click sound on CTA buttons (Web Audio synth, no external files)
+  let audioCtx;
+  function playChime(){
+    try{
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      const now = audioCtx.currentTime;
+      const notes = [523.25, 659.25, 783.99]; // C5 E5 G5
+      notes.forEach((freq, i) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.001, now + i*0.07);
+        gain.gain.exponentialRampToValueAtTime(0.12, now + i*0.07 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + i*0.07 + 0.25);
+        osc.connect(gain).connect(audioCtx.destination);
+        osc.start(now + i*0.07);
+        osc.stop(now + i*0.07 + 0.3);
+      });
+    }catch(e){}
+  }
+  document.querySelectorAll('.btn, .nav-cta, .float-wa').forEach(btn => {
+    btn.addEventListener('click', playChime);
+  });
+</script>
+
+</body>
+</html>
