@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Selvacoa | Fine Cacao Sourcing — Colombia Direct Origin</title>
+<meta name="description" content="Selvacoa curates the finest Colombian cacao. Direct origin specialists. We don't pitch stories, we roast the proof. Request your sample today.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF1DE;
+    --gold:#F0A02C;
+    --terracotta:#E4632B;
+    --cacao-brown:#4A2A18;
+    --jungle:#2F6B4F;
+    --jungle-deep:#1F4936;
+    --paper:#FFF9EE;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Work Sans',sans-serif;
+    background:var(--cream);
+    color:var(--cacao-brown);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,241,222,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:2px solid rgba(74,42,24,0.08);
+  }
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;}
+  .logo{font-family:'Fraunces',serif;font-weight:700;font-size:1.4rem;color:var(--jungle-deep);display:flex;align-items:center;gap:8px;}
+  .logo .pod{width:22px;height:26px;}
+  .nav-links{display:flex;gap:28px;align-items:center;}
+  .nav-links a{font-size:0.92rem;font-weight:600;color:var(--cacao-brown);}
+  .nav-links a:hover{color:var(--terracotta);}
+  .nav-cta{
+    background:var(--jungle-deep);color:var(--paper)!important;
+    padding:10px 20px;border-radius:100px;font-size:0.88rem;
+  }
+  .nav-cta:hover{background:var(--terracotta);}
+  @media (max-width:640px){ .nav-links a:not(.nav-cta){display:none;} }
+
+  /* HERO */
+  .hero{
+    position:relative;
+    padding:90px 24px 70px;
+    background:
+      radial-gradient(circle at 85% 10%, rgba(240,160,44,0.35), transparent 45%),
+      radial-gradient(circle at 5% 90%, rgba(47,107,79,0.25), transparent 40%),
+      var(--cream);
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;
+    max-width:1080px;margin:0 auto;
+  }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} }
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--paper);border:1.5px solid var(--gold);
+    color:var(--terracotta);font-weight:600;font-size:0.82rem;
+    padding:7px 16px;border-radius:100px;margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.3rem,5.2vw,3.6rem);
+    line-height:1.05;color:var(--jungle-deep);margin-bottom:22px;
+  }
+  .hero h1 em{font-style:italic;color:var(--terracotta);}
+  .hero p.lead{font-size:1.15rem;line-height:1.6;color:#5c3d28;max-width:520px;margin-bottom:32px;}
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 30px;border-radius:100px;font-weight:700;font-size:1rem;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{background:var(--terracotta);color:#fff;box-shadow:0 8px 22px rgba(228,99,43,0.35);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(228,99,43,0.45);}
+  .btn-secondary{background:transparent;border:2px solid var(--jungle-deep);color:var(--jungle-deep);}
+  .btn-secondary:hover{background:var(--jungle-deep);color:#fff;transform:translateY(-2px);}
+
+  .hero-visual{position:relative;display:flex;justify-content:center;}
+  .pod-illustration{width:100%;max-width:340px;filter:drop-shadow(0 20px 30px rgba(74,42,24,0.25));}
+  .float-badge{
+    position:absolute;bottom:-10px;left:10px;
+    background:var(--jungle-deep);color:var(--paper);
+    padding:14px 18px;border-radius:16px;font-size:0.85rem;font-weight:600;
+    box-shadow:0 10px 20px rgba(31,73,54,0.3);
+    display:flex;gap:10px;align-items:center;
+  }
+  .float-badge b{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--gold);}
+
+  /* STRIP */
+  .strip{
+    background:var(--jungle-deep);color:var(--paper);
+    padding:16px 0;overflow:hidden;white-space:nowrap;
+    border-top:4px solid var(--gold);border-bottom:4px solid var(--gold);
+  }
+  .strip-track{display:inline-block;animation:scroll 26s linear infinite;font-weight:600;letter-spacing:0.03em;}
+  .strip span{margin:0 32px;font-size:0.95rem;opacity:0.92;}
+  .strip span:before{content:"●";color:var(--gold);margin-right:32px;}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* SECTION GENERIC */
+  section{padding:88px 0;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .kicker{color:var(--terracotta);font-weight:700;font-size:0.85rem;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;display:block;}
+  .section-head h2{font-size:clamp(1.8rem,3.6vw,2.6rem);color:var(--jungle-deep);line-height:1.15;}
+  .section-head p{margin-top:16px;font-size:1.05rem;color:#5c3d28;line-height:1.65;}
+
+  /* WHY GRID */
+  .why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  @media (max-width:800px){.why-grid{grid-template-columns:1fr;}}
+  .why-card{
+    background:var(--paper);border-radius:20px;padding:32px 26px;
+    border:1.5px solid rgba(74,42,24,0.08);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .why-card:hover{transform:translateY(-6px);box-shadow:0 16px 30px rgba(74,42,24,0.12);}
+  .why-icon{
+    width:52px;height:52px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;margin-bottom:18px;
+  }
+  .why-card:nth-child(1) .why-icon{background:rgba(228,99,43,0.15);}
+  .why-card:nth-child(2) .why-icon{background:rgba(240,160,44,0.2);}
+  .why-card:nth-child(3) .why-icon{background:rgba(47,107,79,0.15);}
+  .why-card h3{font-size:1.2rem;color:var(--jungle-deep);margin-bottom:10px;}
+  .why-card p{font-size:0.96rem;line-height:1.6;color:#5c3d28;}
+
+  /* ORIGIN MAP SIGNATURE SECTION */
+  .origin{background:var(--jungle-deep);color:var(--paper);}
+  .origin .kicker{color:var(--gold);}
+  .origin .section-head h2{color:var(--paper);}
+  .origin .section-head p{color:rgba(255,249,238,0.8);}
+  .origin-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  @media (max-width:860px){.origin-grid{grid-template-columns:1fr;}}
+  .region-list{display:flex;flex-direction:column;gap:18px;}
+  .region-item{
+    display:flex;gap:16px;align-items:flex-start;
+    padding:18px 20px;background:rgba(255,249,238,0.06);
+    border-left:3px solid var(--gold);border-radius:0 14px 14px 0;
+  }
+  .region-dot{
+    width:12px;height:12px;border-radius:50%;background:var(--gold);
+    margin-top:6px;flex-shrink:0;
+  }
+  .region-item h4{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--gold);margin-bottom:4px;}
+  .region-item p{font-size:0.92rem;color:rgba(255,249,238,0.82);line-height:1.55;}
+  .colombia-svg{width:100%;max-width:380px;margin:0 auto;}
+
+  /* PROCESS */
+  .process-steps{display:flex;flex-direction:column;gap:0;}
+  .step{
+    display:grid;grid-template-columns:64px 1fr;gap:24px;
+    padding:26px 0;border-bottom:1.5px solid rgba(74,42,24,0.1);
+  }
+  .step:last-child{border-bottom:none;}
+  .step-num{
+    width:52px;height:52px;border-radius:50%;
+    background:var(--terracotta);color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem;
+  }
+  .step h3{font-size:1.2rem;color:var(--jungle-deep);margin-bottom:6px;}
+  .step p{color:#5c3d28;line-height:1.6;font-size:0.98rem;}
+
+  /* QUOTE / PROOF */
+  .proof{
+    background:linear-gradient(135deg, rgba(240,160,44,0.18), rgba(228,99,43,0.12));
+    border-radius:28px;padding:56px 40px;text-align:center;
+    max-width:820px;margin:0 auto;
+  }
+  .proof p.big{
+    font-family:'Fraunces',serif;font-style:italic;font-weight:500;
+    font-size:clamp(1.4rem,2.6vw,1.9rem);color:var(--cacao-brown);line-height:1.4;
+  }
+  .proof .stats{display:flex;gap:40px;justify-content:center;margin-top:36px;flex-wrap:wrap;}
+  .stat b{display:block;font-family:'Fraunces',serif;font-size:2rem;color:var(--terracotta);}
+  .stat span{font-size:0.85rem;color:#5c3d28;font-weight:600;}
+
+  /* FINAL CTA */
+  .final-cta{
+    background:var(--terracotta);color:#fff;text-align:center;
+    padding:90px 24px;position:relative;overflow:hidden;
+  }
+  .final-cta h2{font-size:clamp(2rem,4.4vw,2.8rem);margin-bottom:18px;}
+  .final-cta p{font-size:1.1rem;max-width:520px;margin:0 auto 34px;opacity:0.95;}
+  .final-cta .btn-primary{background:var(--jungle-deep);box-shadow:0 8px 22px rgba(31,73,54,0.4);}
+  .final-cta .btn-primary:hover{background:#183c2b;}
+  .ig-pill{
+    display:inline-flex;align-items:center;gap:10px;margin-top:22px;
+    background:rgba(255,255,255,0.15);padding:10px 20px;border-radius:100px;
+    font-weight:600;font-size:0.95rem;
+  }
+  .ig-pill:hover{background:rgba(255,255,255,0.28);}
+
+  footer{
+    background:var(--cacao-brown);color:rgba(255,249,238,0.75);
+    padding:40px 24px;text-align:center;font-size:0.88rem;
+  }
+  footer .foot-links{display:flex;gap:24px;justify-content:center;margin-bottom:14px;flex-wrap:wrap;}
+  footer a:hover{color:var(--gold);}
+
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#" class="logo">
+      <svg class="pod" viewBox="0 0 24 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C6 6 3 12 4 18C4.8 23 8 27 12 28C16 27 19.2 23 20 18C21 12 18 6 12 2Z" fill="#E4632B" stroke="#4A2A18" stroke-width="1.2"/>
+        <path d="M12 4V26" stroke="#F0A02C" stroke-width="1.2"/>
+        <path d="M12 8C10 9 9 11 9.5 13M12 8C14 9 15 11 14.5 13" stroke="#F0A02C" stroke-width="1"/>
+        <path d="M12 14C10 15 9 17 9.5 19M12 14C14 15 15 17 14.5 19" stroke="#F0A02C" stroke-width="1"/>
+      </svg>
+      Selvacoa
+    </a>
+    <div class="nav-links">
+      <a href="#why">Why Selvacoa</a>
+      <a href="#origin">Origin</a>
+      <a href="#process">Process</a>
+      <a class="nav-cta" href="https://www.instagram.com/selvacoa.cacao/" target="_blank" rel="noopener">Get Your Sample</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">🇨🇴 Direct Origin Specialists</span>
+      <h1>We don't pitch<br>stories. We <em>roast<br>the proof.</em></h1>
+      <p class="lead">Selvacoa curates the finest Colombian cacao for chocolate makers, roasters, and brands who taste before they believe. Traceable to the farm. Graded for flavor. Ready to ship.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://www.instagram.com/selvacoa.cacao/" target="_blank" rel="noopener">
+          Get Your Sample →
+        </a>
+        <a class="btn btn-secondary" href="#why">See What Makes It Fine</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg class="pod-illustration" viewBox="0 0 300 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="150" cy="330" rx="90" ry="14" fill="#4A2A18" opacity="0.12"/>
+        <path d="M150 20C90 60 55 130 65 210C75 270 105 320 150 340C195 320 225 270 235 210C245 130 210 60 150 20Z" fill="#E4632B"/>
+        <path d="M150 20C90 60 55 130 65 210C75 270 105 320 150 340" fill="none" stroke="#4A2A18" stroke-width="2"/>
+        <path d="M150 20C210 60 245 130 235 210C225 270 195 320 150 340" fill="none" stroke="#4A2A18" stroke-width="2"/>
+        <path d="M150 40V320" stroke="#F0A02C" stroke-width="3"/>
+        <path d="M150 60C130 70 118 90 122 112M150 60C170 70 182 90 178 112" stroke="#F0A02C" stroke-width="2"/>
+        <path d="M150 130C130 140 118 160 122 182M150 130C170 140 182 160 178 182" stroke="#F0A02C" stroke-width="2"/>
+        <path d="M150 200C130 210 118 230 122 252M150 200C170 210 182 230 178 252" stroke="#F0A02C" stroke-width="2"/>
+        <path d="M150 265C130 273 122 288 125 305M150 265C170 273 178 288 175 305" stroke="#F0A02C" stroke-width="2"/>
+        <circle cx="150" cy="15" r="8" fill="#2F6B4F"/>
+      </svg>
+      <div class="float-badge">
+        <b>95%</b> of Colombian cacao rated fine &amp; aroma by the ICCO
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="strip-track">
+    <span>Direct Origin</span><span>Single Farm Traceability</span><span>Fine &amp; Aroma Grade</span><span>Sample-First Sourcing</span><span>Nariño</span><span>Cauca</span><span>Sierra Nevada</span>
+    <span>Direct Origin</span><span>Single Farm Traceability</span><span>Fine &amp; Aroma Grade</span><span>Sample-First Sourcing</span><span>Nariño</span><span>Cauca</span><span>Sierra Nevada</span>
+  </div>
+</div>
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Why Buyers Choose Us</span>
+      <h2>Cacao sourcing built on proof, not pitch decks.</h2>
+      <p>We work directly with growers across Colombia's finest cacao-producing regions, so every lot you receive comes with a real name, a real farm, and a real flavor profile — before you commit to a single kilo.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 6V12C4 17 7.5 21 12 22C16.5 21 20 17 20 12V6L12 2Z" stroke="#E4632B" stroke-width="1.8"/></svg>
+        </div>
+        <h3>Traceable to the Farm</h3>
+        <p>Every sample is linked to its origin — down to the region, the cooperative, and the harvest. No blends, no guessing.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#F0A02C" stroke-width="1.8"/><path d="M12 7V12L15 14" stroke="#F0A02C" stroke-width="1.8"/></svg>
+        </div>
+        <h3>Sample Before You Scale</h3>
+        <p>Taste the lot before you buy the container. We send real samples so you evaluate flavor, not marketing copy.</p>
+      </div>
+      <div class="why-card reveal">
+        <div class="why-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 12C4 12 7 5 12 5C17 5 20 12 20 12C20 12 17 19 12 19C7 19 4 12 4 12Z" stroke="#2F6B4F" stroke-width="1.8"/><circle cx="12" cy="12" r="2.5" stroke="#2F6B4F" stroke-width="1.8"/></svg>
+        </div>
+        <h3>Fine &amp; Aroma Grade</h3>
+        <p>Colombia is recognized for exceptional fine-flavor cacao. We select only lots that meet that standard — nothing bulk, nothing generic.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="origin" class="origin">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">Where It Grows</span>
+      <h2>Sourced from Colombia's most distinctive cacao terroirs.</h2>
+      <p>Altitude, soil, and generations of growing knowledge shape every flavor note. We source from the regions that consistently produce the country's most award-recognized cacao.</p>
+    </div>
+    <div class="origin-grid">
+      <svg class="colombia-svg reveal" viewBox="0 0 320 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M150 20C190 40 220 70 230 110C240 150 225 180 235 210C245 240 260 260 250 290C240 320 200 340 180 330C160 320 165 300 145 295C125 290 100 310 85 295C70 280 80 250 65 230C50 210 30 200 35 175C40 150 65 145 70 120C75 95 60 70 85 50C110 30 130 15 150 20Z" fill="rgba(240,160,44,0.15)" stroke="#F0A02C" stroke-width="2"/>
+        <circle cx="110" cy="90" r="7" fill="#E4632B"/>
+        <text x="122" y="95" fill="#FBF1DE" font-family="Work Sans" font-size="13" font-weight="600">Sierra Nevada</text>
+        <circle cx="90" cy="200" r="7" fill="#F0A02C"/>
+        <text x="102" y="205" fill="#FBF1DE" font-family="Work Sans" font-size="13" font-weight="600">Cauca</text>
+        <circle cx="70" cy="270" r="7" fill="#E4632B"/>
+        <text x="82" y="275" fill="#FBF1DE" font-family="Work Sans" font-size="13" font-weight="600">Nariño</text>
+      </svg>
+      <div class="region-list reveal">
+        <div class="region-item">
+          <span class="region-dot"></span>
+          <div>
+            <h4>Sierra Nevada de Santa Marta</h4>
+            <p>Ancestral growing territory with deep indigenous cacao heritage and complex, aromatic profiles.</p>
+          </div>
+        </div>
+        <div class="region-item">
+          <span class="region-dot"></span>
+          <div>
+            <h4>Cauca</h4>
+            <p>High-altitude farms producing bright, floral lots prized by fine chocolate makers.</p>
+          </div>
+        </div>
+        <div class="region-item">
+          <span class="region-dot"></span>
+          <div>
+            <h4>Nariño</h4>
+            <p>One of the country's most award-recognized regions for fruity, well-balanced cacao.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="kicker">How Sourcing Works</span>
+      <h2>From sample request to full container, in three steps.</h2>
+    </div>
+    <div class="process-steps">
+      <div class="step reveal">
+        <div class="step-num">1</div>
+        <div>
+          <h3>Request Your Sample</h3>
+          <p>Message us on Instagram and tell us the flavor profile or volume you're sourcing for. We'll recommend lots that match.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">2</div>
+        <div>
+          <h3>Taste &amp; Confirm</h3>
+          <p>We send a real sample with full origin details — region, cooperative, harvest date, and fermentation notes.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="step-num">3</div>
+        <div>
+          <h3>Scale With Confidence</h3>
+          <p>Once you've tasted the proof, we handle sourcing at the volume you need, direct from origin.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="proof reveal">
+      <p class="big">"We don't pitch stories. We roast the proof."</p>
+      <div class="stats">
+        <div class="stat"><b>95%</b><span>Fine &amp; aroma export grade</span></div>
+        <div class="stat"><b>3</b><span>Signature growing regions</span></div>
+        <div class="stat"><b>1</b><span>Sample, before you scale</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>Ready to taste the difference?</h2>
+    <p>Send us a message on Instagram and we'll get your Colombian cacao sample moving — no pitch deck required.</p>
+    <a class="btn btn-primary" href="https://www.instagram.com/selvacoa.cacao/" target="_blank" rel="noopener">Get Your Sample →</a>
+    <br>
+    <a class="ig-pill" href="https://www.instagram.com/selvacoa.cacao/" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" stroke="#fff" stroke-width="1.8"/><circle cx="17.2" cy="6.8" r="1.2" fill="#fff"/></svg>
+      @selvacoa.cacao
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-links">
+    <a href="https://www.instagram.com/selvacoa.cacao/" target="_blank" rel="noopener">Instagram</a>
+    <a href="#why">Why Selvacoa</a>
+    <a href="#origin">Origin</a>
+    <a href="#process">Process</a>
+  </div>
+  <p>© 2026 Selvacoa. Fine cacao sourcing, direct from Colombia.</p>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+  },{threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
