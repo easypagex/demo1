@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chocolates Artesanales Bogotá | Handcrafted Colombian Chocolate</title>
+<meta name="description" content="Eye-catching, high-quality artisanal chocolates handmade in Bogotá, Colombia — perfect for weddings, birthdays, corporate gifts and every celebration.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cacao: #3B1F0F;
+    --cacao-deep: #2A1509;
+    --terracotta: #8A4A22;
+    --marigold: #E8A93D;
+    --gold: #D4AF37;
+    --gold-bright: #F0C040;
+    --guava: #E85D75;
+    --leaf: #1F7A54;
+    --cream: #FFF8ED;
+    --cream-soft: #FBEFDA;
+    --ink: #2A1509;
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:'Quicksand', sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+  }
+
+  a{ text-decoration:none; color:inherit; }
+  img{ max-width:100%; display:block; }
+  ul{ list-style:none; }
+
+  .wrap{ max-width:1140px; margin:0 auto; padding:0 24px; }
+
+  /* ===== Nav ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(59,31,15,0.96);
+    backdrop-filter: blur(6px);
+    border-bottom:2px solid var(--gold);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px; max-width:1140px; margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif; font-weight:700; font-size:1.25rem;
+    color:var(--cream);
+    letter-spacing:0.3px;
+  }
+  .logo-mark{
+    width:34px; height:34px; border-radius:40% 60% 55% 45%/50% 45% 55% 50%;
+    background:linear-gradient(135deg, var(--gold-bright), var(--terracotta));
+    border:2px solid var(--gold);
+    flex-shrink:0;
+  }
+  nav .nav-links{ display:flex; gap:28px; align-items:center; }
+  nav .nav-links a{
+    color:var(--cream-soft); font-weight:600; font-size:0.95rem;
+    transition:color .2s;
+  }
+  nav .nav-links a:hover{ color:var(--gold-bright); }
+  .nav-cta{
+    background:linear-gradient(135deg, var(--gold-bright), var(--gold));
+    color:var(--cacao-deep) !important;
+    padding:9px 20px; border-radius:30px; font-weight:700 !important;
+    box-shadow:0 3px 0 rgba(0,0,0,0.25);
+  }
+  .nav-cta:hover{ filter:brightness(1.05); }
+  @media (max-width:720px){
+    nav .nav-links{ display:none; }
+  }
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(232,169,61,0.25), transparent 40%),
+      radial-gradient(circle at 85% 75%, rgba(232,93,117,0.28), transparent 45%),
+      linear-gradient(160deg, var(--cacao) 0%, var(--cacao-deep) 60%, #1c0d05 100%);
+    color:var(--cream);
+    padding:90px 0 70px;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center;
+  }
+  @media (max-width:900px){
+    .hero .wrap{ grid-template-columns:1fr; }
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    color:var(--gold-bright); font-weight:700; letter-spacing:1.5px;
+    text-transform:uppercase; font-size:0.78rem; margin-bottom:18px;
+    border:1px solid var(--gold); padding:6px 14px; border-radius:30px;
+  }
+  .hero h1{
+    font-size:clamp(2.3rem, 4.6vw, 3.4rem);
+    line-height:1.08;
+    margin-bottom:20px;
+  }
+  .hero h1 em{
+    font-style:italic; color:var(--gold-bright);
+  }
+  .hero p.lead{
+    font-size:1.15rem; color:#F3E3CC; max-width:520px; margin-bottom:30px; line-height:1.6;
+  }
+  .cta-row{ display:flex; gap:16px; flex-wrap:wrap; }
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 28px; border-radius:40px; font-weight:700; font-size:1rem;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg, var(--gold-bright), var(--gold));
+    color:var(--cacao-deep);
+    box-shadow:0 5px 0 #a9812a;
+  }
+  .btn-primary:hover{ transform:translateY(-2px); box-shadow:0 7px 0 #a9812a; }
+  .btn-outline{
+    border:2px solid var(--gold);
+    color:var(--cream);
+  }
+  .btn-outline:hover{ background:rgba(212,175,55,0.15); }
+
+  /* Bonbon grid illustration */
+  .bonbon-box{
+    position:relative;
+    display:grid; grid-template-columns:repeat(3,1fr); gap:14px;
+    background:var(--cream-soft);
+    padding:22px; border-radius:24px;
+    border:3px solid var(--gold);
+    box-shadow:0 20px 45px rgba(0,0,0,0.35);
+    transform:rotate(2deg);
+  }
+  .bonbon{
+    aspect-ratio:1; border-radius:38% 62% 55% 45%/48% 42% 58% 52%;
+    position:relative;
+    box-shadow:inset 0 -6px 10px rgba(0,0,0,0.18), 0 4px 8px rgba(0,0,0,0.15);
+  }
+  .bonbon::after{
+    content:''; position:absolute; top:14%; left:18%; width:38%; height:22%;
+    background:rgba(255,255,255,0.35); border-radius:50%;
+    filter:blur(2px);
+  }
+  .bonbon.c1{ background:linear-gradient(135deg,#8A4A22,#5A2E12); }
+  .bonbon.c2{ background:linear-gradient(135deg,#E85D75,#B33A52); }
+  .bonbon.c3{ background:linear-gradient(135deg,#E8A93D,#C9871F); }
+  .bonbon.c4{ background:linear-gradient(135deg,#1F7A54,#125836); }
+  .bonbon.c5{ background:linear-gradient(135deg,#D4AF37,#8A4A22); }
+  .bonbon.c6{ background:linear-gradient(135deg,#5A2E12,#2A1509); }
+  .bonbon.c7{ background:linear-gradient(135deg,#E8A93D,#E85D75); }
+  .bonbon.c8{ background:linear-gradient(135deg,#8A4A22,#D4AF37); }
+  .bonbon.c9{ background:linear-gradient(135deg,#B33A52,#E8A93D); }
+  .ribbon-tag{
+    position:absolute; top:-16px; right:-14px;
+    background:var(--guava); color:#fff; font-weight:700;
+    padding:10px 16px; border-radius:50%; width:78px; height:78px;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    font-size:0.75rem; line-height:1.1; transform:rotate(8deg);
+    border:3px solid var(--cream); box-shadow:0 4px 10px rgba(0,0,0,0.3);
+  }
+
+  /* ===== Melt divider ===== */
+  .melt-divider{
+    display:block; width:100%; height:60px; margin-top:-2px;
+  }
+
+  /* ===== About / stats ===== */
+  .about{
+    background:var(--cream);
+    padding:80px 0 60px;
+  }
+  .about-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+  }
+  @media (max-width:860px){ .about-grid{ grid-template-columns:1fr; gap:32px; } }
+  .about h2{ font-size:2.1rem; color:var(--cacao); margin-bottom:18px; }
+  .about p{ color:#5b4433; line-height:1.75; font-size:1.05rem; margin-bottom:16px; }
+  .stat-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .stat-card{
+    background:var(--cream-soft);
+    border:2px solid var(--gold);
+    border-radius:18px; padding:22px;
+    text-align:center;
+  }
+  .stat-card .num{
+    font-family:'Fraunces',serif; font-size:2.1rem; color:var(--terracotta); font-weight:700;
+  }
+  .stat-card .label{ font-size:0.85rem; color:#6b5744; font-weight:600; margin-top:4px; }
+
+  /* ===== Occasions ===== */
+  .occasions{
+    background:linear-gradient(180deg, var(--cream) 0%, #FCEEDB 100%);
+    padding:20px 0 90px;
+  }
+  .section-head{ text-align:center; max-width:640px; margin:0 auto 50px; }
+  .section-head .eyebrow-dark{
+    color:var(--terracotta); font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+    font-size:0.8rem; margin-bottom:10px; display:block;
+  }
+  .section-head h2{ font-size:2.1rem; color:var(--cacao); }
+  .occ-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:22px;
+  }
+  @media (max-width:860px){ .occ-grid{ grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:560px){ .occ-grid{ grid-template-columns:1fr;} }
+  .occ-card{
+    background:#fff;
+    border-radius:20px;
+    padding:28px 22px;
+    text-align:center;
+    border:2px solid transparent;
+    box-shadow:0 8px 24px rgba(59,31,15,0.08);
+    transition:transform .25s, border-color .25s, box-shadow .25s;
+  }
+  .occ-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--gold);
+    box-shadow:0 16px 30px rgba(59,31,15,0.16);
+  }
+  .occ-icon{
+    width:58px; height:58px; margin:0 auto 16px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem;
+    color:#fff;
+  }
+  .occ-card:nth-child(1) .occ-icon{ background:linear-gradient(135deg,var(--guava),#b33a52);}
+  .occ-card:nth-child(2) .occ-icon{ background:linear-gradient(135deg,var(--leaf),#125836);}
+  .occ-card:nth-child(3) .occ-icon{ background:linear-gradient(135deg,var(--gold-bright),var(--terracotta));}
+  .occ-card:nth-child(4) .occ-icon{ background:linear-gradient(135deg,var(--terracotta),var(--cacao));}
+  .occ-card:nth-child(5) .occ-icon{ background:linear-gradient(135deg,var(--marigold),var(--guava));}
+  .occ-card:nth-child(6) .occ-icon{ background:linear-gradient(135deg,var(--leaf),var(--gold));}
+  .occ-card h3{ font-size:1.15rem; margin-bottom:8px; color:var(--cacao); }
+  .occ-card p{ font-size:0.92rem; color:#6b5744; line-height:1.5; }
+
+  /* ===== Gallery ===== */
+  .gallery{ background:var(--cacao-deep); padding:90px 0; color:var(--cream); }
+  .gallery .section-head h2{ color:var(--cream); }
+  .gallery .section-head .eyebrow-dark{ color:var(--gold-bright); }
+  .gal-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:16px;
+  }
+  @media (max-width:860px){ .gal-grid{ grid-template-columns:repeat(2,1fr);} }
+  .gal-item{
+    aspect-ratio:1;
+    border-radius:22px;
+    position:relative;
+    overflow:hidden;
+    border:2px solid var(--gold);
+    display:flex; align-items:flex-end;
+    padding:14px;
+    font-weight:700; font-size:0.9rem;
+  }
+  .gal-item span{
+    background:rgba(0,0,0,0.35); padding:6px 10px; border-radius:10px;
+    backdrop-filter:blur(2px);
+  }
+  .gal-item.g1{ background:radial-gradient(circle at 30% 30%, #E8A93D, #8A4A22 75%); }
+  .gal-item.g2{ background:radial-gradient(circle at 70% 30%, #E85D75, #5A2E12 75%); }
+  .gal-item.g3{ background:radial-gradient(circle at 30% 70%, #1F7A54, #2A1509 75%); }
+  .gal-item.g4{ background:radial-gradient(circle at 70% 70%, #D4AF37, #B33A52 75%); }
+  .gal-item.g5{ background:radial-gradient(circle at 50% 20%, #F0C040, #3B1F0F 75%); }
+  .gal-item.g6{ background:radial-gradient(circle at 20% 50%, #E85D75, #8A4A22 75%); }
+  .gal-item.g7{ background:radial-gradient(circle at 80% 50%, #1F7A54, #5A2E12 75%); }
+  .gal-item.g8{ background:radial-gradient(circle at 50% 80%, #E8A93D, #2A1509 75%); }
+
+  .gallery-note{
+    text-align:center; margin-top:32px; color:#E9D4B4; font-size:0.95rem;
+  }
+
+  /* ===== Process ===== */
+  .process{ background:var(--cream); padding:90px 0; }
+  .proc-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:30px;
+    counter-reset:step;
+  }
+  @media (max-width:860px){ .proc-grid{ grid-template-columns:1fr; } }
+  .proc-card{
+    position:relative;
+    background:var(--cream-soft);
+    border-radius:22px; padding:34px 26px;
+    border:2px solid var(--gold);
+  }
+  .proc-num{
+    counter-increment:step;
+    font-family:'Fraunces',serif; font-weight:700; font-size:2.6rem;
+    color:var(--gold);
+    -webkit-text-stroke:2px var(--terracotta);
+    margin-bottom:10px;
+  }
+  .proc-num::before{ content: counter(step, decimal-leading-zero); }
+  .proc-card h3{ font-size:1.2rem; color:var(--cacao); margin-bottom:8px; }
+  .proc-card p{ color:#6b5744; line-height:1.6; font-size:0.95rem; }
+
+  /* ===== Instagram CTA ===== */
+  .ig-cta{
+    background:linear-gradient(120deg, #8A4A22 0%, #E85D75 45%, #E8A93D 100%);
+    padding:80px 0; text-align:center; color:#fff; position:relative; overflow:hidden;
+  }
+  .ig-cta::before{
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(circle at 20% 30%, rgba(255,255,255,0.18), transparent 40%),
+               radial-gradient(circle at 80% 70%, rgba(255,255,255,0.15), transparent 45%);
+  }
+  .ig-cta-inner{ position:relative; max-width:640px; margin:0 auto; }
+  .ig-cta h2{ font-size:2.2rem; margin-bottom:14px; }
+  .ig-cta p{ font-size:1.08rem; margin-bottom:30px; opacity:0.95; }
+  .btn-ig{
+    display:inline-flex; align-items:center; gap:12px;
+    background:#fff; color:var(--cacao-deep);
+    padding:16px 34px; border-radius:40px; font-weight:700; font-size:1.05rem;
+    box-shadow:0 6px 0 rgba(0,0,0,0.2);
+    transition:transform .2s;
+  }
+  .btn-ig:hover{ transform:translateY(-3px); }
+  .btn-ig svg{ width:24px; height:24px; }
+  .handle{
+    margin-top:22px; font-weight:700; letter-spacing:0.5px; opacity:0.9;
+  }
+
+  /* ===== Footer ===== */
+  footer{
+    background:var(--cacao-deep); color:#cbb392; padding:44px 0 30px;
+    border-top:3px solid var(--gold);
+  }
+  .footer-grid{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+  }
+  .footer-logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces',serif; font-weight:700; color:var(--cream); font-size:1.1rem;
+  }
+  footer .social{
+    display:flex; gap:14px;
+  }
+  footer .social a{
+    width:40px; height:40px; border-radius:50%;
+    border:2px solid var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--gold-bright);
+    transition:background .2s, color .2s;
+  }
+  footer .social a:hover{ background:var(--gold); color:var(--cacao-deep); }
+  .footer-bottom{
+    margin-top:26px; text-align:center; font-size:0.82rem; color:#8a7358;
+  }
+
+  /* Reveal animation */
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.show{ opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{ opacity:1; transform:none; transition:none; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <a href="#top" class="logo"><span class="logo-mark"></span> Chocolates Artesanales Bogotá</a>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#occasions">Occasions</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#process">How to Order</a>
+      <a href="https://www.instagram.com/chocolatesartesanalesbogota/" target="_blank" rel="noopener" class="nav-cta">Order on Instagram</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">🇨🇴 Handmade in Bogotá</span>
+      <h1>Artisanal chocolate, <em>designed</em> to steal the show.</h1>
+      <p class="lead">Varied, eye-catching bonbons made with high-quality chocolate — crafted by hand for weddings, birthdays, corporate gifts and every celebration worth remembering.</p>
+      <div class="cta-row">
+        <a href="https://www.instagram.com/chocolatesartesanalesbogota/" target="_blank" rel="noopener" class="btn btn-primary">
+          Message us on Instagram
+        </a>
+        <a href="#gallery" class="btn btn-outline">See the designs</a>
+      </div>
+    </div>
+    <div>
+      <div class="bonbon-box">
+        <div class="ribbon-tag">100%<br>Handmade</div>
+        <div class="bonbon c1"></div>
+        <div class="bonbon c2"></div>
+        <div class="bonbon c3"></div>
+        <div class="bonbon c4"></div>
+        <div class="bonbon c5"></div>
+        <div class="bonbon c6"></div>
+        <div class="bonbon c7"></div>
+        <div class="bonbon c8"></div>
+        <div class="bonbon c9"></div>
+      </div>
+    </div>
+  </div>
+  <svg class="melt-divider" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,0 L1200,0 L1200,20 C1150,45 1100,10 1050,30 C1000,50 950,15 900,28 C850,42 800,12 750,25 C700,38 650,10 600,22 C550,35 500,8 450,20 C400,32 350,12 300,26 C250,40 200,10 150,24 C100,38 50,14 0,28 Z" fill="#FFF8ED"/>
+  </svg>
+</section>
+
+<section class="about reveal" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <span class="eyebrow-dark">Our Story</span>
+      <h2>Small-batch chocolate, made with real craft.</h2>
+      <p>Every piece that leaves our Bogotá kitchen is shaped, painted and finished by hand. We work only with high-quality chocolate, so every bonbon looks as good as it tastes.</p>
+      <p>No two boxes are ever quite the same — our designs are made to match your event, your brand, or simply your mood, from playful pastels to deep, dramatic cacao tones.</p>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-card"><div class="num">100%</div><div class="label">Handcrafted</div></div>
+      <div class="stat-card"><div class="num">🍫</div><div class="label">Premium Chocolate</div></div>
+      <div class="stat-card"><div class="num">∞</div><div class="label">Design Combinations</div></div>
+      <div class="stat-card"><div class="num">🎉</div><div class="label">Any Occasion</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="occasions reveal" id="occasions">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-dark">Made For You</span>
+      <h2>Ideal for absolutely any occasion</h2>
+    </div>
+    <div class="occ-grid">
+      <div class="occ-card">
+        <div class="occ-icon">💍</div>
+        <h3>Weddings</h3>
+        <p>Elegant favors and dessert tables designed around your palette.</p>
+      </div>
+      <div class="occ-card">
+        <div class="occ-icon">🎂</div>
+        <h3>Birthdays</h3>
+        <p>Playful, colorful boxes that make every birthday sweeter.</p>
+      </div>
+      <div class="occ-card">
+        <div class="occ-icon">🏢</div>
+        <h3>Corporate Gifts</h3>
+        <p>Branded, professional presentations for clients and teams.</p>
+      </div>
+      <div class="occ-card">
+        <div class="occ-icon">👶</div>
+        <h3>Baby Showers</h3>
+        <p>Soft, delicate designs to celebrate new arrivals.</p>
+      </div>
+      <div class="occ-card">
+        <div class="occ-icon">❤️</div>
+        <h3>Anniversaries</h3>
+        <p>Rich, romantic flavors for milestones worth savoring.</p>
+      </div>
+      <div class="occ-card">
+        <div class="occ-icon">🎁</div>
+        <h3>Just Because</h3>
+        <p>Because a handmade chocolate is always a good idea.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery reveal" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-dark">The Collection</span>
+      <h2>A taste of our designs</h2>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item g1"><span>Marigold Truffle</span></div>
+      <div class="gal-item g2"><span>Guava Bonbon</span></div>
+      <div class="gal-item g3"><span>Cacao Leaf</span></div>
+      <div class="gal-item g4"><span>Gold Edition</span></div>
+      <div class="gal-item g5"><span>Sunrise Praline</span></div>
+      <div class="gal-item g6"><span>Rose Cacao</span></div>
+      <div class="gal-item g7"><span>Jungle Mint</span></div>
+      <div class="gal-item g8"><span>Classic Dark</span></div>
+    </div>
+    <p class="gallery-note">Follow us on Instagram to see our newest designs and flavors every week 🍫</p>
+  </div>
+</section>
+
+<section class="process reveal" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow-dark">How To Order</span>
+      <h2>From a message to a masterpiece</h2>
+    </div>
+    <div class="proc-grid">
+      <div class="proc-card">
+        <div class="proc-num"></div>
+        <h3>Send us a message</h3>
+        <p>Reach out on Instagram and tell us about your occasion, your colors, and your budget.</p>
+      </div>
+      <div class="proc-card">
+        <div class="proc-num"></div>
+        <h3>Choose your design</h3>
+        <p>We'll share design options and flavors so you can pick exactly what fits your event.</p>
+      </div>
+      <div class="proc-card">
+        <div class="proc-num"></div>
+        <h3>Enjoy your chocolates</h3>
+        <p>We hand-finish your order and coordinate delivery or pickup in Bogotá.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ig-cta">
+  <div class="wrap ig-cta-inner">
+    <h2>Let's design your next box of chocolates.</h2>
+    <p>DM us on Instagram to start your order — we reply fast and love talking flavors and colors.</p>
+    <a href="https://www.instagram.com/chocolatesartesanalesbogota/" target="_blank" rel="noopener" class="btn-ig">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .25 2.5.42.6.24 1.1.55 1.6 1.02.47.47.78 1 1.02 1.6.17.5.36 1.3.42 2.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 2-.42 2.5-.24.6-.55 1.1-1.02 1.6-.47.47-1 .78-1.6 1.02-.5.17-1.3.36-2.5.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.25-2.5-.42-.6-.24-1.1-.55-1.6-1.02-.47-.47-.78-1-1.02-1.6-.17-.5-.36-1.3-.42-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-2 .42-2.5.24-.6.55-1.1 1.02-1.6.47-.47 1-.78 1.6-1.02.5-.17 1.3-.36 2.5-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5 0-4.75.07-1 .05-1.5.2-1.86.34-.47.18-.8.4-1.15.75-.35.35-.57.68-.75 1.15-.14.36-.3.86-.34 1.86C3.08 8.5 3.08 8.85 3.08 12s0 3.5.07 4.75c.05 1 .2 1.5.34 1.86.18.47.4.8.75 1.15.35.35.68.57 1.15.75.36.14.86.3 1.86.34C8.5 20.92 8.85 20.92 12 20.92s3.5 0 4.75-.07c1-.05 1.5-.2 1.86-.34.47-.18.8-.4 1.15-.75.35-.35.57-.68.75-1.15.14-.36.3-.86.34-1.86.07-1.25.07-1.6.07-4.75s0-3.5-.07-4.75c-.05-1-.2-1.5-.34-1.86-.18-.47-.4-.8-.75-1.15-.35-.35-.68-.57-1.15-.75-.36-.14-.86-.3-1.86-.34C15.5 4 15.15 4 12 4zm0 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 1.8a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4zm5.7-2a1.05 1.05 0 1 1-2.1 0 1.05 1.05 0 0 1 2.1 0z"/></svg>
+      @chocolatesartesanalesbogota
+    </a>
+    <div class="handle">Follow · Message · Order</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div class="footer-logo"><span class="logo-mark"></span> Chocolates Artesanales Bogotá</div>
+    <div class="social">
+      <a href="https://www.instagram.com/chocolatesartesanalesbogota/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2 .25 2.5.42.6.24 1.1.55 1.6 1.02.47.47.78 1 1.02 1.6.17.5.36 1.3.42 2.5.06 1.3.07 1.7.07 4.9s0 3.6-.07 4.9c-.06 1.2-.25 2-.42 2.5-.24.6-.55 1.1-1.02 1.6-.47.47-1 .78-1.6 1.02-.5.17-1.3.36-2.5.42-1.3.06-1.7.07-4.9.07s-3.6 0-4.9-.07c-1.2-.06-2-.25-2.5-.42-.6-.24-1.1-.55-1.6-1.02-.47-.47-.78-1-1.02-1.6-.17-.5-.36-1.3-.42-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.9c.06-1.2.25-2 .42-2.5.24-.6.55-1.1 1.02-1.6.47-.47 1-.78 1.6-1.02.5-.17 1.3-.36 2.5-.42C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.5 0-4.75.07-1 .05-1.5.2-1.86.34-.47.18-.8.4-1.15.75-.35.35-.57.68-.75 1.15-.14.36-.3.86-.34 1.86C3.08 8.5 3.08 8.85 3.08 12s0 3.5.07 4.75c.05 1 .2 1.5.34 1.86.18.47.4.8.75 1.15.35.35.68.57 1.15.75.36.14.86.3 1.86.34C8.5 20.92 8.85 20.92 12 20.92s3.5 0 4.75-.07c1-.05 1.5-.2 1.86-.34.47-.18.8-.4 1.15-.75.35-.35.57-.68.75-1.15.14-.36.3-.86.34-1.86.07-1.25.07-1.6.07-4.75s0-3.5-.07-4.75c-.05-1-.2-1.5-.34-1.86-.18-.47-.4-.8-.75-1.15-.35-.35-.68-.57-1.15-.75-.36-.14-.86-.3-1.86-.34C15.5 4 15.15 4 12 4zm0 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 1.8a2.7 2.7 0 1 0 0 5.4 2.7 2.7 0 0 0 0-5.4zm5.7-2a1.05 1.05 0 1 1-2.1 0 1.05 1.05 0 0 1 2.1 0z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">© 2026 Chocolates Artesanales Bogotá · Handmade in Bogotá, Colombia 🇨🇴</div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
