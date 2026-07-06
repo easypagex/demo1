@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MR KAFFEE ☕ | Café de Especialidad de Oxapampa</title>
+<style>
+  :root{
+    --brown-dark:#3B2416;
+    --brown:#5C3A21;
+    --coffee:#7A4E2B;
+    --cream:#FFF4E0;
+    --orange:#E87A2C;
+    --orange-light:#FFB25B;
+    --green:#3E6B3A;
+    --green-light:#6FA85A;
+    --gold:#D4AF37;
+    --gold-light:#F0C040;
+    --gold-deep:#C9A84C;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Georgia', 'Segoe UI', serif;
+    background: linear-gradient(160deg, #2E1A0F 0%, #4A2E18 30%, #6B4423 60%, #2E1A0F 100%);
+    color:var(--cream);
+    overflow-x:hidden;
+  }
+  .bg-pattern{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    opacity:0.06;
+    background-image: radial-gradient(circle at 20% 20%, var(--gold) 2px, transparent 2px),
+                       radial-gradient(circle at 70% 60%, var(--orange) 2px, transparent 2px);
+    background-size: 60px 60px, 90px 90px;
+  }
+  header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 6%;
+    background:rgba(30,17,8,0.55);
+    backdrop-filter:blur(6px);
+    position:sticky;
+    top:0;
+    z-index:100;
+    border-bottom:2px solid var(--gold);
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:1.5rem;
+    font-weight:bold;
+    letter-spacing:1px;
+    color:var(--gold-light);
+  }
+  nav a{
+    color:var(--cream);
+    text-decoration:none;
+    margin-left:28px;
+    font-size:0.95rem;
+    font-weight:600;
+    transition:color .3s;
+  }
+  nav a:hover{color:var(--gold-light);}
+  @media(max-width:700px){ nav{display:none;} }
+
+  .hero{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:center;
+    gap:40px;
+    padding:70px 6% 90px;
+    position:relative;
+  }
+  .hero-text{max-width:560px;}
+  .hero-text h1{
+    font-size:2.8rem;
+    line-height:1.15;
+    background:linear-gradient(90deg,var(--gold-light),var(--orange-light),var(--gold));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    margin-bottom:18px;
+  }
+  .hero-text p{
+    font-size:1.15rem;
+    color:#FFE8C7;
+    margin-bottom:30px;
+    line-height:1.6;
+  }
+  .badge-row{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-bottom:30px;
+  }
+  .badge{
+    background:linear-gradient(135deg,var(--green),var(--green-light));
+    padding:8px 18px;
+    border-radius:30px;
+    font-size:0.85rem;
+    font-weight:bold;
+    border:1px solid var(--gold);
+    color:#fff;
+    box-shadow:0 4px 10px rgba(0,0,0,0.25);
+  }
+  .cta-buttons{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 32px;
+    border-radius:50px;
+    font-weight:bold;
+    text-decoration:none;
+    font-size:1rem;
+    transition:transform .25s, box-shadow .25s;
+    border:2px solid transparent;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--gold-light),var(--orange));
+    color:#2E1A0F;
+    box-shadow:0 6px 20px rgba(232,122,44,0.4);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 10px 26px rgba(232,122,44,0.55);}
+  .btn-secondary{
+    border-color:var(--gold);
+    color:var(--gold-light);
+    background:rgba(212,175,55,0.08);
+  }
+  .btn-secondary:hover{background:rgba(212,175,55,0.2);transform:translateY(-3px);}
+
+  .hero-visual{
+    width:320px;
+    max-width:90vw;
+  }
+
+  section{padding:70px 6%;}
+  .section-title{
+    text-align:center;
+    font-size:2.2rem;
+    margin-bottom:14px;
+    color:var(--gold-light);
+  }
+  .section-sub{
+    text-align:center;
+    color:#FFE8C7;
+    max-width:600px;
+    margin:0 auto 50px;
+    font-size:1.05rem;
+    opacity:0.9;
+  }
+
+  .about{
+    background:linear-gradient(135deg, rgba(62,107,58,0.25), rgba(90,60,30,0.2));
+    border-radius:24px;
+    margin:0 4%;
+  }
+  .about-grid{
+    display:flex;
+    gap:50px;
+    align-items:center;
+    flex-wrap:wrap;
+    justify-content:center;
+  }
+  .about-text{max-width:500px;}
+  .about-text p{margin-bottom:16px;line-height:1.7;font-size:1.05rem;color:#FFF3DE;}
+
+  .products{
+    background:radial-gradient(ellipse at top, rgba(232,122,44,0.12), transparent 60%);
+  }
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:28px;
+    max-width:1000px;
+    margin:0 auto;
+  }
+  .product-card{
+    background:linear-gradient(160deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+    border:1px solid var(--gold-deep);
+    border-radius:20px;
+    padding:32px 24px;
+    text-align:center;
+    transition:transform .3s, box-shadow .3s;
+  }
+  .product-card:hover{transform:translateY(-8px);box-shadow:0 14px 30px rgba(0,0,0,0.35);}
+  .product-card .icon-wrap{margin-bottom:16px;}
+  .product-card h3{color:var(--gold-light);margin-bottom:10px;font-size:1.3rem;}
+  .product-card p{color:#FFE8C7;font-size:0.95rem;line-height:1.5;}
+
+  .why{
+    background:linear-gradient(135deg, rgba(212,175,55,0.08), rgba(232,122,44,0.1));
+    border-radius:24px;
+    margin:0 4%;
+  }
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:26px;
+    max-width:1000px;
+    margin:0 auto;
+  }
+  .why-item{text-align:center;padding:20px;}
+  .why-item .num{
+    width:60px;height:60px;
+    margin:0 auto 14px;
+    border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-light),var(--orange));
+    display:flex;align-items:center;justify-content:center;
+    font-weight:bold;font-size:1.4rem;color:#2E1A0F;
+    box-shadow:0 6px 16px rgba(0,0,0,0.3);
+  }
+  .why-item h4{color:var(--gold-light);margin-bottom:8px;}
+  .why-item p{color:#FFE8C7;font-size:0.9rem;}
+
+  .gallery-strip{
+    display:flex;
+    justify-content:center;
+    gap:24px;
+    flex-wrap:wrap;
+    margin-top:20px;
+  }
+
+  .contact{
+    text-align:center;
+    background:linear-gradient(160deg, rgba(30,17,8,0.4), rgba(90,60,30,0.3));
+    border-radius:24px;
+    margin:0 4% 40px;
+    padding:60px 6%;
+  }
+  .social-row{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-top:36px;
+  }
+  .social-btn{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:16px 26px;
+    border-radius:16px;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:1rem;
+    color:#fff;
+    transition:transform .25s, box-shadow .25s;
+    border:1px solid var(--gold);
+  }
+  .social-btn:hover{transform:translateY(-4px) scale(1.03);}
+  .ig-btn{background:linear-gradient(135deg,#F58529,#DD2A7B,#8134AF);}
+  .fb-btn{background:linear-gradient(135deg,#1877F2,#0d5bc4);}
+  .wa-btn{background:linear-gradient(135deg,#25D366,#128C4A);}
+
+  footer{
+    text-align:center;
+    padding:30px 6%;
+    color:#D9B98C;
+    font-size:0.85rem;
+    border-top:1px solid rgba(212,175,55,0.3);
+  }
+  footer span{color:var(--gold-light);font-weight:bold;}
+
+  .float-wa{
+    position:fixed;
+    bottom:24px;
+    right:24px;
+    z-index:200;
+    background:linear-gradient(135deg,#25D366,#128C4A);
+    width:64px;height:64px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px rgba(0,0,0,0.4);
+    border:2px solid var(--gold-light);
+    animation:pulse 2.4s infinite;
+    text-decoration:none;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(37,211,102,0.5);}
+    70%{box-shadow:0 0 0 16px rgba(37,211,102,0);}
+    100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+  }
+
+  @media(max-width:600px){
+    .hero-text h1{font-size:2.1rem;}
+    section{padding:50px 5%;}
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-pattern"></div>
+
+<header>
+  <div class="logo">
+    <svg width="38" height="38" viewBox="0 0 64 64">
+      <ellipse cx="32" cy="50" rx="20" ry="6" fill="#3B2416" opacity="0.4"/>
+      <path d="M14 24 h30 v18 a15 15 0 0 1-15 15 a15 15 0 0 1-15-15 Z" fill="#7A4E2B" stroke="#D4AF37" stroke-width="2"/>
+      <path d="M44 28 h6 a7 7 0 0 1 0 14 h-4" fill="none" stroke="#D4AF37" stroke-width="3"/>
+      <path d="M20 10 q4 6 0 10" stroke="#F0C040" stroke-width="2" fill="none"/>
+      <path d="M28 8 q4 6 0 10" stroke="#F0C040" stroke-width="2" fill="none"/>
+      <path d="M36 10 q4 6 0 10" stroke="#F0C040" stroke-width="2" fill="none"/>
+    </svg>
+    MR KAFFEE
+  </div>
+  <nav>
+    <a href="#about">Nosotros</a>
+    <a href="#productos">Productos</a>
+    <a href="#why">¿Por qué elegirnos?</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="badge-row">
+      <span class="badge">🇵🇪 Oxapampa, Perú</span>
+      <span class="badge">🌱 100% Arábica</span>
+    </div>
+    <h1>Café de especialidad<br>directo de Oxapampa</h1>
+    <p>En <strong>MR KAFFEE</strong> tostamos y preparamos café 100% arábica de origen peruano, para que disfrutes momentos únicos y tengas un gran día ☕🤎. Molido o en granos, listo para tu hogar o negocio.</p>
+    <div class="cta-buttons">
+      <a href="https://wa.me/?text=Hola%20Mr.%20Kaffee%2C%20quiero%20saber%20m%C3%A1s%20sobre%20su%20caf%C3%A9%20de%20especialidad%20de%20Oxapampa%20☕" class="btn btn-primary" target="_blank">💬 Pedir por WhatsApp</a>
+      <a href="https://www.instagram.com/mr.kaffee_kaffee/" class="btn btn-secondary" target="_blank">📸 Síguenos en Instagram</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <svg viewBox="0 0 300 300" width="100%">
+      <defs>
+        <radialGradient id="steamGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#F0C040" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#F0C040" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+      <ellipse cx="150" cy="260" rx="90" ry="14" fill="#2E1A0F" opacity="0.4"/>
+      <path d="M70 130 h140 v70 a70 70 0 0 1-140 0 Z" fill="#7A4E2B" stroke="#D4AF37" stroke-width="3"/>
+      <path d="M210 145 h20 a25 25 0 0 1 0 50 h-14" fill="none" stroke="#D4AF37" stroke-width="5"/>
+      <rect x="65" y="118" width="150" height="16" rx="8" fill="#5C3A21" stroke="#D4AF37" stroke-width="2"/>
+      <path d="M105 90 q10 20 0 34" stroke="#F0C040" stroke-width="4" fill="none" opacity="0.8"/>
+      <path d="M130 80 q10 22 0 38" stroke="#F0C040" stroke-width="4" fill="none" opacity="0.8"/>
+      <path d="M155 90 q10 20 0 34" stroke="#F0C040" stroke-width="4" fill="none" opacity="0.8"/>
+      <circle cx="130" cy="60" r="45" fill="url(#steamGrad)"/>
+      <g>
+        <ellipse cx="95" cy="220" rx="14" ry="9" fill="#3B2416" transform="rotate(20 95 220)"/>
+        <ellipse cx="115" cy="235" rx="14" ry="9" fill="#3B2416" transform="rotate(-15 115 235)"/>
+        <ellipse cx="185" cy="230" rx="14" ry="9" fill="#3B2416" transform="rotate(30 185 230)"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <h2 class="section-title">Nuestra Pasión por el Café</h2>
+  <p class="section-sub">De las montañas de Oxapampa a tu taza</p>
+  <div class="about-grid">
+    <svg width="220" height="220" viewBox="0 0 220 220">
+      <circle cx="110" cy="110" r="100" fill="#3E6B3A" opacity="0.25"/>
+      <path d="M60 150 Q80 60 140 50 Q170 45 180 80 Q150 90 130 120 Q110 150 60 150 Z" fill="#3E6B3A" stroke="#D4AF37" stroke-width="2"/>
+      <path d="M90 140 Q110 90 150 70" stroke="#F0C040" stroke-width="2" fill="none" opacity="0.6"/>
+      <circle cx="75" cy="130" r="12" fill="#7A4E2B" stroke="#D4AF37" stroke-width="2"/>
+      <circle cx="100" cy="110" r="12" fill="#5C3A21" stroke="#D4AF37" stroke-width="2"/>
+      <circle cx="130" cy="90" r="12" fill="#E87A2C" stroke="#D4AF37" stroke-width="2"/>
+    </svg>
+    <div class="about-text">
+      <p>🌱 Cultivamos y seleccionamos granos <strong>100% arábica</strong> provenientes de las alturas de Oxapampa, una región peruana reconocida por su microclima ideal para el café de altura.</p>
+      <p>☕ Cada lote es tostado cuidadosamente para resaltar notas dulces, achocolatadas y frutales, pensado para acompañar tus mejores momentos del día.</p>
+      <p>🤎 Trabajamos directamente para ofrecerte un café fresco, molido o en grano, con la calidad que tu hogar o tu negocio merece.</p>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="productos">
+  <h2 class="section-title">Nuestros Productos</h2>
+  <p class="section-sub">Elige tu formato favorito de café de especialidad</p>
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="icon-wrap">
+        <svg width="60" height="60" viewBox="0 0 60 60">
+          <circle cx="30" cy="30" r="26" fill="#5C3A21" stroke="#D4AF37" stroke-width="2"/>
+          <path d="M20 30 q10 -14 20 0" stroke="#F0C040" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      <h3>Café Molido</h3>
+      <p>Listo para tu cafetera o prensa francesa. Aroma intenso y sabor equilibrado en cada taza.</p>
+    </div>
+    <div class="product-card">
+      <div class="icon-wrap">
+        <svg width="60" height="60" viewBox="0 0 60 60">
+          <ellipse cx="22" cy="30" rx="9" ry="13" fill="#7A4E2B" stroke="#D4AF37" stroke-width="2"/>
+          <ellipse cx="38" cy="30" rx="9" ry="13" fill="#3B2416" stroke="#D4AF37" stroke-width="2"/>
+        </svg>
+      </div>
+      <h3>Café en Grano</h3>
+      <p>Frescura garantizada. Ideal para moler al momento y disfrutar el máximo aroma.</p>
+    </div>
+    <div class="product-card">
+      <div class="icon-wrap">
+        <svg width="60" height="60" viewBox="0 0 60 60">
+          <path d="M18 18 h24 v14 a12 12 0 0 1-24 0 Z" fill="#7A4E2B" stroke="#D4AF37" stroke-width="2"/>
+          <path d="M42 22 h6 a5 5 0 0 1 0 10 h-4" fill="none" stroke="#D4AF37" stroke-width="2"/>
+        </svg>
+      </div>
+      <h3>Pedidos Personalizados</h3>
+      <p>Cantidades para tu cafetería, negocio o consumo personal. Escríbenos y armamos tu pedido.</p>
+    </div>
+  </div>
+</section>
+
+<section class="why" id="why">
+  <h2 class="section-title">¿Por qué elegir Mr. Kaffee?</h2>
+  <div class="why-grid">
+    <div class="why-item">
+      <div class="num">🇵🇪</div>
+      <h4>Origen Peruano</h4>
+      <p>Café cultivado en Oxapampa, tierra reconocida por su café de altura.</p>
+    </div>
+    <div class="why-item">
+      <div class="num">🌱</div>
+      <h4>100% Arábica</h4>
+      <p>Sin mezclas, solo grano de la más alta calidad.</p>
+    </div>
+    <div class="why-item">
+      <div class="num">☕</div>
+      <h4>Frescura Real</h4>
+      <p>Tostado y despachado pensando en que llegue fresco a tu taza.</p>
+    </div>
+    <div class="why-item">
+      <div class="num">🤎</div>
+      <h4>Hecho con Pasión</h4>
+      <p>Para que disfrutes momentos y tengas un gran día, siempre.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <h2 class="section-title">Haz tu Pedido Hoy</h2>
+  <p class="section-sub">Escríbenos y llevamos el mejor café de Oxapampa hasta ti</p>
+  <div class="social-row">
+    <a href="https://wa.me/?text=Hola%20Mr.%20Kaffee%2C%20quiero%20hacer%20un%20pedido%20de%20caf%C3%A9%20☕" class="social-btn wa-btn" target="_blank">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.9.5 3.68 1.38 5.22L2 22l4.9-1.35C8.4 21.5 10.15 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.6 0-3.1-.43-4.4-1.18l-.32-.19-2.9.8.8-2.83-.2-.32A7.94 7.94 0 0 1 4 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8zm4.4-5.7c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.4-1.32-1.64-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.4-.14 0-.3-.02-.46-.02s-.42.06-.64.3c-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>
+      WhatsApp
+    </a>
+    <a href="https://www.instagram.com/mr.kaffee_kaffee/" class="social-btn ig-btn" target="_blank">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.42.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.42.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.42-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.42-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07c-1.28.06-2.15.26-2.91.56-.79.31-1.46.72-2.13 1.39C1.35 2.7.94 3.37.63 4.15.33 4.91.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.28.26 2.15.56 2.91.31.79.72 1.46 1.39 2.13.67.67 1.34 1.08 2.13 1.39.76.3 1.63.5 2.91.56 1.28.06 1.69.07 4.95.07s3.67-.01 4.95-.07c1.28-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.39.67-.67 1.08-1.34 1.39-2.13.3-.76.5-1.63.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.28-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.39-2.13C21.3 1.35 20.63.94 19.85.63c-.76-.3-1.63-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84A6.16 6.16 0 1 0 12 18.16 6.16 6.16 0 0 0 12 5.84zm0 10.16A4 4 0 1 1 12 8a4 4 0 0 1 0 8zm6.4-10.4a1.44 1.44 0 1 1-2.88 0 1.44 1.44 0 0 1 2.88 0z"/></svg>
+      Instagram
+    </a>
+    <a href="https://www.facebook.com/CafeMrKaffeePeru" class="social-btn fb-btn" target="_blank">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="white"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg>
+      Facebook
+    </a>
+  </div>
+</section>
+
+<footer>
+  <span>MR KAFFEE</span> · Café de especialidad de Oxapampa, Lima, Perú · Hecho con 🤎 para tu gran día
+</footer>
+
+<a href="https://wa.me/?text=Hola%20Mr.%20Kaffee%2C%20quiero%20saber%20m%C3%A1s%20sobre%20su%20caf%C3%A9%20☕" class="float-wa" target="_blank" aria-label="WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.9.5 3.68 1.38 5.22L2 22l4.9-1.35C8.4 21.5 10.15 22 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm0 18c-1.6 0-3.1-.43-4.4-1.18l-.32-.19-2.9.8.8-2.83-.2-.32A7.94 7.94 0 0 1 4 12c0-4.42 3.58-8 8-8s8 3.58 8 8-3.58 8-8 8zm4.4-5.7c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1-.37-1.9-1.17-.7-.62-1.18-1.4-1.32-1.64-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.4-.14 0-.3-.02-.46-.02s-.42.06-.64.3c-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.52.1.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28z"/></svg>
+</a>
+
+</body>
+</html>
