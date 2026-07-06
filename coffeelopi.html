@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coffee Lopi ☕ | Café de las alturas de Cusco para tu hogar en Lima</title>
+<meta name="description" content="Coffee Lopi: café artesanal cultivado en las alturas de Cusco, entregado directo a tu hogar en Lima, Perú. Que el sol siempre brille en tu pecho.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sol: #FFB627;
+    --sol-suave: #FFD481;
+    --atardecer: #F2542D;
+    --verde-valle: #2D6A4F;
+    --verde-oscuro: #1E4A38;
+    --turquesa: #14919B;
+    --crema: #FFF6E6;
+    --crema-2: #FFEFD6;
+    --cafe: #3A2318;
+    --cafe-suave: #6B4A38;
+    --blanco: #FFFDF8;
+    --radio-grande: 28px;
+    --radio-chico: 14px;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--crema);
+    color:var(--cafe);
+    font-family:'Work Sans', sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+  }
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.16em;
+    font-size:0.72rem;
+    font-weight:700;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  img{ max-width:100%; display:block; }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,246,230,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid rgba(58,35,24,0.08);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fredoka', sans-serif;
+    font-weight:700; font-size:1.28rem;
+    color:var(--cafe);
+  }
+  .logo svg{ width:34px; height:34px; }
+  .navlinks{ display:flex; align-items:center; gap:30px; }
+  .navlinks a{
+    font-weight:600; font-size:0.95rem; color:var(--cafe-suave);
+    transition:color .2s;
+  }
+  .navlinks a:hover{ color:var(--atardecer); }
+  .nav-cta{
+    background:var(--verde-valle); color:var(--blanco) !important;
+    padding:10px 20px; border-radius:999px;
+    font-weight:700 !important; font-size:0.9rem !important;
+    box-shadow:0 4px 0 var(--verde-oscuro);
+    transition:transform .15s, box-shadow .15s;
+  }
+  .nav-cta:hover{ transform:translateY(2px); box-shadow:0 2px 0 var(--verde-oscuro); }
+  .nav-toggle{ display:none; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:90px 28px 60px;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 82% 8%, var(--sol-suave) 0%, transparent 42%),
+      linear-gradient(180deg, var(--crema) 0%, var(--crema-2) 100%);
+  }
+  .hero-inner{
+    max-width:1180px; margin:0 auto;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px;
+    align-items:center;
+  }
+  .hero-eyebrow{
+    color:var(--atardecer);
+    display:inline-flex; align-items:center; gap:8px;
+    margin-bottom:18px;
+  }
+  .hero-eyebrow::before{ content:"☀"; font-size:1rem; }
+  h1.hero-title{
+    font-size:clamp(2.6rem, 5.2vw, 4.3rem);
+    color:var(--cafe);
+    margin-bottom:20px;
+  }
+  h1.hero-title em{
+    font-style:normal;
+    color:var(--atardecer);
+    position:relative;
+  }
+  .hero-sub{
+    font-size:1.14rem;
+    color:var(--cafe-suave);
+    max-width:480px;
+    margin-bottom:32px;
+  }
+  .hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; margin-bottom:36px; }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 28px;
+    border-radius:999px;
+    font-weight:700; font-size:1rem;
+    font-family:'Work Sans', sans-serif;
+    cursor:pointer; border:none;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{
+    background:var(--atardecer); color:var(--blanco);
+    box-shadow:0 5px 0 #b83a1c;
+  }
+  .btn-primary:hover{ transform:translateY(3px); box-shadow:0 2px 0 #b83a1c; }
+  .btn-outline{
+    background:transparent; color:var(--cafe);
+    border:2.5px solid var(--cafe);
+  }
+  .btn-outline:hover{ background:var(--cafe); color:var(--blanco); }
+
+  .hero-stats{ display:flex; gap:32px; flex-wrap:wrap; }
+  .hero-stat b{
+    display:block; font-family:'Fredoka'; font-size:1.6rem; color:var(--verde-valle);
+  }
+  .hero-stat span{ font-size:0.82rem; color:var(--cafe-suave); }
+
+  .hero-art{ position:relative; display:flex; justify-content:center; }
+  .sun-wrap{ position:relative; width:100%; max-width:420px; }
+  .sun-rays{ animation:spin 40s linear infinite; transform-origin:center; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .steam path{ animation:steam 4s ease-in-out infinite; }
+  .steam path:nth-child(2){ animation-delay:.6s; }
+  .steam path:nth-child(3){ animation-delay:1.2s; }
+  @keyframes steam{
+    0%{ opacity:0; transform:translateY(6px); }
+    35%{ opacity:.8; }
+    100%{ opacity:0; transform:translateY(-24px); }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .sun-rays{ animation:none; }
+    .steam path{ animation:none; opacity:.5; }
+  }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee{
+    background:var(--cafe); color:var(--crema);
+    padding:14px 0; overflow:hidden; white-space:nowrap;
+  }
+  .marquee-track{
+    display:inline-flex; gap:40px;
+    animation:scroll 26s linear infinite;
+    font-family:'Space Mono', monospace; font-size:0.85rem; letter-spacing:0.04em;
+  }
+  .marquee-track span{ display:flex; align-items:center; gap:40px; }
+  @keyframes scroll{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+  @media (prefers-reduced-motion: reduce){ .marquee-track{ animation:none; } }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{ padding:100px 0; }
+  .section-head{ max-width:640px; margin-bottom:56px; }
+  .section-head .eyebrow{ color:var(--turquesa); margin-bottom:12px; display:block; }
+  .section-head h2{ font-size:clamp(2rem, 4vw, 2.7rem); color:var(--cafe); }
+  .section-head p{ color:var(--cafe-suave); margin-top:14px; font-size:1.05rem; }
+
+  /* ---------- HISTORIA ---------- */
+  .historia{ background:var(--blanco); }
+  .historia-grid{
+    display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:center;
+  }
+  .mountain-card{
+    background:linear-gradient(180deg, var(--turquesa) 0%, #0d6870 100%);
+    border-radius:var(--radio-grande);
+    padding:40px; color:var(--blanco); position:relative; overflow:hidden;
+    min-height:380px; display:flex; flex-direction:column; justify-content:flex-end;
+  }
+  .mountain-card svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .mountain-card-text{ position:relative; z-index:2; }
+  .mountain-card-text .eyebrow{ color:var(--sol-suave); }
+  .mountain-card-text h3{ font-size:1.6rem; margin-top:8px; }
+  .historia-copy p{ margin-bottom:18px; color:var(--cafe-suave); font-size:1.05rem; }
+  .historia-copy p b{ color:var(--cafe); }
+
+  /* ---------- PRODUCTOS ---------- */
+  .productos{ background:var(--crema-2); }
+  .prod-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:26px;
+  }
+  .prod-card{
+    background:var(--blanco); border-radius:var(--radio-grande);
+    padding:32px 28px; position:relative;
+    border:2px solid transparent;
+    transition:transform .2s, border-color .2s, box-shadow .2s;
+  }
+  .prod-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--sol);
+    box-shadow:0 16px 30px -14px rgba(58,35,24,0.25);
+  }
+  .prod-tag{
+    display:inline-block; font-family:'Space Mono'; font-size:0.68rem;
+    background:var(--crema); color:var(--atardecer);
+    padding:5px 12px; border-radius:999px; margin-bottom:18px; font-weight:700;
+  }
+  .prod-card h3{ font-size:1.4rem; margin-bottom:10px; }
+  .prod-card p{ color:var(--cafe-suave); font-size:0.95rem; margin-bottom:20px; }
+  .prod-meta{
+    display:flex; justify-content:space-between; align-items:center;
+    border-top:1.5px dashed rgba(58,35,24,0.18); padding-top:16px;
+  }
+  .prod-meta .altura{ font-family:'Space Mono'; font-size:0.78rem; color:var(--verde-valle); font-weight:700; }
+  .prod-cup{ width:46px; height:46px; }
+
+  /* ---------- POR QUE ---------- */
+  .porque{ background:var(--verde-oscuro); color:var(--crema); }
+  .porque .section-head .eyebrow{ color:var(--sol); }
+  .porque .section-head h2{ color:var(--blanco); }
+  .porque .section-head p{ color:#c9dccf; }
+  .why-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:24px;
+  }
+  .why-card{
+    background:rgba(255,255,255,0.06);
+    border:1.5px solid rgba(255,255,255,0.12);
+    border-radius:var(--radio-chico);
+    padding:28px 22px;
+  }
+  .why-card .num{
+    font-family:'Fredoka'; font-size:2.2rem; color:var(--sol); margin-bottom:14px;
+  }
+  .why-card h3{ font-size:1.1rem; margin-bottom:8px; color:var(--blanco); }
+  .why-card p{ font-size:0.92rem; color:#c9dccf; }
+
+  /* ---------- PASOS ---------- */
+  .pasos{ background:var(--blanco); }
+  .pasos-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+    position:relative;
+  }
+  .paso{ padding:0 20px; position:relative; }
+  .paso:not(:last-child)::after{
+    content:"→"; position:absolute; right:-14px; top:20px;
+    color:var(--sol); font-size:1.4rem; font-weight:700;
+  }
+  .paso .eyebrow{ color:var(--atardecer); }
+  .paso h3{ font-size:1.15rem; margin:10px 0 8px; }
+  .paso p{ color:var(--cafe-suave); font-size:0.92rem; }
+
+  /* ---------- INSTAGRAM CTA ---------- */
+  .insta-cta{
+    background:
+      radial-gradient(circle at 20% 20%, rgba(255,182,39,0.5), transparent 45%),
+      radial-gradient(circle at 80% 80%, rgba(242,84,45,0.45), transparent 50%),
+      var(--cafe);
+    color:var(--blanco); text-align:center;
+    border-radius:var(--radio-grande);
+    padding:70px 40px;
+    margin:0 28px;
+  }
+  .insta-cta h2{ font-size:clamp(1.9rem,4vw,2.6rem); margin-bottom:16px; }
+  .insta-cta p{ color:#e8d8ca; max-width:520px; margin:0 auto 32px; font-size:1.05rem; }
+  .insta-btn{
+    background:var(--blanco); color:var(--cafe);
+    padding:16px 32px; border-radius:999px; font-weight:700;
+    display:inline-flex; align-items:center; gap:12px; font-size:1.05rem;
+    box-shadow:0 5px 0 #c9a887;
+    transition:transform .15s, box-shadow .15s;
+  }
+  .insta-btn:hover{ transform:translateY(3px); box-shadow:0 2px 0 #c9a887; }
+  .insta-handle{ margin-top:22px; font-family:'Space Mono'; font-size:0.85rem; color:#e8d8ca; }
+
+  /* ---------- FOOTER ---------- */
+  footer{ background:var(--cafe); color:#d8c3b3; padding:60px 0 30px; }
+  .footer-grid{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px;
+    padding-bottom:40px; border-bottom:1px solid rgba(255,255,255,0.12);
+  }
+  .footer-brand{ display:flex; align-items:center; gap:10px; font-family:'Fredoka'; font-size:1.3rem; color:var(--blanco); }
+  .footer-brand svg{ width:30px; height:30px; }
+  .footer-tag{ color:#b39a86; max-width:280px; margin-top:12px; font-size:0.9rem; }
+  .footer-links{ display:flex; gap:60px; flex-wrap:wrap; }
+  .footer-col h4{ font-family:'Space Mono'; font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--sol); margin-bottom:14px; }
+  .footer-col a{ display:block; margin-bottom:10px; font-size:0.92rem; color:#d8c3b3; transition:color .2s; }
+  .footer-col a:hover{ color:var(--blanco); }
+  .footer-bottom{
+    display:flex; justify-content:space-between; padding-top:24px;
+    font-size:0.82rem; color:#8a7261; flex-wrap:wrap; gap:10px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:920px){
+    .hero-inner{ grid-template-columns:1fr; }
+    .hero-art{ order:-1; max-width:260px; margin:0 auto 20px; }
+    .historia-grid{ grid-template-columns:1fr; }
+    .prod-grid{ grid-template-columns:1fr 1fr; }
+    .why-grid{ grid-template-columns:1fr 1fr; }
+    .pasos-grid{ grid-template-columns:1fr 1fr; gap:30px; }
+    .paso:not(:last-child)::after{ display:none; }
+    .navlinks{ display:none; }
+  }
+  @media (max-width:560px){
+    .prod-grid{ grid-template-columns:1fr; }
+    .why-grid{ grid-template-columns:1fr; }
+    .pasos-grid{ grid-template-columns:1fr; }
+    .hero-stats{ gap:22px; }
+    .insta-cta{ margin:0 14px; padding:50px 22px; }
+    section{ padding:70px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <div class="logo">
+      <svg viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="9" fill="#FFB627"/>
+        <g stroke="#F2542D" stroke-width="3" stroke-linecap="round">
+          <line x1="20" y1="2" x2="20" y2="7"/>
+          <line x1="20" y1="33" x2="20" y2="38"/>
+          <line x1="2" y1="20" x2="7" y2="20"/>
+          <line x1="33" y1="20" x2="38" y2="20"/>
+          <line x1="7" y1="7" x2="10.5" y2="10.5"/>
+          <line x1="29.5" y1="29.5" x2="33" y2="33"/>
+          <line x1="33" y1="7" x2="29.5" y2="10.5"/>
+          <line x1="10.5" y1="29.5" x2="7" y2="33"/>
+        </g>
+      </svg>
+      Coffee Lopi
+    </div>
+    <div class="navlinks">
+      <a href="#historia">Historia</a>
+      <a href="#productos">Cafés</a>
+      <a href="#porque">Por qué nosotros</a>
+      <a href="#pedir">Cómo pedir</a>
+      <a class="nav-cta" href="https://www.instagram.com/coffeelopi/" target="_blank" rel="noopener">Pedir por Instagram</a>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow hero-eyebrow">DE LAS ALTURAS DE CUSCO PARA LIMA</span>
+      <h1 class="hero-title">Que el sol siempre<br>brille en tu <em>taza</em>.</h1>
+      <p class="hero-sub">Café cultivado en las alturas de Cusco, tostado con cariño y entregado directo a la puerta de tu casa en Lima. Siempre primavera, siempre fresco.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://www.instagram.com/coffeelopi/" target="_blank" rel="noopener">☕ Pide tu café ahora</a>
+        <a class="btn btn-outline" href="#productos">Ver variedades</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>3,400+ msnm</b><span>Altura del cultivo en Cusco</span></div>
+        <div class="hero-stat"><b>100%</b><span>Grano arábica peruano</span></div>
+        <div class="hero-stat"><b>24-48h</b><span>Entrega a tu hogar en Lima</span></div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="sun-wrap">
+        <svg viewBox="0 0 400 400" fill="none">
+          <g class="sun-rays">
+            <g stroke="#F2542D" stroke-width="10" stroke-linecap="round">
+              <line x1="200" y1="20" x2="200" y2="60"/>
+              <line x1="200" y1="340" x2="200" y2="380"/>
+              <line x1="20" y1="200" x2="60" y2="200"/>
+              <line x1="340" y1="200" x2="380" y2="200"/>
+              <line x1="66" y1="66" x2="94" y2="94"/>
+              <line x1="306" y1="306" x2="334" y2="334"/>
+              <line x1="334" y1="66" x2="306" y2="94"/>
+              <line x1="94" y1="306" x2="66" y2="334"/>
+            </g>
+            <g stroke="#FFB627" stroke-width="7" stroke-linecap="round" opacity="0.7">
+              <line x1="200" y1="42" x2="200" y2="72" transform="rotate(22 200 200)"/>
+              <line x1="200" y1="42" x2="200" y2="72" transform="rotate(67 200 200)"/>
+              <line x1="200" y1="42" x2="200" y2="72" transform="rotate(112 200 200)"/>
+              <line x1="200" y1="42" x2="200" y2="72" transform="rotate(157 200 200)"/>
+              <line x1="200" y1="42" x2="200" y2="72" transform="rotate(202 200 200)"/>
+              <line x1="200" y1="42" x2="200" y2="72" transform="rotate(247 200 200)"/>
+              <line x1="200" y1="42" x2="200" y2="72" transform="rotate(292 200 200)"/>
+              <line x1="200" y1="42" x2="200" y2="72" transform="rotate(337 200 200)"/>
+            </g>
+          </g>
+          <circle cx="200" cy="200" r="86" fill="#FFB627"/>
+          <circle cx="200" cy="200" r="86" fill="url(#g1)" opacity="0.5"/>
+          <defs>
+            <radialGradient id="g1" cx="35%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#FFE4A0"/>
+              <stop offset="100%" stop-color="#FFB627" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <!-- taza -->
+          <g transform="translate(148,230)">
+            <rect x="0" y="20" width="104" height="70" rx="14" fill="#3A2318"/>
+            <rect x="8" y="30" width="88" height="50" rx="8" fill="#6B4A38"/>
+            <path d="M104 35 Q132 35 132 55 Q132 75 104 75" stroke="#3A2318" stroke-width="9" fill="none"/>
+          </g>
+          <g class="steam" transform="translate(178,150)">
+            <path d="M0 60 C10 40, -10 30, 0 10" stroke="#FFFDF8" stroke-width="6" stroke-linecap="round" fill="none"/>
+            <path d="M22 60 C32 40, 12 30, 22 10" stroke="#FFFDF8" stroke-width="6" stroke-linecap="round" fill="none"/>
+            <path d="M44 60 C54 40, 34 30, 44 10" stroke="#FFFDF8" stroke-width="6" stroke-linecap="round" fill="none"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>☀ SIEMPRE PRIMAVERA &nbsp;•&nbsp; ☕ CAFÉ DE ALTURA &nbsp;•&nbsp; 🏔 DE CUSCO A LIMA &nbsp;•&nbsp; 🇵🇪 100% PERUANO &nbsp;•&nbsp; </span>
+    <span>☀ SIEMPRE PRIMAVERA &nbsp;•&nbsp; ☕ CAFÉ DE ALTURA &nbsp;•&nbsp; 🏔 DE CUSCO A LIMA &nbsp;•&nbsp; 🇵🇪 100% PERUANO &nbsp;•&nbsp; </span>
+  </div>
+</div>
+
+<section class="historia" id="historia">
+  <div class="wrap historia-grid">
+    <div class="mountain-card">
+      <svg viewBox="0 0 400 300" preserveAspectRatio="none">
+        <polygon points="0,300 0,180 90,90 160,160 230,60 310,170 400,120 400,300" fill="#0d6870"/>
+        <polygon points="0,300 0,220 100,140 190,200 260,120 340,200 400,170 400,300" fill="#116e77" opacity="0.85"/>
+        <circle cx="330" cy="60" r="34" fill="#FFD481" opacity="0.9"/>
+      </svg>
+      <div class="mountain-card-text">
+        <span class="eyebrow">CUSCO · +3,400 MSNM</span>
+        <h3>Cultivado entre montañas, cosechado con paciencia.</h3>
+      </div>
+    </div>
+    <div class="historia-copy">
+      <span class="eyebrow" style="color:var(--turquesa);">NUESTRA HISTORIA</span>
+      <h2 style="margin:14px 0 22px; font-size:clamp(1.9rem,3.4vw,2.4rem);">Un pedacito de Cusco, todos los días en tu mesa.</h2>
+      <p><b>Coffee Lopi</b> nació de las alturas de Cusco, donde el sol se siente distinto y el café crece despacio, con altura y con alma. Seleccionamos los mejores granos de pequeños productores de la región y los tostamos pensando en una sola cosa: que cada taza te haga sentir esa calidez del hogar.</p>
+      <p>Creemos que un buen café no solo se toma, se comparte. Por eso llevamos ese pedacito de Cusco directo a tu hogar en Lima, para que el sol —y un delicioso café— siempre brillen en tu pecho.</p>
+      <a class="btn btn-outline" href="https://www.instagram.com/coffeelopi/" target="_blank" rel="noopener">Conócenos en Instagram →</a>
+    </div>
+  </div>
+</section>
+
+<section class="productos" id="productos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">NUESTROS CAFÉS</span>
+      <h2>Elige tu momento de sol.</h2>
+      <p>Tres perfiles de tueste, un mismo origen: las alturas de Cusco.</p>
+    </div>
+    <div class="prod-grid">
+
+      <div class="prod-card">
+        <span class="prod-tag">TUESTE CLARO</span>
+        <h3>Amanecer Andino</h3>
+        <p>Notas frutales y florales, acidez brillante. Ideal para empezar el día con energía de montaña.</p>
+        <div class="prod-meta">
+          <span class="altura">3,400 msnm</span>
+          <svg class="prod-cup" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="28" fill="#FFF6E6"/><rect x="15" y="24" width="24" height="18" rx="4" fill="#3A2318"/><path d="M39 27 Q48 27 48 33 Q48 39 39 39" stroke="#3A2318" stroke-width="3" fill="none"/></svg>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <span class="prod-tag">TUESTE MEDIO</span>
+        <h3>Siempre Primavera</h3>
+        <p>Equilibrado, dulzura a panela y toques de fruta madura. Nuestro café insignia, el favorito de casa.</p>
+        <div class="prod-meta">
+          <span class="altura">3,600 msnm</span>
+          <svg class="prod-cup" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="28" fill="#FFF6E6"/><rect x="15" y="24" width="24" height="18" rx="4" fill="#3A2318"/><path d="M39 27 Q48 27 48 33 Q48 39 39 39" stroke="#3A2318" stroke-width="3" fill="none"/></svg>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <span class="prod-tag">TUESTE OSCURO</span>
+        <h3>Sol de las Alturas</h3>
+        <p>Cuerpo intenso, notas a cacao y caramelo tostado. Para quienes aman un café con carácter.</p>
+        <div class="prod-meta">
+          <span class="altura">3,800 msnm</span>
+          <svg class="prod-cup" viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="28" fill="#FFF6E6"/><rect x="15" y="24" width="24" height="18" rx="4" fill="#3A2318"/><path d="M39 27 Q48 27 48 33 Q48 39 39 39" stroke="#3A2318" stroke-width="3" fill="none"/></svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="porque" id="porque">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">POR QUÉ COFFEE LOPI</span>
+      <h2>Café con altura, entregado con cariño.</h2>
+      <p>No vendemos solo café, compartimos un pedazo de Cusco en cada bolsa.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="num">01</div>
+        <h3>Origen verificado</h3>
+        <p>Grano 100% cultivado en las alturas de Cusco, directo de productores locales.</p>
+      </div>
+      <div class="why-card">
+        <div class="num">02</div>
+        <h3>Tueste fresco</h3>
+        <p>Tostamos en pequeños lotes para que cada entrega llegue en su punto justo.</p>
+      </div>
+      <div class="why-card">
+        <div class="num">03</div>
+        <h3>Entrega a tu puerta</h3>
+        <p>Llevamos tu pedido directo a tu hogar en Lima, sin que tengas que salir.</p>
+      </div>
+      <div class="why-card">
+        <div class="num">04</div>
+        <h3>Trato cercano</h3>
+        <p>Atención personalizada por Instagram, como comprarle a un amigo de confianza.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pasos" id="pedir">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">CÓMO PEDIR</span>
+      <h2>De Cusco a tu casa, en 4 pasos.</h2>
+    </div>
+    <div class="pasos-grid">
+      <div class="paso">
+        <span class="eyebrow">PASO 1</span>
+        <h3>Escríbenos</h3>
+        <p>Envíanos un mensaje directo a nuestro Instagram @coffeelopi.</p>
+      </div>
+      <div class="paso">
+        <span class="eyebrow">PASO 2</span>
+        <h3>Elige tu café</h3>
+        <p>Te contamos sobre nuestros tuestes y eliges el que más te guste.</p>
+      </div>
+      <div class="paso">
+        <span class="eyebrow">PASO 3</span>
+        <h3>Coordinamos</h3>
+        <p>Confirmamos tu dirección en Lima y la forma de pago.</p>
+      </div>
+      <div class="paso">
+        <span class="eyebrow">PASO 4</span>
+        <h3>Disfruta</h3>
+        <p>Recibes tu café fresco en la puerta de tu casa. ☕☀️</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="insta-cta">
+    <span class="eyebrow" style="color:var(--sol);">ESCRÍBENOS HOY</span>
+    <h2 style="margin-top:14px;">Que el sol siempre brille en tu pecho.<br>Y un delicioso café por compartir.</h2>
+    <p>Contáctanos por Instagram y arma tu pedido de café de altura, directo de Cusco para tu hogar en Lima.</p>
+    <a class="insta-btn" href="https://www.instagram.com/coffeelopi/" target="_blank" rel="noopener">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#3A2318" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="#3A2318" stroke-width="2"/><circle cx="18" cy="6" r="1.3" fill="#3A2318"/></svg>
+      Escríbenos en Instagram
+    </a>
+    <div class="insta-handle">@coffeelopi · De las alturas de Cusco para tu hogar · Lima, Perú</div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="9" fill="#FFB627"/>
+            <g stroke="#F2542D" stroke-width="3" stroke-linecap="round">
+              <line x1="20" y1="2" x2="20" y2="7"/><line x1="20" y1="33" x2="20" y2="38"/>
+              <line x1="2" y1="20" x2="7" y2="20"/><line x1="33" y1="20" x2="38" y2="20"/>
+            </g>
+          </svg>
+          Coffee Lopi
+        </div>
+        <p class="footer-tag">Que el sol siempre brille en tu pecho, y un delicioso café por compartir. De las alturas de Cusco para tu hogar. Lima, Perú.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Explorar</h4>
+          <a href="#historia">Nuestra historia</a>
+          <a href="#productos">Nuestros cafés</a>
+          <a href="#porque">Por qué elegirnos</a>
+          <a href="#pedir">Cómo pedir</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="https://www.instagram.com/coffeelopi/" target="_blank" rel="noopener">Instagram @coffeelopi</a>
+          <a href="#pedir">Cómo hacer tu pedido</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Coffee Lopi · Lima, Perú</span>
+      <span>Hecho con ☕ y mucho sol.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
