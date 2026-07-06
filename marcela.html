@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marcela Fibbiani — Comunicadora de Diseño</title>
+<meta name="description" content="Marcela Fibbiani, editora de la revista 90+10. Hablo de diseño desde 2004. Cobertura editorial, contenido de marca y curaduría para marcas y ferias de diseño.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600;1,9..144,900&family=Work+Sans:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF6E9;
+    --cream-2:#FCEBD4;
+    --ink:#1C1033;
+    --coral:#FF5A36;
+    --teal:#00918A;
+    --yellow:#FFC93C;
+    --magenta:#E63888;
+    --violet:#6C4AB6;
+    --line: rgba(28,16,51,0.14);
+    --radius: 18px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  ::selection{ background:var(--coral); color:var(--cream); }
+
+  a{ color:inherit; }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:12px;
+    font-weight:700;
+  }
+
+  h1,h2,h3{ font-family:'Fraunces', serif; margin:0; }
+
+  /* focus visibility */
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--violet);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* ---------- MASTHEAD BAR ---------- */
+  .masthead-bar{
+    position:sticky; top:0; z-index:50;
+    background:var(--ink);
+    color:var(--cream);
+    border-bottom:3px solid var(--coral);
+  }
+  .masthead-bar .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:14px; padding-bottom:14px;
+  }
+  .masthead-logo{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:20px;
+    letter-spacing:0.01em;
+  }
+  .masthead-logo span{ color:var(--yellow); font-style:italic; }
+  .masthead-nav{ display:flex; gap:22px; align-items:center; }
+  .masthead-nav a{
+    text-decoration:none;
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    color:var(--cream);
+    opacity:0.85;
+  }
+  .masthead-nav a:hover{ opacity:1; color:var(--yellow); }
+  .btn-ig-small{
+    background:var(--coral);
+    color:var(--ink) !important;
+    padding:9px 16px;
+    border-radius:999px;
+    font-weight:700;
+    opacity:1 !important;
+    display:inline-flex; align-items:center; gap:6px;
+  }
+  .btn-ig-small:hover{ background:var(--yellow); }
+  .nav-links-desktop{ display:flex; gap:22px; align-items:center; }
+  @media (max-width:720px){
+    .nav-links-desktop a:not(.btn-ig-small){ display:none; }
+  }
+
+  /* ---------- HERO / COVER ---------- */
+  .hero{
+    position:relative;
+    padding:78px 0 60px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.25fr 0.9fr;
+    gap:48px;
+    align-items:center;
+  }
+  @media (max-width:900px){
+    .hero-grid{ grid-template-columns:1fr; }
+  }
+
+  .cover-kicker{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--ink); color:var(--cream);
+    padding:7px 14px 7px 10px;
+    border-radius:999px;
+    margin-bottom:22px;
+  }
+  .cover-kicker .dot{
+    width:8px;height:8px;border-radius:50%;
+    background:var(--coral);
+    animation:pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse{ 0%,100%{transform:scale(1);opacity:1;} 50%{transform:scale(1.5);opacity:0.6;} }
+
+  .hero h1{
+    font-size:clamp(52px, 8vw, 94px);
+    line-height:0.94;
+    font-weight:900;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 em{
+    font-style:italic;
+    font-weight:500;
+    color:var(--coral);
+  }
+  .hero-sub{
+    font-size:clamp(18px, 2vw, 22px);
+    max-width:46ch;
+    margin-top:22px;
+    line-height:1.5;
+  }
+  .hero-sub strong{
+    background:linear-gradient(180deg, transparent 62%, var(--yellow) 62%);
+    font-weight:600;
+  }
+
+  .hero-ctas{
+    display:flex; flex-wrap:wrap; gap:14px;
+    margin-top:34px;
+  }
+  .btn{
+    font-family:'Work Sans', sans-serif;
+    font-weight:700;
+    font-size:16px;
+    padding:16px 26px;
+    border-radius:999px;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    border:2px solid var(--ink);
+    transition:transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+  }
+  .btn-primary{
+    background:var(--coral);
+    color:var(--ink);
+    box-shadow:6px 6px 0 var(--ink);
+  }
+  .btn-primary:hover{ transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--ink); background:var(--yellow); }
+  .btn-secondary{
+    background:transparent;
+    color:var(--ink);
+    box-shadow:6px 6px 0 var(--teal);
+    border-color:var(--teal);
+  }
+  .btn-secondary:hover{ transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--teal); background:var(--teal); color:var(--cream); }
+
+  /* cover lines / sticky-note tags */
+  .cover-lines{
+    position:relative;
+    min-height:420px;
+  }
+  .tag{
+    position:absolute;
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size:13px;
+    line-height:1.35;
+    padding:14px 16px;
+    border-radius:14px;
+    border:2px solid var(--ink);
+    box-shadow:5px 5px 0 var(--ink);
+    max-width:230px;
+  }
+  .tag-1{ background:var(--yellow); top:0%; left:6%; transform:rotate(-4deg); }
+  .tag-2{ background:var(--teal); color:var(--cream); top:26%; left:38%; transform:rotate(3deg); }
+  .tag-3{ background:var(--magenta); color:var(--cream); top:54%; left:2%; transform:rotate(2deg); }
+  .tag-4{ background:var(--cream-2); top:76%; left:34%; transform:rotate(-3deg); }
+  @media (max-width:900px){
+    .cover-lines{ min-height:auto; display:flex; flex-wrap:wrap; gap:12px; margin-top:10px; }
+    .tag{ position:static; transform:none !important; }
+  }
+
+  /* ---------- TICKER ---------- */
+  .ticker-band{
+    background:var(--ink);
+    color:var(--cream);
+    padding:16px 0;
+    overflow:hidden;
+    white-space:nowrap;
+    border-top:3px solid var(--yellow);
+    border-bottom:3px solid var(--yellow);
+  }
+  .ticker-track{
+    display:inline-flex;
+    gap:40px;
+    animation:scroll-left 32s linear infinite;
+  }
+  .ticker-band:hover .ticker-track{ animation-play-state:paused; }
+  @keyframes scroll-left{
+    0%{ transform:translateX(0); }
+    100%{ transform:translateX(-50%); }
+  }
+  .ticker-item{
+    font-family:'Space Mono', monospace;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:0.08em;
+    display:inline-flex;
+    align-items:center;
+    gap:40px;
+  }
+  .ticker-item .sep{ color:var(--coral); }
+
+  /* ---------- STATS ---------- */
+  .stats{
+    padding:70px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  @media (max-width:820px){ .stats-grid{ grid-template-columns:repeat(2,1fr); } }
+  .stat-num{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size:clamp(38px,5vw,58px);
+    line-height:1;
+  }
+  .stat-label{
+    font-family:'Space Mono', monospace;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    margin-top:10px;
+    opacity:0.75;
+  }
+  .stat-card:nth-child(1) .stat-num{ color:var(--coral); }
+  .stat-card:nth-child(2) .stat-num{ color:var(--teal); }
+  .stat-card:nth-child(3) .stat-num{ color:var(--magenta); }
+  .stat-card:nth-child(4) .stat-num{ color:var(--violet); }
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section{ padding:90px 0; }
+  .section-head{
+    display:flex; align-items:flex-end; justify-content:space-between;
+    gap:30px; margin-bottom:48px; flex-wrap:wrap;
+  }
+  .section-head .eyebrow{ color:var(--coral); }
+  .section-head h2{
+    font-size:clamp(32px,4.5vw,52px);
+    font-weight:700;
+    margin-top:10px;
+    max-width:16ch;
+  }
+  .section-head p{ max-width:38ch; font-size:16px; line-height:1.55; opacity:0.85; }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background:var(--cream-2); }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap:56px;
+    align-items:start;
+  }
+  @media (max-width:900px){ .about-grid{ grid-template-columns:1fr; } }
+  .portrait-card{
+    background:var(--ink);
+    color:var(--cream);
+    border-radius:var(--radius);
+    padding:34px;
+    position:relative;
+  }
+  .portrait-card .initials{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:110px;
+    line-height:0.8;
+    color:var(--yellow);
+  }
+  .portrait-card .role{
+    margin-top:18px;
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    letter-spacing:0.04em;
+    line-height:1.7;
+    opacity:0.9;
+  }
+  .about-text p{ font-size:17px; line-height:1.75; margin:0 0 20px; }
+  .about-text p:last-child{ margin-bottom:0; }
+  .credentials{
+    margin-top:28px;
+    display:grid;
+    gap:14px;
+  }
+  .credential{
+    display:flex; gap:14px; align-items:flex-start;
+    padding:16px;
+    background:var(--cream);
+    border-radius:12px;
+    border:1px solid var(--line);
+  }
+  .credential .mark{
+    width:26px;height:26px;border-radius:50%;
+    background:var(--coral);
+    flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--cream); font-weight:700; font-size:13px;
+    font-family:'Space Mono',monospace;
+  }
+  .credential:nth-child(2) .mark{ background:var(--teal); }
+  .credential:nth-child(3) .mark{ background:var(--magenta); }
+  .credential p{ margin:0; font-size:15px; line-height:1.5; }
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:20px;
+  }
+  @media (max-width:980px){ .services-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .services-grid{ grid-template-columns:1fr; } }
+  .service-card{
+    border-radius:var(--radius);
+    padding:30px 24px;
+    border:2px solid var(--ink);
+    background:var(--cream);
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+    display:flex; flex-direction:column; gap:14px;
+  }
+  .service-card:hover{ transform:translateY(-6px); box-shadow:8px 10px 0 var(--ink); }
+  .service-num{
+    font-family:'Space Mono', monospace;
+    font-size:13px;
+    opacity:0.55;
+  }
+  .service-card h3{ font-size:21px; font-weight:700; line-height:1.25; }
+  .service-card p{ font-size:14.5px; line-height:1.6; margin:0; opacity:0.85; }
+  .service-card:nth-child(1){ background:#FFE4D6; }
+  .service-card:nth-child(2){ background:#D6EFEC; }
+  .service-card:nth-child(3){ background:#FBE0EC; }
+  .service-card:nth-child(4){ background:#FFF0C2; }
+
+  /* ---------- PRESS ---------- */
+  .press{ background:var(--ink); color:var(--cream); }
+  .press .eyebrow{ color:var(--yellow); }
+  .press .section-head p{ opacity:0.75; }
+  .press-list{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:18px;
+  }
+  @media (max-width:860px){ .press-list{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .press-list{ grid-template-columns:1fr; } }
+  .press-item{
+    border:1px solid rgba(255,246,233,0.25);
+    border-radius:14px;
+    padding:22px;
+  }
+  .press-item .press-name{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-weight:600;
+    font-size:19px;
+    color:var(--yellow);
+  }
+  .press-item p{
+    margin:10px 0 0;
+    font-size:14px;
+    line-height:1.55;
+    opacity:0.85;
+  }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    padding:100px 0;
+    text-align:center;
+    position:relative;
+  }
+  .cta-final h2{
+    font-size:clamp(34px,6vw,64px);
+    font-weight:900;
+    max-width:16ch;
+    margin:0 auto;
+    line-height:1.08;
+  }
+  .cta-final h2 em{ color:var(--coral); font-style:italic; font-weight:500; }
+  .cta-final .hero-sub{ margin-left:auto; margin-right:auto; }
+  .cta-final .hero-ctas{ justify-content:center; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);
+    color:var(--cream);
+    padding:44px 0 30px;
+  }
+  .footer-grid{
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:20px;
+    border-bottom:1px solid rgba(255,246,233,0.18);
+    padding-bottom:26px;
+  }
+  .footer-logo{ font-family:'Fraunces', serif; font-weight:700; font-size:20px; }
+  .footer-logo span{ color:var(--yellow); font-style:italic; }
+  .footer-links{ display:flex; gap:20px; }
+  .footer-links a{ text-decoration:none; font-family:'Space Mono',monospace; font-size:12px; text-transform:uppercase; letter-spacing:0.06em; opacity:0.8; }
+  .footer-links a:hover{ opacity:1; color:var(--yellow); }
+  .footer-bottom{
+    padding-top:20px;
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    opacity:0.55;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+
+  /* reveal animation */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.is-visible{ opacity:1; transform:none; }
+</style>
+</head>
+<body>
+
+  <div class="masthead-bar">
+    <div class="wrap">
+      <div class="masthead-logo">MARCELA <span>FIBBIANI</span></div>
+      <nav class="masthead-nav nav-links-desktop">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#prensa">Prensa</a>
+        <a class="btn-ig-small" href="https://www.instagram.com/marcelafibbiani/" target="_blank" rel="noopener">Instagram ↗</a>
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="cover-kicker">
+          <span class="dot"></span>
+          <span class="eyebrow">Creadora digital · Diseño</span>
+        </span>
+        <h1>Hablo de<br><em>diseño</em><br>desde 2004.</h1>
+        <p class="hero-sub">
+          Soy editora de la revista <strong>90+10</strong> y cuento las historias
+          de personas, marcas y objetos que hacen al diseño argentino e
+          internacional. Si tenés una marca, una feria o un proyecto que
+          merece ser contado, hablemos.
+        </p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="https://www.instagram.com/marcelafibbiani/" target="_blank" rel="noopener">Seguime en Instagram ↗</a>
+          <a class="btn btn-secondary" href="https://linktr.ee/marcelafibbiani" target="_blank" rel="noopener">Todos mis links ↗</a>
+        </div>
+      </div>
+      <div class="cover-lines">
+        <div class="tag tag-1">180K seguidores en Instagram</div>
+        <div class="tag tag-2">21 años cubriendo diseño</div>
+        <div class="tag tag-3">Jurado del Sello de Buen Diseño Argentino</div>
+        <div class="tag tag-4">Corresponsal en Salone del Mobile & Ambiente Frankfurt</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TICKER -->
+  <div class="ticker-band" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">Salone del Mobile Milano <span class="sep">·</span></span>
+      <span class="ticker-item">Ambiente Frankfurt <span class="sep">·</span></span>
+      <span class="ticker-item">BIEL Light + Building <span class="sep">·</span></span>
+      <span class="ticker-item">Expo CAFIRA <span class="sep">·</span></span>
+      <span class="ticker-item">La Noche del Diseño <span class="sep">·</span></span>
+      <span class="ticker-item">Revista 90+10 <span class="sep">·</span></span>
+      <span class="ticker-item">Salone del Mobile Milano <span class="sep">·</span></span>
+      <span class="ticker-item">Ambiente Frankfurt <span class="sep">·</span></span>
+      <span class="ticker-item">BIEL Light + Building <span class="sep">·</span></span>
+      <span class="ticker-item">Expo CAFIRA <span class="sep">·</span></span>
+      <span class="ticker-item">La Noche del Diseño <span class="sep">·</span></span>
+      <span class="ticker-item">Revista 90+10 <span class="sep">·</span></span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="wrap stats-grid">
+      <div class="stat-card reveal">
+        <div class="stat-num">180K+</div>
+        <div class="stat-label">Seguidores en Instagram</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-num">5.4K+</div>
+        <div class="stat-label">Publicaciones sobre diseño</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-num">2004</div>
+        <div class="stat-label">Año de fundación de 90+10</div>
+      </div>
+      <div class="stat-card reveal">
+        <div class="stat-num">21</div>
+        <div class="stat-label">Años de trayectoria editorial</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MI -->
+  <section class="section about" id="sobre-mi">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">Sobre mí</span>
+          <h2>Comunico diseño para que las marcas lleguen a quienes lo aman.</h2>
+        </div>
+        <p>Sociología del diseño, escenografía y dos décadas de redacción especializada, en una sola voz editorial.</p>
+      </div>
+      <div class="about-grid">
+        <div class="portrait-card reveal">
+          <div class="initials">MF</div>
+          <div class="role">
+            EDITORA · REVISTA 90+10<br>
+            ESPECIALISTA EN SOCIOLOGÍA DEL DISEÑO<br>
+            ESCENÓGRAFA<br>
+            JURADO · A' DESIGN AWARDS
+          </div>
+        </div>
+        <div class="about-text reveal">
+          <p>
+            Desde 2004 escribo sobre diseño industrial, mobiliario, arquitectura
+            y tendencias, primero en papel y hoy en <strong>90mas10.com</strong>,
+            la revista que fundé y sigo editando. Cubro ferias como el Salone
+            del Mobile de Milán y Ambiente Frankfurt, y llevo esas historias a
+            una comunidad de más de 180 mil personas en Instagram y TikTok.
+          </p>
+          <p>
+            Soy especialista en Sociología del Diseño y escenógrafa, y desde
+            2017 integro el Comité de Selección del Sello de Buen Diseño
+            Argentino. Curo y modero espacios de diseño argentino en eventos
+            como La Noche del Diseño y Expo CAFIRA, y soy jurado de los
+            A' Design Awards.
+          </p>
+          <div class="credentials">
+            <div class="credential">
+              <div class="mark">01</div>
+              <p>Editora y co-fundadora de la revista de diseño 90+10, activa desde 2004.</p>
+            </div>
+            <div class="credential">
+              <div class="mark">02</div>
+              <p>Cobertura editorial en ferias internacionales: Salone del Mobile, Ambiente Frankfurt y BIEL.</p>
+            </div>
+            <div class="credential">
+              <div class="mark">03</div>
+              <p>Curadora y mentora en eventos de diseño argentino, jurado de premios nacionales e internacionales.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section class="section" id="servicios">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow" style="color:var(--teal);">Trabajemos juntos</span>
+          <h2>Formas de contar tu marca.</h2>
+        </div>
+        <p>Cuatro maneras de trabajar con marcas, estudios, ferias e instituciones de diseño.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <span class="service-num">01</span>
+          <h3>Cobertura editorial</h3>
+          <p>Notas, entrevistas e historias en la revista 90+10 para lanzamientos, ferias y proyectos de diseño.</p>
+        </div>
+        <div class="service-card reveal">
+          <span class="service-num">02</span>
+          <h3>Contenido de marca</h3>
+          <p>Reels, posteos y stories en Instagram y TikTok, con storytelling propio para tu producto o espacio.</p>
+        </div>
+        <div class="service-card reveal">
+          <span class="service-num">03</span>
+          <h3>Curaduría y jurado</h3>
+          <p>Selección de piezas y proyectos para muestras, premios y espacios de diseño argentino.</p>
+        </div>
+        <div class="service-card reveal">
+          <span class="service-num">04</span>
+          <h3>Charlas y mentorías</h3>
+          <p>Moderación de paneles, mentorías y presentaciones en ferias y eventos del sector.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRENSA -->
+  <section class="section press" id="prensa">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">En los medios</span>
+          <h2>Voz habitual en la conversación sobre diseño.</h2>
+        </div>
+        <p>Entrevistas, notas y participaciones en medios especializados y de interés general.</p>
+      </div>
+      <div class="press-list">
+        <div class="press-item reveal">
+          <div class="press-name">La Nación</div>
+          <p>Festival de tendencias: qué se verá en la Noche del Diseño.</p>
+        </div>
+        <div class="press-item reveal">
+          <div class="press-name">Diseño y Diáspora</div>
+          <p>Entrevista sobre archivar y documentar el diseño argentino.</p>
+        </div>
+        <div class="press-item reveal">
+          <div class="press-name">Revista Palabras</div>
+          <p>Cobertura de La Noche del Diseño 2024 en Distrito Arenales.</p>
+        </div>
+        <div class="press-item reveal">
+          <div class="press-name">Red de Diseñadores</div>
+          <p>Participación en Desayunos Edit sobre comunicación de diseño.</p>
+        </div>
+        <div class="press-item reveal">
+          <div class="press-name">Domestika</div>
+          <p>Formación y comunidad en torno al diseño industrial y editorial.</p>
+        </div>
+        <div class="press-item reveal">
+          <div class="press-name">Vamos Improvisando</div>
+          <p>Charla en Café VIP sobre trayectoria y comunicación de diseño.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="wrap">
+      <span class="eyebrow" style="color:var(--magenta);">¿Hablamos?</span>
+      <h2 style="margin-top:14px;">¿Tenés una marca, una feria<br>o un proyecto de <em>diseño</em>?</h2>
+      <p class="hero-sub">Escribime por Instagram o mirá todos mis canales en un solo lugar. Respondo yo, Marcela.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://www.instagram.com/marcelafibbiani/" target="_blank" rel="noopener">Escribime por Instagram ↗</a>
+        <a class="btn btn-secondary" href="https://linktr.ee/marcelafibbiani" target="_blank" rel="noopener">Ver linktr.ee/marcelafibbiani ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-logo">MARCELA <span>FIBBIANI</span></div>
+        <div class="footer-links">
+          <a href="https://www.instagram.com/marcelafibbiani/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://linktr.ee/marcelafibbiani" target="_blank" rel="noopener">Linktree</a>
+          <a href="#sobre-mi">Sobre mí</a>
+          <a href="#servicios">Servicios</a>
+        </div>
+      </div>
+      <div class="footer-bottom wrap" style="padding-left:0;padding-right:0;">
+        <span>Editora de la revista 90+10 · Hablo de diseño desde 2004</span>
+        <span>© 2026 Marcela Fibbiani</span>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el=> io.observe(el));
+</script>
+
+</body>
+</html>
