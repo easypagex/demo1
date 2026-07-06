@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bioma · Mercado Eco-Social — Sucre, Bolivia</title>
+<meta name="description" content="Bioma es un ecosistema de diversidad, sanación y respeto en Sucre, Bolivia. Ayni, comunidad y buen vivir tejidos en un mercado eco-social y bio-cultural.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF3E2;
+    --paper:#F3E6C9;
+    --clay:#BD5C28;
+    --clay-dark:#9A491E;
+    --ochre:#CE9A2E;
+    --green:#3E5A3C;
+    --green-dark:#2C4128;
+    --magenta:#95395A;
+    --ink:#3B2A1E;
+    --ink-soft:#6B5847;
+    --line: rgba(59,42,30,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'DM Sans', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Syne', sans-serif;
+    margin:0;
+    color:var(--ink);
+    letter-spacing:-0.01em;
+  }
+  .eyebrow{
+    font-family:'Barlow Condensed', sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.18em;
+    font-weight:600;
+    font-size:0.82rem;
+    color:var(--clay-dark);
+  }
+  .quote{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+  }
+  a{color:inherit;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,243,226,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:76px;
+  }
+  .brand{display:flex;align-items:center;gap:10px;font-family:'Syne',sans-serif;font-weight:700;font-size:1.35rem;}
+  .brand .leaf{width:26px;height:26px;}
+  .nav-links{display:flex;align-items:center;gap:28px;font-size:0.95rem;font-weight:500;}
+  .nav-links a{text-decoration:none;position:relative;padding:4px 0;}
+  .nav-links a:hover{color:var(--clay);}
+  .nav-cta{
+    background:var(--clay);color:var(--cream);
+    padding:10px 20px;border-radius:100px;
+    font-weight:600;font-size:0.9rem;
+    text-decoration:none;
+    display:flex;align-items:center;gap:8px;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .nav-cta:hover{background:var(--clay-dark);transform:translateY(-1px);}
+  .menu-toggle{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:88px 0 60px;
+    overflow:hidden;
+  }
+  .zigzag-border{
+    position:absolute;left:0;right:0;bottom:0;height:14px;
+    background-repeat:repeat-x;background-size:28px 14px;
+    opacity:0.9;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr 0.9fr;
+    gap:56px;align-items:center;
+  }
+  .hero .eyebrow{margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+  .hero .eyebrow::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;}
+  .hero h1{
+    font-size:clamp(2.6rem, 5vw, 4.1rem);
+    line-height:1.02;
+    font-weight:800;
+  }
+  .hero h1 span{color:var(--clay);}
+  .hero-sub{
+    margin-top:22px;
+    font-size:1.18rem;
+    line-height:1.6;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .hero-tag{
+    margin-top:20px;
+    font-size:1.4rem;
+    color:var(--green-dark);
+  }
+  .hero-actions{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap;}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 28px;border-radius:100px;
+    font-weight:600;font-size:1rem;text-decoration:none;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary{background:var(--clay);color:var(--cream);box-shadow:0 8px 22px -8px rgba(189,92,40,0.55);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px -8px rgba(189,92,40,0.6);}
+  .btn-ghost{border:1.5px solid var(--ink);color:var(--ink);}
+  .btn-ghost:hover{background:var(--ink);color:var(--cream);}
+
+  /* Ayni symbol */
+  .ayni-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
+  .ayni-wrap svg{width:100%;max-width:400px;height:auto;}
+  .ayni-spin{animation:spin 40s linear infinite;transform-origin:200px 200px;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .ayni-spin-rev{animation:spinrev 55s linear infinite;transform-origin:200px 200px;}
+  @keyframes spinrev{to{transform:rotate(-360deg);}}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:96px 0;}
+  .section-alt{background:var(--paper);}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{font-size:clamp(1.9rem,3.4vw,2.6rem);margin-top:14px;line-height:1.1;}
+  .section-head p{margin-top:16px;color:var(--ink-soft);font-size:1.08rem;line-height:1.65;}
+
+  /* ---------- ECOSYSTEM INTRO ---------- */
+  .intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .intro-visual{position:relative;aspect-ratio:1/1;max-width:420px;}
+  .weave-ring{position:absolute;inset:0;border-radius:50%;}
+  .intro-copy p{font-size:1.15rem;line-height:1.75;color:var(--ink-soft);}
+  .intro-copy p + p{margin-top:18px;}
+  .intro-copy .quote{font-size:1.5rem;color:var(--green-dark);display:block;margin-top:26px;}
+
+  /* ---------- PILARES (Ayni / Comunidad / Buen Vivir) ---------- */
+  .pilares{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .pilar-card{
+    background:var(--cream);
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:36px 30px;
+    position:relative;
+    overflow:hidden;
+  }
+  .pilar-card::before{
+    content:'';position:absolute;top:0;left:0;right:0;height:6px;
+  }
+  .pilar-card.c1::before{background:var(--clay);}
+  .pilar-card.c2::before{background:var(--green);}
+  .pilar-card.c3::before{background:var(--magenta);}
+  .pilar-icon{width:52px;height:52px;margin-bottom:22px;}
+  .pilar-card h3{font-size:1.3rem;margin-bottom:12px;}
+  .pilar-card p{color:var(--ink-soft);line-height:1.6;font-size:0.98rem;}
+  .pilar-word{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:700;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    font-size:0.78rem;
+    color:var(--ink-soft);
+    display:block;margin-bottom:8px;
+  }
+
+  /* ---------- TEJIDO / OFERTA ---------- */
+  .tejido-list{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .tejido-item{
+    display:flex;gap:18px;align-items:flex-start;
+    padding:22px 0;border-bottom:1px solid var(--line);
+  }
+  .tejido-num{
+    font-family:'Syne',sans-serif;font-weight:700;color:var(--ochre);
+    font-size:1.1rem;min-width:34px;
+  }
+  .tejido-item h3{font-size:1.08rem;margin-bottom:6px;}
+  .tejido-item p{color:var(--ink-soft);font-size:0.96rem;line-height:1.55;margin:0;}
+
+  /* ---------- CTA VENDEDORES ---------- */
+  .cta-band{
+    background:var(--green-dark);
+    color:var(--cream);
+    border-radius:28px;
+    padding:64px 56px;
+    display:grid;grid-template-columns:1.2fr 0.8fr;
+    gap:40px;align-items:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-band::after{
+    content:'';position:absolute;right:-60px;top:-60px;width:220px;height:220px;
+    border-radius:50%;background:radial-gradient(circle, rgba(206,154,46,0.35), transparent 70%);
+  }
+  .cta-band h2{color:var(--cream);font-size:clamp(1.7rem,3vw,2.2rem);}
+  .cta-band p{color:#E9DFC7;margin-top:14px;font-size:1.05rem;line-height:1.6;max-width:48ch;}
+  .cta-band .btn-primary{background:var(--ochre);color:var(--ink);box-shadow:0 8px 22px -8px rgba(206,154,46,0.55);}
+  .cta-band .btn-primary:hover{background:#DDAE45;}
+  .cta-mini{display:flex;flex-direction:column;gap:14px;}
+
+  /* ---------- UBICACION ---------- */
+  .loc-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:48px;align-items:stretch;}
+  .loc-card{
+    background:var(--cream);border:1px solid var(--line);border-radius:22px;
+    padding:38px;display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .loc-detail{display:flex;gap:14px;align-items:flex-start;margin-top:18px;}
+  .loc-detail svg{width:22px;height:22px;flex-shrink:0;margin-top:2px;color:var(--clay);}
+  .loc-detail p{margin:0;color:var(--ink-soft);line-height:1.55;}
+  .map-frame{
+    border-radius:22px;overflow:hidden;border:1px solid var(--line);min-height:340px;
+  }
+  .map-frame iframe{width:100%;height:100%;min-height:340px;border:0;display:block;filter:sepia(8%) saturate(115%);}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:56px 0 40px;border-top:1px solid var(--line);}
+  .footer-grid{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer-brand{font-family:'Syne',sans-serif;font-weight:700;font-size:1.2rem;display:flex;align-items:center;gap:8px;}
+  .footer-links{display:flex;gap:22px;font-size:0.95rem;}
+  .footer-links a{text-decoration:none;display:flex;align-items:center;gap:8px;}
+  .footer-links a:hover{color:var(--clay);}
+  .footer-note{font-size:0.82rem;color:var(--ink-soft);margin-top:26px;text-align:center;}
+  .footer-note a{color:var(--ink-soft);text-decoration:underline;}
+
+  @media (max-width: 860px){
+    .nav-links{display:none;}
+    .hero-grid,.intro-grid,.pilares,.tejido-list,.cta-band,.loc-grid{grid-template-columns:1fr;}
+    .pilares{gap:20px;}
+    .cta-band{padding:44px 30px;}
+    .wrap{padding:0 22px;}
+    section{padding:68px 0;}
+    .hero{padding:56px 0 40px;}
+    .footer-grid{flex-direction:column;align-items:flex-start;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .ayni-spin,.ayni-spin-rev{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">
+      <svg class="leaf" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 4C10 4 4 12 4 20c0 9 7 16 16 16 2 0 3.5-1.5 3.5-3.5S22 29 20 29c-6 0-11-4.5-11-9.5S14 9 20 9c6 0 10.5 5 10.5 11 0 2 1.5 3.5 3.5 3.5S38 22 38 20C38 11 30 4 20 4z" fill="var(--green)"/>
+      </svg>
+      Bioma
+    </div>
+    <div class="nav-links">
+      <a href="#ecosistema">Ecosistema</a>
+      <a href="#pilares">Pilares</a>
+      <a href="#mercado">El mercado</a>
+      <a href="#ubicacion">Ubicación</a>
+    </div>
+    <a class="nav-cta" href="https://www.instagram.com/bioma_mercado_ecosocial/" target="_blank" rel="noopener">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.25.64.42 1.37.47 2.43.05 1.06.06 1.42.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.42.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43a4.9 4.9 0 0 1 1.15-1.77A4.9 4.9 0 0 1 5.45.53C6.09.28 6.82.11 7.88.06 8.94.01 9.3 0 12 0zm0 5.35A6.65 6.65 0 1 0 12 18.65 6.65 6.65 0 0 0 12 5.35zm0 10.97a4.32 4.32 0 1 1 0-8.64 4.32 4.32 0 0 1 0 8.64zm6.9-11.23a1.55 1.55 0 1 1-3.1 0 1.55 1.55 0 0 1 3.1 0z" fill="currentColor"/></svg>
+      Síguenos
+    </a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Sucre, Bolivia 📍</div>
+      <h1>Un ecosistema de <span>diversidad</span>, sanación y respeto</h1>
+      <p class="hero-sub">Bioma es un mercado eco-social donde se teje la vida comunitaria: productores, sanadores, artesanos y familias construyendo juntos el buen vivir.</p>
+      <div class="hero-tag quote">Ayni · comunidad · buen vivir 🌀</div>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#mercado">Conoce el mercado</a>
+        <a class="btn btn-ghost" href="https://www.instagram.com/bioma_mercado_ecosocial/" target="_blank" rel="noopener">Únete como emprendedor</a>
+      </div>
+    </div>
+    <div class="ayni-wrap">
+      <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="200" r="188" fill="none" stroke="var(--ochre)" stroke-width="1.5" stroke-dasharray="2 10" opacity="0.6"/>
+        <g class="ayni-spin">
+          <circle cx="200" cy="200" r="150" fill="none" stroke="var(--clay)" stroke-width="2" opacity="0.55"/>
+          <path d="M200 50 A150 150 0 0 1 335 130" fill="none" stroke="var(--clay)" stroke-width="10" stroke-linecap="round"/>
+          <path d="M200 350 A150 150 0 0 1 65 270" fill="none" stroke="var(--green)" stroke-width="10" stroke-linecap="round"/>
+        </g>
+        <g class="ayni-spin-rev">
+          <circle cx="200" cy="200" r="104" fill="none" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="4 8" opacity="0.6"/>
+          <path d="M310 200 A110 110 0 0 1 245 296" fill="none" stroke="var(--magenta)" stroke-width="7" stroke-linecap="round"/>
+          <path d="M90 200 A110 110 0 0 1 155 104" fill="none" stroke="var(--ochre)" stroke-width="7" stroke-linecap="round"/>
+        </g>
+        <circle cx="200" cy="200" r="46" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.5"/>
+        <text x="200" y="196" text-anchor="middle" font-family="Syne, sans-serif" font-weight="700" font-size="15" fill="var(--ink)">BIOMA</text>
+        <text x="200" y="213" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-size="11" letter-spacing="2" fill="var(--ink-soft)">ECOSOCIAL</text>
+      </svg>
+    </div>
+  </div>
+  <div class="zigzag-border" style="background-image:linear-gradient(45deg, var(--clay) 25%, transparent 25%), linear-gradient(-45deg, var(--clay) 25%, transparent 25%);"></div>
+</section>
+
+<section id="ecosistema">
+  <div class="wrap intro-grid">
+    <div class="intro-copy">
+      <div class="eyebrow">Tejido eco-social y bio-cultural 🤝🌾</div>
+      <h2 style="margin-top:14px;font-size:clamp(1.8rem,3vw,2.4rem);">Cada puesto es un hilo de la misma trama</h2>
+      <p>En Bioma convergen quienes cultivan la tierra, quienes sanan el cuerpo y el alma, y quienes crean con las manos. No es solo un mercado: es un espacio donde circula el respeto entre personas, entre culturas y entre la comunidad y su entorno.</p>
+      <p>Cada feria es una oportunidad de encuentro: se comparte alimento agroecológico, medicina ancestral, arte y saberes que sostienen una forma de vida más consciente y colectiva.</p>
+      <span class="quote">"Lo que doy, vuelve. Lo que recibo, se comparte."</span>
+    </div>
+    <div class="intro-visual">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;">
+        <defs>
+          <pattern id="weave" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M0 20 L20 0 L40 20 L20 40 Z" fill="none" stroke="var(--clay)" stroke-width="2" opacity="0.55"/>
+            <path d="M0 0 L40 40 M40 0 L0 40" stroke="var(--green)" stroke-width="1" opacity="0.35"/>
+          </pattern>
+        </defs>
+        <circle cx="210" cy="210" r="190" fill="url(#weave)"/>
+        <circle cx="210" cy="210" r="190" fill="none" stroke="var(--ink)" stroke-width="1.5" opacity="0.5"/>
+        <circle cx="210" cy="210" r="130" fill="var(--paper)" stroke="var(--ochre)" stroke-width="2"/>
+        <text x="210" y="200" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="22" fill="var(--ink)">Buen</text>
+        <text x="210" y="230" text-anchor="middle" font-family="Cormorant Garamond, serif" font-style="italic" font-size="22" fill="var(--ink)">Vivir</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="pilares" class="section-alt">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Nuestros pilares</div>
+      <h2>Tres principios sostienen la red</h2>
+      <p>Bioma se organiza alrededor de valores andinos que ordenan cada encuentro, cada intercambio y cada decisión comunitaria.</p>
+    </div>
+    <div class="pilares">
+      <div class="pilar-card c1">
+        <svg class="pilar-icon" viewBox="0 0 52 52" fill="none"><circle cx="26" cy="26" r="24" stroke="var(--clay)" stroke-width="2"/><path d="M26 10a16 16 0 0 1 16 16" stroke="var(--clay)" stroke-width="3" stroke-linecap="round"/><path d="M26 42a16 16 0 0 1-16-16" stroke="var(--clay)" stroke-width="3" stroke-linecap="round"/></svg>
+        <span class="pilar-word">Reciprocidad</span>
+        <h3>Ayni</h3>
+        <p>Hoy por ti, mañana por mí. El intercambio de trabajo, saberes y productos sostiene a toda la comunidad por igual.</p>
+      </div>
+      <div class="pilar-card c2">
+        <svg class="pilar-icon" viewBox="0 0 52 52" fill="none"><circle cx="18" cy="20" r="7" stroke="var(--green)" stroke-width="2"/><circle cx="34" cy="20" r="7" stroke="var(--green)" stroke-width="2"/><path d="M8 42c1-8 7-13 18-13s17 5 18 13" stroke="var(--green)" stroke-width="2"/></svg>
+        <span class="pilar-word">Encuentro</span>
+        <h3>Comunidad</h3>
+        <p>Productores, artesanos, sanadores y vecinos tejen vínculos duraderos alrededor de la feria y sus rituales.</p>
+      </div>
+      <div class="pilar-card c3">
+        <svg class="pilar-icon" viewBox="0 0 52 52" fill="none"><path d="M26 6 C34 14 42 20 42 30 A16 16 0 0 1 10 30 C10 20 18 14 26 6Z" stroke="var(--magenta)" stroke-width="2"/><path d="M26 20v22" stroke="var(--magenta)" stroke-width="2"/></svg>
+        <span class="pilar-word">Equilibrio</span>
+        <h3>Buen Vivir</h3>
+        <p>Una vida digna en armonía con la tierra, sin la lógica de la acumulación: suficiencia, salud y respeto mutuo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mercado">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Qué encuentras en la feria</div>
+      <h2>Un solo lugar, muchas formas de cuidar la vida</h2>
+      <p>Bioma reúne en cada jornada distintas expresiones del cuidado colectivo, pensadas para quienes producen y para quienes visitan.</p>
+    </div>
+    <div class="tejido-list">
+      <div class="tejido-item">
+        <span class="tejido-num">01</span>
+        <div><h3>Alimentos agroecológicos</h3><p>Productos cultivados sin agroquímicos, directo de la mano de quien los siembra.</p></div>
+      </div>
+      <div class="tejido-item">
+        <span class="tejido-num">02</span>
+        <div><h3>Medicina y sanación ancestral</h3><p>Terapias, plantas medicinales y acompañamiento desde saberes originarios.</p></div>
+      </div>
+      <div class="tejido-item">
+        <span class="tejido-num">03</span>
+        <div><h3>Artesanía y arte bio-cultural</h3><p>Piezas hechas a mano que llevan la identidad de sus creadores y su territorio.</p></div>
+      </div>
+      <div class="tejido-item">
+        <span class="tejido-num">04</span>
+        <div><h3>Encuentros y talleres</h3><p>Espacios de intercambio de saberes, círculos de palabra y actividades comunitarias.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-alt">
+  <div class="wrap">
+    <div class="cta-band">
+      <div>
+        <h2>¿Produces, sanas o creas con las manos?</h2>
+        <p>Súmate a la red de Bioma como emprendedor o productor. Escríbenos por Instagram y cuéntanos qué tejes en tu propio ecosistema.</p>
+      </div>
+      <div class="cta-mini">
+        <a class="btn btn-primary" href="https://www.instagram.com/bioma_mercado_ecosocial/" target="_blank" rel="noopener">Escríbenos por Instagram</a>
+        <a class="btn btn-ghost" style="border-color:var(--cream);color:var(--cream);" href="#ubicacion">Ver ubicación</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ubicacion">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Encuéntranos</div>
+      <h2>Calle Oruro esquina Chaco, Sucre</h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-card">
+        <div>
+          <div class="loc-detail">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M12 22s7-7.2 7-12.5A7 7 0 0 0 5 9.5C5 14.8 12 22 12 22z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9.5" r="2.6" stroke="currentColor" stroke-width="1.6"/></svg>
+            <p>Calle Oruro esquina Chaco, Sucre, Bolivia</p>
+          </div>
+          <div class="loc-detail">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" stroke="currentColor" stroke-width="1.6"/><path d="M2 7l10 6 10-6" stroke="currentColor" stroke-width="1.6"/></svg>
+            <p>Escríbenos por Instagram para conocer los días y horarios de la próxima feria.</p>
+          </div>
+        </div>
+        <a class="btn btn-primary" style="margin-top:26px;justify-content:center;" href="https://www.instagram.com/bioma_mercado_ecosocial/" target="_blank" rel="noopener">Visítanos en Instagram</a>
+      </div>
+      <div class="map-frame">
+        <iframe src="https://maps.google.com/maps?q=Calle%20Oruro%20esquina%20Chaco%2C%20Sucre%2C%20Bolivia&t=&z=16&ie=UTF8&iwloc=&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de Bioma en Sucre, Bolivia"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <svg width="22" height="22" viewBox="0 0 40 40" fill="none"><path d="M20 4C10 4 4 12 4 20c0 9 7 16 16 16 2 0 3.5-1.5 3.5-3.5S22 29 20 29c-6 0-11-4.5-11-9.5S14 9 20 9c6 0 10.5 5 10.5 11 0 2 1.5 3.5 3.5 3.5S38 22 38 20C38 11 30 4 20 4z" fill="var(--green)"/></svg>
+        Bioma · Mercado Eco-Social
+      </div>
+      <div class="footer-links">
+        <a href="https://www.instagram.com/bioma_mercado_ecosocial/" target="_blank" rel="noopener">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2c2.7 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.25.64.42 1.37.47 2.43.05 1.06.06 1.42.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.64.25-1.37.42-2.43.47-1.06.05-1.42.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.7 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43a4.9 4.9 0 0 1 1.15-1.77A4.9 4.9 0 0 1 5.45.53C6.09.28 6.82.11 7.88.06 8.94.01 9.3 0 12 0zm0 5.35A6.65 6.65 0 1 0 12 18.65 6.65 6.65 0 0 0 12 5.35zm0 10.97a4.32 4.32 0 1 1 0-8.64 4.32 4.32 0 0 1 0 8.64zm6.9-11.23a1.55 1.55 0 1 1-3.1 0 1.55 1.55 0 0 1 3.1 0z" fill="currentColor"/></svg>
+          @bioma_mercado_ecosocial
+        </a>
+      </div>
+    </div>
+    <div class="footer-note">© 2026 Bioma Mercado Eco-Social · Sucre, Bolivia · Sitio diseñado por <a href="https://easypagex.github.io" target="_blank" rel="noopener">EasyPageX</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
