@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Chocolate Connection | Chocolate Gatherings & Tasting Experiences</title>
+<style>
+  :root{
+    --cocoa: #5b3a29;
+    --cocoa-dark: #3e2417;
+    --caramel: #d98e3f;
+    --gold: #f2b544;
+    --cream: #fff4e0;
+    --peach: #ffd9a0;
+    --pink: #f4a988;
+    --white: #fffaf2;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(180deg, #fff4e0 0%, #ffe6bf 40%, #ffd9a0 100%);
+    color: var(--cocoa-dark);
+    overflow-x:hidden;
+  }
+  a{text-decoration:none;}
+  .wrap{max-width:1100px; margin:0 auto; padding:0 24px;}
+
+  /* NAV */
+  nav{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 24px; position:sticky; top:0; z-index:100;
+    background: rgba(255,244,224,0.9); backdrop-filter: blur(6px);
+    border-bottom: 2px solid var(--gold);
+  }
+  .logo{font-size:1.4rem; font-weight:bold; color:var(--cocoa);}
+  .logo span{color:var(--pink);}
+  nav ul{display:flex; gap:28px; list-style:none;}
+  nav ul li a{color:var(--cocoa-dark); font-weight:600; font-size:0.95rem; transition:color .2s;}
+  nav ul li a:hover{color:var(--pink);}
+  .nav-cta{
+    background: var(--pink); color:white !important; padding:10px 20px;
+    border-radius:30px; font-weight:bold;
+  }
+  .menu-toggle{display:none; font-size:1.6rem; background:none; border:none; cursor:pointer; color:var(--cocoa);}
+
+  /* HERO */
+  header.hero{
+    text-align:center; padding:90px 24px 70px; position:relative;
+  }
+  .hero-emoji{font-size:3rem; margin-bottom:10px; animation: float 3s ease-in-out infinite;}
+  @keyframes float{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-10px);} }
+  h1.hero-title{
+    font-size:clamp(2.2rem, 5vw, 3.6rem); color:var(--cocoa); line-height:1.15; margin-bottom:18px;
+  }
+  h1.hero-title em{color:var(--pink); font-style:normal; border-bottom:4px solid var(--gold);}
+  .hero-sub{
+    max-width:640px; margin:0 auto 34px; font-size:1.2rem; color:var(--cocoa-dark); line-height:1.6;
+  }
+  .btn-row{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .btn{
+    padding:16px 34px; border-radius:40px; font-weight:bold; font-size:1.05rem;
+    display:inline-flex; align-items:center; gap:8px; transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 6px 18px rgba(217,142,63,0.35);
+  }
+  .btn-primary{ background: linear-gradient(135deg, var(--gold), var(--pink)); color:white; }
+  .btn-secondary{ background:white; color:var(--cocoa); border:2px solid var(--gold); }
+  .btn:hover{ transform: translateY(-3px); box-shadow: 0 10px 24px rgba(217,142,63,0.45); }
+
+  .divider{
+    width:80px; height:4px; background:var(--gold); margin:14px auto; border-radius:4px;
+  }
+
+  /* SECTIONS */
+  section{ padding:70px 24px; }
+  .section-title{
+    text-align:center; font-size:clamp(1.8rem,4vw,2.4rem); color:var(--cocoa); margin-bottom:14px;
+  }
+  .section-sub{
+    text-align:center; max-width:600px; margin:0 auto 46px; color:var(--cocoa-dark); font-size:1.05rem; line-height:1.6;
+  }
+
+  /* WHO */
+  .who-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:26px; max-width:1000px; margin:0 auto;
+  }
+  .who-card{
+    background:white; border-radius:20px; padding:34px 24px; text-align:center;
+    box-shadow:0 8px 20px rgba(94,58,29,0.1); transition: transform .25s;
+    border-top:6px solid var(--gold);
+  }
+  .who-card:hover{ transform: translateY(-8px); }
+  .who-card .icon{font-size:2.4rem; margin-bottom:14px;}
+  .who-card h3{font-size:1.2rem; color:var(--cocoa); margin-bottom:10px;}
+  .who-card p{font-size:0.95rem; line-height:1.55;}
+
+  /* EXPERIENCE / WHY */
+  .why-section{ background: linear-gradient(135deg, var(--pink), var(--caramel)); color:white; }
+  .why-section .section-title, .why-section .section-sub{ color:white; }
+  .why-grid{
+    display:grid; grid-template-columns:repeat(2,1fr); gap:24px; max-width:900px; margin:0 auto;
+  }
+  .why-item{
+    background:rgba(255,255,255,0.15); border-radius:16px; padding:26px; backdrop-filter:blur(4px);
+    border:1px solid rgba(255,255,255,0.3);
+  }
+  .why-item h4{ font-size:1.1rem; margin-bottom:8px; }
+  .why-item p{ font-size:0.95rem; line-height:1.5; opacity:0.95; }
+
+  /* HOW IT WORKS */
+  .steps{
+    display:flex; justify-content:center; gap:30px; flex-wrap:wrap; max-width:1000px; margin:0 auto;
+  }
+  .step{
+    flex:1; min-width:220px; max-width:260px; text-align:center; padding:20px;
+  }
+  .step-num{
+    width:56px; height:56px; border-radius:50%; background:var(--gold); color:white;
+    display:flex; align-items:center; justify-content:center; font-size:1.4rem; font-weight:bold;
+    margin:0 auto 16px; box-shadow:0 6px 14px rgba(242,181,68,0.4);
+  }
+  .step h4{ color:var(--cocoa); margin-bottom:8px; font-size:1.1rem; }
+  .step p{ font-size:0.92rem; line-height:1.5; }
+
+  /* TESTIMONIAL / QUOTE */
+  .quote-section{
+    text-align:center; padding:80px 24px; background: var(--cream);
+  }
+  .quote{
+    font-size:1.5rem; max-width:700px; margin:0 auto 20px; color:var(--cocoa); font-style:italic; line-height:1.6;
+  }
+  .quote-author{ font-weight:bold; color:var(--pink); }
+
+  /* GALLERY STRIP */
+  .strip{
+    display:flex; overflow-x:auto; gap:16px; padding:10px 24px 30px; scrollbar-width:thin;
+  }
+  .strip-card{
+    min-width:220px; height:150px; border-radius:16px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-size:2.5rem; color:white; font-weight:bold;
+    box-shadow:0 8px 18px rgba(0,0,0,0.12);
+  }
+  .strip-card:nth-child(1){background:linear-gradient(135deg,#d98e3f,#8a5a2c);}
+  .strip-card:nth-child(2){background:linear-gradient(135deg,#f4a988,#c9683f);}
+  .strip-card:nth-child(3){background:linear-gradient(135deg,#f2b544,#d98e3f);}
+  .strip-card:nth-child(4){background:linear-gradient(135deg,#8a5a2c,#5b3a29);}
+  .strip-card:nth-child(5){background:linear-gradient(135deg,#c9683f,#f4a988);}
+
+  /* CONTACT / CTA */
+  .cta-section{
+    text-align:center; padding:90px 24px; background: linear-gradient(135deg, var(--gold), var(--pink));
+    color:white;
+  }
+  .cta-section h2{ font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:18px; }
+  .cta-section p{ max-width:560px; margin:0 auto 32px; font-size:1.1rem; line-height:1.6; opacity:0.95; }
+  .cta-section .btn-primary{ background:white; color:var(--cocoa); }
+  .cta-section .btn-secondary{ background:transparent; color:white; border:2px solid white; }
+
+  /* FOOTER */
+  footer{
+    background: var(--cocoa-dark); color:var(--peach); text-align:center; padding:40px 24px;
+  }
+  footer .footer-logo{ font-size:1.3rem; font-weight:bold; margin-bottom:10px; color:white; }
+  footer a{ color:var(--gold); font-weight:bold; }
+  footer .footer-note{ font-size:0.85rem; opacity:0.7; margin-top:16px; }
+
+  /* Floating whatsapp-style instagram bubble */
+  .float-btn{
+    position:fixed; bottom:26px; right:26px; z-index:200;
+    background: linear-gradient(135deg,#f2b544,#f4a988,#c9683f);
+    width:60px; height:60px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25); font-size:1.7rem; color:white;
+    animation: pulse 2.4s infinite;
+  }
+  @keyframes pulse{ 0%{box-shadow:0 0 0 0 rgba(242,181,68,0.5);} 70%{box-shadow:0 0 0 16px rgba(242,181,68,0);} 100%{box-shadow:0 0 0 0 rgba(242,181,68,0);} }
+
+  @media(max-width:820px){
+    nav ul{ display:none; }
+    .menu-toggle{ display:block; }
+    .who-grid{ grid-template-columns:1fr; }
+    .why-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">🍫 The Chocolate <span>Connection</span></div>
+  <ul>
+    <li><a href="#who">Who It's For</a></li>
+    <li><a href="#why">Why Chocolate</a></li>
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="https://www.instagram.com/the_chocolateconnection/" target="_blank" class="nav-cta">Book a Gathering</a></li>
+  </ul>
+</nav>
+
+<header class="hero">
+  <div class="hero-emoji">🍫✨🍫</div>
+  <h1 class="hero-title">Reconnect to your senses,<br> one <em>chocolate gathering</em> at a time</h1>
+  <p class="hero-sub">
+    The Chocolate Connection curates immersive chocolate tasting experiences that bring people back to themselves — and to each other. For individuals, teams, clients, and communities who want a moment that actually means something.
+  </p>
+  <div class="btn-row">
+    <a href="https://www.instagram.com/the_chocolateconnection/" target="_blank" class="btn btn-primary">📸 Visit Our Instagram</a>
+    <a href="#how" class="btn btn-secondary">See How It Works</a>
+  </div>
+</header>
+
+<section id="who">
+  <h2 class="section-title">Who We Gather For</h2>
+  <p class="section-sub">Every chocolate experience is designed around the people in the room — because connection looks different for everyone.</p>
+  <div class="who-grid">
+    <div class="who-card">
+      <div class="icon">🧘</div>
+      <h3>Individuals</h3>
+      <p>A slow, sensory reset. Come alone or bring a friend, and rediscover what it feels like to truly taste, feel, and be present.</p>
+    </div>
+    <div class="who-card">
+      <div class="icon">🤝</div>
+      <h3>Teams</h3>
+      <p>A refreshing alternative to the usual team-building day. Shared tasting experiences that build real rapport, naturally.</p>
+    </div>
+    <div class="who-card">
+      <div class="icon">💼</div>
+      <h3>Clients & Community</h3>
+      <p>Host an unforgettable gathering for clients, partners, or your community — memorable, warm, and effortlessly on-brand.</p>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="why-section">
+  <h2 class="section-title">Why Chocolate?</h2>
+  <p class="section-sub">Because chocolate is one of the few experiences that engages every sense at once — and gives people permission to slow down.</p>
+  <div class="why-grid">
+    <div class="why-item">
+      <h4>🍫 A Full Sensory Reset</h4>
+      <p>Aroma, texture, sound, and taste — guided tastings pull people out of their heads and into the present moment.</p>
+    </div>
+    <div class="why-item">
+      <h4>💬 Real Conversation, Naturally</h4>
+      <p>Shared tasting creates easy, unforced connection — no icebreakers required.</p>
+    </div>
+    <div class="why-item">
+      <h4>🌍 Curated With Intention</h4>
+      <p>Each gathering is thoughtfully designed — from the chocolate selection to the pacing of the experience.</p>
+    </div>
+    <div class="why-item">
+      <h4>✨ Memorable By Design</h4>
+      <p>Not just an event — an experience people actually talk about afterward.</p>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <h2 class="section-title">How It Works</h2>
+  <p class="section-sub">Simple to book, effortless to enjoy.</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h4>Reach Out</h4>
+      <p>Message us on Instagram to share who this gathering is for and what you're hoping to create.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h4>We Curate</h4>
+      <p>We design a chocolate experience tailored to your group size, setting, and goals.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h4>You Gather</h4>
+      <p>Sit back, taste, connect — we handle the details so you can be fully present.</p>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-card">🍫</div>
+  <div class="strip-card">✨</div>
+  <div class="strip-card">🤝</div>
+  <div class="strip-card">🧘</div>
+  <div class="strip-card">💬</div>
+</div>
+
+<section class="quote-section">
+  <p class="quote">"We curate chocolate gatherings that help people reconnect to their senses, themselves, their teammates, clients, and community."</p>
+  <p class="quote-author">— The Chocolate Connection</p>
+</section>
+
+<section class="cta-section">
+  <h2>Ready to Gather?</h2>
+  <p>Whether it's just for you, your team, or your whole community — let's design a chocolate experience worth remembering.</p>
+  <div class="btn-row">
+    <a href="https://www.instagram.com/the_chocolateconnection/" target="_blank" class="btn btn-primary">📸 Message Us on Instagram</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">🍫 The Chocolate Connection</div>
+  <p>Follow along and book your gathering: <a href="https://www.instagram.com/the_chocolateconnection/" target="_blank">@the_chocolateconnection</a></p>
+  <p class="footer-note">© 2026 The Chocolate Connection. All rights reserved.</p>
+</footer>
+
+<a href="https://www.instagram.com/the_chocolateconnection/" target="_blank" class="float-btn" title="Message us on Instagram">📸</a>
+
+</body>
+</html>
