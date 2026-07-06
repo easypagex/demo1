@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MafeChocolatería ❤️ | Chocolate artesanal colombiano</title>
+<meta name="description" content="MafeChocolatería - Un chocolate hace la diferencia en el viaje de la memoria. Chocolate artesanal colombiano hecho con amor por María Fernanda.">
+<style>
+  :root {
+    --cacao-dark: #4a2c1a;
+    --cacao-mid: #7b4a2d;
+    --caramel: #c98a3e;
+    --gold: #e8ac4d;
+    --cream: #fff6e8;
+    --cream-2: #fdecd0;
+    --blush: #f4a89a;
+    --blush-dark: #e2685a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Georgia', 'Palatino Linotype', serif;
+    background: linear-gradient(160deg, var(--cream) 0%, var(--cream-2) 55%, #fbe1c2 100%);
+    color: var(--cacao-dark);
+    overflow-x: hidden;
+  }
+  a { text-decoration: none; }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 246, 232, 0.92);
+    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 6%;
+    border-bottom: 2px solid var(--gold);
+  }
+  .logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--cacao-dark);
+    letter-spacing: 0.5px;
+  }
+  .logo span { color: var(--blush-dark); }
+  .nav-links { display: flex; gap: 26px; }
+  .nav-links a {
+    color: var(--cacao-mid);
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blush-dark); }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    text-align: center;
+    padding: 90px 6% 70px;
+    overflow: hidden;
+  }
+  .hero::before, .hero::after {
+    content: "🍫";
+    position: absolute;
+    font-size: 5rem;
+    opacity: 0.15;
+    top: 10%;
+  }
+  .hero::before { left: 4%; transform: rotate(-15deg); }
+  .hero::after { right: 4%; top: 60%; transform: rotate(20deg); }
+  .hero-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 12px rgba(201,138,62,0.35);
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    color: var(--cacao-dark);
+    margin-bottom: 14px;
+    line-height: 1.15;
+  }
+  .hero h1 span { color: var(--blush-dark); }
+  .hero .tagline {
+    max-width: 640px;
+    margin: 0 auto 12px;
+    font-style: italic;
+    font-size: 1.25rem;
+    color: var(--cacao-mid);
+  }
+  .hero .subtext {
+    max-width: 560px;
+    margin: 0 auto 34px;
+    font-size: 1.05rem;
+    color: #6b4a34;
+  }
+  .cta-row {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--blush-dark), var(--blush));
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(226,104,90,0.35);
+  }
+  .btn-secondary {
+    background: #fff;
+    color: var(--cacao-dark);
+    border: 2px solid var(--gold);
+  }
+  .btn:hover { transform: translateY(-3px); box-shadow: 0 12px 26px rgba(0,0,0,0.15); }
+
+  /* ---------- SECTION SHARED ---------- */
+  section { padding: 70px 6%; }
+  .section-title {
+    text-align: center;
+    font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+    color: var(--cacao-dark);
+    margin-bottom: 12px;
+  }
+  .section-sub {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 46px;
+    color: var(--cacao-mid);
+    font-size: 1.05rem;
+  }
+
+  /* ---------- SOBRE MI ---------- */
+  .about {
+    background: #fff;
+    border-radius: 28px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 50px 6%;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    box-shadow: 0 12px 40px rgba(74,44,26,0.08);
+  }
+  .about-photo {
+    flex: 1 1 240px;
+    display: flex;
+    justify-content: center;
+  }
+  .photo-circle {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--blush));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+    box-shadow: 0 10px 26px rgba(201,138,62,0.35);
+  }
+  .about-text { flex: 2 1 340px; }
+  .about-text h3 { font-size: 1.6rem; margin-bottom: 6px; color: var(--cacao-dark); }
+  .about-text .role { color: var(--blush-dark); font-weight: bold; margin-bottom: 16px; }
+  .about-text p { color: #5c4331; line-height: 1.7; margin-bottom: 14px; }
+  .flag { font-size: 1.3rem; }
+
+  /* ---------- PRODUCTOS ---------- */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 26px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .product-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 32px 24px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(74,44,26,0.08);
+    transition: transform 0.25s, box-shadow 0.25s;
+    border: 2px solid transparent;
+  }
+  .product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 34px rgba(226,104,90,0.18);
+    border-color: var(--gold);
+  }
+  .product-icon { font-size: 2.6rem; margin-bottom: 14px; }
+  .product-card h4 { font-size: 1.15rem; margin-bottom: 8px; color: var(--cacao-dark); }
+  .product-card p { color: #7a5b45; font-size: 0.95rem; line-height: 1.5; }
+
+  /* ---------- WHY / VALORES ---------- */
+  .values {
+    background: linear-gradient(135deg, var(--cacao-dark), var(--cacao-mid));
+    border-radius: 28px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 55px 6%;
+    color: var(--cream);
+  }
+  .values .section-title, .values .section-sub { color: var(--cream); }
+  .values .section-sub { color: #f0d9c2; }
+  .values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    margin-top: 10px;
+  }
+  .value-item { text-align: center; }
+  .value-item .icon { font-size: 2.2rem; margin-bottom: 10px; }
+  .value-item h4 { font-size: 1.05rem; margin-bottom: 6px; color: var(--gold); }
+  .value-item p { font-size: 0.9rem; color: #f0d9c2; line-height: 1.5; }
+
+  /* ---------- TESTIMONIO / QUOTE ---------- */
+  .quote-block {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+  }
+  .quote-block p {
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--cacao-mid);
+    line-height: 1.6;
+    position: relative;
+  }
+  .quote-block p::before { content: "“"; font-size: 2.5rem; color: var(--gold); }
+  .quote-block p::after { content: "”"; font-size: 2.5rem; color: var(--gold); }
+  .quote-block .author {
+    margin-top: 16px;
+    font-weight: bold;
+    color: var(--blush-dark);
+    font-size: 1rem;
+    font-style: normal;
+  }
+
+  /* ---------- CONTACTO / CTA FINAL ---------- */
+  .final-cta {
+    text-align: center;
+    background: linear-gradient(135deg, var(--blush), var(--gold));
+    border-radius: 28px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 60px 6%;
+    color: #fff;
+  }
+  .final-cta h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); margin-bottom: 14px; }
+  .final-cta p { font-size: 1.05rem; margin-bottom: 30px; max-width: 520px; margin-left: auto; margin-right: auto; }
+  .final-cta .btn-primary {
+    background: #fff;
+    color: var(--blush-dark);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer {
+    text-align: center;
+    padding: 40px 6% 30px;
+    color: var(--cacao-mid);
+    font-size: 0.9rem;
+  }
+  footer a { color: var(--blush-dark); font-weight: bold; }
+  .footer-social { margin: 16px 0; display: flex; justify-content: center; gap: 16px; }
+  .footer-social a {
+    background: #fff;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(74,44,26,0.1);
+    font-size: 1.2rem;
+    color: var(--cacao-dark);
+    transition: transform 0.2s;
+  }
+  .footer-social a:hover { transform: translateY(-3px); }
+
+  /* ---------- WHATSAPP FLOAT ---------- */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: #25D366;
+    color: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+    z-index: 200;
+    transition: transform 0.2s;
+  }
+  .whatsapp-float:hover { transform: scale(1.1); }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .about { flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Mafe<span>Chocolatería</span> ❤️</div>
+  <div class="nav-links">
+    <a href="#sobre-mi">Sobre mí</a>
+    <a href="#productos">Productos</a>
+    <a href="#valores">Valores</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">🇨🇴 CHOCOLATE ARTESANAL COLOMBIANO</div>
+  <h1>Un chocolate hace la <span>diferencia</span><br>en el viaje de la memoria</h1>
+  <p class="tagline">MafeChocolatería ❤️</p>
+  <p class="subtext">Cacao colombiano transformado con cuidado, técnica y cariño por María Fernanda — geógrafa y chocolatera. Cada barra cuenta una historia de origen, territorio y sabor.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="https://wa.me/57" target="_blank" rel="noopener">💬 Escríbeme por WhatsApp</a>
+    <a class="btn btn-secondary" href="https://www.instagram.com/mafechocolateria/" target="_blank" rel="noopener">📷 Síguenos en Instagram</a>
+  </div>
+</section>
+
+<section id="sobre-mi">
+  <h2 class="section-title">Sobre mí</h2>
+  <p class="section-sub">La pasión por el territorio y el cacao colombiano, contada desde el corazón.</p>
+  <div class="about">
+    <div class="about-photo">
+      <div class="photo-circle">🍫</div>
+    </div>
+    <div class="about-text">
+      <h3>María Fernanda</h3>
+      <div class="role">Geógrafa & Chocolatera <span class="flag">🇨🇴</span></div>
+      <p>Detrás de MafeChocolatería hay una geógrafa enamorada del cacao colombiano. Cada tableta nace de un recorrido por el territorio, entendiendo de dónde viene el sabor y por qué cada región le da a su chocolate un carácter único.</p>
+      <p>Para mí, el chocolate no es solo un dulce: es memoria, es viaje, es identidad. Por eso cada creación busca despertar un recuerdo, una emoción, una conexión.</p>
+    </div>
+  </div>
+</section>
+
+<section id="productos">
+  <h2 class="section-title">Nuestro chocolate</h2>
+  <p class="section-sub">Creaciones artesanales pensadas para acompañar tus momentos especiales.</p>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-icon">🍫</div>
+      <h4>Barras de origen</h4>
+      <p>Cacao colombiano seleccionado, con notas propias de cada territorio.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🎁</div>
+      <h4>Regalos y detalles</h4>
+      <p>Presentaciones especiales para celebraciones, empresas y ocasiones únicas.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">☕</div>
+      <h4>Bebidas de cacao</h4>
+      <p>Chocolate caliente y bebidas artesanales para disfrutar despacio.</p>
+    </div>
+    <div class="product-card">
+      <div class="product-icon">🌱</div>
+      <h4>Ediciones especiales</h4>
+      <p>Creaciones de temporada inspiradas en recuerdos y viajes por Colombia.</p>
+    </div>
+  </div>
+</section>
+
+<section id="valores">
+  <div class="values">
+    <h2 class="section-title">Lo que nos hace diferentes</h2>
+    <p class="section-sub">Cada tableta lleva un pedazo de territorio, historia y cuidado artesanal.</p>
+    <div class="values-grid">
+      <div class="value-item">
+        <div class="icon">🗺️</div>
+        <h4>Mirada de geógrafa</h4>
+        <p>Cada chocolate nace de entender el territorio y el origen del cacao.</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">✋</div>
+        <h4>Hecho a mano</h4>
+        <p>Procesos artesanales, cuidados en cada detalle, lote por lote.</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">🇨🇴</div>
+        <h4>100% colombiano</h4>
+        <p>Cacao de nuestra tierra, celebrando la riqueza cacaotera del país.</p>
+      </div>
+      <div class="value-item">
+        <div class="icon">❤️</div>
+        <h4>Hecho con amor</h4>
+        <p>Cada creación busca emocionar y despertar un buen recuerdo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="quote-block">
+    <p>Un chocolate hace la diferencia en el viaje de la memoria</p>
+    <div class="author">— María Fernanda, MafeChocolatería</div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="final-cta">
+    <h2>¿Lista para probar MafeChocolatería?</h2>
+    <p>Escríbeme por WhatsApp o síguenos en Instagram para conocer nuestras creaciones, pedidos y novedades.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://wa.me/57" target="_blank" rel="noopener">💬 Pedir por WhatsApp</a>
+      <a class="btn btn-secondary" href="https://www.instagram.com/mafechocolateria/" target="_blank" rel="noopener">📷 @mafechocolateria</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-social">
+    <a href="https://www.instagram.com/mafechocolateria/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+  </div>
+  <p>MafeChocolatería ❤️ — Colombia 🇨🇴</p>
+  <p>&copy; 2026 MafeChocolatería. Todos los derechos reservados.</p>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/57" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+</body>
+</html>
