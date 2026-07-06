@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estancia La Alejandra — Cabalgatas al pie del Cordón del Plata</title>
+<meta name="description" content="Estancia cordillerana turística en Tupungato, Mendoza. Cabalgatas, gastronomía criolla y alojamiento al pie del Cordón del Plata.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Caveat:wght@600&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sand:#FBF1DC;
+    --sand-deep:#F3E4C4;
+    --ink:#3E2A1C;
+    --azul:#1B5A78;
+    --azul-deep:#123C51;
+    --naranja:#E8622C;
+    --naranja-deep:#C74E1E;
+    --ocre:#E1A83B;
+    --verde:#6D8F3F;
+    --cream-card:#FFFBF2;
+    --shadow: 0 14px 34px rgba(62,42,28,0.14);
+    --radius: 18px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'Karla', sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Abril Fatface', serif;
+    margin:0;
+    line-height:1.05;
+    font-weight:400;
+    color:var(--azul-deep);
+  }
+  .tag-script{
+    font-family:'Caveat', cursive;
+    font-weight:600;
+    color:var(--naranja-deep);
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 28px;
+    border-radius:100px;
+    font-weight:700;
+    text-decoration:none;
+    font-size:0.98rem;
+    letter-spacing:0.2px;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    border:2px solid transparent;
+    cursor:pointer;
+  }
+  .btn-primary{background:var(--naranja); color:#fff; box-shadow:0 10px 24px rgba(232,98,44,0.35);}
+  .btn-primary:hover{transform:translateY(-3px); background:var(--naranja-deep); box-shadow:0 14px 30px rgba(232,98,44,0.42);}
+  .btn-outline{background:transparent; border-color:rgba(255,255,255,0.8); color:#fff;}
+  .btn-outline:hover{transform:translateY(-3px); background:rgba(255,255,255,0.14);}
+  .btn-dark-outline{background:transparent; border-color:var(--azul-deep); color:var(--azul-deep);}
+  .btn-dark-outline:hover{transform:translateY(-3px); background:var(--azul-deep); color:#fff;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:1000;
+    padding:18px 0;
+    transition:background .35s ease, padding .35s ease, box-shadow .35s ease;
+  }
+  header.scrolled{
+    background:rgba(251,241,220,0.94);
+    backdrop-filter: blur(8px);
+    padding:12px 0;
+    box-shadow:0 6px 20px rgba(62,42,28,0.08);
+  }
+  .nav-inner{display:flex; align-items:center; justify-content:space-between;}
+  .brand{
+    font-family:'Abril Fatface', serif;
+    font-size:1.35rem;
+    color:#fff;
+    text-decoration:none;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    transition:color .35s ease;
+  }
+  header.scrolled .brand{color:var(--azul-deep);}
+  .brand .mark{width:34px; height:34px; flex-shrink:0;}
+  nav.links{display:flex; gap:34px; align-items:center;}
+  nav.links a{
+    text-decoration:none; font-weight:600; font-size:0.94rem;
+    color:#fff; opacity:0.92; position:relative; padding:4px 0;
+    transition:color .35s ease;
+  }
+  header.scrolled nav.links a{color:var(--ink);}
+  nav.links a::after{
+    content:""; position:absolute; left:0; bottom:-2px; height:2px; width:0%;
+    background:var(--naranja); transition:width .25s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+  .nav-cta{display:flex; align-items:center; gap:16px;}
+  .hamburger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px; z-index:1001;}
+  .hamburger span{width:26px; height:3px; background:#fff; border-radius:2px; transition:.3s;}
+  header.scrolled .hamburger span{background:var(--azul-deep);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:flex-end;
+    background:linear-gradient(180deg,#F7C873 0%, #EF8C4B 32%, #D85D3B 55%, #9C3B4A 74%, #3B2246 100%);
+    overflow:hidden;
+  }
+  .hero-sun{
+    position:absolute; left:50%; top:22%; width:220px; height:220px; border-radius:50%;
+    background:radial-gradient(circle at 35% 35%, #FFF3D0, #FFD873 55%, rgba(255,216,115,0));
+    transform:translateX(-50%);
+    filter:blur(0.5px);
+  }
+  .hero-birds{position:absolute; top:14%; left:12%; opacity:0.75;}
+  .hero-mountains{position:absolute; bottom:0; left:0; width:100%; line-height:0;}
+  .hero-riders{
+    position:absolute; bottom:9%; left:-16%;
+    width:230px;
+    animation: ride 26s linear infinite;
+  }
+  @keyframes ride{
+    0%{ left:-20%; }
+    100%{ left:104%; }
+  }
+  .hero-content{
+    position:relative; z-index:5; width:100%;
+    padding:180px 0 120px;
+    color:#fff;
+  }
+  .eyebrow{
+    font-weight:700; letter-spacing:2.4px; text-transform:uppercase;
+    font-size:0.78rem; opacity:0.92; margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:34px; height:2px; background:#fff; display:inline-block;}
+  .hero h1{
+    color:#fff; font-size:clamp(2.6rem, 6vw, 5.2rem);
+    text-shadow:0 6px 30px rgba(59,34,70,0.35);
+  }
+  .hero .lead{
+    max-width:560px; margin-top:22px; font-size:1.16rem; line-height:1.55;
+    color:#FFF3E2; font-weight:500;
+  }
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:16px; margin-top:38px;}
+  .scroll-cue{
+    position:absolute; bottom:26px; left:50%; transform:translateX(-50%);
+    color:#fff; opacity:0.85; font-size:0.8rem; letter-spacing:1.5px; text-transform:uppercase;
+    display:flex; flex-direction:column; align-items:center; gap:8px; z-index:6;
+  }
+  .scroll-cue .line{width:1px; height:34px; background:#fff; animation:scrollLine 1.8s ease-in-out infinite;}
+  @keyframes scrollLine{0%,100%{transform:scaleY(0.4); opacity:0.4;} 50%{transform:scaleY(1); opacity:1;}}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0; transform:translateY(34px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- RIDGE DIVIDER (signature) ---------- */
+  .ridge{width:100%; line-height:0; margin-top:-2px;}
+  .ridge.flip{transform:scaleY(-1);}
+
+  /* ---------- INTRO ---------- */
+  .intro{padding:110px 0 70px; text-align:center;}
+  .intro .tag-script{font-size:1.7rem; display:block; margin-bottom:6px;}
+  .intro h2{font-size:clamp(2rem,4vw,2.9rem); max-width:780px; margin:0 auto;}
+  .intro p{max-width:640px; margin:26px auto 0; font-size:1.08rem; line-height:1.75; color:#5A4230;}
+  .intro-stats{display:flex; justify-content:center; gap:60px; margin-top:52px; flex-wrap:wrap;}
+  .stat{text-align:center;}
+  .stat .num{font-family:'Abril Fatface',serif; font-size:2.4rem; color:var(--naranja);}
+  .stat .label{font-size:0.82rem; text-transform:uppercase; letter-spacing:1px; color:var(--azul-deep); font-weight:700; margin-top:4px;}
+
+  /* ---------- EXPERIENCIAS ---------- */
+  .experiencias{background:var(--sand-deep); padding:100px 0 110px;}
+  .section-head{text-align:center; max-width:640px; margin:0 auto 60px;}
+  .section-head .tag-script{font-size:1.5rem; display:block; margin-bottom:4px;}
+  .section-head h2{font-size:clamp(1.9rem,3.6vw,2.6rem);}
+  .section-head p{color:#5A4230; margin-top:16px; font-size:1.03rem; line-height:1.6;}
+  .exp-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:26px;
+  }
+  .exp-card{
+    background:var(--cream-card); border-radius:var(--radius); padding:34px 28px;
+    box-shadow:var(--shadow); position:relative; overflow:hidden;
+    transition:transform .35s ease, box-shadow .35s ease;
+    border-top:5px solid var(--accent, var(--naranja));
+  }
+  .exp-card:hover{transform:translateY(-8px); box-shadow:0 20px 40px rgba(62,42,28,0.2);}
+  .exp-card .icon{
+    width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:var(--accent, var(--naranja)); color:#fff; margin-bottom:20px;
+  }
+  .exp-card h3{font-size:1.3rem; color:var(--azul-deep); margin-bottom:10px;}
+  .exp-card p{margin:0; color:#5A4230; font-size:0.97rem; line-height:1.6;}
+  .exp-card .meta{margin-top:14px; font-size:0.82rem; font-weight:700; color:var(--accent, var(--naranja)); text-transform:uppercase; letter-spacing:0.5px;}
+
+  /* ---------- ALOJAMIENTO ---------- */
+  .alojamiento{padding:110px 0; position:relative;}
+  .aloj-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;}
+  .aloj-visual{
+    position:relative; border-radius:26px; overflow:hidden; aspect-ratio:4/5;
+    background:linear-gradient(160deg,#274F63,#1B5A78 45%, #3E7A55 100%);
+  }
+  .aloj-visual svg{width:100%; height:100%;}
+  .aloj-text .tag-script{font-size:1.5rem; display:block; margin-bottom:6px;}
+  .aloj-text h2{font-size:clamp(2rem,3.6vw,2.7rem); margin-bottom:20px;}
+  .aloj-text p{color:#5A4230; font-size:1.05rem; line-height:1.75; margin-bottom:16px;}
+  .aloj-list{list-style:none; padding:0; margin:26px 0 34px; display:grid; gap:12px;}
+  .aloj-list li{display:flex; gap:12px; align-items:flex-start; font-size:0.98rem; color:var(--ink); font-weight:600;}
+  .aloj-list li .dot{width:9px; height:9px; border-radius:50%; background:var(--ocre); margin-top:7px; flex-shrink:0;}
+
+  /* ---------- UBICACION ---------- */
+  .ubicacion{background:var(--azul-deep); color:#fff; padding:110px 0;}
+  .ubicacion .section-head h2{color:#fff;}
+  .ubicacion .section-head p{color:#DCEAF0;}
+  .ubi-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:50px; align-items:stretch;}
+  .ubi-card{
+    background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.14);
+    border-radius:var(--radius); padding:36px; display:flex; flex-direction:column; justify-content:space-between;
+  }
+  .ubi-card h3{color:#fff; font-size:1.5rem; margin-bottom:14px;}
+  .ubi-card p{color:#DCEAF0; line-height:1.7; margin-bottom:24px;}
+  .map-embed{border-radius:var(--radius); overflow:hidden; border:1px solid rgba(255,255,255,0.14); min-height:340px;}
+  .map-embed iframe{width:100%; height:100%; min-height:340px; border:0; display:block;}
+
+  /* ---------- MENU ---------- */
+  .menu-cta{padding:100px 0;}
+  .menu-card{
+    background:linear-gradient(120deg,#E8622C,#C74E1E);
+    border-radius:28px; padding:64px 50px; text-align:center; color:#fff;
+    position:relative; overflow:hidden;
+  }
+  .menu-card::before{
+    content:""; position:absolute; inset:0;
+    background:radial-gradient(circle at 85% 15%, rgba(255,255,255,0.18), transparent 55%);
+  }
+  .menu-card .tag-script{color:#FFE3C9; font-size:1.5rem; display:block; margin-bottom:6px;}
+  .menu-card h2{color:#fff; font-size:clamp(1.9rem,3.6vw,2.6rem); margin-bottom:16px;}
+  .menu-card p{max-width:520px; margin:0 auto 30px; color:#FFE9D6; font-size:1.03rem; line-height:1.6;}
+
+  /* ---------- TESTIMONIOS ---------- */
+  .testimonios{background:var(--sand-deep); padding:100px 0 110px;}
+  .test-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:26px;}
+  .test-card{
+    background:var(--cream-card); border-radius:var(--radius); padding:32px 28px; box-shadow:var(--shadow);
+  }
+  .test-card .stars{color:var(--ocre); font-size:1.1rem; margin-bottom:14px; letter-spacing:2px;}
+  .test-card p{color:#5A4230; font-size:0.98rem; line-height:1.65; margin-bottom:18px;}
+  .test-card .who{font-weight:700; color:var(--azul-deep); font-size:0.9rem;}
+
+  /* ---------- INSTAGRAM ---------- */
+  .insta{padding:100px 0 110px; text-align:center;}
+  .insta-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:14px; margin-top:50px;}
+  .insta-tile{
+    aspect-ratio:1; border-radius:14px; display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem; text-decoration:none; color:#fff; transition:transform .3s ease;
+  }
+  .insta-tile:hover{transform:scale(1.05);}
+  .insta-follow{margin-top:44px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#2A1B10; color:#F3E4C4; padding:70px 0 30px;}
+  .foot-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:50px; margin-bottom:50px;}
+  footer h4{font-family:'Abril Fatface',serif; color:#fff; font-size:1.5rem; margin-bottom:16px; font-weight:400;}
+  footer p, footer a{color:#D9C4A8; text-decoration:none; font-size:0.95rem; line-height:1.9;}
+  footer a:hover{color:var(--ocre);}
+  .foot-col h5{color:#fff; font-size:0.85rem; letter-spacing:1.2px; text-transform:uppercase; margin-bottom:16px; font-weight:700;}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,0.12); padding-top:26px; text-align:center; font-size:0.85rem; color:#A88E6E;}
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .float-wa{
+    position:fixed; bottom:26px; right:26px; z-index:900;
+    width:62px; height:62px; border-radius:50%;
+    background:#28A052; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 28px rgba(0,0,0,0.28);
+    animation:pulse 2.6s ease-in-out infinite;
+    text-decoration:none;
+  }
+  @keyframes pulse{0%,100%{box-shadow:0 12px 28px rgba(0,0,0,0.28);} 50%{box-shadow:0 12px 28px rgba(40,160,82,0.55);}}
+
+  @media (max-width:940px){
+    nav.links, .nav-cta .btn{display:none;}
+    .hamburger{display:flex;}
+    .exp-grid{grid-template-columns:1fr 1fr;}
+    .aloj-grid, .ubi-grid{grid-template-columns:1fr; gap:34px;}
+    .foot-grid{grid-template-columns:1fr; gap:34px;}
+    .test-grid{grid-template-columns:1fr;}
+    .insta-grid{grid-template-columns:repeat(3,1fr);}
+    .intro-stats{gap:34px;}
+  }
+  @media (max-width:940px){
+    .mobile-menu{
+      position:fixed; inset:0; background:var(--azul-deep); z-index:999;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:30px;
+      transform:translateX(100%); transition:transform .4s ease;
+    }
+    .mobile-menu.open{transform:translateX(0);}
+    .mobile-menu a{color:#fff; font-family:'Abril Fatface',serif; font-size:1.7rem; text-decoration:none;}
+    .mobile-menu .btn{margin-top:10px;}
+  }
+  @media (max-width:600px){
+    .exp-grid{grid-template-columns:1fr;}
+    .insta-grid{grid-template-columns:repeat(3,1fr);}
+    .hero-content{padding:150px 0 100px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .hero-riders{animation:none; left:38%;}
+    .scroll-cue .line{animation:none;}
+    .float-wa{animation:none;}
+    .reveal{transition:none; opacity:1; transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="header">
+  <div class="wrap nav-inner">
+    <a href="#inicio" class="brand">
+      <svg class="mark" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="30" r="29" stroke="currentColor" stroke-width="2"/>
+        <path d="M8 38L20 22L28 33L36 18L52 38" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" fill="none"/>
+      </svg>
+      Estancia La Alejandra
+    </a>
+    <nav class="links">
+      <a href="#experiencias">Experiencias</a>
+      <a href="#alojamiento">Alojamiento</a>
+      <a href="#ubicacion">Ubicación</a>
+      <a href="#menu">Menú</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="https://api.whatsapp.com/send?phone=542615377578&text=Hola!%20Quiero%20consultar%20por%20una%20cabalgata%20en%20Estancia%20La%20Alejandra" target="_blank" rel="noopener">Reservar</a>
+    </div>
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#experiencias">Experiencias</a>
+  <a href="#alojamiento">Alojamiento</a>
+  <a href="#ubicacion">Ubicación</a>
+  <a href="#menu">Menú</a>
+  <a href="#contacto">Contacto</a>
+  <a class="btn btn-primary" href="https://api.whatsapp.com/send?phone=542615377578&text=Hola!%20Quiero%20consultar%20por%20una%20cabalgata%20en%20Estancia%20La%20Alejandra" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <div class="hero-sun"></div>
+  <svg class="hero-birds" width="90" height="30" viewBox="0 0 90 30" fill="none">
+    <path d="M2 14 Q10 2 18 14 Q26 2 34 14" stroke="#fff" stroke-width="1.6" fill="none" opacity="0.8"/>
+    <path d="M46 20 Q52 11 58 20 Q64 11 70 20" stroke="#fff" stroke-width="1.4" fill="none" opacity="0.6"/>
+  </svg>
+
+  <svg class="hero-riders" viewBox="0 0 240 70" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g fill="#2A1B10" opacity="0.9">
+      <path d="M6 58c0-10 8-16 16-16 4-8 12-13 20-13 10 0 18 7 20 16 6 1 10 6 10 12 0 1-1 3-2 3H8c-1 0-2-1-2-2z"/>
+      <path d="M22 42c2-6 4-11 4-11l3 2-3 10z"/>
+      <rect x="26" y="30" width="3" height="12" rx="1"/>
+      <circle cx="27" cy="27" r="4"/>
+    </g>
+    <g fill="#3E2A1C" opacity="0.85">
+      <path d="M96 60c0-11 9-18 18-18 4-9 13-14 22-14 11 0 20 8 22 18 6 1 11 7 11 13 0 1-1 3-2 3H98c-1 0-2-1-2-2z"/>
+      <path d="M114 42c2-7 5-12 5-12l3 2-3 11z"/>
+      <rect x="118" y="28" width="3" height="13" rx="1"/>
+      <circle cx="119" cy="25" r="4.4"/>
+    </g>
+    <g fill="#2A1B10" opacity="0.75">
+      <path d="M170 62c0-9 7-15 15-15 3-7 10-11 17-11 9 0 16 6 18 14 5 1 9 5 9 10 0 1-1 2-2 2h-55c-1 0-2-1-2-2z"/>
+      <rect x="196" y="34" width="2.5" height="10" rx="1"/>
+      <circle cx="197" cy="31" r="3.4"/>
+    </g>
+  </svg>
+
+  <div class="hero-content wrap">
+    <div class="eyebrow">Tupungato · Valle de Uco · 2170 msnm</div>
+    <h1>Estancia<br>La Alejandra</h1>
+    <p class="lead">Cabalgatas, gastronomía criolla y montaña de verdad, al pie del Cordón del Plata. Una estancia para vivir el campo mendocino como es: auténtico y sin apuro.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://api.whatsapp.com/send?phone=542615377578&text=Hola!%20Quiero%20consultar%20por%20una%20cabalgata%20en%20Estancia%20La%20Alejandra" target="_blank" rel="noopener">
+        Reservar por WhatsApp
+      </a>
+      <a class="btn btn-outline" href="https://www.instagram.com/estancia.la.alejandra/" target="_blank" rel="noopener">Ver en Instagram</a>
+    </div>
+  </div>
+
+  <!-- Ridge signature: Cordón del Plata skyline -->
+  <svg class="hero-mountains" viewBox="0 0 1440 260" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 260 L0 150 L90 190 L180 90 L230 130 L300 40 L360 110 L430 60 L520 150 L600 100 L680 170 L760 70 L840 140 L930 55 L1020 130 L1110 85 L1200 160 L1300 100 L1440 150 L1440 260 Z" fill="#2E3B52" opacity="0.55"/>
+    <path d="M0 260 L0 190 L70 210 L150 130 L210 165 L280 100 L350 155 L420 115 L500 190 L600 150 L680 205 L770 130 L850 175 L950 110 L1040 170 L1130 140 L1220 195 L1320 150 L1440 185 L1440 260 Z" fill="#20293C" opacity="0.85"/>
+    <path d="M180 90 L192 100 L206 92 L221 105" stroke="#F3E9D6" stroke-width="4" fill="none" opacity="0.6" stroke-linecap="round"/>
+    <path d="M300 40 L314 52 L330 43 L347 58" stroke="#F3E9D6" stroke-width="4" fill="none" opacity="0.7" stroke-linecap="round"/>
+    <path d="M760 70 L774 82 L790 72 L807 88" stroke="#F3E9D6" stroke-width="4" fill="none" opacity="0.65" stroke-linecap="round"/>
+    <path d="M930 55 L944 67 L960 57 L977 73" stroke="#F3E9D6" stroke-width="4" fill="none" opacity="0.6" stroke-linecap="round"/>
+  </svg>
+
+  <div class="scroll-cue">
+    <span>Descubrí más</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<!-- ================= INTRO ================= -->
+<section class="intro wrap reveal">
+  <span class="tag-script">Auténtica y natural</span>
+  <h2>Casi 300 años de vida de campo, al pie de la Cordillera de los Andes</h2>
+  <p>La estancia se extiende sobre 192 hectáreas en San José, Tupungato, integrada a las Tierras Atamisque. Acá elegimos lo genuino por sobre lo artificial: potreros de cría de caballos, arroyos de deshielo y un microclima que regala uno de los paisajes más alpinos de la cordillera mendocina.</p>
+  <div class="intro-stats">
+    <div class="stat"><div class="num">192</div><div class="label">Hectáreas</div></div>
+    <div class="stat"><div class="num">2170</div><div class="label">Msnm</div></div>
+    <div class="stat"><div class="num">90km</div><div class="label">De Mendoza Capital</div></div>
+  </div>
+</section>
+
+<svg class="ridge" viewBox="0 0 1440 100" preserveAspectRatio="none">
+  <path d="M0 100 L0 60 L120 80 L240 30 L340 65 L440 20 L560 70 L680 35 L800 75 L920 25 L1040 60 L1160 40 L1280 70 L1440 45 L1440 100 Z" fill="var(--sand-deep)"/>
+</svg>
+
+<!-- ================= EXPERIENCIAS ================= -->
+<section class="experiencias" id="experiencias">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag-script">Lo que se vive acá</span>
+      <h2>Experiencias con la naturaleza como escenario</h2>
+      <p>Cada día en la estancia tiene su ritmo propio: a caballo, a pie, en bici o en la mesa. Elegí el tuyo.</p>
+    </div>
+    <div class="exp-grid">
+
+      <div class="exp-card reveal" style="--accent:var(--naranja)">
+        <div class="icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M4 19c0-4 3-6 6-6 1-3 4-5 7-5 4 0 7 3 8 6 2 0 4 2 4 4" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Cabalgatas al Cordón del Plata</h3>
+        <p>Recorré potreros y senderos de altura acompañado por guías baqueanos, con parada panorámica frente a la cordillera.</p>
+        <div class="meta">Grupos reducidos</div>
+      </div>
+
+      <div class="exp-card reveal" style="--accent:var(--verde)">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 3v18M6 3c4 0 4 3 8 3M18 3v18" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>La Pulpería</h3>
+        <p>Cocina criolla al fuego de leña, horno y disco. Un menú distinto cada fin de semana, con productos de estación.</p>
+        <div class="meta">Sáb. y dom. desde las 11 hs</div>
+      </div>
+
+      <div class="exp-card reveal" style="--accent:var(--ocre)">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#fff" stroke-width="1.8"/><path d="M12 7v5l3 3" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Clase de cocina criolla</h3>
+        <p>Aprendé los secretos del asado y el disco de barro de la mano de nuestra chef, en una jornada para compartir en grupo.</p>
+        <div class="meta">A pedido, en grupo</div>
+      </div>
+
+      <div class="exp-card reveal" style="--accent:var(--azul)">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 4v5c0 5-3 8-7 9-4-1-7-4-7-9V7l7-4z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Escuelita ecuestre</h3>
+        <p>Un espacio para que chicos y adolescentes aprendan el arte de montar, el cuidado del caballo y su entrenamiento.</p>
+        <div class="meta">Encuentros mensuales</div>
+      </div>
+
+      <div class="exp-card reveal" style="--accent:var(--naranja)">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3 20l6-9 4 5 3-4 5 8" stroke="#fff" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Trekking y mountain bike</h3>
+        <p>Senderos entre viñedos, huertas y arroyos de montaña, con avistaje de zorros, cóndores y águilas mora.</p>
+        <div class="meta">Media y jornada completa</div>
+      </div>
+
+      <div class="exp-card reveal" style="--accent:var(--verde)">
+        <div class="icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 3h8l-1 8a3 3 0 0 1-6 0z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 14v7M9 21h6" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Degustación de vinos</h3>
+        <p>Maridajes de altura en puntos panorámicos, en conjunto con las bodegas de Tierras Atamisque.</p>
+        <div class="meta">Con reserva previa</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= ALOJAMIENTO ================= -->
+<section class="alojamiento" id="alojamiento">
+  <div class="wrap aloj-grid">
+    <div class="aloj-visual reveal">
+      <svg viewBox="0 0 500 620" xmlns="http://www.w3.org/2000/svg">
+        <rect width="500" height="620" fill="url(#skyGrad)"/>
+        <defs>
+          <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#274F63"/>
+            <stop offset="55%" stop-color="#1B5A78"/>
+            <stop offset="100%" stop-color="#3E7A55"/>
+          </linearGradient>
+        </defs>
+        <path d="M0 330 L60 260 L120 300 L190 210 L260 280 L330 190 L400 260 L460 220 L500 270 L500 620 L0 620 Z" fill="#12293A" opacity="0.7"/>
+        <path d="M0 380 L80 330 L150 360 L230 300 L300 350 L380 290 L460 340 L500 320 L500 620 L0 620 Z" fill="#0D1F2C" opacity="0.85"/>
+        <!-- ranchito -->
+        <g>
+          <rect x="150" y="430" width="200" height="120" fill="#8A5A34"/>
+          <polygon points="140,430 250,360 360,430" fill="#6E4325"/>
+          <rect x="230" y="470" width="40" height="80" fill="#3E2A1C"/>
+          <rect x="170" y="460" width="30" height="30" fill="#F3E9D6" opacity="0.85"/>
+          <rect x="300" y="460" width="30" height="30" fill="#F3E9D6" opacity="0.85"/>
+          <rect x="0" y="550" width="500" height="70" fill="#4A6B3E"/>
+        </g>
+        <circle cx="410" cy="120" r="46" fill="#FFD873" opacity="0.9"/>
+      </svg>
+    </div>
+    <div class="aloj-text reveal">
+      <span class="tag-script">Los Ranchitos</span>
+      <h2>Dormir con el Cordón del Plata como paisaje</h2>
+      <p>Habitaciones rústicas en piedra y madera, con la calidez de los tejidos y las artesanías de la región. Baño privado, calefacción y el silencio de la montaña como único ruido de fondo.</p>
+      <ul class="aloj-list">
+        <li><span class="dot"></span>Vista directa a la cordillera desde cada ranchito</li>
+        <li><span class="dot"></span>Desayuno y gastronomía criolla incluida en estadías</li>
+        <li><span class="dot"></span>Punto de partida para cabalgatas, trekking y bici</li>
+      </ul>
+      <a class="btn btn-dark-outline" href="https://api.whatsapp.com/send?phone=542615377578&text=Hola!%20Quiero%20consultar%20disponibilidad%20para%20alojarme%20en%20Los%20Ranchitos" target="_blank" rel="noopener">Consultar disponibilidad</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= UBICACION ================= -->
+<section class="ubicacion" id="ubicacion">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag-script" style="color:#F7C873">Cómo llegar</span>
+      <h2>San José, Tupungato — Valle de Uco</h2>
+      <p>A 90 km de la Ciudad de Mendoza, a 2170 msnm, integrada a las Tierras Atamisque.</p>
+    </div>
+    <div class="ubi-grid">
+      <div class="map-embed reveal">
+        <iframe src="https://www.google.com/maps?q=Estancia+La+Alejandra+Tupungato+Mendoza&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de Estancia La Alejandra"></iframe>
+      </div>
+      <div class="ubi-card reveal">
+        <div>
+          <h3>Te esperamos en la estancia</h3>
+          <p>San José, Tupungato, Mendoza, Argentina. Ubicada en el Valle de La Carrera, entre el Cordón del Plata y la Precordillera.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <a class="btn btn-primary" href="https://maps.app.goo.gl/rKBXL6sGFs6fh4vG9" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          <a class="btn btn-outline" href="https://api.whatsapp.com/send?phone=542615377578&text=Hola!%20Quiero%20consultar%20c%C3%B3mo%20llegar%20a%20la%20estancia" target="_blank" rel="noopener">Preguntar cómo llegar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= MENU ================= -->
+<section class="menu-cta wrap" id="menu">
+  <div class="menu-card reveal">
+    <span class="tag-script">La Pulpería</span>
+    <h2>Mirá nuestro menú de fin de semana</h2>
+    <p>Platos al fuego de leña, con productos de estación y recetas de campo. Descargá el menú completo y elegí qué vas a comer antes de venir.</p>
+    <a class="btn btn-outline" style="border-color:#fff;" href="https://drive.google.com/file/d/1HwB7jDwPvL3EYgrMvJrsobFUjtjrwEmj/view" target="_blank" rel="noopener">Ver menú en PDF</a>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIOS ================= -->
+<section class="testimonios">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="tag-script">Lo que cuentan los que ya vinieron</span>
+      <h2>Historias de viajeros en Tripadvisor</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>Familias que llegan por el día destacan lo bien organizado del traslado, la cabalgata y el almuerzo entero hecho a fuego de leña.</p>
+        <div class="who">Visita en familia</div>
+      </div>
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>Quienes se quedan a pasar la noche resaltan la comodidad de las habitaciones y lo original de la cabalgata con caballos mansos.</p>
+        <div class="who">Estadía de fin de semana</div>
+      </div>
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>Los grupos que vienen por el día completo remarcan el trato cercano del equipo y la calidad de la comida casera de campo.</p>
+        <div class="who">Día de cabalgata</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= INSTAGRAM ================= -->
+<section class="insta wrap">
+  <div class="section-head reveal">
+    <span class="tag-script">Seguinos</span>
+    <h2>@estancia.la.alejandra</h2>
+    <p>Cabalgatas, atardeceres y la vida de campo, todos los días en nuestro Instagram.</p>
+  </div>
+  <div class="insta-grid reveal">
+    <a class="insta-tile" style="background:linear-gradient(135deg,#E8622C,#C74E1E)" href="https://www.instagram.com/estancia.la.alejandra/" target="_blank" rel="noopener">🐎</a>
+    <a class="insta-tile" style="background:linear-gradient(135deg,#1B5A78,#123C51)" href="https://www.instagram.com/estancia.la.alejandra/" target="_blank" rel="noopener">🏔️</a>
+    <a class="insta-tile" style="background:linear-gradient(135deg,#E1A83B,#C78619)" href="https://www.instagram.com/estancia.la.alejandra/" target="_blank" rel="noopener">🍷</a>
+    <a class="insta-tile" style="background:linear-gradient(135deg,#6D8F3F,#4A6B3E)" href="https://www.instagram.com/estancia.la.alejandra/" target="_blank" rel="noopener">🔥</a>
+    <a class="insta-tile" style="background:linear-gradient(135deg,#C74E1E,#9C3B4A)" href="https://www.instagram.com/estancia.la.alejandra/" target="_blank" rel="noopener">🌅</a>
+    <a class="insta-tile" style="background:linear-gradient(135deg,#123C51,#2A1B10)" href="https://www.instagram.com/estancia.la.alejandra/" target="_blank" rel="noopener">📸</a>
+  </div>
+  <div class="insta-follow reveal">
+    <a class="btn btn-primary" href="https://www.instagram.com/estancia.la.alejandra/" target="_blank" rel="noopener">Seguir en Instagram</a>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer id="contacto">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <h4>Estancia La Alejandra</h4>
+        <p>Estancia cordillerana turística al pie del Cordón del Plata. Cabalgatas, alojamiento y gastronomía criolla en Tupungato, Mendoza.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Contacto</h5>
+        <p><a href="https://api.whatsapp.com/send?phone=542615377578" target="_blank" rel="noopener">WhatsApp: +54 9 261 537-7578</a></p>
+        <p><a href="https://www.instagram.com/estancia.la.alejandra/" target="_blank" rel="noopener">Instagram @estancia.la.alejandra</a></p>
+        <p><a href="https://drive.google.com/file/d/1HwB7jDwPvL3EYgrMvJrsobFUjtjrwEmj/view" target="_blank" rel="noopener">Menú de La Pulpería</a></p>
+      </div>
+      <div class="foot-col">
+        <h5>Ubicación</h5>
+        <p>San José, Tupungato<br>Valle de Uco, Mendoza<br>2170 msnm</p>
+        <p><a href="https://maps.app.goo.gl/rKBXL6sGFs6fh4vG9" target="_blank" rel="noopener">Ver en Google Maps →</a></p>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 Estancia La Alejandra · Tupungato, Mendoza, Argentina</div>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://api.whatsapp.com/send?phone=542615377578&text=Hola!%20Quiero%20consultar%20por%20una%20cabalgata%20en%20Estancia%20La%20Alejandra" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-3.6-6.7L20 4l-1 3.7A7.96 7.96 0 0 1 20 12z" stroke="#fff" stroke-width="1.6"/><path d="M8.5 8.7c.2-.5.5-.5.8-.5h.6c.2 0 .4 0 .6.5.2.5.7 1.7.7 1.8.1.1.1.3 0 .4-.1.2-.1.3-.3.5-.1.2-.3.3-.4.5-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.7.8.2.1.4.2.5.3.1.2.1.9-.2 1.7-.3.8-1.7 1.5-2.3 1.6-.6.1-1.3.1-2.1-.1-.5-.1-1.1-.3-1.9-.7-3.3-1.4-5.4-4.7-5.6-4.9-.2-.2-1.3-1.7-1.3-3.3 0-1.6.8-2.3 1.1-2.7z" fill="#fff"/></svg>
+</a>
+
+<script>
+  // Header background on scroll
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Mobile menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
