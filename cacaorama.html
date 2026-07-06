@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cacao de Rama — Traditional Cacao from Norte del Cauca, Colombia</title>
+<meta name="description" content="Cacao de Rama grows and cures fine-flavor cacao on a traditional family finca in Norte del Cauca, Colombia. Wholesale beans, cacao paste and farm experiences for chocolatiers and cacao lovers worldwide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;700;800&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pod-green:#3F6B35;
+    --pod-yellow:#F5A623;
+    --pod-orange:#E85D33;
+    --pod-maroon:#6B2138;
+    --cream:#FFF6E9;
+    --bean-brown:#4A2E1E;
+    --ink:#2B1A12;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Manrope', sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif;}
+  a{text-decoration:none;color:inherit;}
+  img,svg{display:block;max-width:100%;}
+
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* NAV */
+  nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:18px 6vw;
+    background:rgba(255,246,233,0.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(75,46,30,0.08);
+  }
+  .brand{display:flex; align-items:center; gap:10px; font-family:'Fraunces',serif; font-weight:700; font-size:1.3rem;}
+  .brand .dot{width:14px;height:14px;border-radius:50%; background:conic-gradient(var(--pod-green),var(--pod-yellow),var(--pod-orange),var(--pod-maroon),var(--pod-green));}
+  nav .links{display:flex; gap:28px; font-weight:700; font-size:0.92rem;}
+  nav .links a{opacity:0.75; transition:opacity .2s, color .2s;}
+  nav .links a:hover{opacity:1; color:var(--pod-orange);}
+  .nav-cta{
+    background:var(--pod-maroon); color:var(--cream); padding:10px 20px; border-radius:30px;
+    font-weight:800; font-size:0.85rem; letter-spacing:.02em;
+    box-shadow:0 6px 16px rgba(107,33,56,0.3);
+    transition:transform .2s;
+  }
+  .nav-cta:hover{transform:translateY(-2px);}
+  @media (max-width:760px){ nav .links{display:none;} }
+
+  /* HERO */
+  .hero{
+    min-height:100vh; display:flex; align-items:center; position:relative;
+    padding:140px 6vw 80px;
+    background:
+      radial-gradient(circle at 85% 15%, rgba(245,166,35,0.35), transparent 45%),
+      radial-gradient(circle at 10% 90%, rgba(63,107,53,0.30), transparent 50%),
+      linear-gradient(135deg, #FFF6E9 0%, #FDEBD2 55%, #FBDCC0 100%);
+    overflow:hidden;
+  }
+  .hero-grid{display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center; width:100%; max-width:1280px; margin:0 auto; position:relative; z-index:2;}
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Caveat',cursive; font-weight:700; font-size:1.35rem; color:var(--pod-maroon);
+    background:rgba(255,255,255,0.5); padding:6px 16px 8px; border-radius:20px; margin-bottom:18px;
+    border:1.5px dashed var(--pod-maroon);
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.6vw, 4.6rem); line-height:1.02; font-weight:700; letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+  .hero h1 em{font-style:italic; color:var(--pod-orange);}
+  .hero p.lead{
+    font-size:1.18rem; line-height:1.6; max-width:52ch; margin-top:22px; opacity:0.85;
+  }
+  .hero-ctas{display:flex; gap:16px; margin-top:34px; flex-wrap:wrap;}
+  .btn-primary{
+    background:linear-gradient(120deg,var(--pod-orange),var(--pod-maroon));
+    color:#fff; padding:16px 30px; border-radius:14px; font-weight:800; font-size:1rem;
+    box-shadow:0 12px 24px rgba(232,93,51,0.35);
+    transition:transform .25s, box-shadow .25s;
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .btn-primary:hover{transform:translateY(-3px) scale(1.02); box-shadow:0 16px 30px rgba(232,93,51,0.45);}
+  .btn-ghost{
+    border:2px solid var(--pod-maroon); color:var(--pod-maroon); padding:14px 28px; border-radius:14px;
+    font-weight:800; font-size:1rem; transition:background .25s, color .25s;
+    display:inline-flex; align-items:center; gap:10px;
+  }
+  .btn-ghost:hover{background:var(--pod-maroon); color:#fff;}
+
+  .pod-wrap{position:relative; display:flex; justify-content:center;}
+  .pod-wrap svg{width:100%; max-width:420px; filter:drop-shadow(0 30px 40px rgba(107,33,56,0.25));}
+  .float{animation:float 6s ease-in-out infinite;}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(-2deg);} 50%{transform:translateY(-18px) rotate(2deg);}}
+
+  .stat-chip{
+    position:absolute; background:#fff; border-radius:16px; padding:10px 16px; font-weight:800;
+    font-size:0.85rem; box-shadow:0 14px 26px rgba(75,46,30,0.15); display:flex; gap:8px; align-items:center;
+  }
+  .stat-chip span{font-family:'Fraunces',serif; font-size:1.2rem; color:var(--pod-orange);}
+  .chip-1{top:6%; left:-6%;}
+  .chip-2{bottom:8%; right:-4%;}
+  @media (max-width:900px){ .hero-grid{grid-template-columns:1fr;} .pod-wrap{order:-1;} .chip-1,.chip-2{display:none;} }
+
+  /* RIPENING BAND - signature element */
+  .ripen-band{
+    position:relative; height:64px;
+    background:linear-gradient(90deg, var(--pod-green) 0%, var(--pod-green) 20%, var(--pod-yellow) 45%, var(--pod-orange) 68%, var(--pod-maroon) 100%);
+  }
+  .ripen-band .marks{
+    max-width:1280px; margin:0 auto; height:100%; display:flex; align-items:center; justify-content:space-between;
+    padding:0 6vw; font-family:'Caveat',cursive; font-weight:700; color:#fff; font-size:1.1rem;
+    text-shadow:0 1px 3px rgba(0,0,0,0.25);
+  }
+
+  section{padding:100px 6vw;}
+  .section-inner{max-width:1180px; margin:0 auto;}
+  .tag{
+    font-family:'Caveat',cursive; font-weight:700; font-size:1.3rem; color:var(--pod-orange);
+    display:inline-block; margin-bottom:6px;
+  }
+  h2.title{font-size:clamp(2rem,3.6vw,2.8rem); font-weight:700; margin-bottom:18px; max-width:16ch;}
+  p.sub{font-size:1.08rem; max-width:60ch; opacity:0.8; line-height:1.65;}
+
+  /* FARM */
+  .farm{background:#fff;}
+  .farm-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:60px; align-items:center; margin-top:50px;}
+  .farm-grid svg{width:100%;}
+  .farm-list{list-style:none; margin-top:26px; display:flex; flex-direction:column; gap:16px;}
+  .farm-list li{display:flex; gap:14px; align-items:flex-start; font-size:1.02rem; line-height:1.5;}
+  .farm-list .ico{
+    width:34px; height:34px; border-radius:50%; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+    background:var(--pod-yellow); color:#fff; font-weight:800;
+  }
+  @media (max-width:860px){ .farm-grid{grid-template-columns:1fr;} }
+
+  /* PROCESS */
+  .process{background:linear-gradient(180deg,#FFF6E9,#FBEAD3);}
+  .process-steps{display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:56px;}
+  .step{
+    background:#fff; border-radius:22px; padding:28px 22px; position:relative;
+    box-shadow:0 16px 30px rgba(75,46,30,0.08); transition:transform .3s, box-shadow .3s;
+    border-top:6px solid var(--step-color, var(--pod-orange));
+  }
+  .step:hover{transform:translateY(-8px); box-shadow:0 22px 38px rgba(75,46,30,0.16);}
+  .step .num{font-family:'Fraunces',serif; font-weight:700; font-size:2.2rem; color:var(--step-color, var(--pod-orange)); opacity:0.4;}
+  .step h3{font-size:1.2rem; margin:10px 0 8px;}
+  .step p{font-size:0.94rem; opacity:0.75; line-height:1.5;}
+  @media (max-width:900px){ .process-steps{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .process-steps{grid-template-columns:1fr;} }
+
+  /* PRODUCTS */
+  .products{background:#fff;}
+  .prod-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:28px; margin-top:56px;}
+  .prod-card{
+    border-radius:24px; padding:36px 28px; color:#fff; position:relative; overflow:hidden; min-height:260px;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    transition:transform .35s;
+  }
+  .prod-card:hover{transform:scale(1.03);}
+  .prod-card::before{
+    content:''; position:absolute; inset:0; opacity:0.9; z-index:0;
+  }
+  .prod-card > *{position:relative; z-index:1;}
+  .prod-1::before{background:linear-gradient(155deg,#3F6B35,#264619);}
+  .prod-2::before{background:linear-gradient(155deg,#F5A623,#C97A0F);}
+  .prod-3::before{background:linear-gradient(155deg,#E85D33,#6B2138);}
+  .prod-card h3{font-size:1.35rem; margin-bottom:8px;}
+  .prod-card p{font-size:0.92rem; opacity:0.92; line-height:1.5;}
+  .prod-badge{
+    position:absolute; top:22px; left:24px; font-size:2.4rem; z-index:1;
+  }
+  @media (max-width:900px){ .prod-grid{grid-template-columns:1fr;} }
+
+  /* WHY */
+  .why{background:linear-gradient(180deg,#FBEAD3,#FFF6E9);}
+  .why-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:26px; margin-top:54px; text-align:center;}
+  .why-card{background:#fff; border-radius:20px; padding:32px 20px; box-shadow:0 14px 26px rgba(75,46,30,0.08);}
+  .why-card .icowrap{
+    width:56px; height:56px; border-radius:16px; margin:0 auto 16px; display:flex; align-items:center; justify-content:center;
+    background:radial-gradient(circle,var(--pod-yellow),var(--pod-orange));
+  }
+  .why-card h3{font-size:1.05rem; margin-bottom:8px;}
+  .why-card p{font-size:0.9rem; opacity:0.75; line-height:1.45;}
+  @media (max-width:900px){ .why-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:560px){ .why-grid{grid-template-columns:1fr;} }
+
+  /* INSTAGRAM */
+  .insta{
+    background:linear-gradient(135deg,#6B2138,#E85D33 60%,#F5A623);
+    color:#fff; text-align:center;
+  }
+  .insta .tag{color:#FFE1B8;}
+  .insta h2.title{color:#fff; margin:0 auto 14px; max-width:22ch;}
+  .insta p.sub{color:#FFE9CF; opacity:0.95; margin:0 auto;}
+  .insta-grid{
+    display:grid; grid-template-columns:repeat(6,1fr); gap:12px; max-width:900px; margin:46px auto 0;
+  }
+  .insta-cell{
+    aspect-ratio:1; border-radius:14px; display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem; background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.25);
+    transition:transform .25s, background .25s;
+  }
+  .insta-cell:hover{transform:translateY(-6px) rotate(-3deg); background:rgba(255,255,255,0.3);}
+  @media (max-width:700px){ .insta-grid{grid-template-columns:repeat(3,1fr);} }
+  .insta-btn{
+    margin-top:40px; display:inline-flex; align-items:center; gap:10px; background:#fff; color:var(--pod-maroon);
+    padding:16px 34px; border-radius:16px; font-weight:800; font-size:1.05rem;
+    box-shadow:0 16px 30px rgba(0,0,0,0.2); transition:transform .25s;
+  }
+  .insta-btn:hover{transform:translateY(-3px) scale(1.03);}
+
+  /* CONTACT */
+  .contact{background:#fff;}
+  .contact-box{
+    background:linear-gradient(135deg,#FFF6E9,#FBEAD3);
+    border-radius:32px; padding:60px 8vw; text-align:center; position:relative; overflow:hidden;
+  }
+  .contact-box h2{font-size:clamp(1.8rem,4vw,2.6rem); margin-bottom:16px;}
+  .contact-box p{max-width:56ch; margin:0 auto 34px; opacity:0.8; font-size:1.05rem; line-height:1.6;}
+  .contact-ctas{display:flex; gap:18px; justify-content:center; flex-wrap:wrap;}
+
+  footer{
+    background:var(--ink); color:#EADFD3; padding:50px 6vw 26px; text-align:center;
+  }
+  footer .brand{justify-content:center; color:#fff; margin-bottom:14px;}
+  footer .flinks{display:flex; gap:22px; justify-content:center; margin:18px 0; font-weight:700; font-size:0.9rem;}
+  footer .flinks a{opacity:0.75; transition:opacity .2s;}
+  footer .flinks a:hover{opacity:1;}
+  footer .fine{font-size:0.8rem; opacity:0.5; margin-top:20px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand"><span class="dot"></span>Cacao de Rama</div>
+  <div class="links">
+    <a href="#farm">Our Finca</a>
+    <a href="#process">Process</a>
+    <a href="#products">Products</a>
+    <a href="#why">Why Us</a>
+  </div>
+  <a class="nav-cta" href="https://www.instagram.com/cacaoderama/" target="_blank" rel="noopener">Message us →</a>
+</nav>
+
+<header class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">🌿 Finca Tradicional · Norte del Cauca, Colombia</span>
+      <h1>Real cacao,<br>grown by hand,<br><em>ripened with care.</em></h1>
+      <p class="lead">Cacao de Rama cultivates fine-flavor cacao on a traditional family finca in Colombia's Norte del Cauca — where the crop, the land and the culture grow from the same root. We work directly with chocolatiers, roasters and cacao lovers who want beans they can trace back to the tree.</p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="https://www.instagram.com/cacaoderama/" target="_blank" rel="noopener">📩 Ask about wholesale cacao</a>
+        <a class="btn-ghost" href="#products">See what we grow</a>
+      </div>
+    </div>
+    <div class="pod-wrap">
+      <div class="stat-chip chip-1">🌱 <span>100%</span> traditional finca</div>
+      <div class="stat-chip chip-2">🍫 <span>Direct</span> from grower</div>
+      <svg class="float" viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M200 20C120 60 60 160 60 260C60 360 120 440 200 460C280 440 340 360 340 260C340 160 280 60 200 20Z" fill="#6B2138"/>
+        <path d="M200 20C120 60 60 160 60 260C60 360 120 440 200 460" fill="none" stroke="#8C3049" stroke-width="6" opacity="0.6"/>
+        <path d="M200 30V450" stroke="#8C3049" stroke-width="5" opacity="0.5"/>
+        <path d="M200 60C150 130 130 220 200 260C270 220 250 130 200 60Z" stroke="#8C3049" stroke-width="4" opacity="0.5"/>
+        <path d="M200 130C160 190 150 260 200 300C250 260 240 190 200 130Z" stroke="#8C3049" stroke-width="4" opacity="0.5"/>
+        <path d="M200 200C170 250 165 310 200 340C235 310 230 250 200 200Z" stroke="#8C3049" stroke-width="4" opacity="0.5"/>
+        <ellipse cx="200" cy="250" rx="95" ry="150" fill="#F5A623" opacity="0.14"/>
+        <g>
+          <ellipse cx="165" cy="230" rx="26" ry="34" fill="#F5D6A0"/>
+          <ellipse cx="210" cy="215" rx="26" ry="34" fill="#EFC688"/>
+          <ellipse cx="185" cy="270" rx="26" ry="34" fill="#F5D6A0"/>
+          <ellipse cx="230" cy="260" rx="26" ry="34" fill="#EFC688"/>
+          <ellipse cx="210" cy="300" rx="26" ry="34" fill="#F5D6A0"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="ripen-band">
+  <div class="marks">
+    <span>green</span><span>yellow</span><span>orange</span><span>ripe maroon 🌾</span>
+  </div>
+</div>
+
+<section id="farm" class="farm">
+  <div class="section-inner farm-grid">
+    <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="200" cy="200" r="190" fill="#FBEAD3"/>
+      <path d="M60 320C90 220 150 150 200 150C250 150 310 220 340 320" stroke="#3F6B35" stroke-width="14" stroke-linecap="round" fill="none"/>
+      <ellipse cx="140" cy="230" rx="34" ry="50" fill="#3F6B35"/>
+      <ellipse cx="200" cy="200" rx="34" ry="50" fill="#4C7F3E"/>
+      <ellipse cx="260" cy="230" rx="34" ry="50" fill="#3F6B35"/>
+      <rect x="150" y="300" width="100" height="70" rx="10" fill="#8C5A34"/>
+      <rect x="165" y="285" width="70" height="20" rx="6" fill="#6B4225"/>
+      <circle cx="120" cy="120" r="18" fill="#F5A623"/>
+      <circle cx="290" cy="110" r="12" fill="#E85D33"/>
+    </svg>
+    <div>
+      <span class="tag">Where it grows</span>
+      <h2 class="title">A traditional finca in Norte del Cauca</h2>
+      <p class="sub">Our cacao grows on ancestral land in the north of Cauca, Colombia — a region shaped by generations of small farmers who never stopped tending cacao the traditional way. Every pod is watched, hand-picked at the right stage of ripeness, and cured slowly. It's cultivo y cultura: cultivation and culture, grown from the same soil.</p>
+      <ul class="farm-list">
+        <li><span class="ico">🌎</span> Grown on family-owned land in Colombia's cacao heartland, Norte del Cauca.</li>
+        <li><span class="ico">✋</span> Hand-harvested pod by pod, selected only when fully ripe.</li>
+        <li><span class="ico">📖</span> Traditional methods passed down through generations of growers.</li>
+        <li><span class="ico">🤝</span> Direct relationships with buyers — no unnecessary middlemen.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="process">
+  <div class="section-inner" style="text-align:center;">
+    <span class="tag">From tree to bean</span>
+    <h2 class="title" style="margin:0 auto 14px; max-width:20ch;">How we turn a pod into fine-flavor cacao</h2>
+    <p class="sub" style="margin:0 auto;">Every batch follows the same unhurried process — the one that gives Cacao de Rama its character.</p>
+    <div class="process-steps">
+      <div class="step" style="--step-color:#3F6B35;">
+        <div class="num">01</div>
+        <h3>Harvest</h3>
+        <p>Pods are cut by hand only once they reach full ripeness on the tree.</p>
+      </div>
+      <div class="step" style="--step-color:#F5A623;">
+        <div class="num">02</div>
+        <h3>Ferment</h3>
+        <p>Beans rest and ferment in wooden boxes, developing the aroma that defines the finca's flavor.</p>
+      </div>
+      <div class="step" style="--step-color:#E85D33;">
+        <div class="num">03</div>
+        <h3>Dry</h3>
+        <p>Sun-dried slowly and turned by hand until moisture and flavor are perfectly balanced.</p>
+      </div>
+      <div class="step" style="--step-color:#6B2138;">
+        <div class="num">04</div>
+        <h3>Select</h3>
+        <p>Every batch is sorted by hand before it leaves the finca, ready for your kitchen or workshop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="products" class="products">
+  <div class="section-inner">
+    <span class="tag">What we offer</span>
+    <h2 class="title">Cacao for chocolatiers, roasters and curious cooks</h2>
+    <p class="sub">Whether you're building a chocolate line or just want to taste cacao the way it grows in Norte del Cauca, we have something for you.</p>
+    <div class="prod-grid">
+      <div class="prod-card prod-1">
+        <div class="prod-badge">🌱</div>
+        <h3>Raw Cacao Beans</h3>
+        <p>Fermented and sun-dried whole beans, sold by the kilo for chocolate makers and roasters.</p>
+      </div>
+      <div class="prod-card prod-2">
+        <div class="prod-badge">🍫</div>
+        <h3>Cacao Paste & Nibs</h3>
+        <p>Stone-ground cacao paste and cracked nibs, ready for bars, drinks and pastry work.</p>
+      </div>
+      <div class="prod-card prod-3">
+        <div class="prod-badge">🌾</div>
+        <h3>Finca Experiences</h3>
+        <p>Visit the finca, walk the cacao rows, and taste chocolate made minutes from the tree.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="why">
+  <div class="section-inner" style="text-align:center;">
+    <span class="tag">Why work with us</span>
+    <h2 class="title" style="margin:0 auto 14px;">Grown with tradition. Sold with honesty.</h2>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="icowrap">🌿</div>
+        <h3>Traceable Origin</h3>
+        <p>Every bag comes from one finca, one family, one harvest — no blending, no mystery.</p>
+      </div>
+      <div class="why-card">
+        <div class="icowrap">⚖️</div>
+        <h3>Fair, Direct Pricing</h3>
+        <p>We sell straight to you, so growers earn more and buyers pay less for the same quality.</p>
+      </div>
+      <div class="why-card">
+        <div class="icowrap">🔥</div>
+        <h3>Real Flavor</h3>
+        <p>Slow fermentation and sun-drying build the deep, fruity notes Norte del Cauca cacao is known for.</p>
+      </div>
+      <div class="why-card">
+        <div class="icowrap">📦</div>
+        <h3>Reliable Supply</h3>
+        <p>Consistent harvests and clear communication, batch after batch, season after season.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="insta">
+  <div class="section-inner">
+    <span class="tag">Follow the harvest</span>
+    <h2 class="title">See the finca on Instagram</h2>
+    <p class="sub">Daily life on the cacao rows, harvest days, and the culture behind every bean — @cacaoderama.</p>
+    <div class="insta-grid">
+      <div class="insta-cell">🌱</div>
+      <div class="insta-cell">🍫</div>
+      <div class="insta-cell">🌾</div>
+      <div class="insta-cell">🌤️</div>
+      <div class="insta-cell">🤲</div>
+      <div class="insta-cell">🌳</div>
+    </div>
+    <a class="insta-btn" href="https://www.instagram.com/cacaoderama/" target="_blank" rel="noopener">📷 @cacaoderama on Instagram</a>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="section-inner">
+    <div class="contact-box">
+      <h2>Ready to bring home real cacao?</h2>
+      <p>Send us a message on Instagram with what you're looking for — wholesale beans, cacao paste, or a visit to the finca — and we'll get back to you directly.</p>
+      <div class="contact-ctas">
+        <a class="btn-primary" href="https://www.instagram.com/cacaoderama/" target="_blank" rel="noopener">📩 Message @cacaoderama</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="brand"><span class="dot"></span>Cacao de Rama</div>
+  <p>Cultivo y cultura en Cacao, Finca Tradicional del Norte del Cauca, Colombia.</p>
+  <div class="flinks">
+    <a href="https://www.instagram.com/cacaoderama/" target="_blank" rel="noopener">Instagram @cacaoderama</a>
+    <a href="#farm">Our Finca</a>
+    <a href="#products">Products</a>
+  </div>
+  <div class="fine">© Cacao de Rama · Norte del Cauca, Colombia</div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.step, .why-card, .prod-card, .farm-list li, .hero-grid > div');
+  revealEls.forEach(el => el.classList.add('reveal'));
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
