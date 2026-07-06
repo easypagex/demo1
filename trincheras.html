@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cacao & Chocolates Trincheras · Chocolate artesanal de Naguanagua</title>
+<meta name="description" content="Chocolate artesanal hecho a mano con cacao rojo de Las Trincheras, Naguanagua. Chocolate 70% y 100%, bombones, cacao en polvo y más, desde 2005.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF4E8;
+    --cream-deep:#F1E1BE;
+    --gold:#C69A3E;
+    --gold-light:#E8CD8E;
+    --brown:#3F2416;
+    --brown-soft:#7C4B32;
+    --red:#A5341E;
+    --red-soft:#C9583B;
+    --line: rgba(63,36,22,0.14);
+    --shadow: 0 20px 45px rgba(63,36,22,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--brown);
+    font-family:'DM Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    margin:0;
+    color:var(--brown);
+  }
+  .eyebrow{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--red);
+    font-size:0.82rem;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+  /* Texture background */
+  body::before{
+    content:"";
+    position:fixed;inset:0;
+    background-image:
+      radial-gradient(circle at 15% 20%, rgba(198,154,62,0.08) 0, transparent 45%),
+      radial-gradient(circle at 85% 75%, rgba(165,52,30,0.06) 0, transparent 50%);
+    pointer-events:none;
+    z-index:0;
+  }
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(251,244,232,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 32px;max-width:1180px;margin:0 auto;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.5rem;font-weight:600;
+    color:var(--brown);
+  }
+  .logo .pod-mini{width:30px;height:30px;flex-shrink:0;}
+  .nav-links{display:flex;align-items:center;gap:34px;}
+  .nav-links a{
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600;letter-spacing:0.08em;
+    text-transform:uppercase;font-size:0.92rem;
+    color:var(--brown-soft);
+    transition:color .2s;
+  }
+  .nav-links a:hover{color:var(--red);}
+  .nav-cta{
+    background:var(--red);color:var(--cream) !important;
+    padding:10px 22px;border-radius:2px;
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:0.88rem;
+    transition:background .2s, transform .2s;
+  }
+  .nav-cta:hover{background:var(--red-soft);transform:translateY(-1px);}
+  .burger{display:none;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;z-index:1;
+    padding:96px 32px 60px;
+    max-width:1180px;margin:0 auto;
+    display:grid;grid-template-columns:1.1fr 0.9fr;
+    gap:60px;align-items:center;
+  }
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:10px;
+    border:1px solid var(--gold);
+    padding:7px 16px;border-radius:100px;
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600;letter-spacing:0.12em;text-transform:uppercase;
+    font-size:0.78rem;color:var(--brown-soft);
+    margin-bottom:26px;
+  }
+  .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--red);}
+  .hero h1{
+    font-size:clamp(2.6rem, 5vw, 4.2rem);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+  .hero h1 em{color:var(--red);font-style:italic;}
+  .hero p.lede{
+    font-size:1.15rem;color:var(--brown-soft);
+    max-width:480px;margin-top:22px;
+  }
+  .hero-actions{display:flex;gap:16px;margin-top:36px;flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--red);color:var(--cream);
+    padding:15px 30px;border-radius:2px;
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:0.95rem;
+    display:inline-flex;align-items:center;gap:10px;
+    transition:background .2s, transform .2s;
+  }
+  .btn-primary:hover{background:var(--red-soft);transform:translateY(-2px);}
+  .btn-secondary{
+    border:1px solid var(--brown);
+    padding:15px 30px;border-radius:2px;
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:0.95rem;
+    transition:background .2s, border-color .2s;
+  }
+  .btn-secondary:hover{background:var(--cream-deep);border-color:var(--red);}
+
+  .hero-art{position:relative;display:flex;justify-content:center;align-items:center;}
+  .hero-art svg{width:100%;max-width:420px;}
+  .float-note{
+    position:absolute;bottom:6%;left:0;
+    background:var(--cream);border:1px solid var(--line);
+    box-shadow:var(--shadow);
+    padding:14px 18px;border-radius:4px;
+    font-family:'Barlow Condensed', sans-serif;
+    font-size:0.85rem;letter-spacing:0.04em;text-transform:uppercase;font-weight:600;
+    color:var(--brown-soft);
+  }
+
+  /* ===== marquee strip ===== */
+  .strip{
+    background:var(--brown);color:var(--cream-deep);
+    padding:14px 0;overflow:hidden;position:relative;
+  }
+  .strip-track{
+    display:flex;gap:48px;white-space:nowrap;
+    animation:scroll 32s linear infinite;
+    font-family:'Barlow Condensed', sans-serif;
+    letter-spacing:0.14em;text-transform:uppercase;font-size:0.85rem;font-weight:600;
+  }
+  .strip-track span::after{content:"•";margin-left:48px;color:var(--gold);}
+  @keyframes scroll{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+
+  /* ===== SECTION shared ===== */
+  section{position:relative;z-index:1;padding:100px 32px;}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{font-size:clamp(2rem,3.4vw,2.8rem);margin-top:14px;}
+  .section-head p{color:var(--brown-soft);margin-top:16px;font-size:1.05rem;}
+  .center{text-align:center;margin-left:auto;margin-right:auto;}
+
+  /* ===== HISTORIA ===== */
+  .historia{background:var(--cream-deep);}
+  .historia-grid{
+    max-width:1180px;margin:0 auto;
+    display:grid;grid-template-columns:0.85fr 1.15fr;gap:70px;align-items:center;
+  }
+  .historia-art{position:relative;}
+  .historia-art svg{width:100%;}
+  .historia-text p{color:var(--brown-soft);font-size:1.05rem;margin-bottom:18px;}
+  .historia-text p:first-of-type{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;font-size:1.5rem;color:var(--brown);
+    line-height:1.4;margin-bottom:26px;
+  }
+  .founder-tag{
+    display:flex;align-items:center;gap:12px;margin-top:28px;
+    font-family:'Barlow Condensed', sans-serif;
+    letter-spacing:0.06em;text-transform:uppercase;font-size:0.88rem;font-weight:600;
+    color:var(--brown-soft);
+  }
+  .founder-tag .line{width:36px;height:1px;background:var(--red);}
+
+  /* ===== PROCESO ===== */
+  .proceso .wrap{max-width:1180px;margin:0 auto;padding:0;}
+  .steps{
+    display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+    position:relative;
+  }
+  .steps::before{
+    content:"";position:absolute;top:34px;left:6%;right:6%;height:1px;
+    background:repeating-linear-gradient(90deg, var(--gold) 0 8px, transparent 8px 16px);
+  }
+  .step{position:relative;padding:0 14px;text-align:center;}
+  .step-num{
+    width:68px;height:68px;border-radius:50%;
+    background:var(--cream);border:1.5px solid var(--gold);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 22px;position:relative;z-index:2;
+    font-family:'Cormorant Garamond', serif;font-style:italic;font-size:1.4rem;color:var(--red);
+  }
+  .step h3{font-size:1.2rem;margin-bottom:8px;}
+  .step p{font-size:0.92rem;color:var(--brown-soft);}
+
+  /* ===== PRODUCTOS ===== */
+  .productos{background:var(--brown);color:var(--cream);}
+  .productos .eyebrow{color:var(--gold-light);}
+  .productos .section-head h2{color:var(--cream);}
+  .productos .section-head p{color:rgba(251,244,232,0.72);}
+  .product-grid{
+    max-width:1180px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:26px;
+  }
+  .product-card{
+    background:rgba(251,244,232,0.05);
+    border:1px solid rgba(251,244,232,0.14);
+    border-radius:4px;padding:34px 28px;
+    transition:transform .25s, background .25s, border-color .25s;
+  }
+  .product-card:hover{
+    transform:translateY(-6px);
+    background:rgba(251,244,232,0.09);
+    border-color:var(--gold);
+  }
+  .product-icon{width:46px;height:46px;margin-bottom:20px;}
+  .product-card h3{color:var(--cream);font-size:1.35rem;margin-bottom:10px;}
+  .product-card p{color:rgba(251,244,232,0.68);font-size:0.95rem;}
+
+  /* ===== VALORES ===== */
+  .valores-grid{
+    max-width:1180px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(4,1fr);gap:36px;
+  }
+  .valor{text-align:left;}
+  .valor .mark{
+    font-family:'Cormorant Garamond', serif;font-style:italic;
+    color:var(--red);font-size:2.4rem;line-height:1;margin-bottom:14px;
+  }
+  .valor h3{font-size:1.15rem;margin-bottom:8px;}
+  .valor p{font-size:0.92rem;color:var(--brown-soft);}
+
+  /* ===== CTA / CONTACTO ===== */
+  .cta-section{
+    background:linear-gradient(160deg, var(--red) 0%, var(--red-soft) 100%);
+    color:var(--cream);text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .cta-section::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(circle at 20% 30%, rgba(251,244,232,0.08) 0, transparent 40%),
+                      radial-gradient(circle at 80% 70%, rgba(251,244,232,0.06) 0, transparent 45%);
+  }
+  .cta-inner{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+  .cta-section .eyebrow{color:var(--gold-light);}
+  .cta-section h2{color:var(--cream);font-size:clamp(2.1rem,4vw,3rem);margin-top:16px;}
+  .cta-section p{color:rgba(251,244,232,0.85);font-size:1.08rem;margin-top:18px;}
+  .cta-actions{display:flex;gap:16px;justify-content:center;margin-top:38px;flex-wrap:wrap;}
+  .btn-cream{
+    background:var(--cream);color:var(--red);
+    padding:16px 34px;border-radius:2px;
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700;letter-spacing:0.08em;text-transform:uppercase;font-size:0.98rem;
+    display:inline-flex;align-items:center;gap:10px;
+    transition:transform .2s;
+  }
+  .btn-cream:hover{transform:translateY(-2px);}
+  .btn-outline-cream{
+    border:1px solid rgba(251,244,232,0.6);color:var(--cream);
+    padding:16px 34px;border-radius:2px;
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:600;letter-spacing:0.08em;text-transform:uppercase;font-size:0.98rem;
+    transition:background .2s;
+  }
+  .btn-outline-cream:hover{background:rgba(251,244,232,0.1);}
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--cream-deep);border-top:1px solid var(--line);
+    padding:50px 32px 30px;
+  }
+  .footer-grid{
+    max-width:1180px;margin:0 auto;
+    display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:30px;
+  }
+  .footer-brand{
+    font-family:'Cormorant Garamond', serif;font-size:1.4rem;font-weight:600;
+    display:flex;align-items:center;gap:10px;
+  }
+  .footer-brand .pod-mini{width:26px;height:26px;}
+  .footer-meta{font-size:0.88rem;color:var(--brown-soft);margin-top:10px;}
+  .footer-social{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Barlow Condensed', sans-serif;font-weight:600;
+    letter-spacing:0.06em;text-transform:uppercase;font-size:0.88rem;
+    border:1px solid var(--brown);padding:10px 18px;border-radius:2px;
+    transition:background .2s;
+  }
+  .footer-social:hover{background:var(--cream);}
+  .footer-bottom{
+    max-width:1180px;margin:36px auto 0;padding-top:20px;border-top:1px solid var(--line);
+    font-size:0.82rem;color:var(--brown-soft);
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;padding-top:60px;}
+    .hero-art{order:-1;max-width:280px;margin:0 auto;}
+    .historia-grid{grid-template-columns:1fr;gap:40px;}
+    .product-grid{grid-template-columns:1fr 1fr;}
+    .valores-grid{grid-template-columns:1fr 1fr;}
+    .steps{grid-template-columns:1fr 1fr;gap:34px;}
+    .steps::before{display:none;}
+    .nav-links{display:none;}
+  }
+  @media (max-width:560px){
+    .product-grid{grid-template-columns:1fr;}
+    .valores-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
+    section{padding:70px 22px;}
+    .hero{padding:60px 22px 40px;}
+    .cta-actions, .hero-actions{flex-direction:column;align-items:stretch;}
+    .btn-primary,.btn-secondary,.btn-cream,.btn-outline-cream{justify-content:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="nav">
+    <div class="logo">
+      <svg class="pod-mini" viewBox="0 0 40 40"><path d="M20 3C11 6 5 16 5 24c0 8 6 13 15 13s15-5 15-13C35 16 29 6 20 3Z" fill="#A5341E"/><path d="M20 3C11 6 5 16 5 24c0 8 6 13 15 13V3Z" fill="#C9583B"/></svg>
+      Trincheras
+    </div>
+    <nav class="nav-links">
+      <a href="#historia">Nosotros</a>
+      <a href="#proceso">Proceso</a>
+      <a href="#productos">Productos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a class="nav-cta" href="https://www.instagram.com/cacaoychocolatestrincheras/" target="_blank" rel="noopener">Escríbenos</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero" style="padding-top:80px;">
+  <div>
+    <div class="hero-badge"><span class="dot"></span>Desde 2005 · Las Trincheras, Naguanagua</div>
+    <h1>El cacao rojo que se convierte en <em>chocolate de verdad</em></h1>
+    <p class="lede">Cosechamos, fermentamos y tostamos con nuestras manos el cacao Trinitario de Las Trincheras para llevarte chocolate artesanal con el sabor auténtico de nuestra tierra.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="https://www.instagram.com/cacaoychocolatestrincheras/" target="_blank" rel="noopener">Haz tu pedido por Instagram →</a>
+      <a class="btn-secondary" href="#productos">Ver productos</a>
+    </div>
+  </div>
+  <div class="hero-art">
+    <svg viewBox="0 0 400 460" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M200 20C120 45 55 130 55 220c0 100 65 160 145 160s145-60 145-160C345 130 280 45 200 20Z" fill="#A5341E"/>
+      <path d="M200 20C120 45 55 130 55 220c0 100 65 160 145 160V20Z" fill="#C9583B"/>
+      <path d="M200 40C140 60 85 135 85 218c0 92 58 145 115 145s115-53 115-145C315 135 260 60 200 40Z" fill="none" stroke="#3F2416" stroke-opacity="0.15" stroke-width="2"/>
+      <g>
+        <ellipse cx="150" cy="150" rx="20" ry="28" fill="#F1E1BE" transform="rotate(-18 150 150)"/>
+        <ellipse cx="195" cy="130" rx="20" ry="28" fill="#E8CD8E" transform="rotate(2 195 130)"/>
+        <ellipse cx="245" cy="150" rx="20" ry="28" fill="#F1E1BE" transform="rotate(20 245 150)"/>
+        <ellipse cx="130" cy="205" rx="20" ry="28" fill="#E8CD8E" transform="rotate(-30 130 205)"/>
+        <ellipse cx="178" cy="192" rx="20" ry="28" fill="#F1E1BE" transform="rotate(-6 178 192)"/>
+        <ellipse cx="225" cy="198" rx="20" ry="28" fill="#E8CD8E" transform="rotate(14 225 198)"/>
+        <ellipse cx="268" cy="210" rx="20" ry="28" fill="#F1E1BE" transform="rotate(30 268 210)"/>
+        <ellipse cx="155" cy="255" rx="20" ry="28" fill="#E8CD8E" transform="rotate(-20 155 255)"/>
+        <ellipse cx="200" cy="248" rx="20" ry="28" fill="#F1E1BE" transform="rotate(0 200 248)"/>
+        <ellipse cx="245" cy="258" rx="20" ry="28" fill="#E8CD8E" transform="rotate(22 245 258)"/>
+      </g>
+    </svg>
+  </div>
+</section>
+
+<!-- ===== MARQUEE STRIP ===== -->
+<div class="strip">
+  <div class="strip-track">
+    <span>Cacao Trinitario de fruto rojo</span>
+    <span>Hecho a mano en Naguanagua</span>
+    <span>Sin químicos añadidos</span>
+    <span>Tradición familiar desde 2005</span>
+    <span>Cacao Trinitario de fruto rojo</span>
+    <span>Hecho a mano en Naguanagua</span>
+    <span>Sin químicos añadidos</span>
+    <span>Tradición familiar desde 2005</span>
+  </div>
+</div>
+
+<!-- ===== HISTORIA ===== -->
+<section class="historia" id="historia">
+  <div class="historia-grid">
+    <div class="historia-art reveal">
+      <svg viewBox="0 0 340 380" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="340" height="380" rx="6" fill="#F1E1BE"/>
+        <path d="M60 300C60 300 90 180 170 150C250 120 280 60 280 60" stroke="#7C4B32" stroke-width="2" stroke-dasharray="4 6" fill="none"/>
+        <circle cx="170" cy="150" r="46" fill="#A5341E"/>
+        <circle cx="170" cy="150" r="46" fill="none" stroke="#3F2416" stroke-opacity="0.15" stroke-width="2"/>
+        <path d="M170 104C138 112 124 132 124 150c0 24 20 40 46 40" fill="#C9583B"/>
+        <ellipse cx="150" cy="330" rx="70" ry="10" fill="#3F2416" opacity="0.08"/>
+        <text x="170" y="356" text-anchor="middle" font-family="Barlow Condensed" font-size="15" letter-spacing="2" fill="#7C4B32">LAS TRINCHERAS · CARABOBO</text>
+      </svg>
+    </div>
+    <div class="historia-text reveal">
+      <div class="eyebrow">Nuestra historia</div>
+      <p>Somos hijos de la misma tierra que da el cacao.</p>
+      <p>En Las Trincheras crece un cacao distinto: el fruto rojo que caracteriza esta zona de Naguanagua, en Carabobo. Entre montañas, ríos y aguas termales, generaciones de productores han cuidado estas matas de cacao con el mismo cuidado con que se cuida a la familia.</p>
+      <p>Desde 2005 tomamos ese cacao y lo transformamos, paso a paso y con nuestras propias manos, en chocolate, cacao en polvo, manteca y bombones que llevan el sabor real de nuestra tierra a cada mesa.</p>
+      <div class="founder-tag"><span class="line"></span> Un proyecto de @jeadjoel</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROCESO ===== -->
+<section class="proceso" id="proceso">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <div class="eyebrow">De la mata a la barra</div>
+      <h2>Nuestro proceso</h2>
+      <p>Cada paso se hace con tiempo y sin apuro, tal como se ha hecho siempre en Las Trincheras.</p>
+    </div>
+    <div class="steps reveal">
+      <div class="step">
+        <div class="step-num">I</div>
+        <h3>Cosecha</h3>
+        <p>Recolectamos la mazorca de cacao roja en su punto justo de maduración.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">II</div>
+        <h3>Fermentación</h3>
+        <p>El grano descansa envuelto en hojas de plátano, donde nace su sabor.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">III</div>
+        <h3>Secado al sol</h3>
+        <p>Se seca lentamente al aire libre hasta lograr el punto exacto.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">IV</div>
+        <h3>Tueste y molienda</h3>
+        <p>Tostamos y molemos el grano para revelar su aroma y untuosidad.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">V</div>
+        <h3>Chocolate final</h3>
+        <p>Convertimos la pasta de cacao en cada uno de nuestros productos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTOS ===== -->
+<section class="productos" id="productos">
+  <div class="section-head reveal">
+    <div class="eyebrow">Lo que hacemos</div>
+    <h2>Productos hechos con nuestro cacao</h2>
+    <p>Todo nace de la misma semilla: nuestro cacao rojo de Las Trincheras.</p>
+  </div>
+  <div class="product-grid reveal">
+    <div class="product-card">
+      <svg class="product-icon" viewBox="0 0 46 46"><rect x="6" y="6" width="34" height="34" rx="3" fill="#E8CD8E"/><rect x="12" y="12" width="22" height="22" rx="2" fill="#A5341E"/></svg>
+      <h3>Chocolate 70%</h3>
+      <p>Barra de chocolate oscuro, ideal para quienes disfrutan un sabor intenso y equilibrado.</p>
+    </div>
+    <div class="product-card">
+      <svg class="product-icon" viewBox="0 0 46 46"><rect x="6" y="6" width="34" height="34" rx="3" fill="#E8CD8E"/><rect x="12" y="12" width="22" height="22" rx="2" fill="#3F2416"/></svg>
+      <h3>Chocolate 100%</h3>
+      <p>Cacao puro, sin nada de por medio. La expresión más honesta de nuestro grano.</p>
+    </div>
+    <div class="product-card">
+      <svg class="product-icon" viewBox="0 0 46 46"><circle cx="23" cy="23" r="17" fill="#C9583B"/></svg>
+      <h3>Bombones artesanales</h3>
+      <p>Piezas hechas a mano, rellenas y bañadas con nuestro propio chocolate.</p>
+    </div>
+    <div class="product-card">
+      <svg class="product-icon" viewBox="0 0 46 46"><path d="M23 6 L38 40 L8 40 Z" fill="#E8CD8E"/></svg>
+      <h3>Cacao en polvo</h3>
+      <p>Perfecto para repostería, bebidas calientes y todo lo que quieras preparar en casa.</p>
+    </div>
+    <div class="product-card">
+      <svg class="product-icon" viewBox="0 0 46 46"><ellipse cx="23" cy="23" rx="17" ry="14" fill="#F1E1BE"/></svg>
+      <h3>Manteca de cacao</h3>
+      <p>Extraída de nuestro propio grano, ideal para cocina y cuidado personal.</p>
+    </div>
+    <div class="product-card">
+      <svg class="product-icon" viewBox="0 0 46 46"><path d="M17 6h12v10c6 4 8 10 8 16a11 11 0 0 1-22 0c0-6 2-12 8-16Z" fill="#C9583B"/></svg>
+      <h3>Vino de cacao</h3>
+      <p>Elaborado con la pulpa del fruto, un producto poco común y lleno de tradición.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VALORES ===== -->
+<section>
+  <div class="section-head reveal">
+    <div class="eyebrow">Por qué Trincheras</div>
+    <h2>Lo que nos hace diferentes</h2>
+  </div>
+  <div class="valores-grid reveal">
+    <div class="valor">
+      <div class="mark">01</div>
+      <h3>Cacao de origen único</h3>
+      <p>Nuestro cacao rojo crece solo en Las Trincheras, con un sabor que no se repite en otra zona.</p>
+    </div>
+    <div class="valor">
+      <div class="mark">02</div>
+      <h3>Producción familiar</h3>
+      <p>Cada lote pasa por nuestras manos, del cultivo al empaque final.</p>
+    </div>
+    <div class="valor">
+      <div class="mark">03</div>
+      <h3>Sin químicos añadidos</h3>
+      <p>Trabajamos con métodos tradicionales, respetando el fruto y la tierra que lo da.</p>
+    </div>
+    <div class="valor">
+      <div class="mark">04</div>
+      <h3>Trato directo</h3>
+      <p>Habla con nosotros directamente por Instagram y arma tu pedido a tu medida.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA / CONTACTO ===== -->
+<section class="cta-section" id="contacto">
+  <div class="cta-inner reveal">
+    <div class="eyebrow">Haz tu pedido</div>
+    <h2>Prueba el chocolate de Las Trincheras</h2>
+    <p>Escríbenos por Instagram y cuéntanos qué buscas: barras, bombones, cacao en polvo o un pedido especial para tu negocio.</p>
+    <div class="cta-actions">
+      <a class="btn-cream" href="https://www.instagram.com/cacaoychocolatestrincheras/" target="_blank" rel="noopener">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.2" fill="currentColor"/></svg>
+        @cacaoychocolatestrincheras
+      </a>
+      <a class="btn-outline-cream" href="#productos">Ver catálogo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">
+        <svg class="pod-mini" viewBox="0 0 40 40"><path d="M20 3C11 6 5 16 5 24c0 8 6 13 15 13s15-5 15-13C35 16 29 6 20 3Z" fill="#A5341E"/></svg>
+        Cacao & Chocolates Trincheras
+      </div>
+      <div class="footer-meta">Productores de chocolate hecho con el cacao de la zona.<br>Las Trincheras, Naguanagua · Desde 2005</div>
+    </div>
+    <a class="footer-social" href="https://www.instagram.com/cacaoychocolatestrincheras/" target="_blank" rel="noopener">Síguenos en Instagram</a>
+  </div>
+  <div class="footer-bottom wrap">
+    <span>© 2026 Cacao & Chocolates Trincheras</span>
+    <span>Naguanagua, Carabobo, Venezuela</span>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); } });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
