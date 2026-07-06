@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Epoesha Café | Café de especialidad · Villa Rica, Perú</title>
+<style>
+  :root{
+    --black:#0b0a08;
+    --black-2:#151209;
+    --gold:#D4AF37;
+    --gold-light:#F0C040;
+    --gold-deep:#C9A84C;
+    --cream:#F6EEDD;
+    --cream-dim:#cfc4a8;
+    --green:#3f5b3a;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--black);
+    color:var(--cream);
+    font-family:'Georgia', 'Iowan Old Style', serif;
+    overflow-x:hidden;
+  }
+  .sans{font-family:'Helvetica Neue', Arial, sans-serif;}
+
+  /* ---------- Texture ---------- */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:2; opacity:.05; mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 6%;
+    background:linear-gradient(180deg, rgba(11,10,8,.92), rgba(11,10,8,0));
+    backdrop-filter:blur(2px);
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px;
+    font-size:1.35rem; letter-spacing:.06em; color:var(--gold-light); font-weight:700;
+  }
+  .brand svg{width:34px; height:34px;}
+  nav a{
+    color:var(--cream-dim); text-decoration:none; margin-left:26px; font-size:.85rem;
+    letter-spacing:.12em; text-transform:uppercase; font-family:'Helvetica Neue', Arial, sans-serif;
+    transition:color .25s;
+  }
+  nav a:hover{color:var(--gold-light);}
+  @media(max-width:720px){ nav{display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; position:relative; padding:140px 6% 80px;
+    background:
+      radial-gradient(ellipse 90% 60% at 50% -10%, rgba(212,175,55,.16), transparent 60%),
+      linear-gradient(180deg, #0b0a08 0%, #14100a 55%, #0b0a08 100%);
+  }
+  .hero-eyebrow{
+    font-family:'Helvetica Neue', Arial, sans-serif; letter-spacing:.35em; text-transform:uppercase;
+    font-size:.72rem; color:var(--gold); margin-bottom:26px; opacity:0; animation:fadeUp .9s ease forwards .1s;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 7vw, 5.4rem); line-height:1.02; font-weight:400;
+    color:var(--cream); opacity:0; animation:fadeUp 1s ease forwards .25s;
+  }
+  .hero h1 em{
+    font-style:normal; color:var(--gold-light);
+    background:linear-gradient(120deg, var(--gold-deep), var(--gold-light) 45%, #fff6d8 55%, var(--gold-deep));
+    background-size:220% auto; -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation:shine 5s linear infinite;
+  }
+  @keyframes shine{ to{ background-position:-220% center; } }
+  .hero p.sub{
+    max-width:620px; margin:26px auto 0; font-size:1.12rem; color:var(--cream-dim); line-height:1.65;
+    opacity:0; animation:fadeUp 1s ease forwards .45s;
+  }
+  .hero-ctas{
+    display:flex; gap:16px; margin-top:42px; flex-wrap:wrap; justify-content:center;
+    opacity:0; animation:fadeUp 1s ease forwards .62s;
+  }
+  .btn{
+    font-family:'Helvetica Neue', Arial, sans-serif; letter-spacing:.08em; text-transform:uppercase;
+    font-size:.82rem; font-weight:600; padding:16px 34px; border-radius:2px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:10px; transition:transform .25s ease, box-shadow .25s ease;
+    border:1px solid var(--gold);
+  }
+  .btn-solid{
+    background:linear-gradient(135deg, var(--gold-deep), var(--gold-light));
+    color:#1a1305; box-shadow:0 6px 24px rgba(212,175,55,.25);
+  }
+  .btn-solid:hover{ transform:translateY(-3px); box-shadow:0 10px 30px rgba(212,175,55,.4); }
+  .btn-ghost{ color:var(--gold-light); background:transparent; }
+  .btn-ghost:hover{ background:rgba(212,175,55,.1); transform:translateY(-3px); }
+
+  @keyframes fadeUp{ from{opacity:0; transform:translateY(22px);} to{opacity:1; transform:translateY(0);} }
+
+  /* steam */
+  .steam-wrap{ position:absolute; bottom:6%; left:50%; transform:translateX(-50%); width:120px; height:120px; opacity:.5; pointer-events:none;}
+  .steam{ stroke:var(--gold); stroke-width:2; fill:none; stroke-linecap:round; }
+  .steam path{ stroke-dasharray:60; stroke-dashoffset:60; animation:steamRise 4s ease-in-out infinite; }
+  .steam path:nth-child(2){ animation-delay:.6s; }
+  .steam path:nth-child(3){ animation-delay:1.2s; }
+  @keyframes steamRise{
+    0%{ stroke-dashoffset:60; opacity:0; }
+    30%{ opacity:.8; }
+    100%{ stroke-dashoffset:0; opacity:0; transform:translateY(-14px); }
+  }
+
+  /* ---------- Divider ---------- */
+  .divider{ display:flex; align-items:center; justify-content:center; gap:14px; padding:0 0 10px; color:var(--gold); }
+  .divider::before, .divider::after{ content:''; height:1px; width:60px; background:linear-gradient(90deg, transparent, var(--gold), transparent); }
+
+  section{ padding:100px 6%; position:relative; }
+  .section-label{
+    font-family:'Helvetica Neue', Arial, sans-serif; letter-spacing:.3em; text-transform:uppercase;
+    font-size:.72rem; color:var(--gold); text-align:center; margin-bottom:16px;
+  }
+  h2{ text-align:center; font-size:clamp(1.9rem,4vw,3rem); font-weight:400; color:var(--cream); margin-bottom:20px;}
+  h2 em{ font-style:normal; color:var(--gold-light); }
+  .lead{ text-align:center; max-width:680px; margin:0 auto 60px; color:var(--cream-dim); font-size:1.05rem; line-height:1.7; }
+
+  /* ---------- About ---------- */
+  .about{ background:var(--black-2); border-top:1px solid rgba(212,175,55,.15); border-bottom:1px solid rgba(212,175,55,.15); }
+  .about-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; max-width:1100px; margin:0 auto; align-items:center;
+  }
+  .about-art{ display:flex; justify-content:center; }
+  .about-art svg{ width:100%; max-width:340px; }
+  .about-text p{ color:var(--cream-dim); line-height:1.8; margin-bottom:16px; font-size:1.02rem; }
+  .about-text strong{ color:var(--gold-light); }
+  @media(max-width:820px){ .about-grid{ grid-template-columns:1fr; gap:36px; } }
+
+  /* ---------- Values ---------- */
+  .values-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:30px; max-width:1100px; margin:0 auto;
+  }
+  .value-card{
+    background:linear-gradient(160deg, #16130c, #0e0c07);
+    border:1px solid rgba(212,175,55,.25); border-radius:6px; padding:38px 28px; text-align:center;
+    transition:transform .3s ease, border-color .3s ease;
+  }
+  .value-card:hover{ transform:translateY(-8px); border-color:var(--gold); }
+  .value-card svg{ width:52px; height:52px; margin-bottom:20px; color:var(--gold-light); }
+  .value-card h3{ font-size:1.15rem; color:var(--cream); font-weight:400; margin-bottom:12px; letter-spacing:.02em; }
+  .value-card p{ color:var(--cream-dim); font-size:.94rem; line-height:1.6; font-family:'Helvetica Neue', Arial, sans-serif; }
+  @media(max-width:820px){ .values-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Profiles / Flavor wheel ---------- */
+  .profiles{ background:radial-gradient(ellipse at 50% 0%, rgba(212,175,55,.08), transparent 60%); }
+  .profile-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:22px; max-width:1100px; margin:50px auto 0;
+  }
+  .profile-tag{
+    border:1px solid rgba(212,175,55,.35); border-radius:40px; padding:16px 10px; text-align:center;
+    font-family:'Helvetica Neue', Arial, sans-serif; font-size:.88rem; letter-spacing:.03em; color:var(--cream);
+    background:rgba(212,175,55,.05); transition:background .25s, border-color .25s;
+  }
+  .profile-tag:hover{ background:rgba(212,175,55,.14); border-color:var(--gold-light); }
+  @media(max-width:720px){ .profile-grid{ grid-template-columns:repeat(2,1fr); } }
+
+  /* ---------- Origin strip ---------- */
+  .origin{
+    display:flex; align-items:center; justify-content:center; gap:60px; flex-wrap:wrap;
+    max-width:1000px; margin:60px auto 0; text-align:center;
+  }
+  .origin-stat{ min-width:140px; }
+  .origin-stat .num{ font-size:2.6rem; color:var(--gold-light); font-weight:400; }
+  .origin-stat .lbl{ font-family:'Helvetica Neue', Arial, sans-serif; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--cream-dim); margin-top:6px; }
+
+  /* ---------- Gallery strip (SVG landscape) ---------- */
+  .landscape{ padding:0; }
+  .landscape svg{ display:block; width:100%; height:auto; }
+
+  /* ---------- Testimonio / pasantías ---------- */
+  .finca{
+    background:var(--black-2); border-top:1px solid rgba(212,175,55,.15); border-bottom:1px solid rgba(212,175,55,.15);
+  }
+  .finca-inner{ max-width:760px; margin:0 auto; text-align:center; }
+  .finca-inner p{ color:var(--cream-dim); font-size:1.08rem; line-height:1.8; margin-bottom:30px; }
+
+  /* ---------- CTA / Contact ---------- */
+  .cta{
+    text-align:center; background:linear-gradient(180deg, #0b0a08, #17130a);
+  }
+  .cta h2{ margin-bottom:14px; }
+  .cta .lead{ margin-bottom:44px; }
+  .ig-card{
+    display:inline-flex; align-items:center; gap:16px; background:linear-gradient(135deg,#1a1509,#0d0b06);
+    border:1px solid var(--gold); border-radius:50px; padding:16px 30px 16px 16px; margin-bottom:16px;
+    text-decoration:none; transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .ig-card:hover{ transform:translateY(-3px); box-shadow:0 12px 30px rgba(212,175,55,.28); }
+  .ig-icon{
+    width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(135deg, #F0C040, #C9A84C);
+  }
+  .ig-icon svg{ width:24px; height:24px; }
+  .ig-text{ text-align:left; font-family:'Helvetica Neue', Arial, sans-serif; }
+  .ig-text .handle{ color:var(--gold-light); font-weight:700; font-size:1rem; }
+  .ig-text .loc{ color:var(--cream-dim); font-size:.78rem; letter-spacing:.05em; }
+
+  footer{
+    padding:36px 6% 46px; text-align:center; color:var(--cream-dim);
+    font-family:'Helvetica Neue', Arial, sans-serif; font-size:.8rem; letter-spacing:.04em;
+    border-top:1px solid rgba(212,175,55,.15); background:var(--black);
+  }
+  footer a{ color:var(--gold-light); text-decoration:none; }
+
+  /* floating whatsapp-style IG button */
+  .float-ig{
+    position:fixed; bottom:26px; right:26px; z-index:60;
+    width:60px; height:60px; border-radius:50%;
+    background:linear-gradient(135deg, #F0C040, #C9A84C);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 8px 24px rgba(212,175,55,.4);
+    text-decoration:none; animation:floatPulse 3s ease-in-out infinite;
+  }
+  .float-ig svg{ width:28px; height:28px; }
+  @keyframes floatPulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.07); } }
+
+  ::selection{ background:var(--gold); color:#1a1305; }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header>
+  <div class="brand">
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M14 26h30v14a15 15 0 0 1-15 15v0a15 15 0 0 1-15-15V26Z" stroke="#D4AF37" stroke-width="2.5"/>
+      <path d="M44 30h4a6 6 0 0 1 0 12h-3" stroke="#D4AF37" stroke-width="2.5"/>
+      <path d="M22 14c-2 3 2 4 0 7M30 14c-2 3 2 4 0 7M38 14c-2 3 2 4 0 7" stroke="#F0C040" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+    Epoesha Café
+  </div>
+  <nav>
+    <a href="#historia">Historia</a>
+    <a href="#valores">Valores</a>
+    <a href="#perfiles">Perfiles</a>
+    <a href="#finca">Finca</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-eyebrow">Villa Rica · Pasco · Perú</div>
+  <h1>Café de especialidad,<br><em>cultivado con origen</em></h1>
+  <p class="sub">Somos productores de Villa Rica. Trabajamos perfiles únicos y exóticos, cuidando cada etapa del proceso para llevar a tu taza la trazabilidad completa de nuestra tierra.</p>
+  <div class="hero-ctas">
+    <a class="btn btn-solid" href="https://www.instagram.com/epoesha.cafe/" target="_blank" rel="noopener">Escríbenos por Instagram</a>
+    <a class="btn btn-ghost" href="#historia">Conocer la historia</a>
+  </div>
+  <div class="steam-wrap">
+    <svg class="steam" viewBox="0 0 120 120">
+      <path d="M40 100 C 30 80, 55 70, 45 50 C 38 35, 55 28, 50 15"/>
+      <path d="M60 100 C 50 80, 75 70, 65 50 C 58 35, 75 28, 70 15"/>
+      <path d="M80 100 C 70 80, 95 70, 85 50 C 78 35, 95 28, 90 15"/>
+    </svg>
+  </div>
+</section>
+
+<section id="historia" class="about">
+  <div class="section-label">Nuestra historia</div>
+  <h2>Un <em>emprendimiento familiar</em><br>nacido en 2019</h2>
+  <div class="about-grid">
+    <div class="about-art">
+      <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="150" r="140" stroke="#D4AF37" stroke-width="1" opacity="0.3"/>
+        <path d="M150 40 C 100 90, 100 140, 150 190 C 200 140, 200 90, 150 40Z" stroke="#F0C040" stroke-width="2.5"/>
+        <path d="M150 55 L150 175" stroke="#D4AF37" stroke-width="1.5"/>
+        <ellipse cx="150" cy="230" rx="60" ry="14" stroke="#C9A84C" stroke-width="2"/>
+        <path d="M90 230 C 90 260, 210 260, 210 230" stroke="#C9A84C" stroke-width="2"/>
+        <path d="M120 205 L110 260 M180 205 L190 260" stroke="#3f5b3a" stroke-width="2" opacity="0.6"/>
+      </svg>
+    </div>
+    <div class="about-text">
+      <p><strong>Epoesha</strong> nace en <strong>Villa Rica</strong>, en medio de la Reserva de Biósfera Oxapampa-Asháninka-Yánesha, uniéndose a la cultura del café peruano desde sus raíces familiares.</p>
+      <p>Cada etapa del proceso, desde la cosecha hasta el tueste, es trabajada cuidadosamente junto a profesionales especializados del rubro, garantizando <strong>trazabilidad</strong> en cada lote.</p>
+      <p>Nuestro objetivo es posicionar el café de Villa Rica y del Perú ante el mundo, trabajando siempre en armonía con la flora y fauna de nuestra tierra.</p>
+    </div>
+  </div>
+</section>
+
+<section id="valores">
+  <div class="section-label">Lo que nos define</div>
+  <h2>Perfiles <em>únicos y exóticos</em></h2>
+  <p class="lead">Ofrecemos experiencias sensoriales genuinas, respaldadas por procesos cuidados y un profundo respeto por el origen.</p>
+  <div class="values-grid">
+    <div class="value-card">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 4v6M24 38v6M6 24h6M36 24h6M11 11l4 4M33 33l4 4M37 11l-4 4M15 33l-4 4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><circle cx="24" cy="24" r="9" stroke="currentColor" stroke-width="2.5"/></svg>
+      <h3>Trazabilidad</h3>
+      <p>Garantizamos el origen de cada grano, desde la chacra hasta tu taza.</p>
+    </div>
+    <div class="value-card">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 6c8 8 16 14 16 24a16 16 0 0 1-32 0C8 20 16 14 24 6Z" stroke="currentColor" stroke-width="2.5"/><path d="M24 44c-4 0-6-4-6-8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <h3>Café de especialidad</h3>
+      <p>Perfiles diferenciados, trabajados con criterio profesional en cada cosecha.</p>
+    </div>
+    <div class="value-card">
+      <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 4 L44 16 V32 L24 44 L4 32 V16 Z" stroke="currentColor" stroke-width="2.5"/><path d="M24 4v40M4 16l40 16M44 16L4 32" stroke="currentColor" stroke-width="1.2" opacity=".5"/></svg>
+      <h3>Familia y territorio</h3>
+      <p>Un proyecto familiar comprometido con Villa Rica y su biodiversidad.</p>
+    </div>
+  </div>
+</section>
+
+<section id="perfiles" class="profiles">
+  <div class="section-label">Notas de cata</div>
+  <h2>Cada lote, <em>una experiencia distinta</em></h2>
+  <p class="lead">Trabajamos variedades y procesos que resaltan perfiles exóticos, pensados para quienes buscan algo más que una taza de café.</p>
+  <div class="profile-grid">
+    <div class="profile-tag">Frutos rojos</div>
+    <div class="profile-tag">Panela</div>
+    <div class="profile-tag">Cítricos</div>
+    <div class="profile-tag">Floral</div>
+    <div class="profile-tag">Cacao</div>
+    <div class="profile-tag">Caramelo</div>
+    <div class="profile-tag">Especias</div>
+    <div class="profile-tag">Miel</div>
+  </div>
+  <div class="origin">
+    <div class="origin-stat"><div class="num">2019</div><div class="lbl">Desde</div></div>
+    <div class="origin-stat"><div class="num">100%</div><div class="lbl">Villa Rica</div></div>
+    <div class="origin-stat"><div class="num">Geisha·Bourbón·Caturra</div><div class="lbl" style="font-size:.68rem">Variedades</div></div>
+  </div>
+</section>
+
+<div class="landscape">
+  <svg viewBox="0 0 1440 200" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1440" height="200" fill="#0b0a08"/>
+    <path d="M0 160 L120 90 L220 150 L340 60 L460 140 L600 40 L760 150 L900 80 L1040 150 L1180 70 L1320 140 L1440 100 L1440 200 L0 200Z" fill="#151209"/>
+    <path d="M0 190 L160 120 L320 175 L500 110 L700 180 L900 120 L1100 185 L1300 130 L1440 175 L1440 200 L0 200Z" fill="#1c170d"/>
+    <g stroke="#D4AF37" stroke-width="1.5" opacity="0.5">
+      <circle cx="200" cy="130" r="3"/><circle cx="260" cy="110" r="3"/><circle cx="340" cy="140" r="3"/>
+      <circle cx="700" cy="120" r="3"/><circle cx="760" cy="150" r="3"/><circle cx="820" cy="115" r="3"/>
+      <circle cx="1150" cy="140" r="3"/><circle cx="1220" cy="115" r="3"/><circle cx="1290" cy="150" r="3"/>
+    </g>
+  </svg>
+</div>
+
+<section id="finca" class="finca">
+  <div class="section-label">Pasantías en finca</div>
+  <div class="finca-inner">
+    <h2>Conoce el <em>campo</em> de cerca</h2>
+    <p>Desde 2023 abrimos las puertas de nuestra finca en Villa Rica, con previa coordinación, para quienes quieran conocer de cerca el trabajo que realizamos en campo: cosecha, beneficio y tueste.</p>
+    <a class="btn btn-ghost" href="https://www.instagram.com/epoesha.cafe/" target="_blank" rel="noopener">Coordinar una visita</a>
+  </div>
+</section>
+
+<section id="contacto" class="cta">
+  <div class="section-label">Hablemos de café</div>
+  <h2>Llévate un poco de <em>Villa Rica</em></h2>
+  <p class="lead">Escríbenos por Instagram para conocer disponibilidad de lotes, precios y envíos.</p>
+  <a class="ig-card" href="https://www.instagram.com/epoesha.cafe/" target="_blank" rel="noopener">
+    <span class="ig-icon">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#1a1305" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="#1a1305" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#1a1305"/></svg>
+    </span>
+    <span class="ig-text">
+      <div class="handle">@epoesha.cafe</div>
+      <div class="loc">Villa Rica, Pasco, Perú</div>
+    </span>
+  </a>
+</section>
+
+<footer>
+  Epoesha Café · Villa Rica, Pasco, Perú · <a href="https://www.instagram.com/epoesha.cafe/" target="_blank" rel="noopener">Instagram @epoesha.cafe</a>
+</footer>
+
+<a class="float-ig" href="https://www.instagram.com/epoesha.cafe/" target="_blank" rel="noopener" aria-label="Instagram Epoesha Café">
+  <svg viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#1a1305" stroke-width="2.2"/><circle cx="12" cy="12" r="5" stroke="#1a1305" stroke-width="2.2"/><circle cx="17.5" cy="6.5" r="1.3" fill="#1a1305"/></svg>
+</a>
+
+</body>
+</html>
