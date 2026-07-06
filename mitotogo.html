@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MITO To Go — Chocolate, café y trufas artesanas en Barcelona</title>
+<meta name="description" content="Trufas artesanas, frappés, dulces y buen café para llevar en Consell de Cent, 261, Barcelona. Pide en Uber Eats o pasa por la tienda.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Barlow+Condensed:wght@500;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream: #FBF1E2;
+    --cream-2: #F5E6CC;
+    --cocoa: #3E2417;
+    --cocoa-soft: #6B4531;
+    --caramel: #C98A3B;
+    --caramel-light: #E7B96A;
+    --berry: #D6455B;
+    --berry-dark: #B22F44;
+    --pistachio: #7FA37A;
+    --pistachio-dark: #5A7F58;
+    --paper: #FFFDF8;
+    --shadow: rgba(62, 36, 23, 0.16);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body{
+    margin:0;
+    background: var(--cream);
+    color: var(--cocoa);
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .display { font-family: 'Cormorant Garamond', serif; }
+
+  .eyebrow{
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
+    font-weight: 600;
+    font-size: 0.82rem;
+    color: var(--berry-dark);
+  }
+
+  a { color: inherit; }
+
+  /* ---------- background texture ---------- */
+  .cocoa-dots{
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(circle, rgba(62,36,23,0.05) 1.5px, transparent 1.6px);
+    background-size: 26px 26px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .wrap{ max-width: 1180px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+
+  /* ---------- header ---------- */
+  header{
+    position: sticky; top:0; z-index: 50;
+    background: rgba(251,241,226,0.88);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(62,36,23,0.08);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content: space-between;
+    padding: 16px 0;
+  }
+  .logo{
+    display:flex; align-items:baseline; gap:8px;
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600; font-size:1.65rem; color: var(--cocoa);
+    text-decoration:none;
+  }
+  .logo .dot{ color: var(--berry); font-size:1.4rem; }
+  .nav-links{
+    display:flex; gap:30px; align-items:center;
+    font-family:'Barlow Condensed', sans-serif;
+    font-size:1.02rem; font-weight:600; letter-spacing:0.03em;
+    text-transform: uppercase;
+  }
+  .nav-links a{ text-decoration:none; opacity:0.8; transition: opacity .2s; }
+  .nav-links a:hover{ opacity:1; color: var(--berry-dark); }
+  .nav-cta{
+    display:flex; align-items:center; gap:14px;
+  }
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding: 11px 22px; border-radius: 999px;
+    font-family:'Barlow Condensed', sans-serif;
+    font-weight:700; letter-spacing:0.04em; text-transform:uppercase;
+    font-size:0.95rem;
+    text-decoration:none; border: 1.5px solid transparent;
+    cursor:pointer; transition: transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:hover{ transform: translateY(-2px); }
+  .btn-primary{ background: var(--berry); color:#fff; box-shadow: 0 8px 20px -8px var(--berry-dark); }
+  .btn-primary:hover{ box-shadow: 0 12px 24px -8px var(--berry-dark); }
+  .btn-outline{ border-color: var(--cocoa); color: var(--cocoa); background: transparent; }
+  .btn-outline:hover{ background: var(--cocoa); color: var(--cream); }
+  .ig-link{
+    width:38px; height:38px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background: var(--paper); border:1.5px solid rgba(62,36,23,0.15);
+    transition: transform .18s ease, background .18s ease;
+  }
+  .ig-link:hover{ transform: translateY(-2px) rotate(-6deg); background: var(--caramel-light); }
+  .ig-link svg{ width:18px; height:18px; }
+
+  @media (max-width: 880px){
+    .nav-links{ display:none; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{
+    padding: 90px 0 70px;
+    display:grid; grid-template-columns: 1.05fr 0.95fr;
+    gap: 50px; align-items:center;
+  }
+  .hero h1{
+    font-size: clamp(2.6rem, 5vw, 4.1rem);
+    line-height: 1.04;
+    font-weight: 600;
+    margin: 18px 0 22px;
+    color: var(--cocoa);
+  }
+  .hero h1 em{ color: var(--berry); font-style: italic; }
+  .hero p.lead{
+    font-size: 1.18rem; line-height:1.6; max-width: 480px;
+    color: var(--cocoa-soft); margin-bottom: 34px;
+  }
+  .hero-ctas{ display:flex; gap:16px; flex-wrap:wrap; }
+  .hero-meta{
+    display:flex; gap:26px; margin-top:38px; flex-wrap:wrap;
+  }
+  .hero-meta div{ font-family:'Barlow Condensed', sans-serif; font-size:0.98rem; }
+  .hero-meta strong{ display:block; font-family:'Cormorant Garamond', serif; font-size:1.6rem; color:var(--cocoa); }
+
+  /* ---------- signature visual: box of truffles ---------- */
+  .box-wrap{ position:relative; display:flex; justify-content:center; }
+  .lid-tag{
+    position:absolute; top:-20px; left:50%; transform: translateX(-50%) rotate(-3deg);
+    background: var(--cocoa); color: var(--cream);
+    font-family:'Barlow Condensed', sans-serif; font-weight:700; letter-spacing:0.08em;
+    font-size:0.8rem; text-transform:uppercase; padding:6px 14px; border-radius:8px;
+    box-shadow: 0 6px 14px var(--shadow); z-index:3;
+  }
+  .box{
+    background: var(--paper);
+    border-radius: 26px;
+    padding: 34px;
+    box-shadow: 0 30px 60px -20px var(--shadow);
+    display:grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    transform: rotate(2deg);
+    border: 1px solid rgba(62,36,23,0.06);
+  }
+  .truffle{
+    aspect-ratio: 1;
+    border-radius: 50%;
+    position:relative;
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: inset 0 -6px 10px rgba(0,0,0,0.15), 0 6px 14px rgba(62,36,23,0.18);
+    transition: transform .25s ease;
+  }
+  .truffle:hover{ transform: scale(1.08) rotate(-4deg); }
+  .truffle::after{
+    content:''; position:absolute; top:14%; left:20%; width:34%; height:22%;
+    background: rgba(255,255,255,0.45); border-radius:50%; filter: blur(2px);
+  }
+  .truffle span{ display:none; }
+
+  .t1{ background: radial-gradient(circle at 30% 25%, #8a5a35, #4a2c1a); }
+  .t2{ background: radial-gradient(circle at 30% 25%, var(--caramel-light), var(--caramel)); }
+  .t3{ background: radial-gradient(circle at 30% 25%, #caa27a, #6b4531); }
+  .t4{ background: radial-gradient(circle at 30% 25%, #e69aa8, var(--berry)); }
+  .t5{ background: radial-gradient(circle at 30% 25%, #b96a5a, #6b2f28); }
+  .t6{ background: radial-gradient(circle at 30% 25%, #3e2417, #21120a); }
+  .t7{ background: radial-gradient(circle at 30% 25%, #a6c9a0, var(--pistachio-dark)); }
+  .t8{ background: radial-gradient(circle at 30% 25%, #e0c9a6, #a97c4f); }
+  .t9{ background: radial-gradient(circle at 30% 25%, #f0d48a, var(--caramel)); }
+
+  @media (max-width: 880px){
+    .hero{ grid-template-columns: 1fr; padding-top: 50px; }
+    .box{ transform: rotate(0); max-width: 340px; margin: 20px auto 0; }
+  }
+
+  /* ---------- section shells ---------- */
+  section{ padding: 80px 0; position:relative; }
+  .section-head{ max-width: 620px; margin-bottom: 46px; }
+  .section-head h2{ font-size: clamp(2rem, 3.6vw, 2.7rem); font-weight:600; margin: 12px 0 14px; }
+  .section-head p{ color: var(--cocoa-soft); font-size:1.06rem; line-height:1.6; }
+
+  /* ---------- menu cards ---------- */
+  .menu-grid{
+    display:grid; grid-template-columns: repeat(4, 1fr); gap: 22px;
+  }
+  .menu-card{
+    background: var(--paper);
+    border-radius: 20px;
+    padding: 30px 24px;
+    border: 1px solid rgba(62,36,23,0.07);
+    box-shadow: 0 16px 30px -18px var(--shadow);
+    transition: transform .2s ease;
+  }
+  .menu-card:hover{ transform: translateY(-6px); }
+  .menu-card .ic{
+    width:52px; height:52px; border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.5rem; margin-bottom:16px;
+  }
+  .menu-card:nth-child(1) .ic{ background: #F0DFC7; }
+  .menu-card:nth-child(2) .ic{ background: #E9CFCF; }
+  .menu-card:nth-child(3) .ic{ background: #DCE8D6; }
+  .menu-card:nth-child(4) .ic{ background: #F2E2AE; }
+  .menu-card h3{ font-size:1.35rem; margin: 0 0 8px; font-weight:600; }
+  .menu-card p{ font-size:0.94rem; color: var(--cocoa-soft); line-height:1.5; margin:0; }
+
+  @media (max-width: 980px){ .menu-grid{ grid-template-columns: repeat(2,1fr);} }
+  @media (max-width: 560px){ .menu-grid{ grid-template-columns: 1fr;} }
+
+  /* ---------- open the box (signature interactive) ---------- */
+  .flavors-section{ background: var(--cream-2); border-radius: 34px; }
+  .flavors-layout{ display:grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items:center; }
+  .flavor-picker{ display:grid; grid-template-columns: repeat(3,1fr); gap:14px; max-width:380px; }
+  .fchip{
+    aspect-ratio:1; border-radius:50%; border:none; cursor:pointer;
+    position:relative; box-shadow: inset 0 -6px 10px rgba(0,0,0,0.15), 0 8px 16px rgba(62,36,23,0.2);
+    transition: transform .2s ease, outline .2s ease;
+    outline: 3px solid transparent; outline-offset: 3px;
+  }
+  .fchip::after{ content:''; position:absolute; top:14%; left:20%; width:32%; height:20%; background:rgba(255,255,255,0.45); border-radius:50%; filter: blur(2px); }
+  .fchip.active{ outline-color: var(--cocoa); transform: scale(1.06); }
+  .fchip:hover{ transform: scale(1.06); }
+
+  .flavor-detail{
+    background: var(--paper); border-radius: 22px; padding: 36px;
+    box-shadow: 0 20px 40px -20px var(--shadow);
+    min-height: 230px;
+  }
+  .flavor-detail .eyebrow{ margin-bottom:6px; }
+  .flavor-detail h3{ font-size:1.9rem; margin:0 0 12px; font-weight:600; }
+  .flavor-detail p{ color: var(--cocoa-soft); line-height:1.6; font-size:1.03rem; }
+
+  @media (max-width: 880px){
+    .flavors-layout{ grid-template-columns: 1fr; }
+    .flavor-picker{ max-width: 100%; }
+  }
+
+  /* ---------- location ---------- */
+  .loc-layout{ display:grid; grid-template-columns: 1fr 1fr; gap: 46px; align-items:start; }
+  .map-frame{
+    border-radius: 22px; overflow:hidden; box-shadow: 0 24px 46px -20px var(--shadow);
+    border: 1px solid rgba(62,36,23,0.08);
+  }
+  .map-frame iframe{ width:100%; height: 360px; border:0; display:block; }
+  .hours-card{
+    background: var(--paper); border-radius: 22px; padding: 32px;
+    box-shadow: 0 16px 30px -18px var(--shadow);
+  }
+  .hours-card h3{ font-size:1.5rem; margin:0 0 18px; font-weight:600; }
+  .hours-row{ display:flex; justify-content:space-between; padding:9px 0; border-bottom: 1px dashed rgba(62,36,23,0.14); font-size:0.98rem; }
+  .hours-row:last-child{ border-bottom:none; }
+  .hours-row span:first-child{ font-family:'Barlow Condensed', sans-serif; font-weight:600; letter-spacing:0.02em; }
+  .contact-line{ display:flex; align-items:center; gap:12px; margin-top:22px; font-size:1rem; }
+  .contact-line svg{ width:18px; height:18px; flex-shrink:0; color: var(--berry-dark); }
+
+  @media (max-width: 880px){ .loc-layout{ grid-template-columns: 1fr; } }
+
+  /* ---------- CTA banner ---------- */
+  .cta-banner{
+    background: var(--cocoa); color: var(--cream);
+    border-radius: 34px; padding: 60px 50px;
+    display:flex; align-items:center; justify-content:space-between; gap: 30px; flex-wrap:wrap;
+  }
+  .cta-banner h2{ font-size: clamp(1.9rem, 3.4vw, 2.5rem); margin:0 0 8px; font-weight:600; }
+  .cta-banner p{ color: rgba(251,241,226,0.75); margin:0; }
+  .cta-banner .btn-primary{ background: var(--caramel); box-shadow:none; }
+  .cta-actions{ display:flex; gap:14px; flex-wrap:wrap; }
+
+  /* ---------- footer ---------- */
+  footer{ padding: 50px 0 40px; }
+  .foot-row{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+    border-top: 1px solid rgba(62,36,23,0.12); padding-top: 30px;
+  }
+  .foot-logo{ font-family:'Cormorant Garamond', serif; font-size:1.3rem; font-weight:600; }
+  .foot-social{ display:flex; gap:14px; }
+  .foot-note{ font-family:'Barlow Condensed', sans-serif; font-size:0.9rem; color: var(--cocoa-soft); }
+
+  ::selection{ background: var(--berry); color: #fff; }
+
+  @media (prefers-reduced-motion: reduce){
+    * { transition: none !important; animation: none !important; }
+  }
+
+  a:focus-visible, button:focus-visible{
+    outline: 3px solid var(--berry); outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+
+<div class="cocoa-dots"></div>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo">MITO <span class="dot">·</span> To Go</a>
+    <nav class="nav-links">
+      <a href="#menu">Menú</a>
+      <a href="#trufas">Trufas</a>
+      <a href="#ubicacion">Cómo llegar</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="ig-link" href="https://www.instagram.com/mito_to_go/" target="_blank" rel="noopener" aria-label="Instagram de MITO To Go">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a class="btn btn-primary" href="https://www.ubereats.com/es/store/mito-to-go/97_7kBH-XC6ICAEo59XcmA" target="_blank" rel="noopener">Pedir ahora</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero wrap">
+    <div>
+      <p class="eyebrow">Consell de Cent, 261 · Barcelona</p>
+      <h1>Un pequeño <em>mito</em><br>en cada trufa.</h1>
+      <p class="lead">Chocolate artesano, café de especialidad y dulces de verdad, pensados para llevar. Entra, pide y sigue tu camino — el mito se queda contigo.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="https://www.ubereats.com/es/store/mito-to-go/97_7kBH-XC6ICAEo59XcmA" target="_blank" rel="noopener">Pedir en Uber Eats</a>
+        <a class="btn btn-outline" href="#ubicacion">Ver ubicación</a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>5.0</strong>en Uber Eats</div>
+        <div><strong>9</strong>sabores de trufa</div>
+        <div><strong>7</strong>días abiertos</div>
+      </div>
+    </div>
+    <div class="box-wrap">
+      <span class="lid-tag">Caja del día</span>
+      <div class="box" aria-hidden="true">
+        <div class="truffle t1"></div>
+        <div class="truffle t2"></div>
+        <div class="truffle t3"></div>
+        <div class="truffle t4"></div>
+        <div class="truffle t5"></div>
+        <div class="truffle t6"></div>
+        <div class="truffle t7"></div>
+        <div class="truffle t8"></div>
+        <div class="truffle t9"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Lo esencial</p>
+      <h2>Todo lo que encontrarás en la tienda</h2>
+      <p>Cuatro razones para parar en Consell de Cent, aunque sea cinco minutos.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="ic">🍫</div>
+        <h3>Trufas artesanas</h3>
+        <p>Nueve sabores hechos a mano, del cacao puro al Marc de Cava. Se venden sueltas o en tubo de 12.</p>
+      </div>
+      <div class="menu-card">
+        <div class="ic">☕</div>
+        <h3>Buen café</h3>
+        <p>De especialidad, para acompañar una trufa o para llevar solo, rápido y sin colas.</p>
+      </div>
+      <div class="menu-card">
+        <div class="ic">🥤</div>
+        <h3>Frappés</h3>
+        <p>Fríos, cremosos y pensados para el calor de Barcelona. El favorito de la tarde.</p>
+      </div>
+      <div class="menu-card">
+        <div class="ic">🍬</div>
+        <h3>Dulces</h3>
+        <p>Pequeños caprichos que cambian según el día — siempre vale la pena preguntar qué hay hoy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABRE LA CAJA -->
+  <section id="trufas" class="wrap">
+    <div class="flavors-section wrap" style="max-width:100%;">
+      <div class="wrap" style="padding: 54px 46px;">
+        <div class="section-head">
+          <p class="eyebrow">Abre la caja</p>
+          <h2>Nueve trufas, nueve historias</h2>
+          <p>Toca cada bola para descubrir su sabor. Todas se preparan a mano, en pequeños lotes.</p>
+        </div>
+        <div class="flavors-layout">
+          <div class="flavor-picker" id="picker">
+            <button class="fchip t1 active" data-i="0" aria-label="Cacao puro"></button>
+            <button class="fchip t2" data-i="1" aria-label="Caramelo y frutos secos"></button>
+            <button class="fchip t3" data-i="2" aria-label="Cappuccino"></button>
+            <button class="fchip t4" data-i="3" aria-label="Cereza y café"></button>
+            <button class="fchip t5" data-i="4" aria-label="Tiramisú"></button>
+            <button class="fchip t6" data-i="5" aria-label="Vainilla"></button>
+            <button class="fchip t7" data-i="6" aria-label="Crema catalana"></button>
+            <button class="fchip t8" data-i="7" aria-label="Café con leche"></button>
+            <button class="fchip t9" data-i="8" aria-label="Marc de Cava"></button>
+          </div>
+          <div class="flavor-detail">
+            <p class="eyebrow" id="f-eyebrow">Sabor 1 de 9</p>
+            <h3 id="f-title">Cacao puro</h3>
+            <p id="f-desc">Trufa clásica de cacao intenso. Suavidad y un acabado profundo para quien de verdad ama el chocolate.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- UBICACION -->
+  <section id="ubicacion" class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Encuéntranos</p>
+      <h2>En pleno L'Eixample, listo para llevar</h2>
+      <p>Pasa por la tienda o pide sin moverte del sofá — la trufa llega igual de fresca.</p>
+    </div>
+    <div class="loc-layout">
+      <div class="map-frame">
+        <iframe src="https://www.google.com/maps?q=Consell+de+Cent+261+Barcelona&output=embed" loading="lazy" title="Mapa de MITO To Go, Consell de Cent 261, Barcelona"></iframe>
+      </div>
+      <div class="hours-card">
+        <h3>Horario</h3>
+        <div class="hours-row"><span>Lunes – Miércoles</span><span>8:00 – 19:00</span></div>
+        <div class="hours-row"><span>Jueves – Viernes</span><span>8:00 – 20:00</span></div>
+        <div class="hours-row"><span>Sábado</span><span>9:00 – 20:00</span></div>
+        <div class="hours-row"><span>Domingo</span><span>9:00 – 20:00</span></div>
+        <div class="contact-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Consell de Cent, 261, 08011 Barcelona</span>
+        </div>
+        <div class="contact-line">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>
+          <a href="tel:+34688910943">+34 688 91 09 43</a>
+        </div>
+        <div style="margin-top:22px; display:flex; gap:12px; flex-wrap:wrap;">
+          <a class="btn btn-outline" href="https://www.google.com/maps/search/?api=1&query=Consell+de+Cent+261+Barcelona" target="_blank" rel="noopener">Cómo llegar</a>
+          <a class="btn btn-outline" href="https://www.instagram.com/mito_to_go/" target="_blank" rel="noopener">@mito_to_go</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="wrap">
+    <div class="cta-banner">
+      <div>
+        <h2>El mito no espera en la puerta.</h2>
+        <p>Pide en Uber Eats o síguenos en Instagram para no perderte los sabores de temporada.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href="https://www.ubereats.com/es/store/mito-to-go/97_7kBH-XC6ICAEo59XcmA" target="_blank" rel="noopener">Pedir en Uber Eats</a>
+        <a class="btn" style="border:1.5px solid var(--cream); color:var(--cream);" href="https://www.instagram.com/mito_to_go/" target="_blank" rel="noopener">Seguir en Instagram</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div class="foot-logo">MITO To Go</div>
+      <div class="foot-social">
+        <a class="ig-link" href="https://www.instagram.com/mito_to_go/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5.5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+      <p class="foot-note">© 2026 MITO To Go · Consell de Cent, 261, Barcelona</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const flavors = [
+    { name: "Cacao puro", desc: "Trufa clásica de cacao intenso. Suavidad y un acabado profundo para quien de verdad ama el chocolate." },
+    { name: "Caramelo y frutos secos", desc: "Trufa gourmet con caramelo suave y una mezcla de frutos secos. Dulce, crujiente y llena de sabor." },
+    { name: "Cappuccino", desc: "Inspirada en el cappuccino. Cremosa, con notas de café y un acabado delicado." },
+    { name: "Cereza y café", desc: "Sabor intenso: cereza afrutada combinada con café para un contraste delicioso." },
+    { name: "Tiramisú", desc: "De inspiración italiana. Sabor a tiramisú con matices de café y cacao para un bocado elegante." },
+    { name: "Vainilla", desc: "Trufa artesana de vainilla. Suave, aromática y con un toque cremoso irresistible." },
+    { name: "Crema catalana", desc: "Dulce, especiada y con un toque cítrico muy auténtico. Un guiño local en formato trufa." },
+    { name: "Café con leche", desc: "Suave y cremosa con sabor a café con leche. Delicada, equilibrada y muy aromática." },
+    { name: "Marc de Cava", desc: "Trufa premium infusionada con Marc de Cava. Un toque sofisticado y festivo en cada bocado." }
+  ];
+
+  const chips = document.querySelectorAll('.fchip');
+  const title = document.getElementById('f-title');
+  const desc = document.getElementById('f-desc');
+  const eyebrow = document.getElementById('f-eyebrow');
+
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const i = parseInt(chip.dataset.i, 10);
+      title.textContent = flavors[i].name;
+      desc.textContent = flavors[i].desc;
+      eyebrow.textContent = `Sabor ${i + 1} de 9`;
+    });
+  });
+</script>
+
+</body>
+</html>
