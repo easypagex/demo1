@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Takeo Murata — Cantante, Compositor & Vocal Coach</title>
+<meta name="description" content="Takeo Murata: cantante, compositor y vocal coach. CEO de Vozescuela. Reserva tu clase y encuentra tu voz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep: #170B2E;
+    --bg-deep-2: #241143;
+    --coral: #FF6B4A;
+    --yellow: #FFD23F;
+    --teal: #00D9C0;
+    --pink: #FF3E7F;
+    --cream: #FFF9F0;
+    --ink: #170B2E;
+    --max-w: 1100px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    overflow-x:hidden;
+  }
+
+  ::selection{ background:var(--pink); color:var(--cream); }
+
+  .display{
+    font-family:'Bebas Neue', sans-serif;
+    letter-spacing:0.02em;
+    line-height:0.9;
+  }
+
+  .mono{
+    font-family:'Space Mono', monospace;
+  }
+
+  a{ text-decoration:none; color:inherit; }
+
+  .wrap{
+    max-width:var(--max-w);
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 28px;
+    mix-blend-mode:difference;
+    color:var(--cream);
+  }
+  .nav-logo{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:1.4rem;
+    letter-spacing:0.08em;
+  }
+  .nav-links{
+    display:flex;
+    gap:28px;
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+  .nav-links a{ opacity:0.85; transition:opacity .2s; }
+  .nav-links a:hover{ opacity:1; }
+  @media (max-width:640px){
+    .nav-links{ gap:14px; font-size:0.65rem; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    background:
+      radial-gradient(60% 50% at 80% 15%, rgba(255,107,74,0.35), transparent 60%),
+      radial-gradient(50% 45% at 10% 85%, rgba(0,217,192,0.28), transparent 60%),
+      radial-gradient(80% 60% at 50% 100%, rgba(255,62,127,0.22), transparent 60%),
+      var(--bg-deep);
+    color:var(--cream);
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:140px 28px 80px;
+  }
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    font-size:0.8rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--yellow);
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:26px; height:2px;
+    background:var(--yellow);
+    display:inline-block;
+  }
+
+  .hero-title{
+    font-size:clamp(3.6rem, 13vw, 9.5rem);
+    background:linear-gradient(100deg, var(--coral) 0%, var(--yellow) 35%, var(--teal) 65%, var(--pink) 100%);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    max-width:1000px;
+  }
+
+  .hero-sub{
+    margin-top:26px;
+    font-size:clamp(1.05rem, 2.4vw, 1.4rem);
+    max-width:560px;
+    color:rgba(255,249,240,0.88);
+    font-weight:500;
+  }
+
+  /* equalizer signature element */
+  .eq{
+    display:flex;
+    align-items:flex-end;
+    gap:6px;
+    height:54px;
+    margin:34px 0 8px;
+  }
+  .eq span{
+    width:8px;
+    border-radius:4px;
+    display:inline-block;
+    animation:bounce 1.1s ease-in-out infinite;
+  }
+  .eq span:nth-child(1){ background:var(--coral); height:20%; animation-delay:-1.1s; }
+  .eq span:nth-child(2){ background:var(--yellow); height:60%; animation-delay:-0.9s; }
+  .eq span:nth-child(3){ background:var(--teal); height:100%; animation-delay:-0.7s; }
+  .eq span:nth-child(4){ background:var(--pink); height:45%; animation-delay:-0.5s; }
+  .eq span:nth-child(5){ background:var(--coral); height:80%; animation-delay:-0.3s; }
+  .eq span:nth-child(6){ background:var(--yellow); height:30%; animation-delay:-0.15s; }
+  .eq span:nth-child(7){ background:var(--teal); height:65%; animation-delay:0s; }
+  @keyframes bounce{
+    0%, 100%{ transform:scaleY(0.35); }
+    50%{ transform:scaleY(1); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .eq span{ animation:none; transform:scaleY(0.7); }
+  }
+
+  .roles{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:38px;
+  }
+  .pill{
+    font-family:'Space Mono', monospace;
+    font-size:0.82rem;
+    font-weight:700;
+    padding:9px 18px;
+    border-radius:999px;
+    color:var(--ink);
+    white-space:nowrap;
+  }
+  .pill.c1{ background:var(--coral); }
+  .pill.c2{ background:var(--yellow); }
+  .pill.c3{ background:var(--teal); }
+  .pill.c4{ background:var(--pink); color:var(--cream); }
+
+  .hero-ctas{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+    margin-top:46px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 30px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.95rem;
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .btn:focus-visible{ outline:3px solid var(--cream); outline-offset:3px; }
+  .btn-primary{
+    background:var(--coral);
+    color:var(--ink);
+  }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 10px 24px rgba(255,107,74,0.4); }
+  .btn-outline{
+    border:2px solid var(--cream);
+    color:var(--cream);
+  }
+  .btn-outline:hover{ transform:translateY(-3px); background:var(--cream); color:var(--ink); }
+
+  /* ---------- waveform divider ---------- */
+  .wave-divider{
+    height:70px;
+    background:var(--cream);
+  }
+  .wave-divider svg{ display:block; width:100%; height:100%; }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{ padding:100px 0; }
+  .section-tag{
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--pink);
+    margin-bottom:14px;
+  }
+  h2.display{
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    margin-bottom:26px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{ background:var(--cream); }
+  .about-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:60px;
+    align-items:start;
+  }
+  .about p{
+    font-size:1.08rem;
+    line-height:1.7;
+    color:#3a2a52;
+    max-width:52ch;
+  }
+  .about p + p{ margin-top:18px; }
+
+  .stat-card{
+    background:var(--bg-deep);
+    color:var(--cream);
+    border-radius:22px;
+    padding:32px;
+    position:relative;
+    overflow:hidden;
+  }
+  .stat-card::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(60% 60% at 100% 0%, rgba(0,217,192,0.35), transparent 70%);
+  }
+  .stat-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:16px 0;
+    border-bottom:1px solid rgba(255,249,240,0.15);
+    position:relative;
+  }
+  .stat-row:last-child{ border-bottom:none; }
+  .stat-num{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:2.4rem;
+    color:var(--yellow);
+  }
+  .stat-label{
+    font-family:'Space Mono', monospace;
+    font-size:0.78rem;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:rgba(255,249,240,0.75);
+    text-align:right;
+    max-width:170px;
+  }
+
+  @media (max-width:800px){
+    .about-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services{ background:var(--bg-deep-2); color:var(--cream); }
+  .services .section-tag{ color:var(--yellow); }
+  .service-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+    margin-top:20px;
+  }
+  .service-card{
+    border-radius:22px;
+    padding:34px 28px;
+    background:rgba(255,249,240,0.04);
+    border:1px solid rgba(255,249,240,0.12);
+    transition:transform .25s ease, background .25s ease;
+  }
+  .service-card:hover{ transform:translateY(-6px); background:rgba(255,249,240,0.08); }
+  .service-icon{
+    width:52px; height:52px;
+    border-radius:14px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.5rem;
+    margin-bottom:22px;
+  }
+  .service-card:nth-child(1) .service-icon{ background:var(--coral); }
+  .service-card:nth-child(2) .service-icon{ background:var(--teal); }
+  .service-card:nth-child(3) .service-icon{ background:var(--pink); }
+  .service-card h3{
+    font-family:'Bebas Neue', sans-serif;
+    font-size:1.7rem;
+    letter-spacing:0.02em;
+    margin-bottom:12px;
+  }
+  .service-card p{
+    font-size:0.96rem;
+    line-height:1.6;
+    color:rgba(255,249,240,0.75);
+  }
+  @media (max-width:800px){
+    .service-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- VOZESCUELA ---------- */
+  .vozescuela{
+    background:linear-gradient(120deg, var(--coral), var(--pink) 55%, var(--yellow));
+    color:var(--ink);
+  }
+  .voz-card{
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:center;
+    gap:40px;
+    background:var(--cream);
+    border-radius:28px;
+    padding:52px;
+  }
+  .voz-card h2{ font-size:clamp(2rem, 5vw, 3.2rem); margin-bottom:14px; }
+  .voz-card p{ font-size:1.05rem; line-height:1.65; max-width:48ch; color:#3a2a52; }
+  .voz-logo-badge{
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size:0.85rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    background:var(--ink);
+    color:var(--cream);
+    padding:10px 16px;
+    border-radius:999px;
+    display:inline-block;
+    margin-bottom:20px;
+  }
+  @media (max-width:760px){
+    .voz-card{ grid-template-columns:1fr; text-align:left; padding:36px; }
+  }
+
+  /* ---------- CTA / CONTACT ---------- */
+  .cta{
+    background:var(--bg-deep);
+    color:var(--cream);
+    text-align:center;
+    padding:130px 0;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(45% 45% at 20% 20%, rgba(0,217,192,0.28), transparent 60%),
+      radial-gradient(45% 45% at 80% 80%, rgba(255,62,127,0.28), transparent 60%);
+  }
+  .cta-inner{ position:relative; }
+  .cta h2{
+    font-size:clamp(2.6rem, 8vw, 5rem);
+    background:linear-gradient(100deg, var(--yellow), var(--coral), var(--pink));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    margin-bottom:20px;
+  }
+  .cta p{
+    max-width:46ch;
+    margin:0 auto 40px;
+    color:rgba(255,249,240,0.82);
+    font-size:1.08rem;
+  }
+  .cta .hero-ctas{ justify-content:center; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);
+    color:rgba(255,249,240,0.7);
+    padding:44px 0;
+  }
+  .foot-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:18px;
+  }
+  .foot-links{ display:flex; gap:22px; font-family:'Space Mono', monospace; font-size:0.82rem; }
+  .foot-links a{ transition:color .2s; }
+  .foot-links a:hover{ color:var(--yellow); }
+  .foot-brand{ font-family:'Bebas Neue', sans-serif; font-size:1.2rem; letter-spacing:0.05em; color:var(--cream); }
+  .foot-copy{ font-family:'Space Mono', monospace; font-size:0.72rem; margin-top:18px; opacity:0.6; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">TAKEO MURATA</div>
+  <div class="nav-links">
+    <a href="#sobre">Sobre mí</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#vozescuela">Vozescuela</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Cantante · Compositor · Vocal Coach</div>
+    <h1 class="hero-title display">TAKEO<br>MURATA</h1>
+    <div class="eq" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <p class="hero-sub">Encuentra tu voz, libera tu sonido. Clases de canto, coaching vocal y composición para artistas que quieren sonar como ellos mismos.</p>
+
+    <div class="roles">
+      <span class="pill c1">🎤 Cantante</span>
+      <span class="pill c2">📓 Compositor</span>
+      <span class="pill c3">🎹 Vocal Coach</span>
+      <span class="pill c4">CEO en Vozescuela</span>
+    </div>
+
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#contacto">Agenda tu clase</a>
+      <a class="btn btn-outline" href="https://www.instagram.com/takeomurata/" target="_blank" rel="noopener">Sígueme en Instagram</a>
+    </div>
+  </div>
+</header>
+
+<div class="wave-divider">
+  <svg viewBox="0 0 1200 70" preserveAspectRatio="none">
+    <path d="M0,35 Q30,5 60,35 T120,35 T180,35 T240,35 T300,35 T360,35 T420,35 T480,35 T540,35 T600,35 T660,35 T720,35 T780,35 T840,35 T900,35 T960,35 T1020,35 T1080,35 T1140,35 T1200,35 L1200,70 L0,70 Z" fill="#170B2E"/>
+  </svg>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="sobre">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-tag">Sobre Takeo</div>
+      <h2 class="display">Una voz que <span style="color:var(--coral)">forma</span> voces.</h2>
+      <p>Takeo Murata es cantante, compositor y vocal coach, dedicado a ayudar a artistas y estudiantes a descubrir su sonido auténtico. Su método combina técnica vocal, expresión artística y composición, pensado para quienes quieren cantar con seguridad y personalidad propia.</p>
+      <p>Es CEO y fundador de <strong>Vozescuela</strong>, la escuela de canto donde comparte todo lo que ha aprendido sobre su instrumento más importante: la voz.</p>
+    </div>
+    <div class="stat-card">
+      <div class="stat-row"><span class="stat-num">1:1</span><span class="stat-label">Clases personalizadas</span></div>
+      <div class="stat-row"><span class="stat-num">🎼</span><span class="stat-label">Técnica + composición</span></div>
+      <div class="stat-row"><span class="stat-num">100%</span><span class="stat-label">Enfoque en tu voz</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="servicios">
+  <div class="wrap">
+    <div class="section-tag">Cómo trabajamos juntos</div>
+    <h2 class="display">Servicios</h2>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-icon">🎤</div>
+        <h3>Clases de canto</h3>
+        <p>Técnica vocal personalizada para todos los niveles: respiración, afinación, potencia y estilo, adaptado a tu voz.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🎹</div>
+        <h3>Vocal coaching</h3>
+        <p>Acompañamiento para artistas en preparación de shows, grabaciones o giras: cuidado vocal y expresión escénica.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📓</div>
+        <h3>Composición</h3>
+        <p>Creación de canciones originales y desarrollo artístico, desde la idea inicial hasta la maqueta final.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOZESCUELA -->
+<section class="vozescuela" id="vozescuela">
+  <div class="wrap">
+    <div class="voz-card">
+      <div>
+        <span class="voz-logo-badge">Vozescuela</span>
+        <h2 class="display">La escuela de canto de Takeo</h2>
+        <p>Vozescuela es el proyecto donde Takeo forma a la próxima generación de cantantes: clases grupales, cursos y contenido pensado para que cualquier persona encuentre y entrene su voz.</p>
+      </div>
+      <a class="btn btn-primary" style="background:var(--ink); color:var(--cream);" href="https://www.instagram.com/vozescuela/" target="_blank" rel="noopener">Ver Vozescuela →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contacto">
+  <div class="wrap cta-inner">
+    <h2 class="display">¿Listo para encontrar tu voz?</h2>
+    <p>Escríbeme por Instagram y agendemos tu primera clase. Sin importar tu nivel, hay un lugar para tu voz.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="https://www.instagram.com/takeomurata/" target="_blank" rel="noopener">Escríbeme a @takeomurata</a>
+      <a class="btn btn-outline" href="https://www.instagram.com/vozescuela/" target="_blank" rel="noopener">Conoce Vozescuela</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div class="foot-brand">TAKEO MURATA</div>
+      <div class="foot-links">
+        <a href="https://www.instagram.com/takeomurata/" target="_blank" rel="noopener">@takeomurata</a>
+        <a href="https://www.instagram.com/vozescuela/" target="_blank" rel="noopener">@vozescuela</a>
+      </div>
+    </div>
+    <div class="foot-copy">© 2026 Takeo Murata · Vozescuela. Sitio hecho con ♪</div>
+  </div>
+</footer>
+
+</body>
+</html>
