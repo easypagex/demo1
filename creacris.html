@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crea con Cris · Patchwork y Costura Creativa · Cuenca</title>
+<meta name="description" content="Tienda de patchwork y costura creativa en Cuenca. Telas, kits, pedidos por WhatsApp y tutoriales gratuitos en YouTube.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF3E7;
+    --cream-2:#F5E9D6;
+    --plum:#3E2440;
+    --plum-soft:#5B3758;
+    --berry:#E85D75;
+    --berry-dark:#C93F5C;
+    --turquoise:#2FA4A0;
+    --turquoise-dark:#1E7D7A;
+    --mustard:#F2B134;
+    --coral:#FF8552;
+    --whatsapp:#3FBF7F;
+    --radius:18px;
+    --stitch: 2px dashed rgba(62,36,64,0.35);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Nunito', sans-serif;
+    background:var(--cream);
+    color:var(--plum);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Baloo 2', sans-serif;
+    color:var(--plum);
+    margin:0;
+    line-height:1.12;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  ul{margin:0;padding:0;list-style:none;}
+  .container{
+    max-width:1160px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Nunito',sans-serif;
+    font-weight:800;
+    font-size:0.78rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--berry-dark);
+    background:#fff;
+    border:2px solid var(--berry);
+    padding:6px 14px;
+    border-radius:999px;
+  }
+  .eyebrow .dot{width:7px;height:7px;border-radius:50%;background:var(--turquoise);}
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    font-size:1.02rem;
+    padding:13px 26px;
+    border-radius:999px;
+    border:3px solid var(--plum);
+    background:var(--mustard);
+    color:var(--plum);
+    cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease;
+    box-shadow:4px 4px 0 var(--plum);
+  }
+  .btn:hover{transform:translate(-2px,-3px) rotate(-1deg);box-shadow:6px 7px 0 var(--plum);}
+  .btn:active{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--plum);}
+  .btn.alt{background:#fff;color:var(--berry-dark);border-color:var(--berry-dark);box-shadow:4px 4px 0 var(--berry-dark);}
+  .btn.alt:hover{box-shadow:6px 7px 0 var(--berry-dark);}
+  .btn.ghost{background:transparent;color:var(--plum);}
+  .btn.small{padding:9px 18px;font-size:0.9rem;box-shadow:3px 3px 0 var(--plum);}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(251,243,231,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:2px dashed rgba(62,36,64,0.25);
+  }
+  .nav-wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 0;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.35rem;
+    color:var(--plum);
+  }
+  .logo .badge{
+    width:38px;height:38px;border-radius:10px;
+    background:conic-gradient(var(--berry) 0 25%, var(--turquoise) 25% 50%, var(--mustard) 50% 75%, var(--coral) 75% 100%);
+    border:2px solid var(--plum);
+    transform:rotate(-6deg);
+  }
+  nav.main-links{display:flex;gap:28px;}
+  nav.main-links a{
+    font-weight:700;font-size:0.98rem;position:relative;padding:4px 0;
+  }
+  nav.main-links a::after{
+    content:"";position:absolute;left:0;bottom:-2px;height:3px;width:0;
+    background:var(--berry);transition:width .2s ease;border-radius:3px;
+  }
+  nav.main-links a:hover::after{width:100%;}
+  .header-actions{display:flex;align-items:center;gap:14px;}
+  .burger{display:none;background:none;border:none;cursor:pointer;padding:6px;}
+  .burger span{display:block;width:26px;height:3px;background:var(--plum);margin:5px 0;border-radius:3px;}
+
+  /* ---------- ZIGZAG DIVIDER (pinking shears) ---------- */
+  .zigzag{width:100%;height:22px;display:block;color:var(--cream);}
+  .zigzag.to-plum{color:var(--plum);}
+  .zigzag.to-cream{color:var(--cream);}
+  .zigzag.to-turquoise{color:var(--turquoise);}
+  .zigzag.flip{transform:rotate(180deg);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:64px 0 40px;
+    position:relative;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:40px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.3rem, 4.4vw, 3.4rem);
+    margin:16px 0 18px;
+  }
+  .hero h1 .accent{color:var(--berry-dark);}
+  .hero p.lead{
+    font-size:1.14rem;
+    max-width:46ch;
+    color:var(--plum-soft);
+    margin-bottom:26px;
+  }
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:22px;}
+  .hero-meta{
+    display:flex;gap:18px;flex-wrap:wrap;
+    font-weight:700;font-size:0.92rem;color:var(--plum-soft);
+  }
+  .hero-meta span{display:flex;align-items:center;gap:6px;}
+
+  /* patchwork quilt mosaic */
+  .quilt{
+    position:relative;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    transform:rotate(-2deg);
+  }
+  .patch{
+    aspect-ratio:1/1;
+    border-radius:12px;
+    border:var(--stitch);
+    position:relative;
+    transition:transform .35s ease;
+  }
+  .patch:hover{transform:scale(1.06) rotate(2deg);}
+  .patch.p1{background:var(--berry);grid-column:span 2;transform:rotate(-3deg);}
+  .patch.p2{background:repeating-linear-gradient(45deg, var(--mustard) 0 10px, #f7c65e 10px 20px);transform:rotate(2deg);}
+  .patch.p3{background:var(--turquoise);transform:rotate(3deg);}
+  .patch.p4{background:radial-gradient(circle at 30% 30%, #ffd9c7, var(--coral) 65%);transform:rotate(-2deg);}
+  .patch.p5{background:repeating-linear-gradient(90deg, var(--plum-soft) 0 8px, #6d4a6a 8px 16px);grid-column:span 2;transform:rotate(1deg);}
+  .patch.p6{background:var(--mustard);transform:rotate(-4deg);}
+  .quilt-caption{
+    text-align:center;font-weight:800;font-family:'Baloo 2',sans-serif;
+    margin-top:14px;color:var(--plum-soft);font-size:0.95rem;
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:64px 0;position:relative;}
+  .section-head{max-width:640px;margin-bottom:40px;}
+  .section-head h2{font-size:clamp(1.8rem,3vw,2.4rem);margin-top:14px;}
+  .section-head p{color:var(--plum-soft);font-size:1.05rem;margin-top:12px;}
+
+  section.on-plum{background:var(--plum);color:var(--cream);}
+  section.on-plum h2, section.on-plum h3{color:var(--cream);}
+  section.on-plum .section-head p{color:#d8c6d6;}
+  section.on-turquoise{background:var(--turquoise);color:var(--cream);}
+  section.on-turquoise h2{color:#fff;}
+  section.on-turquoise .section-head p{color:#dff6f4;}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{
+    display:grid;grid-template-columns:0.85fr 1.15fr;gap:52px;align-items:center;
+  }
+  .about-visual{
+    position:relative;
+    background:var(--cream-2);
+    border-radius:24px;
+    border:var(--stitch);
+    padding:30px;
+  }
+  .thread-spool{width:100%;}
+  .about p{color:#e4d7e2;font-size:1.05rem;}
+  .signature-line{
+    font-family:'Baloo 2',sans-serif;font-weight:700;font-size:1.15rem;
+    margin-top:18px;color:var(--mustard);
+  }
+
+  /* ---------- OFFER CARDS ---------- */
+  .cards-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+  }
+  .card{
+    background:#fff;
+    border-radius:var(--radius);
+    border:var(--stitch);
+    padding:26px 22px;
+    position:relative;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover{transform:translateY(-6px);box-shadow:0 14px 0 -6px rgba(62,36,64,0.15);}
+  .card .icon-wrap{
+    width:56px;height:56px;border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:16px;
+  }
+  .card:nth-child(1) .icon-wrap{background:#fde2e6;}
+  .card:nth-child(2) .icon-wrap{background:#fdeccb;}
+  .card:nth-child(3) .icon-wrap{background:#d9f2f0;}
+  .card:nth-child(4) .icon-wrap{background:#ffe3d3;}
+  .card h3{font-size:1.18rem;margin-bottom:8px;}
+  .card p{color:var(--plum-soft);font-size:0.96rem;}
+
+  /* ---------- TUTORIALS ---------- */
+  .tut-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:30px;}
+  .tut-card{
+    background:rgba(255,255,255,0.06);
+    border:2px dashed rgba(251,243,231,0.35);
+    border-radius:var(--radius);
+    padding:22px;
+  }
+  .tut-thumb{
+    aspect-ratio:16/10;border-radius:12px;margin-bottom:16px;
+    display:flex;align-items:center;justify-content:center;
+    position:relative;
+  }
+  .tut-card:nth-child(1) .tut-thumb{background:linear-gradient(135deg,var(--berry),var(--berry-dark));}
+  .tut-card:nth-child(2) .tut-thumb{background:linear-gradient(135deg,var(--mustard),#d99420);}
+  .tut-card:nth-child(3) .tut-thumb{background:linear-gradient(135deg,var(--turquoise),var(--turquoise-dark));}
+  .play-btn{
+    width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,0.92);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .tut-card h3{color:var(--cream);font-size:1.08rem;margin-bottom:6px;}
+  .tut-card p{color:#d8c6d6;font-size:0.9rem;}
+  .tut-cta{text-align:center;}
+
+  /* ---------- INSTAGRAM ---------- */
+  .insta-wrap{
+    display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+  }
+  .insta-frame{
+    background:#fff;border-radius:24px;border:var(--stitch);padding:24px;
+  }
+  .insta-mini-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .mini-patch{aspect-ratio:1/1;border-radius:8px;}
+  .mini-patch:nth-child(1){background:var(--berry);}
+  .mini-patch:nth-child(2){background:var(--mustard);}
+  .mini-patch:nth-child(3){background:var(--turquoise);}
+  .mini-patch:nth-child(4){background:var(--coral);}
+  .mini-patch:nth-child(5){background:var(--plum-soft);}
+  .mini-patch:nth-child(6){background:repeating-linear-gradient(45deg,var(--mustard) 0 6px,#fff 6px 12px);}
+  .mini-patch:nth-child(7){background:var(--turquoise-dark);}
+  .mini-patch:nth-child(8){background:var(--berry-dark);}
+  .mini-patch:nth-child(9){background:repeating-linear-gradient(90deg,var(--coral) 0 6px,#ffe3d3 6px 12px);}
+  .insta-handle{
+    display:flex;align-items:center;gap:10px;margin-top:18px;font-weight:800;font-family:'Baloo 2',sans-serif;
+  }
+  .insta-handle .ring{
+    width:44px;height:44px;border-radius:50%;
+    background:conic-gradient(var(--berry),var(--mustard),var(--turquoise),var(--berry));
+    display:flex;align-items:center;justify-content:center;
+  }
+  .insta-handle .ring span{
+    width:36px;height:36px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;
+  }
+
+  /* ---------- VISIT ---------- */
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:stretch;}
+  .visit-card{
+    background:#fff;border-radius:var(--radius);border:var(--stitch);padding:32px;
+  }
+  .visit-card h3{margin-bottom:18px;font-size:1.3rem;}
+  .info-row{display:flex;gap:14px;margin-bottom:18px;align-items:flex-start;}
+  .info-row .ic{flex:0 0 auto;width:38px;height:38px;border-radius:10px;background:var(--cream-2);display:flex;align-items:center;justify-content:center;}
+  .info-row strong{display:block;font-family:'Baloo 2',sans-serif;font-size:1.02rem;}
+  .info-row span{color:var(--plum-soft);font-size:0.95rem;}
+  .map-card{
+    border-radius:var(--radius);border:var(--stitch);
+    background:linear-gradient(135deg,var(--cream-2),#fff);
+    display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;
+    padding:32px;text-align:center;
+  }
+  .pin{width:64px;height:64px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--plum);color:#e4d7e2;padding:50px 0 26px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;margin-bottom:34px;}
+  footer h3{color:var(--cream);font-size:1.1rem;margin-bottom:14px;}
+  footer .flogo{display:flex;align-items:center;gap:10px;font-family:'Baloo 2',sans-serif;font-weight:800;font-size:1.25rem;color:var(--cream);margin-bottom:12px;}
+  footer p{max-width:38ch;color:#cbb7c8;}
+  footer ul li{margin-bottom:10px;}
+  footer ul a:hover{color:var(--mustard);}
+  .socials{display:flex;gap:12px;margin-top:14px;}
+  .social-ic{
+    width:40px;height:40px;border-radius:50%;background:rgba(251,243,231,0.1);
+    display:flex;align-items:center;justify-content:center;border:2px solid rgba(251,243,231,0.25);
+    transition:background .2s ease, transform .2s ease;
+  }
+  .social-ic:hover{background:var(--berry);transform:translateY(-3px);}
+  .fine-print{
+    border-top:1px dashed rgba(251,243,231,0.25);padding-top:20px;
+    font-size:0.85rem;color:#a993a7;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;
+  }
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .float-wa{
+    position:fixed;bottom:24px;right:24px;z-index:200;
+    background:var(--whatsapp);color:#fff;
+    width:60px;height:60px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+    border:3px solid #fff;
+    animation:pulse 2.6s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.08);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .float-wa{animation:none;}
+    *{scroll-behavior:auto !important;}
+  }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ---------- FOCUS ---------- */
+  a:focus-visible, button:focus-visible{outline:3px solid var(--turquoise);outline-offset:3px;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:960px){
+    .about-grid, .insta-wrap, .visit-grid{grid-template-columns:1fr;}
+    .cards-grid{grid-template-columns:repeat(2,1fr);}
+    .tut-grid{grid-template-columns:1fr;}
+    .hero-grid{grid-template-columns:1fr;}
+    .quilt{max-width:420px;margin:0 auto;}
+  }
+  @media (max-width:720px){
+    nav.main-links{
+      position:absolute;top:100%;left:0;right:0;background:var(--cream);
+      flex-direction:column;padding:18px 28px;gap:16px;
+      border-bottom:2px dashed rgba(62,36,64,0.25);
+      display:none;
+    }
+    nav.main-links.open{display:flex;}
+    .burger{display:block;}
+    .header-actions .btn.small{display:none;}
+    .cards-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="container nav-wrap">
+    <a href="#inicio" class="logo">
+      <span class="badge" aria-hidden="true"></span>
+      Crea con Cris
+    </a>
+    <nav class="main-links" id="mainNav">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#tienda">Tienda</a>
+      <a href="#tutoriales">Tutoriales</a>
+      <a href="#instagram">Instagram</a>
+      <a href="#visitanos">Visítanos</a>
+    </nav>
+    <div class="header-actions">
+      <a class="btn small" href="https://wa.me/34616531538?text=%C2%A1Hola%20Cris!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">Pedir por WhatsApp</a>
+      <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="mainNav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Sánchez Vera 16 · Cuenca</span>
+      <h1>Cada retal cuenta <span class="accent">su historia</span></h1>
+      <p class="lead">Telas, patrones, kits y mucha inspiración para tus proyectos de patchwork y costura creativa. Pide lo que necesites por WhatsApp o pásate por la tienda — y si quieres aprender, en YouTube tienes los tutoriales gratis.</p>
+      <div class="hero-actions">
+        <a class="btn" href="https://wa.me/34616531538?text=%C2%A1Hola%20Cris!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">💬 Pedir por WhatsApp</a>
+        <a class="btn alt" href="https://youtube.com/@creaconcris3.0" target="_blank" rel="noopener">▶ Ver tutoriales gratis</a>
+      </div>
+      <div class="hero-meta">
+        <span>📍 Sánchez Vera 16, Cuenca</span>
+        <span>📱 616 531 538</span>
+        <span>🎥 @creaconcris3.0</span>
+      </div>
+    </div>
+    <div>
+      <div class="quilt" aria-hidden="true">
+        <div class="patch p1"></div>
+        <div class="patch p2"></div>
+        <div class="patch p3"></div>
+        <div class="patch p4"></div>
+        <div class="patch p5"></div>
+        <div class="patch p6"></div>
+      </div>
+      <p class="quilt-caption">Así de colorido es nuestro rincón de costura ✂️</p>
+    </div>
+  </div>
+</section>
+
+<svg class="zigzag to-plum" viewBox="0 0 200 20" preserveAspectRatio="none"><defs><pattern id="zz1" width="20" height="20" patternUnits="userSpaceOnUse"><polygon points="0,20 10,0 20,20" fill="currentColor"/></pattern></defs><rect width="200" height="20" fill="url(#zz1)"/></svg>
+
+<!-- ================= NOSOTROS ================= -->
+<section class="on-plum" id="nosotros">
+  <div class="container about-grid reveal">
+    <div class="about-visual">
+      <svg class="thread-spool" viewBox="0 0 200 200" aria-hidden="true">
+        <circle cx="100" cy="60" r="34" fill="#F2B134" stroke="#3E2440" stroke-width="4"/>
+        <rect x="70" y="60" width="60" height="80" fill="#E85D75" stroke="#3E2440" stroke-width="4"/>
+        <circle cx="100" cy="140" r="34" fill="#2FA4A0" stroke="#3E2440" stroke-width="4"/>
+        <path d="M70 65 C 60 90, 140 100, 130 135" stroke="#FBF3E7" stroke-width="3" fill="none" stroke-dasharray="4 4"/>
+      </svg>
+    </div>
+    <div class="about">
+      <span class="eyebrow" style="background:transparent;border-color:var(--mustard);color:var(--mustard);">Quiénes somos</span>
+      <h2 style="margin-top:14px;">La costura de toda la vida, con un punto muy actual</h2>
+      <p>Crea con Cris nació de una idea sencilla: montar en Cuenca un espacio donde encontrar telas bonitas, materiales de patchwork y ayuda de verdad para cada proyecto, sin importar si acabas de empezar o llevas años con la máquina de coser.</p>
+      <p>Cristina, la persona detrás del proyecto, atiende cada pedido en persona — por eso preferimos el trato directo por WhatsApp o mensaje privado antes que un carrito online impersonal.</p>
+      <p class="signature-line">— Cristina, Crea con Cris</p>
+    </div>
+  </div>
+</section>
+
+<svg class="zigzag to-cream flip" viewBox="0 0 200 20" preserveAspectRatio="none"><defs><pattern id="zz2" width="20" height="20" patternUnits="userSpaceOnUse"><polygon points="0,20 10,0 20,20" fill="currentColor"/></pattern></defs><rect width="200" height="20" fill="url(#zz2)"/></svg>
+
+<!-- ================= TIENDA ================= -->
+<section id="tienda">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow"><span class="dot"></span> En la tienda</span>
+      <h2>Todo lo que necesitas para tu próximo proyecto</h2>
+      <p>Ven a tocar las telas, pregunta lo que quieras, y si no puedes pasarte, lo resolvemos por WhatsApp.</p>
+    </div>
+    <div class="cards-grid reveal">
+      <div class="card">
+        <div class="icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="8" height="8" rx="1.5" stroke="#E85D75" stroke-width="2"/><rect x="13" y="3" width="8" height="8" rx="1.5" stroke="#F2B134" stroke-width="2"/><rect x="3" y="13" width="8" height="8" rx="1.5" stroke="#2FA4A0" stroke-width="2"/><rect x="13" y="13" width="8" height="8" rx="1.5" stroke="#FF8552" stroke-width="2"/></svg>
+        </div>
+        <h3>Telas de patchwork</h3>
+        <p>Estampados, lisos y colecciones a juego, para combinar y dejar volar la imaginación.</p>
+      </div>
+      <div class="card">
+        <div class="icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 20 L20 4" stroke="#F2B134" stroke-width="2"/><circle cx="6" cy="6" r="3" stroke="#F2B134" stroke-width="2"/><circle cx="6" cy="18" r="3" stroke="#F2B134" stroke-width="2"/></svg>
+        </div>
+        <h3>Kits y herramientas</h3>
+        <p>Reglas, cutters, bases de corte y kits de iniciación para arrancar sin agobios.</p>
+      </div>
+      <div class="card">
+        <div class="icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M12 3 C 8 7, 8 17, 12 21 C 16 17, 16 7, 12 3 Z" stroke="#2FA4A0" stroke-width="2"/><path d="M4 12 H20" stroke="#2FA4A0" stroke-width="2" stroke-dasharray="2 3"/></svg>
+        </div>
+        <h3>Arreglos y costura a medida</h3>
+        <p>Bajos, ajustes y pequeñas reformas de ropa hechos con mimo y buen ojo.</p>
+      </div>
+      <div class="card">
+        <div class="icon-wrap">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#FF8552" stroke-width="2"/><path d="M8 12 h8 M12 8 v8" stroke="#FF8552" stroke-width="2"/></svg>
+        </div>
+        <h3>Pedidos personalizados</h3>
+        <p>¿Tienes una idea en mente? Cuéntamela por privado y buscamos la manera de hacerla realidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="zigzag to-plum" viewBox="0 0 200 20" preserveAspectRatio="none"><defs><pattern id="zz3" width="20" height="20" patternUnits="userSpaceOnUse"><polygon points="0,20 10,0 20,20" fill="currentColor"/></pattern></defs><rect width="200" height="20" fill="url(#zz3)"/></svg>
+
+<!-- ================= TUTORIALES ================= -->
+<section class="on-plum" id="tutoriales">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="background:transparent;border-color:var(--mustard);color:var(--mustard);">Aprende gratis</span>
+      <h2>Tutoriales para coser paso a paso</h2>
+      <p>En el canal de YouTube subimos vídeos gratuitos con proyectos de patchwork y costura creativa, explicados con calma para que te salgan a la primera.</p>
+    </div>
+    <div class="tut-grid reveal">
+      <div class="tut-card">
+        <div class="tut-thumb"><div class="play-btn">▶</div></div>
+        <h3>Bolsos y proyectos de patchwork</h3>
+        <p>Ideas paso a paso para coser tus propias piezas con retales.</p>
+      </div>
+      <div class="tut-card">
+        <div class="tut-thumb"><div class="play-btn">▶</div></div>
+        <h3>Iniciación a la costura creativa</h3>
+        <p>Lo esencial para perder el miedo a la máquina de coser.</p>
+      </div>
+      <div class="tut-card">
+        <div class="tut-thumb"><div class="play-btn">▶</div></div>
+        <h3>Trucos y técnicas del taller</h3>
+        <p>Pequeños consejos que marcan la diferencia en cada puntada.</p>
+      </div>
+    </div>
+    <div class="tut-cta reveal">
+      <a class="btn" href="https://youtube.com/@creaconcris3.0" target="_blank" rel="noopener">▶ Ver todos los tutoriales en YouTube</a>
+    </div>
+  </div>
+</section>
+
+<svg class="zigzag to-cream flip" viewBox="0 0 200 20" preserveAspectRatio="none"><defs><pattern id="zz4" width="20" height="20" patternUnits="userSpaceOnUse"><polygon points="0,20 10,0 20,20" fill="currentColor"/></pattern></defs><rect width="200" height="20" fill="url(#zz4)"/></svg>
+
+<!-- ================= INSTAGRAM ================= -->
+<section id="instagram">
+  <div class="container insta-wrap reveal">
+    <div class="insta-frame">
+      <div class="insta-mini-grid" aria-hidden="true">
+        <div class="mini-patch"></div><div class="mini-patch"></div><div class="mini-patch"></div>
+        <div class="mini-patch"></div><div class="mini-patch"></div><div class="mini-patch"></div>
+        <div class="mini-patch"></div><div class="mini-patch"></div><div class="mini-patch"></div>
+      </div>
+      <div class="insta-handle">
+        <div class="ring"><span>📷</span></div>
+        <div>@creaconcris_</div>
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow"><span class="dot"></span> Síguenos</span>
+      <h2 style="margin-top:14px;">El día a día del taller, en Instagram</h2>
+      <p style="color:var(--plum-soft);font-size:1.05rem;margin:14px 0 24px;">Telas nuevas, proyectos terminados y algún que otro detrás de cámaras. Síguenos para no perderte nada y escríbenos por privado si quieres hacer un pedido.</p>
+      <a class="btn alt" href="https://www.instagram.com/creaconcris_/" target="_blank" rel="noopener">📸 Seguir en Instagram</a>
+    </div>
+  </div>
+</section>
+
+<svg class="zigzag to-turquoise" viewBox="0 0 200 20" preserveAspectRatio="none"><defs><pattern id="zz5" width="20" height="20" patternUnits="userSpaceOnUse"><polygon points="0,20 10,0 20,20" fill="currentColor"/></pattern></defs><rect width="200" height="20" fill="url(#zz5)"/></svg>
+
+<!-- ================= VISITANOS ================= -->
+<section class="on-turquoise" id="visitanos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="background:transparent;border-color:#fff;color:#fff;">Te esperamos</span>
+      <h2>Visítanos en Cuenca</h2>
+      <p>Y si no puedes acercarte, hablamos por WhatsApp y lo resolvemos igual.</p>
+    </div>
+    <div class="visit-grid reveal">
+      <div class="visit-card">
+        <h3>Datos de contacto</h3>
+        <div class="info-row">
+          <div class="ic">📍</div>
+          <div><strong>Dirección</strong><span>Sánchez Vera 16, Cuenca</span></div>
+        </div>
+        <div class="info-row">
+          <div class="ic">💬</div>
+          <div><strong>Pedidos por WhatsApp</strong><span>616 531 538</span></div>
+        </div>
+        <div class="info-row">
+          <div class="ic">🎥</div>
+          <div><strong>Tutoriales gratis</strong><span>youtube.com/@creaconcris3.0</span></div>
+        </div>
+        <div class="info-row">
+          <div class="ic">📷</div>
+          <div><strong>Instagram</strong><span>@creaconcris_</span></div>
+        </div>
+        <div class="hero-actions" style="margin-top:10px;">
+          <a class="btn" href="https://wa.me/34616531538?text=%C2%A1Hola%20Cris!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener">💬 Escribir por WhatsApp</a>
+        </div>
+      </div>
+      <div class="map-card">
+        <svg class="pin" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 4 C18 4 8 14 8 27 C8 45 32 60 32 60 C32 60 56 45 56 27 C56 14 46 4 32 4 Z" fill="#E85D75" stroke="#3E2440" stroke-width="3"/>
+          <circle cx="32" cy="27" r="10" fill="#FBF3E7" stroke="#3E2440" stroke-width="3"/>
+        </svg>
+        <strong style="font-family:'Baloo 2',sans-serif;font-size:1.1rem;">Sánchez Vera 16, Cuenca</strong>
+        <span style="color:var(--plum-soft);">Escríbenos antes de venir para confirmar disponibilidad</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="flogo"><span class="badge" aria-hidden="true" style="width:30px;height:30px;"></span> Crea con Cris</div>
+        <p>Tienda de patchwork y costura creativa en Cuenca. Pedidos por privado, tutoriales gratis en YouTube.</p>
+        <div class="socials">
+          <a class="social-ic" href="https://www.instagram.com/creaconcris_/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+          <a class="social-ic" href="https://youtube.com/@creaconcris3.0" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+          <a class="social-ic" href="https://wa.me/34616531538" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div>
+        <h3>Explora</h3>
+        <ul>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#tienda">Tienda</a></li>
+          <li><a href="#tutoriales">Tutoriales</a></li>
+          <li><a href="#instagram">Instagram</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Contacto</h3>
+        <ul>
+          <li>Sánchez Vera 16, Cuenca</li>
+          <li>616 531 538</li>
+          <li>@creaconcris_</li>
+        </ul>
+      </div>
+    </div>
+    <div class="fine-print">
+      <span>© 2026 Crea con Cris · Patchwork y costura creativa</span>
+      <span>Hecho con ✂️ en Cuenca</span>
+    </div>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/34616531538?text=%C2%A1Hola%20Cris!%20Quiero%20hacer%20un%20pedido" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">💬</a>
+
+<script>
+  // Mobile nav toggle
+  const burger = document.getElementById('burgerBtn');
+  const nav = document.getElementById('mainNav');
+  burger.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
