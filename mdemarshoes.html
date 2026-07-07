@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mdemarshoes&bags | Zapatos y bolsos en Santa Cruz de Tenerife</title>
+<meta name="description" content="Mdemarshoes&bags — zapatos y bolsos con estilo propio en Santa Cruz de Tenerife. Pásate por la tienda o escríbenos por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --coral:#FF4D6D;
+    --turquesa:#00C2CB;
+    --amarillo:#FFC93C;
+    --purpura:#5C2A5E;
+    --lima:#B7E42A;
+    --crema:#FFF9F0;
+    --tinta:#2E1332;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Work Sans', sans-serif;
+    background:var(--crema);
+    color:var(--tinta);
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.brand,.tag{
+    font-family:'Baloo 2', sans-serif;
+  }
+
+  a{text-decoration:none; color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%; display:block;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,249,240,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:3px solid var(--tinta);
+  }
+  .navbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 24px;
+  }
+  .brand{
+    font-size:1.5rem;
+    font-weight:800;
+    color:var(--purpura);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .brand span{color:var(--coral);}
+  nav ul{
+    display:flex;
+    gap:28px;
+    font-weight:600;
+  }
+  nav a:hover{color:var(--coral);}
+  .nav-cta{
+    background:var(--coral);
+    color:#fff !important;
+    padding:10px 20px;
+    border-radius:999px;
+    font-weight:700;
+    box-shadow:3px 3px 0 var(--tinta);
+    transition:transform .15s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--tinta);}
+
+  @media (max-width:820px){
+    nav ul{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:80px 24px 60px;
+    overflow:hidden;
+  }
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(2px);
+    opacity:.85;
+    z-index:0;
+  }
+  .b1{width:340px; height:340px; background:var(--amarillo); top:-120px; right:-100px;}
+  .b2{width:220px; height:220px; background:var(--turquesa); bottom:-80px; left:-60px;}
+  .b3{width:140px; height:140px; background:var(--coral); bottom:40px; right:12%; opacity:.7;}
+
+  .hero-inner{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    max-width:780px;
+    margin:0 auto;
+  }
+  .eyebrow{
+    display:inline-block;
+    background:var(--purpura);
+    color:var(--amarillo);
+    font-weight:700;
+    padding:8px 18px;
+    border-radius:999px;
+    font-size:.85rem;
+    letter-spacing:.03em;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    line-height:1.05;
+    color:var(--purpura);
+    font-weight:800;
+  }
+  .hero h1 .hl{color:var(--coral);}
+  .hero h1 .hl2{color:var(--turquesa);}
+  .hero p.lead{
+    margin-top:22px;
+    font-size:1.15rem;
+    color:var(--tinta);
+    opacity:.85;
+  }
+  .cta-row{
+    margin-top:34px;
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:16px 28px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:1.05rem;
+    border:3px solid var(--tinta);
+    transition:transform .15s ease, box-shadow .15s ease;
+    box-shadow:4px 4px 0 var(--tinta);
+  }
+  .btn:hover{transform:translate(-3px,-3px); box-shadow:7px 7px 0 var(--tinta);}
+  .btn-primary{background:var(--lima); color:var(--tinta);}
+  .btn-secondary{background:#fff; color:var(--purpura);}
+
+  .laces{
+    position:relative;
+    height:60px;
+    margin-top:10px;
+  }
+  .laces svg{width:100%; height:100%;}
+
+  /* ---------- SHOELACE DIVIDER (signature) ---------- */
+  .thread-section{
+    position:relative;
+    padding:10px 0 0;
+  }
+  .thread{
+    display:block;
+    width:100%;
+    height:70px;
+  }
+
+  /* ---------- CATEGORIAS ---------- */
+  .section{
+    padding:70px 24px;
+  }
+  .section-title{
+    text-align:center;
+    font-size:clamp(1.8rem,4vw,2.6rem);
+    color:var(--purpura);
+    margin-bottom:14px;
+  }
+  .section-sub{
+    text-align:center;
+    max-width:600px;
+    margin:0 auto 46px;
+    opacity:.8;
+  }
+  .cat-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:28px;
+  }
+  @media (max-width:700px){ .cat-grid{grid-template-columns:1fr;} }
+
+  .cat-card{
+    border:3px solid var(--tinta);
+    border-radius:28px;
+    padding:38px 30px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:6px 6px 0 var(--tinta);
+    transition:transform .2s ease;
+  }
+  .cat-card:hover{transform:translateY(-6px);}
+  .cat-card.zapatos{background:var(--coral); color:#fff;}
+  .cat-card.bolsos{background:var(--turquesa); color:var(--tinta);}
+  .cat-icon{font-size:3rem; margin-bottom:14px; display:block;}
+  .cat-card h3{font-size:1.6rem; margin-bottom:10px;}
+  .cat-card p{opacity:.95; margin-bottom:22px; line-height:1.5;}
+  .cat-card .btn{background:var(--tinta); color:#fff; border-color:var(--tinta); font-size:.95rem; padding:12px 22px;}
+  .cat-card .btn:hover{background:#000;}
+
+  /* ---------- POR QUE ---------- */
+  .why-section{background:var(--purpura); color:var(--crema);}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+    margin-top:10px;
+  }
+  @media (max-width:900px){ .why-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:520px){ .why-grid{grid-template-columns:1fr;} }
+  .why-card{
+    background:rgba(255,255,255,0.06);
+    border:2px solid rgba(255,201,60,0.5);
+    border-radius:20px;
+    padding:26px 20px;
+    text-align:center;
+  }
+  .why-card .emoji{font-size:2.2rem; display:block; margin-bottom:12px;}
+  .why-card h4{font-family:'Baloo 2'; color:var(--amarillo); margin-bottom:8px; font-size:1.15rem;}
+  .why-card p{font-size:.92rem; opacity:.85; line-height:1.4;}
+
+  /* ---------- INSTAGRAM ---------- */
+  .insta-section{
+    background:var(--crema);
+    text-align:center;
+  }
+  .insta-card{
+    max-width:680px;
+    margin:0 auto;
+    background:linear-gradient(135deg, var(--coral), var(--amarillo) 50%, var(--turquesa));
+    border-radius:30px;
+    padding:4px;
+    box-shadow:6px 6px 0 var(--tinta);
+  }
+  .insta-inner{
+    background:var(--crema);
+    border-radius:26px;
+    padding:40px 30px;
+  }
+  .insta-handle{
+    font-family:'Baloo 2';
+    font-size:1.6rem;
+    color:var(--purpura);
+    font-weight:700;
+  }
+  .insta-stats{
+    display:flex;
+    justify-content:center;
+    gap:36px;
+    margin:20px 0 24px;
+    flex-wrap:wrap;
+  }
+  .insta-stats div strong{
+    display:block;
+    font-size:1.5rem;
+    color:var(--coral);
+    font-family:'Baloo 2';
+  }
+  .insta-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:8px;
+    margin:24px 0;
+  }
+  .insta-grid div{
+    aspect-ratio:1/1;
+    border-radius:10px;
+  }
+  .g1{background:var(--coral);}
+  .g2{background:var(--amarillo);}
+  .g3{background:var(--turquesa);}
+  .g4{background:var(--lima);}
+  .g5{background:var(--purpura);}
+  .g6{background:var(--turquesa);}
+  .g7{background:var(--coral);}
+  .g8{background:var(--purpura);}
+  .g9{background:var(--amarillo);}
+  .g10{background:var(--lima);}
+
+  /* ---------- MAPA / UBICACION ---------- */
+  .location-section{
+    background:#fff;
+  }
+  .loc-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:34px;
+    align-items:stretch;
+  }
+  @media (max-width:820px){ .loc-grid{grid-template-columns:1fr;} }
+  .loc-info{
+    background:var(--amarillo);
+    border:3px solid var(--tinta);
+    border-radius:24px;
+    padding:34px;
+    box-shadow:6px 6px 0 var(--tinta);
+  }
+  .loc-info h3{font-size:1.6rem; color:var(--purpura); margin-bottom:18px;}
+  .loc-row{
+    display:flex;
+    gap:14px;
+    margin-bottom:16px;
+    align-items:flex-start;
+  }
+  .loc-row .ic{font-size:1.4rem;}
+  .loc-row a{font-weight:600;}
+  .loc-row a:hover{color:var(--coral);}
+  .map-frame{
+    border:3px solid var(--tinta);
+    border-radius:24px;
+    overflow:hidden;
+    box-shadow:6px 6px 0 var(--tinta);
+    min-height:320px;
+  }
+  .map-frame iframe{width:100%; height:100%; min-height:320px; border:0;}
+
+  /* ---------- CTA FINAL ---------- */
+  .final-cta{
+    background:var(--tinta);
+    color:var(--crema);
+    text-align:center;
+  }
+  .final-cta h2{color:var(--amarillo); font-size:clamp(1.8rem,5vw,2.8rem); margin-bottom:16px;}
+  .final-cta p{opacity:.85; max-width:560px; margin:0 auto 30px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--purpura);
+    color:var(--crema);
+    padding:34px 24px;
+    text-align:center;
+    font-size:.9rem;
+  }
+  footer a:hover{color:var(--amarillo);}
+  footer .fbrand{font-family:'Baloo 2'; font-size:1.2rem; color:var(--amarillo); margin-bottom:8px; display:block;}
+
+  /* ---------- FLOATING WHATSAPP ---------- */
+  .float-wa{
+    position:fixed;
+    bottom:22px;
+    right:22px;
+    z-index:100;
+    background:#25D366;
+    color:#fff;
+    width:62px;
+    height:62px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.8rem;
+    border:3px solid var(--tinta);
+    box-shadow:4px 4px 0 var(--tinta);
+    animation:pulse 2.4s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.08);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar wrap">
+    <div class="brand">👠 Mdemar<span>shoes</span>&bags</div>
+    <nav>
+      <ul>
+        <li><a href="#categorias">Zapatos &amp; Bolsos</a></li>
+        <li><a href="#porque">Por qué elegirnos</a></li>
+        <li><a href="#instagram">Instagram</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="https://wa.me/34648031084" target="_blank" rel="noopener">WhatsApp 💬</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="blob b1"></div>
+  <div class="blob b2"></div>
+  <div class="blob b3"></div>
+  <div class="hero-inner">
+    <span class="eyebrow">Santa Cruz de Tenerife · Cl. Pérez Galdós, 26</span>
+    <h1>Pisa fuerte, <span class="hl">viste bonito</span> y llévate un <span class="hl2">bolso</span> a juego</h1>
+    <p class="lead">En Mdemarshoes&bags encontrarás zapatos y bolsos con carácter, para el día a día y para brillar. Ven a probártelos o escríbenos y te lo enseñamos por WhatsApp.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="https://wa.me/34648031084" target="_blank" rel="noopener">💬 Escríbenos por WhatsApp</a>
+      <a class="btn btn-secondary" href="https://www.instagram.com/mdemarshoes/" target="_blank" rel="noopener">📸 Ver Instagram</a>
+    </div>
+  </div>
+</section>
+
+<div class="thread-section">
+  <svg class="thread" viewBox="0 0 1200 70" preserveAspectRatio="none">
+    <path d="M0,35 C150,70 300,0 450,35 C600,70 750,0 900,35 C1050,70 1150,10 1200,35"
+          fill="none" stroke="#5C2A5E" stroke-width="4" stroke-dasharray="14 10" stroke-linecap="round"/>
+    <circle cx="30" cy="34" r="9" fill="#FF4D6D" stroke="#2E1332" stroke-width="3"/>
+    <circle cx="450" cy="35" r="9" fill="#FFC93C" stroke="#2E1332" stroke-width="3"/>
+    <circle cx="900" cy="35" r="9" fill="#00C2CB" stroke="#2E1332" stroke-width="3"/>
+    <circle cx="1170" cy="30" r="9" fill="#B7E42A" stroke="#2E1332" stroke-width="3"/>
+  </svg>
+</div>
+
+<section class="section" id="categorias">
+  <h2 class="section-title">Encuentra tu próximo favorito</h2>
+  <p class="section-sub">Novedades cada semana en zapatos y bolsos, siempre con precios para todos los bolsillos.</p>
+  <div class="cat-grid">
+    <div class="cat-card zapatos">
+      <span class="cat-icon">👡</span>
+      <h3>Zapatos</h3>
+      <p>Tacones, sandalias, bailarinas, botines y deportivos con estilo. Para cada plan tenemos el par perfecto.</p>
+      <a class="btn" href="https://wa.me/34648031084?text=Hola%2C%20quiero%20ver%20las%20novedades%20en%20zapatos" target="_blank" rel="noopener">Pregunta por tallas 👉</a>
+    </div>
+    <div class="cat-card bolsos">
+      <span class="cat-icon">👜</span>
+      <h3>Bolsos</h3>
+      <p>Bolsos de mano, bandolera y mochilas que combinan con cualquier look, del trabajo a la fiesta.</p>
+      <a class="btn" href="https://wa.me/34648031084?text=Hola%2C%20quiero%20ver%20las%20novedades%20en%20bolsos" target="_blank" rel="noopener">Ver modelos 👉</a>
+    </div>
+  </div>
+</section>
+
+<section class="section why-section" id="porque">
+  <h2 class="section-title" style="color:var(--amarillo)">¿Por qué comprar en Mdemarshoes&bags?</h2>
+  <p class="section-sub" style="color:var(--crema); opacity:.8;">Una tienda de barrio con trato cercano, en pleno centro de Santa Cruz.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <span class="emoji">📍</span>
+      <h4>En pleno centro</h4>
+      <p>A pie de calle en Pérez Galdós, fácil de encontrar y de visitar.</p>
+    </div>
+    <div class="why-card">
+      <span class="emoji">💬</span>
+      <h4>Atención directa</h4>
+      <p>Escríbenos por WhatsApp y te enviamos fotos y tallas al momento.</p>
+    </div>
+    <div class="why-card">
+      <span class="emoji">🆕</span>
+      <h4>Novedades constantes</h4>
+      <p>Reposición frecuente de modelos, siempre hay algo nuevo que ver.</p>
+    </div>
+    <div class="why-card">
+      <span class="emoji">❤️</span>
+      <h4>Trato de barrio</h4>
+      <p>Te ayudamos a elegir sin prisa, como en la tienda de toda la vida.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section insta-section" id="instagram">
+  <h2 class="section-title">Síguenos en Instagram</h2>
+  <p class="section-sub">Ahí subimos las novedades antes que a ningún sitio.</p>
+  <div class="insta-card">
+    <div class="insta-inner">
+      <div class="insta-handle">@mdemarshoes</div>
+      <div class="insta-stats">
+        <div><strong>11K</strong> seguidores</div>
+        <div><strong>1.027</strong> publicaciones</div>
+        <div><strong>51</strong> siguiendo</div>
+      </div>
+      <div class="insta-grid">
+        <div class="g1"></div><div class="g2"></div><div class="g3"></div><div class="g4"></div><div class="g5"></div>
+        <div class="g6"></div><div class="g7"></div><div class="g8"></div><div class="g9"></div><div class="g10"></div>
+      </div>
+      <a class="btn btn-primary" href="https://www.instagram.com/mdemarshoes/" target="_blank" rel="noopener">Abrir @mdemarshoes 📸</a>
+    </div>
+  </div>
+</section>
+
+<section class="section location-section" id="ubicacion">
+  <h2 class="section-title">Visítanos</h2>
+  <p class="section-sub">Estamos en el centro de Santa Cruz de Tenerife, a un WhatsApp de distancia si no puedes pasarte.</p>
+  <div class="loc-grid">
+    <div class="loc-info">
+      <h3>Mdemarshoes&bags</h3>
+      <div class="loc-row"><span class="ic">📍</span><span>Calle Pérez Galdós, 26, Local 4<br>38002 Santa Cruz de Tenerife</span></div>
+      <div class="loc-row"><span class="ic">☎️</span><a href="tel:+34922455830">922 455 830</a></div>
+      <div class="loc-row"><span class="ic">💬</span><a href="https://wa.me/34648031084" target="_blank" rel="noopener">WhatsApp: 648 031 084</a></div>
+      <div class="loc-row"><span class="ic">📸</span><a href="https://www.instagram.com/mdemarshoes/" target="_blank" rel="noopener">@mdemarshoes</a></div>
+      <a class="btn btn-primary" style="margin-top:12px;" href="https://www.google.com/maps/search/?api=1&query=Calle+P%C3%A9rez+Gald%C3%B3s+26+Santa+Cruz+de+Tenerife" target="_blank" rel="noopener">Cómo llegar 🗺️</a>
+    </div>
+    <div class="map-frame">
+      <iframe
+        src="https://maps.google.com/maps?q=Calle%20P%C3%A9rez%20Gald%C3%B3s%2026%20Santa%20Cruz%20de%20Tenerife&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta section">
+  <h2>¿Buscas un par nuevo para esta semana?</h2>
+  <p>Escríbenos ahora mismo por WhatsApp y te mostramos las últimas novedades en zapatos y bolsos.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="https://wa.me/34648031084" target="_blank" rel="noopener">💬 Hablar por WhatsApp</a>
+    <a class="btn btn-secondary" href="tel:+34922455830">☎️ Llamar a la tienda</a>
+  </div>
+</section>
+
+<footer>
+  <span class="fbrand">Mdemarshoes&bags</span>
+  <p>Calle Pérez Galdós, 26 Local 4 · 38002 Santa Cruz de Tenerife · 922 455 830</p>
+  <p><a href="https://www.instagram.com/mdemarshoes/" target="_blank" rel="noopener">Instagram</a> · <a href="https://wa.me/34648031084" target="_blank" rel="noopener">WhatsApp</a></p>
+</footer>
+
+<a class="float-wa" href="https://wa.me/34648031084" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">💬</a>
+
+</body>
+</html>
