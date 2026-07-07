@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>amalola — Handmade Baby Treasures from Palencia</title>
+<meta name="description" content="amalola: hand-crocheted baby blankets, booties, hats, amigurumi toys and keepsakes. Made with love in Palencia, Spain. Shipping all over Spain.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#FF6FA5;
+    --pink-soft:#FFDCE9;
+    --sky:#4FC3F7;
+    --sky-soft:#DBF3FF;
+    --yellow:#FFD93D;
+    --yellow-soft:#FFF6D6;
+    --mint:#5FE0B0;
+    --mint-soft:#DAFCEE;
+    --lavender:#B18CFF;
+    --lavender-soft:#EDE3FF;
+    --cream:#FFFBF3;
+    --ink:#3A2E45;
+    --ink-soft:#6E5E7A;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Quicksand',sans-serif;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Baloo 2',cursive;
+    margin:0;
+  }
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+
+  /* Background scattered confetti dots */
+  .confetti-bg{
+    position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden;
+  }
+  .confetti-bg span{
+    position:absolute;border-radius:50%;opacity:.35;
+  }
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,251,243,.88);
+    backdrop-filter:blur(8px);
+    border-bottom:3px dashed var(--pink);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 24px;max-width:1120px;margin:0 auto;
+  }
+  .logo{
+    font-size:28px;font-weight:800;color:var(--pink);
+    letter-spacing:.5px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .logo .dot{color:var(--lavender);}
+  nav.links{display:flex;gap:26px;font-weight:600;font-size:15px;color:var(--ink-soft);}
+  nav.links a:hover{color:var(--pink);}
+  .nav-cta{
+    background:var(--pink);color:#fff;padding:10px 20px;border-radius:30px;
+    font-weight:700;font-size:14px;box-shadow:0 4px 0 #d34d81;
+    transition:transform .15s ease;
+  }
+  .nav-cta:hover{transform:translateY(-2px);}
+  @media(max-width:760px){nav.links{display:none;}}
+
+  /* ===== HERO / MOBILE ===== */
+  .hero{
+    position:relative;
+    padding:80px 24px 60px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .mobile-rig{
+    position:relative;height:180px;max-width:520px;margin:0 auto 10px;
+  }
+  .mobile-rig svg{width:100%;height:100%;overflow:visible;}
+  .charm{
+    transform-origin:top center;
+    animation:sway 4s ease-in-out infinite;
+  }
+  .charm.c2{animation-delay:.4s;animation-duration:4.6s;}
+  .charm.c3{animation-delay:.8s;animation-duration:3.6s;}
+  .charm.c4{animation-delay:.2s;animation-duration:5s;}
+  @keyframes sway{
+    0%,100%{transform:rotate(-6deg);}
+    50%{transform:rotate(6deg);}
+  }
+  .eyebrow{
+    display:inline-block;background:var(--yellow-soft);color:#a37c00;
+    font-weight:700;font-size:13px;padding:6px 16px;border-radius:20px;
+    margin-bottom:18px;letter-spacing:.5px;
+  }
+  .hero h1{
+    font-size:clamp(38px,6vw,64px);
+    color:var(--ink);
+    line-height:1.05;
+  }
+  .hero h1 .rainbow{
+    background:linear-gradient(90deg,var(--pink),var(--lavender) 40%,var(--sky) 70%,var(--mint));
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero p.sub{
+    max-width:560px;margin:22px auto 0;
+    font-size:19px;color:var(--ink-soft);font-weight:500;
+  }
+  .hero-ctas{
+    margin-top:34px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:15px 30px;border-radius:40px;font-weight:700;font-size:16px;
+    cursor:pointer;border:none;transition:transform .15s ease,box-shadow .15s ease;
+  }
+  .btn-primary{background:var(--pink);color:#fff;box-shadow:0 5px 0 #d34d81;}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 0 #d34d81;}
+  .btn-secondary{background:#fff;color:var(--ink);border:2.5px solid var(--lavender);}
+  .btn-secondary:hover{background:var(--lavender-soft);transform:translateY(-3px);}
+
+  .made-in{
+    margin-top:26px;font-size:14px;color:var(--ink-soft);font-weight:600;
+  }
+
+  /* wavy divider */
+  .wave{display:block;width:100%;height:60px;}
+
+  /* ===== SECTION SHELLS ===== */
+  section{position:relative;padding:70px 0;z-index:1;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 48px;}
+  .section-head .eyebrow{margin-bottom:12px;}
+  .section-head h2{font-size:clamp(28px,4vw,42px);}
+  .section-head p{color:var(--ink-soft);font-size:17px;margin-top:12px;font-weight:500;}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  /* ===== ABOUT ===== */
+  .about-bg{background:var(--lavender-soft);border-radius:0;}
+  .about-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;
+  }
+  @media(max-width:760px){.about-grid{grid-template-columns:1fr;}}
+  .about-art{
+    background:#fff;border-radius:28px;padding:20px;
+    box-shadow:0 14px 0 rgba(177,140,255,.35);
+  }
+  .about-text h2{font-size:32px;margin-bottom:16px;}
+  .about-text p{font-size:16px;color:var(--ink-soft);line-height:1.7;margin-bottom:14px;}
+  .stitch-list{list-style:none;padding:0;margin:22px 0 0;display:flex;flex-direction:column;gap:12px;}
+  .stitch-list li{display:flex;gap:12px;align-items:flex-start;font-weight:600;font-size:15px;}
+  .stitch-list li svg{flex:none;margin-top:2px;}
+
+  /* ===== PRODUCTS ===== */
+  .prod-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  }
+  @media(max-width:900px){.prod-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:520px){.prod-grid{grid-template-columns:1fr;}}
+  .prod-card{
+    border-radius:24px;padding:28px 22px 26px;text-align:center;
+    transition:transform .2s ease, box-shadow .2s ease;
+    cursor:default;
+  }
+  .prod-card:hover{transform:translateY(-8px) rotate(-1deg);}
+  .prod-card .icon-wrap{
+    width:88px;height:88px;margin:0 auto 18px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.6);
+  }
+  .prod-card h3{font-size:19px;margin-bottom:8px;}
+  .prod-card p{font-size:14px;color:var(--ink-soft);font-weight:500;line-height:1.5;}
+  .p-pink{background:var(--pink-soft);box-shadow:0 10px 0 #ffc3d9;}
+  .p-sky{background:var(--sky-soft);box-shadow:0 10px 0 #bfeaff;}
+  .p-yellow{background:var(--yellow-soft);box-shadow:0 10px 0 #ffe9a3;}
+  .p-mint{background:var(--mint-soft);box-shadow:0 10px 0 #b7f5da;}
+
+  /* ===== HOW TO ORDER (yarn thread) ===== */
+  .order-bg{background:var(--sky-soft);}
+  .thread-wrap{position:relative;max-width:900px;margin:0 auto;}
+  .thread-svg{position:absolute;top:36px;left:0;width:100%;height:calc(100% - 72px);z-index:0;}
+  .steps{
+    position:relative;z-index:1;
+    display:grid;grid-template-columns:repeat(3,1fr);gap:30px;
+  }
+  @media(max-width:760px){.steps{grid-template-columns:1fr;}}
+  .step{text-align:center;}
+  .step .badge{
+    width:72px;height:72px;border-radius:50%;background:#fff;
+    display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
+    font-family:'Baloo 2';font-weight:800;font-size:26px;color:var(--pink);
+    border:4px solid var(--pink);
+  }
+  .step h3{font-size:18px;margin-bottom:8px;}
+  .step p{font-size:14px;color:var(--ink-soft);font-weight:500;}
+
+  /* ===== SHIPPING STRIP ===== */
+  .ship-strip{
+    background:var(--ink);color:#fff;padding:40px 0;
+  }
+  .ship-inner{
+    display:flex;justify-content:space-around;flex-wrap:wrap;gap:30px;text-align:center;
+  }
+  .ship-item h3{font-family:'Baloo 2';font-size:22px;color:var(--yellow);}
+  .ship-item p{font-size:13px;color:#d8cfe0;margin-top:4px;font-weight:500;}
+
+  /* ===== GALLERY ===== */
+  .gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  @media(max-width:900px){.gal-grid{grid-template-columns:repeat(2,1fr);}}
+  .gal-tile{
+    aspect-ratio:1;border-radius:20px;display:flex;align-items:center;justify-content:center;
+    position:relative;overflow:hidden;
+  }
+  .gal-tile svg{width:60%;height:60%;}
+
+  /* ===== TESTIMONIAL ===== */
+  .testi-bg{background:var(--mint-soft);}
+  .testi-card{
+    max-width:640px;margin:0 auto;background:#fff;border-radius:26px;padding:40px;
+    text-align:center;box-shadow:0 14px 0 rgba(95,224,176,.4);position:relative;
+  }
+  .testi-card .quote-mark{
+    font-family:'Baloo 2';font-size:60px;color:var(--mint);line-height:1;display:block;margin-bottom:6px;
+  }
+  .testi-card p.quote{font-size:18px;font-weight:600;color:var(--ink);line-height:1.6;}
+  .testi-card .who{margin-top:18px;font-weight:700;color:var(--ink-soft);font-size:14px;}
+
+  /* ===== CTA BAND ===== */
+  .cta-band{
+    background:linear-gradient(120deg,var(--pink),var(--lavender));
+    color:#fff;text-align:center;padding:70px 24px;border-radius:40px;
+    margin:0 24px;
+  }
+  .cta-band h2{font-size:clamp(26px,4vw,38px);margin-bottom:14px;}
+  .cta-band p{font-size:16px;opacity:.95;max-width:480px;margin:0 auto 28px;font-weight:500;}
+  .cta-band .btn-primary{background:#fff;color:var(--pink);box-shadow:0 5px 0 rgba(0,0,0,.15);}
+  .cta-band .btn-primary:hover{color:#d34d81;}
+
+  /* ===== FOOTER ===== */
+  footer{padding:50px 24px 30px;text-align:center;}
+  footer .logo{justify-content:center;margin-bottom:10px;}
+  footer .foot-links{display:flex;gap:22px;justify-content:center;margin:18px 0;font-weight:600;font-size:14px;flex-wrap:wrap;}
+  footer .foot-links a:hover{color:var(--pink);}
+  footer .copyright{font-size:12px;color:var(--ink-soft);margin-top:20px;}
+
+  /* ===== FLOATING BUTTONS ===== */
+  .floaters{
+    position:fixed;bottom:22px;right:22px;z-index:100;
+    display:flex;flex-direction:column;gap:12px;align-items:flex-end;
+  }
+  .floater{
+    width:58px;height:58px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 16px rgba(0,0,0,.2);
+    transition:transform .2s ease;
+    cursor:pointer;
+  }
+  .floater:hover{transform:scale(1.1) rotate(-6deg);}
+  .floater.ig{background:radial-gradient(circle at 30% 110%, #ffdb73 0%, #fa7e1e 30%, #d62976 55%, #962fbf 75%, #4f5bd5 100%);}
+  .floater.mail{background:var(--sky);}
+
+  ::selection{background:var(--yellow);color:var(--ink);}
+</style>
+</head>
+<body>
+
+<div class="confetti-bg" id="confettiBg"></div>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="nav">
+    <div class="logo">amalola<span class="dot">.</span></div>
+    <nav class="links">
+      <a href="#about">Our story</a>
+      <a href="#products">Products</a>
+      <a href="#order">How to order</a>
+      <a href="#gallery">Gallery</a>
+    </nav>
+    <a class="nav-cta" href="https://www.instagram.com/_amalola_/" target="_blank" rel="noopener">Message us</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="mobile-rig">
+    <svg viewBox="0 0 520 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="260" y1="0" x2="70" y2="10" stroke="#B18CFF" stroke-width="3"/>
+      <line x1="260" y1="0" x2="190" y2="6" stroke="#B18CFF" stroke-width="3"/>
+      <line x1="260" y1="0" x2="330" y2="6" stroke="#B18CFF" stroke-width="3"/>
+      <line x1="260" y1="0" x2="450" y2="10" stroke="#B18CFF" stroke-width="3"/>
+
+      <g class="charm c1">
+        <line x1="70" y1="10" x2="70" y2="60" stroke="#FF6FA5" stroke-width="2.5"/>
+        <circle cx="70" cy="80" r="22" fill="#FFDCE9"/>
+        <path d="M62 80a8 8 0 1116 0 8 8 0 01-16 0z" fill="#FF6FA5"/>
+      </g>
+      <g class="charm c2">
+        <line x1="190" y1="6" x2="190" y2="70" stroke="#4FC3F7" stroke-width="2.5"/>
+        <path d="M190 70l14 24h-28z" fill="#DBF3FF" stroke="#4FC3F7" stroke-width="2"/>
+      </g>
+      <g class="charm c3">
+        <line x1="330" y1="6" x2="330" y2="66" stroke="#FFD93D" stroke-width="2.5"/>
+        <path d="M330 66l7 14 15 2-11 11 3 15-14-7-14 7 3-15-11-11 15-2z" fill="#FFF6D6" stroke="#FFD93D" stroke-width="2"/>
+      </g>
+      <g class="charm c4">
+        <line x1="450" y1="10" x2="450" y2="62" stroke="#5FE0B0" stroke-width="2.5"/>
+        <circle cx="450" cy="82" r="20" fill="#DAFCEE" stroke="#5FE0B0" stroke-width="2"/>
+        <circle cx="443" cy="76" r="3" fill="#5FE0B0"/>
+        <circle cx="457" cy="76" r="3" fill="#5FE0B0"/>
+      </g>
+    </svg>
+  </div>
+
+  <span class="eyebrow">🧶 Handmade in Palencia, Spain</span>
+  <h1>Cozy, colorful <span class="rainbow">handmade</span><br>treasures for tiny humans</h1>
+  <p class="sub">amalola crochets soft blankets, booties, hats, amigurumi toys and keepsakes — each piece made by hand, stitch by stitch, just for your baby.</p>
+
+  <div class="hero-ctas">
+    <a class="btn btn-primary" id="heroCta" href="https://www.instagram.com/_amalola_/" target="_blank" rel="noopener">
+      🎀 Order on Instagram
+    </a>
+    <a class="btn btn-secondary" href="#products">See what we make</a>
+  </div>
+  <p class="made-in">📍 Based in Palencia · 📦 Shipping all over Spain · ✉️ amalolahandmade@gmail.com</p>
+</section>
+
+<svg class="wave" viewBox="0 0 1440 60" preserveAspectRatio="none"><path fill="#EDE3FF" d="M0,30 C240,60 480,0 720,20 C960,40 1200,60 1440,20 L1440,60 L0,60 Z"/></svg>
+
+<!-- ===== ABOUT ===== -->
+<section class="about-bg" id="about">
+  <div class="wrap about-grid reveal">
+    <div class="about-art">
+      <svg viewBox="0 0 400 320" xmlns="http://www.w3.org/2000/svg">
+        <rect width="400" height="320" rx="20" fill="#FFF6D6"/>
+        <circle cx="90" cy="90" r="46" fill="#FFDCE9"/>
+        <circle cx="90" cy="90" r="46" fill="none" stroke="#FF6FA5" stroke-width="3" stroke-dasharray="4 6"/>
+        <path d="M310 70a44 44 0 11-1 0z" fill="#DBF3FF"/>
+        <path d="M120 220c0-44 36-80 80-80s80 36 80 80" fill="none" stroke="#5FE0B0" stroke-width="10" stroke-linecap="round"/>
+        <circle cx="120" cy="220" r="12" fill="#5FE0B0"/>
+        <circle cx="280" cy="220" r="12" fill="#5FE0B0"/>
+        <path d="M60 260c30-16 250-16 280 0" stroke="#B18CFF" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <text x="200" y="290" text-anchor="middle" font-family="Baloo 2" font-size="20" fill="#3A2E45" font-weight="700">made stitch by stitch</text>
+      </svg>
+    </div>
+    <div class="about-text">
+      <span class="eyebrow" style="background:#fff;color:#8a5cff;">Our story</span>
+      <h2>Every piece starts with one ball of yarn</h2>
+      <p>amalola began the way most handmade brands do — with a hook, a skein of yarn and a lot of love. Today every blanket, bootie and little amigurumi friend is still crocheted entirely by hand, one stitch at a time, right here in Palencia.</p>
+      <p>No two pieces are ever quite the same, and that's exactly the point. When you order from amalola, you're not buying something mass-produced — you're getting something made for your baby.</p>
+      <ul class="stitch-list">
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#FF6FA5"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>100% handmade, zero shortcuts</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#5FE0B0"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Soft, baby-safe yarns and finishes</li>
+        <li><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#4FC3F7"/><path d="M8 12l3 3 5-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Colors and details you can personalize</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRODUCTS ===== -->
+<section id="products">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What we make</span>
+      <h2>A rainbow of handmade essentials</h2>
+      <p>From first-week snuggles to nursery decor, here's what's usually on the hook.</p>
+    </div>
+    <div class="prod-grid reveal">
+      <div class="prod-card p-pink">
+        <div class="icon-wrap">
+          <svg width="46" height="46" viewBox="0 0 48 48"><rect x="6" y="6" width="36" height="36" rx="8" fill="#FF6FA5"/><path d="M12 24h24M24 12v24" stroke="#fff" stroke-width="3" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Blankets</h3>
+        <p>Soft crocheted blankets in cheerful colorways for the crib, stroller or tummy time.</p>
+      </div>
+      <div class="prod-card p-sky">
+        <div class="icon-wrap">
+          <svg width="46" height="46" viewBox="0 0 48 48"><path d="M14 30c0-8 6-14 10-14s10 6 10 14-4 8-10 8-10 0-10-8z" fill="#4FC3F7"/><ellipse cx="24" cy="14" rx="6" ry="4" fill="#4FC3F7"/></svg>
+        </div>
+        <h3>Booties &amp; hats</h3>
+        <p>Tiny hand-stitched booties, bonnets and beanies to keep little toes and heads warm.</p>
+      </div>
+      <div class="prod-card p-yellow">
+        <div class="icon-wrap">
+          <svg width="46" height="46" viewBox="0 0 48 48"><circle cx="18" cy="20" r="10" fill="#FFD93D"/><circle cx="30" cy="20" r="7" fill="#FFD93D"/><circle cx="14" cy="12" r="3" fill="#FFD93D"/><circle cx="22" cy="10" r="3" fill="#FFD93D"/></svg>
+        </div>
+        <h3>Amigurumi toys</h3>
+        <p>Huggable crochet animals and characters, made to become a lifelong favorite.</p>
+      </div>
+      <div class="prod-card p-mint">
+        <div class="icon-wrap">
+          <svg width="46" height="46" viewBox="0 0 48 48"><path d="M24 40s-14-9-14-19a9 9 0 0114-7 9 9 0 0114 7c0 10-14 19-14 19z" fill="#5FE0B0"/></svg>
+        </div>
+        <h3>Keepsakes</h3>
+        <p>Name garlands, birth announcements and nursery decor to treasure for years.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW TO ORDER ===== -->
+<section class="order-bg" id="order">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="background:#fff;color:#1f8cc7;">Ordering is easy</span>
+      <h2>Getting your handmade piece is a 3-step stitch</h2>
+      <p>Every order at amalola is taken directly through Instagram — simple, personal and easy to customize.</p>
+    </div>
+    <div class="thread-wrap reveal">
+      <svg class="thread-svg" viewBox="0 0 900 4" preserveAspectRatio="none"><path d="M0 2 Q225 -20 450 2 T900 2" stroke="#B18CFF" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round" fill="none"/></svg>
+      <div class="steps">
+        <div class="step">
+          <div class="badge">1</div>
+          <h3>Send a DM</h3>
+          <p>Message <strong>@_amalola_</strong> on Instagram and tell us what you're dreaming up.</p>
+        </div>
+        <div class="step">
+          <div class="badge">2</div>
+          <h3>Pick your colors</h3>
+          <p>Choose the piece, colors and little details — every order can be personalized.</p>
+        </div>
+        <div class="step">
+          <div class="badge">3</div>
+          <h3>We stitch &amp; ship</h3>
+          <p>Your piece is handmade to order and shipped anywhere in Spain.</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:44px;">
+      <a class="btn btn-primary" href="https://www.instagram.com/_amalola_/" target="_blank" rel="noopener">🎀 Start your order on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SHIPPING STRIP ===== -->
+<div class="ship-strip reveal">
+  <div class="wrap ship-inner">
+    <div class="ship-item">
+      <h3>📍 Palencia</h3>
+      <p>Handmade locally, one order at a time</p>
+    </div>
+    <div class="ship-item">
+      <h3>📦 All of Spain</h3>
+      <p>Delivered wherever your family calls home</p>
+    </div>
+    <div class="ship-item">
+      <h3>💬 By DM</h3>
+      <p>Every order starts with a friendly message</p>
+    </div>
+    <div class="ship-item">
+      <h3>🧶 Made to order</h3>
+      <p>Colors and sizes personalized for your baby</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">A peek at the yarn basket</span>
+      <h2>Little pieces, big colors</h2>
+      <p>Follow along on Instagram to see the full gallery and newest colorways.</p>
+    </div>
+    <div class="gal-grid reveal">
+      <div class="gal-tile" style="background:var(--pink-soft);">
+        <svg viewBox="0 0 48 48"><path d="M14 30c0-8 6-14 10-14s10 6 10 14-4 8-10 8-10 0-10-8z" fill="#FF6FA5"/></svg>
+      </div>
+      <div class="gal-tile" style="background:var(--sky-soft);">
+        <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16" fill="none" stroke="#4FC3F7" stroke-width="4"/><circle cx="24" cy="24" r="6" fill="#4FC3F7"/></svg>
+      </div>
+      <div class="gal-tile" style="background:var(--yellow-soft);">
+        <svg viewBox="0 0 48 48"><path d="M24 6l4.7 13.8H43l-11.6 8.4L35.9 42 24 33.6 12.1 42l4.5-13.8L5 19.8h14.3z" fill="#FFD93D"/></svg>
+      </div>
+      <div class="gal-tile" style="background:var(--mint-soft);">
+        <svg viewBox="0 0 48 48"><circle cx="18" cy="20" r="10" fill="#5FE0B0"/><circle cx="30" cy="20" r="7" fill="#5FE0B0"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TESTIMONIAL ===== -->
+<section class="testi-bg">
+  <div class="wrap reveal">
+    <div class="testi-card">
+      <span class="quote-mark">“</span>
+      <p class="quote">I messaged amalola not knowing exactly what I wanted, and they helped me pick the perfect colors for my daughter's blanket. It arrived so soft and beautifully made — worth every stitch.</p>
+      <p class="who">— a happy amalola parent</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BAND ===== -->
+<section>
+  <div class="wrap">
+    <div class="cta-band reveal">
+      <h2>Ready to make something one-of-a-kind?</h2>
+      <p>Send a message today and let's design a handmade piece your baby will love — in the colors you choose.</p>
+      <a class="btn btn-primary" href="https://www.instagram.com/_amalola_/" target="_blank" rel="noopener">🎀 Message @_amalola_ now</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="logo">amalola<span class="dot">.</span></div>
+  <p style="color:var(--ink-soft);font-weight:600;font-size:14px;">Handmade baby treasures · Palencia, Spain</p>
+  <div class="foot-links">
+    <a href="https://www.instagram.com/_amalola_/" target="_blank" rel="noopener">Instagram @_amalola_</a>
+    <a href="mailto:amalolahandmade@gmail.com">amalolahandmade@gmail.com</a>
+    <a href="#products">Products</a>
+    <a href="#order">How to order</a>
+  </div>
+  <p class="copyright">© <span id="year"></span> amalola. All pieces handmade with love in Palencia, Spain.</p>
+</footer>
+
+<!-- ===== FLOATING BUTTONS ===== -->
+<div class="floaters">
+  <a class="floater ig" href="https://www.instagram.com/_amalola_/" target="_blank" rel="noopener" aria-label="Message us on Instagram" id="igFloat">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="2" y="2" width="20" height="20" rx="6" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="5" stroke="#fff" stroke-width="2"/><circle cx="17.5" cy="6.5" r="1.2" fill="#fff"/></svg>
+  </a>
+  <a class="floater mail" href="mailto:amalolahandmade@gmail.com" aria-label="Email us">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="16" rx="3" stroke="#fff" stroke-width="2"/><path d="M3 6l9 7 9-7" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>
+  </a>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Confetti background dots
+  (function(){
+    const colors = ['#FF6FA5','#4FC3F7','#FFD93D','#5FE0B0','#B18CFF'];
+    const bg = document.getElementById('confettiBg');
+    for(let i=0;i<26;i++){
+      const s = document.createElement('span');
+      const size = 4 + Math.random()*8;
+      s.style.width = size+'px';
+      s.style.height = size+'px';
+      s.style.left = Math.random()*100+'%';
+      s.style.top = Math.random()*100+'%';
+      s.style.background = colors[i % colors.length];
+      bg.appendChild(s);
+    }
+  })();
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, {threshold:.15});
+  revealEls.forEach(el=>io.observe(el));
+
+  // Playful pop sound on primary CTA clicks (Web Audio API, no external files)
+  function playPop(){
+    try{
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const notes = [660, 880, 990];
+      notes.forEach((freq, i)=>{
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.0001, ctx.currentTime + i*0.07);
+        gain.gain.linearRampToValueAtTime(0.12, ctx.currentTime + i*0.07 + 0.02);
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + i*0.07 + 0.25);
+        osc.connect(gain).connect(ctx.destination);
+        osc.start(ctx.currentTime + i*0.07);
+        osc.stop(ctx.currentTime + i*0.07 + 0.3);
+      });
+    }catch(e){}
+  }
+  document.querySelectorAll('.btn-primary, .floater').forEach(btn=>{
+    btn.addEventListener('click', playPop);
+  });
+</script>
+
+</body>
+</html>
