@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esteban Navas · Educador Canino — Ayuda para perros reactivos</title>
+<meta name="description" content="Esteban Navas ayuda a personas a comprender y entrenar a sus perros reactivos. +4.700 perros reactivos ayudados. Escríbeme por Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600;9..144,700;9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#17211f;
+    --teal:#0f5c56;
+    --teal-dark:#0a3f3b;
+    --teal-pale:#dcf0ec;
+    --marigold:#ffb627;
+    --marigold-dark:#e69c0f;
+    --coral:#ff5a3c;
+    --cream:#fff4e3;
+    --sky:#6ec6d9;
+    --white:#ffffff;
+    --line-soft: rgba(23,33,31,0.12);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    line-height:1.05;
+    font-weight:600;
+  }
+
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.72rem;
+    font-weight:700;
+    color:var(--teal);
+  }
+
+  .wrap{
+    max-width:1160px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,244,227,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line-soft);
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    max-width:1160px;
+    margin:0 auto;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.05rem;
+    white-space:nowrap;
+  }
+  .brand-mark{
+    width:34px; height:34px;
+    border-radius:50%;
+    background:conic-gradient(from 200deg, var(--coral), var(--marigold), var(--sky), var(--teal), var(--coral));
+    flex-shrink:0;
+    position:relative;
+  }
+  .brand-mark::after{
+    content:"";
+    position:absolute; inset:5px;
+    background:var(--cream);
+    border-radius:50%;
+  }
+  .nav-links{
+    display:flex;
+    gap:28px;
+    font-size:0.92rem;
+    font-weight:600;
+  }
+  .nav-links a{
+    text-decoration:none;
+    opacity:0.75;
+    transition:opacity .2s ease;
+  }
+  .nav-links a:hover{opacity:1;}
+
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-weight:700;
+    text-decoration:none;
+    border-radius:100px;
+    padding:12px 22px;
+    font-size:0.92rem;
+    transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+    border:none;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--teal);
+    color:var(--cream);
+    box-shadow:0 6px 0 var(--teal-dark);
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-primary:active{transform:translateY(2px); box-shadow:0 2px 0 var(--teal-dark);}
+  .btn-ghost{
+    background:transparent;
+    color:var(--ink);
+    border:2px solid var(--ink);
+  }
+  .btn-ghost:hover{background:var(--ink); color:var(--cream);}
+  .btn-small{padding:9px 16px; font-size:0.82rem;}
+
+  .nav-cta{display:flex; align-items:center;}
+
+  .menu-toggle{display:none; background:none; border:none; font-size:1.6rem; cursor:pointer; color:var(--ink);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:76px 0 40px;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:48px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    margin:14px 0 20px;
+    color:var(--ink);
+  }
+  .hero h1 em{
+    font-style:normal;
+    background:linear-gradient(180deg, transparent 62%, var(--marigold) 62%);
+    padding:0 2px;
+  }
+  .hero p.lead{
+    font-size:1.15rem;
+    max-width:520px;
+    color:#3a4744;
+    margin-bottom:28px;
+  }
+  .stat-pill{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--white);
+    border:2px solid var(--ink);
+    border-radius:100px;
+    padding:8px 18px 8px 8px;
+    margin-bottom:28px;
+    font-weight:700;
+    font-size:0.95rem;
+  }
+  .stat-pill .num{
+    background:var(--coral);
+    color:var(--white);
+    border-radius:50%;
+    width:34px; height:34px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    flex-shrink:0;
+  }
+  .hero-ctas{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+
+  .hero-art{
+    position:relative;
+    aspect-ratio:1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hero-art .blob{
+    position:absolute;
+    inset:6%;
+    background:var(--teal);
+    border-radius:42% 58% 65% 35% / 45% 40% 60% 55%;
+    animation:blobMove 12s ease-in-out infinite alternate;
+  }
+  @keyframes blobMove{
+    0%{border-radius:42% 58% 65% 35% / 45% 40% 60% 55%;}
+    100%{border-radius:58% 42% 40% 60% / 55% 60% 40% 45%;}
+  }
+  .hero-art svg{position:relative; width:78%; height:78%;}
+
+  /* wave signature */
+  .wave-strip{
+    margin-top:10px;
+    padding:18px 0 6px;
+    border-top:1px solid var(--line-soft);
+    border-bottom:1px solid var(--line-soft);
+  }
+  .wave-strip .wave-caption{
+    display:flex;
+    justify-content:space-between;
+    font-family:'Space Mono', monospace;
+    font-size:0.7rem;
+    text-transform:uppercase;
+    letter-spacing:0.1em;
+    color:#6b7975;
+    margin-top:6px;
+  }
+  #waveSvg{width:100%; height:90px; display:block;}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:88px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:48px;
+  }
+  .section-head h2{
+    font-size:clamp(1.8rem, 3.4vw, 2.6rem);
+    margin-top:10px;
+  }
+  .section-head p{
+    color:#3a4744;
+    font-size:1.05rem;
+    margin-top:14px;
+  }
+
+  /* ---------- PROBLEM ---------- */
+  .problem{
+    background:var(--ink);
+    color:var(--cream);
+    border-radius:32px;
+    margin:0 24px;
+    padding:64px 40px;
+  }
+  .problem .wrap{padding:0;}
+  .problem .section-head p{color:#d8d2c4;}
+  .problem .eyebrow{color:var(--marigold);}
+  .chip-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:16px;
+  }
+  .chip{
+    background:rgba(255,244,227,0.06);
+    border:1px solid rgba(255,244,227,0.18);
+    border-radius:18px;
+    padding:22px;
+  }
+  .chip .glyph{
+    font-size:1.6rem;
+    display:inline-block;
+    margin-bottom:12px;
+  }
+  .chip h3{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-weight:700;
+    font-size:1.02rem;
+    margin-bottom:6px;
+    color:var(--white);
+  }
+  .chip p{font-size:0.92rem; color:#c9c3b6; margin:0;}
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:56px;
+    align-items:center;
+  }
+  .about-visual{
+    position:relative;
+    aspect-ratio:4/5;
+    border-radius:28px;
+    background:linear-gradient(160deg, var(--sky) 0%, var(--teal) 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+  .about-visual svg{width:64%; height:64%;}
+  .about-visual::before{
+    content:"";
+    position:absolute;
+    width:200%; height:200%;
+    background:radial-gradient(circle at 30% 20%, rgba(255,255,255,0.25), transparent 40%);
+  }
+  .about-badge{
+    position:absolute;
+    bottom:18px; left:18px; right:18px;
+    background:var(--marigold);
+    color:var(--ink);
+    border-radius:16px;
+    padding:14px 18px;
+    font-weight:700;
+    font-size:0.9rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .about-text .eyebrow{margin-bottom:10px; display:block;}
+  .about-text h2{font-size:clamp(1.8rem, 3vw, 2.3rem); margin-bottom:18px;}
+  .about-text p{color:#3a4744; margin-bottom:16px; font-size:1.03rem;}
+  .about-list{
+    display:grid;
+    gap:12px;
+    margin-top:22px;
+  }
+  .about-list div{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    font-weight:600;
+    font-size:0.95rem;
+  }
+  .about-list span.dot{
+    width:10px; height:10px;
+    border-radius:50%;
+    background:var(--coral);
+    margin-top:6px;
+    flex-shrink:0;
+  }
+
+  /* ---------- METHOD ---------- */
+  .method-steps{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:24px;
+  }
+  .step{
+    background:var(--white);
+    border-radius:24px;
+    padding:32px 26px;
+    border:2px solid var(--ink);
+    position:relative;
+    transition:transform .2s ease;
+  }
+  .step:hover{transform:translateY(-6px);}
+  .step .step-num{
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size:0.85rem;
+    color:var(--white);
+    background:var(--teal);
+    width:38px; height:38px;
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    margin-bottom:20px;
+  }
+  .step:nth-child(2) .step-num{background:var(--coral);}
+  .step:nth-child(3) .step-num{background:var(--marigold-dark);}
+  .step h3{
+    font-size:1.2rem;
+    margin-bottom:10px;
+  }
+  .step p{color:#3a4744; font-size:0.96rem; margin:0;}
+
+  /* ---------- FOR WHOM ---------- */
+  .forwhom{
+    background:var(--teal-pale);
+    border-radius:32px;
+    margin:0 24px;
+    padding:64px 40px;
+  }
+  .forwhom .wrap{padding:0;}
+  .fw-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
+  .fw-card{
+    background:var(--white);
+    border-radius:20px;
+    padding:26px;
+  }
+  .fw-card h3{
+    font-size:1.05rem;
+    margin-bottom:12px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .fw-card ul{margin:0; padding-left:20px; color:#3a4744; font-size:0.95rem;}
+  .fw-card ul li{margin-bottom:8px;}
+  .fw-card.yes h3{color:var(--teal);}
+  .fw-card.no h3{color:var(--coral);}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{max-width:760px;}
+  .faq-item{
+    border-bottom:1px solid var(--line-soft);
+  }
+  .faq-q{
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    padding:22px 0;
+    font-family:'Fraunces', serif;
+    font-size:1.1rem;
+    font-weight:600;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    cursor:pointer;
+    color:var(--ink);
+  }
+  .faq-q .plus{
+    font-family:'Space Mono', monospace;
+    font-size:1.3rem;
+    color:var(--coral);
+    transition:transform .25s ease;
+    flex-shrink:0;
+    margin-left:20px;
+  }
+  .faq-item.open .faq-q .plus{transform:rotate(45deg);}
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+  }
+  .faq-a p{
+    padding-bottom:22px;
+    margin:0;
+    color:#3a4744;
+    max-width:640px;
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{
+    background:var(--coral);
+    border-radius:32px;
+    margin:0 24px 24px;
+    padding:70px 40px;
+    position:relative;
+    overflow:hidden;
+    color:var(--white);
+  }
+  .contact::before{
+    content:"";
+    position:absolute;
+    width:520px; height:520px;
+    background:radial-gradient(circle, rgba(255,255,255,0.18), transparent 70%);
+    top:-200px; right:-160px;
+  }
+  .contact-inner{
+    position:relative;
+    max-width:640px;
+  }
+  .contact .eyebrow{color:var(--cream);}
+  .contact h2{
+    font-size:clamp(2rem, 4vw, 2.8rem);
+    color:var(--white);
+    margin:14px 0 18px;
+  }
+  .contact p{
+    font-size:1.08rem;
+    margin-bottom:30px;
+    color:#fff0ea;
+  }
+  .contact .btn-primary{
+    background:var(--ink);
+    color:var(--cream);
+    box-shadow:0 6px 0 #000;
+  }
+  .contact-ig{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-top:28px;
+    font-weight:700;
+  }
+  .contact-ig svg{width:22px; height:22px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    padding:36px 24px 46px;
+    text-align:center;
+  }
+  footer .brand{justify-content:center; margin-bottom:14px;}
+  footer .foot-links{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    font-size:0.85rem;
+    font-weight:600;
+    margin-bottom:16px;
+  }
+  footer .foot-links a{text-decoration:none;}
+  footer small{color:#6b7975; font-size:0.78rem;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 860px){
+    .nav-links{display:none;}
+    .menu-toggle{display:block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-art{order:-1; max-width:280px; margin:0 auto 20px;}
+    .about{grid-template-columns:1fr;}
+    .method-steps{grid-template-columns:1fr;}
+    .fw-grid{grid-template-columns:1fr;}
+    .problem, .forwhom, .contact{margin:0 12px; padding:48px 24px; border-radius:24px;}
+    section{padding:64px 0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="brand">
+      <span class="brand-mark"></span>
+      Esteban Navas
+    </div>
+    <div class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#metodo">Método</a>
+      <a href="#para-quien">¿Es para ti?</a>
+      <a href="#preguntas">Preguntas</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-small" href="https://www.instagram.com/soyestebannavas/" target="_blank" rel="noopener">Escríbeme →</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">EDUCADOR CANINO · REACTIVIDAD EN PERROS</span>
+          <h1>Tu perro reactivo <em>puede</em> vivir tranquilo. Y tú también.</h1>
+          <p class="lead">Ayudo a personas a comprender por qué su perro ladra, tira o se pone tenso — y a construir, paso a paso, un plan real para calmarlo. Sin castigos, sin fórmulas mágicas.</p>
+          <div class="stat-pill">
+            <span class="num">🐕</span>
+            +4.700 perros reactivos ayudados
+          </div>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="https://www.instagram.com/soyestebannavas/" target="_blank" rel="noopener">
+              Escríbeme por Instagram
+            </a>
+            <a class="btn btn-ghost" href="#metodo">Ver el método</a>
+          </div>
+        </div>
+        <div class="hero-art">
+          <div class="blob"></div>
+          <svg viewBox="0 0 200 200" fill="none">
+            <path d="M40 150 Q40 90 90 80 Q80 50 110 40 Q150 30 160 70 Q180 80 170 120 Q175 160 130 165 Q90 175 40 150 Z" fill="#fff4e3"/>
+            <circle cx="95" cy="95" r="6" fill="#17211f"/>
+            <circle cx="130" cy="90" r="6" fill="#17211f"/>
+            <path d="M100 120 Q112 130 124 120" stroke="#17211f" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path d="M70 60 Q60 40 45 45" stroke="#17211f" stroke-width="5" stroke-linecap="round" fill="none"/>
+            <path d="M150 55 Q165 38 178 46" stroke="#17211f" stroke-width="5" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+      </div>
+
+      <div class="wave-strip">
+        <svg id="waveSvg" viewBox="0 0 1000 90" preserveAspectRatio="none">
+          <path id="wavePath" d="" fill="none" stroke="#ff5a3c" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <div class="wave-caption">
+          <span>Reactivo · alerta constante</span>
+          <span>Calmado · disponible contigo</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section id="problema">
+    <div class="wrap">
+      <div class="problem">
+        <div class="section-head">
+          <span class="eyebrow">¿TE SUENA FAMILIAR?</span>
+          <h2>Sales a pasear y el paseo se convierte en una batalla.</h2>
+          <p>Si algo de esto pasa con tu perro, no estás solo/a — y sobre todo, no significa que hayas hecho algo mal.</p>
+        </div>
+        <div class="chip-grid">
+          <div class="chip">
+            <span class="glyph">🐾</span>
+            <h3>Ladra o se lanza</h3>
+            <p>Al ver otros perros, personas, bicicletas o coches en la calle.</p>
+          </div>
+          <div class="chip">
+            <span class="glyph">🦴</span>
+            <h3>Tira fuerte de la correa</h3>
+            <p>El paseo se vuelve tenso desde el primer minuto.</p>
+          </div>
+          <div class="chip">
+            <span class="glyph">😬</span>
+            <h3>Se pone rígido o gruñe</h3>
+            <p>En casa, con visitas, o ante ciertos estímulos concretos.</p>
+          </div>
+          <div class="chip">
+            <span class="glyph">💭</span>
+            <h3>Y tú ya no sabes qué hacer</h3>
+            <p>Has probado varias cosas y nada parece funcionar del todo.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="sobre-mi">
+    <div class="wrap">
+      <div class="about">
+        <div class="about-visual">
+          <svg viewBox="0 0 200 200" fill="none">
+            <path d="M35 160 Q30 100 75 90 Q65 55 100 45 Q145 35 155 80 Q178 90 168 130 Q175 170 125 175 Q85 185 35 160 Z" fill="#fff4e3"/>
+            <circle cx="90" cy="100" r="6" fill="#17211f"/>
+            <circle cx="128" cy="95" r="6" fill="#17211f"/>
+            <path d="M95 128 Q110 140 125 128" stroke="#17211f" stroke-width="4" stroke-linecap="round" fill="none"/>
+          </svg>
+          <div class="about-badge">🐕 +4.700 perros reactivos acompañados en su proceso</div>
+        </div>
+        <div class="about-text">
+          <span class="eyebrow">SOBRE ESTEBAN</span>
+          <h2>No entreno perros. Ayudo a personas a entender a sus perros.</h2>
+          <p>Soy Esteban Navas, educador canino especializado en reactividad. Mi trabajo es ayudarte a comprender por qué tu perro reacciona como reacciona — y darte herramientas claras y realistas para acompañarlo hacia la calma.</p>
+          <p>La reactividad no se "arregla" de un día para otro, pero sí se transforma con el enfoque correcto, constancia y mucha empatía hacia tu perro.</p>
+          <div class="about-list">
+            <div><span class="dot"></span> Enfoque basado en comprender la causa, no solo el síntoma.</div>
+            <div><span class="dot"></span> Planes adaptados a cada perro y cada familia.</div>
+            <div><span class="dot"></span> Acompañamiento cercano durante todo el proceso.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METHOD -->
+  <section id="metodo">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">CÓMO TRABAJAMOS JUNTOS</span>
+        <h2>Un proceso claro, en tres pasos.</h2>
+        <p>Nada de fórmulas genéricas: primero entendemos a tu perro, luego construimos un plan hecho a su medida.</p>
+      </div>
+      <div class="method-steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <h3>Escucha y evaluación</h3>
+          <p>Hablamos de la historia de tu perro: qué situaciones lo activan, cómo reacciona y qué has probado hasta ahora.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <h3>Plan personalizado</h3>
+          <p>Diseño un plan de trabajo realista, adaptado a tu día a día y al ritmo de tu perro — sin castigos ni atajos.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <h3>Acompañamiento paso a paso</h3>
+          <p>Te guío durante todo el proceso, ajustando el plan a medida que tu perro avanza hacia la calma.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOR WHOM -->
+  <section id="para-quien">
+    <div class="wrap">
+      <div class="forwhom">
+        <div class="section-head">
+          <span class="eyebrow">¿ES PARA TI?</span>
+          <h2>Esto te va a servir si...</h2>
+        </div>
+        <div class="fw-grid">
+          <div class="fw-card yes">
+            <h3>✅ Esto es para ti si...</h3>
+            <ul>
+              <li>Tu perro ladra, se lanza o se pone tenso ante ciertos estímulos.</li>
+              <li>Quieres entender el "por qué", no solo tapar el síntoma.</li>
+              <li>Estás dispuesto/a a ser constante durante el proceso.</li>
+              <li>Buscas un método respetuoso con tu perro.</li>
+            </ul>
+          </div>
+          <div class="fw-card no">
+            <h3>✋ Esto no es para ti si...</h3>
+            <ul>
+              <li>Buscas una solución instantánea de un solo día.</li>
+              <li>No puedes dedicar tiempo a practicar en casa.</li>
+              <li>Buscas métodos basados en castigo o dominancia.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="preguntas">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">PREGUNTAS FRECUENTES</span>
+        <h2>Antes de escribirme, quizá esto te ayude.</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">¿Qué es exactamente un "perro reactivo"?
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a"><p>Es un perro que reacciona de forma intensa (ladrando, tirando, poniéndose tenso) ante ciertos estímulos concretos, como otros perros, personas o ruidos. No es "mal comportamiento": suele ser una respuesta de estrés o alerta que se puede trabajar.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Cuánto tiempo toma ver cambios?
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a"><p>Depende de cada perro y cada situación, pero la mayoría de las familias empieza a notar cambios claros a las pocas semanas de trabajo constante siguiendo el plan.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Trabajas presencial u online?
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a"><p>Cuéntame tu caso por Instagram y vemos juntos cuál es la mejor forma de acompañarte a ti y a tu perro.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">¿Usas castigos o herramientas aversivas?
+            <span class="plus">+</span>
+          </button>
+          <div class="faq-a"><p>No. El trabajo se basa en comprender al perro y construir confianza, no en el miedo ni el castigo.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contacto">
+    <div class="wrap">
+      <div class="contact">
+        <div class="contact-inner">
+          <span class="eyebrow">EMPECEMOS</span>
+          <h2>Cuéntame cómo es tu perro y busquemos juntos el camino a la calma.</h2>
+          <p>Escríbeme por Instagram contándome un poco la situación de tu perro. Te respondo yo mismo.</p>
+          <a class="btn btn-primary" href="https://www.instagram.com/soyestebannavas/" target="_blank" rel="noopener">
+            Escríbeme por Instagram
+          </a>
+          <div class="contact-ig">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.2.27 2.9.54.8.3 1.4.7 2 1.3.6.6 1 1.2 1.3 2 .3.7.5 1.7.5 2.9.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2.2-.6 2.9-.3.8-.7 1.4-1.3 2-.6.6-1.2 1-2 1.3-.7.3-1.7.5-2.9.5-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2.2-.3-2.9-.6-.8-.3-1.4-.7-2-1.3-.6-.6-1-1.2-1.3-2-.3-.7-.5-1.7-.5-2.9C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2.2.6-2.9.3-.8.7-1.4 1.3-2 .6-.6 1.2-1 2-1.3.7-.3 1.7-.5 2.9-.6C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.1 0-3.5 0-4.8.07-1 .05-1.6.2-2 .35-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.15.4-.3 1-.35 2C2.8 9.5 2.8 9.9 2.8 13s0 3.5.07 4.8c.05 1 .2 1.6.35 2 .2.5.4.8.8 1.2.4.4.7.6 1.2.8.4.15 1 .3 2 .35 1.3.07 1.7.07 4.8.07s3.5 0 4.8-.07c1-.05 1.6-.2 2-.35.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.15-.4.3-1 .35-2 .07-1.3.07-1.7.07-4.8s0-3.5-.07-4.8c-.05-1-.2-1.6-.35-2-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.4-.15-1-.3-2-.35C15.5 4 15.1 4 12 4zm0 3.6a5.4 5.4 0 110 10.8 5.4 5.4 0 010-10.8zm0 1.8a3.6 3.6 0 100 7.2 3.6 3.6 0 000-7.2zm5.6-2a1.26 1.26 0 110 2.52 1.26 1.26 0 010-2.52z"/></svg>
+            @soyestebannavas
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="brand"><span class="brand-mark"></span> Esteban Navas · Educador canino</div>
+  <div class="foot-links">
+    <a href="https://www.instagram.com/soyestebannavas/" target="_blank" rel="noopener">Instagram</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#preguntas">Preguntas</a>
+  </div>
+  <small>© 2026 Esteban Navas. Todos los perros merecen calma.</small>
+</footer>
+
+<script>
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if(!isOpen){
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Signature wave: from jagged (reactive) to calm (smooth), then settles
+  const path = document.getElementById('wavePath');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const W = 1000, H = 90, MID = 45;
+  const POINTS = 60;
+
+  function buildPath(progress){
+    // progress: 0 = fully jagged, 1 = fully calm sine wave
+    let d = `M0 ${MID} `;
+    const seed = 42;
+    let rnd = seed;
+    function noise(){ rnd = (rnd * 9301 + 49297) % 233280; return (rnd / 233280) * 2 - 1; }
+    for(let i=0; i<=POINTS; i++){
+      const x = (W/POINTS) * i;
+      const t = i / POINTS;
+      const smooth = Math.sin(t * Math.PI * 4) * 18;
+      const jagged = noise() * 34 * (0.6 + 0.4*Math.sin(t*Math.PI*7));
+      const y = MID + jagged * (1-progress) + smooth * progress;
+      d += `L${x.toFixed(1)} ${y.toFixed(1)} `;
+    }
+    return d;
+  }
+
+  function colorFor(progress){
+    // coral -> sky/teal
+    const c1 = [255,90,60], c2 = [15,92,86];
+    const r = Math.round(c1[0] + (c2[0]-c1[0])*progress);
+    const g = Math.round(c1[1] + (c2[1]-c1[1])*progress);
+    const b = Math.round(c1[2] + (c2[2]-c1[2])*progress);
+    return `rgb(${r},${g},${b})`;
+  }
+
+  if(reduced){
+    path.setAttribute('d', buildPath(1));
+    path.setAttribute('stroke', colorFor(1));
+  } else {
+    let start = null;
+    const duration = 2600;
+    function animate(ts){
+      if(!start) start = ts;
+      const elapsed = ts - start;
+      let progress = Math.min(elapsed / duration, 1);
+      // ease out
+      progress = 1 - Math.pow(1-progress, 3);
+      path.setAttribute('d', buildPath(progress));
+      path.setAttribute('stroke', colorFor(progress));
+      if(elapsed < duration){
+        requestAnimationFrame(animate);
+      } else {
+        // gentle ambient breathing once settled
+        let breathStart = null;
+        function breathe(ts2){
+          if(!breathStart) breathStart = ts2;
+          const bt = (ts2 - breathStart) / 4000;
+          const amp = 1 + Math.sin(bt * Math.PI * 2) * 0.04;
+          path.setAttribute('d', buildPath(Math.min(amp,1)));
+          requestAnimationFrame(breathe);
+        }
+        requestAnimationFrame(breathe);
+      }
+    }
+    requestAnimationFrame(animate);
+  }
+</script>
+
+</body>
+</html>
