@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El Ropero de Cristina — Ropa con personalidad en Salamanca, Madrid</title>
+<meta name="description" content="El Ropero de Cristina. Tienda de ropa de mujer en Calle Padilla 52, Madrid. Camisas originales, pantalones de tiro alto y vestidos con encanto, a muy buen precio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500;1,9..144,600&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --fucsia:#E8177C;
+    --mandarina:#FF7A3D;
+    --amarillo:#FFC94A;
+    --uva:#7B2FF7;
+    --crema:#FFF6EA;
+    --tinta:#241023;
+    --verde:#2FBF8F;
+    --radius:26px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Plus Jakarta Sans', sans-serif;
+    background:var(--crema);
+    color:var(--tinta);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    letter-spacing:-0.01em;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px;}
+
+  /* ===== NAV ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(255,246,234,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:3px solid var(--tinta);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px; max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:700; font-size:1.4rem;
+    display:flex; align-items:center; gap:10px;
+  }
+  .logo .dot{
+    width:14px; height:14px; border-radius:50%;
+    background:var(--fucsia);
+    box-shadow:6px 0 0 var(--mandarina), 12px 0 0 var(--amarillo);
+  }
+  .nav-links{display:flex; gap:28px; font-weight:600; font-size:0.95rem;}
+  .nav-links a{position:relative; padding:4px 0;}
+  .nav-links a:after{
+    content:""; position:absolute; left:0; bottom:0; height:3px; width:0;
+    background:var(--fucsia); transition:width .25s ease;
+  }
+  .nav-links a:hover:after{width:100%;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px; border-radius:100px;
+    font-weight:700; font-size:0.95rem;
+    border:3px solid var(--tinta);
+    background:var(--amarillo); color:var(--tinta);
+    box-shadow:5px 5px 0 var(--tinta);
+    transition:transform .15s ease, box-shadow .15s ease;
+    cursor:pointer;
+  }
+  .btn:hover{ transform:translate(-3px,-3px); box-shadow:8px 8px 0 var(--tinta); }
+  .btn:active{ transform:translate(0,0); box-shadow:2px 2px 0 var(--tinta); }
+  .btn.pink{background:var(--fucsia); color:#fff;}
+  .btn.small{padding:9px 16px; font-size:0.85rem; box-shadow:4px 4px 0 var(--tinta);}
+  .btn.outline{background:transparent; color:var(--tinta);}
+
+  @media (max-width:820px){
+    .nav-links{display:none;}
+  }
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    padding:70px 24px 90px;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(255,201,74,0.55), transparent 45%),
+      radial-gradient(circle at 85% 15%, rgba(123,47,247,0.35), transparent 40%),
+      radial-gradient(circle at 75% 90%, rgba(232,23,124,0.35), transparent 45%);
+  }
+  .hero-inner{
+    max-width:1180px; margin:0 auto;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:50px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--tinta); color:var(--crema);
+    padding:8px 16px; border-radius:100px;
+    font-size:0.8rem; font-weight:700; letter-spacing:0.06em; text-transform:uppercase;
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5vw, 4.2rem);
+    font-weight:700; line-height:1.02;
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:italic; font-weight:500;
+    background:linear-gradient(100deg, var(--fucsia), var(--mandarina) 60%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p.lead{
+    font-size:1.15rem; max-width:480px; margin-bottom:32px; line-height:1.6;
+    color:#3a2337;
+  }
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap;}
+  .hero-stats{
+    display:flex; gap:28px; margin-top:36px; flex-wrap:wrap;
+  }
+  .hero-stats div{font-weight:800; font-size:1.6rem; font-family:'Fraunces',serif;}
+  .hero-stats span{display:block; font-weight:600; font-size:0.78rem; color:#6b5568; text-transform:uppercase; letter-spacing:.04em;}
+
+  /* signature: rotating tag stack */
+  .tag-stack{
+    position:relative; height:440px;
+  }
+  .tag{
+    position:absolute;
+    width:230px;
+    background:var(--crema);
+    border:3px solid var(--tinta);
+    border-radius:20px;
+    padding:22px;
+    box-shadow:8px 8px 0 var(--tinta);
+    font-family:'Fraunces', serif;
+  }
+  .tag .price{font-size:2rem; font-weight:700;}
+  .tag .name{font-weight:600; font-size:1rem; margin-top:4px;}
+  .tag .swatch{
+    width:100%; height:90px; border-radius:12px; margin-bottom:14px;
+    border:2px solid var(--tinta);
+  }
+  .tag.t1{ top:0; left:10%; transform:rotate(-9deg); background:var(--amarillo); z-index:3;}
+  .tag.t2{ top:120px; left:44%; transform:rotate(7deg); background:#fff; z-index:2;}
+  .tag.t3{ top:250px; left:6%; transform:rotate(4deg); background:var(--verde); color:#fff; z-index:1;}
+  .tag .swatch.a{background:var(--fucsia);}
+  .tag .swatch.b{background:var(--uva);}
+  .tag .swatch.c{background:var(--mandarina);}
+
+  @media(max-width:900px){
+    .hero-inner{grid-template-columns:1fr;}
+    .tag-stack{height:340px; margin-top:20px;}
+    .tag{width:190px;}
+  }
+
+  /* ===== MARQUEE ===== */
+  .marquee{
+    background:var(--tinta); color:var(--crema);
+    overflow:hidden; white-space:nowrap;
+    padding:16px 0;
+    border-top:3px solid var(--tinta); border-bottom:3px solid var(--tinta);
+  }
+  .marquee-track{
+    display:inline-block; padding-left:100%;
+    animation:scroll 26s linear infinite;
+    font-family:'Fraunces',serif; font-size:1.3rem; font-weight:600;
+  }
+  .marquee-track span{margin:0 28px; color:var(--amarillo);}
+  .marquee-track span.alt{color:var(--fucsia);}
+  @keyframes scroll{ 0%{transform:translateX(0);} 100%{transform:translateX(-100%);} }
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track{animation:none;}
+  }
+
+  /* ===== SECTION GENERIC ===== */
+  section{padding:100px 24px;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head .kicker{
+    font-weight:700; text-transform:uppercase; letter-spacing:.08em; font-size:.8rem;
+    color:var(--fucsia); margin-bottom:14px; display:block;
+  }
+  .section-head h2{font-size:clamp(2rem,3.4vw,2.8rem); font-weight:600; line-height:1.1;}
+
+  /* ===== ABOUT ===== */
+  .about{background:#fff;}
+  .about-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+  }
+  .about-visual{
+    position:relative; aspect-ratio:1/1; border-radius:32px;
+    background:linear-gradient(135deg, var(--uva), var(--fucsia));
+    border:3px solid var(--tinta);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .about-visual .ring{
+    position:absolute; border:3px solid rgba(255,255,255,0.5); border-radius:50%;
+  }
+  .about-visual .ring.r1{width:70%; height:70%;}
+  .about-visual .ring.r2{width:45%; height:45%;}
+  .about-visual .core{
+    position:relative; z-index:2; color:#fff; text-align:center; font-family:'Fraunces',serif;
+    font-size:1.4rem; font-weight:600; padding:20px;
+  }
+  .about-text p{font-size:1.08rem; line-height:1.75; color:#3a2337; margin-bottom:20px;}
+  .pill-row{display:flex; gap:12px; flex-wrap:wrap; margin-top:24px;}
+  .pill{
+    border:2.5px solid var(--tinta); border-radius:100px; padding:8px 16px;
+    font-weight:700; font-size:.85rem; background:var(--crema);
+  }
+
+  /* ===== CATEGORIES ===== */
+  .categories{background:var(--crema);}
+  .cat-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:26px;
+  }
+  .cat-card{
+    border:3px solid var(--tinta); border-radius:var(--radius);
+    padding:30px; background:#fff;
+    box-shadow:7px 7px 0 var(--tinta);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .cat-card:hover{transform:translate(-4px,-4px); box-shadow:11px 11px 0 var(--tinta);}
+  .cat-icon{
+    width:64px; height:64px; border-radius:18px; margin-bottom:22px;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.7rem; border:3px solid var(--tinta);
+  }
+  .cat-card h3{font-size:1.35rem; font-weight:600; margin-bottom:10px;}
+  .cat-card p{color:#5c4956; font-size:.96rem; line-height:1.55;}
+  .cat-card.c1 .cat-icon{background:var(--amarillo);}
+  .cat-card.c2 .cat-icon{background:var(--fucsia); color:#fff;}
+  .cat-card.c3 .cat-icon{background:var(--verde); color:#fff;}
+
+  @media(max-width:900px){
+    .cat-grid{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+  }
+
+  /* ===== TESTIMONIALS ===== */
+  .testimonials{background:var(--tinta); color:var(--crema);}
+  .testimonials .section-head h2{color:var(--crema);}
+  .testimonials .section-head .kicker{color:var(--amarillo);}
+  .t-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .t-card{
+    background:rgba(255,246,234,0.06);
+    border:2px solid rgba(255,246,234,0.3);
+    border-radius:22px; padding:28px;
+  }
+  .t-card .stars{color:var(--amarillo); font-size:1.1rem; margin-bottom:14px; letter-spacing:2px;}
+  .t-card p{font-size:.98rem; line-height:1.6; margin-bottom:18px; color:#f3e9ee;}
+  .t-card .who{font-weight:700; font-size:.85rem; color:var(--amarillo);}
+  @media(max-width:900px){ .t-grid{grid-template-columns:1fr;} }
+
+  /* ===== INSTAGRAM ===== */
+  .insta{background:#fff; text-align:center;}
+  .insta .section-head{margin-left:auto; margin-right:auto; text-align:center;}
+  .insta-grid{
+    display:grid; grid-template-columns:repeat(6,1fr); gap:14px; margin:44px 0 44px;
+  }
+  .insta-cell{
+    aspect-ratio:1/1; border-radius:16px; border:3px solid var(--tinta);
+    display:flex; align-items:center; justify-content:center; font-size:1.6rem;
+    position:relative; overflow:hidden;
+  }
+  .insta-cell::after{
+    content:""; position:absolute; inset:0; opacity:0; transition:opacity .2s;
+    background:rgba(36,16,35,0.55);
+  }
+  .insta-cell:hover::after{opacity:1;}
+  .insta-cell:nth-child(1){background:var(--fucsia);}
+  .insta-cell:nth-child(2){background:var(--amarillo);}
+  .insta-cell:nth-child(3){background:var(--uva); color:#fff;}
+  .insta-cell:nth-child(4){background:var(--mandarina);}
+  .insta-cell:nth-child(5){background:var(--verde); color:#fff;}
+  .insta-cell:nth-child(6){background:var(--tinta); color:var(--crema);}
+  @media(max-width:820px){ .insta-grid{grid-template-columns:repeat(3,1fr);} }
+
+  /* ===== LOCATION ===== */
+  .location{background:var(--crema);}
+  .loc-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px;
+    border:3px solid var(--tinta); border-radius:32px; overflow:hidden;
+    box-shadow:9px 9px 0 var(--tinta);
+  }
+  .loc-info{background:#fff; padding:48px;}
+  .loc-info h3{font-size:1.6rem; margin-bottom:22px;}
+  .loc-row{display:flex; gap:16px; margin-bottom:20px; align-items:flex-start;}
+  .loc-row .ico{
+    width:42px; height:42px; min-width:42px; border-radius:12px;
+    background:var(--amarillo); border:2.5px solid var(--tinta);
+    display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+  }
+  .loc-row .txt strong{display:block; font-size:.95rem;}
+  .loc-row .txt span{font-size:.9rem; color:#5c4956;}
+  .loc-map{min-height:340px;}
+  .loc-map iframe{width:100%; height:100%; border:0; min-height:340px; display:block;}
+  @media(max-width:900px){ .loc-grid{grid-template-columns:1fr;} }
+
+  /* ===== FINAL CTA ===== */
+  .final-cta{
+    background:linear-gradient(120deg, var(--fucsia), var(--uva));
+    color:#fff; text-align:center;
+    border-top:3px solid var(--tinta); border-bottom:3px solid var(--tinta);
+  }
+  .final-cta h2{font-size:clamp(2rem,4vw,3rem); margin-bottom:18px; color:#fff;}
+  .final-cta p{font-size:1.1rem; margin-bottom:34px; opacity:.92; max-width:520px; margin-left:auto; margin-right:auto;}
+  .final-cta .hero-ctas{justify-content:center;}
+  .final-cta .btn{background:var(--amarillo); color:var(--tinta);}
+  .final-cta .btn.outline{background:transparent; color:#fff; border-color:#fff; box-shadow:5px 5px 0 rgba(255,255,255,0.5);}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--tinta); color:var(--crema); padding:56px 24px 30px;}
+  .footer-grid{display:flex; justify-content:space-between; gap:40px; flex-wrap:wrap; margin-bottom:40px;}
+  .footer-col h4{font-family:'Fraunces',serif; font-size:1.1rem; margin-bottom:16px;}
+  .footer-col p, .footer-col a{display:block; font-size:.92rem; color:#cbb9c6; margin-bottom:8px;}
+  .footer-col a:hover{color:var(--amarillo);}
+  .foot-bottom{
+    border-top:1px solid rgba(255,246,234,0.2); padding-top:22px;
+    font-size:.82rem; color:#a8909e; display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><span class="dot"></span> El Ropero de Cristina</div>
+    <div class="nav-links">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#prendas">Prendas</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#tienda">Instagram</a>
+      <a href="#visitanos">Visítanos</a>
+    </div>
+    <a class="btn small pink" href="#visitanos">📍 Cómo llegar</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">✦ Barrio de Salamanca, Madrid</span>
+      <h1>Prendas con alma en <em>Calle Padilla, 52</em></h1>
+      <p class="lead">Una tienda pequeñita donde cada prenda enamora: camisas originales, pantalones de tiro alto que sientan de maravilla y vestidos que no vas a ver en cualquier escaparate. A precios que también te van a gustar.</p>
+      <div class="hero-ctas">
+        <a class="btn pink" href="https://www.instagram.com/el_ropero_de_cristina/" target="_blank" rel="noopener">📷 Síguenos en Instagram</a>
+        <a class="btn outline" href="#visitanos">Ver ubicación</a>
+      </div>
+      <div class="hero-stats">
+        <div>7.670+ <span>Seguidoras en Instagram</span></div>
+        <div>4/5 <span>Valoración de clientas</span></div>
+        <div>Trato <span>100% personalizado</span></div>
+      </div>
+    </div>
+    <div class="tag-stack">
+      <div class="tag t1"><div class="swatch a"></div><div class="price">39€</div><div class="name">Camisa original</div></div>
+      <div class="tag t2"><div class="swatch b"></div><div class="price">45€</div><div class="name">Pantalón tiro alto</div></div>
+      <div class="tag t3"><div class="swatch c"></div><div class="price">-30%</div><div class="name">Vestidos de temporada</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>CAMISAS ORIGINALES</span><span class="alt">★</span>
+    <span>PANTALONES DE TIRO ALTO</span><span class="alt">★</span>
+    <span>VESTIDOS CON ENCANTO</span><span class="alt">★</span>
+    <span>ATENCIÓN PERSONALIZADA</span><span class="alt">★</span>
+    <span>CALLE PADILLA 52, MADRID</span><span class="alt">★</span>
+    <span>CAMISAS ORIGINALES</span><span class="alt">★</span>
+    <span>PANTALONES DE TIRO ALTO</span><span class="alt">★</span>
+    <span>VESTIDOS CON ENCANTO</span><span class="alt">★</span>
+    <span>ATENCIÓN PERSONALIZADA</span><span class="alt">★</span>
+    <span>CALLE PADILLA 52, MADRID</span><span class="alt">★</span>
+  </div>
+</div>
+
+<section class="about" id="nosotros">
+  <div class="wrap about-grid">
+    <div class="about-visual">
+      <div class="ring r1"></div>
+      <div class="ring r2"></div>
+      <div class="core">"Tienda pequeñita,<br>pero con ropa preciosa."</div>
+    </div>
+    <div class="about-text">
+      <span class="eyebrow" style="background:var(--fucsia)">Nuestra historia</span>
+      <h2 style="margin:18px 0;">El armario que faltaba en tu barrio</h2>
+      <p>En El Ropero de Cristina buscamos las prendas una a una: cosas bonitas, distintas, que no vas a encontrar en cualquier cadena. Siempre hay algo esperándote, ya sea una camisa con estampado imposible de olvidar o un vestido que rebajamos hasta hacerlo irresistible.</p>
+      <p>Cristina y su equipo te atienden como si fueras de la familia, te ayudan a encontrar la talla, el color y el look que de verdad te sienta bien.</p>
+      <div class="pill-row">
+        <span class="pill">🧵 Selección cuidada</span>
+        <span class="pill">💛 Precios accesibles</span>
+        <span class="pill">🤍 Trato cercano</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="categories" id="prendas">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Lo que vas a encontrar</span>
+      <h2>Tres razones para venir a mirar el escaparate</h2>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card c1">
+        <div class="cat-icon">👔</div>
+        <h3>Camisas súper originales</h3>
+        <p>Estampados y cortes que no vas a ver en ningún otro escaparate de la calle. Para ti y también para regalar.</p>
+      </div>
+      <div class="cat-card c2">
+        <div class="cat-icon">👖</div>
+        <h3>Pantalones de tiro alto</h3>
+        <p>Cómodos, favorecedores y pensados para sentar bien de verdad. Nuestras clientas los repiten temporada tras temporada.</p>
+      </div>
+      <div class="cat-card c3">
+        <div class="cat-icon">👗</div>
+        <h3>Vestidos con mucho encanto</h3>
+        <p>Piezas que enamoran a primera vista, muchas veces con un precio rebajado que no querrás dejar pasar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="opiniones">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Nuestras clientas hablan</span>
+      <h2>Lo que dicen de nosotras</h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>Un descubrimiento en la calle Padilla: camisas súper originales tanto para mí como para mi madre, y los pantalones de tiro alto cómodos y sientan fenomenal.</p>
+        <div class="who">— Clienta del barrio de Salamanca</div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>Tienda pequeñita, pero con ropa preciosa. Siempre hay alguna prenda que enamora.</p>
+        <div class="who">— Reseña en Google</div>
+      </div>
+      <div class="t-card">
+        <div class="stars">★★★★★</div>
+        <p>Atención excelente y trato personalizado. Tienen ropa ideal y algunos vestidos con un precio muy rebajado.</p>
+        <div class="who">— Reseña en Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="insta" id="tienda">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">@el_ropero_de_cristina</span>
+      <h2>Novedades cada semana, primero en Instagram</h2>
+    </div>
+    <div class="insta-grid">
+      <div class="insta-cell">👗</div>
+      <div class="insta-cell">👜</div>
+      <div class="insta-cell">👚</div>
+      <div class="insta-cell">👖</div>
+      <div class="insta-cell">🧥</div>
+      <div class="insta-cell">✨</div>
+    </div>
+    <a class="btn pink" href="https://www.instagram.com/el_ropero_de_cristina/" target="_blank" rel="noopener">📷 Ver el Instagram completo</a>
+  </div>
+</section>
+
+<section class="location" id="visitanos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">Te esperamos</span>
+      <h2>Ven a probártelo en persona</h2>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-info">
+        <h3>El Ropero de Cristina</h3>
+        <div class="loc-row">
+          <div class="ico">📍</div>
+          <div class="txt"><strong>Dirección</strong><span>Calle Padilla, 52 · 28006 Madrid (Barrio de Salamanca)</span></div>
+        </div>
+        <div class="loc-row">
+          <div class="ico">📞</div>
+          <div class="txt"><strong>Teléfono</strong><span>677 38 74 40</span></div>
+        </div>
+        <div class="loc-row">
+          <div class="ico">📷</div>
+          <div class="txt"><strong>Instagram</strong><span>@el_ropero_de_cristina</span></div>
+        </div>
+        <div class="loc-row">
+          <div class="ico">🕒</div>
+          <div class="txt"><strong>Horario</strong><span>Consulta horario actualizado por Instagram o teléfono</span></div>
+        </div>
+        <div class="hero-ctas" style="margin-top:28px;">
+          <a class="btn small" href="tel:677387440">Llamar ahora</a>
+          <a class="btn small outline" href="https://www.google.com/maps/search/?api=1&query=Calle+Padilla+52+28006+Madrid" target="_blank" rel="noopener">Abrir en Maps</a>
+        </div>
+      </div>
+      <div class="loc-map">
+        <iframe src="https://www.google.com/maps?q=Calle+Padilla+52,+28006+Madrid&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <h2>Tu próximo look favorito está en Padilla 52</h2>
+    <p>Pásate por la tienda o síguenos en Instagram para no perderte las novedades y las rebajas de temporada.</p>
+    <div class="hero-ctas">
+      <a class="btn" href="https://www.instagram.com/el_ropero_de_cristina/" target="_blank" rel="noopener">📷 Seguir en Instagram</a>
+      <a class="btn outline" href="tel:677387440">📞 Llamar a la tienda</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>El Ropero de Cristina</h4>
+        <p>Ropa de mujer con personalidad en el corazón de Salamanca, Madrid.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Visítanos</h4>
+        <p>Calle Padilla, 52 · 28006 Madrid</p>
+        <p>677 38 74 40</p>
+      </div>
+      <div class="footer-col">
+        <h4>Síguenos</h4>
+        <a href="https://www.instagram.com/el_ropero_de_cristina/" target="_blank" rel="noopener">Instagram · @el_ropero_de_cristina</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 El Ropero de Cristina</span>
+      <span>Hecho con 💛 para el barrio de Salamanca</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
