@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Achibiricote 🧶 Ropita de Bebé Tejida a Mano</title>
+<style>
+  :root{
+    --rosa: #ff8fab;
+    --amarillo: #ffd166;
+    --celeste: #8ecae6;
+    --menta: #a7f3d0;
+    --lila: #d0b3ff;
+    --crema: #fff6e9;
+    --marron: #7a4a2b;
+    --texto: #4a2c17;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Comic Sans MS', 'Baloo 2', 'Trebuchet MS', sans-serif;
+    background: linear-gradient(135deg, var(--crema), #ffe9d6 40%, var(--menta) 100%);
+    color: var(--texto);
+    overflow-x:hidden;
+  }
+  a{text-decoration:none;}
+  .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+
+  /* Confetti dots background */
+  .dots{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background-image:
+      radial-gradient(var(--rosa) 6px, transparent 7px),
+      radial-gradient(var(--celeste) 5px, transparent 6px),
+      radial-gradient(var(--amarillo) 6px, transparent 7px),
+      radial-gradient(var(--lila) 5px, transparent 6px);
+    background-size: 140px 140px, 180px 180px, 200px 200px, 160px 160px;
+    background-position: 0 0, 40px 60px, 90px 20px, 120px 100px;
+    opacity:0.35;
+    z-index:0;
+  }
+
+  header{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding:60px 20px 40px;
+  }
+  .logo-badge{
+    display:inline-block;
+    background: linear-gradient(135deg, var(--rosa), var(--lila));
+    color:white;
+    padding:10px 26px;
+    border-radius:50px;
+    font-size:0.9rem;
+    font-weight:bold;
+    letter-spacing:1px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.15);
+    margin-bottom:18px;
+  }
+  h1{
+    font-size:3.2rem;
+    color:var(--marron);
+    text-shadow: 3px 3px 0 var(--amarillo), 5px 5px 0 rgba(0,0,0,0.05);
+    margin-bottom:10px;
+  }
+  header p.subtitle{
+    font-size:1.3rem;
+    color:var(--texto);
+    max-width:650px;
+    margin:0 auto 30px;
+    font-weight:600;
+  }
+  .cta-row{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:20px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:16px 32px;
+    border-radius:50px;
+    font-weight:bold;
+    font-size:1.1rem;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border:none;
+    cursor:pointer;
+  }
+  .btn:hover{ transform: translateY(-4px) scale(1.03); box-shadow:0 12px 25px rgba(0,0,0,0.2); }
+  .btn-whatsapp{ background:#25D366; color:white; }
+  .btn-instagram{ background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4); color:white; }
+  .btn-tiktok{ background:#010101; color:white; }
+
+  section{
+    position:relative;
+    z-index:2;
+    padding:60px 20px;
+  }
+  .section-title{
+    text-align:center;
+    font-size:2.3rem;
+    color:var(--marron);
+    margin-bottom:12px;
+  }
+  .section-sub{
+    text-align:center;
+    max-width:600px;
+    margin:0 auto 40px;
+    font-size:1.1rem;
+    color:var(--texto);
+  }
+
+  .cards{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap:26px;
+  }
+  .card{
+    background:white;
+    border-radius:24px;
+    padding:30px 22px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(122,74,43,0.12);
+    border:4px solid transparent;
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .card:nth-child(1){border-color:var(--rosa);}
+  .card:nth-child(2){border-color:var(--celeste);}
+  .card:nth-child(3){border-color:var(--amarillo);}
+  .card:nth-child(4){border-color:var(--lila);}
+  .card:hover{ transform: translateY(-8px) rotate(-1deg); }
+  .card .emoji{ font-size:3rem; margin-bottom:14px; display:block; }
+  .card h3{ color:var(--marron); margin-bottom:8px; font-size:1.3rem;}
+  .card p{ font-size:0.98rem; line-height:1.4; }
+
+  .why{
+    background: linear-gradient(135deg, var(--celeste), var(--menta));
+    border-radius:32px;
+    margin:0 20px;
+    padding:50px 30px;
+  }
+  .why .container{ max-width:900px; }
+  .why-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap:24px;
+    margin-top:30px;
+  }
+  .why-item{
+    background:rgba(255,255,255,0.75);
+    border-radius:18px;
+    padding:22px;
+    text-align:center;
+    font-weight:600;
+  }
+  .why-item .emoji{font-size:2.2rem;display:block;margin-bottom:10px;}
+
+  .testimonio{
+    max-width:650px;
+    margin:0 auto;
+    background: white;
+    border-radius:24px;
+    padding:36px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(122,74,43,0.12);
+    position:relative;
+  }
+  .testimonio::before{
+    content:"❝";
+    font-size:4rem;
+    color:var(--rosa);
+    display:block;
+    line-height:0.5;
+    margin-bottom:20px;
+  }
+  .testimonio p{ font-size:1.15rem; font-style:italic; margin-bottom:16px; }
+  .testimonio .autor{ font-weight:bold; color:var(--marron); }
+
+  .avisos{
+    background: var(--amarillo);
+    border-radius:24px;
+    margin:0 20px;
+    padding:36px 30px;
+    text-align:center;
+  }
+  .avisos h3{ color:var(--marron); font-size:1.6rem; margin-bottom:12px; }
+  .avisos p{ font-size:1.05rem; max-width:600px; margin:0 auto; }
+
+  footer{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding:50px 20px 30px;
+  }
+  footer .cta-row{ margin-bottom:26px; }
+  footer .copy{ font-size:0.85rem; color:var(--texto); opacity:0.7; }
+
+  .float-emoji{
+    position:absolute;
+    font-size:2rem;
+    animation: float 6s ease-in-out infinite;
+    opacity:0.6;
+  }
+  @keyframes float{
+    0%,100%{ transform: translateY(0) rotate(0deg); }
+    50%{ transform: translateY(-20px) rotate(10deg); }
+  }
+
+  @media(max-width:600px){
+    h1{ font-size:2.2rem; }
+    header p.subtitle{ font-size:1.05rem; }
+    .btn{ padding:14px 22px; font-size:1rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="dots"></div>
+
+<header>
+  <div class="container" style="position:relative;">
+    <span class="float-emoji" style="left:5%; top:0;">🧶</span>
+    <span class="float-emoji" style="right:8%; top:20px; animation-delay:1s;">🍼</span>
+    <span class="float-emoji" style="left:12%; bottom:0; animation-delay:2s;">👶</span>
+    <span class="float-emoji" style="right:5%; bottom:10px; animation-delay:3s;">🎀</span>
+
+    <div class="logo-badge">🇪🇸 Marca Registrada · Tejido a Mano · Diseño Propio</div>
+    <h1>Achibiricote 🧶</h1>
+    <p class="subtitle">Ropita de bebé tejida a mano, con muchísimo amor y colores que enamoran. Cada conjunto es único, artesanal y pensado para los momentos más tiernos de tu bebé.</p>
+    <div class="cta-row">
+      <a href="https://wa.me/?text=Hola!%20Quiero%20consultar%20disponibilidad%20de%20un%20conjunto%20de%20Achibiricote" class="btn btn-whatsapp" target="_blank">💬 Consultar por WhatsApp</a>
+      <a href="https://www.instagram.com/achibiricote_/" class="btn btn-instagram" target="_blank">📸 Ver en Instagram</a>
+    </div>
+  </div>
+</header>
+
+<section id="productos">
+  <div class="container">
+    <h2 class="section-title">Nuestros Conjuntos 🌈</h2>
+    <p class="section-sub">Diseños exclusivos tejidos a mano, en los colores y tallas que prefieras. ¡Cada pieza es una obra de arte para tu bebé!</p>
+    <div class="cards">
+      <div class="card">
+        <span class="emoji">👶</span>
+        <h3>Conjuntos Premium</h3>
+        <p>Batitas, peleles y rebozos a juego. Línea premium con acabados delicados y elegantes.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🧦</span>
+        <h3>Patucos y Accesorios</h3>
+        <p>Patuquitos, gorritos y detalles tejidos para completar el look más tierno.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">🎨</span>
+        <h3>Colores a tu Elección</h3>
+        <p>Tú eliges el color y el modelo. Cada conjunto se adapta a tu gusto y estilo.</p>
+      </div>
+      <div class="card">
+        <span class="emoji">📏</span>
+        <h3>Tallas Adaptadas</h3>
+        <p>Diseños pensados para que tu bebé los disfrute más tiempo, desde recién nacido en adelante.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="container">
+    <h2 class="section-title" style="color:var(--marron);">¿Por qué elegir Achibiricote? 💖</h2>
+    <div class="why-grid">
+      <div class="why-item"><span class="emoji">🧵</span>Tejido 100% a mano, puntada por puntada</div>
+      <div class="why-item"><span class="emoji">✨</span>Diseño propio y marca registrada</div>
+      <div class="why-item"><span class="emoji">🎁</span>Piezas únicas hechas por encargo</div>
+      <div class="why-item"><span class="emoji">❤️</span>Hecho con dedicación por Susana</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <h2 class="section-title">Lo que dicen las mamás 🥰</h2>
+    <div class="testimonio">
+      <p>Espectacular, delicadeza por donde se lo mire. Mi bebé lució precioso con su conjunto de Achibiricote, ¡se nota el amor en cada puntada!</p>
+      <p class="autor">— Cliente feliz de Achibiricote</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="avisos">
+      <h3>⏳ ¡Producción Limitada!</h3>
+      <p>La agenda se llena muy rápido y los cupos son limitados. Reserva ahora tu conjunto por encargo y elige tu modelo y color favorito antes de que se agoten los huecos. 🧶💕</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <h2 class="section-title">¡Reserva tu Conjunto Hoy! 🎀</h2>
+    <p class="section-sub">Escríbenos por WhatsApp o Instagram para consultar disponibilidad, colores y modelos.</p>
+    <div class="cta-row">
+      <a href="https://wa.me/?text=Hola!%20Quiero%20consultar%20disponibilidad%20de%20un%20conjunto%20de%20Achibiricote" class="btn btn-whatsapp" target="_blank">💬 WhatsApp</a>
+      <a href="https://www.instagram.com/achibiricote_/" class="btn btn-instagram" target="_blank">📸 Instagram</a>
+      <a href="https://www.tiktok.com/@loscaprichosdeinma" class="btn btn-tiktok" target="_blank">🎵 TikTok</a>
+    </div>
+    <p class="copy">© 2026 Achibiricote — Susana Rubio Bethancourt. Todos los derechos reservados.<br>Sitio creado por EasyPageX</p>
+  </div>
+</footer>
+
+</body>
+</html>
