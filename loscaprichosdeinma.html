@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Los Caprichos de Inma · Ropa de bebé hecha a mano en Sevilla</title>
+<meta name="description" content="Ropa de bebé hecha a mano en Sevilla, hasta 6 meses. Prendas únicas, tejidas con hilo y aguja, con todo el cariño para los más pequeños de la casa.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --rosa: #FF9EC4;
+    --rosa-suave: #FFD6E8;
+    --celeste: #7FD8F7;
+    --celeste-suave: #CDEFFC;
+    --amarillo: #FFD966;
+    --menta: #8CE6C4;
+    --lavanda: #C9A9F5;
+    --crema: #FFF8EF;
+    --marron: #6B4A3A;
+    --hilo: #E8574A;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Quicksand', sans-serif;
+    background:var(--crema);
+    color:var(--marron);
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.logo{font-family:'Fredoka', sans-serif;}
+
+  /* ---------- Fondo con confeti de nubes/estrellas ---------- */
+  .bg-shapes{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+  .bg-shapes span{position:absolute;opacity:.35;font-size:2rem;animation:float 12s ease-in-out infinite;}
+  @keyframes float{
+    0%,100%{transform:translateY(0) rotate(0deg);}
+    50%{transform:translateY(-30px) rotate(10deg);}
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,248,239,.9);
+    backdrop-filter:blur(6px);
+    border-bottom:3px dashed var(--rosa);
+    display:flex;align-items:center;justify-content:space-between;
+    padding:14px 6vw;
+  }
+  .logo{
+    font-size:1.5rem;font-weight:700;color:var(--hilo);
+    display:flex;align-items:center;gap:8px;
+  }
+  .logo span.dot{color:var(--celeste);}
+  nav a{
+    color:var(--marron);text-decoration:none;font-weight:600;
+    margin-left:24px;font-size:.95rem;
+    transition:color .2s;
+  }
+  nav a:hover{color:var(--hilo);}
+  @media (max-width:700px){ nav{display:none;} }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;z-index:1;
+    text-align:center;
+    padding:70px 6vw 90px;
+    background:
+      radial-gradient(circle at 15% 20%, var(--rosa-suave) 0%, transparent 40%),
+      radial-gradient(circle at 85% 15%, var(--celeste-suave) 0%, transparent 40%),
+      radial-gradient(circle at 50% 90%, var(--amarillo) 0%, transparent 35%);
+  }
+  .hero .eyebrow{
+    display:inline-block;background:var(--menta);color:var(--marron);
+    padding:6px 18px;border-radius:30px;font-weight:700;font-size:.85rem;
+    margin-bottom:20px;letter-spacing:.5px;
+    box-shadow:3px 3px 0 var(--marron);
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    color:var(--hilo);
+    line-height:1.1;
+    margin-bottom:18px;
+    text-shadow: 3px 3px 0 var(--amarillo);
+  }
+  .hero p.subtitle{
+    font-size:clamp(1.05rem, 2vw, 1.35rem);
+    max-width:620px;margin:0 auto 34px;
+    font-weight:600;
+  }
+  .stitch-line{
+    width:100%;max-width:500px;margin:0 auto 34px;
+    height:24px;
+  }
+  .cta-row{
+    display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 32px;border-radius:50px;
+    font-family:'Fredoka',sans-serif;font-weight:600;font-size:1.05rem;
+    text-decoration:none;border:3px solid var(--marron);
+    box-shadow:5px 5px 0 var(--marron);
+    transition:transform .15s, box-shadow .15s;
+  }
+  .btn:active, .btn:hover{
+    transform:translate(3px,3px);
+    box-shadow:2px 2px 0 var(--marron);
+  }
+  .btn-primary{background:var(--rosa);color:#fff;}
+  .btn-secondary{background:var(--celeste);color:var(--marron);}
+  .btn-ghost{background:#fff;color:var(--marron);}
+
+  /* ---------- Marquee de iconitos ---------- */
+  .marquee{
+    position:relative;z-index:1;
+    background:var(--rosa);
+    padding:14px 0;
+    overflow:hidden;
+    border-top:3px dashed var(--marron);
+    border-bottom:3px dashed var(--marron);
+  }
+  .marquee-track{
+    display:flex;white-space:nowrap;
+    animation:scroll 22s linear infinite;
+    width:max-content;
+  }
+  .marquee-track span{
+    font-size:1.4rem;color:#fff;font-weight:700;
+    margin:0 26px;font-family:'Fredoka',sans-serif;
+  }
+  @keyframes scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ---------- Secciones generales ---------- */
+  section{
+    position:relative;z-index:1;
+    padding:80px 6vw;
+    max-width:1100px;margin:0 auto;
+  }
+  .section-title{
+    text-align:center;font-size:clamp(1.8rem,4vw,2.6rem);
+    color:var(--hilo);margin-bottom:12px;
+  }
+  .section-sub{
+    text-align:center;max-width:560px;margin:0 auto 50px;
+    font-weight:600;color:var(--marron);opacity:.85;
+  }
+
+  /* ---------- Tarjetas "Nosotros / Por qué elegirnos" ---------- */
+  .cards{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:28px;
+  }
+  .card{
+    background:#fff;border:3px solid var(--marron);
+    border-radius:28px;padding:32px 24px;text-align:center;
+    box-shadow:6px 6px 0 var(--celeste);
+    transition:transform .2s;
+  }
+  .card:nth-child(2){box-shadow:6px 6px 0 var(--rosa);}
+  .card:nth-child(3){box-shadow:6px 6px 0 var(--amarillo);}
+  .card:nth-child(4){box-shadow:6px 6px 0 var(--menta);}
+  .card:hover{transform:translateY(-6px);}
+  .card .icon{font-size:2.6rem;margin-bottom:14px;display:block;}
+  .card h3{font-size:1.2rem;margin-bottom:10px;color:var(--hilo);}
+  .card p{font-size:.95rem;line-height:1.5;}
+
+  /* ---------- Galería (ilustraciones de prendas) ---------- */
+  .gallery{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:24px;
+  }
+  .gal-item{
+    background:#fff;border-radius:24px;border:3px solid var(--marron);
+    padding:26px 16px 20px;text-align:center;
+    box-shadow:5px 5px 0 var(--marron);
+  }
+  .gal-item svg{width:100%;height:140px;}
+  .gal-item p{margin-top:12px;font-weight:700;color:var(--marron);}
+
+  /* ---------- Segunda mano ---------- */
+  .second-hand{
+    background:var(--lavanda);
+    border-radius:36px;border:3px dashed var(--marron);
+    padding:50px 6vw;
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;
+    gap:30px;
+  }
+  .second-hand h2{color:#fff;text-shadow:2px 2px 0 var(--marron);font-size:clamp(1.5rem,3.5vw,2.2rem);}
+  .second-hand p{color:#fff;font-weight:600;max-width:420px;}
+  .second-hand .btn{background:var(--amarillo);color:var(--marron);}
+
+  /* ---------- Testimonios ---------- */
+  .testimonios{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:24px;
+  }
+  .testi{
+    background:var(--celeste-suave);border-radius:24px;padding:28px;
+    border:3px solid var(--marron);
+    position:relative;
+  }
+  .testi::before{
+    content:"❝";font-size:2.4rem;color:var(--celeste);
+    position:absolute;top:-6px;left:16px;font-family:Georgia,serif;
+  }
+  .testi p{font-weight:600;margin-top:16px;line-height:1.5;}
+  .testi span{display:block;margin-top:14px;font-weight:700;color:var(--hilo);}
+
+  /* ---------- Contacto ---------- */
+  .contacto{
+    text-align:center;
+    background:var(--menta);
+    border-radius:40px;
+    padding:60px 6vw;
+    border:3px solid var(--marron);
+  }
+  .contacto h2{color:var(--marron);margin-bottom:10px;}
+  .contact-grid{
+    display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-top:30px;
+  }
+  .contact-card{
+    background:#fff;border:3px solid var(--marron);border-radius:20px;
+    padding:20px 26px;min-width:200px;
+    box-shadow:4px 4px 0 var(--marron);
+    text-decoration:none;color:var(--marron);font-weight:700;
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    transition:transform .15s;
+  }
+  .contact-card:hover{transform:translateY(-5px);}
+  .contact-card .emoji{font-size:1.8rem;}
+
+  footer{
+    text-align:center;padding:30px 6vw 40px;
+    font-size:.85rem;color:var(--marron);opacity:.75;
+    position:relative;z-index:1;
+  }
+  footer a{color:var(--hilo);font-weight:700;text-decoration:none;}
+
+  ::selection{background:var(--rosa);color:#fff;}
+</style>
+</head>
+<body>
+
+<div class="bg-shapes">
+  <span style="top:8%;left:5%;animation-delay:0s;">☁️</span>
+  <span style="top:20%;left:80%;animation-delay:2s;">⭐</span>
+  <span style="top:60%;left:10%;animation-delay:4s;">🧸</span>
+  <span style="top:75%;left:85%;animation-delay:1s;">☁️</span>
+  <span style="top:40%;left:45%;animation-delay:3s;">⭐</span>
+</div>
+
+<header>
+  <div class="logo">👶 Los Caprichos <span class="dot">de Inma</span></div>
+  <nav>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#coleccion">Colección</a>
+    <a href="#segunda-mano">2ª mano</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">🧵 Hecho a mano en Sevilla 🪡</div>
+  <h1>Ropa de bebé con<br>todo el cariño del mundo</h1>
+  <p class="subtitle">Prendas únicas cosidas puntada a puntada para bebés de 0 a 6 meses. Cada conjunto de Los Caprichos de Inma nace de la ilusión de vestir a los más pequeños con algo especial.</p>
+
+  <svg class="stitch-line" viewBox="0 0 500 24" xmlns="http://www.w3.org/2000/svg">
+    <line x1="10" y1="12" x2="490" y2="12" stroke="#6B4A3A" stroke-width="2" stroke-dasharray="14 10" stroke-linecap="round"/>
+    <circle cx="10" cy="12" r="5" fill="#FF9EC4" stroke="#6B4A3A" stroke-width="2"/>
+    <circle cx="490" cy="12" r="5" fill="#7FD8F7" stroke="#6B4A3A" stroke-width="2"/>
+  </svg>
+
+  <div class="cta-row">
+    <a class="btn btn-primary" href="https://www.instagram.com/loscaprichosdeinma/" target="_blank" rel="noopener">📸 Síguenos en Instagram</a>
+    <a class="btn btn-secondary" href="https://www.tiktok.com/@loscaprichosdeinma" target="_blank" rel="noopener">🎵 Míranos en TikTok</a>
+    <a class="btn btn-ghost" href="mailto:Loscaprichosdeinma@gmail.com">✉️ Escríbenos</a>
+  </div>
+</section>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>🧵 HECHO A MANO</span><span>👶🏻 HASTA 6 MESES</span><span>📍 SEVILLA</span><span>🪡 PUNTADA A PUNTADA</span>
+    <span>🧵 HECHO A MANO</span><span>👶🏻 HASTA 6 MESES</span><span>📍 SEVILLA</span><span>🪡 PUNTADA A PUNTADA</span>
+  </div>
+</div>
+
+<section id="nosotros">
+  <h2 class="section-title">¿Por qué elegir Los Caprichos de Inma?</h2>
+  <p class="section-sub">Ropa artesanal, pensada al detalle, para vestir a tu bebé con prendas que no encontrarás en ninguna tienda.</p>
+  <div class="cards">
+    <div class="card">
+      <span class="icon">🧶</span>
+      <h3>100% hecho a mano</h3>
+      <p>Cada prenda se teje y cose de forma artesanal, con hilo y aguja, sin prisas y con mucho mimo.</p>
+    </div>
+    <div class="card">
+      <span class="icon">👶🏻</span>
+      <h3>Tallas 0-6 meses</h3>
+      <p>Colección pensada para los primeros meses de vida, con tejidos suaves y cómodos para la piel del bebé.</p>
+    </div>
+    <div class="card">
+      <span class="icon">🎨</span>
+      <h3>Diseños únicos</h3>
+      <p>Colores y estampados alegres que hacen que cada conjunto sea una pieza especial e irrepetible.</p>
+    </div>
+    <div class="card">
+      <span class="icon">💌</span>
+      <h3>Atención cercana</h3>
+      <p>Te acompañamos en todo el proceso, desde elegir la prenda hasta que llega a casa.</p>
+    </div>
+  </div>
+</section>
+
+<section id="coleccion">
+  <h2 class="section-title">Un vistazo a nuestras prendas</h2>
+  <p class="section-sub">Cada pieza está inspirada en el mundo de los más pequeños: nubes, estrellas y mucho color.</p>
+  <div class="gallery">
+    <div class="gal-item">
+      <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+        <path d="M70 20 L70 5 Q100 -10 130 5 L130 20 L150 40 L135 60 L130 55 L130 130 L70 130 L70 55 L65 60 L50 40 Z" fill="#FF9EC4" stroke="#6B4A3A" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="100" cy="70" r="6" fill="#fff"/>
+        <circle cx="100" cy="90" r="6" fill="#fff"/>
+      </svg>
+      <p>Body bordado</p>
+    </div>
+    <div class="gal-item">
+      <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="100" cy="55" rx="55" ry="35" fill="#7FD8F7" stroke="#6B4A3A" stroke-width="3"/>
+        <ellipse cx="100" cy="55" rx="18" ry="12" fill="#FFF8EF" stroke="#6B4A3A" stroke-width="2"/>
+        <path d="M80 85 Q100 100 120 85" stroke="#6B4A3A" stroke-width="3" fill="none"/>
+      </svg>
+      <p>Babero artesanal</p>
+    </div>
+    <div class="gal-item">
+      <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+        <path d="M60 30 Q100 10 140 30 L150 80 Q100 100 50 80 Z" fill="#FFD966" stroke="#6B4A3A" stroke-width="3" stroke-linejoin="round"/>
+        <circle cx="100" cy="55" r="10" fill="#fff"/>
+      </svg>
+      <p>Gorrito tejido</p>
+    </div>
+    <div class="gal-item">
+      <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg">
+        <rect x="55" y="30" width="90" height="80" rx="20" fill="#8CE6C4" stroke="#6B4A3A" stroke-width="3"/>
+        <path d="M55 55 Q30 60 35 85" stroke="#6B4A3A" stroke-width="3" fill="none"/>
+        <path d="M145 55 Q170 60 165 85" stroke="#6B4A3A" stroke-width="3" fill="none"/>
+      </svg>
+      <p>Conjunto de punto</p>
+    </div>
+  </div>
+</section>
+
+<section id="segunda-mano">
+  <div class="second-hand">
+    <div>
+      <h2>💛 ¿Buscas ropa de bebé de segunda mano?</h2>
+      <p>También cuidamos las prendas que ya han vivido su primera aventura. Descubre nuestra línea de segunda mano, con la misma calidad y cariño de siempre.</p>
+    </div>
+    <a class="btn" href="https://www.instagram.com/loscaprichosdeinmasegundamano" target="_blank" rel="noopener">Ver 2ª mano en Instagram →</a>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Lo que dicen las mamás y papás</h2>
+  <div class="testimonios">
+    <div class="testi">
+      <p>Le pedí un conjunto para el bautizo de mi hija y quedó precioso, se nota que está hecho con mucho cariño.</p>
+      <span>— Cliente de Sevilla</span>
+    </div>
+    <div class="testi">
+      <p>La calidad de las prendas es increíble, y Inma siempre está pendiente de todos los detalles.</p>
+      <span>— Mamá primeriza</span>
+    </div>
+    <div class="testi">
+      <p>Compré ropa de la línea de segunda mano y llegó impecable, ¡totalmente recomendable!</p>
+      <span>— Cliente habitual</span>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="contacto">
+    <h2>¿Hablamos de tu pedido?</h2>
+    <p style="font-weight:600;">Escríbenos y te ayudamos a elegir la prenda perfecta para tu bebé.</p>
+    <div class="contact-grid">
+      <a class="contact-card" href="mailto:Loscaprichosdeinma@gmail.com">
+        <span class="emoji">✉️</span> Loscaprichosdeinma@gmail.com
+      </a>
+      <a class="contact-card" href="https://www.instagram.com/loscaprichosdeinma/" target="_blank" rel="noopener">
+        <span class="emoji">📸</span> @loscaprichosdeinma
+      </a>
+      <a class="contact-card" href="https://www.tiktok.com/@loscaprichosdeinma" target="_blank" rel="noopener">
+        <span class="emoji">🎵</span> TikTok
+      </a>
+      <a class="contact-card" href="#" onclick="return false;" style="cursor:default;">
+        <span class="emoji">📍</span> Sevilla, España
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Los Caprichos de Inma · Ropa de bebé hecha a mano en <a href="https://www.instagram.com/loscaprichosdeinma/" target="_blank" rel="noopener">Sevilla</a>
+</footer>
+
+</body>
+</html>
