@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charinni Baby · Artesanía infantil tejida a mano en Galicia</title>
+<meta name="description" content="Charinni Baby - Prendas de bebé tejidas a mano por encargo. Diseños únicos desde Galicia, España. Contacta por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8EF;
+    --peach:#FFD1AE;
+    --pink:#FFACA6;
+    --mint:#9FE3C4;
+    --butter:#FFE08A;
+    --lavender:#D8C4F2;
+    --plum:#5B3A57;
+    --plum-soft:#7A5678;
+    --white:#FFFFFF;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Quicksand', sans-serif;
+    background:var(--cream);
+    color:var(--plum);
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Baloo 2', cursive;
+    font-weight:700;
+  }
+
+  a{text-decoration:none; color:inherit;}
+
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- yarn stitch divider (signature element) ---------- */
+  .stitch-divider{
+    width:100%;
+    height:34px;
+    display:block;
+  }
+
+  /* ---------- Floating yarn dots background ---------- */
+  .yarn-dot{
+    position:absolute;
+    border-radius:50%;
+    opacity:0.55;
+    filter:blur(0px);
+    animation:float 7s ease-in-out infinite;
+  }
+  @keyframes float{
+    0%,100%{ transform:translateY(0) rotate(0deg); }
+    50%{ transform:translateY(-18px) rotate(8deg); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .yarn-dot, .bounce, .wiggle{ animation:none !important; }
+  }
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,248,239,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:3px dashed var(--pink);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 24px;
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .logo{
+    font-family:'Baloo 2', cursive;
+    font-size:1.5rem;
+    font-weight:800;
+    color:var(--plum);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .logo-heart{ color:var(--pink); }
+
+  .nav-cta{
+    background:#25D366;
+    color:white;
+    padding:10px 20px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.95rem;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    box-shadow:0 4px 14px rgba(37,211,102,0.35);
+    transition:transform .2s ease;
+  }
+  .nav-cta:hover{ transform:translateY(-2px) scale(1.03); }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:70px 24px 40px;
+    text-align:center;
+    overflow:hidden;
+  }
+  .hero-badge{
+    display:inline-block;
+    background:var(--butter);
+    color:var(--plum);
+    padding:6px 18px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.85rem;
+    letter-spacing:0.5px;
+    margin-bottom:22px;
+    box-shadow:0 3px 0 rgba(0,0,0,0.06);
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    line-height:1.05;
+    color:var(--plum);
+    margin-bottom:20px;
+  }
+  .hero h1 span{
+    color:var(--pink);
+    position:relative;
+    display:inline-block;
+  }
+  .hero p.subtitle{
+    font-size:clamp(1.05rem, 2vw, 1.3rem);
+    max-width:620px;
+    margin:0 auto 34px;
+    color:var(--plum-soft);
+    font-weight:500;
+  }
+
+  .hero-illustration{
+    max-width:340px;
+    margin:0 auto 34px;
+  }
+
+  .cta-row{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-bottom:16px;
+  }
+  .btn-primary{
+    background:#25D366;
+    color:white;
+    padding:16px 34px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:1.05rem;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    box-shadow:0 8px 22px rgba(37,211,102,0.4);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn-primary:hover{ transform:translateY(-3px); box-shadow:0 12px 26px rgba(37,211,102,0.5); }
+
+  .btn-secondary{
+    background:var(--white);
+    color:var(--plum);
+    padding:16px 30px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:1.05rem;
+    border:2.5px solid var(--lavender);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    transition:transform .2s ease, background .2s ease;
+  }
+  .btn-secondary:hover{ transform:translateY(-3px); background:var(--lavender); }
+
+  .hero-note{
+    font-size:0.92rem;
+    color:var(--plum-soft);
+    font-weight:600;
+  }
+  .hero-note span{ color:#25D366; }
+
+  /* ---------- Trust strip ---------- */
+  .trust-strip{
+    background:var(--white);
+    border-top:3px dashed var(--mint);
+    border-bottom:3px dashed var(--mint);
+    padding:22px 0;
+  }
+  .trust-grid{
+    display:flex;
+    justify-content:center;
+    gap:44px;
+    flex-wrap:wrap;
+    text-align:center;
+  }
+  .trust-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    max-width:150px;
+  }
+  .trust-item .icon{ font-size:1.8rem; }
+  .trust-item span.label{
+    font-weight:700;
+    font-size:0.85rem;
+    color:var(--plum-soft);
+  }
+
+  /* ---------- Section generic ---------- */
+  section{
+    padding:70px 0;
+    position:relative;
+  }
+  .section-eyebrow{
+    display:inline-block;
+    font-weight:700;
+    font-size:0.85rem;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    color:var(--pink);
+    margin-bottom:10px;
+  }
+  .section-title{
+    font-size:clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom:16px;
+    color:var(--plum);
+  }
+  .section-sub{
+    font-size:1.05rem;
+    color:var(--plum-soft);
+    max-width:600px;
+    margin-bottom:44px;
+    font-weight:500;
+  }
+
+  /* ---------- About ---------- */
+  .about{
+    background:var(--lavender);
+    border-radius:40px;
+    margin:0 24px;
+    padding:56px 40px;
+    max-width:1052px;
+    margin-left:auto;
+    margin-right:auto;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
+  }
+  .about-photo-frame{
+    background:var(--white);
+    border-radius:28px;
+    padding:18px;
+    box-shadow:0 14px 30px rgba(91,58,87,0.15);
+    transform:rotate(-3deg);
+  }
+  .about-photo-frame .inner{
+    background:linear-gradient(135deg, var(--peach), var(--butter));
+    border-radius:20px;
+    aspect-ratio:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:5rem;
+  }
+  .about-text h2{ font-size:1.9rem; margin-bottom:16px; color:var(--plum); }
+  .about-text p{ font-weight:500; color:var(--plum-soft); line-height:1.65; margin-bottom:14px; font-size:1.02rem;}
+  .about-signature{
+    font-family:'Baloo 2', cursive;
+    font-size:1.3rem;
+    color:var(--plum);
+    margin-top:10px;
+  }
+
+  @media (max-width:760px){
+    .about{ grid-template-columns:1fr; padding:36px 26px; border-radius:28px;}
+  }
+
+  /* ---------- Process (numbered - it IS a sequence) ---------- */
+  .process{
+    background:var(--cream);
+  }
+  .process-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:26px;
+  }
+  .process-step{
+    background:var(--white);
+    border-radius:24px;
+    padding:30px 22px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(91,58,87,0.08);
+    position:relative;
+    transition:transform .25s ease;
+  }
+  .process-step:hover{ transform:translateY(-6px); }
+  .process-num{
+    width:38px; height:38px;
+    border-radius:50%;
+    background:var(--pink);
+    color:white;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:800;
+    margin:0 auto 16px;
+    font-family:'Baloo 2', cursive;
+  }
+  .process-step .step-icon{ font-size:2.1rem; margin-bottom:10px; }
+  .process-step h3{ font-size:1.1rem; margin-bottom:8px; color:var(--plum); }
+  .process-step p{ font-size:0.92rem; color:var(--plum-soft); font-weight:500; line-height:1.5;}
+
+  @media (max-width:900px){
+    .process-grid{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:560px){
+    .process-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- Products / gallery ---------- */
+  .products{ background:var(--white); }
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .product-card{
+    border-radius:26px;
+    padding:32px 24px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+    color:var(--plum);
+    transition:transform .25s ease;
+  }
+  .product-card:hover{ transform:translateY(-6px) rotate(-1deg); }
+  .product-card .tag-icon{ font-size:2.6rem; margin-bottom:14px; display:block;}
+  .product-card h3{ font-size:1.2rem; margin-bottom:8px; }
+  .product-card p{ font-size:0.92rem; font-weight:500; color:var(--plum-soft); }
+  .p1{ background:linear-gradient(160deg, var(--peach), #ffe6cf);}
+  .p2{ background:linear-gradient(160deg, var(--mint), #d3f5e6);}
+  .p3{ background:linear-gradient(160deg, var(--butter), #fff2cf);}
+  .p4{ background:linear-gradient(160deg, var(--pink), #ffd9d6);}
+  .p5{ background:linear-gradient(160deg, var(--lavender), #ece1fb);}
+  .p6{ background:linear-gradient(160deg, #bfe8ff, #e3f5ff);}
+
+  @media (max-width:900px){ .product-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .product-grid{ grid-template-columns:1fr; } }
+
+  /* ---------- Why custom (por encargo) ---------- */
+  .why{
+    background:var(--peach);
+    border-radius:40px;
+    margin:0 24px;
+    max-width:1052px;
+    margin-left:auto;
+    margin-right:auto;
+    padding:56px 40px;
+    text-align:center;
+  }
+  .why h2{ color:var(--plum); margin-bottom:18px; }
+  .why p{ max-width:640px; margin:0 auto 30px; font-weight:600; color:var(--plum-soft); font-size:1.05rem; line-height:1.6;}
+
+  /* ---------- Final CTA ---------- */
+  .final-cta{
+    text-align:center;
+    padding:80px 24px;
+  }
+  .final-cta h2{ font-size:clamp(2rem,5vw,2.8rem); margin-bottom:16px; color:var(--plum);}
+  .final-cta p{ font-size:1.1rem; color:var(--plum-soft); font-weight:600; margin-bottom:34px;}
+
+  .social-row{
+    display:flex;
+    justify-content:center;
+    gap:18px;
+    margin-top:26px;
+    flex-wrap:wrap;
+  }
+  .social-pill{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    background:var(--white);
+    padding:10px 20px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.95rem;
+    border:2px solid var(--lavender);
+    transition:transform .2s ease;
+  }
+  .social-pill:hover{ transform:translateY(-2px); background:var(--lavender); }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--plum);
+    color:var(--cream);
+    text-align:center;
+    padding:34px 24px 28px;
+  }
+  footer .foot-logo{
+    font-family:'Baloo 2', cursive;
+    font-size:1.3rem;
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  footer p{ font-size:0.85rem; opacity:0.8; font-weight:500;}
+  footer .foot-heart{ color:var(--pink); }
+
+  /* whatsapp floating button */
+  .float-whatsapp{
+    position:fixed;
+    bottom:22px;
+    right:22px;
+    background:#25D366;
+    color:white;
+    width:62px;
+    height:62px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.8rem;
+    box-shadow:0 8px 22px rgba(37,211,102,0.5);
+    z-index:60;
+    animation:pulse 2.4s infinite;
+  }
+  @keyframes pulse{
+    0%{ box-shadow:0 0 0 0 rgba(37,211,102,0.55); }
+    70%{ box-shadow:0 0 0 16px rgba(37,211,102,0); }
+    100%{ box-shadow:0 0 0 0 rgba(37,211,102,0); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .float-whatsapp{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="nav">
+    <div class="logo"><span class="logo-heart">💕</span> Charinni Baby</div>
+    <a class="nav-cta" href="https://api.whatsapp.com/send/?phone=34607082459" target="_blank" rel="noopener">
+      💬 WhatsApp
+    </a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="wrap" style="position:relative; z-index:2;">
+    <div class="hero-badge">🧶 Artesanía infantil · Galicia, España</div>
+    <h1>Prendas tejidas a mano<br>con <span>todo el cariño</span> para tu bebé</h1>
+    <p class="subtitle">Soy Charo, y creo diseños propios de punto por encargo: gorritos, patucos, mantitas y conjuntos únicos, tejidos uno a uno para cada bebé.</p>
+
+    <div class="hero-illustration">
+      <svg viewBox="0 0 300 220" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <ellipse cx="150" cy="205" rx="120" ry="12" fill="#5B3A57" opacity="0.08"/>
+        <!-- bonnet -->
+        <path d="M70 120 Q70 40 150 40 Q230 40 230 120 L230 130 Q150 150 70 130 Z" fill="#FFACA6"/>
+        <path d="M70 120 Q70 40 150 40 Q230 40 230 120" fill="none" stroke="#fff" stroke-width="4" stroke-dasharray="10 8" opacity="0.6"/>
+        <circle cx="150" cy="42" r="14" fill="#FFE08A"/>
+        <circle cx="150" cy="42" r="14" fill="none" stroke="#fff" stroke-width="2" stroke-dasharray="4 4"/>
+        <!-- booties -->
+        <g>
+          <ellipse cx="110" cy="180" rx="30" ry="18" fill="#9FE3C4"/>
+          <rect x="90" y="150" width="40" height="35" rx="16" fill="#9FE3C4"/>
+          <path d="M90 165 h40" stroke="#fff" stroke-width="3" stroke-dasharray="5 5" opacity="0.7"/>
+        </g>
+        <g>
+          <ellipse cx="190" cy="180" rx="30" ry="18" fill="#D8C4F2"/>
+          <rect x="170" y="150" width="40" height="35" rx="16" fill="#D8C4F2"/>
+          <path d="M170 165 h40" stroke="#fff" stroke-width="3" stroke-dasharray="5 5" opacity="0.7"/>
+        </g>
+        <!-- yarn strand connecting -->
+        <path d="M40 210 Q 90 190 110 160 T 150 90 T 190 160 Q 210 190 260 210" fill="none" stroke="#FFD1AE" stroke-width="5" stroke-linecap="round"/>
+      </svg>
+    </div>
+
+    <div class="cta-row">
+      <a class="btn-primary" href="https://api.whatsapp.com/send/?phone=34607082459" target="_blank" rel="noopener">
+        💬 Escríbeme por WhatsApp
+      </a>
+      <a class="btn-secondary" href="https://www.instagram.com/charinni_baby/" target="_blank" rel="noopener">
+        📸 Ver diseños en Instagram
+      </a>
+    </div>
+    <p class="hero-note"><span>●</span> Respuesta rápida por WhatsApp · Envíos a toda España</p>
+  </div>
+</section>
+
+<!-- ================= TRUST STRIP ================= -->
+<div class="trust-strip">
+  <div class="wrap trust-grid">
+    <div class="trust-item"><span class="icon">🧶</span><span class="label">100% tejido a mano</span></div>
+    <div class="trust-item"><span class="icon">✨</span><span class="label">Diseños propios y únicos</span></div>
+    <div class="trust-item"><span class="icon">🎨</span><span class="label">Colores a tu elección</span></div>
+    <div class="trust-item"><span class="icon">📦</span><span class="label">Hecho por encargo</span></div>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section>
+  <div class="about">
+    <div class="about-photo-frame">
+      <div class="inner">🧸</div>
+    </div>
+    <div class="about-text">
+      <span class="section-eyebrow">Sobre mí</span>
+      <h2>Hola, soy Charo</h2>
+      <p>Me dedico a la artesanía infantil, tejiendo por encargo mis propios diseños para bebés. Cada prenda nace de una idea, se elige el hilo perfecto y se teje puntada a puntada, pensando en el bebé que la va a llevar.</p>
+      <p>Trabajo desde Galicia y envío a toda España, para que cada familia tenga una prenda irrepetible, hecha con calma y cariño.</p>
+      <div class="about-signature">— Charinni Baby 🧶</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="process">
+  <div class="wrap">
+    <span class="section-eyebrow">Cómo pedir tu prenda</span>
+    <h2 class="section-title">Tan sencillo como escribir un mensaje</h2>
+    <p class="section-sub">Cada encargo es un proceso cercano, de principio a fin, hablando directamente conmigo por WhatsApp.</p>
+
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="process-num">1</div>
+        <div class="step-icon">💬</div>
+        <h3>Cuéntame tu idea</h3>
+        <p>Me escribes por WhatsApp con la prenda que imaginas para tu bebé.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">2</div>
+        <div class="step-icon">🎨</div>
+        <h3>Elegimos diseño y color</h3>
+        <p>Vemos juntas el modelo, la talla, la lana y los colores perfectos.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">3</div>
+        <div class="step-icon">🧶</div>
+        <h3>Tejo con cariño</h3>
+        <p>Empiezo a tejer tu encargo a mano, puntada a puntada, sin prisa.</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">4</div>
+        <div class="step-icon">📦</div>
+        <h3>Te lo envío</h3>
+        <p>Recibes en casa tu prenda única, lista para tu bebé.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PRODUCTS ================= -->
+<section class="products">
+  <div class="wrap">
+    <span class="section-eyebrow">Qué puedo tejer para ti</span>
+    <h2 class="section-title">Prendas para cada momento</h2>
+    <p class="section-sub">Algunos de los diseños que más piden las familias. Todo se hace por encargo, a tu medida.</p>
+
+    <div class="product-grid">
+      <div class="product-card p1">
+        <span class="tag-icon">👶</span>
+        <h3>Gorritos</h3>
+        <p>Para recién nacidos, en algodón suave y diseños delicados.</p>
+      </div>
+      <div class="product-card p2">
+        <span class="tag-icon">🧦</span>
+        <h3>Patucos</h3>
+        <p>Calentitos y a juego con el resto del conjunto.</p>
+      </div>
+      <div class="product-card p3">
+        <span class="tag-icon">🛏️</span>
+        <h3>Mantitas</h3>
+        <p>Ideales para el carrito, la cuna o de regalo especial.</p>
+      </div>
+      <div class="product-card p4">
+        <span class="tag-icon">👗</span>
+        <h3>Conjuntos</h3>
+        <p>Jerséis, ranitas y vestidos a juego, para ocasiones únicas.</p>
+      </div>
+      <div class="product-card p5">
+        <span class="tag-icon">🎁</span>
+        <h3>Regalos de bebé</h3>
+        <p>Sets completos perfectos para baby shower o nacimiento.</p>
+      </div>
+      <div class="product-card p6">
+        <span class="tag-icon">✨</span>
+        <h3>Diseños personalizados</h3>
+        <p>Cuéntame tu idea y la tejemos juntas, a tu manera.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY CUSTOM ================= -->
+<section>
+  <div class="why">
+    <h2 class="display" style="font-size:1.9rem;">Por qué encargar en vez de comprar</h2>
+    <p>Cada prenda se teje solo para tu bebé: eliges color, talla e hilo, y así tienes una pieza que no encontrarás en ninguna tienda. Tejer a mano lleva tiempo, así que los encargos se preparan con calma y cuidado.</p>
+    <a class="btn-primary" href="https://api.whatsapp.com/send/?phone=34607082459" target="_blank" rel="noopener">
+      💬 Hacer mi encargo por WhatsApp
+    </a>
+  </div>
+</section>
+
+<!-- ================= FINAL CTA ================= -->
+<section class="final-cta">
+  <div class="wrap">
+    <h2>¿Lista para encargar la prenda de tu bebé?</h2>
+    <p>Escríbeme por WhatsApp y hablamos de tu idea, sin compromiso.</p>
+    <a class="btn-primary" href="https://api.whatsapp.com/send/?phone=34607082459" target="_blank" rel="noopener">
+      💬 +34 607 082 459 · Escribir ahora
+    </a>
+    <div class="social-row">
+      <a class="social-pill" href="https://www.instagram.com/charinni_baby/" target="_blank" rel="noopener">📸 @charinni_baby</a>
+      <a class="social-pill" href="https://api.whatsapp.com/send/?phone=34607082459" target="_blank" rel="noopener">💬 Solo WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="foot-logo">💕 Charinni Baby</div>
+  <p>Artesanía infantil tejida a mano · Galicia, España <span class="foot-heart">♥</span></p>
+  <p>© 2026 Charinni Baby. Todos los derechos reservados.</p>
+</footer>
+
+<!-- Floating WhatsApp button -->
+<a class="float-whatsapp" href="https://api.whatsapp.com/send/?phone=34607082459" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">💬</a>
+
+</body>
+</html>
