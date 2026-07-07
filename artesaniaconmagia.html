@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artesanía con Magia | Crochet Boho Chic Hecho a Mano</title>
+<meta name="description" content="Artesanía en crochet hecha con cariño por Cristina. Piezas únicas en merino, algodón y acrílico, con alma boho chic y raíces ancestrales.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#D4AF37;
+    --gold-light:#F0C040;
+    --gold-deep:#C9A84C;
+    --terracota:#C56B4A;
+    --verde:#4E7A51;
+    --verde-oscuro:#2F4F35;
+    --lila:#8B6BA8;
+    --crema:#FFF6E9;
+    --rosa:#E88A9A;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Fredoka',sans-serif;
+    background:
+      radial-gradient(circle at 15% 20%, rgba(212,175,55,0.25), transparent 45%),
+      radial-gradient(circle at 85% 10%, rgba(139,107,168,0.28), transparent 45%),
+      radial-gradient(circle at 75% 80%, rgba(78,122,81,0.28), transparent 50%),
+      radial-gradient(circle at 20% 90%, rgba(197,107,74,0.25), transparent 45%),
+      linear-gradient(135deg, #3B2A52 0%, #4E7A51 35%, #C56B4A 70%, #8B6BA8 100%);
+    background-attachment:fixed;
+    color:#2c1f3d;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Playfair Display',serif;}
+  .reveal{opacity:0;transform:translateY(40px);transition:all 0.9s cubic-bezier(.19,1,.22,1);}
+  .reveal.active{opacity:1;transform:translateY(0);}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 6%;
+    background:rgba(47,79,53,0.55);
+    backdrop-filter:blur(10px);
+    border-bottom:2px solid var(--gold);
+  }
+  .logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--crema);font-weight:700;}
+  .logo span{color:var(--gold-light);}
+  .nav-cta{
+    background:linear-gradient(120deg,var(--gold-deep),var(--gold-light));
+    color:#3B2A52;padding:10px 22px;border-radius:30px;font-weight:600;
+    text-decoration:none;box-shadow:0 4px 15px rgba(212,175,55,0.5);
+    transition:transform 0.3s;
+  }
+  .nav-cta:hover{transform:scale(1.06);}
+
+  /* HERO */
+  header.hero{
+    min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;padding:120px 6% 60px;position:relative;
+  }
+  .badge{
+    background:rgba(255,246,233,0.15);border:2px solid var(--gold);color:var(--crema);
+    padding:8px 20px;border-radius:30px;font-size:0.95rem;margin-bottom:24px;
+    backdrop-filter:blur(6px);
+  }
+  header.hero h1{
+    font-size:clamp(2.4rem,6vw,4.2rem);color:#FFF9EE;
+    text-shadow:0 4px 20px rgba(0,0,0,0.3);line-height:1.15;margin-bottom:20px;
+  }
+  header.hero h1 em{
+    font-style:italic;color:var(--gold-light);
+  }
+  .subtitle{
+    font-size:1.3rem;color:var(--crema);max-width:640px;margin-bottom:36px;
+    line-height:1.6;
+  }
+  .hero-icons{font-size:2.5rem;margin-bottom:30px;letter-spacing:20px;}
+  .cta-group{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;}
+  .btn-primary, .btn-secondary{
+    padding:16px 36px;border-radius:40px;text-decoration:none;font-weight:600;font-size:1.05rem;
+    display:inline-flex;align-items:center;gap:10px;transition:all 0.3s;
+  }
+  .btn-primary{
+    background:linear-gradient(120deg,#25D366,#1EBE57);
+    color:white;box-shadow:0 8px 25px rgba(37,211,102,0.45);
+  }
+  .btn-primary:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 12px 30px rgba(37,211,102,0.55);}
+  .btn-secondary{
+    background:linear-gradient(120deg,var(--gold-deep),var(--gold-light));
+    color:#3B2A52;box-shadow:0 8px 25px rgba(212,175,55,0.5);
+  }
+  .btn-secondary:hover{transform:translateY(-4px) scale(1.03);}
+
+  /* SECTIONS */
+  section{padding:90px 6%;max-width:1100px;margin:0 auto;}
+  .section-title{
+    text-align:center;font-size:clamp(1.8rem,4vw,2.6rem);color:#FFF9EE;
+    margin-bottom:14px;text-shadow:0 3px 12px rgba(0,0,0,0.25);
+  }
+  .section-sub{
+    text-align:center;color:var(--crema);opacity:0.9;max-width:600px;margin:0 auto 50px;
+    font-size:1.05rem;
+  }
+  .gold-divider{
+    width:80px;height:4px;background:linear-gradient(90deg,var(--gold-deep),var(--gold-light));
+    margin:0 auto 40px;border-radius:4px;
+  }
+
+  /* ABOUT CARD */
+  .about-card{
+    background:rgba(255,246,233,0.94);
+    border-radius:28px;padding:50px;
+    border:2px solid var(--gold);
+    box-shadow:0 20px 50px rgba(0,0,0,0.25);
+    display:flex;gap:40px;flex-wrap:wrap;align-items:center;
+  }
+  .about-avatar{
+    width:150px;height:150px;border-radius:50%;flex-shrink:0;
+    background:linear-gradient(135deg,var(--verde),var(--lila),var(--terracota));
+    display:flex;align-items:center;justify-content:center;font-size:4rem;
+    border:5px solid var(--gold-light);box-shadow:0 8px 25px rgba(0,0,0,0.2);
+    margin:0 auto;
+  }
+  .about-text{flex:1;min-width:260px;}
+  .about-text h3{color:var(--verde-oscuro);font-size:1.6rem;margin-bottom:12px;}
+  .about-text p{color:#4a3a5c;line-height:1.75;font-size:1.05rem;margin-bottom:10px;}
+  .tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px;}
+  .tag{
+    background:linear-gradient(120deg,var(--verde),var(--verde-oscuro));
+    color:white;padding:6px 16px;border-radius:20px;font-size:0.9rem;font-weight:500;
+  }
+
+  /* MATERIALS GRID */
+  .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px;}
+  .mat-card{
+    background:rgba(255,255,255,0.12);
+    border:2px solid rgba(212,175,55,0.5);
+    border-radius:22px;padding:36px 26px;text-align:center;
+    backdrop-filter:blur(8px);transition:all 0.4s;
+  }
+  .mat-card:hover{transform:translateY(-10px);border-color:var(--gold-light);background:rgba(255,255,255,0.2);}
+  .mat-icon{font-size:3rem;margin-bottom:16px;}
+  .mat-card h4{color:var(--gold-light);font-size:1.25rem;margin-bottom:10px;}
+  .mat-card p{color:var(--crema);font-size:0.95rem;line-height:1.6;opacity:0.9;}
+
+  /* GALLERY MOCK PIECES (css-drawn, no external images) */
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;}
+  .piece{
+    aspect-ratio:1/1;border-radius:20px;position:relative;overflow:hidden;
+    border:3px solid var(--gold);box-shadow:0 12px 30px rgba(0,0,0,0.3);
+    display:flex;align-items:center;justify-content:center;font-size:3.5rem;
+    transition:transform 0.4s;
+  }
+  .piece:hover{transform:scale(1.05) rotate(-1deg);}
+  .p1{background:linear-gradient(135deg,#8B6BA8,#C56B4A);}
+  .p2{background:linear-gradient(135deg,#4E7A51,#D4AF37);}
+  .p3{background:linear-gradient(135deg,#E88A9A,#8B6BA8);}
+  .p4{background:linear-gradient(135deg,#D4AF37,#4E7A51);}
+  .p5{background:linear-gradient(135deg,#C56B4A,#8B6BA8);}
+  .p6{background:linear-gradient(135deg,#4E7A51,#E88A9A);}
+  .piece-label{
+    position:absolute;bottom:0;left:0;right:0;background:rgba(47,25,60,0.75);
+    color:var(--crema);font-size:0.85rem;padding:8px;text-align:center;
+  }
+
+  /* TESTIMONIOS */
+  .testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;}
+  .testi-card{
+    background:rgba(255,246,233,0.95);border-radius:20px;padding:30px;
+    border-left:6px solid var(--gold);box-shadow:0 10px 25px rgba(0,0,0,0.2);
+  }
+  .testi-card p{color:#4a3a5c;font-style:italic;line-height:1.6;margin-bottom:14px;}
+  .testi-name{color:var(--verde-oscuro);font-weight:600;}
+  .stars{color:var(--gold-deep);margin-bottom:10px;font-size:1.1rem;}
+
+  /* PROCESO */
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;}
+  .step{text-align:center;color:var(--crema);}
+  .step-num{
+    width:64px;height:64px;border-radius:50%;margin:0 auto 16px;
+    background:linear-gradient(135deg,var(--gold-deep),var(--gold-light));
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.5rem;
+    color:#3B2A52;box-shadow:0 8px 20px rgba(212,175,55,0.5);
+  }
+  .step h4{margin-bottom:8px;color:var(--gold-light);}
+  .step p{opacity:0.9;font-size:0.95rem;line-height:1.5;}
+
+  /* FINAL CTA */
+  .final-cta{
+    text-align:center;background:linear-gradient(135deg,rgba(78,122,81,0.9),rgba(139,107,168,0.9));
+    border-radius:32px;padding:70px 30px;border:3px solid var(--gold);
+    box-shadow:0 25px 60px rgba(0,0,0,0.35);
+  }
+  .final-cta h2{color:#FFF9EE;font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:18px;}
+  .final-cta p{color:var(--crema);font-size:1.1rem;margin-bottom:36px;max-width:500px;margin-left:auto;margin-right:auto;}
+
+  footer{
+    text-align:center;padding:40px 6%;color:var(--crema);opacity:0.85;font-size:0.9rem;
+    border-top:2px solid rgba(212,175,55,0.4);
+  }
+  footer a{color:var(--gold-light);text-decoration:none;font-weight:600;}
+
+  /* FLOATING WHATSAPP */
+  .floating-wa{
+    position:fixed;bottom:26px;right:26px;z-index:200;
+    background:#25D366;color:white;width:64px;height:64px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:2rem;
+    box-shadow:0 8px 25px rgba(37,211,102,0.6);text-decoration:none;
+    animation:pulse 2.2s infinite;
+  }
+  @keyframes pulse{
+    0%{box-shadow:0 0 0 0 rgba(37,211,102,0.6);}
+    70%{box-shadow:0 0 0 18px rgba(37,211,102,0);}
+    100%{box-shadow:0 0 0 0 rgba(37,211,102,0);}
+  }
+
+  @media(max-width:600px){
+    .about-card{padding:32px 24px;flex-direction:column;text-align:center;}
+    .hero-icons{letter-spacing:10px;font-size:2rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Artesanía con <span>Magia</span> 🧶</div>
+  <a class="nav-cta" href="https://wa.me/34600000000?text=Hola%20Cristina%2C%20vi%20tu%20artesan%C3%ADa%20y%20me%20encant%C3%B3%20%F0%9F%92%9A" target="_blank">Escríbeme</a>
+</nav>
+
+<header class="hero">
+  <div class="badge reveal active">🪄 Artesanía ancestral hecha con cariño</div>
+  <div class="hero-icons reveal active">🧶 💚 🪄</div>
+  <h1 class="reveal active">Piezas de crochet con <em>alma y magia</em></h1>
+  <p class="subtitle reveal active">Soy Cristina, creo artesanía consciente en merino, algodón y acrílico. Cada pieza nace con ternura, creatividad y raíces ancestrales — hecha especialmente para ti.</p>
+  <div class="cta-group reveal active">
+    <a class="btn-primary" href="https://wa.me/34600000000?text=Hola%20Cristina%2C%20quiero%20un%20pedido%20personalizado%20de%20crochet%20%F0%9F%A7%B6" target="_blank">
+      💬 Pedir por WhatsApp
+    </a>
+    <a class="btn-secondary" href="https://www.instagram.com/artesaniaconmagia_/" target="_blank">
+      📸 Ver en Instagram
+    </a>
+  </div>
+</header>
+
+<section id="sobre-mi">
+  <h2 class="section-title reveal">Sobre Cristina</h2>
+  <div class="gold-divider reveal"></div>
+  <div class="about-card reveal">
+    <div class="about-avatar">🧵</div>
+    <div class="about-text">
+      <h3>Creatividad consciente, hecha a mano 💚</h3>
+      <p>Cada puntada de crochet lleva intención: ternura, paciencia y una conexión profunda con la artesanía ancestral que se transmite de generación en generación.</p>
+      <p>Trabajo con materiales nobles — merino suave, algodón natural y acrílico de calidad — para crear piezas únicas, duraderas y llenas de personalidad boho chic.</p>
+      <div class="tags">
+        <span class="tag">#crochet</span>
+        <span class="tag">#bohochic</span>
+        <span class="tag">#artesanal</span>
+        <span class="tag">#hechoamano</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="materiales">
+  <h2 class="section-title reveal">Materiales con los que trabajo</h2>
+  <p class="section-sub reveal">Calidad y calidez en cada fibra, elegida con intención.</p>
+  <div class="grid-3">
+    <div class="mat-card reveal">
+      <div class="mat-icon">🐑</div>
+      <h4>Lana Merino</h4>
+      <p>Suave, cálida y natural. Ideal para prendas y accesorios que abrazan.</p>
+    </div>
+    <div class="mat-card reveal">
+      <div class="mat-icon">🌿</div>
+      <h4>Algodón</h4>
+      <p>Fresco, resistente y perfecto para piezas de uso diario, todo el año.</p>
+    </div>
+    <div class="mat-card reveal">
+      <div class="mat-icon">🎨</div>
+      <h4>Acrílico</h4>
+      <p>Colores vibrantes y duraderos, para diseños llenos de vida y textura.</p>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
+  <h2 class="section-title reveal">Un vistazo a la magia 🪄</h2>
+  <p class="section-sub reveal">Piezas únicas, cada una con su propia historia y color.</p>
+  <div class="gallery">
+    <div class="piece p1 reveal">🧶<div class="piece-label">Bolso boho</div></div>
+    <div class="piece p2 reveal">🌸<div class="piece-label">Amigurumi</div></div>
+    <div class="piece p3 reveal">👜<div class="piece-label">Accesorio</div></div>
+    <div class="piece p4 reveal">🧣<div class="piece-label">Chal artesanal</div></div>
+    <div class="piece p5 reveal">🌼</div>
+    <div class="piece p6 reveal">✨</div>
+  </div>
+</section>
+
+<section id="proceso">
+  <h2 class="section-title reveal">¿Cómo pedir tu pieza?</h2>
+  <div class="gold-divider reveal"></div>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">1</div>
+      <h4>Escríbeme</h4>
+      <p>Cuéntame qué tienes en mente por WhatsApp o Instagram.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">2</div>
+      <h4>Diseñamos juntas</h4>
+      <p>Elegimos colores, materiales y detalles personalizados.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">3</div>
+      <h4>Creo tu pieza</h4>
+      <p>Tejo cada puntada con cariño, con tiempos y calidad ancestral.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">4</div>
+      <h4>La recibes</h4>
+      <p>Tu pieza única llega lista para acompañarte o regalar.</p>
+    </div>
+  </div>
+</section>
+
+<section id="testimonios">
+  <h2 class="section-title reveal">Lo que dicen de mis piezas</h2>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"El bolso que me hizo Cristina es hermosísimo, se nota el cariño en cada detalle. ¡Lo amo!"</p>
+      <div class="testi-name">— Valeria M.</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"Pedí un amigurumi personalizado para mi hija y quedó perfecto, súper tierno y bien hecho."</p>
+      <div class="testi-name">— Daniela R.</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p>"La calidad de la lana y el acabado son increíbles. Se siente artesanía de verdad."</p>
+      <div class="testi-name">— Camila S.</div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="final-cta reveal">
+    <h2>¿Lista para tu pieza de crochet con magia? 🪄🧶</h2>
+    <p>Escríbeme hoy mismo y creemos juntas algo único, hecho con cariño y creatividad consciente.</p>
+    <div class="cta-group">
+      <a class="btn-primary" href="https://wa.me/34600000000?text=Hola%20Cristina%2C%20quiero%20hacer%20un%20pedido%20de%20crochet%20%F0%9F%A7%B6%F0%9F%92%9A" target="_blank">
+        💬 Escribir por WhatsApp
+      </a>
+      <a class="btn-secondary" href="https://www.instagram.com/artesaniaconmagia_/" target="_blank">
+        📸 Seguir en Instagram
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>🧶 Artesanía con Magia · Cristina · Creatividad consciente 💚</p>
+  <p style="margin-top:8px;">Sígueme en <a href="https://www.instagram.com/artesaniaconmagia_/" target="_blank">@artesaniaconmagia_</a></p>
+</footer>
+
+<a class="floating-wa" href="https://wa.me/34600000000?text=Hola%20Cristina%2C%20vi%20tu%20p%C3%A1gina%20y%20quiero%20saber%20m%C3%A1s%20%F0%9F%A7%B6" target="_blank">💬</a>
+
+<script>
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('active');
+      }
+    });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
