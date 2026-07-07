@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nur Örgü Evi — Handmade Baby Crochet, Made with Love in Turkey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --pink:#FF8FB1;
+    --pink-deep:#FF6B9D;
+    --sky:#7EC8E3;
+    --sky-deep:#4FB3D9;
+    --butter:#FFD966;
+    --mint:#8FE3C0;
+    --lavender:#C9A8E9;
+    --cream:#FFF9F0;
+    --ink:#5B4B4F;
+    --ink-soft:#8B7A7E;
+    --white:#FFFFFF;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Quicksand', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3,.display{
+    font-family:'Baloo 2', cursive;
+    font-weight:700;
+  }
+
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---------- Scallop divider (signature element: crochet stitch edge) ---------- */
+  .scallop{
+    width:100%;
+    height:40px;
+    display:block;
+    line-height:0;
+  }
+  .scallop svg{width:100%;height:100%;display:block;}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,249,240,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:3px dashed var(--pink);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 28px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.5rem;
+    color:var(--pink-deep);
+  }
+  .logo .yarn{font-size:1.7rem;}
+  .nav-links{
+    display:flex;
+    gap:28px;
+    font-weight:600;
+    font-size:0.98rem;
+  }
+  .nav-links a{
+    position:relative;
+    padding:6px 2px;
+  }
+  .nav-links a:hover{color:var(--sky-deep);}
+  .nav-cta{
+    background:var(--pink-deep);
+    color:var(--white);
+    padding:10px 22px;
+    border-radius:30px;
+    font-weight:700;
+    font-size:0.95rem;
+    box-shadow:0 4px 0 #d9527d;
+    transition:transform .15s ease, box-shadow .15s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 0 #d9527d;}
+  @media(max-width:820px){
+    .nav-links{display:none;}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:70px 28px 60px;
+    text-align:center;
+    background:
+      radial-gradient(circle at 12% 20%, rgba(255,143,177,0.35), transparent 40%),
+      radial-gradient(circle at 88% 15%, rgba(126,200,227,0.35), transparent 40%),
+      radial-gradient(circle at 50% 90%, rgba(255,217,102,0.3), transparent 45%);
+  }
+  .hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--white);
+    border:2px solid var(--mint);
+    padding:8px 18px;
+    border-radius:30px;
+    font-weight:700;
+    font-size:0.85rem;
+    color:#3a9c78;
+    margin-bottom:26px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 6vw, 4.2rem);
+    line-height:1.08;
+    color:var(--pink-deep);
+    max-width:900px;
+    margin:0 auto 22px;
+    text-shadow:2px 2px 0 rgba(255,217,102,0.5);
+  }
+  .hero h1 span{color:var(--sky-deep);}
+  .hero p.sub{
+    font-size:1.2rem;
+    color:var(--ink-soft);
+    max-width:600px;
+    margin:0 auto 34px;
+    font-weight:600;
+  }
+  .hero-ctas{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-bottom:50px;
+  }
+  .btn-primary{
+    background:var(--pink-deep);
+    color:var(--white);
+    padding:16px 34px;
+    border-radius:40px;
+    font-weight:700;
+    font-size:1.05rem;
+    box-shadow:0 5px 0 #d9527d;
+    transition:transform .15s ease, box-shadow .15s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 8px 0 #d9527d;}
+  .btn-secondary{
+    background:var(--white);
+    color:var(--sky-deep);
+    border:3px solid var(--sky);
+    padding:13px 30px;
+    border-radius:40px;
+    font-weight:700;
+    font-size:1.05rem;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:transform .15s ease, background .15s ease;
+  }
+  .btn-secondary:hover{transform:translateY(-3px);background:#eaf7fc;}
+
+  /* Hero yarn illustration row */
+  .hero-strip{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    flex-wrap:wrap;
+  }
+  .yarn-dot{
+    width:64px;height:64px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.8rem;
+    box-shadow:inset 0 -6px 0 rgba(0,0,0,0.08);
+    animation:bob 3.4s ease-in-out infinite;
+  }
+  .yarn-dot:nth-child(1){background:var(--pink);animation-delay:0s;}
+  .yarn-dot:nth-child(2){background:var(--sky);animation-delay:.3s;}
+  .yarn-dot:nth-child(3){background:var(--butter);animation-delay:.6s;}
+  .yarn-dot:nth-child(4){background:var(--mint);animation-delay:.9s;}
+  .yarn-dot:nth-child(5){background:var(--lavender);animation-delay:1.2s;}
+  @keyframes bob{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-12px);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .yarn-dot{animation:none;}
+  }
+
+  /* ---------- Section shared ---------- */
+  section{padding:70px 0;}
+  .section-title{
+    text-align:center;
+    font-size:clamp(1.9rem,4vw,2.6rem);
+    margin-bottom:14px;
+  }
+  .section-sub{
+    text-align:center;
+    color:var(--ink-soft);
+    max-width:560px;
+    margin:0 auto 50px;
+    font-weight:600;
+  }
+
+  /* ---------- About ---------- */
+  .about{background:var(--white);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:50px;
+    align-items:center;
+  }
+  .about-card{
+    background:var(--lavender);
+    border-radius:28px;
+    padding:40px;
+    color:#fff;
+    position:relative;
+    overflow:hidden;
+  }
+  .about-card::after{
+    content:"🧶";
+    position:absolute;
+    right:-10px;bottom:-20px;
+    font-size:8rem;
+    opacity:.18;
+  }
+  .about-card h3{font-size:1.6rem;margin-bottom:12px;}
+  .about-text p{margin-bottom:16px;line-height:1.7;font-weight:500;}
+  .about-text strong{color:var(--pink-deep);}
+  .stat-row{
+    display:flex;
+    gap:30px;
+    margin-top:28px;
+    flex-wrap:wrap;
+  }
+  .stat{
+    background:var(--cream);
+    border-radius:18px;
+    padding:16px 22px;
+    text-align:center;
+    min-width:120px;
+  }
+  .stat .num{
+    font-family:'Baloo 2',cursive;
+    font-size:1.7rem;
+    color:var(--sky-deep);
+  }
+  .stat .label{font-size:0.82rem;color:var(--ink-soft);font-weight:700;}
+  @media(max-width:820px){
+    .about-grid{grid-template-columns:1fr;}
+  }
+
+  /* ---------- Products ---------- */
+  .products{background:var(--cream);}
+  .product-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:26px;
+  }
+  .product-card{
+    background:var(--white);
+    border-radius:24px;
+    padding:0 0 22px;
+    overflow:hidden;
+    box-shadow:0 10px 24px rgba(91,75,79,0.08);
+    transition:transform .2s ease, box-shadow .2s ease;
+    border:3px solid transparent;
+  }
+  .product-card:hover{
+    transform:translateY(-8px) rotate(-1deg);
+    box-shadow:0 16px 30px rgba(91,75,79,0.14);
+  }
+  .product-img{
+    height:170px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:4rem;
+  }
+  .product-card:nth-child(1) .product-img{background:var(--pink);}
+  .product-card:nth-child(2) .product-img{background:var(--sky);}
+  .product-card:nth-child(3) .product-img{background:var(--butter);}
+  .product-card:nth-child(4) .product-img{background:var(--mint);}
+  .product-card:nth-child(5) .product-img{background:var(--lavender);}
+  .product-card:nth-child(6) .product-img{background:var(--pink);}
+  .product-body{padding:20px 22px 0;}
+  .product-body h4{font-family:'Baloo 2',cursive;font-size:1.2rem;margin-bottom:6px;}
+  .product-body p{font-size:0.9rem;color:var(--ink-soft);font-weight:600;line-height:1.5;}
+  .tag{
+    display:inline-block;
+    margin-top:10px;
+    font-size:0.75rem;
+    font-weight:700;
+    background:var(--cream);
+    color:var(--pink-deep);
+    padding:5px 12px;
+    border-radius:20px;
+  }
+
+  /* ---------- Why handmade ---------- */
+  .why{background:var(--white);}
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:28px;
+  }
+  .why-card{
+    text-align:center;
+    padding:32px 22px;
+    border-radius:24px;
+    background:var(--cream);
+    transition:transform .2s ease;
+  }
+  .why-card:hover{transform:translateY(-6px);}
+  .why-icon{
+    width:70px;height:70px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.9rem;
+    margin:0 auto 16px;
+  }
+  .why-card:nth-child(1) .why-icon{background:var(--mint);}
+  .why-card:nth-child(2) .why-icon{background:var(--pink);}
+  .why-card:nth-child(3) .why-icon{background:var(--sky);}
+  .why-card:nth-child(4) .why-icon{background:var(--butter);}
+  .why-card h4{font-family:'Baloo 2',cursive;font-size:1.15rem;margin-bottom:8px;}
+  .why-card p{font-size:0.9rem;color:var(--ink-soft);font-weight:600;line-height:1.5;}
+
+  /* ---------- Shipping / world ---------- */
+  .shipping{
+    background:var(--sky-deep);
+    color:#fff;
+    text-align:center;
+    position:relative;
+  }
+  .shipping h2{color:#fff;}
+  .shipping .section-sub{color:rgba(255,255,255,0.85);}
+  .globe-row{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    flex-wrap:wrap;
+    margin-top:20px;
+  }
+  .globe-item{
+    background:rgba(255,255,255,0.15);
+    border:2px solid rgba(255,255,255,0.4);
+    border-radius:20px;
+    padding:22px 30px;
+    min-width:180px;
+  }
+  .globe-item .big{font-size:2rem;margin-bottom:6px;}
+  .globe-item .txt{font-weight:700;font-size:0.95rem;}
+
+  /* ---------- Testimonials ---------- */
+  .testimonials{background:var(--cream);}
+  .testi-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:26px;
+  }
+  .testi-card{
+    background:var(--white);
+    border-radius:22px;
+    padding:28px;
+    position:relative;
+    box-shadow:0 8px 20px rgba(91,75,79,0.07);
+  }
+  .testi-card .stars{color:var(--butter);font-size:1.1rem;margin-bottom:10px;}
+  .testi-card p{font-weight:600;font-size:0.95rem;line-height:1.6;margin-bottom:14px;color:var(--ink);}
+  .testi-name{font-family:'Baloo 2',cursive;color:var(--pink-deep);font-size:1rem;}
+
+  /* ---------- Follow / Instagram-Youtube ---------- */
+  .follow{background:var(--white);text-align:center;}
+  .follow-cards{
+    display:flex;
+    gap:26px;
+    justify-content:center;
+    flex-wrap:wrap;
+    margin-top:10px;
+  }
+  .follow-card{
+    width:280px;
+    border-radius:24px;
+    padding:34px 26px;
+    color:#fff;
+    text-align:left;
+    transition:transform .2s ease;
+  }
+  .follow-card:hover{transform:translateY(-6px);}
+  .follow-card.ig{background:linear-gradient(135deg,#FF8FB1,#C9A8E9,#7EC8E3);}
+  .follow-card.yt{background:linear-gradient(135deg,#FF6B9D,#FFD966);}
+  .follow-card .icon{font-size:2.2rem;margin-bottom:14px;}
+  .follow-card h4{font-family:'Baloo 2',cursive;font-size:1.3rem;margin-bottom:8px;}
+  .follow-card p{font-size:0.9rem;font-weight:600;opacity:0.95;margin-bottom:18px;}
+  .follow-card .go{
+    background:rgba(255,255,255,0.25);
+    display:inline-block;
+    padding:9px 18px;
+    border-radius:20px;
+    font-weight:700;
+    font-size:0.85rem;
+    border:2px solid rgba(255,255,255,0.6);
+  }
+  .follow-card .go:hover{background:rgba(255,255,255,0.4);}
+
+  /* ---------- Order / contact ---------- */
+  .order{
+    background:var(--pink-deep);
+    color:#fff;
+    text-align:center;
+  }
+  .order h2{color:#fff;}
+  .order .section-sub{color:rgba(255,255,255,0.9);}
+  .order-box{
+    background:#fff;
+    color:var(--ink);
+    border-radius:30px;
+    max-width:640px;
+    margin:0 auto;
+    padding:40px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.15);
+  }
+  .order-box h3{color:var(--pink-deep);margin-bottom:10px;font-size:1.4rem;}
+  .order-box p{font-weight:600;color:var(--ink-soft);margin-bottom:24px;}
+  .order-steps{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    text-align:left;
+    margin-bottom:26px;
+  }
+  .order-step{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:700;
+    font-size:0.95rem;
+  }
+  .order-step .n{
+    width:30px;height:30px;
+    border-radius:50%;
+    background:var(--mint);
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Baloo 2',cursive;
+    flex-shrink:0;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:#3f3236;
+    color:#f4e9ec;
+    text-align:center;
+    padding:44px 28px 30px;
+  }
+  footer .flogo{
+    font-family:'Baloo 2',cursive;
+    font-size:1.5rem;
+    color:var(--pink);
+    margin-bottom:10px;
+  }
+  footer p{font-size:0.85rem;opacity:0.75;font-weight:500;margin-bottom:6px;}
+  .flinks{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    margin:18px 0;
+    flex-wrap:wrap;
+    font-weight:700;
+    font-size:0.85rem;
+  }
+  .flinks a:hover{color:var(--pink);}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo"><span class="yarn">🧶</span> Nur Örgü Evi</div>
+    <nav class="nav-links">
+      <a href="#about">Our Story</a>
+      <a href="#products">Collection</a>
+      <a href="#why">Why Handmade</a>
+      <a href="#shipping">Shipping</a>
+      <a href="#order">Order</a>
+    </nav>
+    <a class="nav-cta" href="https://instagram.com/nur_orgu.evi" target="_blank" rel="noopener">Order on Instagram</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-badge">🌍 Shipping worldwide from Eskişehir, Turkey</div>
+    <h1>Cozy little <span>crochet</span> pieces, made stitch by stitch for your baby</h1>
+    <p class="sub">Nur Örgü Evi crafts one-of-a-kind handmade baby knits — booties, blankets, hats and rompers — with love in every loop. El emeği ❤️</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="https://instagram.com/nur_orgu.evi" target="_blank" rel="noopener">💌 DM to Order</a>
+      <a class="btn-secondary" href="https://youtube.com/@nur_orgu_evi" target="_blank" rel="noopener">▶️ Watch on YouTube</a>
+    </div>
+    <div class="hero-strip">
+      <div class="yarn-dot">🧸</div>
+      <div class="yarn-dot">🍼</div>
+      <div class="yarn-dot">👶</div>
+      <div class="yarn-dot">🎀</div>
+      <div class="yarn-dot">☁️</div>
+    </div>
+  </div>
+</section>
+
+<div class="scallop" aria-hidden="true">
+  <svg viewBox="0 0 1200 40" preserveAspectRatio="none">
+    <path d="M0,0 Q25,40 50,0 Q75,40 100,0 Q125,40 150,0 Q175,40 200,0 Q225,40 250,0 Q275,40 300,0 Q325,40 350,0 Q375,40 400,0 Q425,40 450,0 Q475,40 500,0 Q525,40 550,0 Q575,40 600,0 Q625,40 650,0 Q675,40 700,0 Q725,40 750,0 Q775,40 800,0 Q825,40 850,0 Q875,40 900,0 Q925,40 950,0 Q975,40 1000,0 Q1025,40 1050,0 Q1075,40 1100,0 Q1125,40 1150,0 Q1175,40 1200,0 L1200,0 L0,0 Z" fill="#FFF9F0"/>
+  </svg>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-card">
+        <h3>Meet Nur 👋</h3>
+        <p style="font-weight:500;line-height:1.7;">Every piece from Nur Örgü Evi begins with a single strand of soft yarn and a lot of patience. Based in Eskişehir, Turkey, Nur hand-crochets each baby item herself — no factories, no shortcuts, just careful handwork made to be treasured.</p>
+      </div>
+      <div class="about-text">
+        <h2 class="section-title" style="text-align:left;margin-bottom:18px;">A little home of handmade love</h2>
+        <p>Nur Örgü Evi means <strong>"Nur's Knitting House"</strong> — and that's exactly what it is. What started as a passion for crochet has grown into a small home studio sending soft, colorful baby pieces to families near and far.</p>
+        <p>Each order is made to order, so your little one receives something truly unique — never mass-produced, always <strong>made with love (el emeği ❤️)</strong>.</p>
+        <div class="stat-row">
+          <div class="stat"><div class="num">100%</div><div class="label">Handmade</div></div>
+          <div class="stat"><div class="num">🌍</div><div class="label">Ships Worldwide</div></div>
+          <div class="stat"><div class="num">1:1</div><div class="label">Made to Order</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<section class="products" id="products">
+  <div class="wrap">
+    <h2 class="section-title">Our Cozy Collection</h2>
+    <p class="section-sub">Soft, breathable yarns in cheerful colors — designed for tiny hands, tiny feet, and lots of naps.</p>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="product-img">🧦</div>
+        <div class="product-body">
+          <h4>Baby Booties</h4>
+          <p>Snug little shoes to keep tiny toes warm, in pastel and bright colorways.</p>
+          <span class="tag">Best Seller</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🧣</div>
+        <div class="product-body">
+          <h4>Blankets & Wraps</h4>
+          <p>Soft crochet blankets perfect for swaddling, strollers, or nursery decor.</p>
+          <span class="tag">Custom Colors</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">👒</div>
+        <div class="product-body">
+          <h4>Sun & Winter Hats</h4>
+          <p>Adorable hand-crocheted hats for every season, with playful details.</p>
+          <span class="tag">Made to Order</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🩱</div>
+        <div class="product-body">
+          <h4>Rompers & Sets</h4>
+          <p>Complete matching sets — the sweetest first outfits for newborns.</p>
+          <span class="tag">Gift Ready</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🧸</div>
+        <div class="product-body">
+          <h4>Amigurumi Toys</h4>
+          <p>Huggable crochet toys, a soft first friend for your baby.</p>
+          <span class="tag">Personalized</span>
+        </div>
+      </div>
+      <div class="product-card">
+        <div class="product-img">🎀</div>
+        <div class="product-body">
+          <h4>Headbands & Bows</h4>
+          <p>Delicate hand-stitched accessories for photos and special days.</p>
+          <span class="tag">Popular</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY HANDMADE ============ -->
+<section class="why" id="why">
+  <div class="wrap">
+    <h2 class="section-title">Why Families Choose Handmade</h2>
+    <p class="section-sub">Not just a gift — a piece made with care, meant to be kept.</p>
+    <div class="why-grid">
+      <div class="why-card">
+        <div class="why-icon">🧶</div>
+        <h4>Soft, Safe Yarns</h4>
+        <p>Gentle, breathable materials chosen with sensitive baby skin in mind.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💗</div>
+        <h4>Made With Love</h4>
+        <p>Every stitch is worked by hand — el emeği, the labor of love.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎨</div>
+        <h4>Your Colors, Your Style</h4>
+        <p>Choose the palette and details that fit your baby's story.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">🎁</div>
+        <h4>A Gift to Remember</h4>
+        <p>Perfect for baby showers, newborn gifts, and family keepsakes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SHIPPING ============ -->
+<section class="shipping" id="shipping">
+  <div class="wrap">
+    <h2 class="section-title">From Eskişehir to Your Doorstep</h2>
+    <p class="section-sub">Domestic and international orders welcome — wherever you are, we'll get your handmade piece to you.</p>
+    <div class="globe-row">
+      <div class="globe-item"><div class="big">🇹🇷</div><div class="txt">Domestic Shipping<br>(Yurtiçi)</div></div>
+      <div class="globe-item"><div class="big">🌍</div><div class="txt">International Shipping<br>(Yurtdışı)</div></div>
+      <div class="globe-item"><div class="big">📦</div><div class="txt">Carefully Packaged<br>Every Order</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials">
+  <div class="wrap">
+    <h2 class="section-title">Loved by Little Ones (and Their Parents)</h2>
+    <p class="section-sub">A few sweet words from families around the world.</p>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"The booties were softer and more beautiful than any photo could show. You can feel the care in every stitch."</p>
+        <div class="testi-name">— A happy mom, Istanbul</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Ordered a blanket for my niece overseas and it arrived perfectly wrapped. Truly a treasure."</p>
+        <div class="testi-name">— International customer</div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Nur helped me pick the perfect colors for a baby shower gift. Everyone asked where it was from!"</p>
+        <div class="testi-name">— Gift buyer, Ankara</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOLLOW ============ -->
+<section class="follow">
+  <div class="wrap">
+    <h2 class="section-title">Follow the Journey</h2>
+    <p class="section-sub">See new pieces first, watch behind-the-scenes crochet videos, and get inspired.</p>
+    <div class="follow-cards">
+      <a class="follow-card ig" href="https://instagram.com/nur_orgu.evi" target="_blank" rel="noopener">
+        <div class="icon">📸</div>
+        <h4>@nur_orgu.evi</h4>
+        <p>New designs, custom orders, and daily behind-the-scenes on Instagram.</p>
+        <span class="go">Follow on Instagram →</span>
+      </a>
+      <a class="follow-card yt" href="https://youtube.com/@nur_orgu_evi" target="_blank" rel="noopener">
+        <div class="icon">▶️</div>
+        <h4>@nur_orgu_evi</h4>
+        <p>Watch full crochet processes and tutorials on the YouTube channel.</p>
+        <span class="go">Watch on YouTube →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ORDER ============ -->
+<section class="order" id="order">
+  <div class="wrap">
+    <h2 class="section-title">Ready to Order?</h2>
+    <p class="section-sub">It only takes a message. Here's how it works:</p>
+    <div class="order-box">
+      <h3>Let's create something special 🧶</h3>
+      <p>Custom colors, sizes, and made-to-order pieces — just for your little one.</p>
+      <div class="order-steps">
+        <div class="order-step"><span class="n">1</span> Send a DM on Instagram with what you'd like</div>
+        <div class="order-step"><span class="n">2</span> Choose your colors, size, and any extra details</div>
+        <div class="order-step"><span class="n">3</span> Your piece is hand-crocheted just for you</div>
+        <div class="order-step"><span class="n">4</span> Packed with care and shipped — domestic or worldwide</div>
+      </div>
+      <a class="btn-primary" href="https://instagram.com/nur_orgu.evi" target="_blank" rel="noopener">💌 Message Us on Instagram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="flogo">🧶 Nur Örgü Evi</div>
+  <p>Handmade baby crochet · El emeği ❤️ · Eskişehir, Turkey</p>
+  <p>Yurtiçi ve yurtdışı sipariş alınır — Domestic & international orders welcome</p>
+  <div class="flinks">
+    <a href="https://instagram.com/nur_orgu.evi" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://youtube.com/@nur_orgu_evi" target="_blank" rel="noopener">YouTube</a>
+    <a href="#order">Order Now</a>
+  </div>
+  <p>© 2026 Nur Örgü Evi. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
