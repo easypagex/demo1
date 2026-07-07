@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sissi y Punto | Ropa para bebé hecha a mano 🪡</title>
+<meta name="description" content="Ropa para bebé hecha a mano con mucho amor. Tallas 0-6 meses. Envíos a toda España y Canarias.">
+<style>
+  :root{
+    --pink:#ff8fab;
+    --pink-dark:#ff5c8a;
+    --mint:#8fe3c4;
+    --mint-dark:#4fd1a0;
+    --lavender:#c9a6ff;
+    --yellow:#ffd166;
+    --cream:#fff6ee;
+    --brown:#6b4a3a;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'Segoe UI', Verdana, sans-serif;
+    background:linear-gradient(180deg,#fff6ee 0%, #ffe9f2 40%, #eafff6 100%);
+    color:var(--brown);
+    overflow-x:hidden;
+  }
+  a{text-decoration:none;}
+
+  /* Decorative floating shapes */
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    opacity:0.35;
+    filter:blur(2px);
+    z-index:0;
+  }
+
+  header{
+    position:relative;
+    text-align:center;
+    padding:70px 20px 100px;
+    overflow:hidden;
+  }
+  header .blob1{width:180px;height:180px;background:var(--yellow);top:-40px;left:-40px;}
+  header .blob2{width:140px;height:140px;background:var(--mint);top:20px;right:-30px;}
+  header .blob3{width:100px;height:100px;background:var(--lavender);bottom:-20px;left:20%;}
+
+  .logo-badge{
+    position:relative;
+    z-index:2;
+    display:inline-block;
+    background:#fff;
+    padding:14px 28px;
+    border-radius:40px;
+    box-shadow:0 10px 25px rgba(255,92,138,0.25);
+    font-size:1.1em;
+    color:var(--pink-dark);
+    font-weight:700;
+    margin-bottom:20px;
+  }
+
+  h1{
+    position:relative;
+    z-index:2;
+    font-size:2.8em;
+    color:var(--pink-dark);
+    margin-bottom:10px;
+    text-shadow:2px 2px 0 #fff;
+  }
+  header p.subtitle{
+    position:relative;
+    z-index:2;
+    font-size:1.3em;
+    color:var(--brown);
+    max-width:600px;
+    margin:0 auto 30px;
+  }
+  .cta-group{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    justify-content:center;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:16px 32px;
+    border-radius:50px;
+    font-weight:700;
+    font-size:1.05em;
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+  }
+  .btn:hover{transform:translateY(-4px) scale(1.03);}
+  .btn-whatsapp{background:#25D366;color:#fff;}
+  .btn-instagram{
+    background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
+    color:#fff;
+  }
+
+  section{
+    padding:60px 20px;
+    position:relative;
+  }
+  .section-title{
+    text-align:center;
+    font-size:2em;
+    color:var(--pink-dark);
+    margin-bottom:40px;
+  }
+
+  /* Sobre mi */
+  .about{
+    background:#fff;
+    border-radius:30px;
+    max-width:900px;
+    margin:0 auto;
+    padding:50px;
+    box-shadow:0 15px 40px rgba(255,143,171,0.2);
+    text-align:center;
+  }
+  .about p{font-size:1.15em; line-height:1.7; max-width:700px; margin:0 auto 20px;}
+  .heart-row{font-size:1.8em; margin-top:10px;}
+
+  /* Productos / categorias */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
+    gap:30px;
+    max-width:1100px;
+    margin:0 auto;
+  }
+  .card{
+    background:#fff;
+    border-radius:24px;
+    padding:35px 25px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:transform 0.25s ease;
+    border-top:8px solid var(--mint);
+  }
+  .card:nth-child(2){border-top-color:var(--pink);}
+  .card:nth-child(3){border-top-color:var(--lavender);}
+  .card:nth-child(4){border-top-color:var(--yellow);}
+  .card:hover{transform:translateY(-8px);}
+  .card .icon{font-size:2.6em; margin-bottom:15px;}
+  .card h3{color:var(--pink-dark); margin-bottom:10px; font-size:1.2em;}
+  .card p{font-size:0.95em; color:#7a5c4d;}
+
+  /* Por que elegirnos */
+  .why{
+    background:var(--cream);
+    border-radius:0;
+  }
+  .why-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    max-width:1000px;
+    margin:0 auto;
+  }
+  .why-item{
+    background:#fff;
+    border-radius:20px;
+    padding:30px 20px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.06);
+  }
+  .why-item .emoji{font-size:2.2em; display:block; margin-bottom:12px;}
+  .why-item h4{color:var(--mint-dark); margin-bottom:8px;}
+  .why-item p{font-size:0.9em; color:#7a5c4d;}
+
+  /* Envios */
+  .envios{
+    max-width:800px;
+    margin:0 auto;
+    background:linear-gradient(135deg, var(--mint), var(--lavender));
+    border-radius:30px;
+    padding:45px;
+    text-align:center;
+    color:#fff;
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+  }
+  .envios h3{font-size:1.6em; margin-bottom:15px;}
+  .envios p{font-size:1.1em; margin-bottom:5px;}
+
+  /* Testimonios */
+  .testimonials{
+    max-width:1000px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:25px;
+  }
+  .testimonial{
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.07);
+    position:relative;
+  }
+  .testimonial::before{
+    content:"❝";
+    font-size:2.5em;
+    color:var(--pink);
+    position:absolute;
+    top:5px;
+    left:15px;
+    opacity:0.4;
+  }
+  .testimonial p{font-style:italic; margin:20px 0 15px; color:#5a4034;}
+  .testimonial .author{font-weight:700; color:var(--pink-dark);}
+  .stars{color:var(--yellow); font-size:1.1em;}
+
+  /* Final CTA */
+  .final-cta{
+    text-align:center;
+    background:var(--pink);
+    color:#fff;
+    padding:70px 20px;
+    border-radius:40px 40px 0 0;
+  }
+  .final-cta h2{font-size:2.2em; margin-bottom:15px;}
+  .final-cta p{font-size:1.15em; margin-bottom:30px; max-width:600px; margin-left:auto; margin-right:auto;}
+  .final-cta .btn-whatsapp{background:#fff; color:#25D366;}
+  .final-cta .btn-instagram{background:#fff; color:#ee2a7b; -webkit-background-clip:unset; background-clip:unset;}
+
+  footer{
+    text-align:center;
+    padding:30px 20px;
+    background:#fff0f5;
+    font-size:0.9em;
+    color:#a37c6b;
+  }
+  footer a{color:var(--pink-dark); font-weight:600;}
+
+  @media (max-width:600px){
+    h1{font-size:2.1em;}
+    .about{padding:30px 20px;}
+    .final-cta h2{font-size:1.7em;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="blob blob1"></div>
+  <div class="blob blob2"></div>
+  <div class="blob blob3"></div>
+  <div class="logo-badge">🪡 Sissi y Punto</div>
+  <h1>Ropa para bebé, hecha a mano con mucho 🩵</h1>
+  <p class="subtitle">Prendas únicas de 0 a 6 meses, tejidas con cariño para los primeros meses de tu bebé. Envíos a toda España y Canarias 📍</p>
+  <div class="cta-group">
+    <a class="btn btn-whatsapp" href="https://wa.me/34600000000?text=Hola%20Sissi!%20Quiero%20más%20info%20sobre%20la%20ropa%20de%20bebé%20🩵" target="_blank">
+      💬 Escríbeme por WhatsApp
+    </a>
+    <a class="btn btn-instagram" href="https://www.instagram.com/sissiypunto/" target="_blank">
+      📸 Ver en Instagram
+    </a>
+  </div>
+</header>
+
+<section>
+  <h2 class="section-title">Sobre Sissi y Punto</h2>
+  <div class="about">
+    <p>Cada prenda nace de la ilusión de crear algo especial para los primeros meses de vida. Tejo a mano, con paciencia y mucho amor, piezas únicas pensadas para la piel más delicada: la de tu bebé.</p>
+    <p>No son solo prendas, son pequeños detalles hechos con el corazón, perfectos para regalar o para consentir a los más pequeños de la casa.</p>
+    <div class="heart-row">🧶 🩵 👶 🩷 🪡</div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Lo que tejo para tu bebé</h2>
+  <div class="grid">
+    <div class="card">
+      <div class="icon">🧦</div>
+      <h3>Conjuntos completos</h3>
+      <p>Peleles, jerséis y patucos a juego, tejidos con hilos suaves y de calidad.</p>
+    </div>
+    <div class="card">
+      <div class="icon">👗</div>
+      <h3>Vestiditos y ranitas</h3>
+      <p>Diseños tiernos y delicados para los momentos más especiales.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🎁</div>
+      <h3>Regalos personalizados</h3>
+      <p>Ideal para bautizos, baby showers y bienvenidas al mundo.</p>
+    </div>
+    <div class="card">
+      <div class="icon">🧸</div>
+      <h3>Accesorios a juego</h3>
+      <p>Gorritos, mantitas y detalles que completan el conjunto perfecto.</p>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <h2 class="section-title">¿Por qué elegir Sissi y Punto?</h2>
+  <div class="why-grid">
+    <div class="why-item">
+      <span class="emoji">🩵</span>
+      <h4>100% hecho a mano</h4>
+      <p>Cada puntada cuidada al detalle, sin prisas.</p>
+    </div>
+    <div class="why-item">
+      <span class="emoji">👶</span>
+      <h4>Pensado para bebés</h4>
+      <p>Materiales suaves, ideales para pieles sensibles de 0 a 6 meses.</p>
+    </div>
+    <div class="why-item">
+      <span class="emoji">📦</span>
+      <h4>Envíos a toda España</h4>
+      <p>Incluyendo Canarias, para que llegue donde estés.</p>
+    </div>
+    <div class="why-item">
+      <span class="emoji">✨</span>
+      <h4>Piezas únicas</h4>
+      <p>Diseños exclusivos, no encontrarás lo mismo en ningún otro lugar.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Envíos</h2>
+  <div class="envios">
+    <h3>📦 Enviamos a toda España, Canarias incluidas</h3>
+    <p>Tu pedido llega directo a casa, listo para estrenar.</p>
+    <p>Pregunta por disponibilidad y tiempos de entrega por WhatsApp o Instagram 💌</p>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Lo que dicen las mamás</h2>
+  <div class="testimonials">
+    <div class="testimonial">
+      <p>Pedí un conjunto para el bautizo de mi hija y quedó precioso, se nota el cariño en cada punto.</p>
+      <div class="author">— Marta G.</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="testimonial">
+      <p>La calidad es espectacular y la atención por WhatsApp súper rápida y amable.</p>
+      <div class="author">— Laura P.</div>
+      <div class="stars">★★★★★</div>
+    </div>
+    <div class="testimonial">
+      <p>Llegó a Canarias sin problema y en perfecto estado. ¡Repetiré seguro!</p>
+      <div class="author">— Cristina R.</div>
+      <div class="stars">★★★★★</div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>¿Lista para vestir a tu bebé con amor? 🩵</h2>
+  <p>Escríbeme y cuéntame qué buscas, hacemos tu pedido a medida con mucho cariño.</p>
+  <div class="cta-group">
+    <a class="btn btn-whatsapp" href="https://wa.me/34600000000?text=Hola%20Sissi!%20Quiero%20hacer%20un%20pedido%20🩵" target="_blank">
+      💬 Pedir por WhatsApp
+    </a>
+    <a class="btn btn-instagram" href="https://www.instagram.com/sissiypunto/" target="_blank">
+      📸 Seguir en Instagram
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>🪡 Sissi y Punto — Ropa para bebé hecha a mano © 2026</p>
+  <p>Síguenos en <a href="https://www.instagram.com/sissiypunto/" target="_blank">@sissiypunto</a></p>
+</footer>
+
+</body>
+</html>
