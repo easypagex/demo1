@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crealiando · Creaciones textiles hechas con mimo, Valencia</title>
+<meta name="description" content="Crealiando · Creaciones textiles para bebés y niños hechas a mano en Valencia. Mantitas, baberos, muñecos de tela y piezas personalizadas con mimo y mucho amor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Karla:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF3E7;
+    --cream-2:#F5E8D6;
+    --ink:#2B2320;
+    --raspberry:#E94F7C;
+    --raspberry-dark:#C93763;
+    --mustard:#F4B942;
+    --sage:#7C9E6E;
+    --sky:#57A7C4;
+    --thread:#2B2320;
+    --shadow: 6px 6px 0 rgba(43,35,32,0.14);
+    --radius: 22px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Karla', sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,.logo,.stat-num{
+    font-family:'Bricolage Grotesque', sans-serif;
+  }
+
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;}
+
+  .container{
+    width:100%;
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ===== Stitch divider ===== */
+  .stitch-row{
+    width:100%;
+    height:14px;
+  }
+  .stitch-row svg{width:100%;height:100%;display:block;}
+
+  /* ===== Header ===== */
+  header{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:rgba(251,243,231,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:2px dashed rgba(43,35,32,0.25);
+  }
+  .nav-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 28px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.5rem;
+    font-weight:700;
+    letter-spacing:0.02em;
+    color:var(--ink);
+  }
+  .logo .dot{color:var(--raspberry);}
+  .logo svg{width:34px;height:34px;flex-shrink:0;}
+
+  nav ul{
+    display:flex;
+    gap:34px;
+    align-items:center;
+  }
+  nav a.nav-link{
+    font-weight:600;
+    font-size:0.98rem;
+    position:relative;
+    padding-bottom:4px;
+  }
+  nav a.nav-link::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:-2px;
+    width:0%;
+    height:2px;
+    background:var(--raspberry);
+    transition:width .25s ease;
+  }
+  nav a.nav-link:hover::after{width:100%;}
+
+  .nav-cta{
+    background:var(--ink);
+    color:var(--cream);
+    padding:11px 22px;
+    border-radius:40px;
+    font-weight:700;
+    font-size:0.92rem;
+    box-shadow:var(--shadow);
+    transition:transform .2s ease;
+    display:inline-block;
+  }
+  .nav-cta:hover{transform:translate(-2px,-2px);}
+
+  .hamburger{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    z-index:200;
+  }
+  .hamburger span{
+    width:26px;height:3px;background:var(--ink);border-radius:3px;
+    transition:all .3s ease;
+  }
+  .mobile-nav{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:var(--cream);
+    z-index:150;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:30px;
+  }
+  .mobile-nav.open{display:flex;}
+  .mobile-nav a{font-size:1.6rem;font-weight:700;font-family:'Bricolage Grotesque',sans-serif;}
+
+  /* ===== Hero ===== */
+  .hero{
+    position:relative;
+    padding:80px 0 60px;
+    overflow:hidden;
+  }
+  .hero .container{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:50px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--mustard);
+    color:var(--ink);
+    padding:7px 16px;
+    border-radius:40px;
+    font-weight:700;
+    font-size:0.85rem;
+    margin-bottom:22px;
+    transform:rotate(-2deg);
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.7rem);
+    line-height:1.08;
+    font-weight:700;
+    margin-bottom:22px;
+  }
+  .hero h1 .underline-word{
+    position:relative;
+    color:var(--raspberry-dark);
+    white-space:nowrap;
+  }
+  .hero h1 .underline-word svg{
+    position:absolute;
+    left:-2%;
+    bottom:-14px;
+    width:104%;
+    height:16px;
+  }
+  .hero p.lead{
+    font-size:1.15rem;
+    line-height:1.6;
+    max-width:480px;
+    color:#5a4f47;
+    margin-bottom:32px;
+  }
+  .hero-ctas{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:15px 28px;
+    border-radius:40px;
+    font-weight:700;
+    font-size:1rem;
+    box-shadow:var(--shadow);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 rgba(43,35,32,0.14);}
+  .btn-primary{background:var(--raspberry);color:#fff;}
+  .btn-secondary{background:transparent;color:var(--ink);border:2.5px solid var(--ink);box-shadow:none;}
+  .btn-secondary:hover{background:var(--ink);color:var(--cream);}
+
+  .hero-visual{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .hero-visual svg{width:100%;max-width:430px;height:auto;}
+  .float-badge{
+    position:absolute;
+    background:#fff;
+    border-radius:18px;
+    padding:12px 16px;
+    box-shadow:var(--shadow);
+    font-weight:700;
+    font-size:0.85rem;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    animation:floaty 4s ease-in-out infinite;
+  }
+  .float-badge.b1{top:6%;left:-4%;animation-delay:0s;}
+  .float-badge.b2{bottom:8%;right:-6%;animation-delay:1.4s;color:var(--sage);}
+  @keyframes floaty{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-10px);}
+  }
+
+  /* ===== Section generic ===== */
+  section{padding:90px 0;position:relative;}
+  .section-head{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 56px;
+  }
+  .section-head .eyebrow{margin-bottom:16px;}
+  .section-head h2{
+    font-size:clamp(1.9rem,3.4vw,2.7rem);
+    font-weight:700;
+    line-height:1.15;
+    margin-bottom:14px;
+  }
+  .section-head p{
+    color:#5a4f47;
+    font-size:1.05rem;
+    line-height:1.6;
+  }
+
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  /* ===== Creaciones grid ===== */
+  .creaciones-section{background:var(--cream-2);}
+  .grid-cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:24px;
+  }
+  .craft-card{
+    background:#fff;
+    border-radius:var(--radius);
+    padding:30px 22px;
+    box-shadow:var(--shadow);
+    text-align:center;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .craft-card:hover{transform:translateY(-6px);box-shadow:9px 12px 0 rgba(43,35,32,0.12);}
+  .craft-card .icon-wrap{
+    width:78px;height:78px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 18px;
+  }
+  .craft-card svg{width:42px;height:42px;}
+  .craft-card h3{font-size:1.12rem;font-weight:700;margin-bottom:8px;}
+  .craft-card p{font-size:0.92rem;color:#6b5f56;line-height:1.5;}
+
+  .c1{background:#FCE1EA;} .c2{background:#FFF1CE;} .c3{background:#E4EFDC;} .c4{background:#DCEEF4;}
+
+  /* ===== Proceso timeline ===== */
+  .proceso-section .container{max-width:940px;}
+  .timeline{
+    position:relative;
+    padding-left:44px;
+  }
+  .timeline::before{
+    content:'';
+    position:absolute;
+    left:15px;top:6px;bottom:6px;
+    width:3px;
+    background-image:repeating-linear-gradient(to bottom, var(--ink) 0 8px, transparent 8px 16px);
+  }
+  .t-step{
+    position:relative;
+    margin-bottom:46px;
+  }
+  .t-step:last-child{margin-bottom:0;}
+  .t-step::before{
+    content:attr(data-n);
+    position:absolute;
+    left:-44px;top:0;
+    width:32px;height:32px;
+    border-radius:50%;
+    background:var(--raspberry);
+    color:#fff;
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:700;
+    font-size:0.95rem;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .t-step h3{font-size:1.25rem;font-weight:700;margin-bottom:8px;}
+  .t-step p{color:#5a4f47;line-height:1.6;max-width:560px;}
+
+  /* ===== Valores ===== */
+  .valores-section{background:var(--ink);color:var(--cream);}
+  .valores-section .section-head p{color:#d8c9bb;}
+  .valores-section .eyebrow{background:var(--sky);color:var(--ink);}
+  .valores-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:22px;
+  }
+  .valor-item{
+    background:rgba(255,255,255,0.06);
+    border:1.5px dashed rgba(251,243,231,0.35);
+    border-radius:var(--radius);
+    padding:28px 20px;
+    text-align:center;
+  }
+  .valor-item svg{width:36px;height:36px;margin-bottom:14px;}
+  .valor-item h3{font-size:1.02rem;font-weight:700;margin-bottom:6px;font-family:'Bricolage Grotesque',sans-serif;}
+  .valor-item p{font-size:0.88rem;color:#c9bcae;line-height:1.5;}
+
+  /* ===== Testimonios ===== */
+  .test-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .test-card{
+    background:#fff;
+    border-radius:var(--radius);
+    padding:28px 24px;
+    box-shadow:var(--shadow);
+  }
+  .stars{color:var(--mustard);font-size:1.1rem;margin-bottom:14px;letter-spacing:2px;}
+  .test-card p{font-size:0.98rem;line-height:1.6;color:#4a4038;margin-bottom:18px;font-style:italic;}
+  .test-who{display:flex;align-items:center;gap:12px;}
+  .test-avatar{
+    width:42px;height:42px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:700;color:#fff;font-size:1rem;
+  }
+  .test-who .name{font-weight:700;font-size:0.92rem;}
+  .test-who .loc{font-size:0.8rem;color:#8a7d70;}
+
+  /* ===== CTA final ===== */
+  .cta-final{
+    background:var(--raspberry);
+    color:#fff;
+    border-radius:36px;
+    margin:0 28px;
+    padding:64px 40px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .cta-final::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background-image:radial-gradient(circle at 15% 20%, rgba(255,255,255,0.12) 0, transparent 40%),
+                      radial-gradient(circle at 85% 80%, rgba(255,255,255,0.1) 0, transparent 40%);
+  }
+  .cta-final h2{
+    font-size:clamp(1.9rem,3.6vw,2.6rem);
+    font-weight:700;
+    margin-bottom:16px;
+    position:relative;
+  }
+  .cta-final p{
+    max-width:520px;
+    margin:0 auto 32px;
+    font-size:1.05rem;
+    opacity:0.95;
+    position:relative;
+  }
+  .cta-final .hero-ctas{justify-content:center;position:relative;}
+  .cta-final .btn-primary{background:#fff;color:var(--raspberry-dark);}
+  .cta-final .btn-secondary{border-color:#fff;color:#fff;}
+  .cta-final .btn-secondary:hover{background:#fff;color:var(--raspberry-dark);}
+
+  .badge-location{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:rgba(255,255,255,0.15);
+    padding:8px 18px;
+    border-radius:40px;
+    font-weight:700;
+    font-size:0.85rem;
+    margin-bottom:22px;
+    position:relative;
+  }
+
+  /* ===== Footer ===== */
+  footer{
+    background:var(--cream-2);
+    padding:50px 0 28px;
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:30px;
+    margin-bottom:36px;
+  }
+  .footer-logo{font-size:1.4rem;font-weight:700;display:flex;align-items:center;gap:10px;}
+  .footer-logo svg{width:30px;height:30px;}
+  .footer-tag{color:#7a6d61;font-size:0.92rem;margin-top:8px;max-width:280px;}
+  .footer-links{display:flex;gap:60px;flex-wrap:wrap;}
+  .footer-col h4{font-family:'Bricolage Grotesque',sans-serif;font-size:0.95rem;margin-bottom:14px;}
+  .footer-col a{
+    display:block;
+    color:#5a4f47;
+    font-size:0.9rem;
+    margin-bottom:10px;
+    transition:color .2s ease;
+  }
+  .footer-col a:hover{color:var(--raspberry);}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:12px;
+    padding-top:24px;
+    border-top:2px dashed rgba(43,35,32,0.2);
+    font-size:0.82rem;
+    color:#8a7d70;
+  }
+  .social-row{display:flex;gap:14px;}
+  .social-row a{
+    width:38px;height:38px;
+    border-radius:50%;
+    background:#fff;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:var(--shadow);
+    transition:transform .2s ease;
+  }
+  .social-row a:hover{transform:translateY(-3px);}
+  .social-row svg{width:18px;height:18px;}
+
+  /* ===== Floating Instagram button ===== */
+  .float-ig{
+    position:fixed;
+    bottom:26px;right:26px;
+    z-index:120;
+    width:60px;height:60px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#F4B942,#E94F7C 55%,#833AB4);
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:var(--shadow);
+    animation:pulse 2.6s ease-in-out infinite;
+  }
+  .float-ig svg{width:28px;height:28px;}
+  @keyframes pulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.08);}
+  }
+
+  @media(max-width:980px){
+    .hero .container{grid-template-columns:1fr;}
+    .hero-visual{order:-1;max-width:340px;margin:0 auto;}
+    .grid-cards{grid-template-columns:repeat(2,1fr);}
+    .valores-grid{grid-template-columns:repeat(2,1fr);}
+    .test-grid{grid-template-columns:1fr;}
+    nav ul{display:none;}
+    .hamburger{display:flex;}
+    .nav-cta{display:none;}
+  }
+  @media(max-width:600px){
+    .grid-cards{grid-template-columns:1fr;}
+    .valores-grid{grid-template-columns:1fr;}
+    .cta-final{margin:0 14px;padding:48px 24px;}
+    .footer-links{gap:30px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Mobile nav ===== -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#creaciones" class="mnav-link">Creaciones</a>
+  <a href="#proceso" class="mnav-link">Proceso</a>
+  <a href="#valores" class="mnav-link">Por qué nosotras</a>
+  <a href="#testimonios" class="mnav-link">Testimonios</a>
+  <a href="#contacto" class="btn btn-primary" style="margin-top:10px;">Escríbenos</a>
+</div>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="nav-wrap">
+    <a href="#" class="logo">
+      <svg viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="19" stroke="#2B2320" stroke-width="2" stroke-dasharray="4 3"/>
+        <path d="M13 20c2-6 5-9 7-9s2 3 0 5-6 2-6 6 4 6 7 3" stroke="#E94F7C" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+        <circle cx="13" cy="12" r="1.6" fill="#F4B942"/>
+      </svg>
+      creali<span class="dot">a</span>ndo
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#creaciones" class="nav-link">Creaciones</a></li>
+        <li><a href="#proceso" class="nav-link">Proceso</a></li>
+        <li><a href="#valores" class="nav-link">Por qué nosotras</a></li>
+        <li><a href="#testimonios" class="nav-link">Testimonios</a></li>
+      </ul>
+    </nav>
+    <a href="#contacto" class="nav-cta">Escríbenos</a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="stitch-row">
+  <svg preserveAspectRatio="none" viewBox="0 0 800 14"><line x1="0" y1="7" x2="800" y2="7" stroke="#2B2320" stroke-width="2" stroke-dasharray="10 8"/></svg>
+</div>
+
+<!-- ===== Hero ===== -->
+<section class="hero">
+  <div class="container">
+    <div>
+      <span class="eyebrow">🧵 Hecho a mano en Valencia</span>
+      <h1>Creaciones textiles con <span class="underline-word">mimo<svg viewBox="0 0 200 16"><path d="M2 10c20-10 40-10 50 0s30 10 50 0 30-10 50 0 30 10 46 0" stroke="#F4B942" stroke-width="4" fill="none" stroke-linecap="round"/></svg></span> y mucho amor, puntada a puntada</h1>
+      <p class="lead">En Crealiando confeccionamos mantitas, baberos, muñecos de tela y piezas personalizadas para bebés y niños. Cada creación nace despacio, con telas seguras y un proceso que puedes ver paso a paso.</p>
+      <div class="hero-ctas">
+        <a href="#contacto" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.13 2 11.2c0 2.9 1.47 5.48 3.77 7.17V22l3.45-1.9c.9.25 1.85.38 2.78.38 5.52 0 10-4.13 10-9.2S17.52 2 12 2Z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          Pide tu pieza a medida
+        </a>
+        <a href="#creaciones" class="btn btn-secondary">Ver creaciones</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg viewBox="0 0 420 420" fill="none">
+        <circle cx="210" cy="210" r="200" fill="#FCE1EA"/>
+        <path d="M120 150c0-22 18-40 40-40h100c22 0 40 18 40 40v40c14 0 24 12 24 26s-10 26-24 26v70c0 22-18 40-40 40H160c-22 0-40-18-40-40v-70c-14 0-24-12-24-26s10-26 24-26v-40Z" fill="#fff" stroke="#2B2320" stroke-width="3"/>
+        <circle cx="175" cy="220" r="8" fill="#F4B942" stroke="#2B2320" stroke-width="2"/>
+        <circle cx="245" cy="220" r="8" fill="#F4B942" stroke="#2B2320" stroke-width="2"/>
+        <path d="M170 260c14 14 66 14 80 0" stroke="#E94F7C" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+        <path d="M120 160 L100 145 M120 175 L98 168 M300 160 L320 145 M300 175 L322 168" stroke="#2B2320" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="3 4"/>
+        <path d="M180 110c6-14 20-22 30-22s24 8 30 22" stroke="#7C9E6E" stroke-width="3" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="float-badge b1">🪡 100% cosido a mano</div>
+      <div class="float-badge b2">✨ Piezas personalizadas</div>
+    </div>
+  </div>
+</section>
+
+<div class="stitch-row">
+  <svg preserveAspectRatio="none" viewBox="0 0 800 14"><line x1="0" y1="7" x2="800" y2="7" stroke="#2B2320" stroke-width="2" stroke-dasharray="10 8"/></svg>
+</div>
+
+<!-- ===== Creaciones ===== -->
+<section class="creaciones-section" id="creaciones">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="background:var(--sage);color:#fff;">Nuestro catálogo</span>
+      <h2>Cada pieza cuenta una historia</h2>
+      <p>Desde la primera puntada hasta el empaquetado, así son las creaciones que hacemos con más cariño.</p>
+    </div>
+    <div class="grid-cards">
+      <div class="craft-card reveal">
+        <div class="icon-wrap c1">
+          <svg viewBox="0 0 48 48" fill="none"><rect x="8" y="8" width="32" height="32" rx="10" stroke="#E94F7C" stroke-width="2.5"/><path d="M14 24c4-8 8-12 10-12s3 4 0 7-8 3-8 8 5 8 10 4" stroke="#E94F7C" stroke-width="2.2" fill="none" stroke-linecap="round"/></svg>
+        </div>
+        <h3>Mantitas</h3>
+        <p>Suaves, cálidas y a juego con la habitación del bebé. Telas certificadas para piel sensible.</p>
+      </div>
+      <div class="craft-card reveal">
+        <div class="icon-wrap c2">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M24 8c-8 0-14 6-14 14 0 5 2 8 4 10l-2 8h24l-2-8c2-2 4-5 4-10 0-8-6-14-14-14Z" stroke="#F4B942" stroke-width="2.5" fill="none"/><circle cx="24" cy="24" r="3" fill="#F4B942"/></svg>
+        </div>
+        <h3>Baberos</h3>
+        <p>Diseños alegres y prácticos, con cierre a medida y estampados que no pasan de moda.</p>
+      </div>
+      <div class="craft-card reveal">
+        <div class="icon-wrap c3">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="8" stroke="#7C9E6E" stroke-width="2.5"/><path d="M14 40c0-8 5-14 10-14s10 6 10 14" stroke="#7C9E6E" stroke-width="2.5" fill="none"/><circle cx="21" cy="15" r="1.4" fill="#7C9E6E"/><circle cx="27" cy="15" r="1.4" fill="#7C9E6E"/></svg>
+        </div>
+        <h3>Muñecos de tela</h3>
+        <p>Compañeros blandos y únicos, cosidos a mano, ideales para regalar o coleccionar.</p>
+      </div>
+      <div class="craft-card reveal">
+        <div class="icon-wrap c4">
+          <svg viewBox="0 0 48 48" fill="none"><path d="M16 10h16l4 8-4 4 4 4-4 4 4 4-4 4H16l-4-4 4-4-4-4 4-4-4-4Z" stroke="#57A7C4" stroke-width="2.3" fill="none" stroke-linejoin="round"/></svg>
+        </div>
+        <h3>Piezas personalizadas</h3>
+        <p>Nombres bordados, colores a elegir y detalles pensados solo para tu peque.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Proceso ===== -->
+<section class="proceso-section" id="proceso">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">🎬 Detrás de cada puntada</span>
+      <h2>Así nace cada creación</h2>
+      <p>Compartimos el proceso completo en tutoriales y stories, para que veas el cariño detrás de cada pieza.</p>
+    </div>
+    <div class="timeline">
+      <div class="t-step reveal" data-n="1">
+        <h3>Elegimos la tela</h3>
+        <p>Seleccionamos algodones y telas certificadas, seguras para la piel del bebé y agradables al tacto.</p>
+      </div>
+      <div class="t-step reveal" data-n="2">
+        <h3>Diseñamos el patrón</h3>
+        <p>Cada modelo se piensa según su uso: mantita, babero o muñeco, cuidando cada medida y detalle.</p>
+      </div>
+      <div class="t-step reveal" data-n="3">
+        <h3>Cosemos a mano</h3>
+        <p>Puntada a puntada, sin prisas. Este es el paso que más nos gusta compartir en nuestros tutoriales.</p>
+      </div>
+      <div class="t-step reveal" data-n="4">
+        <h3>Empaquetamos con cariño</h3>
+        <p>Cada pedido se prepara con un empaquetado especial, listo para regalar o estrenar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stitch-row">
+  <svg preserveAspectRatio="none" viewBox="0 0 800 14"><line x1="0" y1="7" x2="800" y2="7" stroke="#F5E8D6" stroke-width="2" stroke-dasharray="10 8"/></svg>
+</div>
+
+<!-- ===== Valores ===== -->
+<section class="valores-section" id="valores">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Por qué Crealiando</span>
+      <h2>Cada detalle, pensado para tu bebé</h2>
+      <p>No hacemos producción en serie: hacemos piezas con nombre y apellido, para familias que valoran lo hecho a mano.</p>
+    </div>
+    <div class="valores-grid">
+      <div class="valor-item reveal">
+        <svg viewBox="0 0 40 40" fill="none"><path d="M20 34s-14-8-14-18a9 9 0 0 1 16-6 9 9 0 0 1 16 6c0 10-14 18-18 18Z" stroke="#E94F7C" stroke-width="2.2"/></svg>
+        <h3>Hecho a mano</h3>
+        <p>Sin líneas de producción. Cada pieza pasa por nuestras manos, no por una máquina en serie.</p>
+      </div>
+      <div class="valor-item reveal">
+        <svg viewBox="0 0 40 40" fill="none"><path d="M20 6l3 8 8 1-6 6 2 9-7-5-7 5 2-9-6-6 8-1 3-8Z" stroke="#F4B942" stroke-width="2.2" stroke-linejoin="round"/></svg>
+        <h3>Materiales seguros</h3>
+        <p>Telas certificadas para piel sensible, pensadas para el contacto directo con bebés.</p>
+      </div>
+      <div class="valor-item reveal">
+        <svg viewBox="0 0 40 40" fill="none"><path d="M8 32V16l12-10 12 10v16" stroke="#7C9E6E" stroke-width="2.2" fill="none" stroke-linejoin="round"/><path d="M16 32v-8h8v8" stroke="#7C9E6E" stroke-width="2.2"/></svg>
+        <h3>100% personalizable</h3>
+        <p>Colores, nombres y detalles a tu gusto. Tú eliges, nosotras lo cosemos.</p>
+      </div>
+      <div class="valor-item reveal">
+        <svg viewBox="0 0 40 40" fill="none"><rect x="6" y="14" width="28" height="18" rx="3" stroke="#57A7C4" stroke-width="2.2"/><path d="M6 18h28M14 14v-4h12v4" stroke="#57A7C4" stroke-width="2.2"/></svg>
+        <h3>Envíos a toda España</h3>
+        <p>Preparamos y enviamos cada pedido con cuidado, para que llegue en perfecto estado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Testimonios ===== -->
+<section id="testimonios">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="background:var(--sky);color:#fff;">Familias Crealiando</span>
+      <h2>Lo que cuentan quienes ya tienen su pieza</h2>
+    </div>
+    <div class="test-grid">
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"La mantita quedó preciosa, se nota que está hecha con mucho cariño. Además me enseñaron el proceso por Instagram, ¡una pasada!"</p>
+        <div class="test-who">
+          <div class="test-avatar" style="background:#E94F7C;">M</div>
+          <div><div class="name">Marta S.</div><div class="loc">Valencia</div></div>
+        </div>
+      </div>
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Pedí un babero con el nombre de mi hija y llegó incluso mejor de lo que imaginaba. El acabado a mano se nota muchísimo."</p>
+        <div class="test-who">
+          <div class="test-avatar" style="background:#7C9E6E;">L</div>
+          <div><div class="name">Laura P.</div><div class="loc">Alicante</div></div>
+        </div>
+      </div>
+      <div class="test-card reveal">
+        <div class="stars">★★★★★</div>
+        <p>"El muñeco de tela es el juguete favorito de mi hijo. Trato cercano desde el primer mensaje por Instagram hasta la entrega."</p>
+        <div class="test-who">
+          <div class="test-avatar" style="background:#57A7C4;">C</div>
+          <div><div class="name">Carla R.</div><div class="loc">Castellón</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA final ===== -->
+<section id="contacto">
+  <div class="container">
+    <div class="cta-final reveal">
+      <span class="badge-location">📍 Valencia, España</span>
+      <h2>¿Le hacemos una pieza única a tu peque?</h2>
+      <p>Cuéntanos qué tienes en mente por Instagram y diseñamos juntas la pieza perfecta, a tu medida.</p>
+      <div class="hero-ctas">
+        <a href="https://www.instagram.com/crealiando/" target="_blank" rel="noopener" class="btn btn-primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+          Escríbenos por Instagram
+        </a>
+        <a href="https://linktr.ee/Crealiando1" target="_blank" rel="noopener" class="btn btn-secondary">Todos nuestros enlaces</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">
+          <svg viewBox="0 0 40 40" fill="none">
+            <circle cx="20" cy="20" r="19" stroke="#2B2320" stroke-width="2" stroke-dasharray="4 3"/>
+            <path d="M13 20c2-6 5-9 7-9s2 3 0 5-6 2-6 6 4 6 7 3" stroke="#E94F7C" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          </svg>
+          crealiando
+        </div>
+        <p class="footer-tag">Creaciones textiles hechas con mimo y mucho amor, desde Valencia para toda España.</p>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Explora</h4>
+          <a href="#creaciones">Creaciones</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#testimonios">Testimonios</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <a href="https://www.instagram.com/crealiando/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://linktr.ee/Crealiando1" target="_blank" rel="noopener">Linktree</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Crealiando · Valencia, España</span>
+      <div class="social-row">
+        <a href="https://www.instagram.com/crealiando/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#2B2320" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="#2B2320" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="#2B2320"/></svg>
+        </a>
+        <a href="https://linktr.ee/Crealiando1" target="_blank" rel="noopener" aria-label="Linktree">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M12 8 6 4M12 8l6-4M12 14l-6 4M12 14l6 4" stroke="#2B2320" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== Floating Instagram ===== -->
+<a href="https://www.instagram.com/crealiando/" target="_blank" rel="noopener" class="float-ig" aria-label="Escríbenos por Instagram">
+  <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="#fff" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="#fff" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="#fff"/></svg>
+</a>
+
+<script>
+  // Mobile menu
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburgerBtn.addEventListener('click', () => {
+    mobileNav.classList.toggle('open');
+  });
+  document.querySelectorAll('.mnav-link, .mobile-nav a').forEach(link => {
+    link.addEventListener('click', () => mobileNav.classList.remove('open'));
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
