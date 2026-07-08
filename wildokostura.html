@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wildo Kostura & Handmade — Muñecos y accesorios únicos hechos a mano</title>
+<meta name="description" content="Muñecos y accesorios hechos a mano por Rocío. Piezas únicas y personalizadas. Encargos por WhatsApp o Instagram.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --coral:#E85A45;
+    --coral-dark:#C8442F;
+    --sunny:#F4B93E;
+    --turquoise:#2FA79B;
+    --pink:#F2A6C4;
+    --cream:#FFF8EC;
+    --cream-2:#FFF1DC;
+    --plum:#3B2A3A;
+    --thread:#3B2A3A;
+    --white:#FFFFFF;
+    --radius-lg: 28px;
+    --radius-md: 18px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--plum);
+    font-family:'Quicksand', sans-serif;
+    font-weight:500;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    color:var(--plum);
+    margin:0;
+    line-height:1.05;
+  }
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  section{position:relative;}
+  .wrap{
+    max-width:1140px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ---------- STITCH DIVIDER (signature element) ---------- */
+  .stitch{
+    width:100%;
+    height:34px;
+    display:block;
+  }
+  .stitch.flip{transform:scaleY(-1);}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,248,236,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:2px dashed rgba(59,42,58,0.18);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 24px;
+    max-width:1140px;
+    margin:0 auto;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:800;
+    font-size:1.3rem;
+    color:var(--coral-dark);
+  }
+  .logo .needle{width:34px; height:34px;}
+  .nav-links{
+    display:flex;
+    gap:26px;
+    font-weight:600;
+    font-size:0.98rem;
+  }
+  .nav-links a{
+    position:relative;
+    padding:4px 2px;
+  }
+  .nav-links a:hover{color:var(--coral-dark);}
+  .nav-links a:focus-visible, a:focus-visible, button:focus-visible{
+    outline:3px solid var(--turquoise);
+    outline-offset:3px;
+    border-radius:6px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--coral);
+    color:var(--white);
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    padding:13px 26px;
+    border-radius:999px;
+    border:none;
+    cursor:pointer;
+    box-shadow:0 6px 0 var(--coral-dark);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn:active{transform:translateY(3px); box-shadow:0 2px 0 var(--coral-dark);}
+  .btn.small{padding:10px 20px; font-size:0.9rem; box-shadow:0 4px 0 var(--coral-dark);}
+  .btn.ghost{
+    background:transparent;
+    color:var(--coral-dark);
+    box-shadow:none;
+    border:2.5px solid var(--coral);
+  }
+  .btn.ghost:hover{background:var(--coral); color:var(--white);}
+  .nav .btn{display:none;}
+  @media(min-width:760px){ .nav .btn{display:inline-flex;} }
+
+  /* mobile nav links hide, keep simple */
+  @media(max-width:759px){
+    .nav-links{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:64px 0 40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+  }
+  @media(max-width:860px){
+    .hero .wrap{grid-template-columns:1fr; text-align:center;}
+    .hero-art{order:-1;}
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--pink);
+    color:var(--coral-dark);
+    font-weight:700;
+    font-family:'Baloo 2',sans-serif;
+    padding:8px 18px;
+    border-radius:999px;
+    font-size:0.85rem;
+    letter-spacing:0.02em;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5.2vw, 3.8rem);
+    color:var(--coral-dark);
+  }
+  .hero h1 span{color:var(--turquoise);}
+  .hero p.lead{
+    font-size:1.2rem;
+    margin-top:18px;
+    max-width:480px;
+    color:#5a4a58;
+  }
+  @media(max-width:860px){ .hero p.lead{margin-left:auto; margin-right:auto;} }
+  .hero-ctas{
+    display:flex;
+    gap:14px;
+    margin-top:30px;
+    flex-wrap:wrap;
+  }
+  @media(max-width:860px){ .hero-ctas{justify-content:center;} }
+  .hero-tags{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:28px;
+  }
+  @media(max-width:860px){ .hero-tags{justify-content:center;} }
+  .tag{
+    background:var(--white);
+    border:2px solid var(--cream-2);
+    padding:7px 14px;
+    border-radius:999px;
+    font-size:0.85rem;
+    font-weight:600;
+    color:var(--turquoise);
+  }
+  .hero-art{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .hero-art svg{
+    width:100%;
+    max-width:420px;
+    animation:sway 6s ease-in-out infinite;
+  }
+  @keyframes sway{
+    0%,100%{transform:rotate(-2deg);}
+    50%{transform:rotate(2deg);}
+  }
+
+  /* ---------- SECTION LABEL ---------- */
+  .section-head{
+    text-align:center;
+    max-width:620px;
+    margin:0 auto 46px;
+  }
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{
+    font-size:clamp(1.8rem, 3.6vw, 2.6rem);
+  }
+  .section-head p{
+    color:#5a4a58;
+    font-size:1.05rem;
+    margin-top:12px;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    background:var(--white);
+    padding:70px 0 80px;
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:50px;
+    align-items:center;
+  }
+  @media(max-width:820px){ .about-grid{grid-template-columns:1fr;} }
+  .about-portrait{
+    background:linear-gradient(160deg, var(--pink), var(--sunny));
+    border-radius:var(--radius-lg);
+    padding:26px;
+    display:flex;
+    justify-content:center;
+  }
+  .about-portrait svg{width:100%; max-width:280px;}
+  .about-text h3{
+    font-size:1.6rem;
+    color:var(--coral-dark);
+    margin-bottom:14px;
+  }
+  .about-text p{
+    color:#5a4a58;
+    font-size:1.05rem;
+    line-height:1.7;
+    margin-bottom:14px;
+  }
+  .signature{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    color:var(--turquoise);
+    font-size:1.15rem;
+    margin-top:20px;
+  }
+
+  /* ---------- GALLERY ---------- */
+  .gallery{
+    padding:80px 0;
+    background:var(--cream-2);
+  }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:22px;
+  }
+  @media(max-width:900px){ .gallery-grid{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:480px){ .gallery-grid{grid-template-columns:1fr;} }
+  .card{
+    background:var(--white);
+    border-radius:var(--radius-md);
+    padding:22px 18px 20px;
+    text-align:center;
+    box-shadow:0 8px 24px rgba(59,42,58,0.08);
+    transition:transform .2s ease, box-shadow .2s ease;
+    border:2px solid transparent;
+  }
+  .card:hover{
+    transform:translateY(-6px) rotate(-1deg);
+    box-shadow:0 14px 30px rgba(59,42,58,0.14);
+    border-color:var(--sunny);
+  }
+  .card .icon-wrap{
+    width:100%;
+    aspect-ratio:1/1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:14px;
+  }
+  .card .icon-wrap svg{width:78%;}
+  .card h4{
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    color:var(--plum);
+    font-size:1.05rem;
+    margin-bottom:6px;
+  }
+  .card p{
+    font-size:0.9rem;
+    color:#7a6a78;
+    margin:0;
+  }
+  .gallery-note{
+    text-align:center;
+    margin-top:38px;
+    color:#5a4a58;
+    font-size:0.95rem;
+  }
+  .gallery-note a{
+    color:var(--coral-dark);
+    font-weight:700;
+    border-bottom:2px dashed var(--coral);
+  }
+
+  /* ---------- PROCESS ---------- */
+  .process{
+    padding:80px 0;
+    background:var(--white);
+  }
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:26px;
+    counter-reset:step;
+  }
+  @media(max-width:900px){ .steps{grid-template-columns:repeat(2,1fr);} }
+  @media(max-width:520px){ .steps{grid-template-columns:1fr;} }
+  .step{
+    position:relative;
+    background:var(--cream);
+    border-radius:var(--radius-md);
+    padding:30px 22px 24px;
+  }
+  .step .num{
+    font-family:'Baloo 2',sans-serif;
+    font-weight:800;
+    font-size:2.2rem;
+    color:var(--sunny);
+    -webkit-text-stroke:2px var(--coral-dark);
+    margin-bottom:10px;
+    display:block;
+  }
+  .step h4{
+    font-family:'Baloo 2',sans-serif;
+    font-size:1.1rem;
+    margin-bottom:8px;
+    color:var(--plum);
+  }
+  .step p{
+    color:#5a4a58;
+    font-size:0.92rem;
+    margin:0;
+    line-height:1.55;
+  }
+
+  /* ---------- TESTIMONIOS ---------- */
+  .testimonials{
+    padding:80px 0;
+    background:linear-gradient(180deg, var(--turquoise) 0%, #278a80 100%);
+    color:var(--white);
+  }
+  .testimonials .section-head h2, .testimonials .eyebrow{color:var(--white);}
+  .testimonials .eyebrow{background:rgba(255,255,255,0.18); color:var(--white);}
+  .testimonials .section-head p{color:rgba(255,255,255,0.85);}
+  .t-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+  }
+  @media(max-width:820px){ .t-grid{grid-template-columns:1fr;} }
+  .t-card{
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.25);
+    border-radius:var(--radius-md);
+    padding:26px 22px;
+  }
+  .t-card p.quote{
+    font-size:1rem;
+    line-height:1.6;
+    margin-bottom:16px;
+  }
+  .t-card .who{
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    font-size:0.95rem;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .stars{color:var(--sunny); letter-spacing:2px; margin-bottom:10px; display:block;}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    padding:90px 0;
+    text-align:center;
+    background:var(--cream);
+    position:relative;
+  }
+  .cta-final h2{
+    font-size:clamp(1.9rem, 4vw, 2.8rem);
+    color:var(--coral-dark);
+    margin-bottom:16px;
+  }
+  .cta-final p{
+    color:#5a4a58;
+    font-size:1.1rem;
+    max-width:520px;
+    margin:0 auto 30px;
+  }
+  .cta-buttons{
+    display:flex;
+    gap:16px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--plum);
+    color:var(--cream);
+    padding:50px 0 26px;
+  }
+  .foot-grid{
+    display:flex;
+    justify-content:space-between;
+    gap:30px;
+    flex-wrap:wrap;
+    padding-bottom:30px;
+    border-bottom:1px dashed rgba(255,248,236,0.25);
+  }
+  .foot-logo{
+    font-family:'Baloo 2',sans-serif;
+    font-weight:800;
+    font-size:1.3rem;
+    color:var(--sunny);
+    margin-bottom:10px;
+  }
+  footer p{color:rgba(255,248,236,0.7); font-size:0.92rem; max-width:280px; line-height:1.6;}
+  .foot-links h5, .foot-contact h5{
+    font-family:'Baloo 2',sans-serif;
+    color:var(--pink);
+    font-size:0.95rem;
+    margin-bottom:12px;
+  }
+  .foot-links a, .foot-contact a{
+    display:block;
+    color:rgba(255,248,236,0.85);
+    font-size:0.92rem;
+    margin-bottom:8px;
+  }
+  .foot-links a:hover, .foot-contact a:hover{color:var(--sunny);}
+  .foot-bottom{
+    text-align:center;
+    padding-top:22px;
+    font-size:0.82rem;
+    color:rgba(255,248,236,0.5);
+  }
+
+  /* ---------- WHATSAPP FLOAT ---------- */
+  .float-wa{
+    position:fixed;
+    bottom:22px;
+    right:22px;
+    z-index:60;
+    background:#25D366;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.25);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 8px 20px rgba(37,211,102,0.35);}
+    50%{box-shadow:0 8px 28px rgba(37,211,102,0.6);}
+  }
+  .float-wa svg{width:30px; height:30px;}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header>
+  <nav class="nav">
+    <a href="#top" class="logo">
+      <svg class="needle" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="19" fill="#F4B93E"/>
+        <path d="M12 24C14 18 18 14 24 12" stroke="#3B2A3A" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="2.5 3.5"/>
+        <circle cx="24" cy="12" r="2.4" fill="#E85A45"/>
+        <circle cx="12" cy="24" r="1.6" fill="#2FA79B"/>
+      </svg>
+      Wildo Kostura
+    </a>
+    <div class="nav-links">
+      <a href="#sobre">Sobre mí</a>
+      <a href="#galeria">Galería</a>
+      <a href="#proceso">Cómo encargar</a>
+      <a href="#opiniones">Opiniones</a>
+    </div>
+    <a class="btn small" href="https://wa.me/34600000000?text=Hola%20Roc%C3%ADo%2C%20vengo%20de%20tu%20web%20y%20quiero%20hacer%20un%20encargo" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">🧵 Hecho a mano, hilo a hilo</span>
+      <h1>Muñecos con <span>alma</span>,<br>piezas que <span>nadie más</span> tiene.</h1>
+      <p class="lead">Soy Rocío, y en Wildo Kostura transformo telas e imaginación en muñecos y accesorios únicos, cosidos a mano y pensados para vos. Cada encargo es una pieza irrepetible.</p>
+      <div class="hero-ctas">
+        <a class="btn" href="https://wa.me/34600000000?text=Hola%20Roc%C3%ADo%2C%20quiero%20encargar%20un%20mu%C3%B1eco%20personalizado" target="_blank" rel="noopener">📩 Encargar por WhatsApp</a>
+        <a class="btn ghost" href="https://www.instagram.com/wildokostura/" target="_blank" rel="noopener">Ver en Instagram →</a>
+      </div>
+      <div class="hero-tags">
+        <span class="tag">🧸 Muñecos personalizados</span>
+        <span class="tag">🪡 Piezas únicas</span>
+        <span class="tag">🎁 Regalos con historia</span>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="200" cy="390" rx="120" ry="16" fill="#3B2A3A" opacity="0.08"/>
+        <!-- body -->
+        <rect x="130" y="190" width="140" height="150" rx="45" fill="#F2A6C4"/>
+        <rect x="130" y="190" width="140" height="150" rx="45" fill="url(#stripe)" opacity="0.5"/>
+        <!-- arms -->
+        <rect x="90" y="205" width="46" height="110" rx="23" fill="#F4B93E" transform="rotate(-14 90 205)"/>
+        <rect x="264" y="205" width="46" height="110" rx="23" fill="#F4B93E" transform="rotate(14 264 205)"/>
+        <!-- legs -->
+        <rect x="160" y="320" width="34" height="80" rx="17" fill="#2FA79B"/>
+        <rect x="206" y="320" width="34" height="80" rx="17" fill="#2FA79B"/>
+        <!-- head -->
+        <circle cx="200" cy="140" r="80" fill="#FCE8D5"/>
+        <!-- hair -->
+        <path d="M120 130C110 70 160 30 200 30C240 30 290 70 280 130C270 100 240 90 200 95C160 90 130 100 120 130Z" fill="#E85A45"/>
+        <!-- face -->
+        <path d="M168 148C168 140 176 140 176 148" stroke="#3B2A3A" stroke-width="4" stroke-linecap="round"/>
+        <path d="M224 148C224 140 232 140 232 148" stroke="#3B2A3A" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="150" cy="160" r="10" fill="#F2A6C4" opacity="0.7"/>
+        <circle cx="250" cy="160" r="10" fill="#F2A6C4" opacity="0.7"/>
+        <path d="M182 175C190 185 210 185 218 175" stroke="#C8442F" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <!-- stitch details on body -->
+        <path d="M150 210C170 205 230 205 250 210" stroke="#C8442F" stroke-width="2" stroke-dasharray="4 4" fill="none"/>
+        <path d="M150 320C170 325 230 325 250 320" stroke="#C8442F" stroke-width="2" stroke-dasharray="4 4" fill="none"/>
+        <!-- bow -->
+        <path d="M180 90 L200 105 L220 90 L215 115 L200 105 L185 115 Z" fill="#2FA79B"/>
+        <circle cx="200" cy="105" r="6" fill="#F4B93E"/>
+        <defs>
+          <pattern id="stripe" width="14" height="14" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+            <rect width="7" height="14" fill="#ffffff" opacity="0.25"/>
+          </pattern>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- STITCH DIVIDER -->
+<svg class="stitch" viewBox="0 0 1200 34" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 17 Q 30 0, 60 17 T 120 17 T 180 17 T 240 17 T 300 17 T 360 17 T 420 17 T 480 17 T 540 17 T 600 17 T 660 17 T 720 17 T 780 17 T 840 17 T 900 17 T 960 17 T 1020 17 T 1080 17 T 1140 17 T 1200 17"
+    stroke="#E85A45" stroke-width="3" fill="none" stroke-dasharray="6 8" stroke-linecap="round"/>
+</svg>
+
+<!-- ============ SOBRE MÍ ============ -->
+<section class="about" id="sobre">
+  <div class="wrap about-grid">
+    <div class="about-portrait">
+      <svg viewBox="0 0 260 300" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="130" cy="90" r="70" fill="#FCE8D5"/>
+        <path d="M62 90C55 40 100 15 130 15C160 15 205 40 198 90C185 60 165 50 130 52C95 50 75 60 62 90Z" fill="#3B2A3A"/>
+        <path d="M96 100C96 92 104 92 104 100" stroke="#3B2A3A" stroke-width="4" stroke-linecap="round"/>
+        <path d="M156 100C156 92 164 92 164 100" stroke="#3B2A3A" stroke-width="4" stroke-linecap="round"/>
+        <path d="M112 125C120 134 140 134 148 125" stroke="#C8442F" stroke-width="4" stroke-linecap="round" fill="none"/>
+        <circle cx="90" cy="112" r="9" fill="#F2A6C4" opacity="0.7"/>
+        <circle cx="170" cy="112" r="9" fill="#F2A6C4" opacity="0.7"/>
+        <rect x="55" y="165" width="150" height="120" rx="30" fill="#2FA79B"/>
+        <path d="M55 195C90 205 170 205 205 195" stroke="#FFF8EC" stroke-width="2" stroke-dasharray="4 5" fill="none"/>
+        <circle cx="80" cy="230" r="8" fill="#F4B93E"/>
+        <circle cx="130" cy="235" r="8" fill="#E85A45"/>
+        <circle cx="180" cy="230" r="8" fill="#F2A6C4"/>
+        <rect x="30" y="255" width="70" height="16" rx="8" fill="#F4B93E" transform="rotate(-8 30 255)"/>
+        <rect x="160" y="255" width="70" height="16" rx="8" fill="#F4B93E" transform="rotate(8 160 255)"/>
+      </svg>
+    </div>
+    <div class="about-text">
+      <span class="eyebrow">🙋🏻 Quién hace tus muñecos</span>
+      <h3>Hola, soy Rocío</h3>
+      <p>Detrás de cada Wildo hay horas de costura, retazos de tela elegidos con cariño y mucha imaginación. Empecé cosiendo muñecos para gente cercana y hoy cada pieza sale de mi taller pensada especialmente para quien la va a recibir.</p>
+      <p>No hay dos muñecos iguales: elegís colores, expresión, tamaño y esos detalles que hacen que sea el tuyo. Trabajo con telas resistentes y terminaciones cuidadas, para que sea una pieza que dure y que se pueda abrazar de verdad.</p>
+      <p class="signature">— Rocío, Wildo Kostura & Handmade</p>
+    </div>
+  </div>
+</section>
+
+<svg class="stitch" viewBox="0 0 1200 34" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 17 Q 30 34, 60 17 T 120 17 T 180 17 T 240 17 T 300 17 T 360 17 T 420 17 T 480 17 T 540 17 T 600 17 T 660 17 T 720 17 T 780 17 T 840 17 T 900 17 T 960 17 T 1020 17 T 1080 17 T 1140 17 T 1200 17"
+    stroke="#2FA79B" stroke-width="3" fill="none" stroke-dasharray="6 8" stroke-linecap="round"/>
+</svg>
+
+<!-- ============ GALERÍA ============ -->
+<section class="gallery" id="galeria">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">🧸 Lo que se puede encargar</span>
+      <h2>Cada pieza, un mundo distinto</h2>
+      <p>Esto es una muestra del estilo Wildo. Las fotos reales de cada muñeco terminado están en Instagram — ahí subo cada encargo apenas sale del taller.</p>
+    </div>
+    <div class="gallery-grid">
+
+      <div class="card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="80" cy="80" r="72" fill="#FFF1DC"/>
+            <rect x="55" y="70" width="50" height="60" rx="18" fill="#E85A45"/>
+            <circle cx="80" cy="45" r="30" fill="#FCE8D5"/>
+            <path d="M55 45C55 25 105 25 105 45" fill="#3B2A3A"/>
+            <path d="M70 48c0-4 6-4 6 0" stroke="#3B2A3A" stroke-width="3" stroke-linecap="round"/>
+            <path d="M84 48c0-4 6-4 6 0" stroke="#3B2A3A" stroke-width="3" stroke-linecap="round"/>
+            <path d="M72 58c4 5 12 5 16 0" stroke="#C8442F" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <rect x="35" y="80" width="18" height="45" rx="9" fill="#F4B93E"/>
+            <rect x="107" y="80" width="18" height="45" rx="9" fill="#F4B93E"/>
+          </svg>
+        </div>
+        <h4>Muñecos a medida</h4>
+        <p>Con la ropa, el pelo y la carita que seleccionás vos.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="80" cy="80" r="72" fill="#FFF1DC"/>
+            <ellipse cx="80" cy="95" rx="45" ry="30" fill="#2FA79B"/>
+            <circle cx="55" cy="70" r="20" fill="#2FA79B"/>
+            <circle cx="105" cy="70" r="20" fill="#2FA79B"/>
+            <path d="M60 90c0-3 5-3 5 0" stroke="#3B2A3A" stroke-width="3" stroke-linecap="round"/>
+            <path d="M95 90c0-3 5-3 5 0" stroke="#3B2A3A" stroke-width="3" stroke-linecap="round"/>
+            <ellipse cx="80" cy="100" rx="8" ry="5" fill="#3B2A3A"/>
+            <path d="M60 115c8 6 32 6 40 0" stroke="#FFF8EC" stroke-width="2" stroke-dasharray="3 4" fill="none"/>
+          </svg>
+        </div>
+        <h4>Animalitos de peluche</h4>
+        <p>Osos, conejos y criaturas inventadas, suaves y con carácter.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="80" cy="80" r="72" fill="#FFF1DC"/>
+            <path d="M50 50h60v55a30 30 0 01-60 0z" fill="#F2A6C4"/>
+            <circle cx="80" cy="45" r="12" fill="#F4B93E"/>
+            <path d="M50 75h60" stroke="#fff" stroke-width="2" stroke-dasharray="3 4"/>
+            <path d="M50 95h60" stroke="#fff" stroke-width="2" stroke-dasharray="3 4"/>
+          </svg>
+        </div>
+        <h4>Accesorios y llaveros</h4>
+        <p>Mini muñecos, llaveros y detalles tejidos para regalar.</p>
+      </div>
+
+      <div class="card">
+        <div class="icon-wrap">
+          <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="80" cy="80" r="72" fill="#FFF1DC"/>
+            <rect x="45" y="55" width="70" height="70" rx="16" fill="#F4B93E" transform="rotate(6 80 90)"/>
+            <circle cx="65" cy="80" r="6" fill="#3B2A3A"/>
+            <circle cx="95" cy="80" r="6" fill="#3B2A3A"/>
+            <path d="M62 100c10 8 26 8 36 0" stroke="#C8442F" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M40 60l14 14M120 60l-14 14" stroke="#E85A45" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h4>Piezas de colección</h4>
+        <p>Diseños de edición limitada, pensados para coleccionar.</p>
+      </div>
+
+    </div>
+    <p class="gallery-note">📸 Mirá el catálogo real y encargos entregados en <a href="https://www.instagram.com/wildokostura/" target="_blank" rel="noopener">@wildokostura</a></p>
+  </div>
+</section>
+
+<svg class="stitch" viewBox="0 0 1200 34" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 17 Q 30 0, 60 17 T 120 17 T 180 17 T 240 17 T 300 17 T 360 17 T 420 17 T 480 17 T 540 17 T 600 17 T 660 17 T 720 17 T 780 17 T 840 17 T 900 17 T 960 17 T 1020 17 T 1080 17 T 1140 17 T 1200 17"
+    stroke="#F4B93E" stroke-width="3" fill="none" stroke-dasharray="6 8" stroke-linecap="round"/>
+</svg>
+
+<!-- ============ PROCESO ============ -->
+<section class="process" id="proceso">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">🪡 Así se arma tu encargo</span>
+      <h2>De la idea a tus manos</h2>
+      <p>Un proceso simple para que tu muñeco quede exactamente como lo imaginás.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="num">1</span>
+        <h4>Me escribís</h4>
+        <p>Por WhatsApp o Instagram me contás qué tenés en mente: tipo de muñeco, tamaño y ocasión.</p>
+      </div>
+      <div class="step">
+        <span class="num">2</span>
+        <h4>Definimos el diseño</h4>
+        <p>Elegimos juntas telas, colores y detalles. Te muestro referencias antes de empezar a coser.</p>
+      </div>
+      <div class="step">
+        <span class="num">3</span>
+        <h4>Coso tu pieza</h4>
+        <p>Cada muñeco se hace a mano, con tiempo. Te voy mostrando el avance del taller.</p>
+      </div>
+      <div class="step">
+        <span class="num">4</span>
+        <h4>Lo recibís</h4>
+        <p>Coordinamos entrega o envío, y tu pieza única llega lista para abrazar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIOS ============ -->
+<section class="testimonials" id="opiniones">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">💬 Lo que dicen quienes ya encargaron</span>
+      <h2>Historias cosidas con cariño</h2>
+    </div>
+    <div class="t-grid">
+      <div class="t-card">
+        <span class="stars">★★★★★</span>
+        <p class="quote">Le encargué un muñeco parecido a mi hija y quedó igualito, hasta el moño del pelo. Se nota el detalle en cada puntada.</p>
+        <div class="who">🧵 Cliente de Wildo Kostura</div>
+      </div>
+      <div class="t-card">
+        <span class="stars">★★★★★</span>
+        <p class="quote">Fue un regalo de cumpleaños y superó lo que esperaba. La comunicación durante el proceso fue muy clara.</p>
+        <div class="who">🧵 Cliente de Wildo Kostura</div>
+      </div>
+      <div class="t-card">
+        <span class="stars">★★★★★</span>
+        <p class="quote">Se nota que cada pieza está hecha con tiempo y cuidado. Ya es el segundo muñeco que le encargo.</p>
+        <div class="who">🧵 Cliente de Wildo Kostura</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="stitch flip" viewBox="0 0 1200 34" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M0 17 Q 30 0, 60 17 T 120 17 T 180 17 T 240 17 T 300 17 T 360 17 T 420 17 T 480 17 T 540 17 T 600 17 T 660 17 T 720 17 T 780 17 T 840 17 T 900 17 T 960 17 T 1020 17 T 1080 17 T 1140 17 T 1200 17"
+    stroke="#2FA79B" stroke-width="3" fill="none" stroke-dasharray="6 8" stroke-linecap="round"/>
+</svg>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="cta-final">
+  <div class="wrap">
+    <h2>¿Le ponemos hilo a tu idea?</h2>
+    <p>Contame qué muñeco tenés en mente y lo armamos juntas, paso a paso, hasta que sea perfecto.</p>
+    <div class="cta-buttons">
+      <a class="btn" href="https://wa.me/34600000000?text=Hola%20Roc%C3%ADo%2C%20vengo%20de%20tu%20web%20y%20quiero%20hacer%20un%20encargo" target="_blank" rel="noopener">📩 Encargar por WhatsApp</a>
+      <a class="btn ghost" href="https://www.instagram.com/wildokostura/" target="_blank" rel="noopener">✉️ Escribir por MD en Instagram</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">Wildo Kostura</div>
+        <p>Entre telas e imaginación. Muñecos y accesorios hechos a mano, piezas únicas y personalizadas.</p>
+      </div>
+      <div class="foot-links">
+        <h5>Explorar</h5>
+        <a href="#sobre">Sobre mí</a>
+        <a href="#galeria">Galería</a>
+        <a href="#proceso">Cómo encargar</a>
+        <a href="#opiniones">Opiniones</a>
+      </div>
+      <div class="foot-contact">
+        <h5>Contacto</h5>
+        <a href="https://www.instagram.com/wildokostura/" target="_blank" rel="noopener">📷 @wildokostura</a>
+        <a href="https://wa.me/34600000000" target="_blank" rel="noopener">💬 WhatsApp</a>
+      </div>
+    </div>
+    <div class="foot-bottom">© 2026 Wildo Kostura & Handmade — Hecho con hilo, tela y mucho cariño.</div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOTANTE -->
+<a class="float-wa" href="https://wa.me/34600000000?text=Hola%20Roc%C3%ADo%2C%20quiero%20hacer%20un%20encargo" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 32 32" fill="white" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 2C8.3 2 2 8.3 2 16c0 2.6.7 5 1.9 7.1L2 30l7.1-1.9C11.1 29.3 13.5 30 16 30c7.7 0 14-6.3 14-14S23.7 2 16 2zm0 25.5c-2.3 0-4.4-.6-6.3-1.7l-.4-.3-4.2 1.1 1.1-4.1-.3-.4C4.6 20.3 4 18.2 4 16 4 9.4 9.4 4 16 4s12 5.4 12 12-5.4 11.5-12 11.5zm6.6-8.9c-.4-.2-2.1-1-2.4-1.2-.3-.1-.6-.2-.8.2-.2.4-.9 1.2-1.1 1.4-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.5-.6.2-.2.2-.4.4-.6.1-.2.1-.5 0-.7-.1-.2-.8-2-1.1-2.7-.3-.7-.6-.6-.8-.6h-.7c-.2 0-.6.1-.9.4-.3.4-1.2 1.2-1.2 2.8s1.2 3.3 1.4 3.5c.2.2 2.4 3.6 5.7 5 .8.3 1.4.5 1.9.7.8.2 1.5.2 2 .1.6-.1 2.1-.8 2.4-1.6.3-.8.3-1.5.2-1.6-.1-.2-.3-.3-.6-.4z"/>
+  </svg>
+</a>
+
+</body>
+</html>
