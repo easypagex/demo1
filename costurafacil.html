@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Costura Fácil con Lilibeth | Aprende a coser bonito y sin miedo</title>
+<meta name="description" content="Clases, tips y asesorías de costura con Lilibeth. Aprende a coser fácil, bonito y a tu ritmo. 🧵">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Caveat:wght@600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFF8F0;
+    --cream-2:#FFF1E1;
+    --pink:#F0447D;
+    --pink-dark:#C62E5F;
+    --turquoise:#0FA99B;
+    --turquoise-dark:#0B8478;
+    --mustard:#FFB627;
+    --mustard-dark:#E29A0A;
+    --purple:#8B5FBF;
+    --navy:#1C3A4A;
+    --white:#FFFFFF;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Nunito', sans-serif;
+    background:var(--cream);
+    color:var(--navy);
+    overflow-x:hidden;
+  }
+
+  h1,h2,h3{
+    font-family:'Fredoka', sans-serif;
+    font-weight:600;
+    line-height:1.15;
+  }
+
+  .tag{
+    font-family:'Caveat', cursive;
+    font-weight:700;
+  }
+
+  a{text-decoration:none;color:inherit;}
+  ul{list-style:none;}
+  img{max-width:100%;display:block;}
+
+  .wrap{
+    max-width:1140px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ---------- STITCH DIVIDER (signature element) ---------- */
+  .stitch-divider{
+    width:100%;
+    height:22px;
+    background-repeat:repeat-x;
+    background-size:34px 22px;
+    background-position:center;
+  }
+  .stitch-divider.c1{background-image:radial-gradient(circle, var(--pink) 3px, transparent 3.5px);}
+  .stitch-divider.c2{background-image:radial-gradient(circle, var(--turquoise) 3px, transparent 3.5px);}
+  .stitch-divider.c3{background-image:radial-gradient(circle, var(--mustard) 3px, transparent 3.5px);}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:var(--cream);
+    border-bottom:3px dashed var(--pink);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    max-width:1140px;
+    margin:0 auto;
+  }
+  .logo{
+    font-family:'Fredoka', sans-serif;
+    font-weight:700;
+    font-size:1.4rem;
+    color:var(--pink-dark);
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .logo span{color:var(--turquoise-dark);}
+  .nav-links{
+    display:flex;
+    gap:28px;
+    align-items:center;
+    font-weight:700;
+  }
+  .nav-links a{
+    position:relative;
+    padding:4px 2px;
+    transition:color .2s;
+  }
+  .nav-links a::after{
+    content:"";
+    position:absolute;
+    left:0;bottom:-4px;
+    width:0%;
+    height:3px;
+    background:var(--mustard);
+    transition:width .25s ease;
+  }
+  .nav-links a:hover{color:var(--pink-dark);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--pink);
+    color:var(--white)!important;
+    padding:10px 20px;
+    border-radius:30px;
+    font-weight:800;
+    box-shadow:3px 3px 0 var(--navy);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .nav-cta:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--navy);}
+
+  .menu-btn{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    background:none;
+    border:none;
+    cursor:pointer;
+  }
+  .menu-btn span{
+    width:26px;height:3px;background:var(--navy);border-radius:2px;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:80px 24px 60px;
+    background:
+      radial-gradient(circle at 8% 20%, rgba(240,68,125,0.10) 0, transparent 40%),
+      radial-gradient(circle at 92% 15%, rgba(15,169,155,0.12) 0, transparent 40%),
+      radial-gradient(circle at 85% 85%, rgba(255,182,39,0.14) 0, transparent 45%);
+    overflow:hidden;
+  }
+  .hero-inner{
+    max-width:1140px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:50px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--white);
+    border:2px dashed var(--turquoise);
+    color:var(--turquoise-dark);
+    font-weight:800;
+    padding:8px 16px;
+    border-radius:30px;
+    font-size:.95rem;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:3.1rem;
+    color:var(--navy);
+  }
+  .hero h1 .hl-pink{color:var(--pink);}
+  .hero h1 .hl-turq{color:var(--turquoise-dark);}
+  .hero p.lead{
+    margin-top:20px;
+    font-size:1.15rem;
+    max-width:520px;
+    color:#3a5464;
+  }
+  .hero-ctas{
+    margin-top:32px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-weight:800;
+    padding:14px 26px;
+    border-radius:40px;
+    font-size:1rem;
+    cursor:pointer;
+    border:3px solid var(--navy);
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .btn-primary{
+    background:var(--pink);
+    color:var(--white);
+    box-shadow:4px 4px 0 var(--navy);
+  }
+  .btn-primary:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--navy);}
+  .btn-secondary{
+    background:var(--white);
+    color:var(--navy);
+    box-shadow:4px 4px 0 var(--mustard-dark);
+  }
+  .btn-secondary:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--mustard-dark);}
+
+  .hoop{
+    position:relative;
+    width:340px;
+    height:340px;
+    margin:0 auto;
+    border-radius:50%;
+    border:14px solid var(--mustard);
+    box-shadow: 0 0 0 6px var(--cream), 0 0 0 9px var(--pink);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg, #ffe1ec 0%, #d9f5f0 100%);
+  }
+  .hoop-inner{
+    font-size:6.5rem;
+    filter:drop-shadow(2px 3px 0 rgba(0,0,0,0.08));
+  }
+  .hoop-tag{
+    position:absolute;
+    bottom:-18px;
+    right:10px;
+    background:var(--white);
+    border:2px dashed var(--purple);
+    color:var(--purple);
+    padding:8px 16px;
+    border-radius:20px;
+    font-family:'Caveat',cursive;
+    font-size:1.3rem;
+    font-weight:700;
+    transform:rotate(-4deg);
+    box-shadow:3px 3px 0 rgba(0,0,0,0.06);
+  }
+
+  /* ---------- SECTION TITLES ---------- */
+  .section{padding:80px 0;}
+  .section-title{
+    text-align:center;
+    max-width:640px;
+    margin:0 auto 50px;
+  }
+  .section-title .tag{
+    color:var(--pink);
+    font-size:1.5rem;
+    display:block;
+    margin-bottom:6px;
+  }
+  .section-title h2{
+    font-size:2.3rem;
+    color:var(--navy);
+  }
+  .section-title p{
+    margin-top:14px;
+    color:#4a6472;
+    font-size:1.05rem;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{
+    background:var(--white);
+  }
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:56px;
+    align-items:center;
+  }
+  .about-photo{
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:50%;
+    border:10px dashed var(--turquoise);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(160deg, #fff3d6, #ffe0ea);
+    font-size:5rem;
+    margin:0 auto;
+    max-width:320px;
+  }
+  .about-text h2{
+    font-size:2rem;
+    margin-bottom:16px;
+    color:var(--pink-dark);
+  }
+  .about-text p{
+    margin-bottom:14px;
+    color:#3a5464;
+    font-size:1.05rem;
+  }
+  .about-badges{
+    display:flex;
+    gap:14px;
+    margin-top:22px;
+    flex-wrap:wrap;
+  }
+  .badge{
+    background:var(--cream-2);
+    border:2px solid var(--mustard);
+    padding:8px 16px;
+    border-radius:20px;
+    font-weight:800;
+    font-size:.9rem;
+    color:var(--navy);
+  }
+
+  /* ---------- SERVICIOS ---------- */
+  .servicios{background:var(--cream-2);}
+  .cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  .card{
+    background:var(--white);
+    border-radius:22px;
+    padding:34px 26px;
+    position:relative;
+    border:3px solid var(--navy);
+    box-shadow:6px 6px 0 var(--navy);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{transform:translate(-4px,-4px);box-shadow:10px 10px 0 var(--navy);}
+  .card .spool{
+    width:56px;height:56px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.7rem;
+    margin-bottom:18px;
+    border:3px solid var(--navy);
+  }
+  .card:nth-child(1) .spool{background:var(--pink);}
+  .card:nth-child(2) .spool{background:var(--turquoise);}
+  .card:nth-child(3) .spool{background:var(--mustard);}
+  .card h3{font-size:1.3rem;margin-bottom:10px;color:var(--navy);}
+  .card p{color:#4a6472;font-size:.98rem;margin-bottom:14px;}
+  .card .price-tag{
+    font-family:'Caveat',cursive;
+    font-size:1.2rem;
+    font-weight:700;
+    color:var(--pink-dark);
+  }
+
+  /* ---------- BENEFICIOS ---------- */
+  .beneficios{background:var(--white);}
+  .ben-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:22px;
+  }
+  .ben-item{
+    display:flex;
+    gap:16px;
+    align-items:flex-start;
+    padding:20px;
+    border-radius:16px;
+    background:var(--cream);
+  }
+  .ben-item .icon{
+    flex:none;
+    width:44px;height:44px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.3rem;
+    background:var(--white);
+    border:3px dashed var(--purple);
+  }
+  .ben-item h4{font-size:1.05rem;margin-bottom:4px;color:var(--navy);}
+  .ben-item p{font-size:.92rem;color:#4a6472;}
+
+  /* ---------- GALERIA ---------- */
+  .galeria{background:var(--navy);color:var(--cream);}
+  .galeria .section-title h2{color:var(--white);}
+  .galeria .section-title p{color:#c9dbe2;}
+  .galeria .section-title .tag{color:var(--mustard);}
+  .gal-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:18px;
+  }
+  .gal-item{
+    aspect-ratio:1/1;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:2.6rem;
+    border:3px solid rgba(255,255,255,0.15);
+    transition:transform .2s ease;
+  }
+  .gal-item:hover{transform:scale(1.05) rotate(-2deg);}
+  .gal-item:nth-child(1){background:#F0447D;}
+  .gal-item:nth-child(2){background:#0FA99B;}
+  .gal-item:nth-child(3){background:#FFB627;}
+  .gal-item:nth-child(4){background:#8B5FBF;}
+  .gal-item:nth-child(5){background:#0FA99B;}
+  .gal-item:nth-child(6){background:#FFB627;}
+  .gal-item:nth-child(7){background:#F0447D;}
+  .gal-item:nth-child(8){background:#8B5FBF;}
+  .gal-cta{
+    text-align:center;
+    margin-top:36px;
+  }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    padding:90px 24px;
+    background:linear-gradient(120deg, var(--pink) 0%, var(--purple) 55%, var(--turquoise) 100%);
+    text-align:center;
+    color:var(--white);
+  }
+  .cta-final h2{
+    font-size:2.4rem;
+    margin-bottom:16px;
+  }
+  .cta-final p{
+    max-width:560px;
+    margin:0 auto 30px;
+    font-size:1.1rem;
+    opacity:.95;
+  }
+  .contact-buttons{
+    display:flex;
+    gap:18px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .contact-buttons a{
+    background:var(--white);
+    color:var(--navy);
+    padding:15px 28px;
+    border-radius:40px;
+    font-weight:800;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    box-shadow:4px 4px 0 rgba(28,58,74,0.5);
+    transition:transform .15s ease;
+  }
+  .contact-buttons a:hover{transform:translateY(-3px);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--navy);
+    color:#c9dbe2;
+    padding:40px 24px 30px;
+    text-align:center;
+    font-size:.9rem;
+  }
+  footer .logo{color:var(--mustard);justify-content:center;margin-bottom:10px;}
+  footer .logo span{color:var(--turquoise);}
+  footer .foot-links{
+    display:flex;
+    gap:20px;
+    justify-content:center;
+    margin:14px 0;
+    flex-wrap:wrap;
+  }
+  footer .foot-links a{font-weight:700;color:var(--cream);}
+  footer .foot-links a:hover{color:var(--mustard);}
+
+  /* ---------- REVEAL ANIMATION ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal.in{
+    opacity:1;
+    transform:translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:900px){
+    .hero-inner{grid-template-columns:1fr;text-align:center;}
+    .hero p.lead{margin-left:auto;margin-right:auto;}
+    .hero-ctas{justify-content:center;}
+    .about-grid{grid-template-columns:1fr;}
+    .cards{grid-template-columns:1fr;}
+    .ben-grid{grid-template-columns:1fr;}
+    .gal-grid{grid-template-columns:repeat(2,1fr);}
+    .nav-links{
+      position:fixed;
+      top:64px;left:0;right:0;
+      background:var(--cream);
+      flex-direction:column;
+      padding:20px 24px 30px;
+      border-bottom:3px dashed var(--pink);
+      transform:translateY(-130%);
+      transition:transform .25s ease;
+      gap:18px;
+    }
+    .nav-links.open{transform:translateY(0);}
+    .menu-btn{display:flex;}
+  }
+  @media (max-width:520px){
+    .hero h1{font-size:2.2rem;}
+    .hoop{width:250px;height:250px;}
+    .hoop-inner{font-size:4.5rem;}
+    .gal-grid{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#inicio" class="logo">🧵 Costura Fácil <span>con Lilibeth</span></a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#contenido">Tips</a></li>
+      <li><a href="#contacto" class="nav-cta">Escríbeme</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">🇨🇴 Digital creator · Costura para todas</span>
+      <h1>Aprende a <span class="hl-pink">coser bonito</span>, <span class="hl-turq">fácil</span> y sin miedo a la aguja</h1>
+      <p class="lead">Soy Lilibeth y te enseño costura paso a paso: desde tu primera puntada hasta esas prendas que sueñas hacer con tus propias manos. Clases, tips y acompañamiento personalizado.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#contacto">Quiero empezar a coser 🧵</a>
+        <a class="btn btn-secondary" href="https://www.instagram.com/costurafacilconlilibeth/" target="_blank" rel="noopener">Ver tips en Instagram</a>
+      </div>
+    </div>
+    <div>
+      <div class="hoop">
+        <div class="hoop-inner">🧵</div>
+        <div class="hoop-tag">¡hola, soy Lilibeth!</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stitch-divider c1"></div>
+
+<section class="section about" id="sobre-mi">
+  <div class="wrap">
+    <div class="about-grid reveal">
+      <div class="about-photo">🪡</div>
+      <div class="about-text">
+        <h2>Coser no debería dar miedo</h2>
+        <p>Llevo años compartiendo tips y trucos de costura en redes, ayudando a cientos de personas a perderle el miedo a la máquina y a animarse a crear con sus manos.</p>
+        <p>Ya seas principiante total o quieras perfeccionar tus puntadas, mi meta es que salgas de cada clase con una técnica nueva y muchas ganas de seguir cosiendo.</p>
+        <div class="about-badges">
+          <span class="badge">🧵 Costura desde cero</span>
+          <span class="badge">✂️ Técnicas fáciles</span>
+          <span class="badge">💛 Trato cercano</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stitch-divider c2"></div>
+
+<section class="section servicios" id="servicios">
+  <div class="wrap">
+    <div class="section-title reveal">
+      <span class="tag">lo que puedo hacer por ti</span>
+      <h2>Servicios pensados para que aprendas a tu ritmo</h2>
+      <p>Escoge la forma en la que quieres avanzar con tu costura y hablamos por Instagram o correo para armar el plan perfecto para ti.</p>
+    </div>
+    <div class="cards">
+      <div class="card reveal">
+        <div class="spool">🧵</div>
+        <h3>Tips y trucos gratis</h3>
+        <p>Contenido semanal en Instagram y Facebook con trucos rápidos para coser mejor, arreglar prendas y resolver esos "problemitas" de costura.</p>
+        <span class="price-tag">sígueme y aprende sin costo</span>
+      </div>
+      <div class="card reveal">
+        <div class="spool">✂️</div>
+        <h3>Clases personalizadas</h3>
+        <p>Sesiones uno a uno o en grupo pequeño, adaptadas a tu nivel: desde manejo de máquina hasta confección de tus propias prendas.</p>
+        <span class="price-tag">cupos limitados cada mes</span>
+      </div>
+      <div class="card reveal">
+        <div class="spool">📐</div>
+        <h3>Asesoría de proyectos</h3>
+        <p>¿Tienes un proyecto de costura entre manos? Te acompaño a resolver moldes, telas y técnicas para que quede como lo imaginaste.</p>
+        <span class="price-tag">agenda tu asesoría</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stitch-divider c3"></div>
+
+<section class="section beneficios">
+  <div class="wrap">
+    <div class="section-title reveal">
+      <span class="tag">¿por qué coser conmigo?</span>
+      <h2>Aprender costura también puede ser divertido</h2>
+    </div>
+    <div class="ben-grid">
+      <div class="ben-item reveal">
+        <div class="icon">🌱</div>
+        <div><h4>Empiezas desde donde estás</h4><p>Sin experiencia previa, sin equipo costoso: comenzamos con lo que ya tienes.</p></div>
+      </div>
+      <div class="ben-item reveal">
+        <div class="icon">💬</div>
+        <div><h4>Acompañamiento cercano</h4><p>Respondo tus dudas directamente, sin clases genéricas ni videos fríos.</p></div>
+      </div>
+      <div class="ben-item reveal">
+        <div class="icon">🎯</div>
+        <div><h4>Enfocado en resultados</h4><p>Cada clase o tip tiene un objetivo claro: que salgas cosiendo algo real.</p></div>
+      </div>
+      <div class="ben-item reveal">
+        <div class="icon">🇨🇴</div>
+        <div><h4>Contenido en español</h4><p>Explicaciones claras, sencillas y pensadas para nuestra forma de hablar y coser.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section galeria" id="contenido">
+  <div class="wrap">
+    <div class="section-title reveal">
+      <span class="tag">directo de mi Instagram</span>
+      <h2>Un poco de lo que encontrarás en mis redes</h2>
+      <p>Tips, trucos y proyectos de costura compartidos cada semana.</p>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item reveal">🧵</div>
+      <div class="gal-item reveal">🪡</div>
+      <div class="gal-item reveal">✂️</div>
+      <div class="gal-item reveal">👗</div>
+      <div class="gal-item reveal">🧶</div>
+      <div class="gal-item reveal">📏</div>
+      <div class="gal-item reveal">🪢</div>
+      <div class="gal-item reveal">🧷</div>
+    </div>
+    <div class="gal-cta reveal">
+      <a class="btn btn-primary" href="https://www.instagram.com/costurafacilconlilibeth/" target="_blank" rel="noopener">Ver todo en Instagram →</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final" id="contacto">
+  <div class="wrap">
+    <h2 class="reveal">¿Lista o listo para empezar a coser?</h2>
+    <p class="reveal">Escríbeme y cuéntame qué te gustaría aprender o qué proyecto tienes en mente. Con gusto te cuento cómo trabajamos juntas.</p>
+    <div class="contact-buttons reveal">
+      <a href="mailto:costuraconlilibethcontacto@gmail.com">✉️ Escríbeme por correo</a>
+      <a href="https://www.instagram.com/costurafacilconlilibeth/" target="_blank" rel="noopener">📸 Instagram</a>
+      <a href="https://www.facebook.com/costurafacilconlilibeth" target="_blank" rel="noopener">👍 Facebook</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="#inicio" class="logo">🧵 Costura Fácil <span>con Lilibeth</span></a>
+  <p>Tips y trucos de costura · Digital creator 🇨🇴</p>
+  <div class="foot-links">
+    <a href="https://www.instagram.com/costurafacilconlilibeth/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://www.facebook.com/costurafacilconlilibeth" target="_blank" rel="noopener">Facebook</a>
+    <a href="mailto:costuraconlilibethcontacto@gmail.com">costuraconlilibethcontacto@gmail.com</a>
+  </div>
+  <p>© 2026 Costura Fácil con Lilibeth. Hecho con 💛 y mucho hilo.</p>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  menuBtn.addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('in');
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
