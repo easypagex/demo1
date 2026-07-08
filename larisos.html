@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LARISOS | Tienda Matera — Mates, bombillas y kits con envíos a todo el país</title>
+<meta name="description" content="LARISOS, tienda matera de Flor en Joaquín V. González. Mates artesanales, bombillas y kits para regalo. Envíos a todo el país. Mates primero, todo después.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧉</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Work+Sans:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF1DE;
+    --cream-2:#F4E6C8;
+    --green:#4C7A2E;
+    --green-dark:#365A1E;
+    --rust:#C4531E;
+    --rust-dark:#9C3E13;
+    --gold:#EFAA0F;
+    --plum:#7A2740;
+    --ink:#2C1D12;
+    --paper:#FFFBF2;
+    --shadow: 6px 6px 0px rgba(44,29,18,0.14);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Work Sans', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    overflow-x:hidden;
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important;}
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    line-height:1.05;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px;}
+  .eyebrow{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.72rem;
+    font-weight:700;
+  }
+  ::selection{background:var(--gold);color:var(--ink);}
+  :focus-visible{outline:3px solid var(--rust); outline-offset:3px;}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:100;
+    background:rgba(251,241,222,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:2px solid var(--ink);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 24px;
+    max-width:1180px; margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:1.5rem;
+    letter-spacing:0.06em;
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo span{color:var(--rust);}
+  .nav-links{
+    display:flex; gap:32px; align-items:center;
+    font-weight:600; font-size:0.95rem;
+  }
+  .nav-links a{position:relative; padding:4px 0;}
+  .nav-links a::after{
+    content:''; position:absolute; left:0; bottom:0; width:0; height:2px;
+    background:var(--rust); transition:width 0.25s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--green); color:var(--paper);
+    padding:10px 20px; border-radius:100px;
+    font-weight:700; font-size:0.9rem;
+    border:2px solid var(--ink);
+    box-shadow:3px 3px 0 var(--ink);
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--ink);}
+  .burger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;}
+  .burger span{width:26px; height:3px; background:var(--ink); border-radius:2px; transition:0.3s;}
+  .mobile-menu{display:none;}
+
+  @media (max-width:860px){
+    .nav-links, .nav-cta.desktop-only{display:none;}
+    .burger{display:flex;}
+    .mobile-menu{
+      display:none; flex-direction:column; gap:0;
+      background:var(--paper); border-bottom:2px solid var(--ink);
+    }
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{
+      padding:16px 24px; border-top:1px solid rgba(44,29,18,0.12);
+      font-weight:600;
+    }
+    .mobile-menu .nav-cta{margin:16px 24px; text-align:center; display:block;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:72px 0 100px;
+    overflow:hidden;
+  }
+  .hero-sun{
+    position:absolute; top:-140px; right:-140px; width:420px; height:420px;
+    opacity:0.9; animation:spin 60s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg);} }
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:48px; align-items:center;
+    position:relative; z-index:2;
+  }
+  .hero-badge{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--paper); border:2px solid var(--ink); border-radius:100px;
+    padding:7px 16px; font-size:0.8rem; font-weight:700;
+    box-shadow:3px 3px 0 var(--ink);
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.5vw, 4.4rem);
+    color:var(--green-dark);
+    margin-bottom:20px;
+  }
+  .hero h1 em{
+    font-style:italic; color:var(--rust);
+  }
+  .hero p.lead{
+    font-size:1.15rem; line-height:1.6; max-width:520px;
+    margin-bottom:32px; color:var(--ink);
+  }
+  .hero-ctas{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:36px;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 28px; border-radius:100px;
+    font-weight:700; font-size:1rem;
+    border:2px solid var(--ink);
+    box-shadow:4px 4px 0 var(--ink);
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+    cursor:pointer;
+  }
+  .btn:hover{transform:translate(-2px,-2px); box-shadow:6px 6px 0 var(--ink);}
+  .btn:active{transform:translate(0,0); box-shadow:2px 2px 0 var(--ink);}
+  .btn-primary{background:var(--rust); color:var(--paper);}
+  .btn-secondary{background:var(--paper); color:var(--ink);}
+  .hero-stats{display:flex; gap:28px; flex-wrap:wrap;}
+  .hero-stats div{font-family:'Space Mono',monospace;}
+  .hero-stats strong{display:block; font-size:1.1rem; color:var(--green-dark);}
+  .hero-stats span{font-size:0.78rem; opacity:0.75;}
+
+  .hero-art{position:relative; display:flex; justify-content:center; align-items:center;}
+  .ronda{
+    position:relative; width:100%; max-width:440px; aspect-ratio:1/1;
+  }
+  .ronda-ring{
+    position:absolute; inset:0; border-radius:50%;
+    animation:spin 40s linear infinite;
+  }
+  .ronda-icon{
+    position:absolute; width:52px; height:52px;
+    background:var(--paper); border:2px solid var(--ink); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-size:1.4rem;
+    box-shadow:3px 3px 0 var(--ink);
+  }
+  .steam{
+    transform-origin:center;
+    animation:rise 3.5s ease-in-out infinite;
+    opacity:0.75;
+  }
+  .steam.s2{animation-delay:0.6s;}
+  .steam.s3{animation-delay:1.2s;}
+  @keyframes rise{
+    0%{ transform:translateY(6px) scaleY(0.8); opacity:0;}
+    30%{ opacity:0.8;}
+    100%{ transform:translateY(-38px) scaleY(1.15); opacity:0;}
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:96px 0;}
+  .section-head{max-width:640px; margin-bottom:56px;}
+  .section-head .eyebrow{color:var(--rust); margin-bottom:12px; display:block;}
+  .section-head h2{font-size:clamp(2rem, 4vw, 2.9rem);}
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity 0.7s ease, transform 0.7s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- SOBRE FLOR ---------- */
+  .sobre{background:var(--paper); border-top:2px solid var(--ink); border-bottom:2px solid var(--ink);}
+  .sobre-grid{display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;}
+  .flor-frame{
+    background:var(--gold); border:2px solid var(--ink); border-radius:24px;
+    padding:8px; box-shadow:8px 8px 0 var(--ink);
+    transform:rotate(-2deg);
+  }
+  .flor-frame-inner{
+    background:var(--cream-2); border-radius:18px; aspect-ratio:4/5;
+    display:flex; align-items:center; justify-content:center;
+    border:2px dashed var(--ink);
+  }
+  .sobre h2{color:var(--green-dark); margin-bottom:20px;}
+  .sobre p{font-size:1.06rem; line-height:1.75; margin-bottom:16px; max-width:540px;}
+  .signature{
+    font-family:'Fraunces', serif; font-style:italic; font-size:1.3rem;
+    color:var(--rust); margin-top:20px;
+  }
+  .pin-list{display:flex; gap:14px; flex-wrap:wrap; margin-top:26px;}
+  .pin{
+    display:flex; align-items:center; gap:8px;
+    background:var(--cream); border:2px solid var(--ink); border-radius:100px;
+    padding:8px 16px; font-size:0.85rem; font-weight:600;
+  }
+
+  /* ---------- PRODUCTOS ---------- */
+  .productos{background:var(--green);}
+  .productos .eyebrow{color:var(--gold);}
+  .productos h2{color:var(--paper);}
+  .productos .section-head p{color:var(--cream); opacity:0.9; margin-top:14px; font-size:1.05rem;}
+  .prod-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:22px;}
+  .prod-card{
+    background:var(--paper); border:2px solid var(--ink); border-radius:20px;
+    padding:28px 22px; box-shadow:5px 5px 0 var(--ink);
+    transition:transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .prod-card:hover{transform:translate(-3px,-5px); box-shadow:8px 10px 0 var(--ink);}
+  .prod-icon{
+    width:60px; height:60px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.7rem; margin-bottom:18px; border:2px solid var(--ink);
+  }
+  .prod-card:nth-child(1) .prod-icon{background:var(--gold);}
+  .prod-card:nth-child(2) .prod-icon{background:var(--rust); color:var(--paper);}
+  .prod-card:nth-child(3) .prod-icon{background:var(--plum); color:var(--paper);}
+  .prod-card:nth-child(4) .prod-icon{background:var(--green); color:var(--paper);}
+  .prod-card h3{font-size:1.15rem; margin-bottom:8px;}
+  .prod-card p{font-size:0.92rem; line-height:1.55; opacity:0.85;}
+
+  @media (max-width:960px){
+    .prod-grid{grid-template-columns:repeat(2,1fr);}
+  }
+
+  /* ---------- POR QUE ---------- */
+  .porque-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:24px;}
+  .porque-card{
+    background:var(--cream-2); border:2px solid var(--ink); border-radius:20px; padding:30px;
+    position:relative; overflow:hidden;
+  }
+  .porque-card::before{
+    content:''; position:absolute; top:-30px; right:-30px; width:100px; height:100px;
+    border-radius:50%; opacity:0.5;
+  }
+  .porque-card:nth-child(1)::before{background:var(--gold);}
+  .porque-card:nth-child(2)::before{background:var(--rust);}
+  .porque-card:nth-child(3)::before{background:var(--plum);}
+  .porque-card h3{font-size:1.2rem; margin-bottom:10px; position:relative;}
+  .porque-card p{font-size:0.95rem; line-height:1.6; position:relative; opacity:0.85;}
+  .porque-num{
+    font-family:'Space Mono',monospace; font-weight:700; font-size:0.85rem;
+    color:var(--rust); display:block; margin-bottom:10px;
+  }
+
+  @media (max-width:860px){ .porque-grid{grid-template-columns:1fr;} }
+
+  /* ---------- COMO PEDIR ---------- */
+  .pedir{background:var(--plum); color:var(--paper);}
+  .pedir .eyebrow{color:var(--gold);}
+  .pedir h2{color:var(--paper);}
+  .steps{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+    position:relative; counter-reset:step;
+  }
+  .step{padding:0 20px 0 0; position:relative;}
+  .step:not(:last-child)::after{
+    content:''; position:absolute; top:26px; right:-10px; width:20px; height:2px;
+    background:var(--gold); opacity:0.6;
+  }
+  .step-num{
+    width:52px; height:52px; border-radius:50%; background:var(--gold); color:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces',serif; font-weight:700; font-size:1.3rem;
+    margin-bottom:18px; border:2px solid var(--paper);
+  }
+  .step h3{font-size:1.05rem; margin-bottom:8px; font-family:'Work Sans'; font-weight:700;}
+  .step p{font-size:0.9rem; line-height:1.55; opacity:0.85;}
+
+  @media (max-width:860px){
+    .steps{grid-template-columns:1fr; gap:32px;}
+    .step:not(:last-child)::after{display:none;}
+  }
+
+  /* ---------- ENVIOS ---------- */
+  .envios{
+    background:var(--cream); position:relative;
+  }
+  .envios-grid{display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;}
+  .envios-badge{
+    width:100%; aspect-ratio:1/1; max-width:420px;
+    border-radius:50%; border:3px dashed var(--ink);
+    display:flex; align-items:center; justify-content:center; margin:0 auto;
+    position:relative;
+  }
+  .envios-badge-inner{
+    width:78%; height:78%; border-radius:50%; background:var(--rust);
+    color:var(--paper); display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center;
+    border:2px solid var(--ink); box-shadow:6px 6px 0 var(--ink);
+    padding:20px;
+  }
+  .envios-badge-inner .big{font-size:2.6rem; font-family:'Fraunces',serif; font-weight:700;}
+  .envios h2{color:var(--green-dark); margin-bottom:18px;}
+  .envios p{font-size:1.05rem; line-height:1.7; margin-bottom:16px;}
+  .check-list{list-style:none; margin-top:22px;}
+  .check-list li{
+    display:flex; gap:12px; align-items:flex-start; margin-bottom:14px; font-size:0.98rem;
+  }
+  .check-list li::before{
+    content:'🧉'; flex-shrink:0;
+  }
+
+  @media (max-width:860px){ .envios-grid{grid-template-columns:1fr;} }
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    background:var(--green-dark); color:var(--paper); text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .cta-final h2{font-size:clamp(2rem,5vw,3.2rem); color:var(--paper); margin-bottom:18px;}
+  .cta-final p{font-size:1.1rem; opacity:0.85; max-width:520px; margin:0 auto 34px;}
+  .cta-final .btn-primary{background:var(--gold); color:var(--ink);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink); color:var(--cream-2); padding:56px 0 28px;}
+  .footer-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:40px; margin-bottom:40px;}
+  footer h4{font-family:'Fraunces',serif; font-size:1.1rem; margin-bottom:16px; color:var(--paper);}
+  footer .logo{color:var(--paper);}
+  footer p{font-size:0.9rem; line-height:1.6; opacity:0.75; max-width:320px;}
+  footer ul{list-style:none;}
+  footer li{margin-bottom:10px; font-size:0.9rem;}
+  footer a:hover{color:var(--gold);}
+  .footer-bottom{
+    border-top:1px solid rgba(251,241,222,0.15); padding-top:22px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    font-size:0.78rem; opacity:0.6; font-family:'Space Mono',monospace;
+  }
+
+  /* ---------- FLOATING BUTTONS ---------- */
+  .floaters{
+    position:fixed; right:22px; bottom:22px; z-index:200;
+    display:flex; flex-direction:column; gap:12px; align-items:flex-end;
+  }
+  .float-btn{
+    width:58px; height:58px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:1.6rem; border:2px solid var(--ink);
+    box-shadow:4px 4px 0 var(--ink);
+    transition:transform 0.18s ease;
+  }
+  .float-btn:hover{transform:scale(1.08) rotate(-4deg);}
+  .float-btn.ig{background:linear-gradient(135deg,#f9ce34,#ee2a7b,#6228d7);}
+  .float-btn.top{background:var(--paper); font-size:1.2rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav">
+    <a href="#top" class="logo">🧉 <span>LARISOS</span></a>
+    <div class="nav-links">
+      <a href="#productos">Productos</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#como-pedir">Cómo pedir</a>
+      <a href="#envios">Envíos</a>
+    </div>
+    <a href="https://www.instagram.com/matiemo.pue/" target="_blank" rel="noopener" class="nav-cta desktop-only">Escribinos ✦</a>
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#productos">Productos</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#como-pedir">Cómo pedir</a>
+    <a href="#envios">Envíos</a>
+    <a href="https://www.instagram.com/matiemo.pue/" target="_blank" rel="noopener" class="nav-cta">Escribinos ✦</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <svg class="hero-sun" viewBox="0 0 200 200" aria-hidden="true">
+      <g fill="none" stroke="#EFAA0F" stroke-width="6" opacity="0.55">
+        <circle cx="100" cy="100" r="46"/>
+        <g stroke-linecap="round">
+          <line x1="100" y1="10" x2="100" y2="34"/>
+          <line x1="100" y1="166" x2="100" y2="190"/>
+          <line x1="10" y1="100" x2="34" y2="100"/>
+          <line x1="166" y1="100" x2="190" y2="100"/>
+          <line x1="34" y1="34" x2="50" y2="50"/>
+          <line x1="150" y1="150" x2="166" y2="166"/>
+          <line x1="34" y1="166" x2="50" y2="150"/>
+          <line x1="150" y1="50" x2="166" y2="34"/>
+        </g>
+      </g>
+    </svg>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="hero-badge">📍 Joaquín V. González, Salta &nbsp;·&nbsp; Tienda matera</span>
+        <h1>Mates primero, <em>todo</em> después.</h1>
+        <p class="lead">Soy Flor 👩🏻‍🦱, y en LARISOS elijo cada mate, cada bombilla y cada kit como si fuera para mi propia ronda. Productos pensados para el ritual de todos los días, con envíos a cualquier rincón del país.</p>
+        <div class="hero-ctas">
+          <a href="https://www.instagram.com/matiemo.pue/" target="_blank" rel="noopener" class="btn btn-primary">📩 Pedí el tuyo por Instagram</a>
+          <a href="#productos" class="btn btn-secondary">Ver productos</a>
+        </div>
+        <div class="hero-stats">
+          <div><strong>📦 Todo el país</strong><span>Envíos puerta a puerta</span></div>
+          <div><strong>🧉 100% cebados</strong><span>Elegidos a mano por Flor</span></div>
+          <div><strong>💬 Trato directo</strong><span>Por DM, sin vueltas</span></div>
+        </div>
+      </div>
+      <div class="hero-art">
+        <div class="ronda">
+          <svg viewBox="0 0 440 440" width="100%" height="100%" aria-hidden="true">
+            <circle cx="220" cy="220" r="170" fill="none" stroke="#2C1D12" stroke-width="2" stroke-dasharray="2 10" opacity="0.4"/>
+          </svg>
+          <!-- mate central -->
+          <svg viewBox="0 0 200 220" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-52%); width:52%;">
+            <ellipse cx="100" cy="170" rx="70" ry="40" fill="#4C7A2E" stroke="#2C1D12" stroke-width="4"/>
+            <path d="M32 150 Q30 90 60 55 Q80 25 100 25 Q120 25 140 55 Q170 90 168 150" fill="#5C8F37" stroke="#2C1D12" stroke-width="4"/>
+            <ellipse cx="100" cy="55" rx="26" ry="16" fill="#EFAA0F" stroke="#2C1D12" stroke-width="4"/>
+            <rect x="92" y="10" width="16" height="50" rx="6" fill="#C4531E" stroke="#2C1D12" stroke-width="4" transform="rotate(18 100 40)"/>
+            <path class="steam" d="M96 8 Q88 -4 96 -16" stroke="#2C1D12" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path class="steam s2" d="M106 10 Q114 -2 106 -14" stroke="#2C1D12" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </svg>
+          <!-- orbiting icons -->
+          <div class="ronda-ring">
+            <div class="ronda-icon" style="top:0; left:50%; transform:translate(-50%,-50%);">🍃</div>
+            <div class="ronda-icon" style="top:50%; right:0; transform:translate(50%,-50%);">🔥</div>
+            <div class="ronda-icon" style="bottom:0; left:50%; transform:translate(-50%,50%);">🎁</div>
+            <div class="ronda-icon" style="top:50%; left:0; transform:translate(-50%,-50%);">☀️</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE FLOR -->
+  <section class="sobre" id="nosotros">
+    <div class="wrap sobre-grid">
+      <div class="reveal">
+        <div class="flor-frame">
+          <div class="flor-frame-inner">
+            <svg viewBox="0 0 200 240" width="70%">
+              <circle cx="100" cy="80" r="52" fill="#C4531E" stroke="#2C1D12" stroke-width="4"/>
+              <path d="M50 200 Q50 130 100 130 Q150 130 150 200" fill="#4C7A2E" stroke="#2C1D12" stroke-width="4"/>
+              <circle cx="82" cy="76" r="5" fill="#2C1D12"/>
+              <circle cx="118" cy="76" r="5" fill="#2C1D12"/>
+              <path d="M80 100 Q100 112 120 100" stroke="#2C1D12" stroke-width="4" fill="none" stroke-linecap="round"/>
+              <path d="M52 60 Q60 20 100 22 Q140 20 148 60 Q140 40 100 40 Q60 40 52 60Z" fill="#2C1D12"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="eyebrow" style="color:var(--rust);">La marca</span>
+        <h2>Una tienda hecha a mano, ronda por ronda.</h2>
+        <p>LARISOS nació de una idea simple: el mate no necesita vueltas, necesita cariño. Desde Joaquín V. González elijo mates de calabaza curados, bombillas que duran y kits pensados para regalar sin errar.</p>
+        <p>Cada pedido lo armo yo, Flor, pensando en cómo te gusta cebar: fuerte, suave, dulce o amargo. Por eso en LARISOS no vendemos objetos, armamos rondas.</p>
+        <p class="signature">— Flor, LARISOS</p>
+        <div class="pin-list">
+          <span class="pin">🧵 Curado artesanal</span>
+          <span class="pin">🎁 Ideal para regalo</span>
+          <span class="pin">📍 Norte argentino</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section class="productos" id="productos">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Catálogo</span>
+        <h2>Lo que vas a encontrar en LARISOS</h2>
+        <p>Todo lo necesario para armar tu ronda, elegido y curado a mano.</p>
+      </div>
+      <div class="prod-grid">
+        <div class="prod-card reveal">
+          <div class="prod-icon">🧉</div>
+          <h3>Mates artesanales</h3>
+          <p>Calabazas curadas y listas para cebar, de distintos tamaños y terminaciones.</p>
+        </div>
+        <div class="prod-card reveal">
+          <div class="prod-icon">🥄</div>
+          <h3>Bombillas</h3>
+          <p>Alpaca y acero inoxidable, fáciles de limpiar y pensadas para durar años.</p>
+        </div>
+        <div class="prod-card reveal">
+          <div class="prod-icon">🎁</div>
+          <h3>Kits de regalo</h3>
+          <p>Sets armados con mate, bombilla y yerbero, listos para sorprender.</p>
+        </div>
+        <div class="prod-card reveal">
+          <div class="prod-icon">🍃</div>
+          <h3>Yerbas y accesorios</h3>
+          <p>Selección de yerbas y complementos para cebar como corresponde.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUE -->
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow" style="color:var(--rust);">Por qué LARISOS</span>
+        <h2>Comprar acá se siente distinto</h2>
+      </div>
+      <div class="porque-grid">
+        <div class="porque-card reveal">
+          <span class="porque-num">01</span>
+          <h3>Trato directo con Flor</h3>
+          <p>Sin bots ni catálogos infinitos: escribís y te responde la persona que arma tu pedido.</p>
+        </div>
+        <div class="porque-card reveal">
+          <span class="porque-num">02</span>
+          <h3>Cada mate, revisado</h3>
+          <p>Antes de salir, cada pieza pasa por las manos de Flor para asegurarse de que llegue perfecta.</p>
+        </div>
+        <div class="porque-card reveal">
+          <span class="porque-num">03</span>
+          <h3>Packaging con cariño</h3>
+          <p>Ideal para regalar: cada envío sale cuidado, protegido y con esa onda de LARISOS.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO PEDIR -->
+  <section class="pedir" id="como-pedir">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">El paso a paso</span>
+        <h2>Cómo pedir tu mate</h2>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <h3>Mirá el catálogo</h3>
+          <p>Explorá las publicaciones y historias destacadas de @matiemo.pue.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <h3>Escribinos por DM</h3>
+          <p>Contanos qué buscás: mate, bombilla, kit o combo para regalo.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <h3>Coordinamos todo</h3>
+          <p>Confirmamos producto, forma de pago y datos de envío juntas.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">4</div>
+          <h3>Lo recibís en casa</h3>
+          <p>Tu pedido viaja bien protegido a cualquier punto del país.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENVIOS -->
+  <section class="envios" id="envios">
+    <div class="wrap envios-grid">
+      <div class="reveal" style="order:2;">
+        <span class="eyebrow" style="color:var(--rust);">Logística</span>
+        <h2>Envíos a todo el país</h2>
+        <p>Desde Joaquín V. González, Salta, tu pedido sale bien empaquetado hacia cualquier provincia. Coordinamos el envío una vez confirmado el pedido por Instagram.</p>
+        <ul class="check-list">
+          <li>Envíos a todo el territorio argentino.</li>
+          <li>Empaquetado especial para que el mate llegue entero.</li>
+          <li>Seguimiento del pedido coordinado por DM.</li>
+        </ul>
+      </div>
+      <div class="reveal" style="order:1;">
+        <div class="envios-badge">
+          <div class="envios-badge-inner">
+            <span class="big">🇦🇷</span>
+            <strong style="font-family:'Fraunces',serif; font-size:1.1rem; margin-top:6px;">Envíos a todo el país</strong>
+            <span style="font-size:0.8rem; opacity:0.85; margin-top:6px;">desde Joaquín V. González, Salta</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="cta-final">
+    <div class="wrap">
+      <span class="eyebrow reveal" style="color:var(--gold);">Armemos tu ronda</span>
+      <h2 class="reveal">¿Le ponemos la pava?</h2>
+      <p class="reveal">Escribinos por Instagram y armamos tu mate, tu kit o tu regalo a medida.</p>
+      <a href="https://www.instagram.com/matiemo.pue/" target="_blank" rel="noopener" class="btn btn-primary reveal">📩 Escribir a @matiemo.pue</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a href="#top" class="logo">🧉 LARISOS</a>
+        <p style="margin-top:14px;">Tienda matera de Flor, desde Joaquín V. González, Salta. Mates, bombillas y kits con envíos a todo el país.</p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="#productos">Productos</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#como-pedir">Cómo pedir</a></li>
+          <li><a href="#envios">Envíos</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/matiemo.pue/" target="_blank" rel="noopener">Instagram @matiemo.pue</a></li>
+          <li>📍 Joaquín V. González, Salta</li>
+          <li>📦 Envíos a todo el país</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 LARISOS — Tienda Matera</span>
+      <span>Mates primero, todo después.</span>
+    </div>
+  </div>
+</footer>
+
+<div class="floaters">
+  <a class="float-btn ig" href="https://www.instagram.com/matiemo.pue/" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+  <button class="float-btn top" id="toTop" aria-label="Volver arriba">↑</button>
+</div>
+
+<script>
+  const burger = document.getElementById('burgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen);
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el => io.observe(el));
+
+  document.getElementById('toTop').addEventListener('click', () => {
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+</script>
+</body>
+</html>
