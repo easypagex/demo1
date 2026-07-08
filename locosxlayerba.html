@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Locos x la Yerba 🧉 | Yerba y Mates Uruguayos - Villa Ballester</title>
+<meta name="description" content="Yerba y matera 100% uruguaya, calidad premium y exclusiva. Envíos a todo el país. Villa Ballester, Argentina.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde-mate: #2d5a3d;
+    --verde-claro: #4a8f5c;
+    --naranja: #e8622c;
+    --naranja-claro: #ff8547;
+    --crema: #fdf6e8;
+    --gold: #D4AF37;
+    --gold-light: #F0C040;
+    --gold-deep: #C9A84C;
+    --marron: #5c3a21;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Poppins',sans-serif;
+    background:var(--crema);
+    color:var(--marron);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.brand{font-family:'Fredoka',sans-serif;}
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:linear-gradient(135deg,var(--verde-mate),var(--verde-claro));
+    padding:14px 24px;
+    display:flex;justify-content:space-between;align-items:center;
+    box-shadow:0 4px 20px rgba(0,0,0,0.15);
+    border-bottom:3px solid var(--gold);
+  }
+  nav .brand{color:var(--gold-light);font-size:1.4rem;font-weight:700;display:flex;align-items:center;gap:8px;}
+  nav a.cta-nav{
+    background:linear-gradient(135deg,var(--gold-light),var(--gold-deep));
+    color:var(--marron);padding:10px 20px;border-radius:30px;
+    text-decoration:none;font-weight:600;font-size:0.9rem;
+    box-shadow:0 4px 12px rgba(212,175,55,0.5);
+    transition:transform .2s;
+  }
+  nav a.cta-nav:hover{transform:scale(1.05);}
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    margin-top:64px;
+    min-height:92vh;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:60px 20px;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(232,98,44,0.35), transparent 45%),
+      radial-gradient(circle at 80% 70%, rgba(212,175,55,0.3), transparent 50%),
+      linear-gradient(160deg, var(--verde-mate) 0%, var(--verde-claro) 55%, #6fae6f 100%);
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::before{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,0.08) 2px, transparent 2px);
+    background-size:26px 26px;
+    opacity:.5;
+  }
+  .flag-strip{
+    display:flex;gap:6px;margin-bottom:18px;font-size:1.6rem;
+  }
+  .hero h1{
+    color:#fff;font-size:clamp(2.4rem,6vw,4.2rem);
+    text-shadow:0 4px 18px rgba(0,0,0,0.3);
+    line-height:1.05;position:relative;z-index:2;
+  }
+  .hero h1 span{color:var(--gold-light);}
+  .hero p.subtitle{
+    color:var(--crema);font-size:clamp(1rem,2.2vw,1.4rem);
+    max-width:640px;margin:22px auto 34px;position:relative;z-index:2;
+    font-weight:300;
+  }
+  .badges{
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:36px;position:relative;z-index:2;
+  }
+  .badge{
+    background:rgba(255,255,255,0.14);
+    border:1.5px solid var(--gold-light);
+    color:#fff;padding:8px 18px;border-radius:24px;
+    font-size:.88rem;font-weight:600;backdrop-filter:blur(4px);
+  }
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;position:relative;z-index:2;}
+  .btn-primary{
+    background:linear-gradient(135deg,var(--naranja-claro),var(--naranja));
+    color:#fff;padding:16px 36px;border-radius:40px;
+    text-decoration:none;font-weight:700;font-size:1.05rem;
+    box-shadow:0 8px 24px rgba(232,98,44,0.5);
+    border:2px solid var(--gold-light);
+    transition:transform .25s, box-shadow .25s;
+    display:inline-flex;align-items:center;gap:10px;
+  }
+  .btn-primary:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 12px 30px rgba(232,98,44,0.6);}
+  .btn-secondary{
+    background:transparent;color:var(--gold-light);
+    padding:16px 32px;border-radius:40px;border:2px solid var(--gold-light);
+    text-decoration:none;font-weight:600;font-size:1.05rem;
+    transition:all .25s;
+  }
+  .btn-secondary:hover{background:var(--gold-light);color:var(--verde-mate);}
+
+  .mate-illustration{width:130px;margin-bottom:10px;position:relative;z-index:2;}
+
+  /* ---------- SCROLL REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease, transform .8s ease;}
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  /* ---------- SECTION GENERAL ---------- */
+  section{padding:80px 20px;position:relative;}
+  .section-title{
+    text-align:center;font-size:clamp(1.8rem,4vw,2.6rem);
+    color:var(--verde-mate);margin-bottom:14px;
+  }
+  .section-title span{color:var(--naranja);}
+  .section-sub{
+    text-align:center;color:#7a6a52;max-width:600px;margin:0 auto 50px;
+    font-size:1.05rem;
+  }
+  .gold-divider{
+    width:90px;height:4px;margin:0 auto 40px;
+    background:linear-gradient(90deg,var(--gold-deep),var(--gold-light),var(--gold-deep));
+    border-radius:4px;
+  }
+
+  /* ---------- PRODUCTOS ---------- */
+  .productos-section{background:linear-gradient(180deg,#fff, #fff8ec);}
+  .productos-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:28px;max-width:1100px;margin:0 auto;
+  }
+  .producto-card{
+    background:#fff;border-radius:20px;padding:32px 24px;text-align:center;
+    box-shadow:0 8px 30px rgba(45,90,61,0.1);
+    border:2px solid transparent;
+    background-image:linear-gradient(#fff,#fff), linear-gradient(135deg,var(--gold-light),var(--verde-claro));
+    background-origin:border-box;background-clip:padding-box, border-box;
+    transition:transform .3s, box-shadow .3s;
+  }
+  .producto-card:hover{transform:translateY(-8px);box-shadow:0 16px 40px rgba(45,90,61,0.2);}
+  .producto-card .icon-wrap{width:78px;height:78px;margin:0 auto 18px;}
+  .producto-card h3{color:var(--verde-mate);font-size:1.25rem;margin-bottom:10px;}
+  .producto-card p{color:#7a6a52;font-size:.92rem;line-height:1.5;}
+
+  /* ---------- POR QUE ELEGIRNOS ---------- */
+  .porque-section{
+    background:linear-gradient(135deg,var(--verde-mate),#3a6f4b 60%, var(--verde-claro));
+    color:#fff;
+  }
+  .porque-section .section-title, .porque-section .section-title span{color:#fff;}
+  .porque-section .section-sub{color:#e8f0e4;}
+  .porque-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:24px;max-width:1100px;margin:0 auto;
+  }
+  .porque-item{
+    background:rgba(255,255,255,0.08);
+    border:1.5px solid var(--gold-light);
+    border-radius:18px;padding:28px 22px;text-align:center;
+    backdrop-filter:blur(4px);
+  }
+  .porque-item .num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:44px;height:44px;border-radius:50%;
+    background:linear-gradient(135deg,var(--gold-light),var(--gold-deep));
+    color:var(--verde-mate);font-weight:700;font-size:1.2rem;margin-bottom:14px;
+  }
+  .porque-item h3{font-size:1.1rem;margin-bottom:8px;color:var(--gold-light);}
+  .porque-item p{font-size:.9rem;color:#f0ede0;line-height:1.5;}
+
+  /* ---------- ENVIOS MAPA ---------- */
+  .envios-section{background:#fdf6e8;text-align:center;}
+  .mapa-svg{max-width:480px;width:100%;margin:0 auto 30px;display:block;}
+  .envios-lista{
+    display:flex;flex-wrap:wrap;gap:14px;justify-content:center;max-width:700px;margin:0 auto 30px;
+  }
+  .envio-chip{
+    background:#fff;border:2px solid var(--naranja-claro);color:var(--naranja);
+    padding:8px 18px;border-radius:20px;font-weight:600;font-size:.9rem;
+  }
+
+  /* ---------- TESTIMONIOS / SOCIAL PROOF ---------- */
+  .social-section{background:linear-gradient(180deg,#fff8ec,#fff);text-align:center;}
+  .followers-box{
+    display:inline-flex;align-items:center;gap:14px;
+    background:linear-gradient(135deg,var(--gold-light),var(--gold-deep));
+    padding:20px 40px;border-radius:24px;margin-bottom:40px;
+    box-shadow:0 10px 30px rgba(212,175,55,0.35);
+  }
+  .followers-box .num-big{font-size:2.4rem;font-weight:700;color:var(--verde-mate);font-family:'Fredoka',sans-serif;}
+  .followers-box .num-label{font-size:.95rem;color:var(--marron);font-weight:600;text-align:left;}
+
+  .testi-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:24px;max-width:1000px;margin:0 auto;
+  }
+  .testi-card{
+    background:#fff;border-radius:18px;padding:26px;text-align:left;
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);border-left:5px solid var(--naranja);
+  }
+  .testi-card .stars{color:var(--gold-deep);font-size:1.1rem;margin-bottom:10px;}
+  .testi-card p{color:#5c4a35;font-size:.92rem;font-style:italic;line-height:1.5;margin-bottom:14px;}
+  .testi-card .autor{font-weight:600;color:var(--verde-mate);font-size:.88rem;}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    background:radial-gradient(circle at 50% 30%, #ff8547, #e8622c 70%);
+    text-align:center;color:#fff;padding:90px 20px;position:relative;overflow:hidden;
+  }
+  .cta-final::after{
+    content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,0.12) 2px, transparent 2px);
+    background-size:30px 30px;opacity:.4;
+  }
+  .cta-final h2{font-size:clamp(1.8rem,4.5vw,2.8rem);margin-bottom:18px;position:relative;z-index:2;}
+  .cta-final p{font-size:1.1rem;margin-bottom:34px;opacity:.95;position:relative;z-index:2;}
+  .cta-final .btn-primary{
+    background:linear-gradient(135deg,var(--gold-light),var(--gold-deep));
+    color:var(--verde-mate);border:2px solid #fff;position:relative;z-index:2;
+  }
+
+  footer{
+    background:var(--marron);color:#e8dcc8;text-align:center;padding:36px 20px;
+    font-size:.85rem;border-top:4px solid var(--gold);
+  }
+  footer a{color:var(--gold-light);text-decoration:none;font-weight:600;}
+  footer .foot-brand{font-family:'Fredoka',sans-serif;font-size:1.1rem;color:var(--gold-light);margin-bottom:10px;}
+
+  @media (max-width:600px){
+    nav{padding:12px 16px;}
+    nav .brand{font-size:1.1rem;}
+    section{padding:60px 16px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">🧉 Locos x la Yerba</div>
+  <a class="cta-nav" href="https://www.instagram.com/locosxlayerba/" target="_blank" rel="noopener">Ver Instagram</a>
+</nav>
+
+<header class="hero">
+  <div class="flag-strip">🇺🇾 🧉 🇦🇷</div>
+  <svg class="mate-illustration" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="100" cy="175" rx="55" ry="10" fill="rgba(0,0,0,0.15)"/>
+    <path d="M60 90 Q60 160 100 165 Q140 160 140 90 Q140 60 100 55 Q60 60 60 90 Z" fill="#8B5A2B" stroke="#D4AF37" stroke-width="3"/>
+    <ellipse cx="100" cy="58" rx="40" ry="12" fill="#5c3a21"/>
+    <ellipse cx="100" cy="55" rx="36" ry="9" fill="#3d5c2e"/>
+    <rect x="92" y="10" width="10" height="48" rx="4" fill="#C0C0C0" stroke="#888" stroke-width="1" transform="rotate(15 97 34)"/>
+    <circle cx="120" cy="14" r="4" fill="#D4AF37"/>
+  </svg>
+  <h1>Yerba y Mates <span>100% Uruguayos</span></h1>
+  <p class="subtitle">Calidad premium y exclusiva, directo de Uruguay. Materas artesanales y la mejor yerba, con envíos a todo el país 📦✈️</p>
+  <div class="badges">
+    <div class="badge">🥇 Calidad Premium</div>
+    <div class="badge">📦 Envíos a todo el país</div>
+    <div class="badge">💯 Cuenta Única y Verificada</div>
+  </div>
+  <div class="hero-ctas">
+    <a class="btn-primary" href="https://www.instagram.com/locosxlayerba/" target="_blank" rel="noopener">🧉 Escribinos por Instagram</a>
+    <a class="btn-secondary" href="#productos">Ver productos</a>
+  </div>
+</header>
+
+<section class="productos-section" id="productos">
+  <h2 class="section-title reveal">Nuestros <span>Productos</span></h2>
+  <div class="gold-divider reveal"></div>
+  <p class="section-sub reveal">Todo lo que necesitás para vivir la tradición del mate, tal como se toma en Uruguay.</p>
+  <div class="productos-grid">
+    <div class="producto-card reveal">
+      <svg class="icon-wrap" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#eef7ea"/><path d="M30 45 Q30 85 50 88 Q70 85 70 45 Q70 25 50 22 Q30 25 30 45 Z" fill="#8B5A2B" stroke="#D4AF37" stroke-width="3"/><ellipse cx="50" cy="25" rx="20" ry="6" fill="#3d5c2e"/></svg>
+      <h3>Materas Uruguayas</h3>
+      <p>Materas artesanales originales de Uruguay, distintos modelos y terminaciones para todos los gustos.</p>
+    </div>
+    <div class="producto-card reveal">
+      <svg class="icon-wrap" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#eef7ea"/><rect x="30" y="35" width="40" height="45" rx="6" fill="#4a8f5c"/><rect x="30" y="35" width="40" height="12" rx="6" fill="#2d5a3d"/><text x="50" y="65" font-size="18" text-anchor="middle" fill="#fff">🧉</text></svg>
+      <h3>Yerba Premium</h3>
+      <p>Yerba mate de origen uruguayo, seleccionada por su sabor suave y calidad exclusiva.</p>
+    </div>
+    <div class="producto-card reveal">
+      <svg class="icon-wrap" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#eef7ea"/><rect x="40" y="25" width="6" height="50" rx="3" fill="#C0C0C0"/><circle cx="43" cy="20" r="6" fill="#D4AF37"/></svg>
+      <h3>Bombillas</h3>
+      <p>Bombillas de calidad para acompañar tu matera y disfrutar el mate como se debe.</p>
+    </div>
+    <div class="producto-card reveal">
+      <svg class="icon-wrap" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="#eef7ea"/><rect x="25" y="60" width="50" height="15" rx="4" fill="#e8622c"/><path d="M30 60 L35 30 L65 30 L70 60 Z" fill="#ff8547"/></svg>
+      <h3>Sets Completos</h3>
+      <p>Combos de matera + yerba + bombilla, ideales para regalar o para arrancar tu propio ritual del mate.</p>
+    </div>
+  </div>
+</section>
+
+<section class="porque-section">
+  <h2 class="section-title reveal">¿Por qué elegir <span>Locos x la Yerba</span>?</h2>
+  <div class="gold-divider reveal"></div>
+  <p class="section-sub reveal">Somos la única cuenta oficial, con más de 113 mil seguidores que ya confían en nuestra calidad.</p>
+  <div class="porque-grid">
+    <div class="porque-item reveal">
+      <div class="num">1</div>
+      <h3>100% Uruguayo</h3>
+      <p>Todos nuestros productos son traídos directamente de Uruguay, sin intermediarios.</p>
+    </div>
+    <div class="porque-item reveal">
+      <div class="num">2</div>
+      <h3>Calidad Exclusiva</h3>
+      <p>Seleccionamos cada matera y cada yerba pensando en la mejor experiencia de mate.</p>
+    </div>
+    <div class="porque-item reveal">
+      <div class="num">3</div>
+      <h3>Envíos a Todo el País</h3>
+      <p>Recibí tu pedido estés donde estés en Argentina, rápido y seguro.</p>
+    </div>
+    <div class="porque-item reveal">
+      <div class="num">4</div>
+      <h3>Cuenta Única</h3>
+      <p>Somos la única cuenta oficial de Locos x la Yerba. Cuidate de imitaciones.</p>
+    </div>
+  </div>
+</section>
+
+<section class="envios-section">
+  <h2 class="section-title reveal">Hacemos <span>envíos</span> a todo el país</h2>
+  <div class="gold-divider reveal"></div>
+  <svg class="mapa-svg reveal" viewBox="0 0 300 200">
+    <rect x="10" y="10" width="280" height="180" rx="16" fill="#eef7ea" stroke="#D4AF37" stroke-width="2"/>
+    <path d="M150 30 L170 60 L180 100 L165 150 L150 175 L135 150 L120 100 L130 60 Z" fill="#4a8f5c" opacity="0.85"/>
+    <circle cx="150" cy="90" r="6" fill="#e8622c"/>
+    <circle cx="150" cy="90" r="12" fill="none" stroke="#e8622c" stroke-width="2" opacity="0.5"/>
+    <text x="150" y="195" font-size="11" fill="#5c3a21" text-anchor="middle">Villa Ballester, Buenos Aires</text>
+  </svg>
+  <div class="envios-lista reveal">
+    <div class="envio-chip">📍 Buenos Aires</div>
+    <div class="envio-chip">📍 Córdoba</div>
+    <div class="envio-chip">📍 Santa Fe</div>
+    <div class="envio-chip">📍 Mendoza</div>
+    <div class="envio-chip">📍 Todo el país 🇦🇷</div>
+  </div>
+</section>
+
+<section class="social-section">
+  <h2 class="section-title reveal">Confiado por <span>miles de amantes del mate</span></h2>
+  <div class="gold-divider reveal"></div>
+  <div class="followers-box reveal">
+    <div class="num-big">113K+</div>
+    <div class="num-label">Seguidores en<br>Instagram</div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>"La matera llegó impecable y la yerba tiene un sabor increíble, se nota la calidad uruguaya."</p>
+      <div class="autor">— Cliente verificado</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>"Pedí a Córdoba y llegó rapidísimo, muy buena atención por Instagram."</p>
+      <div class="autor">— Cliente verificado</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>"Se nota que es la cuenta original, calidad premium tal cual la describen."</p>
+      <div class="autor">— Cliente verificado</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <h2>¿Listo para tu ritual del mate uruguayo? 🧉</h2>
+  <p>Escribinos ahora por Instagram y armamos tu pedido</p>
+  <a class="btn-primary" href="https://www.instagram.com/locosxlayerba/" target="_blank" rel="noopener">🥇 Contactar por Instagram</a>
+</section>
+
+<footer>
+  <div class="foot-brand">🧉 Locos x la Yerba</div>
+  <p>Yerba Uruguaya / Mates Uruguayos · Villa Ballester, Argentina 🇦🇷</p>
+  <p>Envíos a todo el país 📦✈️ · 100% Calidad Premium y Exclusiva</p>
+  <p style="margin-top:12px;">Seguinos en <a href="https://www.instagram.com/locosxlayerba/" target="_blank" rel="noopener">@locosxlayerba</a></p>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
