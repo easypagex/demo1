@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Casa del Mate 🧉 | Mates, Bombillas y Termos en Santa Fe</title>
+<meta name="description" content="La Casa del Mate - Mates, bombillas y termos uruguayos en Santa Fe. Todos los medios de pago. Consultanos por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --yerba:#2E7D4F;
+    --yerba-dark:#1E5638;
+    --calabaza:#F2C879;
+    --calabaza-deep:#E3A73B;
+    --sunset:#E8541E;
+    --sunset-deep:#C43F10;
+    --uy-blue:#3E92B5;
+    --wood:#6B4226;
+    --cream:#FFF7E9;
+    --paper:#FFFDF8;
+    --ink:#2A2016;
+    --silver:#C9CDD3;
+    --shadow: 0 10px 30px rgba(42,32,22,0.15);
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Nunito', sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    line-height:1.05;
+  }
+  a{color:inherit;}
+  img,svg{display:block;}
+  .container{max-width:1140px; margin:0 auto; padding:0 24px;}
+
+  /* ---------- decorative dots pattern ---------- */
+  .dot-pattern{
+    background-image: radial-gradient(var(--silver) 1.5px, transparent 1.5px);
+    background-size: 22px 22px;
+    opacity:0.25;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--paper);
+    border-bottom:4px solid var(--yerba);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 24px; max-width:1140px; margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Baloo 2', sans-serif; font-weight:800; font-size:1.35rem;
+    color:var(--yerba-dark);
+  }
+  .logo .flagbits{font-size:1rem; letter-spacing:1px;}
+  nav.links{display:flex; gap:28px; font-weight:700; font-size:0.95rem;}
+  nav.links a{
+    text-decoration:none; color:var(--wood); position:relative; padding:4px 0;
+  }
+  nav.links a::after{
+    content:""; position:absolute; left:0; bottom:-2px; width:0; height:3px;
+    background:var(--sunset); border-radius:3px; transition:width .25s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--sunset);
+    color:#fff; font-weight:800; padding:10px 20px; border-radius:30px;
+    text-decoration:none; font-size:0.9rem; box-shadow:var(--shadow);
+    display:flex; align-items:center; gap:8px; white-space:nowrap;
+    transition: transform .2s ease, background .2s ease;
+  }
+  .nav-cta:hover{ background:var(--sunset-deep); transform:translateY(-2px);}
+  .burger{display:none;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background: linear-gradient(160deg, var(--yerba) 0%, var(--yerba-dark) 55%, #143f28 100%);
+    color:#fff;
+    padding:90px 24px 130px;
+    overflow:hidden;
+  }
+  .hero::before{
+    content:""; position:absolute; inset:0;
+    background-image: radial-gradient(rgba(255,255,255,0.08) 2px, transparent 2px);
+    background-size:34px 34px;
+    pointer-events:none;
+  }
+  .hero-inner{
+    max-width:1140px; margin:0 auto;
+    display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center;
+    position:relative; z-index:2;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.35);
+    padding:7px 16px; border-radius:30px; font-weight:800; font-size:0.85rem;
+    letter-spacing:0.5px; margin-bottom:22px;
+  }
+  .hero h1{
+    font-size:clamp(2.4rem, 5vw, 3.6rem);
+    margin-bottom:18px;
+  }
+  .hero h1 span{color:var(--calabaza);}
+  .hero p.lead{
+    font-size:1.15rem; max-width:480px; opacity:0.92; margin-bottom:32px; font-weight:600;
+  }
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 26px; border-radius:40px; font-weight:800; text-decoration:none;
+    font-size:1rem; transition:transform .2s ease, box-shadow .2s ease;
+    box-shadow:var(--shadow);
+  }
+  .btn:hover{transform:translateY(-3px);}
+  .btn-primary{background:var(--sunset); color:#fff;}
+  .btn-primary:hover{background:var(--sunset-deep);}
+  .btn-outline{background:rgba(255,255,255,0.08); color:#fff; border:2px solid rgba(255,255,255,0.6);}
+  .btn-outline:hover{background:rgba(255,255,255,0.18);}
+  .btn-dark{background:var(--wood); color:#fff;}
+  .btn-dark:hover{background:#4d2f1a;}
+
+  .hero-art{position:relative; display:flex; justify-content:center;}
+  .hero-art svg{width:100%; max-width:340px; filter:drop-shadow(0 20px 30px rgba(0,0,0,0.35));}
+  .steam{transform-origin:center; animation:steamrise 3.5s ease-in-out infinite;}
+  .steam.s2{animation-delay:0.6s;}
+  .steam.s3{animation-delay:1.2s;}
+  @keyframes steamrise{
+    0%{opacity:0; transform:translateY(0) scaleY(1);}
+    30%{opacity:0.85;}
+    100%{opacity:0; transform:translateY(-26px) scaleY(1.3);}
+  }
+  @media (prefers-reduced-motion: reduce){ .steam{animation:none; opacity:0.5;} }
+
+  .wave{
+    position:absolute; left:0; right:0; bottom:-2px; line-height:0;
+  }
+
+  /* ---------- MARQUEE STRIP ---------- */
+  .marquee{
+    background:var(--calabaza); color:var(--wood); font-weight:800;
+    padding:12px 0; overflow:hidden; white-space:nowrap; border-bottom:4px solid var(--sunset);
+    font-family:'Baloo 2', sans-serif; font-size:1rem;
+  }
+  .marquee-track{
+    display:inline-block; padding-left:100%;
+    animation: scroll-left 26s linear infinite;
+  }
+  .marquee span{margin:0 26px;}
+  @keyframes scroll-left{ from{transform:translateX(0);} to{transform:translateX(-100%);} }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:86px 24px;}
+  .section-head{text-align:center; max-width:640px; margin:0 auto 52px;}
+  .section-head .kicker{
+    color:var(--sunset); font-weight:800; letter-spacing:2px; text-transform:uppercase;
+    font-size:0.85rem; display:block; margin-bottom:10px;
+  }
+  .section-head h2{font-size:clamp(1.8rem,3.4vw,2.5rem); color:var(--yerba-dark);}
+  .section-head p{margin-top:14px; font-size:1.05rem; color:#54463a; font-weight:600;}
+
+  /* ---------- PRODUCTOS ---------- */
+  .productos{background:var(--paper);}
+  .prod-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:28px;
+  }
+  .prod-card{
+    background:var(--cream);
+    border-radius:26px; padding:34px 28px; text-align:center;
+    border:3px solid transparent;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    position:relative; overflow:hidden;
+  }
+  .prod-card:hover{
+    transform:translateY(-8px) rotate(-0.5deg);
+    border-color:var(--calabaza-deep);
+    box-shadow:var(--shadow);
+  }
+  .prod-card .icon-wrap{
+    width:96px; height:96px; margin:0 auto 22px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .prod-card:nth-child(1) .icon-wrap{background:#DFF1E4;}
+  .prod-card:nth-child(2) .icon-wrap{background:#FCE7D1;}
+  .prod-card:nth-child(3) .icon-wrap{background:#DDEEF4;}
+  .prod-card h3{font-size:1.4rem; color:var(--yerba-dark); margin-bottom:10px;}
+  .prod-card p{color:#5b4c3d; font-weight:600; font-size:0.98rem; margin-bottom:18px;}
+  .tag-row{display:flex; flex-wrap:wrap; gap:8px; justify-content:center;}
+  .tag{
+    background:#fff; border:2px solid var(--yerba); color:var(--yerba-dark);
+    font-weight:800; font-size:0.78rem; padding:5px 12px; border-radius:20px;
+  }
+
+  /* ---------- URUGUAY STORY / SOBRE NOSOTROS ---------- */
+  .historia{
+    background: var(--wood);
+    color:#fff;
+    position:relative;
+  }
+  .historia-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:center;
+  }
+  .historia h2{color:var(--calabaza); font-size:clamp(1.8rem,3vw,2.4rem); margin-bottom:20px;}
+  .historia p{font-weight:600; opacity:0.95; margin-bottom:16px; line-height:1.6;}
+  .badge-row{display:flex; gap:14px; flex-wrap:wrap; margin-top:26px;}
+  .badge{
+    display:flex; align-items:center; gap:8px;
+    background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.3);
+    padding:10px 16px; border-radius:16px; font-weight:800; font-size:0.9rem;
+  }
+  .historia-art{display:flex; justify-content:center;}
+
+  /* ---------- PAGOS ---------- */
+  .pagos{
+    background: var(--calabaza);
+    text-align:center;
+  }
+  .pagos .section-head p{color:#6b4a1c;}
+  .pagos .section-head .kicker{color:var(--sunset-deep);}
+  .pagos .section-head h2{color:var(--wood);}
+  .pago-icons{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:18px; margin-top:10px;
+  }
+  .pago-chip{
+    background:#fff; padding:14px 24px; border-radius:18px; font-weight:800; color:var(--wood);
+    box-shadow:0 6px 16px rgba(107,66,38,0.18); font-size:0.95rem;
+    display:flex; align-items:center; gap:8px;
+  }
+
+  /* ---------- UBICACION ---------- */
+  .ubicacion{background:var(--paper);}
+  .ubi-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:36px; align-items:stretch;
+  }
+  .ubi-card{
+    background:var(--cream); border-radius:26px; padding:34px; box-shadow:var(--shadow);
+  }
+  .ubi-card h3{color:var(--yerba-dark); font-size:1.4rem; margin-bottom:16px;}
+  .ubi-list{list-style:none; display:flex; flex-direction:column; gap:16px;}
+  .ubi-list li{display:flex; gap:14px; font-weight:700; color:#43362a;}
+  .ubi-list .dot{
+    min-width:38px; height:38px; border-radius:50%; background:var(--yerba);
+    color:#fff; display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+  }
+  .map-wrap{border-radius:26px; overflow:hidden; box-shadow:var(--shadow); min-height:320px;}
+  .map-wrap iframe{width:100%; height:100%; min-height:320px; border:0;}
+
+  /* ---------- CTA FINAL ---------- */
+  .cta-final{
+    background: radial-gradient(circle at 30% 20%, var(--sunset) 0%, var(--sunset-deep) 60%, #7f2408 100%);
+    color:#fff; text-align:center;
+    position:relative; overflow:hidden;
+  }
+  .cta-final h2{font-size:clamp(2rem,4vw,2.8rem); margin-bottom:16px;}
+  .cta-final p{font-weight:700; font-size:1.1rem; max-width:520px; margin:0 auto 34px; opacity:0.95;}
+  .cta-actions{display:flex; gap:16px; justify-content:center; flex-wrap:wrap;}
+  .cta-final .btn-outline{border-color:rgba(255,255,255,0.7);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--yerba-dark); color:#e6efe8; padding:44px 24px 26px; text-align:center;
+  }
+  footer .logo{color:#fff; justify-content:center; margin-bottom:14px;}
+  .foot-links{display:flex; justify-content:center; gap:24px; flex-wrap:wrap; font-weight:800; margin-bottom:18px;}
+  .foot-links a{text-decoration:none; opacity:0.9;}
+  .foot-links a:hover{opacity:1; text-decoration:underline;}
+  footer small{opacity:0.65; font-weight:600;}
+
+  /* ---------- WHATSAPP FLOATING BUTTON ---------- */
+  .wa-float{
+    position:fixed; bottom:22px; right:22px; z-index:60;
+    background:#25D366; color:#fff; width:64px; height:64px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 24px rgba(0,0,0,0.3); text-decoration:none;
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 10px 24px rgba(37,211,102,0.35);}
+    50%{box-shadow:0 10px 30px rgba(37,211,102,0.7);}
+  }
+  @media (prefers-reduced-motion: reduce){ .wa-float{animation:none;} }
+
+  /* ---------- FOCUS STATES ---------- */
+  a:focus-visible, button:focus-visible{
+    outline:3px solid var(--uy-blue); outline-offset:3px;
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 900px){
+    nav.links{display:none;}
+    .hero-inner{grid-template-columns:1fr; text-align:center;}
+    .hero p.lead{margin-left:auto; margin-right:auto;}
+    .hero-actions{justify-content:center;}
+    .prod-grid{grid-template-columns:1fr;}
+    .historia-grid{grid-template-columns:1fr; text-align:center;}
+    .badge-row{justify-content:center;}
+    .ubi-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:480px){
+    .nav-cta span.txt{display:none;}
+    section{padding:64px 18px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">
+      <svg width="30" height="30" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="30" cy="34" r="20" fill="#F2C879" stroke="#6B4226" stroke-width="3"/>
+        <line x1="38" y1="20" x2="46" y2="6" stroke="#C9CDD3" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="46" cy="6" r="3" fill="#C9CDD3"/>
+      </svg>
+      La Casa del Mate <span class="flagbits">🧉🇺🇾</span>
+    </div>
+    <nav class="links">
+      <a href="#productos">Productos</a>
+      <a href="#historia">Nosotros</a>
+      <a href="#pagos">Pagos</a>
+      <a href="#ubicacion">Ubicación</a>
+    </nav>
+    <a class="nav-cta" href="https://api.whatsapp.com/send/?phone=5493425556934&text=Hola!%20Quiero%20consultar%20por%20un%20producto%20%F0%9F%A7%89" target="_blank" rel="noopener">
+      💬 <span class="txt">Escribinos</span>
+    </a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="eyebrow">🇺🇾 Tradición uruguaya en Santa Fe</span>
+      <h1>Tu ronda de mate empieza en <span>La Casa del Mate</span> 🧉</h1>
+      <p class="lead">Mates, bombillas y termos elegidos con onda para que cada cebada sea perfecta. Todos los medios de pago, atención personalizada y stock siempre renovado.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://api.whatsapp.com/send/?phone=5493425556934&text=Hola!%20Quiero%20consultar%20por%20un%20producto%20%F0%9F%A7%89" target="_blank" rel="noopener">
+          🟢 Consultar por WhatsApp
+        </a>
+        <a class="btn btn-outline" href="#productos">Ver productos ↓</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg">
+        <ellipse class="steam s1" cx="120" cy="55" rx="6" ry="18" fill="#ffffff" opacity="0"/>
+        <ellipse class="steam s2" cx="140" cy="50" rx="6" ry="20" fill="#ffffff" opacity="0"/>
+        <ellipse class="steam s3" cx="160" cy="55" rx="6" ry="18" fill="#ffffff" opacity="0"/>
+        <path d="M150 100 C90 100 65 150 70 200 C75 258 110 300 150 300 C190 300 225 258 230 200 C235 150 210 100 150 100 Z" fill="#E3A73B" stroke="#6B4226" stroke-width="4"/>
+        <path d="M150 100 C90 100 65 150 70 200 C75 258 110 300 150 300" fill="none" stroke="#6B4226" stroke-width="2" opacity="0.35"/>
+        <ellipse cx="150" cy="112" rx="42" ry="14" fill="#C9CDD3" stroke="#6B4226" stroke-width="3"/>
+        <rect x="176" y="70" width="16" height="55" rx="8" transform="rotate(18 176 70)" fill="#C9CDD3" stroke="#6B4226" stroke-width="3"/>
+        <circle cx="205" cy="72" r="7" fill="#C9CDD3" stroke="#6B4226" stroke-width="3"/>
+        <path d="M100 190 Q150 175 200 190" stroke="#1E5638" stroke-width="3" fill="none" opacity="0.5"/>
+        <path d="M95 220 Q150 205 205 220" stroke="#1E5638" stroke-width="3" fill="none" opacity="0.4"/>
+      </svg>
+    </div>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:70px;">
+    <path d="M0,40 C240,90 480,0 720,30 C960,60 1200,10 1440,40 L1440,90 L0,90 Z" fill="#FFF7E9"></path>
+  </svg>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>🧉 MATES DE CALABAZA Y MADERA</span>
+    <span>•</span>
+    <span>🥤 BOMBILLAS DE ALPACA Y ACERO</span>
+    <span>•</span>
+    <span>🌡️ TERMOS PARA TODO EL DÍA</span>
+    <span>•</span>
+    <span>💳 TODOS LOS MEDIOS DE PAGO</span>
+    <span>•</span>
+    <span>🧉 MATES DE CALABAZA Y MADERA</span>
+    <span>•</span>
+    <span>🥤 BOMBILLAS DE ALPACA Y ACERO</span>
+    <span>•</span>
+    <span>🌡️ TERMOS PARA TODO EL DÍA</span>
+    <span>•</span>
+    <span>💳 TODOS LOS MEDIOS DE PAGO</span>
+  </div>
+</div>
+
+<section id="productos" class="productos">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Nuestro catálogo</span>
+      <h2>Todo lo que necesitás para cebar bien</h2>
+      <p>Seleccionamos cada producto pensando en la ronda de todos los días.</p>
+    </div>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <div class="icon-wrap">
+          <svg width="52" height="52" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 15 C15 15 10 30 12 40 C14 50 22 55 30 55 C38 55 46 50 48 40 C50 30 45 15 30 15Z" fill="#F2C879" stroke="#6B4226" stroke-width="3"/>
+            <ellipse cx="30" cy="18" rx="9" ry="4" fill="#C9CDD3" stroke="#6B4226" stroke-width="2"/>
+          </svg>
+        </div>
+        <h3>Mates</h3>
+        <p>De calabaza, madera, cerámica y torpedo. Lisos, forrados en cuero o pintados a mano.</p>
+        <div class="tag-row">
+          <span class="tag">Calabaza</span>
+          <span class="tag">Madera</span>
+          <span class="tag">Cuero</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="icon-wrap">
+          <svg width="52" height="52" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="27" y="8" width="8" height="34" rx="4" fill="#C9CDD3" stroke="#6B4226" stroke-width="3"/>
+            <circle cx="31" cy="47" r="7" fill="#E8541E" stroke="#6B4226" stroke-width="3"/>
+          </svg>
+        </div>
+        <h3>Bombillas</h3>
+        <p>De alpaca, acero inoxidable y bombillas pico de loro. Con filtro para una cebada suave.</p>
+        <div class="tag-row">
+          <span class="tag">Alpaca</span>
+          <span class="tag">Acero</span>
+          <span class="tag">Con filtro</span>
+        </div>
+      </div>
+      <div class="prod-card">
+        <div class="icon-wrap">
+          <svg width="52" height="52" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="18" y="18" width="24" height="34" rx="10" fill="#3E92B5" stroke="#6B4226" stroke-width="3"/>
+            <rect x="24" y="10" width="12" height="10" rx="3" fill="#C9CDD3" stroke="#6B4226" stroke-width="3"/>
+          </svg>
+        </div>
+        <h3>Termos</h3>
+        <p>Térmicos de acero y aluminio, en distintos colores y tamaños. Ideales para llevar a todos lados.</p>
+        <div class="tag-row">
+          <span class="tag">1 Litro</span>
+          <span class="tag">Colores</span>
+          <span class="tag">Larga duración</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="historia" class="historia">
+  <div class="container historia-grid">
+    <div>
+      <span class="eyebrow" style="background:rgba(255,255,255,0.12); border-color:rgba(255,255,255,0.3);">🇺🇾 Desde 2018</span>
+      <h2>Una tradición uruguaya, cebada en Santa Fe</h2>
+      <p>La Casa del Mate nació para acercar la cultura del mate 🇺🇾 a cada casa de Santa Fe. Elegimos cada mate, bombilla y termo pensando en la calidad y en esa charla de todos los días compartiendo la ronda.</p>
+      <p>Atendemos con onda, te asesoramos según tu gusto y tu bolsillo, y aceptamos todos los medios de pago para que llevarte tu mate sea siempre fácil.</p>
+      <div class="badge-row">
+        <div class="badge">🧉 +7 años de trayectoria</div>
+        <div class="badge">💳 Todos los medios de pago</div>
+        <div class="badge">📍 Santa Fe, Argentina</div>
+      </div>
+    </div>
+    <div class="historia-art">
+      <svg width="260" height="260" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="100" cy="100" r="92" fill="#F2C879" opacity="0.12"/>
+        <circle cx="100" cy="100" r="70" fill="none" stroke="#F2C879" stroke-width="3" stroke-dasharray="6 10"/>
+        <text x="100" y="112" font-size="70" text-anchor="middle">🧉</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section id="pagos" class="pagos">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Facilidad para vos</span>
+      <h2>Todos los medios de pago</h2>
+      <p>Comprá como te resulte más cómodo, en el local o coordinando por WhatsApp.</p>
+    </div>
+    <div class="pago-icons">
+      <div class="pago-chip">💵 Efectivo</div>
+      <div class="pago-chip">💳 Débito</div>
+      <div class="pago-chip">💳 Crédito</div>
+      <div class="pago-chip">📱 Transferencia</div>
+      <div class="pago-chip">🏦 Mercado Pago</div>
+      <div class="pago-chip">🧾 Cuotas</div>
+    </div>
+  </div>
+</section>
+
+<section id="ubicacion" class="ubicacion">
+  <div class="container">
+    <div class="section-head">
+      <span class="kicker">Te esperamos</span>
+      <h2>Visitanos o escribinos</h2>
+      <p>Estamos en Irigoyen Freyre 2347, Santa Fe. También podés consultar todo por WhatsApp.</p>
+    </div>
+    <div class="ubi-grid">
+      <div class="ubi-card">
+        <h3>Datos de contacto</h3>
+        <ul class="ubi-list">
+          <li><span class="dot">📍</span> Irigoyen Freyre 2347, Santa Fe, Santa Fe (3000)</li>
+          <li><span class="dot">💬</span> WhatsApp: <a href="https://api.whatsapp.com/send/?phone=5493425556934" target="_blank" rel="noopener">+54 9 342 555-6934</a></li>
+          <li><span class="dot">📷</span> Instagram: <a href="https://www.instagram.com/lacasadelmate2018/" target="_blank" rel="noopener">@lacasadelmate2018</a></li>
+          <li><span class="dot">🔗</span> Todos los links: <a href="https://linktr.ee/lacasa.delmate" target="_blank" rel="noopener">linktr.ee/lacasa.delmate</a></li>
+        </ul>
+        <div class="hero-actions" style="margin-top:26px;">
+          <a class="btn btn-dark" href="https://api.whatsapp.com/send/?phone=5493425556934&text=Hola!%20Quiero%20consultar%20por%20un%20producto%20%F0%9F%A7%89" target="_blank" rel="noopener">🟢 Escribir por WhatsApp</a>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe
+          src="https://www.google.com/maps?q=Irigoyen+Freyre+2347,+Santa+Fe,+Argentina&output=embed"
+          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          title="Ubicación La Casa del Mate">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="container">
+    <h2>¿Listo para armar tu mate ideal? 🧉</h2>
+    <p>Contanos qué buscás y te ayudamos a elegir el mate, la bombilla o el termo perfecto para vos.</p>
+    <div class="cta-actions">
+      <a class="btn btn-primary" style="background:#25D366;" href="https://api.whatsapp.com/send/?phone=5493425556934&text=Hola!%20Quiero%20consultar%20por%20un%20producto%20%F0%9F%A7%89" target="_blank" rel="noopener">🟢 Escribir por WhatsApp</a>
+      <a class="btn btn-outline" href="https://www.instagram.com/lacasadelmate2018/" target="_blank" rel="noopener">📷 Seguinos en Instagram</a>
+      <a class="btn btn-outline" href="https://linktr.ee/lacasa.delmate" target="_blank" rel="noopener">🔗 Ver Linktree</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">🧉 La Casa del Mate 🇺🇾</div>
+  <div class="foot-links">
+    <a href="https://api.whatsapp.com/send/?phone=5493425556934" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="https://www.instagram.com/lacasadelmate2018/" target="_blank" rel="noopener">Instagram</a>
+    <a href="https://linktr.ee/lacasa.delmate" target="_blank" rel="noopener">Linktree</a>
+    <a href="#ubicacion">Ubicación</a>
+  </div>
+  <small>© 2026 La Casa del Mate — Irigoyen Freyre 2347, Santa Fe, Santa Fe.</small>
+</footer>
+
+<a class="wa-float" href="https://api.whatsapp.com/send/?phone=5493425556934&text=Hola!%20Quiero%20consultar%20por%20un%20producto%20%F0%9F%A7%89" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 32 32" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16 3C9 3 3 9 3 16c0 2.4.6 4.6 1.8 6.6L3 29l6.6-1.7C11.5 28.4 13.7 29 16 29c7 0 13-6 13-13S23 3 16 3zm0 23.8c-2 0-4-.5-5.7-1.6l-.4-.2-4 1 1-3.9-.3-.4C5.6 20 5 18 5 16c0-6 5-11 11-11s11 5 11 11-5 11-11 11z"/>
+    <path d="M22 19.2c-.3-.1-1.8-.9-2.1-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.1-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.3z"/>
+  </svg>
+</a>
+
+</body>
+</html>
