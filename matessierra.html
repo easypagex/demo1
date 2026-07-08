@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>mates.sierra — Mates premium personalizados | Córdoba</title>
+<meta name="description" content="Mates premium personalizados en Córdoba Capital y Villa Dolores. Showroom con cita previa, envíos a todo el país, grabado a pedido.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF1E1;
+    --cream-2:#F4E4C4;
+    --green-deep:#1F4A34;
+    --green:#356B48;
+    --green-vivid:#4CA868;
+    --clay:#C1502E;
+    --clay-light:#E37B45;
+    --gold:#D9A036;
+    --brown:#4A2E1F;
+    --brown-2:#6B4530;
+    --silver:#C9D2CE;
+    --ink:#2A1E14;
+    --radius:22px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Manrope', sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    color:var(--green-deep);
+    line-height:1.05;
+    letter-spacing:-0.01em;
+  }
+  .label{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.14em;
+    font-size:0.72rem;
+    font-weight:700;
+  }
+  a{color:inherit; text-decoration:none;}
+  img,svg{display:block; max-width:100%;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  section{position:relative;}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,241,225,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(74,46,31,0.1);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fraunces', serif; font-weight:600; font-style:italic;
+    font-size:1.4rem; color:var(--green-deep);
+  }
+  .logo svg{width:34px; height:34px;}
+  .nav-links{display:flex; align-items:center; gap:30px;}
+  .nav-links a:not(.btn){
+    font-family:'Space Mono', monospace; font-size:0.78rem;
+    text-transform:uppercase; letter-spacing:0.08em; color:var(--brown-2);
+    transition:color .2s;
+  }
+  .nav-links a:not(.btn):hover{color:var(--clay);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 24px; border-radius:100px;
+    font-family:'Space Mono', monospace; font-size:0.78rem;
+    text-transform:uppercase; letter-spacing:0.06em; font-weight:700;
+    transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
+    border:none; cursor:pointer;
+  }
+  .btn-clay{background:var(--clay); color:var(--cream);}
+  .btn-clay:hover{background:var(--clay-light); transform:translateY(-2px); box-shadow:0 10px 24px rgba(193,80,46,0.35);}
+  .btn-outline{background:transparent; color:var(--green-deep); border:1.5px solid var(--green-deep);}
+  .btn-outline:hover{background:var(--green-deep); color:var(--cream); transform:translateY(-2px);}
+  .btn-ghost{background:var(--cream-2); color:var(--brown);}
+  .btn-ghost:hover{background:var(--gold); color:var(--brown); transform:translateY(-2px);}
+
+  /* ---------- hero ---------- */
+  .hero{padding:76px 0 40px; overflow:visible;}
+  .hero-grid{
+    display:grid; grid-template-columns:1.05fr 0.85fr; gap:50px; align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex; gap:10px; align-items:center;
+    color:var(--clay); margin-bottom:22px;
+  }
+  .eyebrow span.dot{width:6px; height:6px; border-radius:50%; background:var(--clay); display:inline-block;}
+  h1.hero-title{font-size:clamp(2.6rem, 5.2vw, 4.4rem); font-weight:600;}
+  h1.hero-title em{color:var(--clay); font-style:italic;}
+  .hero-sub{
+    margin-top:22px; font-size:1.14rem; color:var(--brown-2); max-width:480px; line-height:1.55;
+  }
+  .hero-badges{display:flex; flex-wrap:wrap; gap:12px; margin-top:26px;}
+  .badge{
+    display:flex; align-items:center; gap:7px;
+    background:var(--cream-2); padding:8px 16px; border-radius:100px;
+    font-family:'Space Mono', monospace; font-size:0.74rem; color:var(--brown-2);
+    border:1px solid rgba(74,46,31,0.12);
+  }
+  .hero-ctas{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
+
+  .hero-visual{position:relative; display:flex; align-items:center; justify-content:center;}
+  .hero-visual .stamp-ring{
+    position:absolute; inset:0; margin:auto; width:110%; height:110%;
+    animation:spin 40s linear infinite;
+    opacity:0.5;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .mate-glow{
+    position:absolute; width:340px; height:340px; border-radius:50%;
+    background:radial-gradient(circle, rgba(217,160,54,0.35), transparent 70%);
+    filter:blur(10px);
+  }
+  .steam{
+    position:absolute; opacity:0.55;
+  }
+  .steam path{
+    stroke:var(--silver); stroke-width:3; fill:none; stroke-linecap:round;
+    stroke-dasharray:60; stroke-dashoffset:0;
+    animation:steamMove 3.6s ease-in-out infinite;
+  }
+  .steam path:nth-child(2){animation-delay:0.5s;}
+  .steam path:nth-child(3){animation-delay:1s;}
+  @keyframes steamMove{
+    0%{stroke-dashoffset:60; opacity:0;}
+    30%{opacity:0.7;}
+    100%{stroke-dashoffset:0; opacity:0;}
+  }
+
+  /* ---------- trust bar ---------- */
+  .trust{
+    background:var(--green-deep); padding:46px 0; margin-top:30px;
+  }
+  .trust-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:24px;
+  }
+  .trust-item{color:var(--cream);}
+  .trust-item .icon{
+    width:40px; height:40px; margin-bottom:14px; color:var(--gold);
+  }
+  .trust-item h3{color:var(--cream); font-size:1.02rem; font-weight:600; margin-bottom:6px;}
+  .trust-item p{font-size:0.87rem; color:rgba(251,241,225,0.72); line-height:1.5;}
+
+  /* ---------- section heads ---------- */
+  .section-pad{padding:100px 0;}
+  .section-head{max-width:620px; margin-bottom:56px;}
+  .section-head .label{color:var(--clay); display:block; margin-bottom:14px;}
+  .section-head h2{font-size:clamp(2rem, 3.6vw, 2.9rem); font-weight:600;}
+  .section-head p{margin-top:16px; color:var(--brown-2); font-size:1.05rem; line-height:1.6;}
+
+  /* ---------- products ---------- */
+  .prod-grid{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:22px;
+  }
+  .prod-card{
+    background:var(--cream-2); border-radius:var(--radius);
+    padding:30px 24px; display:flex; flex-direction:column; gap:16px;
+    border:1px solid rgba(74,46,31,0.08);
+    transition:transform .3s ease, box-shadow .3s ease, background .3s ease;
+    position:relative; overflow:hidden;
+  }
+  .prod-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(74,46,31,0.16);
+    background:var(--cream);
+  }
+  .prod-card .icon-wrap{
+    width:60px; height:60px; border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .prod-card:nth-child(1) .icon-wrap{background:rgba(76,168,104,0.18);}
+  .prod-card:nth-child(2) .icon-wrap{background:rgba(193,80,46,0.16);}
+  .prod-card:nth-child(3) .icon-wrap{background:rgba(217,160,54,0.2);}
+  .prod-card:nth-child(4) .icon-wrap{background:rgba(107,69,48,0.16);}
+  .prod-card .icon-wrap svg{width:30px; height:30px;}
+  .prod-card:nth-child(1) svg{color:var(--green-vivid);}
+  .prod-card:nth-child(2) svg{color:var(--clay);}
+  .prod-card:nth-child(3) svg{color:var(--gold);}
+  .prod-card:nth-child(4) svg{color:var(--brown-2);}
+  .prod-card h3{font-size:1.18rem; font-weight:600; color:var(--green-deep);}
+  .prod-card p{font-size:0.92rem; color:var(--brown-2); line-height:1.5; flex-grow:1;}
+  .prod-card .link{
+    font-family:'Space Mono', monospace; font-size:0.72rem; text-transform:uppercase;
+    letter-spacing:0.06em; color:var(--clay); display:inline-flex; align-items:center; gap:6px;
+    font-weight:700;
+  }
+
+  /* ---------- personalize ---------- */
+  .personalize{
+    background:var(--green-deep); border-radius:32px; padding:64px;
+    display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center;
+    color:var(--cream);
+  }
+  .personalize .label{color:var(--gold);}
+  .personalize h2{color:var(--cream); font-size:clamp(1.8rem,3vw,2.5rem);}
+  .personalize p{color:rgba(251,241,225,0.75); margin-top:14px; line-height:1.6;}
+  .stamp-input{
+    margin-top:30px; display:flex; gap:10px; flex-wrap:wrap;
+  }
+  .stamp-input input{
+    flex:1; min-width:200px; padding:14px 18px; border-radius:100px; border:none;
+    background:rgba(251,241,225,0.12); color:var(--cream);
+    font-family:'Manrope',sans-serif; font-size:0.95rem; outline:none;
+    border:1.5px solid rgba(251,241,225,0.28);
+  }
+  .stamp-input input::placeholder{color:rgba(251,241,225,0.5);}
+  .stamp-input input:focus{border-color:var(--gold);}
+  .stamp-preview{display:flex; align-items:center; justify-content:center;}
+  .stamp-svg-wrap{position:relative; width:300px; height:300px;}
+  #stampText{font-family:'Fraunces', serif; font-weight:600; fill:var(--cream);}
+  .stamp-circle-ring{animation:spin 60s linear infinite;}
+
+  /* ---------- showroom ---------- */
+  .showroom-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .loc-card{
+    background:var(--cream-2); border-radius:var(--radius); padding:36px;
+    border:1px solid rgba(74,46,31,0.08);
+    position:relative; overflow:hidden;
+  }
+  .loc-card .pin{
+    width:52px; height:52px; border-radius:14px; background:var(--clay);
+    display:flex; align-items:center; justify-content:center; margin-bottom:20px;
+  }
+  .loc-card .pin svg{width:26px; height:26px; color:var(--cream);}
+  .loc-card h3{font-size:1.4rem; margin-bottom:8px;}
+  .loc-card p{color:var(--brown-2); font-size:0.95rem; line-height:1.6; margin-bottom:20px;}
+
+  /* ---------- instagram ---------- */
+  .insta-grid{
+    display:grid; grid-template-columns:repeat(6,1fr); gap:14px; margin-top:44px;
+  }
+  .insta-cell{
+    aspect-ratio:1; border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .3s ease;
+  }
+  .insta-cell:hover{transform:scale(1.06) rotate(-1deg);}
+  .insta-cell svg{width:28px; height:28px;}
+  .insta-cell:nth-child(6n+1){background:var(--green);}
+  .insta-cell:nth-child(6n+2){background:var(--clay);}
+  .insta-cell:nth-child(6n+3){background:var(--gold);}
+  .insta-cell:nth-child(6n+4){background:var(--brown-2);}
+  .insta-cell:nth-child(6n+5){background:var(--green-vivid);}
+  .insta-cell:nth-child(6n+6){background:var(--clay-light);}
+  .insta-cell svg{color:var(--cream);}
+
+  /* ---------- final cta ---------- */
+  .final-cta{
+    background:linear-gradient(135deg, var(--clay), var(--clay-light));
+    border-radius:32px; padding:70px 50px; text-align:center;
+    color:var(--cream); position:relative; overflow:hidden;
+  }
+  .final-cta h2{color:var(--cream); font-size:clamp(2rem,4vw,3rem);}
+  .final-cta p{margin:16px auto 30px; max-width:480px; color:rgba(251,241,225,0.88);}
+  .final-cta .btn-ghost{background:var(--cream); color:var(--clay);}
+  .final-cta .btn-ghost:hover{background:var(--green-deep); color:var(--cream);}
+
+  /* ---------- footer ---------- */
+  footer{padding:60px 0 40px; border-top:1px solid rgba(74,46,31,0.12); margin-top:30px;}
+  .footer-grid{display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;}
+  footer .logo{margin-bottom:10px;}
+  footer p{color:var(--brown-2); font-size:0.85rem;}
+  .footer-social{display:flex; gap:14px;}
+  .footer-social a{
+    width:42px; height:42px; border-radius:50%; background:var(--cream-2);
+    display:flex; align-items:center; justify-content:center; transition:background .2s, transform .2s;
+  }
+  .footer-social a:hover{background:var(--clay); transform:translateY(-3px);}
+  .footer-social a svg{width:19px; height:19px; color:var(--brown);}
+  .footer-social a:hover svg{color:var(--cream);}
+
+  /* ---------- floating instagram ---------- */
+  .float-ig{
+    position:fixed; bottom:26px; right:26px; z-index:60;
+    width:58px; height:58px; border-radius:50%;
+    background:var(--clay); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 12px 30px rgba(193,80,46,0.45);
+    transition:transform .25s ease;
+  }
+  .float-ig:hover{transform:scale(1.1) rotate(-6deg);}
+  .float-ig svg{width:26px; height:26px; color:var(--cream);}
+
+  /* ---------- responsive ---------- */
+  @media(max-width:920px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-visual{order:-1; max-width:320px; margin:0 auto;}
+    .trust-grid{grid-template-columns:repeat(2,1fr);}
+    .prod-grid{grid-template-columns:repeat(2,1fr);}
+    .personalize{grid-template-columns:1fr; padding:44px 28px;}
+    .showroom-grid{grid-template-columns:1fr;}
+    .insta-grid{grid-template-columns:repeat(3,1fr);}
+    .nav-links{display:none;}
+    .section-pad{padding:70px 0;}
+  }
+  @media(max-width:520px){
+    .prod-grid{grid-template-columns:1fr;}
+    .trust-grid{grid-template-columns:1fr;}
+  }
+
+  @media(prefers-reduced-motion: reduce){
+    *{animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="logo">
+      <svg viewBox="0 0 40 40" fill="none"><path d="M12 16c0-4 4-7 8-7s8 3 8 7v7a8 8 0 0 1-8 8h0a8 8 0 0 1-8-8v-7Z" stroke="var(--green-deep)" stroke-width="2.2"/><path d="M20 9V5" stroke="var(--clay)" stroke-width="2.2" stroke-linecap="round"/><path d="M20 5c3 0 4 2 4 2s-3 1-4 1-4-1-4-1 1-2 4-2Z" fill="var(--clay)"/></svg>
+      mates.sierra
+    </a>
+    <div class="nav-links">
+      <a href="#productos">Productos</a>
+      <a href="#personalizar">Personalización</a>
+      <a href="#showroom">Showroom</a>
+      <a href="https://www.instagram.com/mates.sierra/" target="_blank" rel="noopener" class="btn btn-clay">Escribinos</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow label"><span class="dot"></span> CÓRDOBA CAPITAL · VILLA DOLORES</div>
+        <h1 class="hero-title">Cada mate<br>lleva <em>tu sello.</em></h1>
+        <p class="hero-sub">Mates premium, elegidos y personalizados a pedido. Diseñamos la pieza que vas a cebar todos los días — con tu nombre, tu estilo, tu ritual.</p>
+        <div class="hero-badges">
+          <span class="badge">✨ Showroom con cita previa</span>
+          <span class="badge">📦 Envíos a todo el país</span>
+          <span class="badge">💳 Aceptamos tarjetas</span>
+        </div>
+        <div class="hero-ctas">
+          <a href="#productos" class="btn btn-clay">Ver catálogo</a>
+          <a href="https://www.instagram.com/mates.sierra/" target="_blank" rel="noopener" class="btn btn-outline">Seguinos en Instagram</a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="mate-glow"></div>
+        <svg class="stamp-ring" viewBox="0 0 300 300" fill="none">
+          <circle cx="150" cy="150" r="140" stroke="var(--silver)" stroke-width="1.2" stroke-dasharray="3 7"/>
+          <circle cx="150" cy="150" r="118" stroke="var(--gold)" stroke-width="1" stroke-dasharray="1 5" opacity="0.6"/>
+        </svg>
+        <svg viewBox="0 0 260 320" width="240" style="position:relative;">
+          <!-- mate body -->
+          <path d="M60 140c0-40 30-65 70-65s70 25 70 65v70c0 44-31 80-70 80s-70-36-70-80v-70Z" fill="var(--gold)" opacity="0.16"/>
+          <path d="M60 140c0-40 30-65 70-65s70 25 70 65v70c0 44-31 80-70 80s-70-36-70-80v-70Z" stroke="var(--brown-2)" stroke-width="3" fill="none"/>
+          <ellipse cx="130" cy="140" rx="70" ry="22" fill="var(--green-vivid)" opacity="0.85"/>
+          <ellipse cx="130" cy="140" rx="70" ry="22" stroke="var(--green-deep)" stroke-width="2.5" fill="none"/>
+          <!-- band -->
+          <path d="M62 178c20 8 46 12 68 12s48-4 68-12" stroke="var(--clay)" stroke-width="6" fill="none" stroke-linecap="round"/>
+          <!-- bombilla -->
+          <line x1="160" y1="150" x2="215" y2="40" stroke="var(--silver)" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="215" cy="40" r="8" fill="var(--silver)"/>
+          <!-- steam -->
+          <g class="steam" transform="translate(190,10)">
+            <path d="M0 40 C10 25, -8 15, 2 0" />
+            <path d="M14 40 C24 25, 6 15, 16 0" transform="translate(4,0)"/>
+            <path d="M-14 40 C-4 25, -22 15, -12 0" transform="translate(-2,0)"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST BAR -->
+  <section class="trust">
+    <div class="wrap trust-grid">
+      <div class="trust-item reveal">
+        <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M4 8l8-6 8 6M6 10v9a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-9" stroke="currentColor" stroke-width="1.8"/></svg>
+        <h3>Personalizamos tu mate</h3>
+        <p>Grabado a pedido: nombre, apodo o la frase que quieras cebar.</p>
+      </div>
+      <div class="trust-item reveal">
+        <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M3 7l9-4 9 4-9 4-9-4Zm0 0v10l9 4 9-4V7M12 11v10" stroke="currentColor" stroke-width="1.8"/></svg>
+        <h3>Envíos a todo el país</h3>
+        <p>Tu mate llega hasta la puerta de tu casa, esté donde esté.</p>
+      </div>
+      <div class="trust-item reveal">
+        <svg class="icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8"/></svg>
+        <h3>Showroom con cita previa</h3>
+        <p>Cba Capital y Villa Dolores. Coordinamos el día que te quede.</p>
+      </div>
+      <div class="trust-item reveal">
+        <svg class="icon" viewBox="0 0 24 24" fill="none"><rect x="2" y="6" width="20" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M2 10h20" stroke="currentColor" stroke-width="1.8"/></svg>
+        <h3>Pagá como quieras</h3>
+        <p>Recibimos tarjetas de crédito y débito.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTOS -->
+  <section class="section-pad" id="productos">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="label">Catálogo</span>
+        <h2>Productos premium</h2>
+        <p>Cada pieza está elegida y trabajada para que cebar sea un ritual, no un trámite.</p>
+      </div>
+      <div class="prod-grid">
+        <div class="prod-card reveal">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none"><path d="M4 10c0-4.4 3.6-8 8-8s8 3.6 8 8v4a8 8 0 0 1-16 0v-4Z" stroke="currentColor" stroke-width="1.8"/><path d="M8 22h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+          <h3>Mates de algarrobo</h3>
+          <p>Torneados en madera nativa, con alma de calabaza. Piezas únicas, de veta visible.</p>
+          <a class="link" href="https://www.instagram.com/mates.sierra/" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+        <div class="prod-card reveal">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9a6 6 0 0 1 12 0v6a6 6 0 0 1-12 0V9Z" stroke="currentColor" stroke-width="1.8"/><path d="M6 12h12" stroke="currentColor" stroke-width="1.8"/></svg></div>
+          <h3>Forrados en cuero</h3>
+          <p>Terminación artesanal cosida a mano. Textura cálida, pieza que se hace tuya con el uso.</p>
+          <a class="link" href="https://www.instagram.com/mates.sierra/" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+        <div class="prod-card reveal">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M3 10h18M9 4v16" stroke="currentColor" stroke-width="1.8"/></svg></div>
+          <h3>Sets matero completos</h3>
+          <p>Mate, bombilla y yerbera a juego. Listos para regalar o para arrancar tu ritual desde cero.</p>
+          <a class="link" href="https://www.instagram.com/mates.sierra/" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+        <div class="prod-card reveal">
+          <div class="icon-wrap"><svg viewBox="0 0 24 24" fill="none"><line x1="5" y1="19" x2="19" y2="5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="5" r="2.3" stroke="currentColor" stroke-width="1.8"/></svg></div>
+          <h3>Bombillas personalizadas</h3>
+          <p>Alpaca y acero, grabadas a pedido. El detalle que distingue tu mate del resto.</p>
+          <a class="link" href="https://www.instagram.com/mates.sierra/" target="_blank" rel="noopener">Consultar →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERSONALIZAR -->
+  <section class="section-pad" id="personalizar">
+    <div class="wrap">
+      <div class="personalize reveal">
+        <div>
+          <span class="label">Tu sello</span>
+          <h2>Diseñá el grabado de tu mate</h2>
+          <p>Escribí tu nombre, tu apodo o esa frase que te representa. Así de simple se ve tu sello en el mate — nosotros lo grabamos a mano.</p>
+          <div class="stamp-input">
+            <input type="text" id="stampInput" maxlength="14" placeholder="Escribí tu nombre o frase" value="TU NOMBRE">
+            <a href="https://www.instagram.com/mates.sierra/" target="_blank" rel="noopener" class="btn btn-clay">Pedir este grabado</a>
+          </div>
+        </div>
+        <div class="stamp-preview">
+          <div class="stamp-svg-wrap">
+            <svg viewBox="0 0 300 300" width="100%" height="100%">
+              <g class="stamp-circle-ring">
+                <circle cx="150" cy="150" r="130" fill="none" stroke="var(--gold)" stroke-width="1.4" stroke-dasharray="2 6"/>
+              </g>
+              <circle cx="150" cy="150" r="105" fill="none" stroke="var(--cream)" stroke-width="2" opacity="0.5"/>
+              <circle cx="150" cy="150" r="88" fill="rgba(251,241,225,0.06)" stroke="var(--cream)" stroke-width="1.5"/>
+              <text id="stampText" x="150" y="158" text-anchor="middle" font-size="26">TU NOMBRE</text>
+              <path d="M110 190 Q150 205 190 190" stroke="var(--clay)" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHOWROOM -->
+  <section class="section-pad" id="showroom">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="label">Visitanos</span>
+        <h2>Showroom con cita previa</h2>
+        <p>Elegí tu mate en persona, probá texturas y coordiná tu grabado cara a cara.</p>
+      </div>
+      <div class="showroom-grid">
+        <div class="loc-card reveal">
+          <div class="pin"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s7-7.4 7-12.5A7 7 0 0 0 5 9.5C5 14.6 12 22 12 22Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9.5" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg></div>
+          <h3>Córdoba Capital</h3>
+          <p>Coordinamos día y horario por Instagram para que pruebes cada pieza sin apuro.</p>
+          <a href="https://www.instagram.com/mates.sierra/" target="_blank" rel="noopener" class="btn btn-outline">Coordinar visita</a>
+        </div>
+        <div class="loc-card reveal">
+          <div class="pin"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22s7-7.4 7-12.5A7 7 0 0 0 5 9.5C5 14.6 12 22 12 22Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="9.5" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg></div>
+          <h3>Villa Dolores</h3>
+          <p>Mismo showroom, mismo mimo por el detalle. Escribinos y vemos la mejor fecha.</p>
+          <a href="https://www.instagram.com/mates.sierra/" target="_blank" rel="noopener" class="btn btn-outline">Coordinar visita</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTAGRAM -->
+  <section class="section-pad">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="label">@mates.sierra</span>
+        <h2>Seguí el día a día del taller</h2>
+        <p>Grabados, piezas nuevas y materos de todo el país. Todo el contenido, en Instagram.</p>
+      </div>
+      <div class="insta-grid reveal">
+        <div class="insta-cell"><svg viewBox="0 0 24 24" fill="none"><path d="M4 10c0-4.4 3.6-8 8-8s8 3.6 8 8v4a8 8 0 0 1-16 0v-4Z" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <div class="insta-cell"><svg viewBox="0 0 24 24" fill="none"><line x1="5" y1="19" x2="19" y2="5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="19" cy="5" r="2.3" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <div class="insta-cell"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <div class="insta-cell"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <div class="insta-cell"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9a6 6 0 0 1 12 0v6a6 6 0 0 1-12 0V9Z" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <div class="insta-cell"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2v20M4 8l8-6 8 6" stroke="currentColor" stroke-width="1.8"/></svg></div>
+      </div>
+      <div style="text-align:center; margin-top:40px;">
+        <a href="https://www.instagram.com/mates.sierra/" target="_blank" rel="noopener" class="btn btn-clay">Ver más en Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="section-pad">
+    <div class="wrap">
+      <div class="final-cta reveal">
+        <h2>¿Listo para tu mate personalizado?</h2>
+        <p>Escribinos por Instagram, contanos qué tenés en mente y armamos tu pieza a medida.</p>
+        <a href="https://www.instagram.com/mates.sierra/" target="_blank" rel="noopener" class="btn btn-ghost">Escribinos por Instagram</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <a href="#top" class="logo">
+        <svg viewBox="0 0 40 40" fill="none"><path d="M12 16c0-4 4-7 8-7s8 3 8 7v7a8 8 0 0 1-8 8h0a8 8 0 0 1-8-8v-7Z" stroke="var(--green-deep)" stroke-width="2.2"/></svg>
+        mates.sierra
+      </a>
+      <p>Productos premium 🧉 · Córdoba Capital · Villa Dolores · Argentina</p>
+      <p style="margin-top:4px;">© 2026 mates.sierra — Todos los derechos reservados.</p>
+    </div>
+    <div class="footer-social">
+      <a href="https://www.instagram.com/mates.sierra/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<a href="https://www.instagram.com/mates.sierra/" target="_blank" rel="noopener" class="float-ig" aria-label="Instagram mates.sierra">
+  <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg>
+</a>
+
+<script>
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => io.observe(el));
+
+  // live stamp preview
+  const input = document.getElementById('stampInput');
+  const stampText = document.getElementById('stampText');
+  function updateStamp(){
+    const val = (input.value || 'TU NOMBRE').toUpperCase().slice(0,14);
+    stampText.textContent = val;
+    const len = val.length;
+    let size = 26;
+    if(len > 10) size = 20;
+    if(len > 12) size = 17;
+    stampText.setAttribute('font-size', size);
+  }
+  input.addEventListener('input', updateStamp);
+  updateStamp();
+</script>
+
+</body>
+</html>
