@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mate al Argento — @azuprusso</title>
+<meta name="description" content="Una argentina compartiendo mates y frases de la vida. Colaboraciones con marcas al DM 🧉🇦🇷">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,600&family=Caveat:wght@500;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sol: #FFC93C;
+    --sol-fuerte: #FF9F1C;
+    --yerba: #2E7D32;
+    --yerba-clara: #6FBF73;
+    --celeste: #6EC6E8;
+    --crema: #FFF6E3;
+    --tierra: #7A4A2B;
+    --plata: #E8E4DA;
+    --tinta: #1F2A1E;
+    --shadow: rgba(31,42,30,0.15);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    font-family:'Space Grotesk', sans-serif;
+    background: var(--crema);
+    color: var(--tinta);
+    overflow-x:hidden;
+  }
+
+  .bg-textura{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    background:
+      radial-gradient(circle at 10% 15%, rgba(255,201,60,0.35), transparent 40%),
+      radial-gradient(circle at 90% 10%, rgba(110,198,232,0.30), transparent 35%),
+      radial-gradient(circle at 85% 85%, rgba(111,191,115,0.30), transparent 40%),
+      var(--crema);
+  }
+
+  a{ text-decoration:none; color:inherit; }
+
+  h1,h2,h3{ font-family:'Fraunces', serif; }
+
+  .contenedor{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* NAV */
+  nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background: rgba(255,246,227,0.85);
+    backdrop-filter: blur(8px);
+    border-bottom: 3px solid var(--tinta);
+  }
+  nav .contenedor{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:14px 24px;
+  }
+  .logo{
+    font-family:'Fraunces', serif;
+    font-weight:900;
+    font-size:1.3rem;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .logo span.mate{ font-size:1.4rem; }
+  .nav-links{
+    display:flex;
+    gap:26px;
+    font-weight:500;
+    font-size:0.95rem;
+  }
+  .nav-links a{
+    position:relative;
+    padding-bottom:4px;
+  }
+  .nav-links a:hover{ color:var(--yerba); }
+  .btn-nav{
+    background:var(--yerba);
+    color:var(--crema) !important;
+    padding:10px 20px;
+    border-radius:999px;
+    font-weight:700;
+    border:2px solid var(--tinta);
+    box-shadow: 3px 3px 0 var(--tinta);
+    transition: transform 0.15s ease;
+  }
+  .btn-nav:hover{ transform: translate(-2px,-2px); box-shadow: 5px 5px 0 var(--tinta); }
+
+  @media (max-width:760px){
+    .nav-links{ display:none; }
+  }
+
+  /* HERO */
+  header.hero{
+    padding:90px 0 60px;
+    position:relative;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+  }
+  @media (max-width:860px){
+    .hero-grid{ grid-template-columns:1fr; }
+  }
+
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--sol);
+    border:2px solid var(--tinta);
+    padding:6px 16px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.85rem;
+    margin-bottom:22px;
+    box-shadow:3px 3px 0 var(--tinta);
+  }
+
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 4.4rem);
+    line-height:1.02;
+    font-weight:900;
+    margin-bottom:22px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--yerba);
+    text-decoration: wavy underline var(--sol-fuerte) 3px;
+    text-underline-offset:8px;
+  }
+
+  .hero p.lead{
+    font-size:1.15rem;
+    max-width:480px;
+    margin-bottom:32px;
+    line-height:1.55;
+  }
+
+  .cta-row{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+
+  .btn-primario{
+    background:var(--tierra);
+    color:var(--crema);
+    padding:16px 30px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:1.02rem;
+    border:2px solid var(--tinta);
+    box-shadow:4px 4px 0 var(--tinta);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .btn-primario:hover{ transform: translate(-3px,-3px); box-shadow:7px 7px 0 var(--tinta); }
+
+  .btn-secundario{
+    background:transparent;
+    color:var(--tinta);
+    padding:16px 30px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:1.02rem;
+    border:2px solid var(--tinta);
+    transition: background 0.15s ease;
+  }
+  .btn-secundario:hover{ background: var(--plata); }
+
+  /* Mate visual */
+  .mate-visual{
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .mate-circulo{
+    width:340px;
+    height:340px;
+    border-radius:50%;
+    background: conic-gradient(from 200deg, var(--yerba-clara), var(--sol), var(--celeste), var(--yerba-clara));
+    border:4px solid var(--tinta);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:7rem;
+    box-shadow: 8px 8px 0 var(--tinta);
+    animation: girar 22s linear infinite;
+  }
+  @keyframes girar{
+    from{ filter:hue-rotate(0deg); }
+    to{ filter:hue-rotate(15deg); }
+  }
+  .mate-circulo span{
+    display:inline-block;
+    background:var(--crema);
+    border:3px solid var(--tinta);
+    border-radius:50%;
+    width:190px;
+    height:190px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .globito{
+    position:absolute;
+    background:var(--celeste);
+    border:2px solid var(--tinta);
+    border-radius:16px;
+    padding:8px 14px;
+    font-family:'Caveat', cursive;
+    font-weight:700;
+    font-size:1.3rem;
+    box-shadow:3px 3px 0 var(--tinta);
+  }
+  .globito.g1{ top:-10px; right:20px; transform:rotate(-6deg); background:var(--sol);}
+  .globito.g2{ bottom:0px; left:-10px; transform:rotate(4deg); }
+
+  /* MARQUEE frases */
+  .marquee-wrap{
+    background: var(--yerba);
+    border-top:3px solid var(--tinta);
+    border-bottom:3px solid var(--tinta);
+    padding:16px 0;
+    overflow:hidden;
+    white-space:nowrap;
+  }
+  .marquee{
+    display:inline-block;
+    animation: desplazar 28s linear infinite;
+    font-family:'Caveat', cursive;
+    font-size:1.6rem;
+    color:var(--crema);
+    font-weight:700;
+  }
+  .marquee span{ margin:0 26px; }
+  @keyframes desplazar{
+    0%{ transform:translateX(0); }
+    100%{ transform:translateX(-50%); }
+  }
+
+  /* SECCIONES */
+  section{ padding:90px 0; }
+  .titulo-seccion{
+    font-size:clamp(1.9rem,4vw,2.6rem);
+    font-weight:900;
+    margin-bottom:14px;
+  }
+  .subrayado{
+    display:inline-block;
+    height:10px;
+    width:70px;
+    background:var(--sol);
+    border-radius:6px;
+    margin-bottom:26px;
+  }
+
+  .reveal{
+    opacity:0;
+    transform: translateY(28px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible{ opacity:1; transform:translateY(0); }
+
+  /* Sobre mi */
+  .sobre-grid{
+    display:grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap:50px;
+    align-items:center;
+  }
+  @media (max-width:860px){ .sobre-grid{ grid-template-columns:1fr; } }
+  .foto-marco{
+    background: var(--sol);
+    border:3px solid var(--tinta);
+    border-radius:24px;
+    aspect-ratio: 4/5;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:5rem;
+    box-shadow:6px 6px 0 var(--tinta);
+    transform:rotate(-3deg);
+  }
+  .sobre-texto p{
+    font-size:1.08rem;
+    line-height:1.7;
+    margin-bottom:18px;
+  }
+  .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+  }
+  .chip{
+    background:var(--celeste);
+    border:2px solid var(--tinta);
+    border-radius:999px;
+    padding:8px 16px;
+    font-weight:600;
+    font-size:0.9rem;
+  }
+
+  /* Frases destacadas */
+  .frases-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  @media (max-width:860px){ .frases-grid{ grid-template-columns:1fr; } }
+  .tarjeta-frase{
+    background:var(--crema);
+    border:3px solid var(--tinta);
+    border-radius:18px;
+    padding:28px 24px;
+    box-shadow:5px 5px 0 var(--tinta);
+    transition: transform 0.2s ease;
+  }
+  .tarjeta-frase:nth-child(1){ background: #FFF0C2; }
+  .tarjeta-frase:nth-child(2){ background: #DCF2DD; }
+  .tarjeta-frase:nth-child(3){ background: #DDF0F7; }
+  .tarjeta-frase:hover{ transform: translateY(-6px) rotate(-1deg); }
+  .tarjeta-frase p.frase{
+    font-family:'Caveat', cursive;
+    font-size:1.5rem;
+    font-weight:700;
+    line-height:1.35;
+    margin-bottom:14px;
+  }
+  .tarjeta-frase .icono{ font-size:1.8rem; margin-bottom:10px; display:block; }
+
+  /* Para marcas / collabs */
+  .marcas-wrap{
+    background: var(--tierra);
+    color: var(--crema);
+    border-top:3px solid var(--tinta);
+    border-bottom:3px solid var(--tinta);
+  }
+  .marcas-wrap .subrayado{ background:var(--sol); }
+  .marcas-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:26px;
+    margin-top:40px;
+  }
+  @media (max-width:860px){ .marcas-grid{ grid-template-columns:1fr; } }
+  .stat-card{
+    background: rgba(255,246,227,0.08);
+    border:2px solid var(--crema);
+    border-radius:18px;
+    padding:26px 22px;
+  }
+  .stat-card .numero{
+    font-family:'Fraunces', serif;
+    font-size:2.6rem;
+    font-weight:900;
+    color:var(--sol);
+  }
+  .stat-card p{ margin-top:8px; font-size:0.98rem; line-height:1.5; }
+
+  .pilares{
+    display:flex;
+    flex-wrap:wrap;
+    gap:14px;
+    margin-top:34px;
+  }
+  .pilar{
+    background:var(--yerba-clara);
+    color:var(--tinta);
+    border:2px solid var(--crema);
+    padding:10px 18px;
+    border-radius:999px;
+    font-weight:700;
+    font-size:0.92rem;
+  }
+
+  /* Como funciona */
+  .pasos{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-top:20px;
+  }
+  @media (max-width:900px){ .pasos{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:560px){ .pasos{ grid-template-columns:1fr; } }
+  .paso{
+    background:var(--crema);
+    border:3px solid var(--tinta);
+    border-radius:18px;
+    padding:26px 20px;
+    position:relative;
+  }
+  .paso .num{
+    position:absolute;
+    top:-16px; left:20px;
+    background:var(--celeste);
+    border:2px solid var(--tinta);
+    border-radius:50%;
+    width:36px; height:36px;
+    display:flex; align-items:center; justify-content:center;
+    font-weight:900;
+    font-family:'Fraunces', serif;
+  }
+  .paso h3{ font-size:1.05rem; margin:14px 0 8px; }
+  .paso p{ font-size:0.92rem; line-height:1.5; }
+
+  /* CTA final */
+  .cta-final{
+    text-align:center;
+    padding:100px 0 110px;
+  }
+  .cta-final h2{
+    font-size:clamp(2rem,5vw,3.2rem);
+    margin-bottom:20px;
+  }
+  .cta-final p{
+    font-size:1.1rem;
+    max-width:520px;
+    margin:0 auto 36px;
+    line-height:1.6;
+  }
+
+  footer{
+    background:var(--tinta);
+    color:var(--plata);
+    padding:36px 0;
+    text-align:center;
+    font-size:0.9rem;
+  }
+  footer a{ color:var(--sol); font-weight:700; }
+
+  ::selection{ background:var(--sol); color:var(--tinta); }
+</style>
+</head>
+<body>
+
+<div class="bg-textura"></div>
+
+<nav>
+  <div class="contenedor">
+    <div class="logo"><span class="mate">🧉</span> Mate al Argento</div>
+    <div class="nav-links">
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#frases">Frases</a>
+      <a href="#marcas">Para marcas</a>
+      <a href="#como-funciona">Cómo funciona</a>
+    </div>
+    <a class="btn-nav" href="https://www.instagram.com/matealoargento/" target="_blank" rel="noopener">Ver Instagram</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="contenedor hero-grid">
+    <div>
+      <div class="eyebrow">🇦🇷 Contenido 100% argentino</div>
+      <h1>Mates, <em>frases</em><br> y mucha vida real.</h1>
+      <p class="lead">Soy Azu (@azuprusso) y comparto mate y frases de la vida en <strong>Mate al Argento</strong> — la cuenta que le pone calidez a tu feed. Si tu marca busca cercanía, autenticidad y una comunidad que realmente lee las frases, hablemos.</p>
+      <div class="cta-row">
+        <a class="btn-primario" href="https://www.instagram.com/matealoargento/" target="_blank" rel="noopener">🧉 Ir al Instagram</a>
+        <a class="btn-secundario" href="#marcas">Quiero colaborar</a>
+      </div>
+    </div>
+    <div class="mate-visual">
+      <div class="mate-circulo">
+        <span>🧉</span>
+      </div>
+      <div class="globito g1">che, ¿tomamos unos mates?</div>
+      <div class="globito g2">frases que se sienten</div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee-wrap">
+  <div class="marquee">
+    <span>🧉 EL MATE UNE MÁS QUE LAS PALABRAS</span>
+    <span>🇦🇷 FRASES DE LA VIDA REAL</span>
+    <span>🌿 COLABORACIONES AL DM</span>
+    <span>🧉 EL MATE UNE MÁS QUE LAS PALABRAS</span>
+    <span>🇦🇷 FRASES DE LA VIDA REAL</span>
+    <span>🌿 COLABORACIONES AL DM</span>
+  </div>
+</div>
+
+<section id="sobre-mi">
+  <div class="contenedor sobre-grid">
+    <div class="foto-marco reveal">🧉🌿</div>
+    <div class="sobre-texto">
+      <h2 class="titulo-seccion">Sobre mí</h2>
+      <div class="subrayado"></div>
+      <p class="reveal">Una argentina compartiendo mates y frases de la vida. Mate al Argento nació como un rinconcito para pausar, cebar un mate y leer algo que te haga sentir acompañado — sin vueltas, sin filtros de más.</p>
+      <p class="reveal">La cuenta creció gracias a algo simple: contenido honesto, con identidad bien argentina, que la gente guarda y comparte. Eso es justamente lo que hace que las colaboraciones funcionen tan bien acá.</p>
+      <div class="chips reveal">
+        <span class="chip">🧉 Mate & rituales</span>
+        <span class="chip">🇦🇷 Identidad argenta</span>
+        <span class="chip">💬 Frases de vida</span>
+        <span class="chip">🌿 Contenido cercano</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="frases">
+  <div class="contenedor">
+    <h2 class="titulo-seccion reveal">Lo que se comparte acá</h2>
+    <div class="subrayado reveal"></div>
+    <div class="frases-grid">
+      <div class="tarjeta-frase reveal">
+        <span class="icono">🌅</span>
+        <p class="frase">"El primer mate del día se ceba despacito, como se piensan las decisiones importantes."</p>
+      </div>
+      <div class="tarjeta-frase reveal">
+        <span class="icono">🤝</span>
+        <p class="frase">"Ronda de mate, ronda de verdades. No hay mate apurado que valga la pena."</p>
+      </div>
+      <div class="tarjeta-frase reveal">
+        <span class="icono">🌿</span>
+        <p class="frase">"No es la yerba, es con quién la compartís."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marcas-wrap" id="marcas">
+  <section>
+    <div class="contenedor">
+      <h2 class="titulo-seccion reveal">Para marcas y colaboraciones</h2>
+      <div class="subrayado reveal"></div>
+      <p class="reveal" style="max-width:600px;font-size:1.05rem;line-height:1.6;">Mate al Argento conecta con una comunidad que valora lo genuino: mate, costumbres, y contenido que se siente como una charla entre amigos. Ideal para marcas de yerba, accesorios de mate, indumentaria, gastronomía y estilo de vida argentino.</p>
+
+      <div class="marcas-grid">
+        <div class="stat-card reveal">
+          <div class="numero">🧉</div>
+          <p><strong>Contenido nativo</strong><br>Publicaciones que no se sienten como publicidad — se sienten como Mate al Argento.</p>
+        </div>
+        <div class="stat-card reveal">
+          <div class="numero">💬</div>
+          <p><strong>Comunidad activa</strong><br>Seguidores que comentan, guardan y comparten las frases — engagement real, no pasivo.</p>
+        </div>
+        <div class="stat-card reveal">
+          <div class="numero">🇦🇷</div>
+          <p><strong>Identidad clara</strong><br>Una estética y un tono reconocibles: cálido, argentino, sin impostar nada.</p>
+        </div>
+      </div>
+
+      <div class="pilares reveal">
+        <span class="pilar">Reels con mate</span>
+        <span class="pilar">Frases patrocinadas</span>
+        <span class="pilar">Unboxing de productos</span>
+        <span class="pilar">Historias del día a día</span>
+        <span class="pilar">Menciones en feed</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<section id="como-funciona">
+  <div class="contenedor">
+    <h2 class="titulo-seccion reveal">Cómo funciona una colaboración</h2>
+    <div class="subrayado reveal"></div>
+    <div class="pasos">
+      <div class="paso reveal">
+        <div class="num">1</div>
+        <h3>Me escribís al DM</h3>
+        <p>Contame de tu marca y qué tenés en mente.</p>
+      </div>
+      <div class="paso reveal">
+        <div class="num">2</div>
+        <h3>Armamos la propuesta</h3>
+        <p>Vemos formato, tono y objetivos juntos.</p>
+      </div>
+      <div class="paso reveal">
+        <div class="num">3</div>
+        <h3>Creamos el contenido</h3>
+        <p>Con la identidad de siempre: mate, frases y cercanía.</p>
+      </div>
+      <div class="paso reveal">
+        <div class="num">4</div>
+        <h3>Publicamos y medimos</h3>
+        <p>Te paso resultados y feedback de la comunidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="contenedor">
+    <h2 class="reveal">¿Cebamos una colaboración? 🧉</h2>
+    <p class="reveal">Escribime al DM de Instagram y armamos algo juntos, sin vueltas y con mucho mate de por medio.</p>
+    <a class="btn-primario reveal" href="https://www.instagram.com/matealoargento/" target="_blank" rel="noopener">🧉 Mandar DM en Instagram</a>
+  </div>
+</section>
+
+<footer>
+  <div class="contenedor">
+    <p>© 2026 Mate al Argento — @azuprusso · Hecho con mate y mucho cariño 🇦🇷</p>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el=>observer.observe(el));
+</script>
+
+</body>
+</html>
