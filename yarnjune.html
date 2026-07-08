@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>yarn.june — Handmade Ceramics & Crochet from Vietnam</title>
+<meta name="description" content="yarn.june makes handmade ceramics and crochet pieces in Vietnam, made to order in 7–10 days and shipped worldwide. Follow on Instagram to order yours.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF3E6;
+    --cream-2:#FFF8EE;
+    --ink:#2B2118;
+    --clay:#E8734A;
+    --clay-dark:#C85A34;
+    --pink:#F2578F;
+    --blue:#3E92CC;
+    --yellow:#F4C430;
+    --sage:#7FA871;
+    --lilac:#9B7EDE;
+    --line: rgba(43,33,24,0.12);
+    --shadow: 0 10px 30px rgba(43,33,24,0.12);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Nunito', sans-serif;
+    font-size:17px;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    line-height:1.08;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  .script{
+    font-family:'Caveat', cursive;
+    font-weight:700;
+  }
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 24px;}
+
+  /* stitched divider */
+  .stitch{
+    width:100%;
+    height:26px;
+    display:block;
+  }
+  .stitch path{fill:none;stroke:var(--ink);stroke-width:2.5;stroke-linecap:round;opacity:0.18;}
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,243,230,0.88);
+    backdrop-filter:blur(8px);
+    border-bottom:2px dashed var(--line);
+  }
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px; max-width:1140px; margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Baloo 2',sans-serif; font-weight:800; font-size:22px;
+  }
+  .logo .dot{
+    width:14px;height:14px;border-radius:50%;
+    background:conic-gradient(var(--pink),var(--yellow),var(--blue),var(--sage),var(--pink));
+    box-shadow: 0 0 0 3px var(--cream), 0 0 0 4px var(--ink);
+  }
+  .nav-links{display:flex; gap:28px; font-weight:700; font-size:15px;}
+  .nav-links a{opacity:0.75; transition:opacity .2s, color .2s;}
+  .nav-links a:hover{opacity:1; color:var(--clay-dark);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:12px 22px;
+    border-radius:999px;
+    font-weight:800;
+    font-size:15px;
+    border:2.5px solid var(--ink);
+    box-shadow: 3px 3px 0 var(--ink);
+    transition: transform .15s ease, box-shadow .15s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--ink);}
+  .btn:active{transform:translate(0,0); box-shadow:1px 1px 0 var(--ink);}
+  .btn-primary{background:var(--pink); color:#fff;}
+  .btn-alt{background:var(--yellow); color:var(--ink);}
+  .btn-outline{background:transparent;color:var(--ink);}
+  .btn-sm{padding:9px 16px; font-size:13px; box-shadow:2px 2px 0 var(--ink);}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    padding:70px 24px 40px;
+    overflow:hidden;
+  }
+  .hero .wrap{
+    display:grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+  }
+  .blob{
+    position:absolute; border-radius:50%; filter:blur(0px); z-index:0; opacity:0.85;
+  }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:#fff; border:2px solid var(--ink); border-radius:999px;
+    padding:6px 14px; font-weight:800; font-size:13px;
+    box-shadow:3px 3px 0 var(--ink);
+    margin-bottom:18px;
+    transform:rotate(-2deg);
+  }
+  .hero h1{
+    font-size:clamp(38px, 5.4vw, 62px);
+    color:var(--ink);
+  }
+  .hero h1 span.hl{
+    color:var(--clay-dark);
+    position:relative;
+    white-space:nowrap;
+  }
+  .hero h1 span.hl svg{
+    position:absolute; left:-4%; bottom:-10px; width:108%; z-index:-1;
+  }
+  .hero p.lead{
+    margin-top:20px; font-size:19px; max-width:46ch; color:#4a3d2f;
+  }
+  .hero .ctas{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap;}
+  .hero-badges{display:flex; gap:14px; margin-top:34px; flex-wrap:wrap;}
+  .mini-badge{
+    display:flex; align-items:center; gap:8px;
+    background:var(--cream-2); border:2px solid var(--line);
+    padding:8px 14px; border-radius:14px; font-weight:800; font-size:13.5px;
+  }
+
+  .hero-art{position:relative; display:flex; align-items:center; justify-content:center; z-index:1;}
+  .card-float{
+    position:absolute;
+    background:#fff; border:2.5px solid var(--ink); border-radius:18px;
+    box-shadow:5px 5px 0 var(--ink);
+    padding:12px 16px;
+    font-weight:800; font-size:14px;
+    display:flex; align-items:center; gap:8px;
+    animation: floaty 5s ease-in-out infinite;
+  }
+  .card-float.c1{top:6%; left:-6%; animation-delay:0s; transform:rotate(-6deg);}
+  .card-float.c2{bottom:8%; right:-8%; animation-delay:1.2s; transform:rotate(5deg); background:var(--yellow);}
+  .card-float.c3{bottom:-4%; left:8%; animation-delay:2.1s; transform:rotate(-3deg); background:var(--sage); color:#fff;}
+  @keyframes floaty{
+    0%,100%{transform:translateY(0) rotate(var(--r,0deg));}
+    50%{transform:translateY(-10px) rotate(var(--r,0deg));}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .card-float{animation:none;}
+  }
+
+  /* ---------- Section generic ---------- */
+  section{padding:70px 24px;}
+  .section-head{max-width:640px; margin:0 auto 44px; text-align:center;}
+  .section-head .kicker{
+    font-weight:800; font-size:13px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--clay-dark); margin-bottom:10px; display:block;
+  }
+  .section-head h2{font-size:clamp(28px,4vw,40px);}
+  .section-head p{margin-top:14px; color:#5a4c3c; font-size:17px;}
+
+  /* ---------- Craft cards ---------- */
+  .craft-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:26px;
+    max-width:1000px; margin:0 auto;
+  }
+  .craft-card{
+    background:#fff; border:2.5px solid var(--ink); border-radius:24px;
+    padding:30px; box-shadow:6px 6px 0 var(--ink);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .craft-card:hover{transform:translate(-3px,-3px); box-shadow:9px 9px 0 var(--ink);}
+  .craft-card .icon-wrap{
+    width:74px;height:74px;border-radius:20px; display:flex; align-items:center; justify-content:center;
+    margin-bottom:18px;
+  }
+  .craft-card.ceramics .icon-wrap{background:var(--clay);}
+  .craft-card.crochet .icon-wrap{background:var(--blue);}
+  .craft-card h3{font-size:24px; margin-bottom:10px;}
+  .craft-card p{color:#5a4c3c; font-size:15.5px;}
+  .tag-row{display:flex; gap:8px; flex-wrap:wrap; margin-top:16px;}
+  .tag{
+    font-size:12.5px; font-weight:800; padding:5px 12px; border-radius:999px;
+    border:2px solid var(--ink); background:var(--cream-2);
+  }
+
+  /* ---------- palette / yarn swatches ---------- */
+  .palette{background:var(--ink); color:var(--cream);}
+  .palette .section-head .kicker{color:var(--yellow);}
+  .palette .section-head p{color:#e7dccb;}
+  .swatch-row{
+    display:grid; grid-template-columns:repeat(6,1fr); gap:16px; max-width:980px; margin:0 auto;
+  }
+  .swatch{
+    aspect-ratio:1/1.15; border-radius:16px; position:relative; overflow:hidden;
+    border:3px solid rgba(255,255,255,0.14);
+    display:flex; align-items:flex-end; padding:10px;
+  }
+  .swatch span{font-family:'Baloo 2'; font-weight:700; font-size:12.5px; color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.3);}
+  .swatch::before{
+    content:""; position:absolute; inset:0;
+    background-image: repeating-radial-gradient(circle at 30% 30%, rgba(255,255,255,.18) 0 2px, transparent 2px 10px);
+  }
+
+  /* ---------- Process ---------- */
+  .process{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:22px; max-width:1080px; margin:0 auto;
+    counter-reset:step;
+  }
+  .step{
+    background:var(--cream-2); border:2.5px dashed var(--ink); border-radius:20px;
+    padding:26px 20px; position:relative;
+  }
+  .step .num{
+    font-family:'Baloo 2'; font-weight:800; font-size:34px; color:var(--clay-dark);
+    display:block; margin-bottom:10px;
+  }
+  .step h3{font-size:18px; margin-bottom:8px;}
+  .step p{font-size:14.5px; color:#5a4c3c;}
+  .step::after{
+    content:"→"; position:absolute; right:-26px; top:50%; transform:translateY(-50%);
+    font-size:22px; color:var(--ink); opacity:.35; font-weight:800;
+  }
+  .step:last-child::after{display:none;}
+
+  /* ---------- deposit tag ---------- */
+  .deposit-wrap{
+    display:flex; justify-content:center; margin-top:50px;
+  }
+  .price-tag{
+    background:var(--yellow); border:3px solid var(--ink); border-radius:16px;
+    padding:22px 34px; position:relative; box-shadow:6px 6px 0 var(--ink);
+    display:flex; align-items:center; gap:18px; transform:rotate(-2deg);
+  }
+  .price-tag::before{
+    content:""; position:absolute; left:-14px; top:50%; width:24px; height:24px;
+    background:var(--cream); border:3px solid var(--ink); border-radius:50%;
+    transform:translateY(-50%);
+  }
+  .price-tag .script{font-size:30px; color:var(--clay-dark);}
+  .price-tag p{margin:0; font-size:14px; font-weight:700; max-width:26ch;}
+
+  /* ---------- info strip ---------- */
+  .info-strip{
+    background:var(--sage); color:#fff;
+    padding:36px 24px;
+  }
+  .info-strip .wrap{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px;
+  }
+  .info-item{display:flex; align-items:center; gap:12px; font-weight:800; font-size:15px;}
+  .info-item .icn{
+    width:40px;height:40px;border-radius:50%; background:rgba(255,255,255,0.18);
+    display:flex;align-items:center;justify-content:center; font-size:18px;
+  }
+
+  /* ---------- gallery / instagram teaser ---------- */
+  .insta-grid{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:14px; max-width:1080px; margin:0 auto;
+  }
+  .insta-cell{
+    aspect-ratio:1/1; border-radius:18px; border:2.5px solid var(--ink);
+    display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;
+    box-shadow:4px 4px 0 var(--ink);
+  }
+  .insta-cell svg{width:52%; height:52%;}
+
+  /* ---------- CTA banner ---------- */
+  .cta-banner{
+    margin:20px 24px 0; border-radius:32px;
+    background:linear-gradient(120deg, var(--pink), var(--clay) 45%, var(--yellow) 100%);
+    padding:64px 40px; text-align:center; color:#fff; position:relative; overflow:hidden;
+    max-width:1140px; margin-left:auto; margin-right:auto;
+  }
+  .cta-banner h2{font-size:clamp(28px,4.4vw,44px); color:#fff;}
+  .cta-banner p{margin-top:14px; font-size:17px; opacity:.95; max-width:50ch; margin-left:auto; margin-right:auto;}
+  .cta-banner .ctas{display:flex; gap:16px; justify-content:center; margin-top:30px; flex-wrap:wrap;}
+  .cta-banner .btn{border-color:#fff; box-shadow:3px 3px 0 rgba(255,255,255,0.7);}
+  .cta-banner .btn:hover{box-shadow:5px 5px 0 rgba(255,255,255,0.7);}
+  .cta-banner .btn-primary{background:#fff; color:var(--clay-dark);}
+  .cta-banner .btn-outline{color:#fff;}
+
+  /* ---------- footer ---------- */
+  footer{padding:50px 24px 30px;}
+  footer .wrap{
+    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:24px;
+    border-top:2px dashed var(--line); padding-top:30px;
+  }
+  footer .f-left{max-width:340px;}
+  footer .f-links{display:flex; gap:40px; flex-wrap:wrap;}
+  footer h4{font-family:'Baloo 2'; font-size:15px; margin-bottom:12px;}
+  footer ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px;}
+  footer a{font-size:14.5px; color:#5a4c3c; font-weight:700;}
+  footer a:hover{color:var(--clay-dark);}
+  .copyright{text-align:center; font-size:13px; color:#8a7c6a; margin-top:30px;}
+
+  @media (max-width: 880px){
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-art{order:-1; height:260px;}
+    .craft-grid{grid-template-columns:1fr;}
+    .process{grid-template-columns:1fr 1fr;}
+    .swatch-row{grid-template-columns:repeat(3,1fr);}
+    .insta-grid{grid-template-columns:repeat(2,1fr);}
+    .step::after{display:none;}
+    .nav-links{display:none;}
+  }
+  @media (max-width:520px){
+    .swatch-row{grid-template-columns:repeat(2,1fr);}
+    .process{grid-template-columns:1fr;}
+    footer .wrap{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><span class="dot"></span> yarn.june</div>
+    <div class="nav-links">
+      <a href="#craft">The Craft</a>
+      <a href="#process">How to Order</a>
+      <a href="#palette">Colors</a>
+      <a href="#gallery">Gallery</a>
+    </div>
+    <a class="btn btn-primary btn-sm" href="https://www.instagram.com/yarn.june/" target="_blank" rel="noopener">DM on Instagram</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="blob" style="width:420px;height:420px; background:var(--yellow); top:-140px; right:-140px; opacity:.55;"></div>
+  <div class="blob" style="width:280px;height:280px; background:var(--blue); bottom:-100px; left:-90px; opacity:.35;"></div>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">📍 Handmade in Vietnam</span>
+      <h1>Ceramics &amp; crochet, <span class="hl">stitched and shaped</span> just for you.</h1>
+      <p class="lead">yarn.june creates one-of-a-kind handmade ceramics and crochet pieces — made to order, wrapped with care, and shipped from Vietnam to wherever you call home.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="https://www.instagram.com/yarn.june/" target="_blank" rel="noopener">✨ Order on Instagram</a>
+        <a class="btn btn-outline" href="#craft">See the craft</a>
+      </div>
+      <div class="hero-badges">
+        <div class="mini-badge">⏱️ 7–10 day makers' time</div>
+        <div class="mini-badge">✈️ Worldwide shipping</div>
+        <div class="mini-badge">🇻🇳 Made in Vietnam</div>
+      </div>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 320 320" width="320" height="320">
+        <defs>
+          <radialGradient id="potGrad" cx="35%" cy="25%" r="80%">
+            <stop offset="0%" stop-color="#F2915F"/>
+            <stop offset="100%" stop-color="#C85A34"/>
+          </radialGradient>
+        </defs>
+        <circle cx="160" cy="160" r="150" fill="#FFF3DF" stroke="#2B2118" stroke-width="3" stroke-dasharray="2 10"/>
+        <!-- ceramic vase -->
+        <path d="M120 90 Q112 70 130 60 L190 60 Q208 70 200 90 Q225 140 210 200 Q205 245 160 250 Q115 245 110 200 Q95 140 120 90 Z"
+          fill="url(#potGrad)" stroke="#2B2118" stroke-width="4"/>
+        <ellipse cx="160" cy="61" rx="34" ry="9" fill="#F6C89A" stroke="#2B2118" stroke-width="3"/>
+        <path d="M118 150 Q160 168 202 150" fill="none" stroke="#2B2118" stroke-width="3" opacity=".5"/>
+        <path d="M112 190 Q160 206 208 190" fill="none" stroke="#2B2118" stroke-width="3" opacity=".5"/>
+        <!-- yarn ball -->
+        <circle cx="90" cy="240" r="34" fill="#F2578F" stroke="#2B2118" stroke-width="4"/>
+        <path d="M65 225 Q90 250 115 228" stroke="#2B2118" stroke-width="2.5" fill="none" opacity=".6"/>
+        <path d="M60 240 Q90 262 120 244" stroke="#2B2118" stroke-width="2.5" fill="none" opacity=".6"/>
+        <path d="M62 255 Q90 272 118 258" stroke="#2B2118" stroke-width="2.5" fill="none" opacity=".6"/>
+        <path d="M90 240 Q140 200 168 235" stroke="#F2578F" stroke-width="5" fill="none" stroke-linecap="round"/>
+        <!-- crochet hook -->
+        <path d="M168 235 L245 190" stroke="#F4C430" stroke-width="7" stroke-linecap="round"/>
+        <path d="M245 190 q10 -14 -4 -20" stroke="#F4C430" stroke-width="7" fill="none" stroke-linecap="round"/>
+      </svg>
+      <div class="card-float c1">🧶 Made to order</div>
+      <div class="card-float c2">💛 40% deposit</div>
+      <div class="card-float c3">🌍 Ships worldwide</div>
+    </div>
+  </div>
+</section>
+
+<svg class="stitch" viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q15 0 30 13 T60 13 T90 13 T120 13 T150 13 T180 13 T210 13 T240 13 T270 13 T300 13 T330 13 T360 13 T390 13 T420 13 T450 13 T480 13 T510 13 T540 13 T570 13 T600 13 T630 13 T660 13 T690 13 T720 13 T750 13 T780 13 T810 13 T840 13 T870 13 T900 13 T930 13 T960 13 T990 13 T1020 13 T1050 13 T1080 13 T1110 13 T1140 13 T1170 13 T1200 13"/></svg>
+
+<!-- CRAFT -->
+<section id="craft">
+  <div class="section-head">
+    <span class="kicker">Two crafts, one hand</span>
+    <h2>Every piece is made, not manufactured.</h2>
+    <p>No factories, no molds shared with a thousand others. Just clay, yarn, and time.</p>
+  </div>
+  <div class="craft-grid">
+    <div class="craft-card ceramics">
+      <div class="icon-wrap">
+        <svg width="38" height="38" viewBox="0 0 38 38" fill="none"><path d="M11 8 Q10 4 14 4 L24 4 Q28 4 27 8 Q33 16 30 24 Q29 32 19 33 Q9 32 8 24 Q5 16 11 8Z" fill="#fff" stroke="#2B2118" stroke-width="2.5"/></svg>
+      </div>
+      <h3>Handmade ceramics</h3>
+      <p>Mugs, vases and bowls thrown and glazed by hand — every curve a little different, the way real pottery should be.</p>
+      <div class="tag-row"><span class="tag">Stoneware</span><span class="tag">Hand-glazed</span><span class="tag">One of a kind</span></div>
+    </div>
+    <div class="craft-card crochet">
+      <div class="icon-wrap">
+        <svg width="38" height="38" viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="15" fill="#fff" stroke="#2B2118" stroke-width="2.5"/><path d="M8 15 Q19 25 30 15" stroke="#2B2118" stroke-width="2" fill="none"/><path d="M7 20 Q19 30 31 20" stroke="#2B2118" stroke-width="2" fill="none"/></svg>
+      </div>
+      <h3>Crochet &amp; knit</h3>
+      <p>Bags, plushies and wearables stitched loop by loop, in colors that feel like a warm afternoon.</p>
+      <div class="tag-row"><span class="tag">Soft cotton yarn</span><span class="tag">Custom colors</span><span class="tag">Made to order</span></div>
+    </div>
+  </div>
+</section>
+
+<svg class="stitch" viewBox="0 0 1200 26" preserveAspectRatio="none"><path d="M0 13 Q15 26 30 13 T60 13 T90 13 T120 13 T150 13 T180 13 T210 13 T240 13 T270 13 T300 13 T330 13 T360 13 T390 13 T420 13 T450 13 T480 13 T510 13 T540 13 T570 13 T600 13 T630 13 T660 13 T690 13 T720 13 T750 13 T780 13 T810 13 T840 13 T870 13 T900 13 T930 13 T960 13 T990 13 T1020 13 T1050 13 T1080 13 T1110 13 T1140 13 T1170 13 T1200 13"/></svg>
+
+<!-- PALETTE -->
+<section id="palette" class="palette">
+  <div class="section-head">
+    <span class="kicker">Pick your palette</span>
+    <h2>Every yarn skein and glaze, in one shelf.</h2>
+    <p>Tell us your favorite from this palette and we'll match it to your piece — or send us your own inspiration.</p>
+  </div>
+  <div class="swatch-row">
+    <div class="swatch" style="background:#F2578F;"><span>Berry Pink</span></div>
+    <div class="swatch" style="background:#F4C430;"><span>Honey Yellow</span></div>
+    <div class="swatch" style="background:#3E92CC;"><span>Lake Blue</span></div>
+    <div class="swatch" style="background:#7FA871;"><span>Rice Sage</span></div>
+    <div class="swatch" style="background:#E8734A;"><span>Terracotta</span></div>
+    <div class="swatch" style="background:#9B7EDE;"><span>Dusk Lilac</span></div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-head">
+    <span class="kicker">From DM to doorstep</span>
+    <h2>How ordering works</h2>
+    <p>Simple, transparent, and made just for you — every single time.</p>
+  </div>
+  <div class="process">
+    <div class="step">
+      <span class="num">01</span>
+      <h3>Message us</h3>
+      <p>Send a DM on Instagram with the piece, size and colors you're dreaming of.</p>
+    </div>
+    <div class="step">
+      <span class="num">02</span>
+      <h3>Secure your spot</h3>
+      <p>Pay a 40% deposit to confirm your order and reserve your place in the queue.</p>
+    </div>
+    <div class="step">
+      <span class="num">03</span>
+      <h3>We make it</h3>
+      <p>Your piece is shaped, glazed or stitched by hand over 7–10 days.</p>
+    </div>
+    <div class="step">
+      <span class="num">04</span>
+      <h3>It ships to you</h3>
+      <p>Carefully packed and shipped from Vietnam — domestic or worldwide.</p>
+    </div>
+  </div>
+  <div class="deposit-wrap">
+    <div class="price-tag">
+      <span class="script">40% deposit</span>
+      <p>secures your order before we start making — the rest is due before shipping.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INFO STRIP -->
+<div class="info-strip">
+  <div class="wrap">
+    <div class="info-item"><span class="icn">📍</span> Based in Vietnam</div>
+    <div class="info-item"><span class="icn">⏱️</span> 7–10 days to make</div>
+    <div class="info-item"><span class="icn">✈️</span> Domestic &amp; international shipping</div>
+    <div class="info-item"><span class="icn">💬</span> Custom orders welcome</div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-head">
+    <span class="kicker">A peek at the shelf</span>
+    <h2>See the latest makes on Instagram</h2>
+    <p>New ceramics and crochet pieces are posted regularly — follow along and DM your favorite.</p>
+  </div>
+  <div class="insta-grid">
+    <a class="insta-cell" style="background:#F2C9D8;" href="https://www.instagram.com/yarn.june/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 38 38" fill="none"><path d="M11 8 Q10 4 14 4 L24 4 Q28 4 27 8 Q33 16 30 24 Q29 32 19 33 Q9 32 8 24 Q5 16 11 8Z" fill="#fff" stroke="#2B2118" stroke-width="2.5"/></svg>
+    </a>
+    <a class="insta-cell" style="background:#CFE6F5;" href="https://www.instagram.com/yarn.june/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 38 38" fill="none"><circle cx="19" cy="19" r="15" fill="#fff" stroke="#2B2118" stroke-width="2.5"/><path d="M8 15 Q19 25 30 15" stroke="#2B2118" stroke-width="2" fill="none"/></svg>
+    </a>
+    <a class="insta-cell" style="background:#FBE3AE;" href="https://www.instagram.com/yarn.june/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 38 38" fill="none"><path d="M19 4 L23 15 L34 15 L25 22 L28 33 L19 26 L10 33 L13 22 L4 15 L15 15 Z" fill="#fff" stroke="#2B2118" stroke-width="2.5"/></svg>
+    </a>
+    <a class="insta-cell" style="background:#D9E8CF;" href="https://www.instagram.com/yarn.june/" target="_blank" rel="noopener">
+      <svg viewBox="0 0 38 38" fill="none"><path d="M19 32 C6 24 5 13 13 10 C17 8 19 12 19 12 C19 12 21 8 25 10 C33 13 32 24 19 32 Z" fill="#fff" stroke="#2B2118" stroke-width="2.5"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Ready for a piece made just for you?</h2>
+  <p>DM yarn.june on Instagram to start your order — tell us the colors, the size, and let's make something one of a kind.</p>
+  <div class="ctas">
+    <a class="btn btn-primary" href="https://www.instagram.com/yarn.june/" target="_blank" rel="noopener">📩 Message yarn.june</a>
+    <a class="btn btn-outline" href="https://www.instagram.com/yarn.june/" target="_blank" rel="noopener">Follow @yarn.june</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="f-left">
+      <div class="logo"><span class="dot"></span> yarn.june</div>
+      <p style="margin-top:12px; font-size:14.5px; color:#5a4c3c;">Handmade ceramics and crochet, made to order in Vietnam and shipped around the world.</p>
+    </div>
+    <div class="f-links">
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#craft">The Craft</a></li>
+          <li><a href="#process">How to Order</a></li>
+          <li><a href="#palette">Colors</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Order</h4>
+        <ul>
+          <li><a href="https://www.instagram.com/yarn.june/" target="_blank" rel="noopener">Instagram DM</a></li>
+          <li><a href="https://www.instagram.com/yarn.june/" target="_blank" rel="noopener">@yarn.june</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p class="copyright">Made with 🧶 &amp; 🏺 in Vietnam · yarn.june</p>
+</footer>
+
+</body>
+</html>
