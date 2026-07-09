@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calmando Mentes | Amor Propio & Salud Mental</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --coral: #FF6B6B;
+            --rosa: #FF69B4;
+            --melocoton: #FFB347;
+            --purpura: #9D84B7;
+            --verde: #7DC582;
+            --dorado: #D4AF37;
+            --crema: #FFF8F3;
+            --texto: #2C3E50;
+            --gris-claro: #F0E8E3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--texto);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER & NAVEGACIÓN */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.95), rgba(255, 105, 180, 0.95));
+            padding: 1.2rem 2rem;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: white;
+            font-weight: 900;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 0.6rem;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 2px;
+            margin-top: -0.5rem;
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* HERO SECTION */
+        .hero {
+            margin-top: 70px;
+            background: linear-gradient(135deg, #FFE5EC 0%, #FFF8DC 50%, #E6F3FF 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            color: var(--rosa);
+            margin-bottom: 1rem;
+            font-weight: 900;
+            line-height: 1.1;
+        }
+
+        .hero h1 .highlight {
+            background: linear-gradient(135deg, var(--coral), var(--rosa), var(--melocoton));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            color: var(--purpura);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--texto);
+            margin-bottom: 2rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .hero-emoji {
+            font-size: 4rem;
+            animation: float 3s ease-in-out infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* BOTONES */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
+
+        .btn {
+            padding: 1.1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--coral), var(--rosa));
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--melocoton), var(--dorado));
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn-primary:hover::before {
+            left: 0;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--rosa);
+            border: 2px solid var(--rosa);
+        }
+
+        .btn-secondary:hover {
+            background: var(--rosa);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* SECCIONES */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--texto);
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--coral), var(--rosa), var(--melocoton));
+            border-radius: 2px;
+        }
+
+        /* BENEFICIOS */
+        .beneficios {
+            background: linear-gradient(135deg, #FFFACD 0%, var(--crema) 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .benefit-card {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--coral);
+            opacity: 0;
+            animation: slideInUp 0.6s ease forwards;
+        }
+
+        .benefit-card:nth-child(2) {
+            animation-delay: 0.2s;
+            border-top-color: var(--rosa);
+        }
+
+        .benefit-card:nth-child(3) {
+            animation-delay: 0.4s;
+            border-top-color: var(--purpura);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .benefit-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .benefit-card:nth-child(2) .benefit-icon {
+            animation-delay: 0.3s;
+        }
+
+        .benefit-card:nth-child(3) .benefit-icon {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--texto);
+        }
+
+        .benefit-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* AUDIOLIBRO */
+        .audiolibro {
+            background: linear-gradient(135deg, #E6D5FF 0%, #FFE5EC 100%);
+        }
+
+        .audiolibro-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .audiolibro-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--purpura);
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .audiolibro-text p {
+            font-size: 1.1rem;
+            color: var(--texto);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .audiolibro-visual {
+            position: relative;
+            text-align: center;
+        }
+
+        .audiolibro-box {
+            background: linear-gradient(135deg, var(--coral), var(--rosa));
+            padding: 3rem;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 107, 107, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .audiolibro-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            animation: spin 3s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .audiolibro-text-box {
+            color: white;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* CTA SECTION */
+        .cta-final {
+            background: linear-gradient(135deg, var(--coral), var(--rosa), var(--purpura));
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+        }
+
+        .cta-final h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-final p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .cta-buttons a {
+            padding: 1.3rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn-instagram {
+            background: white;
+            color: var(--coral);
+        }
+
+        .btn-instagram:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-beacons {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-beacons:hover {
+            background: white;
+            color: var(--coral);
+            transform: translateY(-5px);
+        }
+
+        /* FLOATING BUTTON */
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, var(--coral), var(--rosa));
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+            animation: float 3s ease-in-out infinite;
+            z-index: 999;
+            text-decoration: none;
+        }
+
+        .floating-cta:hover {
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(255, 107, 107, 0.6);
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--texto);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .audiolibro-content {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-group {
+                flex-direction: column;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .floating-cta {
+                width: 55px;
+                height: 55px;
+                font-size: 1.5rem;
+                bottom: 1.5rem;
+                right: 1.5rem;
+            }
+        }
+
+        /* SCROLL REVEAL */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                Calmando Mentes
+                <span>💖 Amor Propio</span>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-emoji">💫</div>
+            <h1>Aprende a <span class="highlight">Sentirte Mejor</span> Contigo Misma</h1>
+            <p class="subtitle">Cada día es una oportunidad para cuidar tu salud mental</p>
+            <p>Descubre herramientas prácticas para fortalecer tu amor propio y transformar tu relación contigo misma. ¡Hoy es el día para empezar!</p>
+            <div class="btn-group">
+                <a href="https://beacons.ai/calmandomentes" class="btn btn-primary">📖 Descargar Audiolibro Gratis</a>
+                <a href="https://www.instagram.com/calmandomentes/" class="btn btn-secondary">Seguir en Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section class="beneficios">
+        <h2 class="section-title">¿Qué Aprenderás?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card reveal">
+                <div class="benefit-icon">🧘‍♀️</div>
+                <h3>Prácticas de Mindfulness</h3>
+                <p>Técnicas simples y poderosas para calmar tu mente y encontrar paz interior en cualquier momento del día.</p>
+            </div>
+            <div class="benefit-card reveal">
+                <div class="benefit-icon">💪</div>
+                <h3>Fortalece tu Amor Propio</h3>
+                <p>Descubre ejercicios transformadores para amarte a ti misma y construir una relación saludable contigo.</p>
+            </div>
+            <div class="benefit-card reveal">
+                <div class="benefit-icon">🌸</div>
+                <h3>Bienestar Emocional</h3>
+                <p>Herramientas efectivas para gestionar emociones, reducir estrés y vivir con mayor equilibrio y alegría.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AUDIOLIBRO SECTION -->
+    <section class="audiolibro">
+        <div class="audiolibro-content">
+            <div class="audiolibro-text reveal">
+                <h2>Tu Audiolibro Gratis te Espera</h2>
+                <p>Un viaje transformador en audio que puedes escuchar en cualquier lugar: camino al trabajo, en casa, antes de dormir.</p>
+                <p><strong>Contenidos exclusivos:</strong></p>
+                <ul style="margin: 1.5rem 0; font-size: 1rem; text-align: left;">
+                    <li>✨ Meditaciones guiadas para el amor propio</li>
+                    <li>✨ Técnicas de respiración y relajación</li>
+                    <li>✨ Reflexiones profundas sobre salud mental</li>
+                    <li>✨ Ejercicios prácticos que puedes hacer hoy</li>
+                </ul>
+                <a href="https://beacons.ai/calmandomentes" class="btn btn-primary" style="width: fit-content;">Accede Ahora 💖</a>
+            </div>
+            <div class="audiolibro-visual reveal">
+                <div class="audiolibro-box">
+                    <div class="audiolibro-icon">🎧</div>
+                    <div class="audiolibro-text-box">
+                        Audiolibro Gratis
+                        <div style="font-size: 0.8rem; margin-top: 0.5rem; opacity: 0.9;">Acceso instantáneo</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final">
+        <h2>¿Lista para el Cambio?</h2>
+        <p>Únete a cientos de mujeres que están transformando su relación consigo mismas</p>
+        <div class="cta-buttons">
+            <a href="https://www.instagram.com/calmandomentes/" class="btn-instagram">
+                📱 Seguir en Instagram
+            </a>
+            <a href="https://beacons.ai/calmandomentes" class="btn-beacons">
+                🎁 Descargar Audiolibro
+            </a>
+        </div>
+    </section>
+
+    <!-- FLOATING CTA -->
+    <a href="https://www.instagram.com/calmandomentes/" class="floating-cta" title="Visitar Instagram">💖</a>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2024 Calmando Mentes | Amor Propio & Salud Mental</p>
+        <p>Creado con ❤️ para tu bienestar</p>
+    </footer>
+
+    <script>
+        // HAMBURGER MENU
+        const hamburger = document.getElementById('hamburger');
+        hamburger.addEventListener('click', function() {
+            this.classList.toggle('active');
+        });
+
+        // SCROLL REVEAL ANIMATION
+        const reveals = document.querySelectorAll('.reveal');
+
+        function reveal() {
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    element.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', reveal);
+        reveal();
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
